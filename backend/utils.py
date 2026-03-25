@@ -4,14 +4,16 @@ from urllib.parse import urlparse
 
 import requests
 from bs4 import BeautifulSoup
+try:
+    from .config import get_settings
+except ImportError:  # pragma: no cover - supports `uvicorn main:app` from backend/
+    from config import get_settings
 
 
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0 Safari/537.36"
 )
-REQUEST_TIMEOUT = 10
-
 
 def looks_like_url(value: str) -> bool:
     parsed = urlparse(value.strip())
@@ -21,7 +23,7 @@ def looks_like_url(value: str) -> bool:
 def fetch_article_text(url: str) -> str:
     response = requests.get(
         url,
-        timeout=REQUEST_TIMEOUT,
+        timeout=get_settings().request_timeout,
         headers={"User-Agent": USER_AGENT},
     )
     response.raise_for_status()

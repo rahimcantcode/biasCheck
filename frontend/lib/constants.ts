@@ -1,5 +1,20 @@
-export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+function resolveApiBaseUrl() {
+  const configuredUrl = process.env.NEXT_PUBLIC_API_BASE_URL?.trim();
+  if (configuredUrl) {
+    return configuredUrl.replace(/\/$/, "");
+  }
+
+  if (typeof window !== "undefined") {
+    const { hostname } = window.location;
+    if (hostname === "localhost" || hostname === "127.0.0.1") {
+      return "http://localhost:8000";
+    }
+  }
+
+  return "/api";
+}
+
+export const API_BASE_URL = resolveApiBaseUrl();
 
 export const MODES = [
   { value: "article", label: "Article" },

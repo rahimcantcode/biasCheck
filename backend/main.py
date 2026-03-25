@@ -1,9 +1,22 @@
+import logging
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from model import get_model, get_tokenizer, predict_text
-from schemas import HealthResponse, PredictRequest, PredictResponse, SegmentPrediction
-from utils import resolve_input, segment_text
+try:
+    from .config import get_settings
+    from .model import get_model, get_tokenizer, predict_text
+    from .schemas import HealthResponse, PredictRequest, PredictResponse, SegmentPrediction
+    from .utils import resolve_input, segment_text
+except ImportError:  # pragma: no cover - supports `uvicorn main:app` from backend/
+    from config import get_settings
+    from model import get_model, get_tokenizer, predict_text
+    from schemas import HealthResponse, PredictRequest, PredictResponse, SegmentPrediction
+    from utils import resolve_input, segment_text
+
+
+logger = logging.getLogger("biaschecker.backend")
+settings = get_settings()
 
 
 app = FastAPI(
@@ -12,18 +25,20 @@ app = FastAPI(
     version="0.1.0",
 )
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+if settings.allowed_origins:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.allowed_origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 
 @app.on_event("startup")
 def warm_model() -> None:
     # Warm the tokenizer and model on startup so the first request feels less cold.
+    logger.info("Starting Bias Checker backend with model directory: %s", settings.model_dir)
     get_tokenizer()
     get_model()
 
@@ -66,4 +81,5 @@ def predict(request: PredictRequest) -> PredictResponse:
     except HTTPException:
         raise
     except Exception as exc:
+        logger.exception("Prediction request failed")
         raise HTTPException(status_code=400, detail=str(exc)) from exc

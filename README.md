@@ -1,6 +1,6 @@
 # Bias Checker
 
-Bias Checker is a local full-stack MVP for analyzing political bias in news content using a fine-tuned RoBERTa classifier stored in `bias_model/`.
+Bias Checker is a full-stack app for analyzing political bias in news content using a fine-tuned RoBERTa classifier stored in `bias_model/`.
 
 ## Project Structure
 
@@ -11,7 +11,9 @@ bias_app/
   bias_model/
 ```
 
-## Backend
+## Local Development
+
+### Backend
 
 Create and activate a virtual environment:
 
@@ -46,7 +48,7 @@ Backend URL:
 http://localhost:8000
 ```
 
-## Frontend
+### Frontend
 
 Install dependencies:
 
@@ -67,9 +69,21 @@ Frontend URL:
 http://localhost:3000
 ```
 
+## Production Deployment
+
+This repo is prepared for single-VPS deployment with:
+
+- FastAPI on `127.0.0.1:8000`
+- Next.js on `127.0.0.1:3000`
+- nginx reverse proxying `/api/` to the backend and `/` to the frontend
+- systemd managing both services
+
+See [`DEPLOY_VPS.md`](/Users/rahim/Documents/bias_app/DEPLOY_VPS.md) for the full Hostinger VPS deployment guide.
+
 ## Notes
 
 - The backend loads the exported Hugging Face model from `../bias_model`.
 - The bundled `backend/setup_env.sh` applies a tokenizer compatibility fix for this exported model on Python 3.11 + local CPU PyTorch.
-- The frontend expects the API at `http://localhost:8000` by default.
-- To change the frontend API target, set `NEXT_PUBLIC_API_BASE_URL` before running `npm run dev`.
+- In local browser development, the frontend falls back to `http://localhost:8000`.
+- In production, the frontend can use same-origin `/api` behind nginx.
+- To override the frontend API target explicitly, set `NEXT_PUBLIC_API_BASE_URL`.

@@ -8,6 +8,7 @@ backend/*.pyc
 # Node / Next.js
 frontend/node_modules/
 frontend/.next/
+frontend/tsconfig.tsbuildinfo
 
 # Logs
 *.log
