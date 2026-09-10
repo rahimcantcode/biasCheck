@@ -14,6 +14,12 @@ interface ResultsPanelProps {
   error: string | null;
 }
 
+const INLINE_HIGHLIGHT_STYLES = {
+  LEFT: "bg-blue-500/15 text-blue-100 decoration-blue-400/50",
+  CENTER: "bg-slate-400/10 text-slate-100 decoration-slate-400/40",
+  RIGHT: "bg-rose-500/15 text-rose-100 decoration-rose-400/50",
+} as const;
+
 export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
   const dominantLabel = useMemo(() => data?.results[0]?.label, [data]);
 
@@ -87,11 +93,11 @@ export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
               Analysis Summary
             </div>
             <h2 className="text-2xl font-semibold text-white">
-              {data.mode === "article" ? "Whole article prediction" : `${data.results.length} segment predictions`}
+              {data.mode === "article" ? "Whole article prediction" : `${data.mode === "sentence" ? "Sentence" : "Paragraph"}-level bias map`}
             </h2>
             <p className="max-w-3xl text-sm leading-7 text-slate-400">
               Source type: <span className="text-slate-200">{data.source_type}</span>. Mode:{" "}
-              <span className="text-slate-200">{data.mode}</span>. The interface below keeps the segment-level predictions color coded so the overall leaning is easy to scan.
+              <span className="text-slate-200">{data.mode}</span>. The analyzed article stays together as one readable document while each classified section is highlighted by political leaning.
             </p>
           </div>
           <div className={`inline-flex items-center gap-3 rounded-2xl border bg-white/[0.03] px-4 py-3 ${styles.border}`}>
@@ -105,27 +111,56 @@ export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
       </div>
 
       {data.mode !== "article" ? (
-        <div className="rounded-[2rem] border border-white/10 bg-white/[0.02] p-5">
-          <p className="mb-4 text-xs uppercase tracking-[0.2em] text-slate-500">Highlighted segment view</p>
-          <div className="flex flex-wrap gap-2">
-            {data.results.map((result) => (
-              <span
-                key={`${result.segment_index}-${result.label}`}
-                className={`rounded-2xl px-3 py-2 text-sm leading-6 ${LABEL_STYLES[result.label].badge}`}
-                title={result.label}
-              >
-                {result.text}
-              </span>
-            ))}
+        <div className="rounded-[2rem] border border-white/10 bg-white/[0.02] p-6 sm:p-8">
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Color-coded article view</p>
+            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
+              <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-blue-400" />Left</span>
+              <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-slate-300" />Center</span>
+              <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-rose-400" />Right</span>
+            </div>
           </div>
-        </div>
-      ) : null}
 
-      <div className="grid gap-4">
-        {data.results.map((result) => (
-          <SegmentCard key={result.segment_index} result={result} />
-        ))}
-      </div>
+          {data.mode === "paragraph" ? (
+            <div className="space-y-5 text-[15px] leading-8 text-slate-200 sm:text-base">
+              {data.results.map((result) => (
+                <p key={`${result.segment_index}-${result.label}`}>
+                  <span
+                    className={`box-decoration-clone px-0.5 py-0.5 ${INLINE_HIGHLIGHT_STYLES[result.label]}`}
+                    title={`${result.label} · ${(result.confidence * 100).toFixed(1)}% confidence`}
+                  >
+                    {result.text}
+                  </span>
+                </p>
+              ))}
+            </div>
+          ) : (
+            <div className="text-[15px] leading-8 text-slate-200 sm:text-base">
+              {data.results.map((result, index) => (
+                <span key={`${result.segment_index}-${result.label}`}>
+                  <span
+                    className={`box-decoration-clone px-0.5 py-0.5 ${INLINE_HIGHLIGHT_STYLES[result.label]}`}
+                    title={`${result.label} · ${(result.confidence * 100).toFixed(1)}% confidence`}
+                  >
+                    {result.text}
+                  </span>
+                  {index < data.results.length - 1 ? " " : null}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <p className="mt-6 border-t border-white/8 pt-4 text-xs leading-5 text-slate-500">
+            Hover over a highlighted section to see its predicted label and confidence. Blue indicates LEFT, gray indicates CENTER, and red indicates RIGHT.
+          </p>
+        </div>
+      ) : (
+        <div className="grid gap-4">
+          {data.results.map((result) => (
+            <SegmentCard key={result.segment_index} result={result} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
