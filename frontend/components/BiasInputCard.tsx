@@ -69,7 +69,7 @@ export function BiasInputCard({
               Live analysis workspace
             </div>
             <p className="text-sm text-slate-400">
-              Paste a full article or a URL. The backend will extract article text automatically for valid links.
+              Paste an article or its URL to see political leaning directly in the text.
             </p>
           </div>
 
@@ -100,7 +100,7 @@ export function BiasInputCard({
                   Input guidance
                 </div>
                 <p className="text-sm leading-6 text-slate-400">
-                  Use article mode for one overall label, sentence mode to inspect line-by-line framing, or paragraph mode for more stable section-level reads.
+                  Article mode combines an overall reading with sentence colors. Choose sentence or paragraph mode to inspect passages at your preferred level of detail.
                 </p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-black/20 p-4">

@@ -31,7 +31,8 @@ export async function analyzeInput(input: string, mode: Mode): Promise<PredictRe
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ input, mode }),
+    // Article view needs passage predictions, not a single truncated article label.
+    body: JSON.stringify({ input, mode: mode === "article" ? "sentence" : mode }),
   });
 
   if (!response.ok) {
@@ -44,5 +45,6 @@ export async function analyzeInput(input: string, mode: Mode): Promise<PredictRe
     }
   }
 
-  return (await response.json()) as PredictResponse;
+  const data = (await response.json()) as PredictResponse;
+  return { ...data, mode };
 }

@@ -1,12 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import { AlertTriangle, Check, Eye, EyeOff, ScanSearch } from "lucide-react";
 
-import { AlertTriangle, BarChart3, FileSearch, ScanSearch } from "lucide-react";
-
-import { SegmentCard } from "@/components/SegmentCard";
-import { PredictResponse } from "@/lib/api";
-import { LABEL_STYLES } from "@/lib/constants";
+import type { Label, PredictResponse, SegmentResult } from "@/lib/api";
+import { buildArticleParts, summarizeArticle } from "@/lib/article";
 
 interface ResultsPanelProps {
   data: PredictResponse | null;
@@ -14,36 +12,26 @@ interface ResultsPanelProps {
   error: string | null;
 }
 
-const INLINE_HIGHLIGHT_STYLES = {
-  LEFT: "bg-blue-500/15 text-blue-100 decoration-blue-400/50",
-  CENTER: "bg-slate-400/10 text-slate-100 decoration-slate-400/40",
-  RIGHT: "bg-rose-500/15 text-rose-100 decoration-rose-400/50",
-} as const;
+const LABELS: Label[] = ["LEFT", "CENTER", "RIGHT"];
+const NAMES = { LEFT: "Left", CENTER: "Center", RIGHT: "Right" };
+const TEXT_COLORS = { LEFT: "text-blue-300", CENTER: "text-slate-200", RIGHT: "text-red-300" };
+const BAR_COLORS = { LEFT: "bg-blue-400", CENTER: "bg-slate-500", RIGHT: "bg-red-400" };
 
+// A fresh response mounts a fresh reader, clearing the previous passage selection.
 export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
-  const dominantLabel = useMemo(() => data?.results[0]?.label, [data]);
-
   if (loading) {
     return (
-      <section className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow backdrop-blur">
-        <div className="mb-6 flex items-center gap-3">
-          <div className="h-10 w-10 animate-pulse rounded-2xl bg-white/10" />
-          <div className="space-y-2">
-            <div className="h-4 w-32 animate-pulse rounded bg-white/10" />
-            <div className="h-3 w-56 animate-pulse rounded bg-white/5" />
-          </div>
-        </div>
-        <div className="space-y-4">
-          {[0, 1, 2].map((item) => (
-            <div key={item} className="rounded-3xl border border-white/8 bg-white/[0.02] p-5">
-              <div className="mb-4 h-4 w-24 animate-pulse rounded bg-white/10" />
-              <div className="mb-2 h-3 w-full animate-pulse rounded bg-white/5" />
-              <div className="mb-6 h-3 w-5/6 animate-pulse rounded bg-white/5" />
-              <div className="space-y-2">
-                <div className="h-2.5 w-full animate-pulse rounded bg-white/5" />
-                <div className="h-2.5 w-full animate-pulse rounded bg-white/5" />
-                <div className="h-2.5 w-full animate-pulse rounded bg-white/5" />
-              </div>
+      <section aria-busy="true" aria-label="Analyzing article" className="mx-auto max-w-5xl rounded-[2rem] border border-white/10 bg-[#0d1320] p-7 sm:p-12">
+        <p role="status" className="mb-10 flex items-center gap-3 text-sm text-slate-300">
+          <span className="h-2 w-2 animate-pulse rounded-full bg-blue-300" />
+          Reading your article and mapping its political leaning…
+        </p>
+        <div aria-hidden="true" className="mx-auto max-w-3xl space-y-8 motion-safe:animate-pulse">
+          {[0, 1, 2].map((paragraph) => (
+            <div key={paragraph} className="space-y-3">
+              <div className="h-3 w-full rounded bg-white/[0.07]" />
+              <div className="h-3 w-full rounded bg-white/[0.07]" />
+              <div className="h-3 w-4/5 rounded bg-white/[0.07]" />
             </div>
           ))}
         </div>
@@ -53,15 +41,11 @@ export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
 
   if (error) {
     return (
-      <section className="rounded-[2rem] border border-rose-400/20 bg-rose-500/5 p-6 shadow-glow">
-        <div className="flex items-start gap-4">
-          <div className="rounded-2xl border border-rose-400/20 bg-rose-500/10 p-3">
-            <AlertTriangle className="h-5 w-5 text-rose-200" />
-          </div>
-          <div className="space-y-1">
-            <h2 className="text-lg font-semibold text-white">Analysis failed</h2>
-            <p className="text-sm leading-6 text-rose-100/90">{error}</p>
-          </div>
+      <section role="alert" className="mx-auto flex max-w-5xl items-start gap-4 rounded-[2rem] border border-red-400/20 bg-red-500/5 p-7">
+        <AlertTriangle className="mt-1 h-5 w-5 shrink-0 text-red-300" />
+        <div>
+          <h2 className="text-lg font-semibold text-white">Analysis failed</h2>
+          <p className="mt-1 text-sm leading-6 text-red-100/90">{error}</p>
         </div>
       </section>
     );
@@ -69,98 +53,128 @@ export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
 
   if (!data) {
     return (
-      <section className="rounded-[2rem] border border-dashed border-white/12 bg-white/[0.02] p-8 text-center">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.03]">
-          <ScanSearch className="h-6 w-6 text-slate-300" />
-        </div>
-        <h2 className="text-xl font-semibold text-white">Ready to analyze</h2>
-        <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-400">
-          Paste article text or drop in a URL above, choose how granular you want the analysis to be, and Bias Checker will return probability-weighted LEFT, CENTER, and RIGHT predictions.
+      <section className="mx-auto max-w-5xl rounded-[2rem] border border-dashed border-white/10 bg-white/[0.02] p-8 text-center sm:p-12">
+        <ScanSearch className="mx-auto mb-4 h-6 w-6 text-slate-400" />
+        <h2 className="text-xl font-semibold text-white">A clearer way to read the news</h2>
+        <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-slate-400">
+          Analyze an article to see its political leaning directly in the text.
+          Left in blue. Right in red. Center stays neutral.
         </p>
       </section>
     );
   }
 
-  const styles = dominantLabel ? LABEL_STYLES[dominantLabel] : LABEL_STYLES.CENTER;
+  return <ArticleReader data={data} />;
+}
+
+function ArticleReader({ data }: { data: PredictResponse }) {
+  const [showColors, setShowColors] = useState(true);
+  const [selected, setSelected] = useState<SegmentResult | null>(null);
+  const parts = useMemo(() => buildArticleParts(data.resolved_text, data.results), [data]);
+  const summary = useMemo(() => summarizeArticle(data.results), [data]);
+  const overall = summary?.label;
 
   return (
-    <section className="space-y-6">
-      <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow backdrop-blur">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs uppercase tracking-[0.22em] text-slate-400">
-              <FileSearch className="h-3.5 w-3.5" />
-              Analysis Summary
-            </div>
-            <h2 className="text-2xl font-semibold text-white">
-              {data.mode === "article" ? "Whole article prediction" : `${data.mode === "sentence" ? "Sentence" : "Paragraph"}-level bias map`}
-            </h2>
-            <p className="max-w-3xl text-sm leading-7 text-slate-400">
-              Source type: <span className="text-slate-200">{data.source_type}</span>. Mode:{" "}
-              <span className="text-slate-200">{data.mode}</span>. The analyzed article stays together as one readable document while each classified section is highlighted by political leaning.
+    <section aria-labelledby="article-reader-title" className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 bg-[#0d1320] shadow-[0_24px_90px_rgba(0,0,0,0.25)]">
+      <header className="border-b border-white/[0.08] px-6 py-7 sm:px-10 sm:py-9">
+        <div className="mb-4 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em] text-slate-400">
+          <Check className="h-3.5 w-3.5 text-slate-300" />
+          Analysis complete
+        </div>
+        <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+          <div>
+            <h2 id="article-reader-title" className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Your article, in perspective.</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-400">
+              {summary?.totalWords.toLocaleString() ?? 0} words
+              <span aria-hidden="true" className="mx-2 text-slate-600">·</span>
+              {data.mode === "paragraph" ? "Paragraph" : "Sentence"} analysis
             </p>
           </div>
-          <div className={`inline-flex items-center gap-3 rounded-2xl border bg-white/[0.03] px-4 py-3 ${styles.border}`}>
-            <BarChart3 className={`h-5 w-5 ${styles.text}`} />
-            <div>
-              <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Top signal</p>
-              <p className={`text-sm font-semibold ${styles.text}`}>{dominantLabel ?? "CENTER"}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {data.mode !== "article" ? (
-        <div className="rounded-[2rem] border border-white/10 bg-white/[0.02] p-6 sm:p-8">
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Color-coded article view</p>
-            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
-              <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-blue-400" />Left</span>
-              <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-slate-300" />Center</span>
-              <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-rose-400" />Right</span>
-            </div>
-          </div>
-
-          {data.mode === "paragraph" ? (
-            <div className="space-y-5 text-[15px] leading-8 text-slate-200 sm:text-base">
-              {data.results.map((result) => (
-                <p key={`${result.segment_index}-${result.label}`}>
-                  <span
-                    className={`box-decoration-clone px-0.5 py-0.5 ${INLINE_HIGHLIGHT_STYLES[result.label]}`}
-                    title={`${result.label} · ${(result.confidence * 100).toFixed(1)}% confidence`}
-                  >
-                    {result.text}
-                  </span>
-                </p>
-              ))}
-            </div>
-          ) : (
-            <div className="text-[15px] leading-8 text-slate-200 sm:text-base">
-              {data.results.map((result, index) => (
-                <span key={`${result.segment_index}-${result.label}`}>
-                  <span
-                    className={`box-decoration-clone px-0.5 py-0.5 ${INLINE_HIGHLIGHT_STYLES[result.label]}`}
-                    title={`${result.label} · ${(result.confidence * 100).toFixed(1)}% confidence`}
-                  >
-                    {result.text}
-                  </span>
-                  {index < data.results.length - 1 ? " " : null}
-                </span>
-              ))}
+          {summary && (
+            <div className="shrink-0 sm:text-right">
+              <p className="text-[10px] uppercase tracking-[0.18em] text-slate-500">Overall leaning</p>
+              <p className={`mt-1 text-lg font-medium ${overall ? TEXT_COLORS[overall] : "text-slate-200"}`}>
+                {overall ? NAMES[overall] : "Mixed"}
+              </p>
             </div>
           )}
-
-          <p className="mt-6 border-t border-white/8 pt-4 text-xs leading-5 text-slate-500">
-            Hover over a highlighted section to see its predicted label and confidence. Blue indicates LEFT, gray indicates CENTER, and red indicates RIGHT.
-          </p>
         </div>
-      ) : (
-        <div className="grid gap-4">
-          {data.results.map((result) => (
-            <SegmentCard key={result.segment_index} result={result} />
+        {summary && (
+          <details className="mt-6">
+            <summary className="w-fit cursor-pointer text-xs text-slate-400 transition hover:text-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300">
+              View score breakdown
+            </summary>
+            <div className="mt-4 flex h-1.5 overflow-hidden rounded-full" aria-hidden="true">
+              {LABELS.map((label) => <span key={label} className={BAR_COLORS[label]} style={{ width: `${summary.probabilities[label] * 100}%` }} />)}
+            </div>
+            <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-400">
+              {LABELS.map((label) => <span key={label}>{NAMES[label]} <span className={TEXT_COLORS[label]}>{(summary.probabilities[label] * 100).toFixed(1)}%</span></span>)}
+            </div>
+            <p className="mt-3 text-xs leading-5 text-slate-500">Average model scores, weighted by passage word count. These are predictions, not a measure of factual accuracy.</p>
+          </details>
+        )}
+      </header>
+
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.06] bg-white/[0.015] px-6 py-4 sm:px-10">
+        <div aria-label="Text color legend" className="flex flex-wrap gap-x-5 gap-y-2 text-xs">
+          {LABELS.map((label) => (
+            <span key={label} className={`flex items-center gap-2 ${TEXT_COLORS[label]}`}>
+              <span aria-hidden="true" className={`h-1.5 w-1.5 rounded-full ${BAR_COLORS[label]}`} />
+              {NAMES[label]}
+            </span>
           ))}
         </div>
-      )}
+        <button
+          type="button"
+          aria-pressed={showColors}
+          onClick={() => { setShowColors(!showColors); setSelected(null); }}
+          className="flex min-h-9 items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-xs text-slate-300 transition hover:border-white/25 hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300"
+        >
+          {showColors ? <Eye className="h-3.5 w-3.5" /> : <EyeOff className="h-3.5 w-3.5" />}
+          Color bias
+        </button>
+      </div>
+
+      <div className="px-6 py-9 sm:px-10 sm:py-12">
+        <article aria-label="Analyzed article" className="mx-auto max-w-3xl whitespace-pre-wrap break-words font-serif text-[18px] leading-[1.95] text-slate-200 sm:text-[20px]">
+          {parts.map((part, index) => {
+            const result = part.result;
+            if (!result || !showColors) return <span key={index}>{part.text}</span>;
+            const confidence = (result.probabilities[result.label] * 100).toFixed(1);
+            const description = `${NAMES[result.label]} leaning, ${confidence}% model score`;
+            const active = selected === result;
+            return (
+              <span
+                key={index}
+                role="button"
+                tabIndex={0}
+                aria-label={`${description}: ${part.text}`}
+                aria-pressed={active}
+                title={description}
+                onClick={() => setSelected(active ? null : result)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setSelected(active ? null : result);
+                  }
+                  if (event.key === "Escape") setSelected(null);
+                }}
+                className={`cursor-pointer rounded-sm decoration-1 underline-offset-[5px] transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400 ${TEXT_COLORS[result.label]} ${active ? "bg-white/5 underline" : ""}`}
+              >
+                {part.text}
+              </span>
+            );
+          })}
+        </article>
+      </div>
+
+      <footer className="border-t border-white/[0.08] bg-white/[0.015] px-6 py-5 sm:px-10">
+        <p aria-live="polite" aria-atomic="true" className="text-xs leading-6 text-slate-400">
+          {selected ? (
+            <><span className={`font-medium ${TEXT_COLORS[selected.label]}`}>{NAMES[selected.label]} leaning</span><span className="mx-2 text-slate-600">·</span>{(selected.probabilities[selected.label] * 100).toFixed(1)}% model score for this passage.</>
+          ) : showColors ? "Select any passage to inspect its prediction. Center text keeps its natural color." : "Plain reading view. Turn on Color bias to see the predictions in the text."}
+        </p>
+      </footer>
     </section>
   );
 }

@@ -10,6 +10,14 @@ Bias Checker is a full-stack political bias analysis app built with:
 
 The app classifies pasted article text or extracted URL content as `LEFT`, `RIGHT`, or `CENTER`, with support for article-level, sentence-level, and paragraph-level analysis.
 
+## Article reading experience
+
+- Results appear as one continuous article, preserving the resolved text's paragraph breaks and punctuation.
+- Left-leaning passages use blue text, right-leaning passages use red text, and center passages keep the normal text color.
+- Select a passage with a mouse, touch, or keyboard to inspect its predicted label and model score. Use **Color bias** to switch to plain reading.
+- The frontend's Article mode requests sentence predictions so different passages can have different colors. The displayed overall leaning averages passage probabilities, weighted by word count, rather than using the first passage's label.
+- Sentence and Paragraph modes use the same reader. The backend `/predict` contract is unchanged.
+
 Production is live at:
 
 - Main site: `https://bias.r4him.tech`

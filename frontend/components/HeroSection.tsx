@@ -67,11 +67,11 @@ export function HeroSection({
             <div className="flex items-center gap-2 text-slate-200">
               <ArrowRight className="h-4 w-4 text-blue-200" />
               {results
-                ? `Latest run returned ${results.results.length} ${results.mode === "article" ? "prediction" : "segments"} in ${results.mode} mode.`
-                : "Local MVP flow: input, classify, and inspect segment-level probabilities in one place."}
+                ? `Your article is ready below, with ${results.results.length} analyzed passages.`
+                : "Read the original article with political leaning woven into the text."}
             </div>
             <div className="hidden h-4 w-px bg-white/10 sm:block" />
-            <p>Bias Checker loads your exported local model from `bias_model/` through FastAPI.</p>
+            <p>Left in blue. Right in red. Center stays neutral.</p>
           </div>
         </div>
       </div>
