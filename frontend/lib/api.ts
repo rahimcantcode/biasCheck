@@ -11,6 +11,10 @@ export interface PredictionProbabilities {
 }
 
 export interface PredictionResult {
+  assessment?: string | null;
+  tentative_label?: Label | null;
+  score_type?: string;
+  relevance_scores?: Record<string, number> | null;
   label: Label | null;
   label_id: number | null;
   raw_label: Label;

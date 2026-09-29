@@ -184,3 +184,18 @@ release approval or final accuracy results were produced.
 The temporary execution workspace was cleared; source code was recovered from GitHub.
 The research notebook was recovered through its text-read interface after two byte
 transfer attempts failed with HTTP 502. Existing notes were preserved and appended.
+
+## 2026-09-29: experimental PoliticalDEBATE integration
+
+Pinned large candidate `mlburnham/Political_DEBATE_large_v1.0` at
+`1a3aff1ecb97ad93a6de598f7414b1707de7e7c3`; MIT model card reviewed previously.
+Weights SHA-256 `5f83396d09cb0b802eafbe1f33f0ca03632f8dc17115051624cc4ef85b9815d4`.
+Completed 40 fixed-hypothesis controlled probes; no human-gold accuracy claimed.
+Preserved failures for vague criticism, partisan-name criticism, and mixed stances.
+Added opt-in backend, independent-score UI, checkpoint verification, bounded
+inference, and directly pinned public-IP URL transport. Real API smoke produced
+nonpolitical dinner, insufficient-context Taxes, and expected tentative directions
+for explicit Left/Right policy examples. Original RoBERTa remains default.
+See `NLI_IMPLEMENTATION.md` for thresholds, limitations, and remaining gates.
+No release approval or VPS deployment occurred. Full article comparison and final
+integration verification are recorded separately as they complete.

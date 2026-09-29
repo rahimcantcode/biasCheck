@@ -1,8 +1,11 @@
 """Bounded article extraction and sentence offsets in the returned text."""
 import ipaddress
+import http.client
+import ssl
+import time
 import re
 import socket
-from urllib.parse import urlparse, urljoin
+from urllib.parse import urlparse, urljoin, quote
 import pysbd
 import requests
 import trafilatura
@@ -30,9 +33,13 @@ def validate_public_url(url):
         raise ValueError('Please provide a public HTTP or HTTPS article URL.')
     if p.port not in (None,80,443):
         raise ValueError('Only standard web ports are supported.')
-    addresses = socket.getaddrinfo(p.hostname, p.port or (443 if p.scheme=='https' else 80), type=socket.SOCK_STREAM)
+    try:
+        addresses = socket.getaddrinfo(p.hostname, p.port or (443 if p.scheme=='https' else 80), type=socket.SOCK_STREAM)
+    except OSError as exc:
+        raise ValueError('Could not resolve the article host. Please paste its text.') from exc
     if not addresses or any(not ipaddress.ip_address(row[4][0]).is_global for row in addresses):
         raise ValueError('Only public article URLs are supported.')
+    return addresses[0]
 
 
 def extract_article_html(html):
@@ -54,29 +61,78 @@ def extract_article_html(html):
     return text
 
 
+class PublicConnection(http.client.HTTPConnection):
+    """Connect to the checked address, retaining the hostname for TLS and Host."""
+    def __init__(self, host, port, address, secure, timeout):
+        super().__init__(host, port=port, timeout=timeout)
+        self.address = address
+        self.secure = secure
+
+    def connect(self):
+        family, socktype, proto, _, sockaddr = self.address
+        sock = socket.socket(family, socktype, proto)
+        try:
+            sock.settimeout(self.timeout)
+            sock.connect(sockaddr)
+            if self.secure:
+                sock = ssl.create_default_context().wrap_socket(sock, server_hostname=self.host)
+            self.sock = sock
+        except BaseException:
+            sock.close()
+            raise
+
+
 def fetch_article_text(url):
-    # Also restrict private-network egress at the deployment boundary; DNS prechecks
-    # alone cannot eliminate DNS rebinding with an unrestricted network client.
+    deadline = time.monotonic() + get_settings().request_timeout
     for _ in range(5):
-        validate_public_url(url)
-        with requests.get(url, timeout=get_settings().request_timeout,
-                          headers={'User-Agent':'BiasChecker/0.2'}, stream=True, allow_redirects=False) as response:
-            if response.is_redirect:
-                location = response.headers.get('Location')
+        address = validate_public_url(url)
+        parsed = urlparse(url)
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise ValueError('Article download timed out. Please paste its text.')
+        connection = PublicConnection(parsed.hostname.encode('idna').decode('ascii'),
+                                      parsed.port or (443 if parsed.scheme == 'https' else 80),
+                                      address, parsed.scheme == 'https', remaining)
+        response = None
+        try:
+            target = quote(parsed.path or '/', safe='/%:@!$&\'()*+,;=-._~')
+            if parsed.query:
+                target += '?' + quote(parsed.query, safe='/%?:@!$&\'()*+,;=-._~')
+            connection.request('GET', target, headers={'User-Agent': 'BiasChecker/0.3', 'Accept-Encoding': 'identity'})
+            active_socket = connection.sock
+            response = connection.getresponse()
+            if response.status in (301, 302, 303, 307, 308):
+                location = response.getheader('Location')
                 if not location:
                     raise ValueError('Article redirect has no destination.')
                 url = urljoin(url, location)
                 continue
-            response.raise_for_status()
-            if not any(t in response.headers.get('Content-Type','').lower() for t in ('text/html','application/xhtml+xml')):
+            if response.status >= 400:
+                raise ValueError('Article host refused the request. Please paste its text.')
+            if response.getheader('Content-Encoding', 'identity').lower() != 'identity':
+                raise ValueError('Article host returned unsupported compression. Please paste its text.')
+            if not any(t in response.getheader('Content-Type', '').lower() for t in ('text/html', 'application/xhtml+xml')):
                 raise ValueError('The URL must point to an HTML article.')
             chunks, total = [], 0
-            for chunk in response.iter_content(65536):
+            while True:
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    raise ValueError('Article download timed out. Please paste its text.')
+                active_socket.settimeout(remaining)
+                chunk = response.read1(65536)
+                if not chunk:
+                    break
                 total += len(chunk)
                 if total > MAX_DOWNLOAD:
                     raise ValueError('Article page exceeds download limit. Please paste the text.')
                 chunks.append(chunk)
             return extract_article_html(b''.join(chunks))
+        except (OSError, http.client.HTTPException) as exc:
+            raise requests.RequestException('Could not retrieve article') from exc
+        finally:
+            if response is not None:
+                response.close()
+            connection.close()
     raise ValueError('Too many article redirects.')
 
 

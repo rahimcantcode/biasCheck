@@ -13,6 +13,7 @@ interface ResultsPanelProps {
 }
 
 const LABELS: Label[] = ["LEFT", "CENTER", "RIGHT"];
+const ASSESSMENTS: Record<string, string> = { nonpolitical: "No political content detected", insufficient_context: "More context needed", uncertain: "Uncertain", mixed_or_conflicting: "Mixed or conflicting signals" };
 const NAMES = { LEFT: "Left", CENTER: "Center", RIGHT: "Right" };
 const TEXT_COLORS = { LEFT: "text-blue-300", CENTER: "text-slate-200", RIGHT: "text-red-300" };
 const BAR_COLORS = { LEFT: "bg-blue-400", CENTER: "bg-slate-500", RIGHT: "bg-red-400" };
@@ -24,7 +25,7 @@ export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
       <section aria-busy="true" aria-label="Analyzing article" className="mx-auto max-w-5xl rounded-[2rem] border border-white/10 bg-[#0d1320] p-7 sm:p-12">
         <p role="status" className="mb-10 flex items-center gap-3 text-sm text-slate-300">
           <span className="h-2 w-2 animate-pulse rounded-full bg-blue-300" />
-          Reading your article and mapping its political leaning…
+          Reading your article and checking political content. Long articles can take several minutes…
         </p>
         <div aria-hidden="true" className="mx-auto max-w-3xl space-y-8 motion-safe:animate-pulse">
           {[0, 1, 2].map((paragraph) => (
@@ -94,7 +95,7 @@ function ArticleReader({ data }: { data: PredictResponse }) {
             <div className="shrink-0 sm:text-right">
               <p className="text-[10px] uppercase tracking-[0.18em] text-slate-500">Overall leaning</p>
               <p className={`mt-1 text-lg font-medium ${overall ? TEXT_COLORS[overall] : "text-slate-200"}`}>
-                {overall ? NAMES[overall] : "No reliable label"}
+                {overall ? NAMES[overall] : summary.tentative_label ? `Tentative ${NAMES[summary.tentative_label]}` : summary.assessment ? ASSESSMENTS[summary.assessment] ?? summary.assessment : "No reliable label"}
               </p>
             </div>
           )}
@@ -106,13 +107,13 @@ function ArticleReader({ data }: { data: PredictResponse }) {
             <summary className="w-fit cursor-pointer text-xs text-slate-400 transition hover:text-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300">
               Inspect experimental scores
             </summary>
-            <div className="mt-4 flex h-1.5 overflow-hidden rounded-full" aria-hidden="true">
+            <div className="mt-4 hidden" aria-hidden="true">
               {LABELS.map((label) => <span key={label} className={BAR_COLORS[label]} style={{ width: `${summary.probabilities[label] * 100}%` }} />)}
             </div>
             <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-400">
               {LABELS.map((label) => <span key={label}>{NAMES[label]} <span className={TEXT_COLORS[label]}>{(summary.probabilities[label] * 100).toFixed(1)}%</span></span>)}
             </div>
-            <p className="mt-3 text-xs leading-5 text-slate-500">Full-document model scores. Unless independently calibrated, these percentages are not measured probabilities of correctness. They do not measure factual accuracy.</p>
+            <p className="mt-3 text-xs leading-5 text-slate-500">Experimental model support scores, not probabilities of correctness. Entailment scores are independent and need not total 100%. Center means nonaligned political reporting, not factual accuracy or absence of bias.</p>
           </details>
         )}
       </header>
@@ -170,6 +171,20 @@ function ArticleReader({ data }: { data: PredictResponse }) {
         </article>
       </div>
 
+      {data.mode !== "article" && data.overall.score_type === "independent_entailment" && (
+        <details className="border-t border-white/10 px-6 py-5 sm:px-10">
+          <summary className="cursor-pointer text-sm text-slate-300">Inspect experimental passage assessments</summary>
+          <ol className="mt-4 space-y-5">
+            {data.results.map(result => (
+              <li key={result.segment_index} className="rounded-lg border border-white/10 p-4 text-sm">
+                <p className="font-medium text-slate-200">{result.tentative_label ? `Tentative ${NAMES[result.tentative_label]}` : ASSESSMENTS[result.assessment ?? ""] ?? "Uncertain"}</p>
+                <p className="mt-2 whitespace-pre-wrap text-slate-400">{result.text}</p>
+                <p className="mt-2 text-xs text-slate-500">Independent support: {LABELS.map(label => `${NAMES[label]} ${(result.probabilities[label] * 100).toFixed(1)}%`).join(" / ")}</p>
+              </li>
+            ))}
+          </ol>
+        </details>
+      )}
       <footer className="border-t border-white/[0.08] bg-white/[0.015] px-6 py-5 sm:px-10">
         <p aria-live="polite" aria-atomic="true" className="text-xs leading-6 text-slate-400">
           {selected?.label ? (

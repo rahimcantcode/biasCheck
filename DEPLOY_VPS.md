@@ -77,7 +77,7 @@ BIASCHECK_REQUEST_TIMEOUT=10
 
 ```bash
 cd /var/www/biasCheck/frontend
-npm install
+npm ci
 ```
 
 Optional frontend environment file:
@@ -197,9 +197,57 @@ When you push new code:
 cd /var/www/biasCheck
 git pull
 git lfs pull
-cd frontend && npm install && npm run build
+cd frontend && npm ci && npm run build
 cd /var/www/biasCheck/backend && bash setup_env.sh
 sudo systemctl restart biascheck-backend.service
 sudo systemctl restart biascheck-frontend.service
 sudo systemctl reload nginx
 ```
+
+
+## Experimental political entailment engine
+
+This branch includes an opt-in PoliticalDEBATE large engine. It is a functioning
+experimental assessment pipeline, not an independently validated high-accuracy
+release. The default remains the original RoBERTa engine. Do not create an
+approved decision policy based on the development results.
+
+From the repository root, after backend setup:
+
+```bash
+backend/.venv/bin/python backend/download_nli_model.py
+```
+
+The downloader pins the model revision and verifies SHA-256 for weights,
+configuration, and tokenizer files. It requires about 1.75 GB for the checkpoint.
+Keep additional free disk space for downloads and dependencies. The development
+machine has 8 GB RAM; production capacity and latency must be measured on your VPS.
+Use one backend worker. Multiple workers duplicate the model in memory.
+
+Set these in `backend/.env` to enable the candidate:
+
+```env
+BIASCHECK_ENGINE=political_nli
+BIASCHECK_NLI_MODEL_DIR=/var/www/biasCheck/research/checkpoints/political-debate-large
+BIASCHECK_TORCH_THREADS=2
+```
+
+Build and restart both services with the updated nginx timeout. `/api/health`
+must report `engine: political_nli`, the pinned model revision, and
+`release_approved: false`. That false value is intentional: results are tentative.
+Try a dinner description, a clear policy position, and a one-word input. They
+should produce distinct relevance/context outcomes instead of universal Left.
+Inspect all three analysis modes. CPU inference can take minutes on long articles.
+The candidate rejects more than 12 windows per text or more than 20 passages.
+Concurrent requests receive a retryable busy response instead of running multiple
+large inference jobs at once.
+
+Rollback: set `BIASCHECK_ENGINE=roberta` and restart the backend. Keep the original
+checkpoint available. The frontend understands both response formats. This is
+not a substitute for retaining your last known working deployment and configuration.
+
+URL retrieval connects directly to a checked public IP address, verifies TLS
+against the requested hostname, and rechecks redirects. Private and link-local
+addresses are rejected. Deployment egress restrictions remain useful defense in
+depth. Sites that block automated retrieval require pasted text.
+No change in this branch has been deployed to the VPS from this workspace.

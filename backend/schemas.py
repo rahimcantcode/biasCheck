@@ -9,6 +9,10 @@ class PredictRequest(BaseModel):
     mode: Mode = 'article'
 
 class PredictionResult(BaseModel):
+    assessment: str | None = None
+    tentative_label: LabelName | None = None
+    relevance_scores: dict[str, float] | None = None
+    score_type: str = "class_probability"
     label: LabelName | None
     label_id: int | None
     raw_label: LabelName
