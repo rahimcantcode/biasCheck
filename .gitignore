@@ -12,3 +12,11 @@ frontend/tsconfig.tsbuildinfo
 
 # Logs
 *.log
+
+# Local experiments, datasets and checkpoints
+.venv*/
+**/__pycache__/
+.pytest_cache/
+research/data/
+research/checkpoints/
+*.joblib

@@ -21,6 +21,9 @@ class Settings:
         )
         self.backend_host = os.getenv("BIASCHECK_BACKEND_HOST", "127.0.0.1")
         self.backend_port = int(os.getenv("BIASCHECK_BACKEND_PORT", "8000"))
+        self.max_windows = 64
+        self.batch_size = max(1, min(8, int(os.getenv("BIASCHECK_BATCH_SIZE", "4"))))
+        self.max_segments = 150
         self.request_timeout = int(os.getenv("BIASCHECK_REQUEST_TIMEOUT", "10"))
 
     @staticmethod
