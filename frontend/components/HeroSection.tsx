@@ -41,7 +41,7 @@ export function HeroSection({
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300">
               <Paperclip className="h-3.5 w-3.5 text-blue-200" />
-              Article, sentence, and paragraph political bias analysis
+              Explore political leaning with full article context
             </div>
             <h1 className="mx-auto max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-6xl">
               See how your article leans
@@ -71,7 +71,7 @@ export function HeroSection({
                 : "Read the original article with political leaning woven into the text."}
             </div>
             <div className="hidden h-4 w-px bg-white/10 sm:block" />
-            <p>Left in blue. Right in red. Center stays neutral.</p>
+            <p>Validated labels use color. Uncertain results stay uncolored.</p>
           </div>
         </div>
       </div>

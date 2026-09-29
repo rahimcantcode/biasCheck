@@ -73,3 +73,52 @@ Never claim high accuracy from suppressed predictions or a contaminated test set
 - https://huggingface.co/matous-volf/political-leaning-deberta-large
 - https://huggingface.co/mediabiasgroup/roberta-babe-ft
 - https://arxiv.org/abs/1706.04599
+
+### Reconstructed implementation and new runs
+
+- Backend now processes complete documents with overlapping windows and explicitly records coverage. The aggregation is experimental; it is not a demonstrated accuracy improvement.
+- Frontend sends the requested mode and uses a separately computed full-document overall result. It does not average sentence classifications into an article label.
+- Exact passage offsets, abbreviation-aware splitting, nonduplicated article extraction, supported pinned dependencies, loading diagnostics, model hashes, input limits and model-bound calibration policies are implemented.
+- Without an approved policy, predictions abstain and raw scores remain explicitly experimental. This is a reliability guard, not a trained relevance classifier or an accuracy improvement. Nonpolitical recognition remains unsolved.
+- Reinstalled a corrupted CPU PyTorch shared library after a SIGBUS; import and package dependency checks then passed.
+- 22 regression tests pass on the reconstructed code. Next.js production build, including TypeScript and lint checks, passed. A tiny randomly initialized RoBERTa completed one training epoch with article-window weighting and wrote a checkpoint. Its synthetic labels and 1/3 accuracy are plumbing checks only.
+
+### Publisher-domain baseline
+
+Pinned dataset revision: ced8111a720948e6a410e52031ace99c4e53f096.
+Registrable-domain grouping corrected the initial hostname-only implementation:
+blogs.wsj.com, online.wsj.com and wsj.com are one publisher group; likewise CNN subdomains.
+Reserved test first, validation second, training last. Removed 2,981 training articles
+whose publisher domains occur in evaluation and six exact normalized duplicates.
+Final sizes: train 23,603, validation 2,356, test 1,300.
+TF-IDF/logistic regression: validation accuracy .289898, macro F1 .279093.
+Validation class counts: LEFT 1,640, CENTER 618, RIGHT 98. This severe imbalance
+and publisher shift make accuracy alone misleading. No test predictions were used.
+Data manifests, parameters, metrics and per-class results are preserved in results/.
+
+### Paired context comparison
+
+Reconstructed the same 60-article public validation sample, seed 20260929, 20/class.
+First-512 result reproduced exactly: accuracy .733333, macro F1 .729798.
+Full-document aggregation: accuracy .683333, macro F1 .671765.
+CENTER recall fell from .60 to .45. Difference in accuracy full minus first: -.05.
+Exploratory paired bootstrap 95% percentile interval [-.116667, 0], 10,000 resamples,
+seed 20260929. This interval ignores publisher/story clustering and unknown training
+contamination. It is not evidence of a reliable population improvement or definitive degradation.
+All full-document examples were processed without silent truncation. Per-example scores,
+logits, coverage and checkpoint hashes are preserved in context_comparison.json.
+No labels were released: accepted coverage remains zero without a validated policy.
+That zero coverage must not be presented as high accuracy or successful relevance handling.
+
+### Research tooling and remaining gates
+
+Added dataset preparation, baseline training, full-document evaluation, calibration,
+offline candidate-policy evaluation and document-window transformer retraining scripts.
+Calibration cannot use the test split; it requires annotation provenance and never
+approves a policy. Offline policy evaluation checks exact test/validation overlap and
+proposed point-estimate targets, but does not grant release approval.
+Full transformer training, trained relevance handling, contemporary independent human
+annotation, source/event/time leakage audit, robust confidence intervals and operational
+staging are outstanding. No GPU is available here. No VPS SSH connection is configured.
+The branch is a research and engineering checkpoint, not a production-ready high-accuracy
+model. No merge, production deployment, or formal report has been performed.

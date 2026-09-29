@@ -8,15 +8,17 @@ Bias Checker is a full-stack political bias analysis app built with:
 - Next.js App Router frontend
 - a local Hugging Face model stored in `bias_model/`
 
-The app classifies pasted article text or extracted URL content as `LEFT`, `RIGHT`, or `CENTER`, with support for article-level, sentence-level, and paragraph-level analysis.
+This research branch analyzes full article context and exposes experimental model scores. Reliable political labels are withheld until a model-bound policy passes independent evaluation. This behavior does not make the underlying model more accurate.
 
 ## Article reading experience
 
-- Results appear as one continuous article, preserving the resolved text's paragraph breaks and punctuation.
-- Left-leaning passages use blue text, right-leaning passages use red text, and center passages keep the normal text color.
-- Select a passage with a mouse, touch, or keyboard to inspect its predicted label and model score. Use **Color bias** to switch to plain reading.
-- The frontend's Article mode requests sentence predictions so different passages can have different colors. The displayed overall leaning averages passage probabilities, weighted by word count, rather than using the first passage's label.
-- Sentence and Paragraph modes use the same reader. The backend `/predict` contract is unchanged.
+- Article mode now requests article inference. Overall results are computed from the document, independently of passage scores.
+- Long documents use overlapping windows with explicit token coverage. Inputs exceeding the processing limit are rejected rather than silently truncated.
+- Sentence and paragraph modes preserve exact text offsets. Their scores remain experimental until separately validated.
+- Unapproved or uncertain results have no political label or partisan coloring. Raw scores are available as experimental diagnostics, not probabilities of correctness.
+- Backend response version 0.2 includes `overall`, nullable labels, offsets, warnings, coverage and model hashes. Deploy frontend and backend together; old clients are not compatible.
+
+See [research workflow](research/README.md) and [experiment log](research/EXPERIMENT_LOG.md). No newly validated model or production deployment is claimed.
 
 Production is live at:
 
@@ -39,7 +41,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-If the exported tokenizer needs the compatibility fix used in production:
+For the pinned CPU runtime without modifying installed package checks:
 
 ```bash
 cd backend
