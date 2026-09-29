@@ -101,7 +101,7 @@ export function BiasInputCard({
                   Input guidance
                 </div>
                 <p className="text-sm leading-6 text-slate-400">
-                  Article mode processes the complete article. Passage modes are experimental and show labels only when separately validated.
+                  Article mode processes the complete article. Passage modes show estimates when the model has enough context.
                 </p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-black/20 p-4">

@@ -69,6 +69,8 @@ def _predict(request: PredictRequest):
         warnings = []
         if overall.get('score_type') == 'independent_entailment':
             warnings.append('Experimental assessment: this model and its decision rules have not passed independent validation. Tentative results can be wrong, especially for sarcasm, vague criticism, quotations, and mixed positions.')
+        if overall.get('reason') == 'demo_estimate':
+            warnings.append('Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.')
         if overall['reason'] == 'model_not_validated':
             warnings.append('This checkpoint has not passed independent validation. Political labels are withheld; experimental scores are available below.')
         if request.mode != 'article':

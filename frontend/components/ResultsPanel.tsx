@@ -59,7 +59,7 @@ export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
         <h2 className="text-xl font-semibold text-white">A clearer way to read the news</h2>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-slate-400">
           Analyze an article to see its political leaning directly in the text.
-          Validated leaning estimates appear in color. Uncertain passages remain plain.
+          Model leaning estimates appear in color when the system has enough context. Uncertain passages remain plain.
         </p>
       </section>
     );
@@ -97,6 +97,7 @@ function ArticleReader({ data }: { data: PredictResponse }) {
               <p className={`mt-1 text-lg font-medium ${overall ? TEXT_COLORS[overall] : "text-slate-200"}`}>
                 {overall ? NAMES[overall] : summary.tentative_label ? `Tentative ${NAMES[summary.tentative_label]}` : summary.assessment ? ASSESSMENTS[summary.assessment] ?? summary.assessment : "No reliable label"}
               </p>
+              {summary.reason === "demo_estimate" && <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-amber-200/80">Experimental estimate</p>}
             </div>
           )}
         </div>
@@ -189,7 +190,7 @@ function ArticleReader({ data }: { data: PredictResponse }) {
         <p aria-live="polite" aria-atomic="true" className="text-xs leading-6 text-slate-400">
           {selected?.label ? (
             <><span className={`font-medium ${TEXT_COLORS[selected.label]}`}>{NAMES[selected.label]} leaning</span><span className="mx-2 text-slate-600">·</span>{(selected.probabilities[selected.label] * 100).toFixed(1)}% model score for this passage.</>
-          ) : showColors ? "Select any passage to inspect its prediction. Uncertain and unvalidated passages remain plain." : "Plain reading view. Turn on Color bias to see the predictions in the text."}
+          ) : showColors ? "Select any passage to inspect its prediction. Uncertain passages remain plain." : "Plain reading view. Turn on Color bias to see the predictions in the text."}
         </p>
       </footer>
     </section>

@@ -71,7 +71,7 @@ export function HeroSection({
                 : "Read the original text alongside the model’s assessment."}
             </div>
             <div className="hidden h-4 w-px bg-white/10 sm:block" />
-            <p>Validated labels use color. Uncertain results stay uncolored.</p>
+            <p>Clear model estimates use color. Uncertain results stay uncolored.</p>
           </div>
         </div>
       </div>

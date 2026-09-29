@@ -40,6 +40,19 @@ def test_high_score_is_not_validated_label():
     assert reason=='model_not_validated'
 
 
+def test_demo_mode_exposes_clear_estimate_without_approving_release(monkeypatch):
+    monkeypatch.setenv('BIASCHECK_DEMO_MODE', '1')
+    scores, reason=classify_scores([10,0,0],15,'article',None)
+    assert scores[0] > .99
+    assert reason == 'demo_estimate'
+
+
+def test_demo_mode_still_withholds_short_context(monkeypatch):
+    monkeypatch.setenv('BIASCHECK_DEMO_MODE', '1')
+    _, reason=classify_scores([10,0,0],3,'article',None)
+    assert reason == 'insufficient_context'
+
+
 def test_context_and_mode_are_not_center():
     p={'release_approved':True,'temperature':1.,'min_tokens':30,'min_confidence':.7,'min_margin':.2,'validated_modes':['article']}
     assert classify_scores([0,9,0],10,'article',p)[1]=='insufficient_context'

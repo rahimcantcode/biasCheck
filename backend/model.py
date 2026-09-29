@@ -67,6 +67,7 @@ def model_metadata():
         'tokenizer_sha256': hashlib.sha256(''.join(p.name + sha256(p) for p in files).encode()).hexdigest(),
         'id2label': {str(k): str(v).upper() for k,v in get_model().config.id2label.items()},
         'aggregation': AGGREGATION, 'max_length': MAX_LENGTH, 'stride': 64,
+        'demo_mode': os.getenv('BIASCHECK_DEMO_MODE', '0') == '1',
         'transformers': transformers.__version__, 'torch': torch.__version__,
         'tokenizers': tokenizers.__version__,
     }
@@ -116,8 +117,18 @@ def classify_scores(logits, token_count, mode, policy):
     scores /= scores.sum()
     ranked = np.sort(scores)
     reason = None
+    demo_mode = os.getenv('BIASCHECK_DEMO_MODE', '0') == '1'
     if not policy or not policy['release_approved']:
-        reason = 'model_not_validated'
+        if demo_mode:
+            margin = float(ranked[-1] - ranked[-2])
+            if token_count < 12:
+                reason = 'insufficient_context'
+            elif ranked[-1] < 0.55 or margin < 0.15:
+                reason = 'uncertain'
+            else:
+                reason = 'demo_estimate'
+        else:
+            reason = 'model_not_validated'
     elif mode not in policy['validated_modes']:
         reason = 'mode_not_validated'
     elif token_count < policy['min_tokens']:
@@ -152,11 +163,11 @@ def predict_text(text, mode='article'):
     labels = {int(k): str(v).upper() for k,v in model.config.id2label.items()}
     label_id = int(scores.argmax())
     return {
-        'label': labels[label_id] if reason is None else None,
-        'label_id': label_id if reason is None else None,
+        'label': labels[label_id] if reason in (None, 'demo_estimate') else None,
+        'label_id': label_id if reason in (None, 'demo_estimate') else None,
         'raw_label': labels[label_id],
         'probabilities': {labels[i]: round(float(scores[i]), 6) for i in range(3)},
-        'decision': 'classified' if reason is None else 'abstained', 'reason': reason,
+        'decision': 'classified' if reason in (None, 'demo_estimate') else 'abstained', 'reason': reason,
         'token_count': len(ids), 'tokens_processed': len(ids), 'chunk_count': len(windows),
         'truncated': False, 'calibrated': bool(policy and policy.get('calibration_data_sha256')),
         'logits': logits.tolist(),

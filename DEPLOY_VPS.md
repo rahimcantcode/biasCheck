@@ -251,3 +251,17 @@ against the requested hostname, and rechecks redirects. Private and link-local
 addresses are rejected. Deployment egress restrictions remain useful defense in
 depth. Sites that block automated retrieval require pasted text.
 No change in this branch has been deployed to the VPS from this workspace.
+
+## Investor demonstration mode
+
+To make the live interface display clear RoBERTa estimates, add this setting to
+`backend/.env`:
+
+```env
+BIASCHECK_DEMO_MODE=1
+```
+
+Restart only the backend after changing the setting. The interface labels the
+result `Experimental estimate`; `/health` still reports `release_approved: false`.
+Short and ambiguous text remains unlabelled. Remove the setting and restart to
+restore the research-safe behavior.

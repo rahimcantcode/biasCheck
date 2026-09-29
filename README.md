@@ -210,3 +210,12 @@ bias, loaded language, factual accuracy, or a publisher's ideology. Known failur
 include vague policy criticism, sarcasm, and mixtures of positions. See
 [implementation and validation notes](research/NLI_IMPLEMENTATION.md) before
 choosing the engine. No VPS deployment or high-accuracy release is claimed.
+
+## Investor demonstration mode
+
+For a product demonstration, set `BIASCHECK_DEMO_MODE=1` in the backend `.env`
+and restart the backend. The original RoBERTa engine will display sufficiently
+clear model estimates and keep short or ambiguous inputs unlabelled. The page
+marks every displayed result as an experimental estimate, and `/health` continues
+to report `release_approved: false`. This mode is for demonstrating the product
+workflow and should not be presented as independently validated accuracy.
