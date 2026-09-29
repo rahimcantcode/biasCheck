@@ -1,0 +1,988 @@
+{
+  "schema_version": 1,
+  "purpose": "unlabeled synthetic deployment diagnostics; not an accuracy benchmark",
+  "started_at": "2026-09-29T16:42:10.217254+00:00",
+  "endpoint": "https://bias.r4him.tech/api/predict",
+  "pilot_id": "biascheck-rubric-pilot-20260929-v1",
+  "manifest_sha256": "97ddc6db156e472065c9091b35b08ecea6885b58f0817ebf7c72c163ba09bcf7",
+  "human_reviewed": false,
+  "server_model_provenance": "unavailable unless health supplies it",
+  "predictions": [
+    {
+      "id": "P005",
+      "case_id": "S22",
+      "text_sha256": "7d4048ce6086cfc4d4eadfae93c72e44e2621411478a40bbb8f7022f08743834",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "Private enterprise should lead economic growth. Lower marginal tax rates and fewer burdensome regulations would let entrepreneurs invest, compete, and hire. Expanding federal programs is the wrong response to sluggish growth.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.945672,
+              "RIGHT": 0.034656,
+              "CENTER": 0.019672
+            },
+            "segment_index": 0,
+            "text": "Private enterprise should lead economic growth. Lower marginal tax rates and fewer burdensome regulations would let entrepreneurs invest, compete, and hire. Expanding federal programs is the wrong response to sluggish growth."
+          }
+        ]
+      },
+      "seconds": 5.740758539000012
+    },
+    {
+      "id": "P006",
+      "case_id": "S21",
+      "text_sha256": "46880a89725c551f32a1c955fc48fe41d45058c72bf34fa80f04d0d219ca21f6",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "A stronger public safety net is worth funding through higher taxes on very large fortunes. Economic opportunity depends on access to housing, healthcare, and education, not simply on the promise that wealth will eventually spread.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.997547,
+              "RIGHT": 0.001085,
+              "CENTER": 0.001368
+            },
+            "segment_index": 0,
+            "text": "A stronger public safety net is worth funding through higher taxes on very large fortunes. Economic opportunity depends on access to housing, healthcare, and education, not simply on the promise that wealth will eventually spread."
+          }
+        ]
+      },
+      "seconds": 8.129188376999991
+    },
+    {
+      "id": "P007",
+      "case_id": "S01",
+      "text_sha256": "55ba559b8d0094bd06a36ffbe0c397da5752e5a0e4140237e2b2b73db3f44f83",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "I cooked rice and chicken for dinner. The food tasted good.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.992506,
+              "RIGHT": 0.003615,
+              "CENTER": 0.003879
+            },
+            "segment_index": 0,
+            "text": "I cooked rice and chicken for dinner. The food tasted good."
+          }
+        ]
+      },
+      "seconds": 8.307056655000025
+    },
+    {
+      "id": "P008",
+      "case_id": "S14",
+      "text_sha256": "3c4aa9b3d714b2a3fe80eb4a485041a57b20c30d5d5f7c467771cb6801f638d3",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The Senate committee scheduled a hearing on the bill. Witnesses will submit written statements before answering questions. No vote on the proposal is scheduled at the hearing.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.977438,
+              "RIGHT": 0.004366,
+              "CENTER": 0.018195
+            },
+            "segment_index": 0,
+            "text": "The Senate committee scheduled a hearing on the bill. Witnesses will submit written statements before answering questions. No vote on the proposal is scheduled at the hearing."
+          }
+        ]
+      },
+      "seconds": 8.158371979000009
+    },
+    {
+      "id": "P010",
+      "case_id": "S34",
+      "text_sha256": "2189983b29e9e4cf1c5c70974ee9485526797e7c28f4e976371ef4065f639b92",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The author criticizes a Republican mayor for refusing to release public records. The criticism concerns transparency and does not state a position on taxation, welfare, immigration, or other ideological policy questions.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998774,
+              "RIGHT": 0.000608,
+              "CENTER": 0.000617
+            },
+            "segment_index": 0,
+            "text": "The author criticizes a Republican mayor for refusing to release public records. The criticism concerns transparency and does not state a position on taxation, welfare, immigration, or other ideological policy questions."
+          }
+        ]
+      },
+      "seconds": 8.429751660000022
+    },
+    {
+      "id": "P012",
+      "case_id": "S17",
+      "text_sha256": "4fa277ab7483995e58b18dbe56b81ca0fab3e94d146467de6be79be4a720b630",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The government should expand universal healthcare and raise taxes on the wealthiest Americans to fund public services.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.808399,
+              "RIGHT": 0.16724,
+              "CENTER": 0.024361
+            },
+            "segment_index": 0,
+            "text": "The government should expand universal healthcare and raise taxes on the wealthiest Americans to fund public services."
+          }
+        ]
+      },
+      "seconds": 6.756100586000002
+    },
+    {
+      "id": "P016",
+      "case_id": "S31",
+      "text_sha256": "adb5e215c3717a7dc7ed6935150134c9e57215ef61de4d75ade0916bf2a87801",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "Taxes.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998911,
+              "RIGHT": 0.000614,
+              "CENTER": 0.000474
+            },
+            "segment_index": 0,
+            "text": "Taxes."
+          }
+        ]
+      },
+      "seconds": 5.253549321999969
+    },
+    {
+      "id": "P026",
+      "case_id": "S36",
+      "text_sha256": "cca447adeb93f8ba6fc73ae0fd3e7d1381414aea384bd118271d1b9f6a3aa306",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The festival celebrates progressive jazz, experimental painting, and independent film. Organizers expect several thousand visitors over the weekend and have arranged extra shuttle buses from the nearby train station.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.996341,
+              "RIGHT": 0.000812,
+              "CENTER": 0.002848
+            },
+            "segment_index": 0,
+            "text": "The festival celebrates progressive jazz, experimental painting, and independent film. Organizers expect several thousand visitors over the weekend and have arranged extra shuttle buses from the nearby train station."
+          }
+        ]
+      },
+      "seconds": 7.699037626000006
+    },
+    {
+      "id": "P030",
+      "case_id": "S20",
+      "text_sha256": "b3500ffe60c19146148f7172fba746de1c5193c24d15cc6089b9fbb0c33d1b65",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "Lawmakers should reduce the federal role in education and return more authority to families and local communities. Parents should have greater freedom to choose schools instead of relying on a uniform national approach.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.99838,
+              "RIGHT": 0.000735,
+              "CENTER": 0.000885
+            },
+            "segment_index": 0,
+            "text": "Lawmakers should reduce the federal role in education and return more authority to families and local communities. Parents should have greater freedom to choose schools instead of relying on a uniform national approach."
+          }
+        ]
+      },
+      "seconds": 7.254995757000017
+    },
+    {
+      "id": "P035",
+      "case_id": "S35",
+      "text_sha256": "b1f6ca8189b9d41557f94d64bb37031670f4e5390ca960a19fa374302f06c1bd",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The report describes a conservative religious community's annual food drive. Volunteers packed rice, canned vegetables, and cooking oil for delivery to local families. The report does not discuss elections or government policy.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998803,
+              "RIGHT": 0.000503,
+              "CENTER": 0.000693
+            },
+            "segment_index": 0,
+            "text": "The report describes a conservative religious community's annual food drive. Volunteers packed rice, canned vegetables, and cooking oil for delivery to local families. The report does not discuss elections or government policy."
+          }
+        ]
+      },
+      "seconds": 5.322736177999957
+    },
+    {
+      "id": "P036",
+      "case_id": "S19",
+      "text_sha256": "21644b7d8e9d3cf62cae20e9cb672bb06cab971f5c5e1582c9534748949d83e8",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "Congress should strengthen collective bargaining rights. When workers negotiate together, they can secure fairer wages and safer conditions. Protecting that power should matter more than preserving employers' ability to resist organizing.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998523,
+              "RIGHT": 0.000646,
+              "CENTER": 0.000831
+            },
+            "segment_index": 0,
+            "text": "Congress should strengthen collective bargaining rights. When workers negotiate together, they can secure fairer wages and safer conditions. Protecting that power should matter more than preserving employers' ability to resist organizing."
+          }
+        ]
+      },
+      "seconds": 6.174483934999955
+    },
+    {
+      "id": "P038",
+      "case_id": "S24",
+      "text_sha256": "1f55dbea54667f0dee899126633b7bb0bbd86d81a2c672909c2650d84433a739",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The governor said, \"We need lower taxes and less regulation.\" The article reports when the speech occurred and who attended, but does not evaluate or endorse the governor's proposal.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.970259,
+              "RIGHT": 0.02621,
+              "CENTER": 0.003531
+            },
+            "segment_index": 0,
+            "text": "The governor said, \"We need lower taxes and less regulation.\" The article reports when the speech occurred and who attended, but does not evaluate or endorse the governor's proposal."
+          }
+        ]
+      },
+      "seconds": 6.4320821890000275
+    },
+    {
+      "id": "P039",
+      "case_id": "S07",
+      "text_sha256": "213f3f208041b5ab779339fa66995b092d87e8d92e40ed8751b940a855baabc3",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The bus route changes next week because the bridge is being repaired. Riders can use the temporary stop two blocks east of the station during construction.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998002,
+              "RIGHT": 0.0006,
+              "CENTER": 0.001398
+            },
+            "segment_index": 0,
+            "text": "The bus route changes next week because the bridge is being repaired. Riders can use the temporary stop two blocks east of the station during construction."
+          }
+        ]
+      },
+      "seconds": 6.308466851999981
+    },
+    {
+      "id": "P047",
+      "case_id": "S09",
+      "text_sha256": "a5683f0b47fe11d2c15e4a0346c7160608ac99545b5b71b4909ef95c951df14d",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The dentist moved my appointment from Tuesday to Thursday. The receptionist asked me to arrive fifteen minutes early and bring the form that was emailed last week.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998698,
+              "RIGHT": 0.000572,
+              "CENTER": 0.000729
+            },
+            "segment_index": 0,
+            "text": "The dentist moved my appointment from Tuesday to Thursday. The receptionist asked me to arrive fifteen minutes early and bring the form that was emailed last week."
+          }
+        ]
+      },
+      "seconds": 8.465536972999985
+    },
+    {
+      "id": "P048",
+      "case_id": "S33",
+      "text_sha256": "e23a5abdbb312eb0804c6e822dcd5fa789fef079ab6b0abdec43e07191587d74",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The author criticizes a Democratic mayor for refusing to release public records. The criticism concerns transparency and does not state a position on taxation, welfare, immigration, or other ideological policy questions.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.994214,
+              "RIGHT": 0.003553,
+              "CENTER": 0.002233
+            },
+            "segment_index": 0,
+            "text": "The author criticizes a Democratic mayor for refusing to release public records. The criticism concerns transparency and does not state a position on taxation, welfare, immigration, or other ideological policy questions."
+          }
+        ]
+      },
+      "seconds": 7.152875000999984
+    },
+    {
+      "id": "P049",
+      "case_id": "S02",
+      "text_sha256": "40c17997551122c372570a1f367ef3b12c7be654f86d5c21a1b7cd9db3d447f1",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The meeting began at 9 a.m. on Tuesday. The committee published its schedule online.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.99822,
+              "RIGHT": 0.000458,
+              "CENTER": 0.001322
+            },
+            "segment_index": 0,
+            "text": "The meeting began at 9 a.m. on Tuesday. The committee published its schedule online."
+          }
+        ]
+      },
+      "seconds": 7.1336140849999765
+    },
+    {
+      "id": "P051",
+      "case_id": "S29",
+      "text_sha256": "e989cc303db03e7e04e0819560027f80af85e3c8998b1fd7a10928391e68d588",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The article argues for strict limits on government spending, then advocates a large new universal housing entitlement without explaining how the two proposals fit together. Its conclusion does not resolve the competing positions.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998579,
+              "RIGHT": 0.000739,
+              "CENTER": 0.000682
+            },
+            "segment_index": 0,
+            "text": "The article argues for strict limits on government spending, then advocates a large new universal housing entitlement without explaining how the two proposals fit together. Its conclusion does not resolve the competing positions."
+          }
+        ]
+      },
+      "seconds": 6.675303908999979
+    },
+    {
+      "id": "P053",
+      "case_id": "S18",
+      "text_sha256": "08b964018d37d02729bfe38983dd1952fe6cbd79ab9c49cdcebb7e6e7bc7cd5e",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The government should lower taxes, reduce regulations, and let private businesses compete without federal interference.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.905294,
+              "RIGHT": 0.082671,
+              "CENTER": 0.012035
+            },
+            "segment_index": 0,
+            "text": "The government should lower taxes, reduce regulations, and let private businesses compete without federal interference."
+          }
+        ]
+      },
+      "seconds": 5.208753806000004
+    },
+    {
+      "id": "P054",
+      "case_id": "S11",
+      "text_sha256": "b51b984650c24f4ea6865700231f30f94a19eb3cddde69cb942745c174e38a3b",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "Apply a liberal amount of glue to the wooden joint. Clamp the two pieces together and leave them overnight before sanding the surface or applying the final coat.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.996496,
+              "RIGHT": 0.000953,
+              "CENTER": 0.00255
+            },
+            "segment_index": 0,
+            "text": "Apply a liberal amount of glue to the wooden joint. Clamp the two pieces together and leave them overnight before sanding the surface or applying the final coat."
+          }
+        ]
+      },
+      "seconds": 6.379557754000018
+    },
+    {
+      "id": "P055",
+      "case_id": "S05",
+      "text_sha256": "86fb25a8d72e5e1b5cddbbb8f7bfdd3acad597f8985a42eb17d61bc38452823b",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "To repot the plant, choose a container with drainage holes. Add fresh soil, keep the roots at their previous depth, and water until excess water drains from the bottom.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998413,
+              "RIGHT": 0.000505,
+              "CENTER": 0.001082
+            },
+            "segment_index": 0,
+            "text": "To repot the plant, choose a container with drainage holes. Add fresh soil, keep the roots at their previous depth, and water until excess water drains from the bottom."
+          }
+        ]
+      },
+      "seconds": 6.743626283000026
+    },
+    {
+      "id": "P059",
+      "case_id": "S12",
+      "text_sha256": "7414b3b170d5ed1ae8c6546504af9bab01e5d51359dfc28ed79880cddfdce9f4",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The left door is locked, so visitors should enter on the right. The reception desk is at the center of the lobby near the elevators.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.995681,
+              "RIGHT": 0.000892,
+              "CENTER": 0.003427
+            },
+            "segment_index": 0,
+            "text": "The left door is locked, so visitors should enter on the right. The reception desk is at the center of the lobby near the elevators."
+          }
+        ]
+      },
+      "seconds": 7.783186382999986
+    },
+    {
+      "id": "P061",
+      "case_id": "S30",
+      "text_sha256": "5a65cdd43ad726c0d0bbfd4a8e9e1ae5ebc129fa10d3d23b6058987171c88925",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "This policy is terrible. The people who wrote it should be ashamed. Nothing in the text identifies the policy, its effects, the political actors involved, or a proposed alternative.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998329,
+              "RIGHT": 0.000826,
+              "CENTER": 0.000846
+            },
+            "segment_index": 0,
+            "text": "This policy is terrible. The people who wrote it should be ashamed. Nothing in the text identifies the policy, its effects, the political actors involved, or a proposed alternative."
+          }
+        ]
+      },
+      "seconds": 6.7728194819999885
+    },
+    {
+      "id": "P062",
+      "case_id": "S37",
+      "text_sha256": "c1dc7865ae6ed86f1ab78d9aa543208e4000c9b989534c03c66c52f4977a12b9",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The writer supports a temporary spending increase during the recession but argues that it should expire automatically when employment recovers. The text weighs competing economic arguments without consistently adopting either a left or right platform.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998231,
+              "RIGHT": 0.000886,
+              "CENTER": 0.000883
+            },
+            "segment_index": 0,
+            "text": "The writer supports a temporary spending increase during the recession but argues that it should expire automatically when employment recovers. The text weighs competing economic arguments without consistently adopting either a left or right platform."
+          }
+        ]
+      },
+      "seconds": 6.4199838460000365
+    },
+    {
+      "id": "P067",
+      "case_id": "S06",
+      "text_sha256": "889db335bd486653925b4da15ca134977eac43e9279bdd697698d97a6a7ce41d",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The phone can back up photos when it is connected to Wi-Fi. If storage is full, existing files remain on the device, but new backups may not finish.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.996968,
+              "RIGHT": 0.000646,
+              "CENTER": 0.002386
+            },
+            "segment_index": 0,
+            "text": "The phone can back up photos when it is connected to Wi-Fi. If storage is full, existing files remain on the device, but new backups may not finish."
+          }
+        ]
+      },
+      "seconds": 5.686036578000028
+    },
+    {
+      "id": "P069",
+      "case_id": "S26",
+      "text_sha256": "f35550b4a140ce23b302544c5bdbe9837f18654a9fe6732d7fb238350dda433f",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The editorial quotes a proposal to cut welfare spending, then argues that the cuts would harm families and should be rejected. It calls for expanding support instead and financing it through a more progressive tax system.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.999013,
+              "RIGHT": 0.000522,
+              "CENTER": 0.000466
+            },
+            "segment_index": 0,
+            "text": "The editorial quotes a proposal to cut welfare spending, then argues that the cuts would harm families and should be rejected. It calls for expanding support instead and financing it through a more progressive tax system."
+          }
+        ]
+      },
+      "seconds": 5.79356865799997
+    },
+    {
+      "id": "P072",
+      "case_id": "S16",
+      "text_sha256": "eca77021c98ded988ea0a15a96e9a9971b33cd15b346b8b5cf1e41ab39d1357e",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The court released its decision on Thursday. The majority opinion and the dissent are available on the court website. The parties have thirty days to request further review.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.997126,
+              "RIGHT": 0.000493,
+              "CENTER": 0.002381
+            },
+            "segment_index": 0,
+            "text": "The court released its decision on Thursday. The majority opinion and the dissent are available on the court website. The parties have thirty days to request further review."
+          }
+        ]
+      },
+      "seconds": 6.288862048999988
+    },
+    {
+      "id": "P073",
+      "case_id": "S39",
+      "text_sha256": "e240ec649b6c38ee63ab43fbd775634b98e01ec5e67f96972817f713c7906bdf",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "\"Close the border,\" shouted a protester outside the building. Inside, an attorney explained why the new restrictions would separate families. The reporter describes both events but provides too little context to establish the article's overall framing.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998932,
+              "RIGHT": 0.000554,
+              "CENTER": 0.000515
+            },
+            "segment_index": 0,
+            "text": "\"Close the border,\" shouted a protester outside the building. Inside, an attorney explained why the new restrictions would separate families. The reporter describes both events but provides too little context to establish the article's overall framing."
+          }
+        ]
+      },
+      "seconds": 6.36224963899997
+    },
+    {
+      "id": "P074",
+      "case_id": "S40",
+      "text_sha256": "a5ea344e40daaf9d6d3fd5e97800b3b3fc1097f1d077edc802a9810afee3705e",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "Dr. Smith discussed U.S. policy at 9 a.m. She said the draft had three sections. The meeting adjourned without a vote, and no participant expressed support for either party.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.999202,
+              "RIGHT": 0.000276,
+              "CENTER": 0.000523
+            },
+            "segment_index": 0,
+            "text": "Dr. Smith discussed U.S. policy at 9 a.m. She said the draft had three sections. The meeting adjourned without a vote, and no participant expressed support for either party."
+          }
+        ]
+      },
+      "seconds": 5.937285967999969
+    },
+    {
+      "id": "P076",
+      "case_id": "S25",
+      "text_sha256": "fc23e3a05301ae1182cb05197805371134c51f1480e132460ebe8c55f29c1f8e",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "One speaker demanded a larger public health program. Another warned that it would increase taxes. The hearing ended before either speaker answered questions, and the reporter offered no assessment of their claims.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998793,
+              "RIGHT": 0.000619,
+              "CENTER": 0.000588
+            },
+            "segment_index": 0,
+            "text": "One speaker demanded a larger public health program. Another warned that it would increase taxes. The hearing ended before either speaker answered questions, and the reporter offered no assessment of their claims."
+          }
+        ]
+      },
+      "seconds": 6.279823636000003
+    },
+    {
+      "id": "P077",
+      "case_id": "S28",
+      "text_sha256": "e5797c3bfd8ab599c0c3a4881be2a8c63b340ae041fa21859c518b58e6d92cc3",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "I support universal public healthcare and stronger unions, but also favor tighter immigration restrictions and substantially lower corporate taxes. No single part of that platform should be treated as a complete description of my position.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.99663,
+              "RIGHT": 0.001553,
+              "CENTER": 0.001817
+            },
+            "segment_index": 0,
+            "text": "I support universal public healthcare and stronger unions, but also favor tighter immigration restrictions and substantially lower corporate taxes. No single part of that platform should be treated as a complete description of my position."
+          }
+        ]
+      },
+      "seconds": 5.933793478999974
+    },
+    {
+      "id": "P080",
+      "case_id": "S08",
+      "text_sha256": "6a2d06f61b0ee2b100b6c0bf220c907a186552eda24c19ca9b54264343d974bf",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The red team defeated the blue team in the school robotics competition. Judges awarded points for completing the obstacle course and accurately moving objects into the collection area.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.835092,
+              "RIGHT": 0.051401,
+              "CENTER": 0.113507
+            },
+            "segment_index": 0,
+            "text": "The red team defeated the blue team in the school robotics competition. Judges awarded points for completing the obstacle course and accurately moving objects into the collection area."
+          }
+        ]
+      },
+      "seconds": 6.913220108000019
+    },
+    {
+      "id": "P082",
+      "case_id": "S03",
+      "text_sha256": "563bd2bd738c8a5f29758667f1dc79fee06dd95c4a4762c9bdee02f71eb600ea",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The library will close at six on Friday for repairs. Books may be returned through the outside slot, and borrowed items will not accrue late fees during the closure.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.997597,
+              "RIGHT": 0.000794,
+              "CENTER": 0.001609
+            },
+            "segment_index": 0,
+            "text": "The library will close at six on Friday for repairs. Books may be returned through the outside slot, and borrowed items will not accrue late fees during the closure."
+          }
+        ]
+      },
+      "seconds": 6.851065106000021
+    },
+    {
+      "id": "P083",
+      "case_id": "S13",
+      "text_sha256": "20c091b0f14348981a2c9ccd71642416e7223a188ca7c54573d9c0f1ae804542",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The council voted seven to two on the zoning amendment. The clerk posted the text and vote record online. The next public hearing will take place on Wednesday.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.9116,
+              "RIGHT": 0.014525,
+              "CENTER": 0.073875
+            },
+            "segment_index": 0,
+            "text": "The council voted seven to two on the zoning amendment. The clerk posted the text and vote record online. The next public hearing will take place on Wednesday."
+          }
+        ]
+      },
+      "seconds": 6.4358914549999895
+    },
+    {
+      "id": "P089",
+      "case_id": "S23",
+      "text_sha256": "318d4a25b8d91cda779aa0182472978022f14edb13e7b0dd3b9e6022e04f72f3",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The senator said, \"We need higher taxes on the wealthy.\" The article reports when the speech occurred and who attended, but does not evaluate or endorse the senator's proposal.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.986674,
+              "RIGHT": 0.011353,
+              "CENTER": 0.001973
+            },
+            "segment_index": 0,
+            "text": "The senator said, \"We need higher taxes on the wealthy.\" The article reports when the speech occurred and who attended, but does not evaluate or endorse the senator's proposal."
+          }
+        ]
+      },
+      "seconds": 7.139719045999982
+    },
+    {
+      "id": "P090",
+      "case_id": "S15",
+      "text_sha256": "daa13913e0b73525d99cc09757e18959eab59ce6dfa91e7f3ffbbc93028f6c12",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The election office reported that polls will open at seven and close at seven. Voters who are in line at closing may remain in line until they cast a ballot.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.857665,
+              "RIGHT": 0.09035,
+              "CENTER": 0.051985
+            },
+            "segment_index": 0,
+            "text": "The election office reported that polls will open at seven and close at seven. Voters who are in line at closing may remain in line until they cast a ballot."
+          }
+        ]
+      },
+      "seconds": 6.37825570900003
+    },
+    {
+      "id": "P091",
+      "case_id": "S04",
+      "text_sha256": "307d75801198cfa337cc8c1121cc808920fb81eddaa1f982af8db16b842afc53",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The team scored twice in the final period. Its coach credited the defense and said the players would return to practice on Monday before their next away game.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.998526,
+              "RIGHT": 0.000469,
+              "CENTER": 0.001005
+            },
+            "segment_index": 0,
+            "text": "The team scored twice in the final period. Its coach credited the defense and said the players would return to practice on Monday before their next away game."
+          }
+        ]
+      },
+      "seconds": 5.316980804000025
+    },
+    {
+      "id": "P092",
+      "case_id": "S32",
+      "text_sha256": "46d0d7a5c1fff2c9156943ea719ff1d14435e186788a72f572e570cbf2170ad5",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "What a brilliant idea: solve every problem by creating another committee. Perhaps the committee can appoint a committee to investigate why nothing gets done. The writer identifies no party or specific policy.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.984882,
+              "RIGHT": 0.012156,
+              "CENTER": 0.002963
+            },
+            "segment_index": 0,
+            "text": "What a brilliant idea: solve every problem by creating another committee. Perhaps the committee can appoint a committee to investigate why nothing gets done. The writer identifies no party or specific policy."
+          }
+        ]
+      },
+      "seconds": 5.520008345999997
+    },
+    {
+      "id": "P094",
+      "case_id": "S38",
+      "text_sha256": "cf39e6dffc3647ab645165525c61f18bfbe85e55c044389b2a734a05a8156615",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The writer says both parties have failed to explain the proposal. They request cost estimates, public hearings, and access to the underlying documents, while withholding a position until those materials are available.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.999105,
+              "RIGHT": 0.000362,
+              "CENTER": 0.000532
+            },
+            "segment_index": 0,
+            "text": "The writer says both parties have failed to explain the proposal. They request cost estimates, public hearings, and access to the underlying documents, while withholding a position until those materials are available."
+          }
+        ]
+      },
+      "seconds": 6.843593096000006
+    },
+    {
+      "id": "P098",
+      "case_id": "S27",
+      "text_sha256": "3ec8f97deeb38bbed96ffd28761f518620915950e64b6f28abf341baa9306ba0",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The editorial quotes a proposal to expand federal benefits, then argues that it would create dependency and should be rejected. It favors private charity and local solutions over another national spending program.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.977545,
+              "RIGHT": 0.017177,
+              "CENTER": 0.005278
+            },
+            "segment_index": 0,
+            "text": "The editorial quotes a proposal to expand federal benefits, then argues that it would create dependency and should be rejected. It favors private charity and local solutions over another national spending program."
+          }
+        ]
+      },
+      "seconds": 5.6010006079999926
+    },
+    {
+      "id": "P100",
+      "case_id": "S10",
+      "text_sha256": "91eebc644850ae60d9c129d7bfe800c11b771ce29530d9fed9076bbb0acc5231",
+      "response": {
+        "source_type": "text",
+        "resolved_text": "A conservative estimate puts the repair at three hours. The mechanic will test the battery and charging system before replacing any components and will call with an updated quote.",
+        "mode": "article",
+        "results": [
+          {
+            "label": "LEFT",
+            "label_id": 0,
+            "probabilities": {
+              "LEFT": 0.988268,
+              "RIGHT": 0.001401,
+              "CENTER": 0.010331
+            },
+            "segment_index": 0,
+            "text": "A conservative estimate puts the repair at three hours. The mechanic will test the battery and charging system before replacing any components and will call with an updated quote."
+          }
+        ]
+      },
+      "seconds": 7.578152538999973
+    }
+  ],
+  "health": {
+    "status": "ok"
+  },
+  "finished_at": "2026-09-29T16:46:40.478758+00:00",
+  "attempted_n": 40,
+  "error_n": 0,
+  "observed_label_counts": {
+    "LEFT": 40
+  },
+  "top_score_at_least_095_n": 34,
+  "limitations": [
+    "Synthetic convenience sample, not representative of real news",
+    "No independent human labels; accuracy is not computed",
+    "Model version cannot be established from legacy health endpoint",
+    "Raw softmax scores are not probabilities of correctness"
+  ]
+}

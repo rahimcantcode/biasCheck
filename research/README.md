@@ -52,3 +52,7 @@ Before approval, evaluate candidate thresholds offline on a separate frozen huma
 6. Test operational behavior in staging: actual model load, hashes, repeatability, frontend/API compatibility, long inputs, response time, memory, health checks, URL-fetch egress restrictions and rollback. Deploy frontend and backend together because the response contract changed.
 
 No automated policy approval, VPS deployment, relevance model, final accuracy claim or formal report is included in this branch.
+
+## Deployed controlled-input diagnostics
+
+`python research/scripts/probe_live_pilot.py --output research/results/live_controlled_probe_YYYYMMDD.json` probes the 40 original controlled examples sequentially and checkpoints each response. It stops after three consecutive failures. `summarize_live_probe.py --input RESULT_JSON --output SUMMARY_MD` summarizes completed observations without computing accuracy. These predictions are intentionally outside the reviewer interface. Reviewers should not inspect them before annotation; disclose any prior exposure in the evidence notes. This is development diagnostics, not independent evaluation.

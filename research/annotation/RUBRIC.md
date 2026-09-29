@@ -48,3 +48,7 @@ Use compare_reviews.py to measure agreement on identical fully reviewed items an
 All 100 pilot items are development material because the rubric and workflow are adjusted using them. Do not place them in the later frozen final test, even after consensus. Do not claim model accuracy from this pilot. Synthetic and natural-news results must stay separate. The historical public articles may overlap old checkpoint training, and the publisher sources are not an independent sample of today's media.
 
 After the pilot, collect a separate contemporary evaluation set with documented usage rights, source/event/time separation, independent review and adjudication. Register class/slice sample sizes and acceptance gates before evaluating candidates. Keep development, calibration and final-test IDs and content hashes separate.
+
+## Prior exposure to model answers
+
+Record in your evidence notes if you have already seen model predictions, legacy dataset labels, or another reviewer's answers for an item. The project owner has seen some controlled-case model outputs during debugging, so those judgments cannot be described as fully blinded. Keep that exposure in the annotation provenance. A separate reviewer should avoid the diagnostic reports until submitting their independent review. The pilot remains development material regardless of agreement.

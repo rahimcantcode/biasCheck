@@ -155,3 +155,32 @@ annotations have been performed, and automated UI fixtures are not included as a
 Next concrete action: two independent reviewers annotate the first 10 pilot items,
 resolve rubric ambiguities, then independently complete or re-review under a frozen rubric.
 Preserve the original judgments and document adjudication before deriving any gold labels.
+
+
+## 2026-09-29: deployed controlled-input probe
+
+Ran all 40 original controlled examples against the live article API sequentially,
+2026-09-29 16:42:10 through 16:46:40 UTC. All 40 requests succeeded. All returned LEFT;
+34 had top raw scores >= .95. The dinner example, glue instructions, door directions
+and single word Taxes were among high-confidence LEFT results. These are diagnostic
+failures of intended use, not an independently measured accuracy or population error rate.
+The earlier full-news comparison found other labels, so universal class collapse is not
+established. A confidence threshold alone cannot reject these high-confidence cases.
+Political relevance and insufficient-context handling require their own validated stage.
+
+The live health endpoint still returns only status=ok, so current server checkpoint
+identity and runtime cannot be verified. No production code or model was changed.
+Raw responses and elapsed request times are preserved in
+research/results/live_controlled_probe_20260929.json; the accompanying Markdown summarizes
+selected contrasts. The reproducible probe checkpoints every request and stops after
+three consecutive failures. Outputs remain outside the annotation viewer.
+
+The project owner has been shown selected model predictions in conversation. Their
+judgments on exposed items cannot be described as fully blinded. The rubric now asks
+reviewers to disclose prior exposure; an independent reviewer should not read diagnostic
+outputs before submitting judgments. No human labels, model retraining, calibration,
+release approval or final accuracy results were produced.
+
+The temporary execution workspace was cleared; source code was recovered from GitHub.
+The research notebook was recovered through its text-read interface after two byte
+transfer attempts failed with HTTP 502. Existing notes were preserved and appended.
