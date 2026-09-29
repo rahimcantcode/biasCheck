@@ -47,7 +47,7 @@ export function HeroSection({
               See how your article leans
             </h1>
             <p className="mx-auto mt-5 max-w-3xl text-balance text-base leading-8 text-slate-300 sm:text-lg">
-              Paste article text or a URL, choose a mode, and get color-coded political bias predictions powered by a fine-tuned RoBERTa classifier.
+              Paste article text or a URL to explore experimental political-leaning assessments. Results can be uncertain and should be checked against the text.
             </p>
           </div>
 
@@ -68,7 +68,7 @@ export function HeroSection({
               <ArrowRight className="h-4 w-4 text-blue-200" />
               {results
                 ? `Your article is ready below, with ${results.results.length} analyzed passages.`
-                : "Read the original article with political leaning woven into the text."}
+                : "Read the original text alongside the model’s assessment."}
             </div>
             <div className="hidden h-4 w-px bg-white/10 sm:block" />
             <p>Validated labels use color. Uncertain results stay uncolored.</p>

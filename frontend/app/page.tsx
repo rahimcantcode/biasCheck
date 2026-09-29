@@ -14,6 +14,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<PredictResponse | null>(null);
+  const requestSequence = useRef(0);
   const resultsRef = useRef<HTMLElement | null>(null);
 
   async function handleAnalyze() {
@@ -23,13 +24,15 @@ export default function HomePage() {
       return;
     }
 
+    const sequence = ++requestSequence.current;
     setLoading(true);
     setError(null);
 
     try {
       const response = await analyzeInput(input, mode);
-      setResults(response);
+      if (sequence === requestSequence.current) setResults(response);
     } catch (analysisError) {
+      if (sequence !== requestSequence.current) return;
       setResults(null);
       setError(
         analysisError instanceof Error
@@ -37,11 +40,13 @@ export default function HomePage() {
           : "Analysis failed. Please try again."
       );
     } finally {
-      setLoading(false);
+      if (sequence === requestSequence.current) setLoading(false);
     }
   }
 
   function handleClear() {
+    requestSequence.current += 1;
+    setLoading(false);
     setInput("");
     setResults(null);
     setError(null);

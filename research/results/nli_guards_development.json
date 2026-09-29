@@ -1,0 +1,452 @@
+{
+  "model": "mlburnham/Political_DEBATE_large_v1.0",
+  "revision": "1a3aff1ecb97ad93a6de598f7414b1707de7e7c3",
+  "hypotheses": {
+    "mixed": "The author endorses a combination of both liberal and conservative political positions.",
+    "specific": "The author advocates a specific ideological position on government policy.",
+    "everyday": "This text is mainly about everyday life rather than politics."
+  },
+  "purpose": "Unlabeled controlled development examples, not accuracy",
+  "predictions": [
+    {
+      "id": "P005",
+      "case_id": "S22",
+      "text_sha256": "7d4048ce6086cfc4d4eadfae93c72e44e2621411478a40bbb8f7022f08743834",
+      "scores": {
+        "mixed": 1.2419924644291314e-07,
+        "specific": 0.9999990463256836,
+        "everyday": 1.2671493720972649e-07
+      },
+      "seconds": 1.991522317999852
+    },
+    {
+      "id": "P006",
+      "case_id": "S21",
+      "text_sha256": "46880a89725c551f32a1c955fc48fe41d45058c72bf34fa80f04d0d219ca21f6",
+      "scores": {
+        "mixed": 8.397698820772348e-07,
+        "specific": 0.9999945163726807,
+        "everyday": 1.7698864951398718e-07
+      },
+      "seconds": 1.4795793649998359
+    },
+    {
+      "id": "P007",
+      "case_id": "S01",
+      "text_sha256": "55ba559b8d0094bd06a36ffbe0c397da5752e5a0e4140237e2b2b73db3f44f83",
+      "scores": {
+        "mixed": 1.702592982155693e-07,
+        "specific": 1.314222259907183e-07,
+        "everyday": 0.9999936819076538
+      },
+      "seconds": 1.3889646770001036
+    },
+    {
+      "id": "P008",
+      "case_id": "S14",
+      "text_sha256": "3c4aa9b3d714b2a3fe80eb4a485041a57b20c30d5d5f7c467771cb6801f638d3",
+      "scores": {
+        "mixed": 2.0776698761437729e-07,
+        "specific": 1.3690585376480158e-07,
+        "everyday": 1.259831776678766e-07
+      },
+      "seconds": 2.304643919
+    },
+    {
+      "id": "P010",
+      "case_id": "S34",
+      "text_sha256": "2189983b29e9e4cf1c5c70974ee9485526797e7c28f4e976371ef4065f639b92",
+      "scores": {
+        "mixed": 3.8316256905090995e-06,
+        "specific": 1.377184020157074e-07,
+        "everyday": 1.5333868930156314e-07
+      },
+      "seconds": 2.5643109970001206
+    },
+    {
+      "id": "P012",
+      "case_id": "S17",
+      "text_sha256": "4fa277ab7483995e58b18dbe56b81ca0fab3e94d146467de6be79be4a720b630",
+      "scores": {
+        "mixed": 8.132102811941877e-05,
+        "specific": 0.9999988079071045,
+        "everyday": 1.2047473774146056e-07
+      },
+      "seconds": 2.03822465799999
+    },
+    {
+      "id": "P016",
+      "case_id": "S31",
+      "text_sha256": "adb5e215c3717a7dc7ed6935150134c9e57215ef61de4d75ade0916bf2a87801",
+      "scores": {
+        "mixed": 0.9296097755432129,
+        "specific": 6.359953204082558e-07,
+        "everyday": 2.202629474368223e-07
+      },
+      "seconds": 1.754909330999908
+    },
+    {
+      "id": "P026",
+      "case_id": "S36",
+      "text_sha256": "cca447adeb93f8ba6fc73ae0fd3e7d1381414aea384bd118271d1b9f6a3aa306",
+      "scores": {
+        "mixed": 1.5272048869974242e-07,
+        "specific": 1.3258315334496729e-07,
+        "everyday": 2.974825008550397e-07
+      },
+      "seconds": 2.5695780660000764
+    },
+    {
+      "id": "P030",
+      "case_id": "S20",
+      "text_sha256": "b3500ffe60c19146148f7172fba746de1c5193c24d15cc6089b9fbb0c33d1b65",
+      "scores": {
+        "mixed": 6.773608447474544e-07,
+        "specific": 0.9999914169311523,
+        "everyday": 1.35747200147307e-07
+      },
+      "seconds": 2.3324102779999976
+    },
+    {
+      "id": "P035",
+      "case_id": "S35",
+      "text_sha256": "b1f6ca8189b9d41557f94d64bb37031670f4e5390ca960a19fa374302f06c1bd",
+      "scores": {
+        "mixed": 0.9999542236328125,
+        "specific": 1.107426669477718e-06,
+        "everyday": 0.9999977350234985
+      },
+      "seconds": 2.3430049410001175
+    },
+    {
+      "id": "P036",
+      "case_id": "S19",
+      "text_sha256": "21644b7d8e9d3cf62cae20e9cb672bb06cab971f5c5e1582c9534748949d83e8",
+      "scores": {
+        "mixed": 4.3529576032597106e-07,
+        "specific": 4.8739580961409956e-05,
+        "everyday": 1.2230601953433506e-07
+      },
+      "seconds": 2.305390643999999
+    },
+    {
+      "id": "P038",
+      "case_id": "S24",
+      "text_sha256": "1f55dbea54667f0dee899126633b7bb0bbd86d81a2c672909c2650d84433a739",
+      "scores": {
+        "mixed": 0.9999949932098389,
+        "specific": 1.9844359485432506e-05,
+        "everyday": 2.0552055502776057e-05
+      },
+      "seconds": 2.2274139569999534
+    },
+    {
+      "id": "P039",
+      "case_id": "S07",
+      "text_sha256": "213f3f208041b5ab779339fa66995b092d87e8d92e40ed8751b940a855baabc3",
+      "scores": {
+        "mixed": 6.020053433530848e-07,
+        "specific": 1.3371237628234667e-07,
+        "everyday": 2.408507668860693e-07
+      },
+      "seconds": 2.3068006650000825
+    },
+    {
+      "id": "P047",
+      "case_id": "S09",
+      "text_sha256": "a5683f0b47fe11d2c15e4a0346c7160608ac99545b5b71b4909ef95c951df14d",
+      "scores": {
+        "mixed": 0.7205328345298767,
+        "specific": 1.418489148363733e-07,
+        "everyday": 0.9996503591537476
+      },
+      "seconds": 2.1453164300000935
+    },
+    {
+      "id": "P048",
+      "case_id": "S33",
+      "text_sha256": "e23a5abdbb312eb0804c6e822dcd5fa789fef079ab6b0abdec43e07191587d74",
+      "scores": {
+        "mixed": 7.475489951502823e-07,
+        "specific": 1.363770536499942e-07,
+        "everyday": 1.3387327157943218e-07
+      },
+      "seconds": 2.3768041249998078
+    },
+    {
+      "id": "P049",
+      "case_id": "S02",
+      "text_sha256": "40c17997551122c372570a1f367ef3b12c7be654f86d5c21a1b7cd9db3d447f1",
+      "scores": {
+        "mixed": 2.1167900854379695e-07,
+        "specific": 1.3700302758934413e-07,
+        "everyday": 1.2735546306430479e-07
+      },
+      "seconds": 2.2379525930000455
+    },
+    {
+      "id": "P051",
+      "case_id": "S29",
+      "text_sha256": "e989cc303db03e7e04e0819560027f80af85e3c8998b1fd7a10928391e68d588",
+      "scores": {
+        "mixed": 0.9978094696998596,
+        "specific": 1.0179944183619227e-05,
+        "everyday": 1.3505044194062066e-07
+      },
+      "seconds": 2.537018626999952
+    },
+    {
+      "id": "P053",
+      "case_id": "S18",
+      "text_sha256": "08b964018d37d02729bfe38983dd1952fe6cbd79ab9c49cdcebb7e6e7bc7cd5e",
+      "scores": {
+        "mixed": 5.627431391985738e-07,
+        "specific": 0.9999991655349731,
+        "everyday": 1.241533027496189e-07
+      },
+      "seconds": 1.9428578399999878
+    },
+    {
+      "id": "P054",
+      "case_id": "S11",
+      "text_sha256": "b51b984650c24f4ea6865700231f30f94a19eb3cddde69cb942745c174e38a3b",
+      "scores": {
+        "mixed": 1.8809713253631344e-07,
+        "specific": 1.294353069170029e-07,
+        "everyday": 1.432541978374502e-07
+      },
+      "seconds": 2.164557160999948
+    },
+    {
+      "id": "P055",
+      "case_id": "S05",
+      "text_sha256": "86fb25a8d72e5e1b5cddbbb8f7bfdd3acad597f8985a42eb17d61bc38452823b",
+      "scores": {
+        "mixed": 1.995344831584589e-07,
+        "specific": 1.307556374285923e-07,
+        "everyday": 2.811210606523673e-07
+      },
+      "seconds": 2.308453290999978
+    },
+    {
+      "id": "P059",
+      "case_id": "S12",
+      "text_sha256": "7414b3b170d5ed1ae8c6546504af9bab01e5d51359dfc28ed79880cddfdce9f4",
+      "scores": {
+        "mixed": 2.7904508215215174e-07,
+        "specific": 1.231911284094167e-07,
+        "everyday": 2.1482163958808087e-07
+      },
+      "seconds": 2.3143146249999518
+    },
+    {
+      "id": "P061",
+      "case_id": "S30",
+      "text_sha256": "5a65cdd43ad726c0d0bbfd4a8e9e1ae5ebc129fa10d3d23b6058987171c88925",
+      "scores": {
+        "mixed": 2.785978381325549e-07,
+        "specific": 0.9929106831550598,
+        "everyday": 1.648174503543487e-07
+      },
+      "seconds": 2.1848007570001755
+    },
+    {
+      "id": "P062",
+      "case_id": "S37",
+      "text_sha256": "c1dc7865ae6ed86f1ab78d9aa543208e4000c9b989534c03c66c52f4977a12b9",
+      "scores": {
+        "mixed": 0.9999101161956787,
+        "specific": 1.8062353035475098e-07,
+        "everyday": 1.6163575367045269e-07
+      },
+      "seconds": 2.3544264280001244
+    },
+    {
+      "id": "P067",
+      "case_id": "S06",
+      "text_sha256": "889db335bd486653925b4da15ca134977eac43e9279bdd697698d97a6a7ce41d",
+      "scores": {
+        "mixed": 2.1295279850619409e-07,
+        "specific": 1.3528789111205697e-07,
+        "everyday": 1.508359019908312e-07
+      },
+      "seconds": 2.410504547000073
+    },
+    {
+      "id": "P069",
+      "case_id": "S26",
+      "text_sha256": "f35550b4a140ce23b302544c5bdbe9837f18654a9fe6732d7fb238350dda433f",
+      "scores": {
+        "mixed": 0.00012085954949725419,
+        "specific": 0.9999972581863403,
+        "everyday": 1.6285687820527528e-07
+      },
+      "seconds": 2.509075185000029
+    },
+    {
+      "id": "P072",
+      "case_id": "S16",
+      "text_sha256": "eca77021c98ded988ea0a15a96e9a9971b33cd15b346b8b5cf1e41ab39d1357e",
+      "scores": {
+        "mixed": 3.0651574434159556e-07,
+        "specific": 1.3506395646345482e-07,
+        "everyday": 1.2933141135818005e-07
+      },
+      "seconds": 3.1956892769999286
+    },
+    {
+      "id": "P073",
+      "case_id": "S39",
+      "text_sha256": "e240ec649b6c38ee63ab43fbd775634b98e01ec5e67f96972817f713c7906bdf",
+      "scores": {
+        "mixed": 0.10547835379838943,
+        "specific": 8.577836183576437e-07,
+        "everyday": 2.2690402090574935e-07
+      },
+      "seconds": 2.8995468739999524
+    },
+    {
+      "id": "P074",
+      "case_id": "S40",
+      "text_sha256": "a5ea344e40daaf9d6d3fd5e97800b3b3fc1097f1d077edc802a9810afee3705e",
+      "scores": {
+        "mixed": 1.1843609399875277e-06,
+        "specific": 2.3493537071317405e-07,
+        "everyday": 4.6991567614895757e-07
+      },
+      "seconds": 2.386970412999972
+    },
+    {
+      "id": "P076",
+      "case_id": "S25",
+      "text_sha256": "fc23e3a05301ae1182cb05197805371134c51f1480e132460ebe8c55f29c1f8e",
+      "scores": {
+        "mixed": 0.0003065232012886554,
+        "specific": 1.3614159399821801e-07,
+        "everyday": 1.4940297887733323e-07
+      },
+      "seconds": 2.2429676369999925
+    },
+    {
+      "id": "P077",
+      "case_id": "S28",
+      "text_sha256": "e5797c3bfd8ab599c0c3a4881be2a8c63b340ae041fa21859c518b58e6d92cc3",
+      "scores": {
+        "mixed": 0.9999302625656128,
+        "specific": 0.999423623085022,
+        "everyday": 1.2280473526971036e-07
+      },
+      "seconds": 2.3135151280000628
+    },
+    {
+      "id": "P080",
+      "case_id": "S08",
+      "text_sha256": "6a2d06f61b0ee2b100b6c0bf220c907a186552eda24c19ca9b54264343d974bf",
+      "scores": {
+        "mixed": 1.392335207128781e-07,
+        "specific": 1.2515950231772877e-07,
+        "everyday": 6.6600532591110095e-06
+      },
+      "seconds": 2.321340212999985
+    },
+    {
+      "id": "P082",
+      "case_id": "S03",
+      "text_sha256": "563bd2bd738c8a5f29758667f1dc79fee06dd95c4a4762c9bdee02f71eb600ea",
+      "scores": {
+        "mixed": 2.2837569702005567e-07,
+        "specific": 1.3354606664961466e-07,
+        "everyday": 2.7915284590562806e-06
+      },
+      "seconds": 2.356114834999971
+    },
+    {
+      "id": "P083",
+      "case_id": "S13",
+      "text_sha256": "20c091b0f14348981a2c9ccd71642416e7223a188ca7c54573d9c0f1ae804542",
+      "scores": {
+        "mixed": 2.505794327589683e-07,
+        "specific": 1.2681589112162328e-07,
+        "everyday": 1.2433375218279252e-07
+      },
+      "seconds": 2.2249729630000274
+    },
+    {
+      "id": "P089",
+      "case_id": "S23",
+      "text_sha256": "318d4a25b8d91cda779aa0182472978022f14edb13e7b0dd3b9e6022e04f72f3",
+      "scores": {
+        "mixed": 0.9999771118164062,
+        "specific": 1.1572265066206455e-06,
+        "everyday": 4.143983289850439e-07
+      },
+      "seconds": 2.671755105000102
+    },
+    {
+      "id": "P090",
+      "case_id": "S15",
+      "text_sha256": "daa13913e0b73525d99cc09757e18959eab59ce6dfa91e7f3ffbbc93028f6c12",
+      "scores": {
+        "mixed": 3.6064311643713154e-06,
+        "specific": 1.3205075788391696e-07,
+        "everyday": 1.2641137914215506e-07
+      },
+      "seconds": 2.201139968999996
+    },
+    {
+      "id": "P091",
+      "case_id": "S04",
+      "text_sha256": "307d75801198cfa337cc8c1121cc808920fb81eddaa1f982af8db16b842afc53",
+      "scores": {
+        "mixed": 3.40553754085704e-07,
+        "specific": 1.4743906717740174e-07,
+        "everyday": 1.6495550880790688e-07
+      },
+      "seconds": 2.188632527999971
+    },
+    {
+      "id": "P092",
+      "case_id": "S32",
+      "text_sha256": "46d0d7a5c1fff2c9156943ea719ff1d14435e186788a72f572e570cbf2170ad5",
+      "scores": {
+        "mixed": 2.7283379040454747e-06,
+        "specific": 1.907648226051606e-07,
+        "everyday": 3.63328155117415e-07
+      },
+      "seconds": 2.2995804170000156
+    },
+    {
+      "id": "P094",
+      "case_id": "S38",
+      "text_sha256": "cf39e6dffc3647ab645165525c61f18bfbe85e55c044389b2a734a05a8156615",
+      "scores": {
+        "mixed": 0.9926633834838867,
+        "specific": 1.2935953463966143e-07,
+        "everyday": 1.2073974176018964e-07
+      },
+      "seconds": 3.493423696000036
+    },
+    {
+      "id": "P098",
+      "case_id": "S27",
+      "text_sha256": "3ec8f97deeb38bbed96ffd28761f518620915950e64b6f28abf341baa9306ba0",
+      "scores": {
+        "mixed": 1.219786372530507e-05,
+        "specific": 0.9999963045120239,
+        "everyday": 2.412286903563654e-07
+      },
+      "seconds": 3.246832275000088
+    },
+    {
+      "id": "P100",
+      "case_id": "S10",
+      "text_sha256": "91eebc644850ae60d9c129d7bfe800c11b771ce29530d9fed9076bbb0acc5231",
+      "scores": {
+        "mixed": 2.0463553482841235e-06,
+        "specific": 1.3692805111986672e-07,
+        "everyday": 1.799023578996639e-07
+      },
+      "seconds": 2.4368815929999528
+    }
+  ]
+}

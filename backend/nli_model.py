@@ -16,6 +16,7 @@ HYPOTHESES = {
     'LEFT': 'The author of this text supports politically liberal positions.',
     'RIGHT': 'The author of this text supports politically conservative positions.',
     'CENTER': 'This text reports political information without taking a political side.',
+    'mixed': 'The author endorses a combination of both liberal and conservative political positions.',
 }
 LABELS = ['LEFT', 'CENTER', 'RIGHT']
 MAX_WINDOWS = 12
@@ -60,7 +61,7 @@ def model_metadata():
     manifest = verify_checkpoint()
     return {'engine': 'political_nli', 'model_id': MODEL_ID, 'revision': REVISION,
             'weights_sha256': manifest['files']['model.safetensors'], 'artifact_sha256': manifest['files'], 'aggregation': 'overlapping_windows_mean_entailment_v1',
-            'validation_status': 'development_only', 'release_approved': False,
+            'decision_rules': 'development_v2_mixed_guard', 'validation_status': 'development_only', 'release_approved': False,
             'hypotheses': HYPOTHESES, 'score_type': 'independent_entailment'}
 
 def assess(scores, token_count):
@@ -72,6 +73,8 @@ def assess(scores, token_count):
     ranked = sorted(LABELS, key=lambda label: scores[label], reverse=True)
     if scores[ranked[0]] < 0.8 or scores[ranked[0]] - scores[ranked[1]] < 0.4:
         return 'uncertain', None
+    if ranked[0] in ('LEFT', 'RIGHT') and scores.get('mixed', 0.0) >= 0.8:
+        return 'mixed_or_conflicting', None
     return 'tentative', ranked[0]
 
 def predict_text(text, mode='article'):

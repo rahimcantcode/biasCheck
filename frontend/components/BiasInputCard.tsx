@@ -78,11 +78,12 @@ export function BiasInputCard({
 
         <div className="grid gap-4 lg:grid-cols-[1fr_280px]">
           <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-3">
-            <label className="mb-3 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-500">
+            <label htmlFor="article-input" className="mb-3 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-500">
               <TextSearch className="h-4 w-4" />
               Article text or URL
             </label>
             <textarea
+              id="article-input"
               value={input}
               onChange={(event) => onInputChange(event.target.value)}
               onFocus={() => setFocused(true)}

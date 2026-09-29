@@ -14,3 +14,11 @@ def test_conflicting_support_abstains():
 
 def test_clear_support_is_only_tentative():
     assert assess(scores(RIGHT=.99), 30) == ('tentative', 'RIGHT')
+
+
+def test_mixed_guard_prevents_one_sided_tentative_result():
+    assert assess(scores(RIGHT=.99, mixed=.95), 30) == ('mixed_or_conflicting', None)
+
+def test_mixed_guard_does_not_override_nonpolitical_or_short_text():
+    assert assess(scores(politics=.01, policy=.01, mixed=.99), 30) == ('nonpolitical', None)
+    assert assess(scores(RIGHT=.99, mixed=.99), 2) == ('insufficient_context', None)

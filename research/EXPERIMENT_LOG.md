@@ -199,3 +199,29 @@ for explicit Left/Right policy examples. Original RoBERTa remains default.
 See `NLI_IMPLEMENTATION.md` for thresholds, limitations, and remaining gates.
 No release approval or VPS deployment occurred. Full article comparison and final
 integration verification are recorded separately as they complete.
+
+### Completed candidate benchmark and guard follow-up
+
+All 60 article predictions completed: PoliticalDEBATE v1 raw-label accuracy
+0.483333, macro F1 0.483066, versus prior original first-window 0.733333/0.729798.
+Candidate confusion LEFT/CENTER/RIGHT: [[6,12,2],[6,13,1],[4,6,10]]. Candidate is
+not promoted to default. See `results/political_debate_comparison.md` for label
+construct mismatch, pair-window differences and exploratory agreement coverage.
+Post hoc model agreement gives 23/26 correct with 26/60 coverage, not high accuracy
+on all inputs and not an enabled release policy.
+
+Tested three additional guard hypotheses after observing failures. Retained only
+mixed ideological endorsement, and only to withhold otherwise tentative Left or
+Right when support >=0.8. Specificity and everyday-life guards were rejected for
+observed failures. Their complete outputs remain in `nli_guards_development.json`.
+Real long-input integration processed all 656 tokens across two windows and
+rejected an oversized request and a localhost URL. Repeated inference was
+identical in the API mode check. No final human-gold accuracy claim is made.
+
+
+Final verification: 38 tests passed, final Next.js production build passed, and
+real Chromium frontend-to-model checks passed on desktop/mobile with no page
+errors. Busy errors and clearing in-flight responses were checked. Model-backed
+checks and browser fixtures are retained in JSON; the browser script is reusable.
+UI copy no longer incorrectly says every engine is RoBERTa, and help links now
+open actual explanations. These checks establish functionality, not accuracy.

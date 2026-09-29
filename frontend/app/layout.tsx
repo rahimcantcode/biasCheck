@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Bias Checker",
-  description: "Analyze political bias in articles with a fine-tuned RoBERTa model.",
+  description: "Explore experimental political-leaning assessments with context and uncertainty.",
 };
 
 export default function RootLayout({
