@@ -1,0 +1,36 @@
+import copy,json
+from pathlib import Path
+import pytest
+from research.annotation.compare_reviews import compare,validate
+ROOT=Path(__file__).resolve().parents[1]
+M=json.loads((ROOT/'research/annotation/pilot_manifest.json').read_text())
+
+def review(who='A',label='UNCERTAIN'):
+    item=M['items'][0]
+    return {'pilot_id':M['pilot_id'],'rubric_version':'v1','reviewer_id':who,'annotations':[{'id':item['id'],'text_sha256':item['text_sha256'],'reviewer_id':who,'status':'reviewed','full_text_read':True,'relevance':'POLITICAL','label':label,'confidence':'low','rationale':'Synthetic unit test evidence only.','completed_at':'2026-09-29T00:00:00Z'}]}
+
+def test_pilot_is_unlabeled_and_separate_from_previous_comparison():
+    items=M['items'];assert len(items)==100 and len({x['id'] for x in items})==100
+    assert sum(x['kind']=='historical_article' for x in items)==60
+    assert all('label' not in x and 'bias_text' not in x for x in items)
+    assert all(x['text'] is None for x in items if x['kind']=='historical_article')
+    previous=json.loads((ROOT/'research/results/context_comparison.json').read_text())
+    assert not {str(x['id']) for x in previous['first512']['predictions']}&{x.get('dataset_id') for x in items}
+
+def test_comparison_preserves_disagreement_and_missing_items():
+    result=compare(review(),review('B','LEFT'),M)
+    assert result['paired_n']==1 and result['label_agreement']['agreement']==0
+    assert len(result['missing_or_skipped_ids'])==99 and len(result['disagreements'])==1
+    assert result['gold_labels_approved'] is False
+
+def test_same_reviewer_rejected():
+    with pytest.raises(ValueError,match='distinct'):compare(review(),review(),M)
+
+@pytest.mark.parametrize('mutation',['hash','duplicate','unread','relevance'])
+def test_invalid_review_rejected(mutation):
+    r=review();a=r['annotations'][0]
+    if mutation=='hash':a['text_sha256']='changed'
+    if mutation=='duplicate':r['annotations'].append(copy.deepcopy(a))
+    if mutation=='unread':a['full_text_read']=False
+    if mutation=='relevance':a['relevance']='NONPOLITICAL'
+    with pytest.raises(ValueError):validate(r,M)

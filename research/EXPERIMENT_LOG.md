@@ -122,3 +122,36 @@ annotation, source/event/time leakage audit, robust confidence intervals and ope
 staging are outstanding. No GPU is available here. No VPS SSH connection is configured.
 The branch is a research and engineering checkpoint, not a production-ready high-accuracy
 model. No merge, production deployment, or formal report has been performed.
+
+## 2026-09-29: 100-example annotation pilot prepared
+
+Prepared an unlabeled rubric-development pilot: 60 historical articles from 12 dataset
+source identifiers and 41 topics, plus 40 original AI-authored controlled examples.
+Selection uses source/topic/length diversity, excludes the earlier 60-example comparison,
+and does not use inherited class labels. It does not establish independence from old
+checkpoint training. All pilot items are development data and must be excluded from the
+future final test. No contemporary independent evaluation set is claimed.
+
+Added a labeling rubric covering political relevance, LEFT/CENTER/RIGHT, NONPOLITICAL,
+UNCERTAIN, quotations, attribution, mixed positions, procedural reporting and lexical
+false positives. The standalone reviewer hides inherited labels, verifies frozen text
+hashes, keeps reviewer workspaces separate, requires reading confirmation and evidence,
+and exports judgments. News text is not redistributed in the repository. The review
+page can download pinned source snapshots directly from GitHub, or read the original
+source folder locally. Source text is held in browser memory, not review exports.
+
+Added a comparison tool for independent reviews: relevance agreement, five-label agreement,
+Cohen's kappa, slice denominators, missing items and a disagreement/adjudication queue.
+It rejects mismatched text, duplicate items and identical reviewer identities. It never
+approves gold labels or substitutes machine judgments for missing human review.
+
+Validation: all 100 frozen hashes verified; seven new annotation tests passed. JavaScript
+DOM tests verified save, restore, reviewer separation, missing-text blocking, snapshot
+verification, wrong-snapshot rejection and the 60-item loader with mocked network responses.
+A full browser test could not run because the browser binary download was unavailable;
+visual rendering and actual in-browser remote downloads remain unverified. No human
+annotations have been performed, and automated UI fixtures are not included as annotations.
+
+Next concrete action: two independent reviewers annotate the first 10 pilot items,
+resolve rubric ambiguities, then independently complete or re-review under a frozen rubric.
+Preserve the original judgments and document adjudication before deriving any gold labels.
