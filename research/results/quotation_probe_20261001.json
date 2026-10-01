@@ -1,0 +1,527 @@
+{
+  "started_at": "2026-10-01T23:10:22.277Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser_args": [
+    "--disable-webgl"
+  ],
+  "url": "https://bias.r4him.tech/",
+  "browser": "154.0.8037.58",
+  "cases": [
+    {
+      "id": "left-endorsement",
+      "status": 200,
+      "seconds": 1.088,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "The government should raise taxes on the wealthy and guarantee universal public health care. These reforms are necessary to reduce inequality and ensure that everyone receives treatment regardless of income.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998116,
+            "RIGHT": 0.000789,
+            "CENTER": 0.001094
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 32,
+          "tokens_processed": 32,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998116,
+              "RIGHT": 0.000789,
+              "CENTER": 0.001094
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 32,
+            "tokens_processed": 32,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "The government should raise taxes on the wealthy and guarantee universal public health care. These reforms are necessary to reduce inequality and ensure that everyone receives treatment regardless of income.",
+            "start": 0,
+            "end": 207
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "visible_text": "BIAS CHECKER\n\nExperimental political analysis\n\nHow it works\nAbout Model\nEXPLORE POLITICAL LEANING WITH FULL ARTICLE CONTEXT\nSee how your article leans\n\nPaste article text or a URL to explore experimental political-leaning assessments. Results can be uncertain and should be checked against the text.\n\nLIVE ANALYSIS WORKSPACE\n\nPaste an English news article or its URL for a contextual political-leaning estimate.\n\nArticle\nSentence\nParagraph\nARTICLE TEXT OR URL\nInput guidance\n\nArticle mode processes the complete article. Passage modes show estimates when the model has enough context.\n\nCURRENT MODE\n\nArticle analysis\n\nAnalyze\nClear\nPaste a news article\nTry article mode\nAnalyze by sentence\nAnalyze by paragraph\nYour article is ready below, with 1 analyzed passages.\n\nClear model estimates use color. Uncertain results stay uncolored.\n\nANALYSIS COMPLETE\nYour article, in perspective.\n\n30 words\u00b7Complete article analysis\n\nOVERALL LEANING\n\nLeft\n\nEXPERIMENTAL ESTIMATE\n\n32 of 32 tokens processed in 1 window(s).\n\nInvestor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.\n\nThis tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language.\n\nInspect experimental scores\nLeft\nCenter\nRight\nColor bias\nThe government should raise taxes on the wealthy and guarantee universal public health care. These reforms are necessary to reduce inequality and ensure that everyone receives treatment regardless of income.\n\nSelect any passage to inspect its prediction. Uncertain passages remain plain.\n\nHow it works\n\nPaste English article text or a public article URL. Article mode processes the document; sentence and paragraph modes also inspect individual passages. Quotations, sarcasm, and mixed positions can mislead the model.\n\nAbout the models and limitations\n\nBias Checker is an experimental tool for political leaning in English U.S. news. It does not check facts.\n\nModel labels: LEFT, RIGHT, CENTER."
+    },
+    {
+      "id": "left-attribution",
+      "status": 200,
+      "seconds": 1.164,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "At Tuesday's hearing, a witness said, \"The government should raise taxes on the wealthy and guarantee universal public health care. These reforms are necessary to reduce inequality and ensure that everyone receives treatment regardless of income.\" The committee took no vote. This report records the witness's statement and does not endorse it.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.997602,
+            "RIGHT": 0.000531,
+            "CENTER": 0.001867
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 61,
+          "tokens_processed": 61,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.997602,
+              "RIGHT": 0.000531,
+              "CENTER": 0.001867
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 61,
+            "tokens_processed": 61,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "At Tuesday's hearing, a witness said, \"The government should raise taxes on the wealthy and guarantee universal public health care. These reforms are necessary to reduce inequality and ensure that everyone receives treatment regardless of income.\" The committee took no vote. This report records the witness's statement and does not endorse it.",
+            "start": 0,
+            "end": 344
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "visible_text": "BIAS CHECKER\n\nExperimental political analysis\n\nHow it works\nAbout Model\nEXPLORE POLITICAL LEANING WITH FULL ARTICLE CONTEXT\nSee how your article leans\n\nPaste article text or a URL to explore experimental political-leaning assessments. Results can be uncertain and should be checked against the text.\n\nLIVE ANALYSIS WORKSPACE\n\nPaste an English news article or its URL for a contextual political-leaning estimate.\n\nArticle\nSentence\nParagraph\nARTICLE TEXT OR URL\nInput guidance\n\nArticle mode processes the complete article. Passage modes show estimates when the model has enough context.\n\nCURRENT MODE\n\nArticle analysis\n\nAnalyze\nClear\nPaste a news article\nTry article mode\nAnalyze by sentence\nAnalyze by paragraph\nYour article is ready below, with 1 analyzed passages.\n\nClear model estimates use color. Uncertain results stay uncolored.\n\nANALYSIS COMPLETE\nYour article, in perspective.\n\n52 words\u00b7Complete article analysis\n\nOVERALL LEANING\n\nLeft\n\nEXPERIMENTAL ESTIMATE\n\n61 of 61 tokens processed in 1 window(s).\n\nInvestor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.\n\nThis tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language.\n\nInspect experimental scores\nLeft\nCenter\nRight\nColor bias\nAt Tuesday's hearing, a witness said, \"The government should raise taxes on the wealthy and guarantee universal public health care. These reforms are necessary to reduce inequality and ensure that everyone receives treatment regardless of income.\" The committee took no vote. This report records the witness's statement and does not endorse it.\n\nSelect any passage to inspect its prediction. Uncertain passages remain plain.\n\nHow it works\n\nPaste English article text or a public article URL. Article mode processes the document; sentence and paragraph modes also inspect individual passages. Quotations, sarcasm, and mixed positions can mislead the model.\n\nAbout the models and limitations\n\nBias Checker is an experimental tool for political leaning in English U.S. news. It does not check facts.\n\nModel labels: LEFT, RIGHT, CENTER."
+    },
+    {
+      "id": "right-endorsement",
+      "status": 200,
+      "seconds": 1.399,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "The government should cut taxes and reduce regulation so private businesses can compete freely. Private health insurance and individual choice are preferable to a government-run health care system.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.985512,
+            "RIGHT": 0.0095,
+            "CENTER": 0.004988
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 32,
+          "tokens_processed": 32,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.985512,
+              "RIGHT": 0.0095,
+              "CENTER": 0.004988
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 32,
+            "tokens_processed": 32,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "The government should cut taxes and reduce regulation so private businesses can compete freely. Private health insurance and individual choice are preferable to a government-run health care system.",
+            "start": 0,
+            "end": 197
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "visible_text": "BIAS CHECKER\n\nExperimental political analysis\n\nHow it works\nAbout Model\nEXPLORE POLITICAL LEANING WITH FULL ARTICLE CONTEXT\nSee how your article leans\n\nPaste article text or a URL to explore experimental political-leaning assessments. Results can be uncertain and should be checked against the text.\n\nLIVE ANALYSIS WORKSPACE\n\nPaste an English news article or its URL for a contextual political-leaning estimate.\n\nArticle\nSentence\nParagraph\nARTICLE TEXT OR URL\nInput guidance\n\nArticle mode processes the complete article. Passage modes show estimates when the model has enough context.\n\nCURRENT MODE\n\nArticle analysis\n\nAnalyze\nClear\nPaste a news article\nTry article mode\nAnalyze by sentence\nAnalyze by paragraph\nYour article is ready below, with 1 analyzed passages.\n\nClear model estimates use color. Uncertain results stay uncolored.\n\nANALYSIS COMPLETE\nYour article, in perspective.\n\n28 words\u00b7Complete article analysis\n\nOVERALL LEANING\n\nLeft\n\nEXPERIMENTAL ESTIMATE\n\n32 of 32 tokens processed in 1 window(s).\n\nInvestor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.\n\nThis tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language.\n\nInspect experimental scores\nLeft\nCenter\nRight\nColor bias\nThe government should cut taxes and reduce regulation so private businesses can compete freely. Private health insurance and individual choice are preferable to a government-run health care system.\n\nSelect any passage to inspect its prediction. Uncertain passages remain plain.\n\nHow it works\n\nPaste English article text or a public article URL. Article mode processes the document; sentence and paragraph modes also inspect individual passages. Quotations, sarcasm, and mixed positions can mislead the model.\n\nAbout the models and limitations\n\nBias Checker is an experimental tool for political leaning in English U.S. news. It does not check facts.\n\nModel labels: LEFT, RIGHT, CENTER."
+    },
+    {
+      "id": "right-attribution",
+      "status": 200,
+      "seconds": 0.978,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "At Tuesday's hearing, a witness said, \"The government should cut taxes and reduce regulation so private businesses can compete freely. Private health insurance and individual choice are preferable to a government-run health care system.\" The committee took no vote. This report records the witness's statement and does not endorse it.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.997641,
+            "RIGHT": 0.000561,
+            "CENTER": 0.001797
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 61,
+          "tokens_processed": 61,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.997641,
+              "RIGHT": 0.000561,
+              "CENTER": 0.001797
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 61,
+            "tokens_processed": 61,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "At Tuesday's hearing, a witness said, \"The government should cut taxes and reduce regulation so private businesses can compete freely. Private health insurance and individual choice are preferable to a government-run health care system.\" The committee took no vote. This report records the witness's statement and does not endorse it.",
+            "start": 0,
+            "end": 334
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "visible_text": "BIAS CHECKER\n\nExperimental political analysis\n\nHow it works\nAbout Model\nEXPLORE POLITICAL LEANING WITH FULL ARTICLE CONTEXT\nSee how your article leans\n\nPaste article text or a URL to explore experimental political-leaning assessments. Results can be uncertain and should be checked against the text.\n\nLIVE ANALYSIS WORKSPACE\n\nPaste an English news article or its URL for a contextual political-leaning estimate.\n\nArticle\nSentence\nParagraph\nARTICLE TEXT OR URL\nInput guidance\n\nArticle mode processes the complete article. Passage modes show estimates when the model has enough context.\n\nCURRENT MODE\n\nArticle analysis\n\nAnalyze\nClear\nPaste a news article\nTry article mode\nAnalyze by sentence\nAnalyze by paragraph\nYour article is ready below, with 1 analyzed passages.\n\nClear model estimates use color. Uncertain results stay uncolored.\n\nANALYSIS COMPLETE\nYour article, in perspective.\n\n50 words\u00b7Complete article analysis\n\nOVERALL LEANING\n\nLeft\n\nEXPERIMENTAL ESTIMATE\n\n61 of 61 tokens processed in 1 window(s).\n\nInvestor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.\n\nThis tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language.\n\nInspect experimental scores\nLeft\nCenter\nRight\nColor bias\nAt Tuesday's hearing, a witness said, \"The government should cut taxes and reduce regulation so private businesses can compete freely. Private health insurance and individual choice are preferable to a government-run health care system.\" The committee took no vote. This report records the witness's statement and does not endorse it.\n\nSelect any passage to inspect its prediction. Uncertain passages remain plain.\n\nHow it works\n\nPaste English article text or a public article URL. Article mode processes the document; sentence and paragraph modes also inspect individual passages. Quotations, sarcasm, and mixed positions can mislead the model.\n\nAbout the models and limitations\n\nBias Checker is an experimental tool for political leaning in English U.S. news. It does not check facts.\n\nModel labels: LEFT, RIGHT, CENTER."
+    },
+    {
+      "id": "balanced-attribution",
+      "status": 200,
+      "seconds": 1.867,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "At Tuesday's hearing, one witness called for higher taxes on the wealthy and universal public health care. Another called for lower taxes, less regulation and private health insurance. Each witness spoke for five minutes. The committee took no vote. This report records their positions without endorsing either.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998102,
+            "RIGHT": 0.000478,
+            "CENTER": 0.00142
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 55,
+          "tokens_processed": 55,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998102,
+              "RIGHT": 0.000478,
+              "CENTER": 0.00142
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 55,
+            "tokens_processed": 55,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "At Tuesday's hearing, one witness called for higher taxes on the wealthy and universal public health care. Another called for lower taxes, less regulation and private health insurance. Each witness spoke for five minutes. The committee took no vote. This report records their positions without endorsing either.",
+            "start": 0,
+            "end": 311
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "visible_text": "BIAS CHECKER\n\nExperimental political analysis\n\nHow it works\nAbout Model\nEXPLORE POLITICAL LEANING WITH FULL ARTICLE CONTEXT\nSee how your article leans\n\nPaste article text or a URL to explore experimental political-leaning assessments. Results can be uncertain and should be checked against the text.\n\nLIVE ANALYSIS WORKSPACE\n\nPaste an English news article or its URL for a contextual political-leaning estimate.\n\nArticle\nSentence\nParagraph\nARTICLE TEXT OR URL\nInput guidance\n\nArticle mode processes the complete article. Passage modes show estimates when the model has enough context.\n\nCURRENT MODE\n\nArticle analysis\n\nAnalyze\nClear\nPaste a news article\nTry article mode\nAnalyze by sentence\nAnalyze by paragraph\nYour article is ready below, with 1 analyzed passages.\n\nClear model estimates use color. Uncertain results stay uncolored.\n\nANALYSIS COMPLETE\nYour article, in perspective.\n\n47 words\u00b7Complete article analysis\n\nOVERALL LEANING\n\nLeft\n\nEXPERIMENTAL ESTIMATE\n\n55 of 55 tokens processed in 1 window(s).\n\nInvestor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.\n\nThis tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language.\n\nInspect experimental scores\nLeft\nCenter\nRight\nColor bias\nAt Tuesday's hearing, one witness called for higher taxes on the wealthy and universal public health care. Another called for lower taxes, less regulation and private health insurance. Each witness spoke for five minutes. The committee took no vote. This report records their positions without endorsing either.\n\nSelect any passage to inspect its prediction. Uncertain passages remain plain.\n\nHow it works\n\nPaste English article text or a public article URL. Article mode processes the document; sentence and paragraph modes also inspect individual passages. Quotations, sarcasm, and mixed positions can mislead the model.\n\nAbout the models and limitations\n\nBias Checker is an experimental tool for political leaning in English U.S. news. It does not check facts.\n\nModel labels: LEFT, RIGHT, CENTER."
+    },
+    {
+      "id": "nonpolitical-quotation",
+      "status": 200,
+      "seconds": 1.211,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "At Tuesday's cooking class, a teacher said, \"Wash the tomatoes, chop them into small pieces, and simmer them with olive oil for twenty minutes.\" Participants followed the recipe and served the sauce with pasta.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998144,
+            "RIGHT": 0.000405,
+            "CENTER": 0.001451
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 43,
+          "tokens_processed": 43,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998144,
+              "RIGHT": 0.000405,
+              "CENTER": 0.001451
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 43,
+            "tokens_processed": 43,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "At Tuesday's cooking class, a teacher said, \"Wash the tomatoes, chop them into small pieces, and simmer them with olive oil for twenty minutes.\" Participants followed the recipe and served the sauce with pasta.",
+            "start": 0,
+            "end": 210
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "visible_text": "BIAS CHECKER\n\nExperimental political analysis\n\nHow it works\nAbout Model\nEXPLORE POLITICAL LEANING WITH FULL ARTICLE CONTEXT\nSee how your article leans\n\nPaste article text or a URL to explore experimental political-leaning assessments. Results can be uncertain and should be checked against the text.\n\nLIVE ANALYSIS WORKSPACE\n\nPaste an English news article or its URL for a contextual political-leaning estimate.\n\nArticle\nSentence\nParagraph\nARTICLE TEXT OR URL\nInput guidance\n\nArticle mode processes the complete article. Passage modes show estimates when the model has enough context.\n\nCURRENT MODE\n\nArticle analysis\n\nAnalyze\nClear\nPaste a news article\nTry article mode\nAnalyze by sentence\nAnalyze by paragraph\nYour article is ready below, with 1 analyzed passages.\n\nClear model estimates use color. Uncertain results stay uncolored.\n\nANALYSIS COMPLETE\nYour article, in perspective.\n\n34 words\u00b7Complete article analysis\n\nOVERALL LEANING\n\nLeft\n\nEXPERIMENTAL ESTIMATE\n\n43 of 43 tokens processed in 1 window(s).\n\nInvestor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.\n\nThis tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language.\n\nInspect experimental scores\nLeft\nCenter\nRight\nColor bias\nAt Tuesday's cooking class, a teacher said, \"Wash the tomatoes, chop them into small pieces, and simmer them with olive oil for twenty minutes.\" Participants followed the recipe and served the sauce with pasta.\n\nSelect any passage to inspect its prediction. Uncertain passages remain plain.\n\nHow it works\n\nPaste English article text or a public article URL. Article mode processes the document; sentence and paragraph modes also inspect individual passages. Quotations, sarcasm, and mixed positions can mislead the model.\n\nAbout the models and limitations\n\nBias Checker is an experimental tool for political leaning in English U.S. news. It does not check facts.\n\nModel labels: LEFT, RIGHT, CENTER."
+    }
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "finished_at": "2026-10-01T23:10:33.740Z",
+  "health_after_probe": {
+    "status": "ok",
+    "model": {
+      "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+      "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+      "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+      "id2label": {
+        "0": "LEFT",
+        "1": "RIGHT",
+        "2": "CENTER"
+      },
+      "aggregation": "new_token_weighted_logit_mean_v1",
+      "max_length": 512,
+      "stride": 64,
+      "demo_mode": true,
+      "transformers": "4.57.1",
+      "torch": "2.6.0+cpu",
+      "tokenizers": "0.22.2"
+    },
+    "release_approved": false
+  },
+  "purpose": "Six AI-authored diagnostic controls; no human-gold accuracy claimed",
+  "fixture_sha256": "598684c75f931f661fafae1277165b1a6e9d83772d7167d2b51d3dbf717509e1",
+  "screenshot_sha256": {
+    "right-endorsement.png": "c77bc4d78150175d5535cd05486afe1a21e580b614719d6198ef69e03a11ada3",
+    "right-attribution.png": "0e8e10351738b5abb1ed0ef498d0fb80d4fda689d95578e62f8735622434e00f",
+    "balanced-attribution.png": "88cdeb0db12a4ac8c5cc3a5268b7da84ba81bf5ba6784dfd88e12f06d2141ca7",
+    "left-endorsement.png": "b45b220ce6924cb074bce5788a0256dad23a4cf87345a4c2e435d4680e81cf06",
+    "mobile.png": "f932ae399168f32d14d02d54c4768549c281ce0f802643cc224eeeff4e65ff0c",
+    "left-attribution.png": "17fdffb274ab4763ffd75302a4648491c9e8feba37cdc00e2475f070cb13aa84",
+    "nonpolitical-quotation.png": "6dac443c358e654411b72964e18fb83f1901d3e17d6aa2306f59c4f8ebb391e7"
+  }
+}

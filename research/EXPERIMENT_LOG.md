@@ -1,5 +1,74 @@
 # Working experiment log (not a final report)
 
+## 2026-10-01 23:08 UTC: annotation-policy audit and quotation probes
+
+No training or model selection this run. Implemented `annotation_audit.py` to
+reconcile unchanged previous predictions with each original annotator and the
+released labels. Inputs are the 66 validation excerpts across 19 events, previous
+comparison results and previous weighting results; their SHA-256 hashes and all
+per-ID comparisons are in `results/annotation_audit_20261001.json`. Reserved test
+not opened. Worker pairs: 21 CENTER/CENTER, 5 LEFT/LEFT, 7 RIGHT/RIGHT,
+14 CENTER/LEFT, 19 CENTER/RIGHT. The 33/33 unanimous/disputed split occurred under
+the original event split; it was not deliberately balanced.
+
+| Prior model | Released-label matches /66 | Mean worker agreement | Matches neither worker /66 |
+| --- | ---: | ---: | ---: |
+| Production RoBERTa | 31 | .3636 | 31 |
+| Astra Medium fixed prompt | 35 | .6288 | 10 |
+| TF-IDF word C=1 | 39 | .4015 | 26 |
+| Frozen MiniLM C=.1 | 37 | .3864 | 27 |
+| Worker-distribution MiniLM C=1 | 37 | .4621 | 22 |
+
+Astra's released-label agreement is 27/33 on unanimous items but 8/33 on disputes.
+Of its 31 released-label disagreements, 21 match the original Center annotator.
+TF-IDF achieves 26/33 released-label matches on disputes but only 13/33 on unanimous
+items. This exposes sensitivity to the source's partisan-directed resolution rule;
+it does not establish which labels are correct. Mean worker agreement gives .5
+for matching either worker in a disputed pair, not full credit, and is explicitly
+not product accuracy. Neither-worker matches are descriptive, not certain errors.
+No labels were changed, candidates selected, or new accuracy claim made.
+
+GPT-6 Astra Medium reviewed the interpretation via the terminal CLI. Advice is
+retained locally in `research/data/annotation-audit-advice-20261001.txt`. Its
+description of the 33/33 split as deliberately balanced was incorrect and is not
+adopted. Its cautions about small reused data, annotation dependence and fresh
+blinded human evaluation remain applicable.
+
+Created six AI-authored diagnostic controls, fixed in
+`fixtures/quotation_probe_20261001.json`, and tested each through the public site's
+actual browser form in Article mode. Local Chromium fallback, WebGL disabled;
+not a cloud-browser run. All six HTTP responses succeeded, no page/request errors,
+and no mobile horizontal overflow. The right-endorsement desktop screenshot was
+visually inspected. Every output was LEFT:
+
+| Control | Raw Left score (uncalibrated) |
+| --- | ---: |
+| Left endorsement | .998116 |
+| Left statement attributed without endorsement | .997602 |
+| Right/free-market endorsement | .985512 |
+| Right statement attributed without endorsement | .997641 |
+| Balanced attribution | .998102 |
+| Nonpolitical cooking quotation | .998144 |
+
+Quotes alone do not prove neutral author framing, and these controls are not
+independent human gold. Nonetheless, the explicit free-market endorsement and
+nonpolitical cooking response show unresolved directional/relevance failures.
+Attribution did not change the label in either paired case; this observation alone
+cannot identify the model's causal mechanism. No keyword guard was added.
+
+Raw responses, visible UI text, source-fixture and screenshot hashes, browser
+version and post-probe production health are committed in
+`results/quotation_probe_20261001.json`. Screenshots are retained in the parent
+workspace at `outputs/live-browser-quotation-20261001/`. Production hash remains
+548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d,
+demo mode, release unapproved. Four focused annotation-audit tests passed.
+
+Decision: no deployment. Next evaluation must separate author endorsement,
+attributed political stance, nonpolitical material and balanced/mixed framing,
+with independently blinded human labels and prespecified adjudication. Keep
+representative sampling separate from curated challenge cases and report both;
+do not use model output as gold or erase legitimate human disagreement.
+
 ## 2026-10-01 22:07 UTC: annotation-weight ablation
 
 Hypothesis: raw-frequency balancing followed by disagreement downweighting can
