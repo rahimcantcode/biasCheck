@@ -56,3 +56,31 @@ No automated policy approval, VPS deployment, relevance model, final accuracy cl
 ## Deployed controlled-input diagnostics
 
 `python research/scripts/probe_live_pilot.py --output research/results/live_controlled_probe_YYYYMMDD.json` probes the 40 original controlled examples sequentially and checkpoints each response. It stops after three consecutive failures. `summarize_live_probe.py --input RESULT_JSON --output SUMMARY_MD` summarizes completed observations without computing accuracy. These predictions are intentionally outside the reviewer interface. Reviewers should not inspect them before annotation; disclose any prior exposure in the evidence notes. This is development diagnostics, not independent evaluation.
+# October 1 research continuation
+
+See `EXPERIMENT_LOG.md` and `results/corpus_comparison_20261001.json` for the
+matched-context live, Astra, TF-IDF, frozen MiniLM and partial fine-tuning runs.
+No candidate passed the high-accuracy goal. All new artifacts are research-only.
+
+Reproduction entry points (run from repository root with the recorded dependencies):
+
+```bash
+python research/scripts/corpus_experiment.py prepare --input /path/to/PoliticalBiasCorpus --output research/data/new-corpus
+python research/scripts/corpus_experiment.py train --input research/data/new-corpus --output research/checkpoints/new-tfidf
+python research/scripts/astra_baseline.py --input research/data/new-corpus/validation_blind.json --output research/data/new-astra
+python research/scripts/live_corpus_probe.py --input research/data/new-corpus/validation.jsonl --output research/data/new-live.json
+python research/scripts/embedding_experiment.py download --output research/checkpoints/new-minilm
+python research/scripts/embedding_experiment.py encode --data research/data/new-corpus --checkpoint research/checkpoints/new-minilm --output research/data/new-features.npz
+python research/scripts/embedding_experiment.py train --data research/data/new-corpus --features research/data/new-features.npz --output research/checkpoints/new-head
+python research/scripts/finetune_minilm.py --data research/data/new-corpus --checkpoint research/checkpoints/new-minilm --output research/checkpoints/new-finetune
+python -m unittest discover -s tests -p test_corpus_experiment.py -v
+```
+
+Pin the source corpus to the commit recorded in the log. The Astra experiment
+requires an authenticated Codex client and uses account inference capacity.
+Its prompt is fixed in the script; only ID/text records are supplied. It is an
+offline research comparator, not a production API implementation.
+The summarizer currently uses the October 1 experiment directory names.
+The browser runner uses `NODE_PATH` for Playwright, `BIASCHECK_TEST_BROWSER` for
+Chromium, and optional `BIASCHECK_DISABLE_WEBGL=1` for the documented fallback.
+It takes an ID/text JSON array and a screenshot/output directory as arguments.

@@ -112,6 +112,15 @@ three-way ID/text/event split separation passed. No application/runtime code was
 changed, no test-set predictions were made, and no candidate was deployed.
 Full numerical evidence without article text: results/corpus_comparison_20261001.json.
 
+Execution environments: both used Python 3.11.0 on Intel macOS. The existing
+neural environment reported torch 2.2.2, transformers 4.41.2, numpy 1.26.4,
+safetensors .7.0 and tokenizers .22.2. This inherited environment differs from
+the branch's pinned production requirements and is not a newly verified portable
+dependency specification. The sklearn environment reported scikit-learn 1.8.0,
+numpy 2.4.2, scipy 1.17.0, requests 2.32.5 and joblib 1.5.3. Browser: Chromium
+154.0.8037.58; terminal Codex 0.159.2. Re-run neural comparisons in a clean,
+compatible pinned environment before using the checkpoints beyond research.
+
 ### Next work
 
 1. Resolve task definition with a separate annotation layer: policy ideology,
