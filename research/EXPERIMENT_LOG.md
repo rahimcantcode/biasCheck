@@ -1,5 +1,72 @@
 # Working experiment log (not a final report)
 
+## 2026-10-01 22:07 UTC: annotation-weight ablation
+
+Hypothesis: raw-frequency balancing followed by disagreement downweighting can
+distort effective class mass. Test annotation handling separately from encoder
+training, using the existing frozen MiniLM features and unchanged train/validation
+IDs. GPT-6 Astra Medium reviewed this design through the authenticated terminal
+client; advice retained locally as `research/data/weighting-advice-20261001.txt`.
+
+Ran 12 logistic-regression heads: hard labels, .25 dispute weighting, two equally
+weighted original worker labels per article, and unanimous-only training, each at
+C=.1,1,10. Compute class balance from effective base mass, then normalize total
+sample weight to 115 in every regime; class_weight=None avoids double balancing.
+Protocol written before training; select by all-validation macro-F1, with ties
+favoring earlier regime/C. Same encoder, feature hashes, split hashes and seed
+20261001; max_iter=1000. No reserved test data read by this run.
+
+| Regime | C | Accuracy (66) | Macro-F1 | Unanimous accuracy (33) |
+| --- | ---: | ---: | ---: | ---: |
+| Hard | .1 | .5606 | .5132 | .3636 |
+| Hard | 1 | .5455 | .5077 | .3939 |
+| Hard | 10 | .5303 | .5106 | .4242 |
+| Downweight | .1 | .5455 | .5040 | .3939 |
+| Downweight | 1 | .5606 | .5331 | .4545 |
+| Downweight | 10 | .5000 | .4867 | .4545 |
+| Worker distribution | .1 | .5303 | .5000 | .3939 |
+| Worker distribution | 1 | .5606 | .5469 | .5152 |
+| Worker distribution | 10 | .5000 | .4993 | .5455 |
+| Unanimous only | .1 | .5303 | .5238 | .4848 |
+| Unanimous only | 1 | .4848 | .4850 | .5758 |
+| Unanimous only | 10 | .4394 | .4276 | .5758 |
+
+All three hard-label control predictions reproduce previous frozen-head runs
+exactly. Selected worker-distribution C=1 recalls LEFT=.5263, CENTER=.4286,
+RIGHT=.6923. Confusion in LEFT/CENTER/RIGHT order: [[10,5,4],[7,9,5],[5,3,18]].
+Compared with the prior frozen baseline, accuracy is unchanged (37/66), while
+macro-F1 rises .0337. Event-cluster bootstrap (5000, seed20261001) accuracy interval
+is [.4259,.6949]; paired accuracy difference interval [-.1111,.1000]. This is
+exploratory repeated-validation selection, not a confirmed generalization gain.
+Unanimous-only has only 54 unique training articles; duplicating worker rows does
+not increase independent sample size. All candidates predict all 66 items.
+
+Artifacts: `research/checkpoints/pbc-weighting-20261001/` contains protocol,
+12 joblib heads and metrics with model hashes. Sanitized metrics, raw label
+predictions, per-class and strict-subset reports are committed in
+`research/results/weighting_ablation_20261001.json`; article text remains local.
+Reproduce with `python3 research/scripts/weighting_ablation.py --data
+research/data/pbc-snippets-20261001 --features
+research/data/minilm-snippets-features.npz --output <fresh-directory>`.
+Five focused tests cover effective balancing, worker targets, unanimous filtering,
+dispute mass, and invalid provenance/missing classes.
+
+Verification: all five new tests plus five existing corpus tests passed. Repeated
+the six real-excerpt browser interactions on https://bias.r4him.tech/ using local
+Chromium (cloud-browser fallback, WebGL disabled as previously documented).
+All six returned HTTP 200 and identical overall results to the earlier audit;
+no page errors, failed requests or horizontal overflow at 390x844. Mobile screenshot
+was visually inspected. Screenshots and raw responses are retained at
+`outputs/live-browser-weighting-followup/` in the parent workspace. Functional
+success does not establish classifier accuracy.
+
+Decision: retain research-only status under corpus noncommercial restrictions;
+no promotion or production deployment. Weighting alone is insufficient. Next,
+investigate task-matched annotation definitions and data sources rather than
+continuing to optimize these same 66 validation examples. An independently
+annotated evaluation with explicit neutral/mixed/quoted-text policy remains a
+release prerequisite.
+
 ## 2026-10-01: local research continuation
 
 Recovered the existing research branch `fix/reliable-bias-analysis` at 4483e70;
