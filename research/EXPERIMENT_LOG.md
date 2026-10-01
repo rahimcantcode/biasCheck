@@ -1,5 +1,141 @@
 # Working experiment log (not a final report)
 
+## 2026-10-01: local research continuation
+
+Recovered the existing research branch `fix/reliable-bias-analysis` at 4483e70;
+`main` still contains the older application. New work is on
+`research/accuracy-2026-10-01`. Production health identifies the same original
+weight hash as the previous audit, aggregation v1, demo_mode=true, and
+release_approved=false. Do not equate the new live response schema with a new
+trained model. SSH key authentication failed; no server changes were made.
+
+The requested GPT-6 Astra with Medium reasoning executed successfully through
+`codex exec --ephemeral -m gpt-6-astra -c 'model_reasoning_effort="medium"'`.
+This establishes the research subprocess configuration, not this parent chat's
+model, an API deployment, or a fine-tuned classifier. Its initial research advice
+is preserved in the workspace. The current computer has 8 GB RAM and an Intel
+i5 CPU; initial experiments use small supervised models and cloud LLM inference.
+
+New research corpus: https://github.com/ksolaiman/PoliticalBiasCorpus at
+b193ee173936b281183ca1dc101ae4de215a0e5c. Its CC-BY-NC-SA-4.0 license restricts
+these experiments to research; no derived model is approved for commercial
+deployment. The 270 released human-derived labels include 139 strict agreements
+and 131 Center/partisan resolutions toward the partisan label. Report these
+separately. Labels are perceived political framing, not objective truth.
+
+An initial full_text run was stopped after discovering HTML/mojibake and the
+fact that annotators saw a title and three snippets. Its partial artifacts are
+retained under research/data/pbc-20261001 and astra-validation-20261001, and
+research/checkpoints/pbc-tfidf-20261001. Those results are invalid for the primary
+matched-context comparison. No test predictions were made in that initial run.
+
+The corrected preparation uses the title and exactly three shown snippets from
+the original HIT input file. It freezes 115 training, 66 validation and 89 test
+items with disjoint normalized event identifiers (seeds 20261001,20261002), and
+checks exact text uniqueness. Human agreements are 54/33/52 respectively.
+Publisher and semantic near-duplicate separation are NOT yet established.
+Pretraining contamination is unknown. Test items must remain unused for fitting,
+prompt selection or threshold tuning. The validation set is already development
+data due to model comparison; do not call it an independent final test.
+
+Predeclared comparisons: word and word+character TF-IDF with balanced logistic
+regression at C in [0.1,1,10]; current live RoBERTa; frozen Astra Medium prompt.
+Select supervised settings on validation macro-F1. Astra sees only IDs/text,
+never reference labels, event descriptions or outlet metadata. These outputs
+are model predictions, never substitute human annotations.
+
+Working product target: >=90% accuracy and >=0.85 macro-F1, with every class
+recall >=0.80, on an independently reviewed task-matched holdout; additionally
+measure nonpolitical false labeling, mixed/quoted text, coverage, uncertainty,
+and latency. These are research targets, not achieved scores. This small
+historical corpus alone cannot certify the product even if a point target passes.
+
+Browser environment: the desktop browser tool failed during startup. Terminal
+Playwright can load the public site, but initial input interaction stalled.
+A retry disables WebGL and records that condition. These are local browsers
+accessing the cloud-hosted app, not cloud-hosted browser execution.
+
+All raw news text, model weights, prompts containing text and intermediate logs
+stay in ignored research/data or research/checkpoints. Publish IDs, hashes,
+metrics, scripts and limitations, not raw article bodies.
+
+### Completed validation and training
+
+All planned 66-item live and Astra predictions completed. Six TF-IDF models and
+three frozen-MiniLM classifier heads were trained on 115 items. MiniLM was pinned
+to sentence-transformers/all-MiniLM-L6-v2 revision
+1110a243fdf4706b3f48f1d95db1a4f5529b4d41, with downloaded file hashes retained.
+Masked-mean embeddings cover all windows (254 content tokens, overlap 32), followed
+by document pooling. Reference: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+
+| Candidate | All 66 label agreement | Macro-F1 | Agreement on 33 unanimous items |
+| --- | ---: | ---: | ---: |
+| Live RoBERTa | 46.97% | .4204 | 39.39% |
+| Best TF-IDF (word, C=1) | 59.09% | .5432 | 39.39% |
+| Best frozen MiniLM (C=.1) | 56.06% | .5132 | 36.36% |
+| Astra Medium, frozen prompt | 53.03% | .5214 | 81.82% |
+| Partially fine-tuned MiniLM, selected epoch 3 | 31.82% | .2081 | 60.61% |
+
+The unanimous subset is highly imbalanced: 5 LEFT, 21 CENTER, 7 RIGHT. Astra's
+macro-F1 on this subset is .7649, not .8182. Its all-item CENTER recall is .8571
+versus .0952 for RoBERTa, but it often disagrees with partisan labels derived from
+Center/partisan disagreements. Do not present the unanimous subset as overall
+product accuracy, or use our interpretation to relabel the six remaining errors.
+Some disagreements reflect party sentiment versus policy ideology: criticizing a
+Republican from a restrictionist immigration position is not necessarily Left.
+
+Exploratory event-cluster bootstrap (5,000 draws) gives a 95% interval of
+[-.0392,.2656] for the best TF-IDF's accuracy difference from live; Astra's interval
+is [-.0926,.2364]. Both include zero. Selecting TF-IDF on this validation set also
+adds selection optimism. There is no statistically established population gain.
+Of 59 live outputs with raw top score >=.95, 30 disagreed with the reference label.
+
+Partial fine-tuning actually updated the top two MiniLM blocks and a new mean-pool
+classification head for three epochs, with per-document window weights, balanced
+class loss, .1 label smoothing, and .25 weighting for disputed source labels.
+Validation accuracy by epoch: .3182, .2879, .3182. The candidate collapsed toward
+CENTER and was rejected. Preserve the loss curves and weights; decreasing training
+loss was not evidence of improved generalization. No full RoBERTa retraining occurred.
+
+Browser verification succeeded after waiting for React hydration. Five controlled
+inputs and six actual corpus article-excerpt inputs ran through the public website;
+all returned 200. Six article predictions exactly matched the separate API run.
+No browser page errors or mobile horizontal overflow were recorded. Screenshots
+and raw results are in the workspace outputs/live-browser-hydrated and
+outputs/live-browser-articles directories. Browser WebGL was disabled; graphical
+background behavior with WebGL enabled is not verified by these runs. Cooking,
+neutral hearing logistics and balanced healthcare reporting were assigned LEFT.
+These controls are diagnostics, not independently annotated accuracy evidence.
+
+Five new evaluation-harness tests passed; Python compilation, Node syntax, and
+three-way ID/text/event split separation passed. No application/runtime code was
+changed, no test-set predictions were made, and no candidate was deployed.
+Full numerical evidence without article text: results/corpus_comparison_20261001.json.
+
+### Next work
+
+1. Resolve task definition with a separate annotation layer: policy ideology,
+   party sentiment, neutral reporting, mixed positions and political relevance.
+   Preserve existing human labels and disagreement records; never silently replace
+   a reference label to improve a score.
+2. Audit a more directly supervised passage corpus before collecting more model
+   scores. Candidate sources: Ideological Books Corpus
+   (https://www.cs.umd.edu/~miyyer/ibc/index.html) and MITweet
+   (https://aclanthology.org/2023.emnlp-main.256/). IBC has a public sample and full
+   access instructions. MITweet's facet definitions are not interchangeable with
+   US partisan labels. Check availability, licenses and annotation semantics first.
+3. Improve neural training only after resolving label noise. Candidate follow-up:
+   warm-start the head from the frozen-feature classifier and compute class weights
+   from effective weighted label counts. Tune on development only.
+4. Keep the 89 reserved test items untouched until a candidate meets development
+   targets. Add independently reviewed contemporary passages before any claim of
+   product-level high accuracy. Obtain deployable training data before promotion.
+
+The user-authorized recurring research heartbeat now runs hourly. Its instructions
+require substantive research work, preserved evidence, Astra Medium where needed,
+and reports only for meaningful changes. Scheduling is not a continuously running
+training process and does not establish the accuracy goal as achieved.
+
 ## 2026-09-28: initial audit and user-authorized implementation
 
 Repository baseline: 68bdc9115b7f403cb96aff1ee2a3aae20971931e.
