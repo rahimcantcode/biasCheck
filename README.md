@@ -8,15 +8,17 @@ Bias Checker is a full-stack political bias analysis app built with:
 - Next.js App Router frontend
 - a local Hugging Face model stored in `bias_model/`
 
-The app classifies pasted article text or extracted URL content as `LEFT`, `RIGHT`, or `CENTER`, with support for article-level, sentence-level, and paragraph-level analysis.
+This research branch analyzes full article context and exposes experimental model scores. Reliable political labels are withheld until a model-bound policy passes independent evaluation. This behavior does not make the underlying model more accurate.
 
 ## Article reading experience
 
-- Results appear as one continuous article, preserving the resolved text's paragraph breaks and punctuation.
-- Left-leaning passages use blue text, right-leaning passages use red text, and center passages keep the normal text color.
-- Select a passage with a mouse, touch, or keyboard to inspect its predicted label and model score. Use **Color bias** to switch to plain reading.
-- The frontend's Article mode requests sentence predictions so different passages can have different colors. The displayed overall leaning averages passage probabilities, weighted by word count, rather than using the first passage's label.
-- Sentence and Paragraph modes use the same reader. The backend `/predict` contract is unchanged.
+- Article mode now requests article inference. Overall results are computed from the document, independently of passage scores.
+- Long documents use overlapping windows with explicit token coverage. Inputs exceeding the processing limit are rejected rather than silently truncated.
+- Sentence and paragraph modes preserve exact text offsets. Their scores remain experimental until separately validated.
+- Unapproved or uncertain results have no political label or partisan coloring. Raw scores are available as experimental diagnostics, not probabilities of correctness.
+- Backend response version 0.3 includes `overall`, nullable labels, offsets, warnings, coverage and model hashes. Deploy frontend and backend together; old clients are not compatible.
+
+See [research workflow](research/README.md) and [experiment log](research/EXPERIMENT_LOG.md). No newly validated model or production deployment is claimed.
 
 Production is live at:
 
@@ -39,7 +41,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-If the exported tokenizer needs the compatibility fix used in production:
+For the pinned CPU runtime without modifying installed package checks:
 
 ```bash
 cd backend
@@ -62,7 +64,7 @@ http://localhost:8000
 
 ```bash
 cd frontend
-npm install
+npm ci
 npm run dev
 ```
 
@@ -146,7 +148,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 cd /var/www/biasCheck/frontend
-npm install
+npm ci
 export NEXT_PUBLIC_API_BASE_URL=/api
 npm run build
 
@@ -184,3 +186,36 @@ Useful checks:
 - If the backend service fails on boot, verify `/var/www/biasCheck/backend/.env` exists.
 - If model loading fails after a fresh clone or pull, run `git lfs pull` and confirm `bias_model/model.safetensors` is the actual model file.
 - If the frontend loads but analysis fails, confirm nginx is routing `/api/*` to the backend and that the frontend was built with `NEXT_PUBLIC_API_BASE_URL=/api`.
+
+
+## Experimental replacement model
+
+The original RoBERTa remains the default. To run the new, pinned PoliticalDEBATE
+large candidate locally, from the repository root:
+
+```bash
+backend/.venv/bin/python backend/download_nli_model.py
+BIASCHECK_ENGINE=political_nli backend/.venv/bin/uvicorn backend.main:app --host 127.0.0.1 --port 8000
+```
+
+Use a single worker. This candidate returns a relevance/context assessment and,
+when development thresholds permit, a **tentative** Left, Right, or Center result.
+`label` remains null and `release_approved` remains false. Tentative results are
+visible in the interface; passage diagnostics are available under a separate
+expander. Independent entailment scores do not form a probability distribution.
+Center here means political reporting without an expressed side, not objectivity.
+
+This is an experimental text-position model, not a verified detector of media
+bias, loaded language, factual accuracy, or a publisher's ideology. Known failures
+include vague policy criticism, sarcasm, and mixtures of positions. See
+[implementation and validation notes](research/NLI_IMPLEMENTATION.md) before
+choosing the engine. No VPS deployment or high-accuracy release is claimed.
+
+## Investor demonstration mode
+
+For a product demonstration, set `BIASCHECK_DEMO_MODE=1` in the backend `.env`
+and restart the backend. The original RoBERTa engine will display sufficiently
+clear model estimates and keep short or ambiguous inputs unlabelled. The page
+marks every displayed result as an experimental estimate, and `/health` continues
+to report `release_approved: false`. This mode is for demonstrating the product
+workflow and should not be presented as independently validated accuracy.

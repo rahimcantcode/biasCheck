@@ -1,0 +1,1021 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bias Checker | Review pilot</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#f4f6fa;color:#142235;font:16px system-ui,sans-serif}header{background:#13263d;color:white;padding:28px max(24px,calc((100vw - 1180px)/2))}header p{color:#c7d7e9;max-width:850px}main{max-width:1180px;margin:24px auto;padding:0 20px}.toolbar,.card{background:white;border:1px solid #dbe2eb;border-radius:14px;padding:20px;margin-bottom:18px}.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(290px,1fr);gap:20px}h1{font-size:28px;margin:0}h2{font-size:20px}label{display:block;margin:15px 0 6px;font-weight:600}input,select,textarea,button{font:inherit}input,select,textarea{padding:10px;border:1px solid #aebbc9;border-radius:7px;max-width:100%}textarea,select{width:100%}button,.link{padding:11px 17px;border-radius:8px;border:1px solid #9cabbc;background:#f5f7fa;color:#142235;cursor:pointer}button.primary{background:#174f88;color:white;border:0}button:disabled{opacity:.45;cursor:not-allowed}#text{white-space:pre-wrap;line-height:1.8;max-height:65vh;overflow:auto}#status{color:#254d7a;min-height:24px}small,.muted{color:#56687c}#hash{overflow-wrap:anywhere}details{margin-top:14px}summary{cursor:pointer;font-weight:600}a{color:#174f88}input[type=checkbox]{width:auto}#readLabel{font-weight:400}.tag{display:inline-block;padding:4px 9px;background:#eaf0f7;border-radius:5px;font-size:13px}#error{color:#a31d1d;white-space:pre-wrap}@media(max-width:760px){.layout{grid-template-columns:1fr}#text{max-height:none}}</style>
+<header><h1>Bias Checker review pilot</h1><p>100 examples to refine our labeling rules. Read independently, support your judgment with evidence, and leave ambiguous cases uncertain. No model answers are shown.</p></header>
+<main><div class="toolbar"><div><label for="reviewer">Your reviewer ID</label><input id="reviewer" placeholder="e.g. reviewer-A" autocomplete="off"></div><button id="start">Open my workspace</button><button id="export">Export my review</button><span id="progress"></span></div>
+<div class="card"><strong>Start here</strong><p>Controlled examples are included below. For the 60 historical articles, click Load article snapshots to download the frozen source files from GitHub. Your annotations are never uploaded. Alternatively, load the dataset's data/jsons folder for offline review.</p><button id="loadRemote" class="primary">Load article snapshots</button> <input aria-label="Load dataset folder" id="files" type="file" webkitdirectory multiple><p id="status" role="status"></p><details><summary>Labeling rules</summary><p>Classify the text's political framing, not the publisher or your agreement with it. Read the whole text. Separate quotations from authorial endorsement.</p><ul><li><b>LEFT / RIGHT:</b> sustained authorial framing supports corresponding U.S. ideological positions. Mentions and quotations alone are insufficient.</li><li><b>CENTER:</b> enough relevant context exists and the framing is substantively nonaligned, balanced or centrist. It does not mean factually correct.</li><li><b>NONPOLITICAL:</b> no substantive political content. Direction words or everyday uses of “liberal” and “conservative” are not political evidence.</li><li><b>UNCERTAIN:</b> context is insufficient, positions are irreconcilably mixed, attribution is unclear, or the U.S. ideology scheme does not apply.</li></ul><p>Record relevance separately. Political procedural reporting can be CENTER; an isolated fragment may be UNCERTAIN. Consult RUBRIC.md for the complete instructions. All 100 items are pilot development material, not a final test.</p></details></div>
+<div class="toolbar"><button id="prev">Previous</button><label for="jump">Example</label><select id="jump" style="width:auto"></select><button id="next">Next</button><span id="kind" class="tag"></span></div>
+<div class="layout"><section class="card"><h2 id="heading"></h2><div id="text"></div><details><summary>Source and text verification</summary><p id="source"></p><small id="hash"></small></details></section>
+<section class="card"><h2>Your judgment</h2><label id="readLabel"><input type="checkbox" id="read"> I read the entire verified text</label><label for="relevance">Political relevance</label><select id="relevance"><option value="">Choose</option><option>POLITICAL</option><option>NONPOLITICAL</option><option>UNCERTAIN</option></select><label for="label">Final label</label><select id="label"><option value="">Choose</option><option>LEFT</option><option>CENTER</option><option>RIGHT</option><option>NONPOLITICAL</option><option>UNCERTAIN</option></select><label for="confidence">Your confidence</label><select id="confidence"><option value="">Choose</option><option>low</option><option>medium</option><option>high</option></select><label for="rationale">Evidence and reasoning</label><textarea id="rationale" rows="5" placeholder="Paraphrase what supports your judgment. Who expresses the viewpoint? What is ambiguous?"></textarea><label for="skip">Skip reason, if unavailable</label><input id="skip" placeholder="e.g. incomplete article"><p id="error" role="alert"></p><button class="primary" id="save">Save judgment</button><button id="skipButton">Record skip</button><p class="muted">Export frequently. Browser storage can be cleared. Use a different reviewer ID and browser profile for independent review.</p></section></div></main>
+<script id="pilot-data" type="application/json">{
+  "schema_version": 1,
+  "pilot_id": "biascheck-rubric-pilot-20260929-v1",
+  "purpose": "rubric development only; not validation or final test",
+  "dataset_revision": "ced8111a720948e6a410e52031ace99c4e53f096",
+  "seed": 20260929,
+  "human_reviewed": false,
+  "items": [
+    {
+      "kind": "historical_article",
+      "dataset_id": "tRh7Zcjmqcv7mGyL",
+      "url": "https://www.propublica.org/article/the-state-department-uses-a-watchlist-to-regulate-gun-exports-commerce-just-got-some-of-that-power-but-hasnt-gotten-the-whole-list",
+      "date": "2020-03-10",
+      "topic": "gun_control_and_gun_rights",
+      "word_count": 1168,
+      "text_sha256": "4e21530e96725e266f50f5c492ede10d910a24c77f1d08985d1c09be4852477f",
+      "text": null,
+      "id": "P001"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "BBvpHOCWtIGufaJZ",
+      "url": "http://nymag.com/daily/intelligencer/2017/11/trump-tax-bill-hammers-new-york-and-california.html?utm_source=Sailthru&utm_medium=email&utm_campaign=Daily%20Intelligencer-%20November%202%2C%202017&utm_term=Subscription%20List%20-%20Daily%20Intelligencer%20%281%20Year%29",
+      "date": "2017-11-02",
+      "topic": "taxes",
+      "word_count": 767,
+      "text_sha256": "5c6cacdf9fd3c9489b50d88d618c9538ac9ecc2d1369ab52910f737808c7215f",
+      "text": null,
+      "id": "P002"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "b41lMwg8SUmQ18IL",
+      "url": "https://www.theepochtimes.com/searching-for-common-ground_2808831.html",
+      "date": "2019-02-22",
+      "topic": "bridging_divides",
+      "word_count": 1135,
+      "text_sha256": "3ea98246c88a66179e51e65a4264b28b4ca47a83899d3087a02285c1c859696e",
+      "text": null,
+      "id": "P003"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "iLEJRWcOgeeOkKd1",
+      "url": "http://www.nytimes.com/2013/12/30/us/utah-ruling-on-marriage-puts-judge-in-spotlight.html?ref=politics",
+      "date": "2013-12-30",
+      "topic": "lgbt_rights",
+      "word_count": 359,
+      "text_sha256": "a77940f87d05c3241111c64ccbc3e9aa502dd93dbc2c1fa9c3617f99dcb81eaf",
+      "text": null,
+      "id": "P004"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S22",
+      "text": "Private enterprise should lead economic growth. Lower marginal tax rates and fewer burdensome regulations would let entrepreneurs invest, compete, and hire. Expanding federal programs is the wrong response to sluggish growth.",
+      "text_sha256": "7d4048ce6086cfc4d4eadfae93c72e44e2621411478a40bbb8f7022f08743834",
+      "word_count": 31,
+      "id": "P005"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S21",
+      "text": "A stronger public safety net is worth funding through higher taxes on very large fortunes. Economic opportunity depends on access to housing, healthcare, and education, not simply on the promise that wealth will eventually spread.",
+      "text_sha256": "46880a89725c551f32a1c955fc48fe41d45058c72bf34fa80f04d0d219ca21f6",
+      "word_count": 35,
+      "id": "P006"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S01",
+      "text": "I cooked rice and chicken for dinner. The food tasted good.",
+      "text_sha256": "55ba559b8d0094bd06a36ffbe0c397da5752e5a0e4140237e2b2b73db3f44f83",
+      "word_count": 11,
+      "id": "P007"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S14",
+      "text": "The Senate committee scheduled a hearing on the bill. Witnesses will submit written statements before answering questions. No vote on the proposal is scheduled at the hearing.",
+      "text_sha256": "3c4aa9b3d714b2a3fe80eb4a485041a57b20c30d5d5f7c467771cb6801f638d3",
+      "word_count": 27,
+      "id": "P008"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "Hw21C7sdEIkLkV6J",
+      "url": "https://www.theepochtimes.com/supreme-court-chief-justice-roberts-admonishes-house-managers-and-trump-lawyers_3212223.html",
+      "date": "2020-01-22",
+      "topic": "polarization",
+      "word_count": 484,
+      "text_sha256": "56c40d95a747fcd9097516b33a706b6bf8d402581479cc4a80572d1fdad037bf",
+      "text": null,
+      "id": "P009"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S34",
+      "text": "The author criticizes a Republican mayor for refusing to release public records. The criticism concerns transparency and does not state a position on taxation, welfare, immigration, or other ideological policy questions.",
+      "text_sha256": "2189983b29e9e4cf1c5c70974ee9485526797e7c28f4e976371ef4065f639b92",
+      "word_count": 31,
+      "id": "P010"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "uXyjW6FVtBhTKvz7",
+      "url": "http://online.wsj.com/article/SB10001424127887324123004579055322279499920.html?mod=WSJ_Opinion_LEADTop",
+      "date": "",
+      "topic": "middle_east",
+      "word_count": 400,
+      "text_sha256": "c2b49f439f668f74ff1f13b0b896a08bd7a524a3521d0858b232e853f4e1664f",
+      "text": null,
+      "id": "P011"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S17",
+      "text": "The government should expand universal healthcare and raise taxes on the wealthiest Americans to fund public services.",
+      "text_sha256": "4fa277ab7483995e58b18dbe56b81ca0fab3e94d146467de6be79be4a720b630",
+      "word_count": 17,
+      "id": "P012"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "O3KGwpozx9xFZR2L",
+      "url": "http://online.wsj.com/articles/why-tensions-are-climbing-between-israel-and-the-u-s-1406565301",
+      "date": "",
+      "topic": "israel",
+      "word_count": 887,
+      "text_sha256": "6f629bfd4e06e2307e67425338252b0b4f5a44a45f7921f5dbba584ec7536fa6",
+      "text": null,
+      "id": "P013"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "qRBa2dl82FkjU9YR",
+      "url": "https://www.axios.com/mark-zuckerberg-facebook-donald-trump-advertising-9d8345fe-5c73-4e1b-a5a7-e9f6b9e9fa85.html?utm_source=twitter&utm_medium=social&utm_campaign=organic",
+      "date": "2019-11-02",
+      "topic": "technology",
+      "word_count": 382,
+      "text_sha256": "a8340562153b7d3bb72675782805873b7acdf059ec417b16679623eb1f4a6f95",
+      "text": null,
+      "id": "P014"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "Xms3SpwCmZyQJnBx",
+      "url": "https://fivethirtyeight.com/features/how-to-understand-natural-disasters-in-a-climate-change-age/",
+      "date": "2019-10-31",
+      "topic": "environment",
+      "word_count": 868,
+      "text_sha256": "e562a410336b57acb25054b4ca7414cd29d845bfa71f4fdf55593958e41adb91",
+      "text": null,
+      "id": "P015"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S31",
+      "text": "Taxes.",
+      "text_sha256": "adb5e215c3717a7dc7ed6935150134c9e57215ef61de4d75ade0916bf2a87801",
+      "word_count": 1,
+      "id": "P016"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "kCPRJMxCpz4nFcEF",
+      "url": "https://www.realclearpolitics.com/articles/2020/07/10/liberal_newsrooms_fail_the_true_black_lives_matter_test_143674.html#2",
+      "date": "2020-07-10",
+      "topic": "race_and_racism",
+      "word_count": 1259,
+      "text_sha256": "64565fa43ac3ccd5ff490f36a80bd5db4ac26d411577f30a25555a0611fed886",
+      "text": null,
+      "id": "P017"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "KmBY3qOFBuBwwPO1",
+      "url": "https://www.bloomberg.com/news/articles/2019-08-30/trump-trade-war-with-china-will-hit-apple-for-real-this-weekend?srnd=premium",
+      "date": "2019-08-30",
+      "topic": "trade",
+      "word_count": 598,
+      "text_sha256": "0f244cf0fbf694f50232177ced194d3f2d646aaf6e7de1abc133eb4b0d5f3238",
+      "text": null,
+      "id": "P018"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "i4X13t1XjdJRDcPl",
+      "url": "http://www.nytimes.com/2012/11/15/us/politics/obama-holds-first-news-conference-since-june.html?ref=politics",
+      "date": "2012-11-15",
+      "topic": "white_house",
+      "word_count": 1135,
+      "text_sha256": "31027a0e6b3224a7ad5414f6bb5c7722972d0c7f6fcaba95f486b395005713b4",
+      "text": null,
+      "id": "P019"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "pGsaWdvfPx7XrRgL",
+      "url": "https://www.realclearpolitics.com/articles/2020/07/09/dont_bail_out_feckless_states_without_strings_attached_143659.html",
+      "date": "2020-07-09",
+      "topic": "federal_budget",
+      "word_count": 714,
+      "text_sha256": "72e218232d67b0696fc7857cc82ac79523ba657b7b0b0cc1810e7c1156885fe8",
+      "text": null,
+      "id": "P020"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "NcoIMDLF33pTjzEY",
+      "url": "https://www.propublica.org/article/bill-barr-promised-to-release-prisoners-threatened-by-coronavirus-even-as-the-feds-secretly-made-it-harder-for-them-to-get-out",
+      "date": "",
+      "topic": "justice_department",
+      "word_count": 1373,
+      "text_sha256": "4c87386b86efcb3f5e7340bcba8c36e2a96d02cfaed3b22cf659e5998bfa42e6",
+      "text": null,
+      "id": "P021"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "GZ9VT544E1XsWhGN",
+      "url": "https://www.cnbc.com/2020/05/20/coronavirus-cdc-quietly-releases-detailed-guidelines-for-reopening-us.html",
+      "date": "2020-05-20",
+      "topic": "public_health",
+      "word_count": 329,
+      "text_sha256": "c2e0642fb4607e1a6a7d5dec43951c847b64ab05485d7b8473f2b204ea24b772",
+      "text": null,
+      "id": "P022"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "P3CCkdow09QjFGzI",
+      "url": "http://nymag.com/daily/intelligencer/2018/09/avenatti-implicates-kavanaugh-in-pattern-of-sexual-assault.html",
+      "date": "2018-09-24",
+      "topic": "supreme_court",
+      "word_count": 548,
+      "text_sha256": "e29511ae06a361f220ffc3b67e155ae9c3f06d883bfe470ec0ccae226afb8895",
+      "text": null,
+      "id": "P023"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "JgHGl9rdbH6wJ7NG",
+      "url": "http://thecaucus.blogs.nytimes.com/2012/07/26/romneys-remarks-cause-stir-in-london/",
+      "date": "2012-07-26",
+      "topic": "elections",
+      "word_count": 1040,
+      "text_sha256": "c4bc6d10ef33d15ab0d9c8116726a69223d6fcd13f46daf1c79d52f42758443b",
+      "text": null,
+      "id": "P024"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "IM8HPDJ6XI6oX40Y",
+      "url": "http://freebeacon.com/issues/house-block-civil-asset-forfeiture/",
+      "date": "2017-09-12",
+      "topic": "criminal_justice",
+      "word_count": 434,
+      "text_sha256": "0739af747e8af4e13bcd224b7acdb6a3337ad8541a14f535b2090e6b7912c9fa",
+      "text": null,
+      "id": "P025"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S36",
+      "text": "The festival celebrates progressive jazz, experimental painting, and independent film. Organizers expect several thousand visitors over the weekend and have arranged extra shuttle buses from the nearby train station.",
+      "text_sha256": "cca447adeb93f8ba6fc73ae0fd3e7d1381414aea384bd118271d1b9f6a3aa306",
+      "word_count": 29,
+      "id": "P026"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "87TjkyxBpq3t3ELg",
+      "url": "https://www.realclearpolitics.com/video/2020/05/14/john_solomon_zeldin_released_documents_raise_questions_whether_marie_yovanovitch_committed_perjury.html",
+      "date": "2020-05-14",
+      "topic": "impeachment",
+      "word_count": 308,
+      "text_sha256": "7f77c999f4b6a04ba251ac86a69856408266c74880a542c47623906c1ecec5a9",
+      "text": null,
+      "id": "P027"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "3TmM3vhGpVEBFKDG",
+      "url": "https://www.bloomberg.com/news/articles/2018-09-10/trump-wrongly-touts-economy-growth-milestone-versus-unemployment?srnd=premium",
+      "date": "2018-09-10",
+      "topic": "economy_and_jobs",
+      "word_count": 612,
+      "text_sha256": "92613e7a5c6f07303b50748db902f074f2d0bba21ee5f64c64ec4a04cd3695de",
+      "text": null,
+      "id": "P028"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "eB4ZmyTU5bENBcIw",
+      "url": "https://www.axios.com/world-health-assembly-australia-coronavirus-probe-afd10de6-897e-4ad3-9abf-7d61069ba2ec.html",
+      "date": "",
+      "topic": "coronavirus",
+      "word_count": 324,
+      "text_sha256": "bbe791123aa5160a0be78535d28ab2ef1564bc872c6901105f9c6ce110099cd3",
+      "text": null,
+      "id": "P029"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S20",
+      "text": "Lawmakers should reduce the federal role in education and return more authority to families and local communities. Parents should have greater freedom to choose schools instead of relying on a uniform national approach.",
+      "text_sha256": "b3500ffe60c19146148f7172fba746de1c5193c24d15cc6089b9fbb0c33d1b65",
+      "word_count": 33,
+      "id": "P030"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "OdKjbQErVqQHnjP8",
+      "url": "http://online.wsj.com/articles/hagel-says-u-s-india-should-jointly-develop-produce-arms-1407590783?cb=logged0.7111525749787688",
+      "date": "",
+      "topic": "defense",
+      "word_count": 382,
+      "text_sha256": "4d7fa7f29a10c206544ad63f9e56dd907c329bed6bd3795b5e3a00d1ff648c4b",
+      "text": null,
+      "id": "P031"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "l14WHF7gaTF7QY2p",
+      "url": "http://online.wsj.com/articles/netanyahu-fires-two-top-ministers-1417542824?mod=WSJ_hp_LEFTTopStories",
+      "date": "",
+      "topic": "israel",
+      "word_count": 1057,
+      "text_sha256": "9697132fc9b28a14af65b60495b7459c45ace300fe9f1805457c4959b36ed531",
+      "text": null,
+      "id": "P032"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "ahPMUfEDe4E7xQ8e",
+      "url": "https://www.axios.com/billionaires-philanthropy-foundations-c9470ef4-baaf-4562-b0ad-281b764977d1.html",
+      "date": "2019-11-30",
+      "topic": "inequality",
+      "word_count": 430,
+      "text_sha256": "2b09c72b2733c4c37c177cd81e8cc6ff266b2112f2a5c7e55f67dfd27bfc8db2",
+      "text": null,
+      "id": "P033"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "Sv1CfCsCk2KjYYiW",
+      "url": "https://freebeacon.com/campus/wilsons-princeton-downfall-could-have-domino-effect/",
+      "date": "2020-06-29",
+      "topic": "education",
+      "word_count": 966,
+      "text_sha256": "3ce388a0522f1bc54f176d5694e84046f6b9b6c0f1117e3bea844e25a552c454",
+      "text": null,
+      "id": "P034"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S35",
+      "text": "The report describes a conservative religious community's annual food drive. Volunteers packed rice, canned vegetables, and cooking oil for delivery to local families. The report does not discuss elections or government policy.",
+      "text_sha256": "b1f6ca8189b9d41557f94d64bb37031670f4e5390ca960a19fa374302f06c1bd",
+      "word_count": 32,
+      "id": "P035"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S19",
+      "text": "Congress should strengthen collective bargaining rights. When workers negotiate together, they can secure fairer wages and safer conditions. Protecting that power should matter more than preserving employers' ability to resist organizing.",
+      "text_sha256": "21644b7d8e9d3cf62cae20e9cb672bb06cab971f5c5e1582c9534748949d83e8",
+      "word_count": 31,
+      "id": "P036"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "GgfoRu6lh4mK50W1",
+      "url": "http://nymag.com/daily/intelligencer/2013/06/obamacare-and-conservative-self-delusion.html",
+      "date": "2013-06-13",
+      "topic": "healthcare",
+      "word_count": 802,
+      "text_sha256": "4f7cffc8e4356c76fe1923e276f56f18b121c2423d4ccd5765266d45df513e4f",
+      "text": null,
+      "id": "P037"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S24",
+      "text": "The governor said, \"We need lower taxes and less regulation.\" The article reports when the speech occurred and who attended, but does not evaluate or endorse the governor's proposal.",
+      "text_sha256": "1f55dbea54667f0dee899126633b7bb0bbd86d81a2c672909c2650d84433a739",
+      "word_count": 29,
+      "id": "P038"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S07",
+      "text": "The bus route changes next week because the bridge is being repaired. Riders can use the temporary stop two blocks east of the station during construction.",
+      "text_sha256": "213f3f208041b5ab779339fa66995b092d87e8d92e40ed8751b940a855baabc3",
+      "word_count": 26,
+      "id": "P039"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "NpUVfEhgb7d1xeob",
+      "url": "https://www.bloomberg.com/news/articles/2017-09-14/motel-6-just-left-the-light-on-for-ice",
+      "date": "2017-09-14",
+      "topic": "business",
+      "word_count": 945,
+      "text_sha256": "a1f6e5043139c9bd7ac05e603fde9e0e68b67b76f5c25c79125a316a386d853c",
+      "text": null,
+      "id": "P040"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "mPSkFS33Y8oYdGQN",
+      "url": "http://nymag.com/daily/intelligencer/2018/02/north-korea-link-to-syrias-chemical-weapons-is-unsurprising.html",
+      "date": "2018-02-28",
+      "topic": "north_korea",
+      "word_count": 1081,
+      "text_sha256": "2f87e312d22ea6bdade28cbae61e110b72322339b2ecfbb6c782dfe24f58693c",
+      "text": null,
+      "id": "P041"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "phMactlGwwYSi9GW",
+      "url": "https://www.cnbc.com/2019/10/03/schiff-trump-asking-china-to-probe-biden-a-breach-of-oath-of-office.html",
+      "date": "2019-10-03",
+      "topic": "impeachment",
+      "word_count": 663,
+      "text_sha256": "e66d6949d14edf9c996c03e490ab0b8ccb71add84caa9546db4242e119b42a8c",
+      "text": null,
+      "id": "P042"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "g9jxq2RFaAvccgh5",
+      "url": "https://www.cnbc.com/2020/03/19/coronavirus-response-democrats-argue-1000-checks-wont-be-enough.html",
+      "date": "2020-03-19",
+      "topic": "banking_and_finance",
+      "word_count": 625,
+      "text_sha256": "751dce034f26451f4c2686f1f79573aa2e23bb567f51fbac7ca5d9f5c995bf24",
+      "text": null,
+      "id": "P043"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "MMYM1Sz3jGDnuSgS",
+      "url": "http://www.nytimes.com/2015/12/06/us/jeb-bushs-team-tries-to-soothe-donor-concerns.html?ref=politics",
+      "date": "2015-12-06",
+      "topic": "elections",
+      "word_count": 390,
+      "text_sha256": "0b335c2c505e1c3d2ce5d6b78c0c31dce97530454f03ea2101df3e269f01dde4",
+      "text": null,
+      "id": "P044"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "7Io7lOT7nfXkhEO6",
+      "url": "http://freebeacon.com/columns/killed-center-left/",
+      "date": "2018-07-06",
+      "topic": "immigration",
+      "word_count": 793,
+      "text_sha256": "e4c27d33775aa3b9768f1c82a6e392d8430c655d27adb769feb4e750b34014b6",
+      "text": null,
+      "id": "P045"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "9hA61mHxZmmUP8tj",
+      "url": "http://online.wsj.com/news/articles/SB10001424052702304655304579549760646774286",
+      "date": "",
+      "topic": "lgbt_rights",
+      "word_count": 1145,
+      "text_sha256": "713e80bf11cc150acd442615fc1fa2de021d919a0cc402bd248e329fc747c1a2",
+      "text": null,
+      "id": "P046"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S09",
+      "text": "The dentist moved my appointment from Tuesday to Thursday. The receptionist asked me to arrive fifteen minutes early and bring the form that was emailed last week.",
+      "text_sha256": "a5683f0b47fe11d2c15e4a0346c7160608ac99545b5b71b4909ef95c951df14d",
+      "word_count": 27,
+      "id": "P047"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S33",
+      "text": "The author criticizes a Democratic mayor for refusing to release public records. The criticism concerns transparency and does not state a position on taxation, welfare, immigration, or other ideological policy questions.",
+      "text_sha256": "e23a5abdbb312eb0804c6e822dcd5fa789fef079ab6b0abdec43e07191587d74",
+      "word_count": 31,
+      "id": "P048"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S02",
+      "text": "The meeting began at 9 a.m. on Tuesday. The committee published its schedule online.",
+      "text_sha256": "40c17997551122c372570a1f367ef3b12c7be654f86d5c21a1b7cd9db3d447f1",
+      "word_count": 14,
+      "id": "P049"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "ovS922HraDfSWH85",
+      "url": "https://www.axios.com/drug-price-increases-2020-pfizer-gilead-475dbce9-d75a-4ff2-804c-a8289bb35f74.html",
+      "date": "2020-01-02",
+      "topic": "opioid_crisis",
+      "word_count": 584,
+      "text_sha256": "20c037321e5dbeb4b7fcb7801d86f3bbacd7600656fac7a16f4a00e95ff3482d",
+      "text": null,
+      "id": "P050"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S29",
+      "text": "The article argues for strict limits on government spending, then advocates a large new universal housing entitlement without explaining how the two proposals fit together. Its conclusion does not resolve the competing positions.",
+      "text_sha256": "e989cc303db03e7e04e0819560027f80af85e3c8998b1fd7a10928391e68d588",
+      "word_count": 33,
+      "id": "P051"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "jJvdQB9dWjAWEV8Q",
+      "url": "https://www.bloomberg.com/opinion/articles/2019-12-11/what-s-worse-than-allies-laughing-at-the-u-s",
+      "date": "2019-12-11",
+      "topic": "foreign_policy",
+      "word_count": 725,
+      "text_sha256": "85d2c92b55b2bb77e6b2b7f83e4a764f687be0d128b035e7982b17df3a7922f4",
+      "text": null,
+      "id": "P052"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S18",
+      "text": "The government should lower taxes, reduce regulations, and let private businesses compete without federal interference.",
+      "text_sha256": "08b964018d37d02729bfe38983dd1952fe6cbd79ab9c49cdcebb7e6e7bc7cd5e",
+      "word_count": 15,
+      "id": "P053"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S11",
+      "text": "Apply a liberal amount of glue to the wooden joint. Clamp the two pieces together and leave them overnight before sanding the surface or applying the final coat.",
+      "text_sha256": "b51b984650c24f4ea6865700231f30f94a19eb3cddde69cb942745c174e38a3b",
+      "word_count": 28,
+      "id": "P054"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S05",
+      "text": "To repot the plant, choose a container with drainage holes. Add fresh soil, keep the roots at their previous depth, and water until excess water drains from the bottom.",
+      "text_sha256": "86fb25a8d72e5e1b5cddbbb8f7bfdd3acad597f8985a42eb17d61bc38452823b",
+      "word_count": 29,
+      "id": "P055"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "dAyYx4p1O98EZrGL",
+      "url": "https://www.realclearpolitics.com/articles/2020/04/29/biden_vs_kavanaugh_how_the_metoo_numbers_stack_up_143065.html",
+      "date": "2020-04-29",
+      "topic": "politics",
+      "word_count": 654,
+      "text_sha256": "2f81d650a347da45b2bc6633dda23a5bdc4ebd4c86af0c307ded4e167a01495f",
+      "text": null,
+      "id": "P056"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "nZdUkHtLzit8e7QL",
+      "url": "https://www.cnbc.com/2019/12/04/sundar-pichai-new-alphabet-ceo-got-the-worst-job-in-silicon-valley.html",
+      "date": "2019-12-04",
+      "topic": "technology",
+      "word_count": 842,
+      "text_sha256": "4dae5449566794bb071f0b81a723da9ca4449ac0281f371312c4149c4c9669d1",
+      "text": null,
+      "id": "P057"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "oRiqwS65Ligsh0CF",
+      "url": "http://thecaucus.blogs.nytimes.com/2012/06/17/romney-doesnt-say-whether-he-will-overturn-obama-immigration-order/?ref=politics",
+      "date": "2012-06-17",
+      "topic": "immigration",
+      "word_count": 715,
+      "text_sha256": "7e71c6348e9068d9c5ed7653afed2d1f79a5a5e5d6b81593b1a62a73eef7e0ef",
+      "text": null,
+      "id": "P058"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S12",
+      "text": "The left door is locked, so visitors should enter on the right. The reception desk is at the center of the lobby near the elevators.",
+      "text_sha256": "7414b3b170d5ed1ae8c6546504af9bab01e5d51359dfc28ed79880cddfdce9f4",
+      "word_count": 25,
+      "id": "P059"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "QTghChkmVBExpCng",
+      "url": "http://www.nytimes.com/2014/10/02/us/julia-pierson-secret-service.html?&hp&action=click&pgtype=Homepage&version=HpSum&module=first-column-region&region=top-news&WT.nav=top-news",
+      "date": "2014-10-02",
+      "topic": "white_house",
+      "word_count": 330,
+      "text_sha256": "c33f1b1eaa7859e1c91695255b1afb65db09fe0169e25f5ce09d698d8f766cec",
+      "text": null,
+      "id": "P060"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S30",
+      "text": "This policy is terrible. The people who wrote it should be ashamed. Nothing in the text identifies the policy, its effects, the political actors involved, or a proposed alternative.",
+      "text_sha256": "5a65cdd43ad726c0d0bbfd4a8e9e1ae5ebc129fa10d3d23b6058987171c88925",
+      "word_count": 29,
+      "id": "P061"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S37",
+      "text": "The writer supports a temporary spending increase during the recession but argues that it should expire automatically when employment recovers. The text weighs competing economic arguments without consistently adopting either a left or right platform.",
+      "text_sha256": "c1dc7865ae6ed86f1ab78d9aa543208e4000c9b989534c03c66c52f4977a12b9",
+      "word_count": 35,
+      "id": "P062"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "yV0erwWSZcGauj9Q",
+      "url": "https://fivethirtyeight.com/features/new-polls-and-new-candidates-are-giving-democrats-some-hope-of-flipping-the-senate/",
+      "date": "2020-03-30",
+      "topic": "politics",
+      "word_count": 1532,
+      "text_sha256": "9f41dec952936e2e59109e89381e0bf40fa7f0b3675f1155b89da0f32a570758",
+      "text": null,
+      "id": "P063"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "GkPWOeq42aNkgIw8",
+      "url": "http://www.nytimes.com/2013/04/10/us/politics/more-senate-republicans-oppose-filibuster-on-gun-bill.html",
+      "date": "2013-04-10",
+      "topic": "gun_control_and_gun_rights",
+      "word_count": 305,
+      "text_sha256": "af33c062eb7b4eaedb3db10f0f62be558a017fa4d0a993d2e8460ec6e70c5838",
+      "text": null,
+      "id": "P064"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "SuXUuaOyrEUIe1FU",
+      "url": "https://www.bloomberg.com/news/articles/2019-06-10/democrats-hold-out-on-usmca-as-trump-walks-back-mexico-tariffs?srnd=premium",
+      "date": "2019-06-10",
+      "topic": "trade",
+      "word_count": 930,
+      "text_sha256": "d9eebb0d553b549bfa9eef89362e1e1fbf8f7a782f1132926fb884fbba081920",
+      "text": null,
+      "id": "P065"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "XcFylhrQIJnegjw9",
+      "url": "https://www.cnbc.com/2020/04/28/coronavirus-mike-pence-tours-mayo-clinic-without-mask.html",
+      "date": "2020-04-28",
+      "topic": "coronavirus",
+      "word_count": 732,
+      "text_sha256": "fb0662f7eb857ab8ac1d610782492879de50a03e68e9eef0138b27cf50a8e4d3",
+      "text": null,
+      "id": "P066"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S06",
+      "text": "The phone can back up photos when it is connected to Wi-Fi. If storage is full, existing files remain on the device, but new backups may not finish.",
+      "text_sha256": "889db335bd486653925b4da15ca134977eac43e9279bdd697698d97a6a7ce41d",
+      "word_count": 28,
+      "id": "P067"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "AD5X03leXVl8VxYm",
+      "url": "https://www.propublica.org/article/the-iowa-caucuses-app-had-another-problem-it-could-have-been-hacked",
+      "date": "2020-02-05",
+      "topic": "cybersecurity",
+      "word_count": 994,
+      "text_sha256": "b85e35cacb059657c8952c2dc4722448a9d66e868e51f1f7e464c8523f5f17c0",
+      "text": null,
+      "id": "P068"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S26",
+      "text": "The editorial quotes a proposal to cut welfare spending, then argues that the cuts would harm families and should be rejected. It calls for expanding support instead and financing it through a more progressive tax system.",
+      "text_sha256": "f35550b4a140ce23b302544c5bdbe9837f18654a9fe6732d7fb238350dda433f",
+      "word_count": 36,
+      "id": "P069"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "OSWIiYgRPbprrS8z",
+      "url": "https://fivethirtyeight.com/features/governor-recall-elections/",
+      "date": "2019-08-19",
+      "topic": "role_of_government",
+      "word_count": 1470,
+      "text_sha256": "027d52a00dcf433dcd3b0f8dab9c0aa9e9f27e03bb18510237ed184e28b914fc",
+      "text": null,
+      "id": "P070"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "BcUgO6CBs66eswSU",
+      "url": "https://www.realclearpolitics.com/articles/2018/01/19/blame_game_ramps_up_as_shutdown_draws_near__136046.html",
+      "date": "2018-01-19",
+      "topic": "us_congress",
+      "word_count": 793,
+      "text_sha256": "e5d3597737a74e3958c9201f258b03db5ed70997f7d9b1b3025742a4b6cf5707",
+      "text": null,
+      "id": "P071"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S16",
+      "text": "The court released its decision on Thursday. The majority opinion and the dissent are available on the court website. The parties have thirty days to request further review.",
+      "text_sha256": "eca77021c98ded988ea0a15a96e9a9971b33cd15b346b8b5cf1e41ab39d1357e",
+      "word_count": 28,
+      "id": "P072"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S39",
+      "text": "\"Close the border,\" shouted a protester outside the building. Inside, an attorney explained why the new restrictions would separate families. The reporter describes both events but provides too little context to establish the article's overall framing.",
+      "text_sha256": "e240ec649b6c38ee63ab43fbd775634b98e01ec5e67f96972817f713c7906bdf",
+      "word_count": 36,
+      "id": "P073"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S40",
+      "text": "Dr. Smith discussed U.S. policy at 9 a.m. She said the draft had three sections. The meeting adjourned without a vote, and no participant expressed support for either party.",
+      "text_sha256": "a5ea344e40daaf9d6d3fd5e97800b3b3fc1097f1d077edc802a9810afee3705e",
+      "word_count": 29,
+      "id": "P074"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "3ixyPpUjTu365CU6",
+      "url": "https://www.bloomberg.com/news/articles/2019-07-09/a-lehman-survivor-is-prepping-for-the-next-credit-downturn?srnd=premium",
+      "date": "2019-07-09",
+      "topic": "economy_and_jobs",
+      "word_count": 561,
+      "text_sha256": "cd0375522e2bcb9166d2dc15e434b7844b11804399213f99a0575ce1f004f39b",
+      "text": null,
+      "id": "P075"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S25",
+      "text": "One speaker demanded a larger public health program. Another warned that it would increase taxes. The hearing ended before either speaker answered questions, and the reporter offered no assessment of their claims.",
+      "text_sha256": "fc23e3a05301ae1182cb05197805371134c51f1480e132460ebe8c55f29c1f8e",
+      "word_count": 32,
+      "id": "P076"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S28",
+      "text": "I support universal public healthcare and stronger unions, but also favor tighter immigration restrictions and substantially lower corporate taxes. No single part of that platform should be treated as a complete description of my position.",
+      "text_sha256": "e5797c3bfd8ab599c0c3a4881be2a8c63b340ae041fa21859c518b58e6d92cc3",
+      "word_count": 35,
+      "id": "P077"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "fZEzNxhBJ8Tv2RLF",
+      "url": "https://www.axios.com/trumps-google-announcement-raises-questions-6d9e84b2-5555-4fd1-ba60-25db1dee9c08.html",
+      "date": "",
+      "topic": "cybersecurity",
+      "word_count": 375,
+      "text_sha256": "0b52cc62d5edd6d87f18a69ef86e0c9a60c7280d7ecb02a8a414fbef8c2cb4f8",
+      "text": null,
+      "id": "P078"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "iJaRE6n65PAlyo9q",
+      "url": "https://www.axios.com/free-speech-election-tech-regulation-polarization-316a777c-0462-4c49-8c2c-7d88c396b7c1.html",
+      "date": "2019-11-05",
+      "topic": "free_speech",
+      "word_count": 482,
+      "text_sha256": "adee5bec4123bf65f3c9680507c3b72de26f7b400866cb413013d38ef10f3fe2",
+      "text": null,
+      "id": "P079"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S08",
+      "text": "The red team defeated the blue team in the school robotics competition. Judges awarded points for completing the obstacle course and accurately moving objects into the collection area.",
+      "text_sha256": "6a2d06f61b0ee2b100b6c0bf220c907a186552eda24c19ca9b54264343d974bf",
+      "word_count": 28,
+      "id": "P080"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "xaPIr9ronUvV3K9N",
+      "url": "https://freebeacon.com/media/new-york-times-biden-kavanaugh/",
+      "date": "2020-04-14",
+      "topic": "media_bias",
+      "word_count": 399,
+      "text_sha256": "9f9ed15d9ee7547e76009ee291bf5d695489c34843eade4d23ca338a903ec1cc",
+      "text": null,
+      "id": "P081"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S03",
+      "text": "The library will close at six on Friday for repairs. Books may be returned through the outside slot, and borrowed items will not accrue late fees during the closure.",
+      "text_sha256": "563bd2bd738c8a5f29758667f1dc79fee06dd95c4a4762c9bdee02f71eb600ea",
+      "word_count": 29,
+      "id": "P082"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S13",
+      "text": "The council voted seven to two on the zoning amendment. The clerk posted the text and vote record online. The next public hearing will take place on Wednesday.",
+      "text_sha256": "20c091b0f14348981a2c9ccd71642416e7223a188ca7c54573d9c0f1ae804542",
+      "word_count": 28,
+      "id": "P083"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "0MUET8GoECfXgSN2",
+      "url": "https://www.theepochtimes.com/doj-finalizes-rule-to-collect-dna-from-illegal-immigrants-detained-in-federal-custody_3262956.html",
+      "date": "2020-03-06",
+      "topic": "justice_department",
+      "word_count": 548,
+      "text_sha256": "2ed95fcc832267ec28f89965173e5ee5af12421a5e2ec20a7527366ab6123132",
+      "text": null,
+      "id": "P084"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "UVOSHHaMDaVKBnrU",
+      "url": "http://nymag.com/intelligencer/2018/10/violent-political-rhetoric-can-feed-political-violence.html",
+      "date": "2018-10-24",
+      "topic": "polarization",
+      "word_count": 846,
+      "text_sha256": "c3075f4a3a1e05baac521dd64bb52be5cf0c426d6886c9f15baf81e37fcc9741",
+      "text": null,
+      "id": "P085"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "KFNkjmmwAjWpTZNS",
+      "url": "https://freebeacon.com/columns/bidens-progressive-gamble/",
+      "date": "2020-05-22",
+      "topic": "campaign_rhetoric",
+      "word_count": 1029,
+      "text_sha256": "61878b3ae046998d64a54cbd73a71ec006d4bcd70d5dc237d70d1e5c771172d7",
+      "text": null,
+      "id": "P086"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "jhpVIJok1IriADXx",
+      "url": "http://online.wsj.com/article/SB10001424052702304898704577480371370927862.html?",
+      "date": "",
+      "topic": "healthcare",
+      "word_count": 1595,
+      "text_sha256": "e0f18cd193f98086cb4e975b77b87e6b463f2ab816d9afa20d35685325ee0ba4",
+      "text": null,
+      "id": "P087"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "ZAHtgPXeAJHa9mOL",
+      "url": "http://www.nytimes.com/2014/08/15/us/ferguson-images-evoke-civil-rights-era-and-changing-visual-perceptions.html?hp&action=click&pgtype=Homepage&version=LargeMediaHeadlineSum&module=b-lede-package-region&region=lede-package&WT.nav=lede-package",
+      "date": "2014-08-15",
+      "topic": "violence_in_america",
+      "word_count": 333,
+      "text_sha256": "f739e80fc14b763e6e8e0fa5e8b6be55a2d2ed162e3b01150941a8af1e26ff94",
+      "text": null,
+      "id": "P088"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S23",
+      "text": "The senator said, \"We need higher taxes on the wealthy.\" The article reports when the speech occurred and who attended, but does not evaluate or endorse the senator's proposal.",
+      "text_sha256": "318d4a25b8d91cda779aa0182472978022f14edb13e7b0dd3b9e6022e04f72f3",
+      "word_count": 29,
+      "id": "P089"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S15",
+      "text": "The election office reported that polls will open at seven and close at seven. Voters who are in line at closing may remain in line until they cast a ballot.",
+      "text_sha256": "daa13913e0b73525d99cc09757e18959eab59ce6dfa91e7f3ffbbc93028f6c12",
+      "word_count": 30,
+      "id": "P090"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S04",
+      "text": "The team scored twice in the final period. Its coach credited the defense and said the players would return to practice on Monday before their next away game.",
+      "text_sha256": "307d75801198cfa337cc8c1121cc808920fb81eddaa1f982af8db16b842afc53",
+      "word_count": 28,
+      "id": "P091"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S32",
+      "text": "What a brilliant idea: solve every problem by creating another committee. Perhaps the committee can appoint a committee to investigate why nothing gets done. The writer identifies no party or specific policy.",
+      "text_sha256": "46d0d7a5c1fff2c9156943ea719ff1d14435e186788a72f572e570cbf2170ad5",
+      "word_count": 32,
+      "id": "P092"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "GEBGJmBUbLRyA6Lj",
+      "url": "http://nymag.com/daily/intelligencer/2018/08/why-nyc-needs-both-the-new-york-post-and-the-daily-news.html",
+      "date": "2018-08-07",
+      "topic": "free_speech",
+      "word_count": 354,
+      "text_sha256": "b975a6a5b1a76e5f24fab15a8659e5a0ec0c8b01274e56fb8d15f994b2ac3f0c",
+      "text": null,
+      "id": "P093"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S38",
+      "text": "The writer says both parties have failed to explain the proposal. They request cost estimates, public hearings, and access to the underlying documents, while withholding a position until those materials are available.",
+      "text_sha256": "cf39e6dffc3647ab645165525c61f18bfbe85e55c044389b2a734a05a8156615",
+      "word_count": 32,
+      "id": "P094"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "p1ygGLBbgcaQu4jv",
+      "url": "https://www.theepochtimes.com/christian-students-ask-supreme-court-to-review-case-over-free-speech-rights-on-campus_3225756.html",
+      "date": "2020-02-03",
+      "topic": "supreme_court",
+      "word_count": 776,
+      "text_sha256": "d86f04ee53f8dd120e3fb1ccbced61c129b50ab807451d7eef89272acd241f30",
+      "text": null,
+      "id": "P095"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "hAlmPwgDER6WciSr",
+      "url": "http://freebeacon.com/issues/yahoo-news-stands-katie-couric-despite-deceptive-editing/",
+      "date": "2016-06-10",
+      "topic": "media_bias",
+      "word_count": 480,
+      "text_sha256": "781b41927647d2de0edf741e741151eccb72b4a9a48d1f30daae37fed2b02a03",
+      "text": null,
+      "id": "P096"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "i1x3BPVKsecwkxNh",
+      "url": "https://www.cnbc.com/2019/07/09/billionaire-and-former-presidential-candidate-ross-perot-is-dead-at-89.html",
+      "date": "2019-07-09",
+      "topic": "general_news",
+      "word_count": 484,
+      "text_sha256": "03b02d1a644bb7d3df7e6840f18b5a5bb07dfe6d6cc8e2871655ccc6cd5e1640",
+      "text": null,
+      "id": "P097"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S27",
+      "text": "The editorial quotes a proposal to expand federal benefits, then argues that it would create dependency and should be rejected. It favors private charity and local solutions over another national spending program.",
+      "text_sha256": "3ec8f97deeb38bbed96ffd28761f518620915950e64b6f28abf341baa9306ba0",
+      "word_count": 32,
+      "id": "P098"
+    },
+    {
+      "kind": "historical_article",
+      "dataset_id": "580S9auCxCBBYIjT",
+      "url": "https://www.realclearpolitics.com/articles/2020/06/30/madonna_of_the_trail_defies_statue-toppling_culture_143574.html",
+      "date": "2020-06-30",
+      "topic": "culture",
+      "word_count": 862,
+      "text_sha256": "b23ed550c4abe57e842499d5297722f7b378398271d14d15aa3bfd6d7cb33311",
+      "text": null,
+      "id": "P099"
+    },
+    {
+      "kind": "controlled_example",
+      "case_id": "S10",
+      "text": "A conservative estimate puts the repair at three hours. The mechanic will test the battery and charging system before replacing any components and will call with an updated quote.",
+      "text_sha256": "91eebc644850ae60d9c129d7bfe800c11b771ce29530d9fed9076bbb0acc5231",
+      "word_count": 29,
+      "id": "P100"
+    }
+  ]
+}
+</script><script>
+'use strict';
+const pilot=JSON.parse(document.getElementById('pilot-data').textContent),$=id=>document.getElementById(id),texts=new Map();
+let current=0,active='',answers={},dirty=false;
+for(const id of ['read','relevance','label','confidence','rationale','skip'])$(id).addEventListener('input',()=>{dirty=true});
+window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+const key=()=>pilot.pilot_id+':'+active;
+function message(s){$('error').textContent=s}
+function store(){try{localStorage.setItem(key(),JSON.stringify(answers));return true}catch(e){message('Browser storage failed. Export your review before closing.');return false}}
+function progress(){$('progress').textContent=Object.values(answers).filter(x=>x.status==='reviewed').length+' / 100 reviewed';}
+function render(){const item=pilot.items[current],a=answers[item.id]||{};$('heading').textContent=item.id;$('jump').value=String(current);$('kind').textContent=item.kind==='controlled_example'?'Controlled example':'Historical article';$('text').textContent=texts.get(item.id)||'Article text is not loaded. Load the pinned dataset folder above. Do not judge from the URL alone.';$('source').replaceChildren();if(item.url){const link=document.createElement('a');link.href=item.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Original article (may differ from frozen dataset text)';$('source').appendChild(link)}else $('source').textContent='Original AI-authored diagnostic text. No human gold label assigned.';$('hash').textContent='Frozen text SHA-256: '+item.text_sha256;$('read').checked=a.full_text_read===true;for(const field of ['relevance','label','confidence','rationale'])$(field).value=a[field]||'';$('skip').value=a.skip_reason||'';$('save').disabled=!active||!texts.has(item.id);$('skipButton').disabled=!active;$('prev').disabled=current===0;$('next').disabled=current===99;message('');progress()}
+for(let i=0;i<pilot.items.length;i++){const o=document.createElement('option');o.value=String(i);o.textContent=pilot.items[i].id;$('jump').appendChild(o);if(pilot.items[i].text!==null)texts.set(pilot.items[i].id,pilot.items[i].text)}
+$('start').onclick=()=>{if(dirty&&!confirm('Discard the unsaved judgment?'))return;dirty=false;const id=$('reviewer').value.trim();if(!/^[A-Za-z0-9_-]{2,40}$/.test(id)){message('Use a reviewer ID with 2-40 letters, numbers, underscores or hyphens.');return}active=id;try{answers=JSON.parse(localStorage.getItem(key())||'{}')}catch(e){answers={};message('Could not restore browser storage.')}render()};
+function nav(n){if(dirty&&!confirm('Discard the unsaved judgment?')){$('jump').value=String(current);return}dirty=false;current=n;render()}
+$('prev').onclick=()=>nav(Math.max(0,current-1));$('next').onclick=()=>nav(Math.min(99,current+1));$('jump').onchange=e=>nav(Number(e.target.value));
+$('relevance').onchange=()=>{const r=$('relevance').value;if(r==='NONPOLITICAL'||r==='UNCERTAIN')$('label').value=r;else $('label').value=''};
+$('save').onclick=()=>{const item=pilot.items[current];const relevance=$('relevance').value,label=$('label').value,confidence=$('confidence').value,rationale=$('rationale').value.trim();if(!active||!texts.has(item.id)||!$('read').checked){message('Read the complete verified text and confirm the checkbox.');return}if(!relevance||!label||!confidence||rationale.length<15){message('Complete all fields and explain your evidence in at least 15 characters.');return}if((relevance==='POLITICAL'&&!['LEFT','CENTER','RIGHT','UNCERTAIN'].includes(label))||(relevance!=='POLITICAL'&&label!==relevance)){message('Final label must match the relevance decision.');return}answers[item.id]={id:item.id,status:'reviewed',reviewer_id:active,text_sha256:item.text_sha256,full_text_read:true,relevance,label,confidence,rationale,completed_at:new Date().toISOString()};store();dirty=false;progress();message('Saved. Export to preserve your review.');};
+$('skipButton').onclick=()=>{if(!active)return;const reason=$('skip').value.trim();if(reason.length<3){message('Record a reason for skipping.');return}const item=pilot.items[current];answers[item.id]={id:item.id,status:'skipped',reviewer_id:active,text_sha256:item.text_sha256,skip_reason:reason,completed_at:new Date().toISOString()};store();dirty=false;progress();message('Skip recorded.');};
+$('export').onclick=()=>{if(!active){message('Open your reviewer workspace first.');return}const payload={schema_version:1,pilot_id:pilot.pilot_id,rubric_version:'v1',reviewer_id:active,exported_at:new Date().toISOString(),annotations:Object.values(answers)};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='review-'+active+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+async function verifySnapshot(item,d){const t=d.content_original.trim();const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)))).map(x=>x.toString(16).padStart(2,'0')).join('');if(hash!==item.text_sha256||d.ID!==item.dataset_id)throw Error('mismatch');texts.set(item.id,t)}
+$('loadRemote').onclick=async()=>{if(dirty&&!confirm('Discard the unsaved judgment before loading articles?'))return;dirty=false;$('loadRemote').disabled=true;let count=0,failed=0;for(const item of pilot.items.filter(x=>x.dataset_id)){try{const url='https://raw.githubusercontent.com/ramybaly/Article-Bias-Prediction/'+pilot.dataset_revision+'/data/jsons/'+encodeURIComponent(item.dataset_id)+'.json';const response=await fetch(url,{signal:AbortSignal.timeout(15000),credentials:'omit',referrerPolicy:'no-referrer'});if(!response.ok)throw Error('Source unavailable');await verifySnapshot(item,await response.json());count++}catch(e){failed++}$('status').textContent=count+' / 60 article snapshots loaded; '+failed+' failed. Keep this tab open.'} $('loadRemote').disabled=false;render();$('status').textContent=count+' / 60 verified article snapshots loaded; '+failed+' failed. If downloads are blocked, use the dataset folder option.'};
+$('files').onchange=async e=>{let count=0,failed=0;const wanted=new Map(pilot.items.filter(x=>x.dataset_id).map(x=>[x.dataset_id+'.json',x]));for(const file of e.target.files){const item=wanted.get(file.name);if(!item)continue;try{const d=JSON.parse(await file.text());await verifySnapshot(item,d);count++}catch(err){failed++}}$('status').textContent=count+' matching article files loaded; '+failed+' mismatched or unreadable. No article text was uploaded.';render()};render();
+</script></html>

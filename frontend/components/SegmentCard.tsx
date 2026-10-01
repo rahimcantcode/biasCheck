@@ -7,7 +7,7 @@ interface SegmentCardProps {
 }
 
 export function SegmentCard({ result }: SegmentCardProps) {
-  const styles = LABEL_STYLES[result.label];
+  const styles = LABEL_STYLES[result.label ?? "CENTER"];
 
   return (
     <article
@@ -19,7 +19,7 @@ export function SegmentCard({ result }: SegmentCardProps) {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <span className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] ${styles.badge}`}>
-              {result.label}
+              {result.label ?? "Insufficient evidence"}
             </span>
             <span className="text-xs uppercase tracking-[0.16em] text-slate-500">
               Segment {result.segment_index + 1}

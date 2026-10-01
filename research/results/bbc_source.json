@@ -1,0 +1,12 @@
+{
+  "dataset": "SetFit/bbc-news",
+  "revision": "9c31f7087a8c225be8b4c420d70216ef1f121eb0",
+  "sha256": "8d8c05767052607390c92a219f4c90bc571a4b005472b0aaa5bcafcd5cc08bed",
+  "purpose": "Historical topic-label proxy for relevance. Not independent product gold labels.",
+  "limitations": [
+    "UK news differs from US scope",
+    "Topic categories do not perfectly define political relevance",
+    "Upstream model pretraining overlap unknown",
+    "No article text redistributed"
+  ]
+}

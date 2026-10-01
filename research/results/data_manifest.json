@@ -1,0 +1,125 @@
+{
+  "dataset": "https://github.com/ramybaly/Article-Bias-Prediction",
+  "revision": "ced8111a720948e6a410e52031ace99c4e53f096",
+  "procedure": "test then valid then train; disjoint registrable publisher domain and normalized exact text",
+  "limitations": [
+    "Near-duplicate and story leakage not fully audited",
+    "Training overlap with existing checkpoints unknown"
+  ],
+  "splits": {
+    "test": {
+      "n": 1300,
+      "excluded": {},
+      "labels": {
+        "RIGHT": 599,
+        "CENTER": 299,
+        "LEFT": 402
+      },
+      "publisher_domains": [
+        "apnews.com",
+        "bbc.com",
+        "breitbart.com",
+        "cbn.com",
+        "cnn.com",
+        "dailycaller.com",
+        "go.com",
+        "newsmax.com",
+        "reason.com",
+        "reuters.com",
+        "salon.com",
+        "spectator.org",
+        "theguardian.com"
+      ]
+    },
+    "valid": {
+      "n": 2356,
+      "excluded": {},
+      "labels": {
+        "RIGHT": 98,
+        "LEFT": 1640,
+        "CENTER": 618
+      },
+      "publisher_domains": [
+        "axios.com",
+        "bloomberg.com",
+        "cnbc.com",
+        "fivethirtyeight.com",
+        "freebeacon.com",
+        "nymag.com",
+        "nytimes.com",
+        "propublica.org",
+        "realclearpolitics.com",
+        "theepochtimes.com",
+        "wsj.com"
+      ]
+    },
+    "train": {
+      "n": 23603,
+      "excluded": {
+        "publisher_reserved_for_other_split": 2981,
+        "duplicate_text": 6
+      },
+      "labels": {
+        "RIGHT": 10192,
+        "CENTER": 7199,
+        "LEFT": 6212
+      },
+      "publisher_domains": [
+        "aljazeera.com",
+        "bostonglobe.com",
+        "businessinsider.com",
+        "buzzfeednews.com",
+        "cbsnews.com",
+        "csmonitor.com",
+        "dailykos.com",
+        "dailymail.co.uk",
+        "dailywire.com",
+        "democracynow.org",
+        "economist.com",
+        "foxbusiness.com",
+        "foxnews.com",
+        "hotair.com",
+        "ibtimes.com",
+        "jacobinmag.com",
+        "marketwatch.com",
+        "mediamatters.org",
+        "motherjones.com",
+        "nationalreview.com",
+        "nbcnews.com",
+        "newsbusters.org",
+        "newyorker.com",
+        "npr.org",
+        "nypost.com",
+        "pewresearch.org",
+        "politico.com",
+        "scientificamerican.com",
+        "slate.com",
+        "suntimes.com",
+        "theatlantic.com",
+        "theblaze.com",
+        "thedailybeast.com",
+        "theflipside.io",
+        "thehill.com",
+        "theintercept.com",
+        "themarshallproject.org",
+        "thenation.com",
+        "theweek.com",
+        "thinkprogress.org",
+        "time.com",
+        "townhall.com",
+        "usatoday.com",
+        "vanityfair.com",
+        "vice.com",
+        "vox.com",
+        "washingtonpost.com",
+        "washingtontimes.com",
+        "yahoo.com"
+      ]
+    }
+  },
+  "record_manifest_sha256": {
+    "test": "240ce2c8ddbcae45cf295f0b4c92001ac7ebd33fb4a538756a4f5e3c298ea47e",
+    "valid": "a6e1b08a8c5edbe2573f2e766d60c56d77a1ac6afea2d661de5caa2f3f054a26",
+    "train": "7b5bc7d53d285f40819cc0deaa9b17144465db0091ce6806e3fb7652005b7331"
+  }
+}

@@ -1,0 +1,2449 @@
+{
+  "purpose": "Exploratory only; training overlap unknown",
+  "seed": 20260929,
+  "model": {
+    "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+    "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+    "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+    "id2label": {
+      "0": "LEFT",
+      "1": "RIGHT",
+      "2": "CENTER"
+    },
+    "aggregation": "new_token_weighted_logit_mean_v1",
+    "max_length": 512,
+    "stride": 64,
+    "transformers": "4.57.1",
+    "torch": "2.6.0+cpu",
+    "tokenizers": "0.22.2"
+  },
+  "seconds": 154.60848881599986,
+  "first512": {
+    "metrics": {
+      "n": 60,
+      "eligible_n": 60,
+      "coverage": 0.0,
+      "selective_accuracy": null,
+      "nonpolitical_n": 0,
+      "nonpolitical_false_label_rate": null,
+      "raw_accuracy": 0.7333333333333333,
+      "macro_f1": 0.7297979797979798,
+      "confusion_order": [
+        "LEFT",
+        "CENTER",
+        "RIGHT"
+      ],
+      "confusion_matrix": [
+        [
+          15,
+          2,
+          3
+        ],
+        [
+          4,
+          12,
+          4
+        ],
+        [
+          1,
+          2,
+          17
+        ]
+      ],
+      "per_class": {
+        "LEFT": {
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1-score": 0.75,
+          "support": 20.0
+        },
+        "CENTER": {
+          "precision": 0.75,
+          "recall": 0.6,
+          "f1-score": 0.6666666666666666,
+          "support": 20.0
+        },
+        "RIGHT": {
+          "precision": 0.7083333333333334,
+          "recall": 0.85,
+          "f1-score": 0.7727272727272727,
+          "support": 20.0
+        },
+        "accuracy": 0.7333333333333333,
+        "macro avg": {
+          "precision": 0.7361111111111112,
+          "recall": 0.7333333333333334,
+          "f1-score": 0.7297979797979798,
+          "support": 60.0
+        },
+        "weighted avg": {
+          "precision": 0.7361111111111112,
+          "recall": 0.7333333333333333,
+          "f1-score": 0.7297979797979797,
+          "support": 60.0
+        }
+      }
+    },
+    "predictions": [
+      {
+        "id": "A1UtjguXkt9fXAiS",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.8877791166305542,
+          0.10620271414518356,
+          0.0060182493180036545
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "LTJQdxU7ctCt6qtb",
+        "gold": "LEFT",
+        "source": "New York Times - Opinion",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.1706833839416504,
+          0.22358030080795288,
+          0.605736255645752
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "QU03UGLvFxY9PWkc",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9994632601737976,
+          0.0004041943175252527,
+          0.00013266672613099217
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "6X4Cexi05H1aEclX",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9991900324821472,
+          0.00039198758895508945,
+          0.00041794843855313957
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "dL3Aq5cZ3lvA2Ahx",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9993866682052612,
+          0.0004300069122109562,
+          0.00018340714450459927
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "xbsvELViO4J5H9HQ",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.015646925196051598,
+          0.9828559756278992,
+          0.0014971877681091428
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "IVkQawktdCXlq8d2",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9995139837265015,
+          0.00034705246798694134,
+          0.00013891360140405595
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "x44tm1vepTqPcbXD",
+        "gold": "CENTER",
+        "source": "FiveThirtyEight",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.07063601166009903,
+          0.002306409412994981,
+          0.9270575046539307
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "P9X3V0Ug5phjwNui",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9952247142791748,
+          0.0038881285581737757,
+          0.0008871630416251719
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "S26w8LimEFAU1xY8",
+        "gold": "LEFT",
+        "source": "New York Magazine",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9987554550170898,
+          0.0008095996454358101,
+          0.00043495537829585373
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "OImK28Rt2uzgNBCv",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9994574189186096,
+          0.00033001898555085063,
+          0.00021257231128402054
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "KrM462l9DCYLXTBE",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9991689920425415,
+          0.0003695094201248139,
+          0.00046158203622326255
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "FGxnvHnkOcLMvUJp",
+        "gold": "CENTER",
+        "source": "CNBC",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.007221483159810305,
+          0.9104553461074829,
+          0.0823231190443039
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "WWECLzexWhqnWfs6",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.999494194984436,
+          0.0003613203589338809,
+          0.00014443094551097602
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "Ay2AZFipb1HJtUzY",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.007196768186986446,
+          0.9826868176460266,
+          0.01011641789227724
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "p6X1ALlMnY8bdKup",
+        "gold": "CENTER",
+        "source": "FiveThirtyEight",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9983358979225159,
+          0.0010854918509721756,
+          0.000578643346671015
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "HKakND9h8F0KmI8M",
+        "gold": "LEFT",
+        "source": "ProPublica",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9993823766708374,
+          0.0003191320283804089,
+          0.0002984600141644478
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "Isz8smKDy8JpIZAd",
+        "gold": "CENTER",
+        "source": "Bloomberg",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.00010644523717928678,
+          0.00017708663654047996,
+          0.9997164607048035
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "3VvOHXZmSUCFX47T",
+        "gold": "CENTER",
+        "source": "Wall Street Journal - News",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0010187928564846516,
+          0.9965388774871826,
+          0.0024423038121312857
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "l1mFnCPdHwJrG2Cr",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9994237422943115,
+          0.0002635431883390993,
+          0.00031270034378394485
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "764ruOww6IXvhHzn",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9994945526123047,
+          0.0003594258159864694,
+          0.0001459609338780865
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "ci4jfSgCkHPKBnvb",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9991855025291443,
+          0.0006227943813428283,
+          0.0001916456239996478
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "OtTX91Qu63epoPvR",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9994365572929382,
+          0.00030763912945985794,
+          0.00025579691282473505
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "GYnyPpgAYosopwRI",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.00046849233331158757,
+          0.00036465312587097287,
+          0.9991668462753296
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "TQjG8eDIiwzDAgEK",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.11553585529327393,
+          0.8717931509017944,
+          0.012671045958995819
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "elka1kDxA3O0yalx",
+        "gold": "CENTER",
+        "source": "Bloomberg",
+        "raw_label": "CENTER",
+        "probabilities": [
+          9.596734162187204e-05,
+          0.00018685581744648516,
+          0.9997171759605408
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "9zFOWSRAwrYRGx4L",
+        "gold": "CENTER",
+        "source": "CNBC",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0005629499210044742,
+          0.9988552331924438,
+          0.0005817667115479708
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "t3qjwfdYet2HjayC",
+        "gold": "CENTER",
+        "source": "ProPublica",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9989569187164307,
+          0.00037995976163074374,
+          0.0006631129654124379
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "juB8CBmz4zqKwWch",
+        "gold": "CENTER",
+        "source": "Guest Writer",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0014572080690413713,
+          0.9980344176292419,
+          0.0005084329750388861
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "5L26klnG7bJtWToU",
+        "gold": "CENTER",
+        "source": "Gail Collins",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9589956402778625,
+          0.00137500767596066,
+          0.03962933272123337
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "2hjGwJk9l6miyaWA",
+        "gold": "CENTER",
+        "source": "Axios",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.0001847965468186885,
+          0.00026497503858990967,
+          0.9995501637458801
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "brUf4z4n9mfmdYzL",
+        "gold": "CENTER",
+        "source": "FiveThirtyEight",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.9983978867530823,
+          0.0007083377568051219,
+          0.0008937592501752079
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "mlnVOiyluH0s84d7",
+        "gold": "CENTER",
+        "source": "Bloomberg",
+        "raw_label": "CENTER",
+        "probabilities": [
+          9.642530494602397e-05,
+          0.00019876097212545574,
+          0.9997047781944275
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "Gmv65JWh6JkESamr",
+        "gold": "CENTER",
+        "source": "Wall Street Journal - News",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.00014094305515754968,
+          0.0002876181388273835,
+          0.9995713829994202
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "lVbHP1XgxtC3doRd",
+        "gold": "CENTER",
+        "source": "CNBC",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.00041947580757550895,
+          0.0014662997564300895,
+          0.9981142282485962
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "qZNgGKpdnkHqd1AB",
+        "gold": "CENTER",
+        "source": "Wall Street Journal - News",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.0015934407711029053,
+          0.03492350876331329,
+          0.9634830951690674
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "QRJHNo6gXMmfxSSN",
+        "gold": "CENTER",
+        "source": "FiveThirtyEight",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.0006707847933284938,
+          0.00019142532255500555,
+          0.9991377592086792
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "9zhOhrT4ljt5esIJ",
+        "gold": "CENTER",
+        "source": "CNBC",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.00015182864444795996,
+          0.0002953602815978229,
+          0.9995527863502502
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "WwyuvEaelVVNALE5",
+        "gold": "CENTER",
+        "source": "Axios",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.00010189785098191351,
+          0.00020512718765530735,
+          0.9996930360794067
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "h8oJ5HLeo9tDD8go",
+        "gold": "CENTER",
+        "source": "Wall Street Journal - News",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.0001835921430028975,
+          0.0014212285168468952,
+          0.9983951449394226
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "HGhAJmLL8D5WGlCi",
+        "gold": "RIGHT",
+        "source": "Guest Writer - Right",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0006725814309902489,
+          0.9989503026008606,
+          0.000377150543499738
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "r7VxfeEUqGa0RmN1",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0007772811222821474,
+          0.9988601207733154,
+          0.00036252065910957754
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "67NIbdPBhXtylhTs",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.00194787688087672,
+          0.9925962090492249,
+          0.005455960985273123
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "uyZuBg0qOmGJtHjZ",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.012565371580421925,
+          0.9777680039405823,
+          0.009666613303124905
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "2bwspneeJmF0HwcM",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0012361981207504869,
+          0.9951678514480591,
+          0.003595982911065221
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "0t2wFHxkEHIEvBd0",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.0005927541642449796,
+          0.005947059486061335,
+          0.9934601783752441
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "LBexlrmMmsevO1cD",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.01037825457751751,
+          0.9133404493331909,
+          0.0762813612818718
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "pz1sv7prho72zn2l",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "raw_label": "LEFT",
+        "probabilities": [
+          0.7554106116294861,
+          0.057585544884204865,
+          0.18700389564037323
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "euK3ybzS65KsGDi5",
+        "gold": "RIGHT",
+        "source": "Guest Writer - Right",
+        "raw_label": "CENTER",
+        "probabilities": [
+          0.10648058354854584,
+          0.08933621644973755,
+          0.8041831851005554
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "XI6l332YBwui0FCC",
+        "gold": "RIGHT",
+        "source": "Guest Writer - Right",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0005757375620305538,
+          0.9991928935050964,
+          0.00023135353694669902
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "sXeju3lRqlTGEJBT",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0006977377342991531,
+          0.9987020492553711,
+          0.0006001548026688397
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "2xNg0pz45yXhnEWj",
+        "gold": "RIGHT",
+        "source": "Noah Rothman",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0007318597636185586,
+          0.998818576335907,
+          0.00044952513417229056
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "Gl5cqTkl71zsniTF",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0005136854015290737,
+          0.9993047714233398,
+          0.00018151552649214864
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "fT0fxgeWOttt2AOA",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0008076291996985674,
+          0.9984257221221924,
+          0.0007666680030524731
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "oUw0fgGgsQAfY08R",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0009321206598542631,
+          0.9976015686988831,
+          0.0014663301408290863
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "YJ3Pj0d77VKpJsFe",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0034058389719575644,
+          0.9949415326118469,
+          0.0016525634564459324
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "Cg71CU86E3K78eIF",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.000615672382991761,
+          0.9991668462753296,
+          0.000217439082916826
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "pcEG1iLCIEdsMIQa",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0004887375980615616,
+          0.9992994070053101,
+          0.00021176057634875178
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "jFH3zQmPNE4MqOll",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0031939661130309105,
+          0.9893267154693604,
+          0.007479340303689241
+        ],
+        "decision": "abstained",
+        "label": null
+      },
+      {
+        "id": "6YFdudW0empgLakl",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "raw_label": "RIGHT",
+        "probabilities": [
+          0.0012769803870469332,
+          0.9958421587944031,
+          0.0028808582574129105
+        ],
+        "decision": "abstained",
+        "label": null
+      }
+    ]
+  },
+  "full_document": {
+    "metrics": {
+      "n": 60,
+      "eligible_n": 60,
+      "coverage": 0.0,
+      "selective_accuracy": null,
+      "nonpolitical_n": 0,
+      "nonpolitical_false_label_rate": null,
+      "raw_accuracy": 0.6833333333333333,
+      "macro_f1": 0.6717652717652718,
+      "confusion_order": [
+        "LEFT",
+        "CENTER",
+        "RIGHT"
+      ],
+      "confusion_matrix": [
+        [
+          15,
+          2,
+          3
+        ],
+        [
+          6,
+          9,
+          5
+        ],
+        [
+          1,
+          2,
+          17
+        ]
+      ],
+      "per_class": {
+        "LEFT": {
+          "precision": 0.6818181818181818,
+          "recall": 0.75,
+          "f1-score": 0.7142857142857143,
+          "support": 20.0
+        },
+        "CENTER": {
+          "precision": 0.6923076923076923,
+          "recall": 0.45,
+          "f1-score": 0.5454545454545454,
+          "support": 20.0
+        },
+        "RIGHT": {
+          "precision": 0.68,
+          "recall": 0.85,
+          "f1-score": 0.7555555555555555,
+          "support": 20.0
+        },
+        "accuracy": 0.6833333333333333,
+        "macro avg": {
+          "precision": 0.6847086247086248,
+          "recall": 0.6833333333333332,
+          "f1-score": 0.6717652717652718,
+          "support": 60.0
+        },
+        "weighted avg": {
+          "precision": 0.6847086247086247,
+          "recall": 0.6833333333333333,
+          "f1-score": 0.6717652717652718,
+          "support": 60.0
+        }
+      }
+    },
+    "predictions": [
+      {
+        "id": "A1UtjguXkt9fXAiS",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.973259,
+          "RIGHT": 0.024589,
+          "CENTER": 0.002152
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 756,
+        "tokens_processed": 756,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          3.3482493370298356,
+          -0.33011261740374187,
+          -2.7660792176685636
+        ]
+      },
+      {
+        "id": "LTJQdxU7ctCt6qtb",
+        "gold": "LEFT",
+        "source": "New York Times - Opinion",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.170683,
+          "RIGHT": 0.22358,
+          "CENTER": 0.605736
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 460,
+        "tokens_processed": 460,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -0.6914595365524292,
+          -0.4214992821216583,
+          0.5751748085021973
+        ]
+      },
+      {
+        "id": "QU03UGLvFxY9PWkc",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998992,
+          "RIGHT": 0.000833,
+          "CENTER": 0.000175
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1215,
+        "tokens_processed": 1215,
+        "chunk_count": 3,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.4954400156751095,
+          -1.5941857707291964,
+          -3.1527826568226756
+        ]
+      },
+      {
+        "id": "6X4Cexi05H1aEclX",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.99919,
+          "RIGHT": 0.000392,
+          "CENTER": 0.000418
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 430,
+        "tokens_processed": 430,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.4095072746276855,
+          -2.433962821960449,
+          -2.3698348999023438
+        ]
+      },
+      {
+        "id": "dL3Aq5cZ3lvA2Ahx",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999387,
+          "RIGHT": 0.00043,
+          "CENTER": 0.000183
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 413,
+        "tokens_processed": 413,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.713943004608154,
+          -2.0371525287628174,
+          -2.8892452716827393
+        ]
+      },
+      {
+        "id": "xbsvELViO4J5H9HQ",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.015647,
+          "RIGHT": 0.982856,
+          "CENTER": 0.001497
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 510,
+        "tokens_processed": 510,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -0.7719970345497131,
+          3.3681912422180176,
+          -3.118682861328125
+        ]
+      },
+      {
+        "id": "IVkQawktdCXlq8d2",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999509,
+          "RIGHT": 0.000341,
+          "CENTER": 0.00015
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1469,
+        "tokens_processed": 1469,
+        "chunk_count": 4,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.873578931459202,
+          -2.1092648384439614,
+          -2.9298339591211326
+        ]
+      },
+      {
+        "id": "x44tm1vepTqPcbXD",
+        "gold": "CENTER",
+        "source": "FiveThirtyEight",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.740372,
+          "RIGHT": 0.007938,
+          "CENTER": 0.25169
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1782,
+        "tokens_processed": 1782,
+        "chunk_count": 4,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          1.988295844876271,
+          -2.547183227860165,
+          0.9093430442975962
+        ]
+      },
+      {
+        "id": "P9X3V0Ug5phjwNui",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.995225,
+          "RIGHT": 0.003888,
+          "CENTER": 0.000887
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 415,
+        "tokens_processed": 415,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          4.393246173858643,
+          -1.15179443359375,
+          -2.629448890686035
+        ]
+      },
+      {
+        "id": "S26w8LimEFAU1xY8",
+        "gold": "LEFT",
+        "source": "New York Magazine",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998755,
+          "RIGHT": 0.00081,
+          "CENTER": 0.000435
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 444,
+        "tokens_processed": 444,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.165834426879883,
+          -1.9518907070159912,
+          -2.5731873512268066
+        ]
+      },
+      {
+        "id": "OImK28Rt2uzgNBCv",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999457,
+          "RIGHT": 0.00033,
+          "CENTER": 0.000213
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 450,
+        "tokens_processed": 450,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.755028247833252,
+          -2.260789394378662,
+          -2.7006571292877197
+        ]
+      },
+      {
+        "id": "KrM462l9DCYLXTBE",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999417,
+          "RIGHT": 0.000361,
+          "CENTER": 0.000223
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1382,
+        "tokens_processed": 1382,
+        "chunk_count": 3,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.730412485975605,
+          -2.1966238497997677,
+          -2.6792755768716594
+        ]
+      },
+      {
+        "id": "FGxnvHnkOcLMvUJp",
+        "gold": "CENTER",
+        "source": "CNBC",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.010544,
+          "RIGHT": 0.89522,
+          "CENTER": 0.094236
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 530,
+        "tokens_processed": 530,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.5265806890883535,
+          1.914940060309644,
+          -0.336330790002391
+        ]
+      },
+      {
+        "id": "WWECLzexWhqnWfs6",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999465,
+          "RIGHT": 0.000382,
+          "CENTER": 0.000154
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 916,
+        "tokens_processed": 916,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.817652699208155,
+          -2.05266901239037,
+          -2.9635986209436274
+        ]
+      },
+      {
+        "id": "Ay2AZFipb1HJtUzY",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.014414,
+          "RIGHT": 0.972509,
+          "CENTER": 0.013077
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 540,
+        "tokens_processed": 540,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -1.4897324906455145,
+          2.7219343980153403,
+          -1.587127731906043
+        ]
+      },
+      {
+        "id": "p6X1ALlMnY8bdKup",
+        "gold": "CENTER",
+        "source": "FiveThirtyEight",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.980349,
+          "RIGHT": 0.003042,
+          "CENTER": 0.016608
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1325,
+        "tokens_processed": 1325,
+        "chunk_count": 3,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          3.4027130657097078,
+          -2.3725207945985614,
+          -0.67530387626504
+        ]
+      },
+      {
+        "id": "HKakND9h8F0KmI8M",
+        "gold": "LEFT",
+        "source": "ProPublica",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.996695,
+          "RIGHT": 0.000874,
+          "CENTER": 0.002431
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 4023,
+        "tokens_processed": 4023,
+        "chunk_count": 9,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          4.555389505519578,
+          -2.4835918554168064,
+          -1.4608821542945158
+        ]
+      },
+      {
+        "id": "Isz8smKDy8JpIZAd",
+        "gold": "CENTER",
+        "source": "Bloomberg",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.001147,
+          "RIGHT": 0.019117,
+          "CENTER": 0.979736
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1616,
+        "tokens_processed": 1616,
+        "chunk_count": 4,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -3.3552808445869107,
+          -0.5416682722544907,
+          3.395013127070252
+        ]
+      },
+      {
+        "id": "3VvOHXZmSUCFX47T",
+        "gold": "CENTER",
+        "source": "Wall Street Journal - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.07747,
+          "RIGHT": 0.906441,
+          "CENTER": 0.016089
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1307,
+        "tokens_processed": 1307,
+        "chunk_count": 3,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -0.4404968204804751,
+          2.0191376911563186,
+          -2.012261908019693
+        ]
+      },
+      {
+        "id": "l1mFnCPdHwJrG2Cr",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999424,
+          "RIGHT": 0.000264,
+          "CENTER": 0.000313
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 446,
+        "tokens_processed": 446,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.7038774490356445,
+          -2.536839485168457,
+          -2.3658111095428467
+        ]
+      },
+      {
+        "id": "764ruOww6IXvhHzn",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999341,
+          "RIGHT": 0.000473,
+          "CENTER": 0.000187
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1605,
+        "tokens_processed": 1605,
+        "chunk_count": 4,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.671536699336637,
+          -1.984830864567623,
+          -2.914088262872904
+        ]
+      },
+      {
+        "id": "ci4jfSgCkHPKBnvb",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999186,
+          "RIGHT": 0.000623,
+          "CENTER": 0.000192
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 427,
+        "tokens_processed": 427,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.562231063842773,
+          -1.8182481527328491,
+          -2.996817111968994
+        ]
+      },
+      {
+        "id": "OtTX91Qu63epoPvR",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999437,
+          "RIGHT": 0.000308,
+          "CENTER": 0.000256
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 461,
+        "tokens_processed": 461,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.71427059173584,
+          -2.371748924255371,
+          -2.5562922954559326
+        ]
+      },
+      {
+        "id": "GYnyPpgAYosopwRI",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.106599,
+          "RIGHT": 0.007441,
+          "CENTER": 0.885961
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 784,
+        "tokens_processed": 784,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          0.20231875290676038,
+          -2.4598125295371425,
+          2.3199219886137517
+        ]
+      },
+      {
+        "id": "TQjG8eDIiwzDAgEK",
+        "gold": "LEFT",
+        "source": "New York Times - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.115536,
+          "RIGHT": 0.871793,
+          "CENTER": 0.012671
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 508,
+        "tokens_processed": 508,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          0.011511501856148243,
+          2.032482862472534,
+          -2.1987500190734863
+        ]
+      },
+      {
+        "id": "elka1kDxA3O0yalx",
+        "gold": "CENTER",
+        "source": "Bloomberg",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.008117,
+          "RIGHT": 0.754561,
+          "CENTER": 0.237322
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1186,
+        "tokens_processed": 1186,
+        "chunk_count": 3,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.819257030599636,
+          1.7129142075324741,
+          0.5561962561904882
+        ]
+      },
+      {
+        "id": "9zFOWSRAwrYRGx4L",
+        "gold": "CENTER",
+        "source": "CNBC",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.005433,
+          "RIGHT": 0.88336,
+          "CENTER": 0.111208
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 806,
+        "tokens_processed": 806,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.890021717577951,
+          2.2012621072622447,
+          0.12892742192478984
+        ]
+      },
+      {
+        "id": "t3qjwfdYet2HjayC",
+        "gold": "CENTER",
+        "source": "ProPublica",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999025,
+          "RIGHT": 0.0005,
+          "CENTER": 0.000475
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 6054,
+        "tokens_processed": 6054,
+        "chunk_count": 14,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          5.30374561515546,
+          -2.295840098198625,
+          -2.3473673709014418
+        ]
+      },
+      {
+        "id": "juB8CBmz4zqKwWch",
+        "gold": "CENTER",
+        "source": "Guest Writer",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.031892,
+          "RIGHT": 0.965288,
+          "CENTER": 0.00282
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 654,
+        "tokens_processed": 654,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -0.4522546781312435,
+          2.9578108175085225,
+          -2.878048649621666
+        ]
+      },
+      {
+        "id": "5L26klnG7bJtWToU",
+        "gold": "CENTER",
+        "source": "Gail Collins",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.958996,
+          "RIGHT": 0.001375,
+          "CENTER": 0.039629
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 488,
+        "tokens_processed": 488,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          3.382213592529297,
+          -3.1652133464813232,
+          0.1958966702222824
+        ]
+      },
+      {
+        "id": "2hjGwJk9l6miyaWA",
+        "gold": "CENTER",
+        "source": "Axios",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.000397,
+          "RIGHT": 0.000384,
+          "CENTER": 0.999219
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 536,
+        "tokens_processed": 536,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.6833563197904557,
+          -2.717110418561679,
+          5.147772079083457
+        ]
+      },
+      {
+        "id": "brUf4z4n9mfmdYzL",
+        "gold": "CENTER",
+        "source": "FiveThirtyEight",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.996874,
+          "RIGHT": 0.00099,
+          "CENTER": 0.002136
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 2226,
+        "tokens_processed": 2226,
+        "chunk_count": 5,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          4.527495959591245,
+          -2.387260000446522,
+          -1.6181805428529203
+        ]
+      },
+      {
+        "id": "mlnVOiyluH0s84d7",
+        "gold": "CENTER",
+        "source": "Bloomberg",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.065596,
+          "RIGHT": 0.069995,
+          "CENTER": 0.864409
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1464,
+        "tokens_processed": 1464,
+        "chunk_count": 4,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -0.9415487751283281,
+          -0.8766453744935208,
+          1.636977284169588
+        ]
+      },
+      {
+        "id": "Gmv65JWh6JkESamr",
+        "gold": "CENTER",
+        "source": "Wall Street Journal - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.110331,
+          "RIGHT": 0.004622,
+          "CENTER": 0.885047
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 909,
+        "tokens_processed": 909,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          0.4060476321985226,
+          -2.766597332340656,
+          2.4882009879197224
+        ]
+      },
+      {
+        "id": "lVbHP1XgxtC3doRd",
+        "gold": "CENTER",
+        "source": "CNBC",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.000419,
+          "RIGHT": 0.001466,
+          "CENTER": 0.998114
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 429,
+        "tokens_processed": 429,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -3.11449933052063,
+          -1.8630074262619019,
+          4.660118103027344
+        ]
+      },
+      {
+        "id": "qZNgGKpdnkHqd1AB",
+        "gold": "CENTER",
+        "source": "Wall Street Journal - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.004713,
+          "RIGHT": 0.008648,
+          "CENTER": 0.986639
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1875,
+        "tokens_processed": 1875,
+        "chunk_count": 5,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.1124815121014913,
+          -1.5055843401590983,
+          3.2314330059051515
+        ]
+      },
+      {
+        "id": "QRJHNo6gXMmfxSSN",
+        "gold": "CENTER",
+        "source": "FiveThirtyEight",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.891873,
+          "RIGHT": 0.008846,
+          "CENTER": 0.099282
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 4478,
+        "tokens_processed": 4478,
+        "chunk_count": 10,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          2.312827896677846,
+          -2.300584161238992,
+          0.11746404869893716
+        ]
+      },
+      {
+        "id": "9zhOhrT4ljt5esIJ",
+        "gold": "CENTER",
+        "source": "CNBC",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.00016,
+          "RIGHT": 0.000308,
+          "CENTER": 0.999532
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 826,
+        "tokens_processed": 826,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -3.2154609239130276,
+          -2.563405318641201,
+          5.521825215429717
+        ]
+      },
+      {
+        "id": "WwyuvEaelVVNALE5",
+        "gold": "CENTER",
+        "source": "Axios",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.00016,
+          "RIGHT": 0.000225,
+          "CENTER": 0.999615
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 835,
+        "tokens_processed": 835,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -3.110772840990992,
+          -2.770205005200323,
+          5.628499793435285
+        ]
+      },
+      {
+        "id": "h8oJ5HLeo9tDD8go",
+        "gold": "CENTER",
+        "source": "Wall Street Journal - News",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.077499,
+          "RIGHT": 0.128528,
+          "CENTER": 0.793974
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1388,
+        "tokens_processed": 1388,
+        "chunk_count": 3,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -0.9935718070533158,
+          -0.48768637383018515,
+          1.3332190975675666
+        ]
+      },
+      {
+        "id": "HGhAJmLL8D5WGlCi",
+        "gold": "RIGHT",
+        "source": "Guest Writer - Right",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.001805,
+          "RIGHT": 0.997283,
+          "CENTER": 0.000913
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1102,
+        "tokens_processed": 1102,
+        "chunk_count": 3,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.1832658677698262,
+          4.131478945269992,
+          -2.86488302087178
+        ]
+      },
+      {
+        "id": "r7VxfeEUqGa0RmN1",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.001648,
+          "RIGHT": 0.997696,
+          "CENTER": 0.000655
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 763,
+        "tokens_processed": 763,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.1150042026414786,
+          4.29060737802348,
+          -3.0377419426119343
+        ]
+      },
+      {
+        "id": "67NIbdPBhXtylhTs",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.002249,
+          "RIGHT": 0.990887,
+          "CENTER": 0.006864
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 556,
+        "tokens_processed": 556,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.7056942740790277,
+          3.382443409600704,
+          -1.5898554649927634
+        ]
+      },
+      {
+        "id": "uyZuBg0qOmGJtHjZ",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.046562,
+          "RIGHT": 0.937992,
+          "CENTER": 0.015445
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 578,
+        "tokens_processed": 578,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -0.8409981236738318,
+          2.1619562541737274,
+          -1.9444703144185684
+        ]
+      },
+      {
+        "id": "2bwspneeJmF0HwcM",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.002568,
+          "RIGHT": 0.992441,
+          "CENTER": 0.004992
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 537,
+        "tokens_processed": 537,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.520266431669949,
+          3.436967705881129,
+          -1.8553937487096095
+        ]
+      },
+      {
+        "id": "0t2wFHxkEHIEvBd0",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.099817,
+          "RIGHT": 0.167243,
+          "CENTER": 0.73294
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 1069,
+        "tokens_processed": 1069,
+        "chunk_count": 3,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -0.987331222997189,
+          -0.47121752847344994,
+          1.0063977700956968
+        ]
+      },
+      {
+        "id": "LBexlrmMmsevO1cD",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.026983,
+          "RIGHT": 0.880377,
+          "CENTER": 0.092639
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 555,
+        "tokens_processed": 555,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -1.9060734929265202,
+          1.5790522549603436,
+          -0.6725881260794562
+        ]
+      },
+      {
+        "id": "pz1sv7prho72zn2l",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.876553,
+          "RIGHT": 0.030225,
+          "CENTER": 0.093221
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 608,
+        "tokens_processed": 608,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          1.842880994473633,
+          -1.5244428284074132,
+          -0.39813906292578105
+        ]
+      },
+      {
+        "id": "euK3ybzS65KsGDi5",
+        "gold": "RIGHT",
+        "source": "Guest Writer - Right",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.106481,
+          "RIGHT": 0.089336,
+          "CENTER": 0.804183
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 438,
+        "tokens_processed": 438,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -0.783717930316925,
+          -0.9592735767364502,
+          1.238146424293518
+        ]
+      },
+      {
+        "id": "XI6l332YBwui0FCC",
+        "gold": "RIGHT",
+        "source": "Guest Writer - Right",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.000576,
+          "RIGHT": 0.999193,
+          "CENTER": 0.000231
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 460,
+        "tokens_processed": 460,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.446681022644043,
+          5.0123701095581055,
+          -3.358386516571045
+        ]
+      },
+      {
+        "id": "sXeju3lRqlTGEJBT",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.008026,
+          "RIGHT": 0.989497,
+          "CENTER": 0.002477
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 907,
+        "tokens_processed": 907,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -1.455929113525277,
+          3.3585688153070286,
+          -2.6315005393380497
+        ]
+      },
+      {
+        "id": "2xNg0pz45yXhnEWj",
+        "gold": "RIGHT",
+        "source": "Noah Rothman",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.00813,
+          "RIGHT": 0.989781,
+          "CENTER": 0.002089
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 656,
+        "tokens_processed": 656,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -1.3606373478726643,
+          3.4412821965610108,
+          -2.719422994590387
+        ]
+      },
+      {
+        "id": "Gl5cqTkl71zsniTF",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.000543,
+          "RIGHT": 0.999272,
+          "CENTER": 0.000185
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 736,
+        "tokens_processed": 736,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.4308583192203357,
+          5.086198970027592,
+          -3.508992631798205
+        ]
+      },
+      {
+        "id": "fT0fxgeWOttt2AOA",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.001066,
+          "RIGHT": 0.99796,
+          "CENTER": 0.000973
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 847,
+        "tokens_processed": 847,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.52094232881224,
+          4.320444068773578,
+          -2.6123472760390785
+        ]
+      },
+      {
+        "id": "oUw0fgGgsQAfY08R",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.001046,
+          "RIGHT": 0.997922,
+          "CENTER": 0.001031
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 618,
+        "tokens_processed": 618,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.539051803570349,
+          4.321401378483448,
+          -2.553507140539225
+        ]
+      },
+      {
+        "id": "YJ3Pj0d77VKpJsFe",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.002692,
+          "RIGHT": 0.994819,
+          "CENTER": 0.002489
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 901,
+        "tokens_processed": 901,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.2522686427494265,
+          3.6599853848511317,
+          -2.33063021920762
+        ]
+      },
+      {
+        "id": "Cg71CU86E3K78eIF",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.000755,
+          "RIGHT": 0.998944,
+          "CENTER": 0.0003
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 838,
+        "tokens_processed": 838,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.3977771909253978,
+          4.789438962367384,
+          -3.3198101964372437
+        ]
+      },
+      {
+        "id": "pcEG1iLCIEdsMIQa",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.000569,
+          "RIGHT": 0.99902,
+          "CENTER": 0.000411
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 853,
+        "tokens_processed": 853,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.663148690499846,
+          4.807984267701018,
+          -2.9872480548420377
+        ]
+      },
+      {
+        "id": "jFH3zQmPNE4MqOll",
+        "gold": "RIGHT",
+        "source": "The Epoch Times",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.003888,
+          "RIGHT": 0.990755,
+          "CENTER": 0.005356
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 711,
+        "tokens_processed": 711,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.218709645895012,
+          3.3217848061509274,
+          -1.898400562221994
+        ]
+      },
+      {
+        "id": "6YFdudW0empgLakl",
+        "gold": "RIGHT",
+        "source": "Washington Free Beacon",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.003066,
+          "RIGHT": 0.991624,
+          "CENTER": 0.005309
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 658,
+        "tokens_processed": 658,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "logits": [
+          -2.4535338980086308,
+          3.3253410384285416,
+          -1.9045071855504463
+        ]
+      }
+    ]
+  },
+  "paired_accuracy_delta": {
+    "full_minus_first": -0.05,
+    "bootstrap_95_percentile_ci": [
+      -0.11666666666666667,
+      0.0
+    ],
+    "resamples": 10000,
+    "seed": 20260929,
+    "limitations": "Unclustered exploratory interval; publisher/story dependence and training contamination not accounted for"
+  }
+}

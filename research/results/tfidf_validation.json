@@ -1,0 +1,41 @@
+{
+  "purpose": "domain-disjoint validation baseline; final test not evaluated",
+  "train_n": 23603,
+  "validation_n": 2356,
+  "accuracy": 0.2898981324278438,
+  "macro_f1": 0.2790930593053927,
+  "classification_report": {
+    "CENTER": {
+      "precision": 0.5668789808917197,
+      "recall": 0.28802588996763756,
+      "f1-score": 0.38197424892703863,
+      "support": 618.0
+    },
+    "LEFT": {
+      "precision": 0.596816976127321,
+      "recall": 0.27439024390243905,
+      "f1-score": 0.37593984962406013,
+      "support": 1640.0
+    },
+    "RIGHT": {
+      "precision": 0.042701863354037264,
+      "recall": 0.5612244897959183,
+      "f1-score": 0.07936507936507936,
+      "support": 98.0
+    },
+    "accuracy": 0.2898981324278438,
+    "macro avg": {
+      "precision": 0.40213260679102597,
+      "recall": 0.3745468745553316,
+      "f1-score": 0.2790930593053927,
+      "support": 2356.0
+    },
+    "weighted avg": {
+      "precision": 0.565915039748975,
+      "recall": 0.2898981324278438,
+      "f1-score": 0.36518642487187875,
+      "support": 2356.0
+    }
+  },
+  "seconds": 70.93221539000001
+}

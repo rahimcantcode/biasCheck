@@ -10,15 +10,35 @@ export interface PredictionProbabilities {
   CENTER: number;
 }
 
-export interface SegmentResult {
-  segment_index: number;
-  text: string;
-  label: Label;
-  label_id: number;
+export interface PredictionResult {
+  assessment?: string | null;
+  tentative_label?: Label | null;
+  score_type?: string;
+  relevance_scores?: Record<string, number> | null;
+  label: Label | null;
+  label_id: number | null;
+  raw_label: Label;
+  decision: "classified" | "abstained";
+  reason: string | null;
+  token_count: number;
+  tokens_processed: number;
+  chunk_count: number;
+  truncated: boolean;
+  calibrated: boolean;
   probabilities: PredictionProbabilities;
 }
 
+export interface SegmentResult extends PredictionResult {
+  segment_index: number;
+  text: string;
+  start: number;
+  end: number;
+}
+
 export interface PredictResponse {
+  overall: PredictionResult;
+  warnings: string[];
+  model: { weights_sha256: string; aggregation: string };
   source_type: SourceType;
   resolved_text: string;
   mode: Mode;
@@ -31,20 +51,20 @@ export async function analyzeInput(input: string, mode: Mode): Promise<PredictRe
     headers: {
       "Content-Type": "application/json",
     },
-    // Article view needs passage predictions, not a single truncated article label.
-    body: JSON.stringify({ input, mode: mode === "article" ? "sentence" : mode }),
+    body: JSON.stringify({ input, mode }),
   });
 
   if (!response.ok) {
     const fallbackMessage = "Analysis failed. Please try again.";
+    let message = fallbackMessage;
     try {
-      const error = (await response.json()) as { detail?: string };
-      throw new Error(error.detail ?? fallbackMessage);
-    } catch {
-      throw new Error(fallbackMessage);
-    }
+      const error = (await response.json()) as { detail?: unknown };
+      if (typeof error.detail === "string") message = error.detail;
+    } catch { /* Keep fallback for non-JSON upstream errors. */ }
+    throw new Error(message);
   }
 
   const data = (await response.json()) as PredictResponse;
-  return { ...data, mode };
+  if (!data.overall) throw new Error("The server needs the updated analysis API. Please update the backend first.");
+  return data;
 }

@@ -1,0 +1,99 @@
+{
+  "purpose": "Real model long-input integration and rejection checks, not accuracy",
+  "seconds": 32.53068458600001,
+  "response": {
+    "source_type": "text",
+    "resolved_text": "The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. I support lower corporate taxes and fewer regulations because private enterprise should drive economic growth.",
+    "mode": "article",
+    "overall": {
+      "assessment": "uncertain",
+      "tentative_label": null,
+      "relevance_scores": {
+        "politics": 0.9999822974205017,
+        "policy": 0.9999988675117493
+      },
+      "score_type": "independent_entailment",
+      "label": null,
+      "label_id": null,
+      "raw_label": "CENTER",
+      "probabilities": {
+        "LEFT": 3.4184861874564376e-07,
+        "CENTER": 0.49999773078934595,
+        "RIGHT": 0.4999878840548888
+      },
+      "decision": "abstained",
+      "reason": "experimental_model_not_validated",
+      "token_count": 656,
+      "tokens_processed": 656,
+      "chunk_count": 2,
+      "truncated": false,
+      "calibrated": false
+    },
+    "results": [
+      {
+        "assessment": "uncertain",
+        "tentative_label": null,
+        "relevance_scores": {
+          "politics": 0.9999822974205017,
+          "policy": 0.9999988675117493
+        },
+        "score_type": "independent_entailment",
+        "label": null,
+        "label_id": null,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 3.4184861874564376e-07,
+          "CENTER": 0.49999773078934595,
+          "RIGHT": 0.4999878840548888
+        },
+        "decision": "abstained",
+        "reason": "experimental_model_not_validated",
+        "token_count": 656,
+        "tokens_processed": 656,
+        "chunk_count": 2,
+        "truncated": false,
+        "calibrated": false,
+        "segment_index": 0,
+        "text": "The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. The city council met on Tuesday to review the public budget and schedule another meeting. I support lower corporate taxes and fewer regulations because private enterprise should drive economic growth.",
+        "start": 0,
+        "end": 3710
+      }
+    ],
+    "warnings": [
+      "Experimental assessment: this model and its decision rules have not passed independent validation. Tentative results can be wrong, especially for sarcasm, vague criticism, quotations, and mixed positions.",
+      "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+    ],
+    "model": {
+      "engine": "political_nli",
+      "model_id": "mlburnham/Political_DEBATE_large_v1.0",
+      "revision": "1a3aff1ecb97ad93a6de598f7414b1707de7e7c3",
+      "weights_sha256": "5f83396d09cb0b802eafbe1f33f0ca03632f8dc17115051624cc4ef85b9815d4",
+      "artifact_sha256": {
+        "tokenizer.json": "9313554f1d10f9e6addc02ea82c727f7e646d9cfb153d2cb62560b9268dd4ca4",
+        "tokenizer_config.json": "4f09b4ad07ef3017caa32bf62d47761a4c30fc660a95f74148920420746799c7",
+        "config.json": "2cc69e991a706f7b0e181db18da534695f33f7160679c181d7e0b5b8128b3706",
+        "special_tokens_map.json": "b70b72bbc44ed96ae896e1b26d2d269d40a58709c9de1428c9bbfa872fe7f7ce",
+        "model.safetensors": "5f83396d09cb0b802eafbe1f33f0ca03632f8dc17115051624cc4ef85b9815d4"
+      },
+      "aggregation": "overlapping_windows_mean_entailment_v1",
+      "decision_rules": "development_v2_mixed_guard",
+      "validation_status": "development_only",
+      "release_approved": false,
+      "hypotheses": {
+        "politics": "This text is about politics.",
+        "policy": "This text is about government policy.",
+        "LEFT": "The author of this text supports politically liberal positions.",
+        "RIGHT": "The author of this text supports politically conservative positions.",
+        "CENTER": "This text reports political information without taking a political side.",
+        "mixed": "The author endorses a combination of both liberal and conservative political positions."
+      },
+      "score_type": "independent_entailment"
+    }
+  },
+  "oversize": {
+    "detail": "Text exceeds the experimental engine limit of 12 windows. Please submit a shorter article."
+  },
+  "private_url": {
+    "detail": "Only public article URLs are supported."
+  }
+}

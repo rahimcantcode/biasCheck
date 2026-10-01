@@ -69,7 +69,7 @@ export function BiasInputCard({
               Live analysis workspace
             </div>
             <p className="text-sm text-slate-400">
-              Paste an article or its URL to see political leaning directly in the text.
+              Paste an English news article or its URL for a contextual political-leaning estimate.
             </p>
           </div>
 
@@ -78,11 +78,12 @@ export function BiasInputCard({
 
         <div className="grid gap-4 lg:grid-cols-[1fr_280px]">
           <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-3">
-            <label className="mb-3 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-500">
+            <label htmlFor="article-input" className="mb-3 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-500">
               <TextSearch className="h-4 w-4" />
               Article text or URL
             </label>
             <textarea
+              id="article-input"
               value={input}
               onChange={(event) => onInputChange(event.target.value)}
               onFocus={() => setFocused(true)}
@@ -100,7 +101,7 @@ export function BiasInputCard({
                   Input guidance
                 </div>
                 <p className="text-sm leading-6 text-slate-400">
-                  Article mode combines an overall reading with sentence colors. Choose sentence or paragraph mode to inspect passages at your preferred level of detail.
+                  Article mode processes the complete article. Passage modes show estimates when the model has enough context.
                 </p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-black/20 p-4">

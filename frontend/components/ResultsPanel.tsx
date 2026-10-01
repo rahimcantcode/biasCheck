@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { AlertTriangle, Check, Eye, EyeOff, ScanSearch } from "lucide-react";
 
 import type { Label, PredictResponse, SegmentResult } from "@/lib/api";
-import { buildArticleParts, summarizeArticle } from "@/lib/article";
+import { buildArticleParts } from "@/lib/article";
 
 interface ResultsPanelProps {
   data: PredictResponse | null;
@@ -13,6 +13,7 @@ interface ResultsPanelProps {
 }
 
 const LABELS: Label[] = ["LEFT", "CENTER", "RIGHT"];
+const ASSESSMENTS: Record<string, string> = { nonpolitical: "No political content detected", insufficient_context: "More context needed", uncertain: "Uncertain", mixed_or_conflicting: "Mixed or conflicting signals" };
 const NAMES = { LEFT: "Left", CENTER: "Center", RIGHT: "Right" };
 const TEXT_COLORS = { LEFT: "text-blue-300", CENTER: "text-slate-200", RIGHT: "text-red-300" };
 const BAR_COLORS = { LEFT: "bg-blue-400", CENTER: "bg-slate-500", RIGHT: "bg-red-400" };
@@ -24,7 +25,7 @@ export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
       <section aria-busy="true" aria-label="Analyzing article" className="mx-auto max-w-5xl rounded-[2rem] border border-white/10 bg-[#0d1320] p-7 sm:p-12">
         <p role="status" className="mb-10 flex items-center gap-3 text-sm text-slate-300">
           <span className="h-2 w-2 animate-pulse rounded-full bg-blue-300" />
-          Reading your article and mapping its political leaning…
+          Reading your article and checking political content. Long articles can take several minutes…
         </p>
         <div aria-hidden="true" className="mx-auto max-w-3xl space-y-8 motion-safe:animate-pulse">
           {[0, 1, 2].map((paragraph) => (
@@ -58,20 +59,20 @@ export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
         <h2 className="text-xl font-semibold text-white">A clearer way to read the news</h2>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-slate-400">
           Analyze an article to see its political leaning directly in the text.
-          Left in blue. Right in red. Center stays neutral.
+          Model leaning estimates appear in color when the system has enough context. Uncertain passages remain plain.
         </p>
       </section>
     );
   }
 
-  return <ArticleReader data={data} />;
+  return <ArticleReader key={`${data.mode}:${data.resolved_text}:${data.model.weights_sha256}`} data={data} />;
 }
 
 function ArticleReader({ data }: { data: PredictResponse }) {
   const [showColors, setShowColors] = useState(true);
   const [selected, setSelected] = useState<SegmentResult | null>(null);
   const parts = useMemo(() => buildArticleParts(data.resolved_text, data.results), [data]);
-  const summary = useMemo(() => summarizeArticle(data.results), [data]);
+  const summary = { ...data.overall, totalWords: data.resolved_text.trim().split(/\s+/).length };
   const overall = summary?.label;
 
   return (
@@ -87,30 +88,33 @@ function ArticleReader({ data }: { data: PredictResponse }) {
             <p className="mt-2 text-sm leading-6 text-slate-400">
               {summary?.totalWords.toLocaleString() ?? 0} words
               <span aria-hidden="true" className="mx-2 text-slate-600">·</span>
-              {data.mode === "paragraph" ? "Paragraph" : "Sentence"} analysis
+              {data.mode === "article" ? "Complete article" : data.mode === "paragraph" ? "Paragraph" : "Sentence"} analysis
             </p>
           </div>
           {summary && (
             <div className="shrink-0 sm:text-right">
               <p className="text-[10px] uppercase tracking-[0.18em] text-slate-500">Overall leaning</p>
               <p className={`mt-1 text-lg font-medium ${overall ? TEXT_COLORS[overall] : "text-slate-200"}`}>
-                {overall ? NAMES[overall] : "Mixed"}
+                {overall ? NAMES[overall] : summary.tentative_label ? `Tentative ${NAMES[summary.tentative_label]}` : summary.assessment ? ASSESSMENTS[summary.assessment] ?? summary.assessment : "No reliable label"}
               </p>
+              {summary.reason === "demo_estimate" && <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-amber-200/80">Experimental estimate</p>}
             </div>
           )}
         </div>
+        <p className="mt-4 text-xs text-slate-400">{data.overall.tokens_processed.toLocaleString()} of {data.overall.token_count.toLocaleString()} tokens processed in {data.overall.chunk_count} window(s).</p>
+        <div className="mt-4 space-y-2">{data.warnings.map(warning => <p key={warning} className="text-sm leading-6 text-amber-100/80">{warning}</p>)}</div>
         {summary && (
           <details className="mt-6">
             <summary className="w-fit cursor-pointer text-xs text-slate-400 transition hover:text-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300">
-              View score breakdown
+              Inspect experimental scores
             </summary>
-            <div className="mt-4 flex h-1.5 overflow-hidden rounded-full" aria-hidden="true">
+            <div className="mt-4 hidden" aria-hidden="true">
               {LABELS.map((label) => <span key={label} className={BAR_COLORS[label]} style={{ width: `${summary.probabilities[label] * 100}%` }} />)}
             </div>
             <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-400">
               {LABELS.map((label) => <span key={label}>{NAMES[label]} <span className={TEXT_COLORS[label]}>{(summary.probabilities[label] * 100).toFixed(1)}%</span></span>)}
             </div>
-            <p className="mt-3 text-xs leading-5 text-slate-500">Average model scores, weighted by passage word count. These are predictions, not a measure of factual accuracy.</p>
+            <p className="mt-3 text-xs leading-5 text-slate-500">Experimental model support scores, not probabilities of correctness. Entailment scores are independent and need not total 100%. Center means nonaligned political reporting, not factual accuracy or absence of bias.</p>
           </details>
         )}
       </header>
@@ -139,7 +143,7 @@ function ArticleReader({ data }: { data: PredictResponse }) {
         <article aria-label="Analyzed article" className="mx-auto max-w-3xl whitespace-pre-wrap break-words font-serif text-[18px] leading-[1.95] text-slate-200 sm:text-[20px]">
           {parts.map((part, index) => {
             const result = part.result;
-            if (!result || !showColors) return <span key={index}>{part.text}</span>;
+            if (!result || !result.label || data.mode === "article" || !showColors) return <span key={index}>{part.text}</span>;
             const confidence = (result.probabilities[result.label] * 100).toFixed(1);
             const description = `${NAMES[result.label]} leaning, ${confidence}% model score`;
             const active = selected === result;
@@ -168,11 +172,25 @@ function ArticleReader({ data }: { data: PredictResponse }) {
         </article>
       </div>
 
+      {data.mode !== "article" && data.overall.score_type === "independent_entailment" && (
+        <details className="border-t border-white/10 px-6 py-5 sm:px-10">
+          <summary className="cursor-pointer text-sm text-slate-300">Inspect experimental passage assessments</summary>
+          <ol className="mt-4 space-y-5">
+            {data.results.map(result => (
+              <li key={result.segment_index} className="rounded-lg border border-white/10 p-4 text-sm">
+                <p className="font-medium text-slate-200">{result.tentative_label ? `Tentative ${NAMES[result.tentative_label]}` : ASSESSMENTS[result.assessment ?? ""] ?? "Uncertain"}</p>
+                <p className="mt-2 whitespace-pre-wrap text-slate-400">{result.text}</p>
+                <p className="mt-2 text-xs text-slate-500">Independent support: {LABELS.map(label => `${NAMES[label]} ${(result.probabilities[label] * 100).toFixed(1)}%`).join(" / ")}</p>
+              </li>
+            ))}
+          </ol>
+        </details>
+      )}
       <footer className="border-t border-white/[0.08] bg-white/[0.015] px-6 py-5 sm:px-10">
         <p aria-live="polite" aria-atomic="true" className="text-xs leading-6 text-slate-400">
-          {selected ? (
+          {selected?.label ? (
             <><span className={`font-medium ${TEXT_COLORS[selected.label]}`}>{NAMES[selected.label]} leaning</span><span className="mx-2 text-slate-600">·</span>{(selected.probabilities[selected.label] * 100).toFixed(1)}% model score for this passage.</>
-          ) : showColors ? "Select any passage to inspect its prediction. Center text keeps its natural color." : "Plain reading view. Turn on Color bias to see the predictions in the text."}
+          ) : showColors ? "Select any passage to inspect its prediction. Uncertain passages remain plain." : "Plain reading view. Turn on Color bias to see the predictions in the text."}
         </p>
       </footer>
     </section>

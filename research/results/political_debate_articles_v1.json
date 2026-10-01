@@ -1,0 +1,914 @@
+{
+  "model": "mlburnham/Political_DEBATE_large_v1.0",
+  "revision": "1a3aff1ecb97ad93a6de598f7414b1707de7e7c3",
+  "hypotheses": {
+    "politics": "This text is about politics.",
+    "policy": "This text is about government policy.",
+    "LEFT": "The author of this text supports politically liberal positions.",
+    "RIGHT": "The author of this text supports politically conservative positions.",
+    "CENTER": "This text reports political information without taking a political side."
+  },
+  "purpose": "Same 60 public development articles; training overlap unknown; first paired-token window only",
+  "max_pair_tokens": 512,
+  "predictions": [
+    {
+      "id": "A1UtjguXkt9fXAiS",
+      "gold": "LEFT",
+      "text_sha256": "f7f4bfa444e0484fe76c6131aa85c97ae2905cfa21827c6152f8fff9ac9efbe5",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 1.9341885035828454e-06,
+        "LEFT": 3.2136870231624926e-06,
+        "RIGHT": 1.5054590107865806e-07,
+        "CENTER": 0.997378945350647
+      },
+      "seconds": 30.93617631699999
+    },
+    {
+      "id": "LTJQdxU7ctCt6qtb",
+      "gold": "LEFT",
+      "text_sha256": "53d559f4308a5d1d2eb71b55924f93bd9f33df26e894f6da56d07daab127c403",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999686479568481,
+        "policy": 1.6641170930142835e-07,
+        "LEFT": 0.9998983144760132,
+        "RIGHT": 1.6813872605325741e-07,
+        "CENTER": 4.994718665329856e-07
+      },
+      "seconds": 18.874450514000046
+    },
+    {
+      "id": "QU03UGLvFxY9PWkc",
+      "gold": "LEFT",
+      "text_sha256": "e1f8da83221147fb56a3a998eff488a5186ec7863e2818d4410519f7d65fefcc",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 1.9781448656885914e-07,
+        "LEFT": 0.055388372391462326,
+        "RIGHT": 2.4966251999103406e-07,
+        "CENTER": 0.020289793610572815
+      },
+      "seconds": 19.887020527999994
+    },
+    {
+      "id": "6X4Cexi05H1aEclX",
+      "gold": "LEFT",
+      "text_sha256": "bb4759d845678372c0eebc656ff7bcfc030965f30b0ab35a3f77c622c928efa6",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 1.5999343304429203e-05,
+        "LEFT": 0.9911359548568726,
+        "RIGHT": 1.4723322294685204e-07,
+        "CENTER": 0.00016065637464635074
+      },
+      "seconds": 16.800034407
+    },
+    {
+      "id": "dL3Aq5cZ3lvA2Ahx",
+      "gold": "LEFT",
+      "text_sha256": "fb087969ab26dd4b5cad67590aa3053cc4f2de396adf1cebf5a62380970610d7",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9999997615814209,
+        "LEFT": 5.866801870979543e-07,
+        "RIGHT": 0.9933813810348511,
+        "CENTER": 0.9890909790992737
+      },
+      "seconds": 18.254659081
+    },
+    {
+      "id": "xbsvELViO4J5H9HQ",
+      "gold": "LEFT",
+      "text_sha256": "6b3edd0fb4f5b79f18dea1bda9bb0b8608d0af2cb0a895a860efe71195b8c954",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9999983310699463,
+        "LEFT": 2.635930104588624e-05,
+        "RIGHT": 2.112190315983753e-07,
+        "CENTER": 0.9724733829498291
+      },
+      "seconds": 14.754584288000046
+    },
+    {
+      "id": "IVkQawktdCXlq8d2",
+      "gold": "LEFT",
+      "text_sha256": "44c459478a05f0ea48b301e9cae07826b91e7b43bd0e87383c1223ad21024855",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9966268539428711,
+        "LEFT": 0.026212679222226143,
+        "RIGHT": 0.02402385137975216,
+        "CENTER": 0.0010612014448270202
+      },
+      "seconds": 16.459498981000024
+    },
+    {
+      "id": "x44tm1vepTqPcbXD",
+      "gold": "CENTER",
+      "text_sha256": "013be1c31bac7adc057e7977f5e24b5aac97abfa9eecb05aade904157ca8a29f",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 0.9977676868438721,
+        "LEFT": 1.5587676216455293e-07,
+        "RIGHT": 7.646377525816206e-06,
+        "CENTER": 0.9999434947967529
+      },
+      "seconds": 27.75788032999992
+    },
+    {
+      "id": "P9X3V0Ug5phjwNui",
+      "gold": "LEFT",
+      "text_sha256": "3cfceb5541b3d8b6a6c866b4f458cf71facb87049719ebd31d534627f35f9a21",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9999997615814209,
+        "LEFT": 0.024949869140982628,
+        "RIGHT": 2.3685365135861502e-07,
+        "CENTER": 0.007489901501685381
+      },
+      "seconds": 10.977830928000003
+    },
+    {
+      "id": "S26w8LimEFAU1xY8",
+      "gold": "LEFT",
+      "text_sha256": "af79e284c055beed13de2b81527b79ff0674d3027eb6c0a156c9c77c91e9b35b",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 4.403727018598147e-07,
+        "LEFT": 0.025897745043039322,
+        "RIGHT": 1.691897182354296e-07,
+        "CENTER": 0.9981549382209778
+      },
+      "seconds": 11.240903056000093
+    },
+    {
+      "id": "OImK28Rt2uzgNBCv",
+      "gold": "LEFT",
+      "text_sha256": "f4aba46366a976328d1f640e0ba4065cea492f1aa62d0fe57b7238cd2083988f",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9999997615814209,
+        "LEFT": 6.561569989571581e-07,
+        "RIGHT": 1.5469484537788958e-07,
+        "CENTER": 0.9996234178543091
+      },
+      "seconds": 11.97056833900001
+    },
+    {
+      "id": "KrM462l9DCYLXTBE",
+      "gold": "LEFT",
+      "text_sha256": "23ff0a877e75e447408a11c649c9006d9f5049e129e7eb8a585ef882cc3b60ee",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 1.5050800072913262e-07,
+        "LEFT": 0.0033655744045972824,
+        "RIGHT": 1.4895867650466244e-07,
+        "CENTER": 0.8849444389343262
+      },
+      "seconds": 15.71358326699999
+    },
+    {
+      "id": "FGxnvHnkOcLMvUJp",
+      "gold": "CENTER",
+      "text_sha256": "f803d00f0af667f98d6b99fb918ce08184053f4d97276b46148260d0d2a5a7e3",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9980168342590332,
+        "LEFT": 6.296072115219431e-06,
+        "RIGHT": 0.004683316219598055,
+        "CENTER": 0.9849700927734375
+      },
+      "seconds": 17.531506187000105
+    },
+    {
+      "id": "WWECLzexWhqnWfs6",
+      "gold": "LEFT",
+      "text_sha256": "2d8a4fce57b385b39631f745da9065e57d6c9e729fce0f92cb3554bc049030b2",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.0012000792194157839,
+        "LEFT": 3.898290742654353e-06,
+        "RIGHT": 0.08553488552570343,
+        "CENTER": 0.022249989211559296
+      },
+      "seconds": 18.405945221000025
+    },
+    {
+      "id": "Ay2AZFipb1HJtUzY",
+      "gold": "LEFT",
+      "text_sha256": "160e1437a32358ac68affa52e28305d7776f2beaa0019d0336b8a5d1e456fadb",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 0.007540475577116013,
+        "LEFT": 1.718399715855412e-07,
+        "RIGHT": 0.000692694156896323,
+        "CENTER": 0.9887813925743103
+      },
+      "seconds": 14.534116000999916
+    },
+    {
+      "id": "p6X1ALlMnY8bdKup",
+      "gold": "CENTER",
+      "text_sha256": "739e8aa6065b41ff1d30ab4b7936e5f57fe3f279826c60bb27f42f9c63fa64e8",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 3.2414136512670666e-06,
+        "LEFT": 0.9935925602912903,
+        "RIGHT": 1.512178755547211e-07,
+        "CENTER": 0.08240186423063278
+      },
+      "seconds": 18.007062787999985
+    },
+    {
+      "id": "HKakND9h8F0KmI8M",
+      "gold": "LEFT",
+      "text_sha256": "b8e94cc20df8b67da3ef6dd30d6eb571ef01366d0bb4713127168642888fd693",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9991377592086792,
+        "policy": 5.405390197665838e-07,
+        "LEFT": 3.6185437579661084e-07,
+        "RIGHT": 1.6134806912759814e-07,
+        "CENTER": 0.14511308073997498
+      },
+      "seconds": 27.981998504000103
+    },
+    {
+      "id": "Isz8smKDy8JpIZAd",
+      "gold": "CENTER",
+      "text_sha256": "92d77fd9947c7c6d85257ee5202eb9329361b9954ce65f9ac3beb0d5068ddb4b",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 1.91402449445377e-07,
+        "policy": 1.962151969792103e-07,
+        "LEFT": 2.0732500161102507e-07,
+        "RIGHT": 1.9016830776763527e-07,
+        "CENTER": 0.0019605406560003757
+      },
+      "seconds": 17.46808923499998
+    },
+    {
+      "id": "3VvOHXZmSUCFX47T",
+      "gold": "CENTER",
+      "text_sha256": "228e35df136a60a26a1e13e66cf0e09dd47312aa8dd19f2061e0953e855a99e1",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 1.091131525754463e-05,
+        "LEFT": 0.00036214786814525723,
+        "RIGHT": 2.4177913360290404e-07,
+        "CENTER": 0.24007181823253632
+      },
+      "seconds": 18.01429902300015
+    },
+    {
+      "id": "l1mFnCPdHwJrG2Cr",
+      "gold": "LEFT",
+      "text_sha256": "0c63f021a35da30ba5fc398caae36dedcadf0b6fb1bb86e9a54281e62dc02655",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9999997615814209,
+        "LEFT": 2.40446610177969e-07,
+        "RIGHT": 7.060654752422124e-06,
+        "CENTER": 0.9877243041992188
+      },
+      "seconds": 16.05289264499993
+    },
+    {
+      "id": "764ruOww6IXvhHzn",
+      "gold": "LEFT",
+      "text_sha256": "8fd95974f8ba9287ebbf449338b641802c9b97c87fa30eecba394ff4d78457ac",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 3.198593105935288e-07,
+        "LEFT": 0.9934878349304199,
+        "RIGHT": 1.6108653255741956e-07,
+        "CENTER": 0.2513448894023895
+      },
+      "seconds": 18.313617115999932
+    },
+    {
+      "id": "ci4jfSgCkHPKBnvb",
+      "gold": "LEFT",
+      "text_sha256": "233623c8304d081d949e4f482f8bba5fbf89053d0a0bc86a685d195276d08cfc",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 1.9815793450561614e-07,
+        "policy": 1.7957427189685404e-07,
+        "LEFT": 5.2657101150543895e-06,
+        "RIGHT": 1.6400336733113363e-07,
+        "CENTER": 0.9995005130767822
+      },
+      "seconds": 11.815334786999983
+    },
+    {
+      "id": "OtTX91Qu63epoPvR",
+      "gold": "LEFT",
+      "text_sha256": "668de69674953758eaaa4d7f5fe9b2f96e79e8d2fa68edc7d727ce3fea4ec733",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 1.687649273662828e-07,
+        "policy": 1.7732891421928798e-07,
+        "LEFT": 1.907813782509038e-07,
+        "RIGHT": 2.0766694319718226e-07,
+        "CENTER": 0.9998719692230225
+      },
+      "seconds": 14.125894160999906
+    },
+    {
+      "id": "GYnyPpgAYosopwRI",
+      "gold": "LEFT",
+      "text_sha256": "2e98ceac34bdf037fabae011ff8f6560b28aa4f5128204f662687491f1719a9a",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 1.7320755318905867e-07,
+        "policy": 1.8481962626992754e-07,
+        "LEFT": 2.077008076639686e-07,
+        "RIGHT": 2.061182868828837e-07,
+        "CENTER": 0.0033932244405150414
+      },
+      "seconds": 16.637262308000118
+    },
+    {
+      "id": "TQjG8eDIiwzDAgEK",
+      "gold": "LEFT",
+      "text_sha256": "acd00edc534fd9a7544d9dbfeaf3501a5541f4b2ffa141f320bc8fe84015951a",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9999997615814209,
+        "LEFT": 4.310548149533133e-07,
+        "RIGHT": 0.00010289507918059826,
+        "CENTER": 0.99397212266922
+      },
+      "seconds": 16.964621923999857
+    },
+    {
+      "id": "elka1kDxA3O0yalx",
+      "gold": "CENTER",
+      "text_sha256": "d14c01ea1465f52b0cdb42c4d30896c341f8a1eb2bb4a7d26ab5f528038b2884",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9998657703399658,
+        "policy": 1.557586301714764e-06,
+        "LEFT": 2.39243718169746e-07,
+        "RIGHT": 1.695166105264434e-07,
+        "CENTER": 0.127030611038208
+      },
+      "seconds": 19.67785002100004
+    },
+    {
+      "id": "9zFOWSRAwrYRGx4L",
+      "gold": "CENTER",
+      "text_sha256": "8ef51d9670018927acf5236ce84c018befd49926528e5acc7a6d8b687b721d7c",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 0.9999991655349731,
+        "LEFT": 0.022805167362093925,
+        "RIGHT": 8.853663189256622e-07,
+        "CENTER": 0.002490853890776634
+      },
+      "seconds": 18.96530605199996
+    },
+    {
+      "id": "t3qjwfdYet2HjayC",
+      "gold": "CENTER",
+      "text_sha256": "11295614f010538f7323ee11c2fb3b0684f890626410c79a173f5a87b909734a",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9998199343681335,
+        "LEFT": 0.06339894980192184,
+        "RIGHT": 2.2500751128973207e-07,
+        "CENTER": 0.009414118714630604
+      },
+      "seconds": 18.451956555999914
+    },
+    {
+      "id": "juB8CBmz4zqKwWch",
+      "gold": "CENTER",
+      "text_sha256": "7e68c777f50e64080664c658bb2f6f6ac05c740f14d275a51a2ae9e553772664",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999995231628418,
+        "policy": 0.9927477240562439,
+        "LEFT": 0.029559791088104248,
+        "RIGHT": 3.358557307819865e-07,
+        "CENTER": 6.032589953974821e-05
+      },
+      "seconds": 18.458490774999973
+    },
+    {
+      "id": "5L26klnG7bJtWToU",
+      "gold": "CENTER",
+      "text_sha256": "0979d492a85a2878c43decda39370ecd95f8ed560a8a3364f4ff22a6d11be9c0",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9999985694885254,
+        "LEFT": 2.712335844989866e-05,
+        "RIGHT": 2.9861655548302224e-07,
+        "CENTER": 0.9596768021583557
+      },
+      "seconds": 18.21117834000006
+    },
+    {
+      "id": "2hjGwJk9l6miyaWA",
+      "gold": "CENTER",
+      "text_sha256": "1c86b575e07d019ab2f3be7699a15b908037428495062ae4f0a92c72f05f0cde",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 5.968842287984444e-06,
+        "LEFT": 0.9986138343811035,
+        "RIGHT": 1.3722322478315618e-07,
+        "CENTER": 9.563835192238912e-06
+      },
+      "seconds": 17.898382481
+    },
+    {
+      "id": "brUf4z4n9mfmdYzL",
+      "gold": "CENTER",
+      "text_sha256": "b15e71ad65ef585db9ec47d8c98f41162a3d2440f919fc64cfcd6bde0c727ac5",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 0.9999996423721313,
+        "LEFT": 7.679804548388347e-05,
+        "RIGHT": 0.00015727781283203512,
+        "CENTER": 3.172234210069291e-05
+      },
+      "seconds": 15.648383616000046
+    },
+    {
+      "id": "mlnVOiyluH0s84d7",
+      "gold": "CENTER",
+      "text_sha256": "d6a87f9f0d0006bc5c92aae4b559903b21caab817aec50eb6bca4b34bc84f213",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 2.0151260571310559e-07,
+        "LEFT": 1.1542505262696068e-06,
+        "RIGHT": 3.6208669484949496e-07,
+        "CENTER": 0.06809531897306442
+      },
+      "seconds": 18.037481063000087
+    },
+    {
+      "id": "Gmv65JWh6JkESamr",
+      "gold": "CENTER",
+      "text_sha256": "4aa5e07ef7ade222088f6bb4254cd0dad8bc3f8eaf5633b235292fa69da90821",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 0.9999995231628418,
+        "LEFT": 5.734779051635996e-07,
+        "RIGHT": 1.878902367025148e-07,
+        "CENTER": 0.9993365406990051
+      },
+      "seconds": 19.535746186000097
+    },
+    {
+      "id": "lVbHP1XgxtC3doRd",
+      "gold": "CENTER",
+      "text_sha256": "065436242b06704cf0c75e4086fd9946dc8c8429c6f257bd8af130a13d0e272c",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 9.964337550627533e-07,
+        "LEFT": 1.7949123787275312e-07,
+        "RIGHT": 1.5532845054622157e-07,
+        "CENTER": 0.9999957084655762
+      },
+      "seconds": 13.695169212999872
+    },
+    {
+      "id": "qZNgGKpdnkHqd1AB",
+      "gold": "CENTER",
+      "text_sha256": "bd87f65bfad6defdc8343479d0be0cb48398ee5e0d4770fd5774e178de514fad",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 1.9529348719515838e-05,
+        "policy": 1.6694755800017447e-07,
+        "LEFT": 2.7275837055640295e-07,
+        "RIGHT": 2.0260172561847867e-07,
+        "CENTER": 0.9999561309814453
+      },
+      "seconds": 15.817894602000024
+    },
+    {
+      "id": "QRJHNo6gXMmfxSSN",
+      "gold": "CENTER",
+      "text_sha256": "f97086aab111cddab849f0a306cb7ab3a039dd1339ccc15729aa2235ec676728",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 1.5157594646098005e-07,
+        "LEFT": 1.5886280380073003e-07,
+        "RIGHT": 1.73458474250765e-07,
+        "CENTER": 0.999985933303833
+      },
+      "seconds": 22.60446201500008
+    },
+    {
+      "id": "9zhOhrT4ljt5esIJ",
+      "gold": "CENTER",
+      "text_sha256": "2d2cd439c89b4f4005ef5d7bdf564b47d801c36cbeaf8bfc700796d19b003d73",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9996998310089111,
+        "policy": 2.1581324460839824e-07,
+        "LEFT": 0.9999639987945557,
+        "RIGHT": 2.4770261575213226e-07,
+        "CENTER": 4.5272099669091403e-07
+      },
+      "seconds": 18.233375972999966
+    },
+    {
+      "id": "WwyuvEaelVVNALE5",
+      "gold": "CENTER",
+      "text_sha256": "baac384dc9da4ca2d8de0cba7b1b60cf7177730c61f2783b1314e83521a81444",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 1.5268669528722967e-07,
+        "LEFT": 1.2125443618060672e-06,
+        "RIGHT": 2.8306762033025734e-05,
+        "CENTER": 0.01653900183737278
+      },
+      "seconds": 21.997312873000055
+    },
+    {
+      "id": "h8oJ5HLeo9tDD8go",
+      "gold": "CENTER",
+      "text_sha256": "12b97fee0ac553c2fba4b07b8cdc98f656cf1b14482e5ffcc34c06933ad162ed",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 0.9999974966049194,
+        "LEFT": 6.43747216599877e-06,
+        "RIGHT": 2.1903125002609158e-07,
+        "CENTER": 0.9994636178016663
+      },
+      "seconds": 20.944577178000145
+    },
+    {
+      "id": "HGhAJmLL8D5WGlCi",
+      "gold": "RIGHT",
+      "text_sha256": "0839517ecd83145c28cf55d7db9cd48abe4480d32b855b2265a4c3df1698a8d7",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9999954700469971,
+        "LEFT": 7.906426731096872e-07,
+        "RIGHT": 0.9999985694885254,
+        "CENTER": 6.924565241206437e-07
+      },
+      "seconds": 16.568114127999934
+    },
+    {
+      "id": "r7VxfeEUqGa0RmN1",
+      "gold": "RIGHT",
+      "text_sha256": "4e0dedbfda5b2d06aeff003ba5d0b212837b0ccb7753fcc489dde9458ed7a36e",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.03334025293588638,
+        "LEFT": 5.992626029183157e-06,
+        "RIGHT": 5.825483185617486e-06,
+        "CENTER": 0.9558992981910706
+      },
+      "seconds": 25.10361934299999
+    },
+    {
+      "id": "67NIbdPBhXtylhTs",
+      "gold": "RIGHT",
+      "text_sha256": "9a2bf38bf8afb7a90ff6226f22a62cca9302a2146b0bf839fdf88ae319aaf248",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 3.996330178779317e-06,
+        "policy": 1.5051273294375278e-07,
+        "LEFT": 1.4352208665968647e-07,
+        "RIGHT": 1.5940520370349986e-07,
+        "CENTER": 0.9998645782470703
+      },
+      "seconds": 21.455406544000198
+    },
+    {
+      "id": "uyZuBg0qOmGJtHjZ",
+      "gold": "RIGHT",
+      "text_sha256": "9cf7fd18eef5f2835f2cd34aa5543f69340e71eb43101b9fc465bf9b7ff8458c",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.004188633058220148,
+        "LEFT": 0.0037787756882607937,
+        "RIGHT": 3.5033729091082932e-06,
+        "CENTER": 2.306516989847296e-06
+      },
+      "seconds": 16.298401952000177
+    },
+    {
+      "id": "2bwspneeJmF0HwcM",
+      "gold": "RIGHT",
+      "text_sha256": "210d9db610036a6d0370cf743bf9ccd85d394fec3a8663ac7b3d9e46dccb9daa",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 1.724574394756928e-05,
+        "LEFT": 1.8364948118687607e-05,
+        "RIGHT": 1.492407761816139e-07,
+        "CENTER": 0.014330928213894367
+      },
+      "seconds": 15.730600691999825
+    },
+    {
+      "id": "0t2wFHxkEHIEvBd0",
+      "gold": "RIGHT",
+      "text_sha256": "2c59eca0e16fd2de932c9c87d48496a30253054ca45e9fb184092b5f30b5dabb",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 7.896940587670542e-06,
+        "LEFT": 3.777175550112588e-07,
+        "RIGHT": 0.9709028005599976,
+        "CENTER": 0.9613208770751953
+      },
+      "seconds": 17.081214759999966
+    },
+    {
+      "id": "LBexlrmMmsevO1cD",
+      "gold": "RIGHT",
+      "text_sha256": "e6d5092da174c0fb86481a63c414ddeebbe73cd02b7494ed253e99b5f7d22adb",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 0.9999988079071045,
+        "LEFT": 0.0909004807472229,
+        "RIGHT": 1.661319828372143e-07,
+        "CENTER": 0.029484374448657036
+      },
+      "seconds": 16.279876887
+    },
+    {
+      "id": "pz1sv7prho72zn2l",
+      "gold": "RIGHT",
+      "text_sha256": "af3e9a854eaf82346a66097ebff7b15d4526648cc991fa0894894ad228aedd96",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 2.8914029826410115e-05,
+        "LEFT": 6.411485742319201e-07,
+        "RIGHT": 0.9768306016921997,
+        "CENTER": 3.4762643963404116e-07
+      },
+      "seconds": 24.35263970999995
+    },
+    {
+      "id": "euK3ybzS65KsGDi5",
+      "gold": "RIGHT",
+      "text_sha256": "bb71b5c3a070dee0cf4305f16a0678b9128e706d5c67c4cd8f852fd571b5b2fc",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9487281441688538,
+        "policy": 1.6951935322140343e-07,
+        "LEFT": 0.9889726042747498,
+        "RIGHT": 1.606561994549338e-07,
+        "CENTER": 0.0007421848713420331
+      },
+      "seconds": 18.632459205000032
+    },
+    {
+      "id": "XI6l332YBwui0FCC",
+      "gold": "RIGHT",
+      "text_sha256": "5ed2c90a959452cb9761ebf9c54ff4c1c1fe844ba4aaa82b72e9b97c5c6b8bb6",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 0.9999735355377197,
+        "LEFT": 0.00010070267308037728,
+        "RIGHT": 0.06267278641462326,
+        "CENTER": 3.5182949886802817e-07
+      },
+      "seconds": 19.902272183999912
+    },
+    {
+      "id": "sXeju3lRqlTGEJBT",
+      "gold": "RIGHT",
+      "text_sha256": "7bbfe605e2b56e43d2bd75b44df60e3f80f73d02bc034ea99ad8e7da2df565f6",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9999481439590454,
+        "LEFT": 1.9742888923701685e-07,
+        "RIGHT": 0.9977759718894958,
+        "CENTER": 0.0266109611839056
+      },
+      "seconds": 25.471149575000027
+    },
+    {
+      "id": "2xNg0pz45yXhnEWj",
+      "gold": "RIGHT",
+      "text_sha256": "2beb1eed37554e4c4be1715247eba71e05d1dfba2ee50f8a05f1a02fb12602a9",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 1.5476906867206708e-07,
+        "LEFT": 0.0014491851907223463,
+        "RIGHT": 0.9949234127998352,
+        "CENTER": 0.003823945764452219
+      },
+      "seconds": 14.77031794000004
+    },
+    {
+      "id": "Gl5cqTkl71zsniTF",
+      "gold": "RIGHT",
+      "text_sha256": "265bd2cca746de6180403f8d0ca7f280c0334b890702077b23851c98c568a7f0",
+      "raw_label": "LEFT",
+      "scores": {
+        "politics": 0.9999991655349731,
+        "policy": 3.2204795843426837e-06,
+        "LEFT": 0.9929946064949036,
+        "RIGHT": 1.943467111686914e-07,
+        "CENTER": 0.06119729205965996
+      },
+      "seconds": 15.464477480000141
+    },
+    {
+      "id": "fT0fxgeWOttt2AOA",
+      "gold": "RIGHT",
+      "text_sha256": "62dcc824c2c8be748a0433eba9117945e7f1d5139ec995a507fa9acd1a648ede",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9911428689956665,
+        "policy": 1.6218838538861746e-07,
+        "LEFT": 1.580526713951258e-07,
+        "RIGHT": 0.003136575687676668,
+        "CENTER": 0.9513773322105408
+      },
+      "seconds": 16.770147333000068
+    },
+    {
+      "id": "oUw0fgGgsQAfY08R",
+      "gold": "RIGHT",
+      "text_sha256": "e411db53be0004cf63061d5f23bc7950bf8d226f1add84ca69f235d73bc2067e",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 0.9992808699607849,
+        "LEFT": 1.78543231754702e-07,
+        "RIGHT": 0.9999226331710815,
+        "CENTER": 0.02097702957689762
+      },
+      "seconds": 14.990363596999941
+    },
+    {
+      "id": "YJ3Pj0d77VKpJsFe",
+      "gold": "RIGHT",
+      "text_sha256": "442b3d0e32115903ad8b0224c79a7400efe6359ea9e7355331fb74e899528f7a",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9998030066490173,
+        "policy": 1.795157089645727e-07,
+        "LEFT": 7.184315563790733e-06,
+        "RIGHT": 0.3012029826641083,
+        "CENTER": 1.3594501979241613e-05
+      },
+      "seconds": 14.968600960000003
+    },
+    {
+      "id": "Cg71CU86E3K78eIF",
+      "gold": "RIGHT",
+      "text_sha256": "5ea083724064f1a215dc924189ab89ac58f5b4b0f7901128fda7a8c8a9c96b43",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 1.5200269842807757e-07,
+        "policy": 1.9309617016460834e-07,
+        "LEFT": 1.5936963393414771e-07,
+        "RIGHT": 1.5268146569269447e-07,
+        "CENTER": 0.7264513373374939
+      },
+      "seconds": 16.170587388000058
+    },
+    {
+      "id": "pcEG1iLCIEdsMIQa",
+      "gold": "RIGHT",
+      "text_sha256": "ef7d391ffe1fc11441aac4bafa3def1025c3f57fa0b30a9baf2d656041dc6038",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999966621398926,
+        "policy": 1.8934635193090799e-07,
+        "LEFT": 1.4968149741889647e-07,
+        "RIGHT": 0.9995822310447693,
+        "CENTER": 0.9643857479095459
+      },
+      "seconds": 21.68477466199988
+    },
+    {
+      "id": "jFH3zQmPNE4MqOll",
+      "gold": "RIGHT",
+      "text_sha256": "ff1aafaec2c8c8026681e5db10f32cad657b35f77a6205cf324dcee2a7d5f95c",
+      "raw_label": "CENTER",
+      "scores": {
+        "politics": 0.9999997615814209,
+        "policy": 0.9999996423721313,
+        "LEFT": 1.4979960383243451e-07,
+        "RIGHT": 0.0005999665590934455,
+        "CENTER": 0.9997661709785461
+      },
+      "seconds": 23.498190912999917
+    },
+    {
+      "id": "6YFdudW0empgLakl",
+      "gold": "RIGHT",
+      "text_sha256": "283507f6085375281e20790771c81cde8cf198f5021183032fbec01524217969",
+      "raw_label": "RIGHT",
+      "scores": {
+        "politics": 0.9999996423721313,
+        "policy": 7.56435099447117e-07,
+        "LEFT": 7.260945835696475e-07,
+        "RIGHT": 0.99359530210495,
+        "CENTER": 0.002792293904349208
+      },
+      "seconds": 21.576906870999892
+    }
+  ],
+  "metrics": {
+    "accuracy": 0.48333333333333334,
+    "macro_f1": 0.483065953654189,
+    "per_class": {
+      "CENTER": {
+        "precision": 0.41935483870967744,
+        "recall": 0.65,
+        "f1-score": 0.5098039215686274,
+        "support": 20.0
+      },
+      "LEFT": {
+        "precision": 0.375,
+        "recall": 0.3,
+        "f1-score": 0.3333333333333333,
+        "support": 20.0
+      },
+      "RIGHT": {
+        "precision": 0.7692307692307693,
+        "recall": 0.5,
+        "f1-score": 0.6060606060606061,
+        "support": 20.0
+      },
+      "accuracy": 0.48333333333333334,
+      "macro avg": {
+        "precision": 0.5211952026468155,
+        "recall": 0.48333333333333334,
+        "f1-score": 0.483065953654189,
+        "support": 60.0
+      },
+      "weighted avg": {
+        "precision": 0.5211952026468155,
+        "recall": 0.48333333333333334,
+        "f1-score": 0.4830659536541889,
+        "support": 60.0
+      }
+    },
+    "confusion_order": [
+      "LEFT",
+      "CENTER",
+      "RIGHT"
+    ],
+    "confusion_matrix": [
+      [
+        6,
+        12,
+        2
+      ],
+      [
+        6,
+        13,
+        1
+      ],
+      [
+        4,
+        6,
+        10
+      ]
+    ]
+  }
+}
