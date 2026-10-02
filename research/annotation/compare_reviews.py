@@ -1,20 +1,39 @@
 """Compare two independent pilot reviews. Does not manufacture final gold labels."""
 import argparse,json
 from collections import Counter
+from datetime import datetime
 from pathlib import Path
+import unicodedata
 LABELS={'LEFT','CENTER','RIGHT','NONPOLITICAL','UNCERTAIN'}
+
+def reviewer_key(value):
+    if not isinstance(value,str) or not value.strip():
+        raise ValueError('Reviewer identity is required')
+    return unicodedata.normalize('NFKC',value).strip().casefold()
+
+def validate_timestamp(value):
+    if not isinstance(value,str) or 'T' not in value:
+        raise ValueError('Completion timestamp must be a timezone-aware ISO datetime')
+    try:
+        parsed=datetime.fromisoformat(value.replace('Z','+00:00'))
+    except ValueError as exc:
+        raise ValueError('Invalid completion timestamp') from exc
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        raise ValueError('Completion timestamp requires an explicit timezone')
 
 def validate(review,manifest):
     if review.get('pilot_id')!=manifest['pilot_id'] or review.get('rubric_version')!='v1':raise ValueError('Pilot or rubric mismatch')
     reviewer=review.get('reviewer_id')
-    if not isinstance(reviewer,str) or not reviewer.strip():raise ValueError('Reviewer identity is required')
+    reviewer_key(reviewer)
     known={r['id']:r for r in manifest['items']};seen=set();result={}
+    if len(known)!=len(manifest['items']):raise ValueError('Duplicate manifest item IDs')
     for row in review.get('annotations',[]):
         id=row.get('id')
         if id not in known or id in seen:raise ValueError('Unknown or duplicate item ID')
         seen.add(id)
         if row.get('reviewer_id')!=reviewer:raise ValueError('Inconsistent reviewer identity')
         if row.get('text_sha256')!=known[id]['text_sha256']:raise ValueError('Text snapshot mismatch')
+        validate_timestamp(row.get('completed_at'))
         if row.get('status')=='skipped':
             if not row.get('skip_reason','').strip():raise ValueError('Skip reason required')
             continue
@@ -33,7 +52,7 @@ def agreement(pairs,field):
     return {'n':n,'agreement':observed,'cohens_kappa':(observed-chance)/(1-chance) if chance<1 else None}
 
 def compare(first,second,manifest):
-    if first.get('reviewer_id')==second.get('reviewer_id'):raise ValueError('Two distinct independent reviewers required')
+    if reviewer_key(first.get('reviewer_id'))==reviewer_key(second.get('reviewer_id')):raise ValueError('Two distinct independent reviewers required')
     a,b=validate(first,manifest),validate(second,manifest);common=sorted(set(a)&set(b));pairs=[(a[k],b[k]) for k in common];items={r['id']:r for r in manifest['items']}
     disagreements=[{'id':k,'reviewer_a':a[k],'reviewer_b':b[k],'adjudicated_label':None,'adjudicated_relevance':None,'adjudicator_id':None,'adjudication_rationale':None} for k in common if any(a[k][f]!=b[k][f] for f in ['label','relevance'])]
     return {'pilot_id':manifest['pilot_id'],'purpose':'rubric development only','reviewers':[first['reviewer_id'],second['reviewer_id']],

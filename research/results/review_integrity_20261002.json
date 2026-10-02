@@ -1,0 +1,132 @@
+{
+  "purpose": "Review evidence validation regression; not classifier accuracy",
+  "release_approved": false,
+  "new_human_annotations": 0,
+  "reserved_test_read": false,
+  "test_runtime": "Python 3.11 isolated stance-runtime; pytest 8.3.5",
+  "tests": {
+    "before": {
+      "counts": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "10",
+        "skipped": "0",
+        "tests": "18",
+        "time": "0.154",
+        "timestamp": "2026-10-02T15:22:19.710645-05:00",
+        "hostname": "Abderrahims-MacBook-Pro.local"
+      },
+      "sha256": "da5730087cdd822e46e2bb27647761eaecb22bb706266e19c562565b052655aa"
+    },
+    "after": {
+      "counts": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "18",
+        "time": "0.073",
+        "timestamp": "2026-10-02T15:22:58.898668-05:00",
+        "hostname": "Abderrahims-MacBook-Pro.local"
+      },
+      "sha256": "a184d5f4a9bbc2d031b1c8d975b95fd81a80bb659af00405bd81f375b3e88694"
+    }
+  },
+  "browser": {
+    "started_at": "2026-10-02T20:22:16.114Z",
+    "finished_at": "2026-10-02T20:22:42.367Z",
+    "browser": "154.0.8037.95",
+    "environment": "local Chromium driving public deployed site; not cloud browser",
+    "page_errors": [],
+    "failed_requests": [],
+    "mobile_overflow": false,
+    "cases": [
+      {
+        "id": "010d924f-4636-45ce-a97e-703055a109ad",
+        "status": 200,
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.993377,
+            "RIGHT": 0.005376,
+            "CENTER": 0.001247
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 97,
+          "tokens_processed": 97,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        }
+      },
+      {
+        "id": "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+        "status": 200,
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.994163,
+            "RIGHT": 0.005053,
+            "CENTER": 0.000784
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 152,
+          "tokens_processed": 152,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        }
+      },
+      {
+        "id": "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+        "status": 200,
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "CENTER",
+          "label_id": 2,
+          "raw_label": "CENTER",
+          "probabilities": {
+            "LEFT": 0.001637,
+            "RIGHT": 0.004395,
+            "CENTER": 0.993968
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 156,
+          "tokens_processed": 156,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        }
+      }
+    ],
+    "screenshots": {
+      "010d924f-4636-45ce-a97e-703055a109ad.png": "de34834edcb2ba5c9a7fc62e88f9be7c94250bced9705c24726b299c81bc8ba9",
+      "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be.png": "bc2a69d46411c24efabd0521667ff9c03db5a4ead06eac8926842dd4d92c9f9c",
+      "01cf769b-136c-483d-8e7f-d59e6a7b4dbe.png": "582236149d7d67e3e3397883d637b69cb312146374c637b337a8cfcb4d4a1b68",
+      "mobile.png": "ba0899835a603c5e8c056521a9886f96f907d6f9fc6a292a8a1181d5503d5f41"
+    }
+  },
+  "source_hashes": {
+    "research/annotation/compare_reviews.py": "e0d093b2105b45b5453934625082d4105d0a1f9e3fdd2fdb5b3d228a28012510",
+    "tests/test_annotation.py": "0f942cfe8fe4c9dfca65d707f1a035529cbd3424ec5905f1deaacffbc7c1b506",
+    "research/annotation/pilot_manifest.json": "97ddc6db156e472065c9091b35b08ecea6885b58f0817ebf7c72c163ba09bcf7"
+  }
+}

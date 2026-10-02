@@ -36,6 +36,14 @@ python compare_reviews.py --first review-Rahim-A.json --second review-reviewer-B
 
 The tool validates identities, frozen text hashes, required evidence and label consistency. It reports relevance and final-label agreement, Cohen's kappa, paired denominators, historical versus controlled slices, and an adjudication queue. It never manufactures missing judgments or approves gold labels.
 
+Reviewer IDs differing only by surrounding whitespace, case, or Unicode
+compatibility forms are not accepted as distinct reviewers. Original IDs remain
+unchanged in exports and reports; each row must still exactly match its export's
+reviewer ID. Reviewed and skipped items must have a calendar-valid ISO completion
+datetime with an explicit timezone (`Z` or a numeric offset). Duplicate manifest
+IDs are rejected, even if their contents match. These checks cannot authenticate
+a reviewer, verify a claimed timestamp, or prove independent human judgment.
+
 Preserve the two independent exports. Adjudicate differences with documented reasoning and reviewer identity. A future gold dataset requires completed adjudication and explicit human sign-off. All pilot items remain development data, excluded from the later final evaluation.
 
 ## Reproduce

@@ -1,5 +1,41 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 19:18 UTC heartbeat: human-review import integrity
+
+Shifted this bounded run from marginal classifier variants to evaluation-data
+integrity. The existing pilot importer accepted reviewer aliases as independent,
+nonempty but invalid completion timestamps, and duplicate manifest IDs. Added
+regression cases first: 10 failed and 8 passed on the old implementation. After
+the fix all 18 passed. Before/after JUnit evidence is retained under research/data/
+review-integrity-{before,after}-20261002.xml; hashes and counts are recorded in
+research/results/review_integrity_20261002.json.
+
+Distinct-reviewer checking now compares Unicode NFKC-normalized, trimmed,
+casefolded keys. Original identities are preserved in exports/reports, and exact
+row/header identity consistency remains required. Completion timestamps for
+reviewed and skipped items must parse as calendar-valid timezone-aware ISO
+datetimes. Duplicate manifest IDs fail validation even for identical contents.
+README documents these compatibility rules and limits. No pilot text, IDs,
+rubric, annotation provenance or labels changed. Human review count remains zero;
+these checks cannot authenticate people, prove independence or truthful timestamps,
+or make consensus into independent gold. Pilot remains development-only.
+
+GPT-6 Astra Medium reviewed the source-only validation design using the terminal
+client; advice is research/data/review-integrity-advice-20261002.txt. Initial test
+commands found pytest absent in global and legacy Python; installed pinned
+pytest 8.3.5 in the existing isolated research/checkpoints/stance-runtime environment,
+without modifying either other runtime. Test output records Python/tool environment.
+No model training, calibration, reserved-test use, or production deployment.
+
+Public-site smoke checks used the local Chromium fallback on the same three
+ordered training examples as the dual-axis run. All returned HTTP 200 and the
+same LEFT/LEFT/CENTER scores; no page errors, request failures or mobile overflow.
+Mobile screenshot inspected. Raw responses/screenshots are in
+outputs/live-browser-review-integrity-20261002; sanitized outputs and screenshot
+hashes are included in the integrity result. These are functional checks only,
+not classifier accuracy evidence. High accuracy remains unproven, with independent
+task-matched human judgments still the central missing evaluation input.
+
 ## 2026-10-02 18:13 UTC: fixed lexical/semantic hybrid training CV
 
 Trained ten new classifier heads: five semantic-only and five hybrid models,

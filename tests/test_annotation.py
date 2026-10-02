@@ -26,6 +26,28 @@ def test_comparison_preserves_disagreement_and_missing_items():
 def test_same_reviewer_rejected():
     with pytest.raises(ValueError,match='distinct'):compare(review(),review(),M)
 
+@pytest.mark.parametrize('alias',[' A ', 'a', '\uFF21'])
+def test_reviewer_aliases_are_not_independent(alias):
+    with pytest.raises(ValueError,match='distinct'):
+        compare(review('A'),review(alias),M)
+
+@pytest.mark.parametrize('timestamp',['not-a-date','2026-09-29','2026-09-29T00:00:00','2026-02-30T00:00:00Z',123])
+def test_invalid_completion_timestamp_rejected(timestamp):
+    r=review();r['annotations'][0]['completed_at']=timestamp
+    with pytest.raises(ValueError):validate(r,M)
+
+def test_duplicate_manifest_ids_rejected():
+    manifest=copy.deepcopy(M);manifest['items'].append(copy.deepcopy(manifest['items'][0]))
+    with pytest.raises(ValueError):validate(review(),manifest)
+
+def test_skipped_item_requires_valid_completion_timestamp():
+    r=review();r['annotations'][0].update(status='skipped',skip_reason='Snapshot unavailable',completed_at='invalid')
+    with pytest.raises(ValueError):validate(r,M)
+
+def test_timezone_offset_timestamp_accepted():
+    r=review();r['annotations'][0]['completed_at']='2026-09-28T19:00:00-05:00'
+    assert len(validate(r,M))==1
+
 @pytest.mark.parametrize('mutation',['hash','duplicate','unread','relevance'])
 def test_invalid_review_rejected(mutation):
     r=review();a=r['annotations'][0]
