@@ -1,5 +1,113 @@
 # Working experiment log (not a final report)
 
+
+## 2026-10-02: bounded baselines, supervision sensitivity and phrase-evidence groundwork
+
+### Training-only comparisons (no production promotion)
+
+Recovered exactly the frozen 115 training rows: SHA-256
+`5ebefc86e5da25784649b895753219207913cbcb042b85e7e90fdf4b84f2d1b9`.
+Pinned upstream combined CSV bytes include nontraining records; recovery filters
+by the known training-ID allowlist before accessing those records' text/label
+fields. No validation/test JSONL was constructed or evaluated. The 66 reused
+validation items and 89 reserved test items were not used for selection.
+
+Registered before fitting: raw/known-exact-footer-clean views, word/bigram features,
+LR C=1 control, LinearSVC and one-versus-rest NB-SVM C=.1/1/10, five grouped folds.
+Vocabulary/IDF and NB ratios are fitted only within each training fold. Known
+reviewed episode IDs are unioned transitively with event-string groups. This still
+leaves 42 groups because the five training IDs already shared an event string.
+Canonical group names change GroupKFold tie ordering; historical 58/115 versus the
+new control's 64/115 is NOT an improvement comparison. Use same-fold controls.
+
+Seventy fits across fourteen candidates completed with no convergence warnings.
+Raw LR control: 64/115 released-label agreement, macro-F1 .4786,
+LEFT/CENTER/RIGHT recall .5526/.1538/.7647. None of the other candidates exceeded
+its macro-F1. All candidates' CENTER recall lies between zero and .1538. These
+are weak, exploratory corpus-reference results, not independent product accuracy.
+Complete protocols, fold IDs, OOF decisions/margins, dependency/model hashes,
+recovery provenance and limitations are preserved in
+`results/training_linear_cv_20261002.json`.
+
+One subsequent fixed diagnostic tested the reference-disagreement issue: train
+raw LR C=1 only on unanimous training items, retaining identical folds and all 115
+held-out-training examples in evaluation. All five fitted subsets retained all
+three classes (40–45 fit rows). Agreement fell to 51/115, macro-F1 .4455.
+CENTER recall rose 4/26 to 21/26, while LEFT fell 21/38 to 16/38 and RIGHT fell
+39/51 to 14/51. Predicted CENTER counts rose 10 to 69. Unanimous held-out agreement
+rose 28/54 to 32/54, while disputed agreement fell 36/61 to 19/61. Filtering changes
+sample size, class/topic composition, vocabulary and IDF together; this is not
+proof the disputed labels are incorrect. Exploratory paired macro-F1 interval
+[-.1288,.0669] spans zero. Original control results were not overwritten.
+See `results/training_label_provenance_20261002.json`.
+
+All 75 saved artifacts reloaded and reproduced all 1,725 predictions/margins.
+Training rows, downloaded source snapshots and weights remain git-ignored.
+CC-BY-NC-SA corpus-derived artifacts remain noncommercial research. No candidate,
+threshold or cleaned view was selected for deployment. Further tuning of this
+small corpus is not justified as a path to a credible high-accuracy claim; the
+next dependency is task-matched independent human supervision.
+
+### Correct evaluation and annotation contracts
+
+Fixed a release-evaluation bug: raw-label macro-F1 and recall previously ignored
+abstentions. Decision-aware metrics now count abstentions as misses, retain an
+ABSTAIN column and class-specific coverage; explicitly named raw metrics remain
+available separately. Policy calibration/test checkpoint, preprocessing version, mode and label
+mappings must match. Exact-source input preservation changes prior normalization;
+legacy policies are rejected unless recalibrated with the new input contract. NaN/infinite/wrong-shape logits are rejected rather than accidentally
+passing threshold comparisons. Marginal Wilson intervals remain descriptive,
+not independent-episode bounds. A frozen uncertainty handling/interval protocol
+is still absent, so certification remains blocked and no policy is approved.
+
+The existing 100-item human pilot now has an explicit v2 reviewer workflow;
+v1 artifacts are preserved. Primary author framing is separate from optional
+policy stance, attribution, insufficient/mixed uncertainty, prior exposure and
+external-context use. Human-source and independence attestations are required but
+are assertions to audit, not software proof of independence. No human judgments
+were created. Pilot development material cannot become an independent final test.
+The corpus context caveat is now explicit: original annotators could consult full
+articles/background/party panels, and their actual extra-context usage is unknown.
+
+### Experimental phrase highlighting and hard blockers
+
+Implemented UTF-8 .txt input, exact original-text rendering, code-point-bound
+phrase evidence, author-only blue LEFT/red RIGHT highlighting, quote/unknown
+nonendorsement behavior, safe HTML rendering, overlap rejection and stale-request
+guards. The article classifier never manufactures evidence from its class label.
+Phrase extraction is disabled by default. A separately configured loopback-only
+structured model server can process arbitrary text; an optional exact-text cache
+supports research. Neither route uses an authenticated research CLI in HTTP.
+
+Frozen 26-case actual model probe was attempted with a fixed full-context prompt.
+All six CLI batches failed before inference with `Read-only file system (os error
+30)` during in-process app-server initialization. Valid model outputs: zero;
+semantic evaluation status is `not_run_provider_initialization_failed`, and
+quality rates are null. This is an infrastructure failure, not a 0% model result.
+No protected configuration/authentication path was modified. The independent
+reviewer's 12 transfer diagnostics remain unrun; no self-hosted model weights,
+phrase accuracy, latency or memory have been validated.
+
+Original RoBERTa weights were recovered and loaded under pinned CPU dependencies;
+SHA-256 remains `548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d`.
+A real FastAPI TestClient request preserved emoji, CRLF, tabs and boundary spaces,
+withheld the unapproved label and returned no fabricated highlights. That actual
+JSON passed React static rendering verification. Loopback mock-provider tests
+exercise complete source transport and fail-closed response validation; mocked
+semantic answers do not establish real extraction quality.
+
+Final local verification at this checkpoint: 209 Python tests passed, 33 frontend
+tests passed, dependency checks passed, TypeScript checks and production build
+passed. Browser visual/interactive QA is unverified: the dot cloud browser blocked
+the local URL, and the frontend server process reported cancelled network
+approval. No alternate route bypassed those restrictions. See
+`PHRASE_EVIDENCE.md` for the exact contract, commands and deployment prerequisites.
+
+Deployment requires the user's connected Mac/authorized SSH path, a verified
+local inference provider and operational capacity, rights review, genuine human
+article/phrase labels and independent quality gates. No VPS access, root-password
+handling, merge, model replacement or production deployment occurred in this run.
+
 ## 2026-10-02 04:21 UTC: training-only footer augmentation CV
 
 Ran five-fold GroupKFold on the 115 training articles (42 source event strings),

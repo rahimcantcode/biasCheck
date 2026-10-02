@@ -1,0 +1,92 @@
+{
+  "purpose": "Real original RoBERTa API smoke; no phrase model ran; not accuracy",
+  "http_status": 200,
+  "seconds": 0.6503061080002226,
+  "exact_source_preserved": true,
+  "release_approved": false,
+  "response": {
+    "source_type": "text",
+    "resolved_text": "  \ud83d\udc08 my cat is pretty and taxing the rich is good\r\n\t",
+    "mode": "article",
+    "overall": {
+      "assessment": null,
+      "tentative_label": null,
+      "relevance_scores": null,
+      "score_type": "class_probability",
+      "label": null,
+      "label_id": null,
+      "raw_label": "RIGHT",
+      "probabilities": {
+        "LEFT": 0.001929,
+        "RIGHT": 0.997745,
+        "CENTER": 0.000326
+      },
+      "decision": "abstained",
+      "reason": "model_not_validated",
+      "token_count": 17,
+      "tokens_processed": 17,
+      "chunk_count": 1,
+      "truncated": false,
+      "calibrated": false
+    },
+    "results": [
+      {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": null,
+        "label_id": null,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.001929,
+          "RIGHT": 0.997745,
+          "CENTER": 0.000326
+        },
+        "decision": "abstained",
+        "reason": "model_not_validated",
+        "token_count": 17,
+        "tokens_processed": 17,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false,
+        "segment_index": 0,
+        "text": "  \ud83d\udc08 my cat is pretty and taxing the rich is good\r\n\t",
+        "start": 0,
+        "end": 51
+      }
+    ],
+    "warnings": [
+      "This checkpoint has not passed independent validation. Political labels are withheld; experimental scores are available below.",
+      "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+    ],
+    "model": {
+      "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+      "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+      "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+      "id2label": {
+        "0": "LEFT",
+        "1": "RIGHT",
+        "2": "CENTER"
+      },
+      "aggregation": "new_token_weighted_logit_mean_v1",
+      "preprocessing": "plain_text_exact_url_article_extraction_v2",
+      "max_length": 512,
+      "stride": 64,
+      "demo_mode": false,
+      "transformers": "4.57.1",
+      "torch": "2.6.0+cpu",
+      "tokenizers": "0.22.2"
+    },
+    "evidence_spans": [],
+    "evidence_status": "unavailable",
+    "evidence_metadata": {
+      "evidence_source": "experimental_phrase_classifier",
+      "source_text_sha256": "7acb8ac942551abcbff38c6507a6260ba93fc547684712b8548184a4ed645bb4",
+      "offset_unit": "unicode_code_point",
+      "calibrated": false,
+      "release_approved": false,
+      "reason": "Experimental phrase extraction is not configured"
+    }
+  }
+}

@@ -31,6 +31,16 @@ class SegmentPrediction(PredictionResult):
     start: int
     end: int
 
+class EvidenceSpan(BaseModel):
+    # Python Unicode code-point positions into the exact resolved_text, end exclusive.
+    start: int = Field(ge=0, strict=True)
+    end: int = Field(gt=0, strict=True)
+    text: str = Field(min_length=1)
+    label: Literal['LEFT', 'RIGHT']
+    attribution: Literal['author', 'quoted', 'unknown']
+    status: Literal['experimental'] = 'experimental'
+    rationale: str = ''
+
 class PredictResponse(BaseModel):
     source_type: SourceType
     resolved_text: str
@@ -39,6 +49,9 @@ class PredictResponse(BaseModel):
     results: list[SegmentPrediction]
     warnings: list[str]
     model: dict
+    evidence_spans: list[EvidenceSpan] = Field(default_factory=list)
+    evidence_status: Literal['available', 'unavailable', 'invalid'] = 'unavailable'
+    evidence_metadata: dict = Field(default_factory=dict)
 
 class HealthResponse(BaseModel):
     status: str

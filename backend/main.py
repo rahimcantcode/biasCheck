@@ -10,11 +10,13 @@ try:
     from .model import get_model, get_tokenizer, get_policy, model_metadata, predict_text
     from .schemas import HealthResponse, PredictRequest, PredictResponse, SegmentPrediction
     from .utils import resolve_input, segment_spans
+    from .evidence import extract_phrase_evidence
 except ImportError:
     from config import get_settings
     from model import get_model, get_tokenizer, get_policy, model_metadata, predict_text
     from schemas import HealthResponse, PredictRequest, PredictResponse, SegmentPrediction
     from utils import resolve_input, segment_spans
+    from evidence import extract_phrase_evidence
 ENGINE = os.getenv('BIASCHECK_ENGINE', 'roberta')
 if ENGINE not in ('roberta', 'political_nli'):
     raise RuntimeError('BIASCHECK_ENGINE must be roberta or political_nli')
@@ -34,7 +36,7 @@ async def lifespan(app):
     get_policy()
     yield
 
-app = FastAPI(title='Bias Checker API', version='0.3.0', lifespan=lifespan)
+app = FastAPI(title='Bias Checker API', version='0.4.0', lifespan=lifespan)
 if settings.allowed_origins:
     app.add_middleware(CORSMiddleware, allow_origins=settings.allowed_origins, allow_credentials=False,
                        allow_methods=['GET', 'POST'], allow_headers=['Content-Type'])
@@ -76,8 +78,15 @@ def _predict(request: PredictRequest):
         if request.mode != 'article':
             warnings.append("Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.")
         warnings.append('This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language.')
+        evidence=extract_phrase_evidence(text)
+        if evidence['status']=='available':
+            warnings.append('Phrase highlights are experimental full-context model suggestions, separately generated from the article classifier. They are not validated explanations or accuracy estimates.')
+        elif evidence['status']=='invalid':
+            warnings.append('Phrase evidence could not be verified against this exact article, so no phrases were highlighted.')
         return PredictResponse(source_type=source_type, resolved_text=text, mode=request.mode,
-                               overall=overall, results=results, warnings=warnings, model=model_metadata())
+                               overall=overall, results=results, warnings=warnings, model=model_metadata(),
+                               evidence_spans=evidence['spans'] if evidence['status']=='available' else [],evidence_status=evidence['status'],
+                               evidence_metadata={k:v for k,v in evidence.items() if k not in ('spans','status')})
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     except requests.RequestException as exc:

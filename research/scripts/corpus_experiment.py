@@ -50,8 +50,8 @@ def prepare(source, output):
                 "revision": subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True).strip(),
                 "license": "CC-BY-NC-SA-4.0; research only; not approved for commercial deployment",
                 "split_method": "Exact text unique; normalized event-string-group-disjoint train/validation/test; seeds 20261001,20261002; not proof of event-family independence",
-                "text_view": "Title and three excerpts shown to annotators, not full article HTML",
-                "limitations": ["Different event strings can describe a shared news episode; event-family audit required", "Publisher overlap not excluded", "Pretraining overlap unknown", "Center/partisan disagreements resolved toward partisan by source", "Historical US news only", "Strict-agreement subset is selection-biased toward easier items"], "splits": {}}
+                "text_view": "Title and three displayed excerpts; annotators could also open full articles, event background and party context, with unknown actual usage",
+                "limitations": ["Annotator extra-context usage is unknown: snippet reconstruction does not establish matched human/model information", "Different event strings can describe a shared news episode; event-family audit required", "Publisher overlap not excluded", "Pretraining overlap unknown", "Center/partisan disagreements resolved toward partisan by source", "Historical US news only", "Strict-agreement subset is selection-biased toward easier items"], "splits": {}}
     for name, items in splits.items():
         content = "".join(json.dumps(r) + "\n" for r in items)
         (output / f"{name}.jsonl").write_text(content)

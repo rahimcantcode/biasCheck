@@ -166,4 +166,9 @@ def segment_text(text,mode):
 
 def resolve_input(raw_input):
     value = raw_input.strip()
-    return ('url',fetch_article_text(value)) if looks_like_url(value) else ('text',clean_text(value))
+    # The resolved article is the immutable coordinate system for evidence spans.
+    # Normalize extracted HTML in fetch_article_text, but never rewrite pasted or
+    # uploaded plain text (including tabs, CRLF, Unicode and boundary whitespace).
+    if not value:
+        return 'text', ''
+    return ('url',fetch_article_text(value)) if looks_like_url(value) else ('text',raw_input)

@@ -3,8 +3,9 @@
 import { useMemo, useState } from "react";
 import { AlertTriangle, Check, Eye, EyeOff, ScanSearch } from "lucide-react";
 
-import type { Label, PredictResponse, SegmentResult } from "@/lib/api";
-import { buildArticleParts } from "@/lib/article";
+import type { EvidenceSpan, Label, PredictResponse } from "@/lib/api";
+import { buildArticleParts } from "../lib/article";
+import { ArticleText } from "./ArticleText";
 
 interface ResultsPanelProps {
   data: PredictResponse | null;
@@ -18,7 +19,7 @@ const NAMES = { LEFT: "Left", CENTER: "Center", RIGHT: "Right" };
 const TEXT_COLORS = { LEFT: "text-blue-300", CENTER: "text-slate-200", RIGHT: "text-red-300" };
 const BAR_COLORS = { LEFT: "bg-blue-400", CENTER: "bg-slate-500", RIGHT: "bg-red-400" };
 
-// A fresh response mounts a fresh reader, clearing the previous passage selection.
+// A fresh response mounts a fresh reader, clearing the previous phrase selection.
 export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
   if (loading) {
     return (
@@ -58,8 +59,8 @@ export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
         <ScanSearch className="mx-auto mb-4 h-6 w-6 text-slate-400" />
         <h2 className="text-xl font-semibold text-white">A clearer way to read the news</h2>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-slate-400">
-          Analyze an article to see its political leaning directly in the text.
-          Model leaning estimates appear in color when the system has enough context. Uncertain passages remain plain.
+          Analyze an article to explore its political leaning and any supported expressions in the original text.
+          Phrase annotations are experimental. Text without supported phrase evidence stays plain.
         </p>
       </section>
     );
@@ -70,9 +71,11 @@ export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
 
 function ArticleReader({ data }: { data: PredictResponse }) {
   const [showColors, setShowColors] = useState(true);
-  const [selected, setSelected] = useState<SegmentResult | null>(null);
-  const parts = useMemo(() => buildArticleParts(data.resolved_text, data.results), [data]);
-  const summary = { ...data.overall, totalWords: data.resolved_text.trim().split(/\s+/).length };
+  const [selected, setSelected] = useState<EvidenceSpan | null>(null);
+  const phraseEvidenceAvailable = data.evidence_status === "available" && data.evidence_metadata?.offset_unit === "unicode_code_point";
+  const parts = useMemo(() => buildArticleParts(data.resolved_text, phraseEvidenceAvailable ? data.evidence_spans : []), [data, phraseEvidenceAvailable]);
+  const highlightCount = parts.filter(part => part.evidence).length;
+  const summary = { ...data.overall, totalWords: data.resolved_text.trim() ? data.resolved_text.trim().split(/\s+/).length : 0 };
   const overall = summary?.label;
 
   return (
@@ -120,56 +123,40 @@ function ArticleReader({ data }: { data: PredictResponse }) {
       </header>
 
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.06] bg-white/[0.015] px-6 py-4 sm:px-10">
-        <div aria-label="Text color legend" className="flex flex-wrap gap-x-5 gap-y-2 text-xs">
-          {LABELS.map((label) => (
+        <div aria-label="Experimental phrase highlight legend" className="flex flex-wrap gap-x-5 gap-y-2 text-xs">
+          {(["LEFT", "RIGHT"] as const).map((label) => (
             <span key={label} className={`flex items-center gap-2 ${TEXT_COLORS[label]}`}>
               <span aria-hidden="true" className={`h-1.5 w-1.5 rounded-full ${BAR_COLORS[label]}`} />
-              {NAMES[label]}
+              {NAMES[label]}-leaning expression
             </span>
           ))}
+          <span className="text-slate-400">Plain text: no supported author-stance annotation</span>
         </div>
         <button
           type="button"
           aria-pressed={showColors}
+          disabled={highlightCount === 0}
           onClick={() => { setShowColors(!showColors); setSelected(null); }}
-          className="flex min-h-9 items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-xs text-slate-300 transition hover:border-white/25 hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300"
+          className="flex min-h-9 items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-xs text-slate-300 transition hover:border-white/25 hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {showColors ? <Eye className="h-3.5 w-3.5" /> : <EyeOff className="h-3.5 w-3.5" />}
-          Color bias
+          Highlight expressions
         </button>
       </div>
 
       <div className="px-6 py-9 sm:px-10 sm:py-12">
-        <article aria-label="Analyzed article" className="mx-auto max-w-3xl whitespace-pre-wrap break-words font-serif text-[18px] leading-[1.95] text-slate-200 sm:text-[20px]">
-          {parts.map((part, index) => {
-            const result = part.result;
-            if (!result || !result.label || data.mode === "article" || !showColors) return <span key={index}>{part.text}</span>;
-            const confidence = (result.probabilities[result.label] * 100).toFixed(1);
-            const description = `${NAMES[result.label]} leaning, ${confidence}% model score`;
-            const active = selected === result;
-            return (
-              <span
-                key={index}
-                role="button"
-                tabIndex={0}
-                aria-label={`${description}: ${part.text}`}
-                aria-pressed={active}
-                title={description}
-                onClick={() => setSelected(active ? null : result)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    setSelected(active ? null : result);
-                  }
-                  if (event.key === "Escape") setSelected(null);
-                }}
-                className={`cursor-pointer rounded-sm decoration-1 underline-offset-[5px] transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400 ${TEXT_COLORS[result.label]} ${active ? "bg-white/5 underline" : ""}`}
-              >
-                {part.text}
-              </span>
-            );
-          })}
-        </article>
+        <div className="mx-auto mb-7 max-w-3xl rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+          <p className="text-xs font-medium uppercase tracking-[0.12em] text-slate-300">Experimental phrase annotations</p>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            {highlightCount > 0
+              ? `${highlightCount} model-suggested author expression${highlightCount === 1 ? "" : "s"} found. Blue marks a Left-leaning expression; red marks a Right-leaning expression. Select a highlight to inspect it.`
+              : phraseEvidenceAvailable
+                ? "No supported author expressions are available to highlight. The original text is shown without highlights, even if an overall model estimate appears above."
+                : "No supported phrase-level evidence is available for this article. Phrase analysis is unavailable, so the original text stays plain. An overall model estimate cannot identify specific expressions."}
+          </p>
+          <p className="mt-2 text-xs leading-5 text-slate-500">Annotations are experimental and may be wrong. Quoted views and uncertain attribution stay plain. Unhighlighted text does not establish neutrality, and highlights do not establish factual accuracy or the author’s overall politics.</p>
+        </div>
+        <ArticleText parts={parts} showHighlights={showColors} selected={selected} onSelect={setSelected} />
       </div>
 
       {data.mode !== "article" && data.overall.score_type === "independent_entailment" && (
@@ -189,8 +176,8 @@ function ArticleReader({ data }: { data: PredictResponse }) {
       <footer className="border-t border-white/[0.08] bg-white/[0.015] px-6 py-5 sm:px-10">
         <p aria-live="polite" aria-atomic="true" className="text-xs leading-6 text-slate-400">
           {selected?.label ? (
-            <><span className={`font-medium ${TEXT_COLORS[selected.label]}`}>{NAMES[selected.label]} leaning</span><span className="mx-2 text-slate-600">·</span>{(selected.probabilities[selected.label] * 100).toFixed(1)}% model score for this passage.</>
-          ) : showColors ? "Select any passage to inspect its prediction. Uncertain passages remain plain." : "Plain reading view. Turn on Color bias to see the predictions in the text."}
+            <><span className={`font-medium ${TEXT_COLORS[selected.label]}`}>Experimental {NAMES[selected.label]}-leaning expression</span><span className="mx-2 text-slate-600">·</span>Attributed to the author. {selected.rationale || "No additional explanation was provided."}</>
+          ) : highlightCount === 0 ? "No supported author expressions to highlight. Your original text is preserved above." : showColors ? "Select a highlighted expression to inspect its experimental annotation." : "Plain reading view. Turn on Highlight expressions to see experimental annotations."}
         </p>
       </footer>
     </section>

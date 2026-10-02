@@ -15,6 +15,7 @@ except ImportError:
 
 MAX_LENGTH = 512
 AGGREGATION = 'new_token_weighted_logit_mean_v1'
+PREPROCESSING = 'plain_text_exact_url_article_extraction_v2'
 
 
 def sha256(path):
@@ -66,7 +67,7 @@ def model_metadata():
         'config_sha256': sha256(path / 'config.json'),
         'tokenizer_sha256': hashlib.sha256(''.join(p.name + sha256(p) for p in files).encode()).hexdigest(),
         'id2label': {str(k): str(v).upper() for k,v in get_model().config.id2label.items()},
-        'aggregation': AGGREGATION, 'max_length': MAX_LENGTH, 'stride': 64,
+        'aggregation': AGGREGATION, 'preprocessing': PREPROCESSING, 'max_length': MAX_LENGTH, 'stride': 64,
         'demo_mode': os.getenv('BIASCHECK_DEMO_MODE', '0') == '1',
         'transformers': transformers.__version__, 'torch': torch.__version__,
         'tokenizers': tokenizers.__version__,
@@ -86,8 +87,8 @@ def token_windows(ids, capacity=510, stride=64):
 
 
 def validate_policy(policy, metadata):
-    for key in ('weights_sha256', 'config_sha256', 'tokenizer_sha256', 'aggregation', 'max_length', 'stride'):
-        if policy.get(key) != metadata[key]:
+    for key in ('weights_sha256', 'config_sha256', 'tokenizer_sha256', 'aggregation', 'max_length', 'stride', 'preprocessing'):
+        if key not in metadata or key not in policy or policy[key] != metadata[key]:
             raise RuntimeError(f'Calibration policy does not match model: {key}')
     if policy.get('schema_version') != 1 or not isinstance(policy.get('release_approved'), bool):
         raise RuntimeError('Invalid decision policy schema')
@@ -112,9 +113,20 @@ def get_policy():
 
 
 def classify_scores(logits, token_count, mode, policy):
-    scores = np.asarray(logits, dtype=float) / (policy['temperature'] if policy else 1.)
-    scores = np.exp(scores - scores.max())
+    values=np.asarray(logits)
+    if values.shape!=(3,) or values.dtype.kind not in 'iuf' or not np.isfinite(values).all():
+        raise ValueError('Expected exactly three finite numeric model logits')
+    temperature=policy['temperature'] if policy else 1.
+    if isinstance(temperature,bool) or not isinstance(temperature,(int,float)) or not math.isfinite(temperature) or temperature<=0:
+        raise ValueError('Expected a finite positive temperature')
+    # Subtract before dividing so even very large finite logits/temperatures do
+    # not overflow into NaN and accidentally pass every confidence comparison.
+    with np.errstate(over='ignore',under='ignore'):
+        centered=values.astype(float)-float(values.max())
+        scores=np.exp(centered/temperature)
     scores /= scores.sum()
+    if not np.isfinite(scores).all():
+        raise ValueError('Model scores could not be normalized')
     ranked = np.sort(scores)
     reason = None
     demo_mode = os.getenv('BIASCHECK_DEMO_MODE', '0') == '1'

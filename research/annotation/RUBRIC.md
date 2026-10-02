@@ -1,54 +1,94 @@
-# Bias Checker annotation rubric, pilot v1
+# Bias Checker annotation rubric, pilot v2
 
-This 100-item pilot develops labeling rules. It is not a release benchmark. It contains 60 historical articles from 12 source identifiers and 41 topics, plus 40 original AI-authored controlled examples. Existing dataset labels and model scores are withheld from reviewers. None of these examples currently has a human-approved label.
+Prepared 2026-10-02. Completed human reviews: **0**. No gold labels assigned.
 
-## Task
+This pilot develops rules using 60 historical natural articles and 40 original AI-authored controlled examples. All are development material. Existing dataset labels and model predictions are hidden, not replaced. v2 changes the annotation schema and rubric, not any frozen text, item ID or order. Archived v1 artifacts remain in `legacy_v1/`; v1 annotations require a new human review under v2, never an automatic relabel.
 
-Read the complete supplied text. Classify its expressed political framing in the context of U.S. politics. Do not label an author, publisher, person, party, or yourself. Do not use agreement with a claim, writing quality, factual accuracy, emotional tone, or a publisher's reputation as a substitute for evidence in the text.
+## Primary construct: political AUTHOR FRAMING
 
-First decide relevance: POLITICAL, NONPOLITICAL, or UNCERTAIN. Political relevance includes government policy, elections, political institutions, and public ideological debate. Ordinary references to public services can be nonpolitical when the text only supplies practical instructions. If that boundary is unclear, record uncertainty and explain why.
+Read the complete supplied frozen text. Judge the author's political framing in U.S. context. Do not classify the publisher, the quoted speaker in isolation, factual truth, emotional tone, writing quality, your agreement, or your personal politics.
 
-If POLITICAL, choose LEFT, CENTER, RIGHT, or UNCERTAIN:
+First choose relevance:
 
-- LEFT: sustained authorial framing supports positions conventionally associated with the U.S. political left, such as stronger redistribution or collective labor protections. A policy mention alone is insufficient.
-- RIGHT: sustained authorial framing supports positions conventionally associated with the U.S. political right, such as a smaller federal economic role or traditionalist policy positions. A policy mention alone is insufficient.
-- CENTER: enough political context exists to judge the framing, and the text is substantively nonaligned, balanced, or consistently centrist. Center does not mean true, reasonable, unbiased, or emotionally calm.
-- UNCERTAIN: insufficient context, irreconcilable mixed positions, ambiguous sarcasm, unclear authorial endorsement, or framing that this U.S. left/right scheme does not represent adequately. Do not force a classification.
+- **POLITICAL:** meaningful content about government, policy, elections, political institutions or ideological debate
+- **NONPOLITICAL:** clearly nonpolitical content; ordinary practical public-service information can qualify
+- **UNCERTAIN:** the relevance boundary or missing context prevents a defensible decision
 
-NONPOLITICAL is the final label for clearly nonpolitical material. If relevance is UNCERTAIN, the final label is UNCERTAIN. For the initial five-label export, political uncertainty and relevance uncertainty both map to UNCERTAIN; keep the relevance field to distinguish them.
+For POLITICAL text, independently choose author framing:
+
+- **LEFT / RIGHT:** the author's narration, evaluative choices or sustained framing support the corresponding U.S. ideological direction. An explicit policy proposal is not required, but textual evidence for the direction is. A party name, isolated quotation or criticism of corruption/competence alone is insufficient
+- **CENTER:** enough political context exists and the author framing is substantively nonaligned, balanced or consistently centrist. CENTER does not mean true, reasonable, unbiased, calm, or merely “no explicit policy stance”
+- **UNCERTAIN:** evidence is insufficient, author-endorsed directions are irreconcilably mixed, attribution is unclear, sarcasm is ambiguous, or this U.S. scheme does not represent the text adequately
+
+NONPOLITICAL relevance requires author framing NOT_APPLICABLE. UNCERTAIN relevance requires author framing UNCERTAIN. The compatibility final label is derived only from relevance and author framing. Optional policy stance can never set it.
+
+## Optional separate axis: issue-policy stance
+
+Assess only an **author-endorsed issue position**, not positions merely reported in quotations. Choose LEFT, CENTER, RIGHT, MIXED, UNCERTAIN, NO_EXPLICIT_STANCE, or NOT_APPLICABLE. Leave NOT_ASSESSED if you are not assessing this axis. Explain the issue and endorsement in the rationale when assessed.
+
+**NO_EXPLICIT_STANCE is not CENTER.** An article can have directional author framing without stating a policy proposal. Conversely, reporting a directional policy proposal need not make the author's framing directional. MIXED policy stance can coexist with a defensible single framing label; explain the difference rather than copying one axis into the other.
+
+## Attribution and uncertainty are required fields
+
+Record who expresses the relevant framing or stance: AUTHOR_NARRATION, QUOTED_SPEAKERS_ONLY, MIXED_AUTHOR_AND_QUOTES, NO_STANCE_EXPRESSED, or UNCLEAR. This is a structured summary; the paraphrased rationale must explain the actual relationship.
+
+Record context sufficiency separately: SUFFICIENT, INSUFFICIENT, or UNCERTAIN. Resolved political LEFT/CENTER/RIGHT requires SUFFICIENT. Adequate context can still reveal genuinely mixed author positions, so SUFFICIENT does not force a resolved direction.
+
+For a primary UNCERTAIN label, select the main reason:
+
+- INSUFFICIENT_CONTEXT
+- MIXED_AUTHOR_POSITIONS
+- ATTRIBUTION_UNCLEAR
+- SARCASM_OR_AMBIGUITY
+- OUTSIDE_US_SCHEME
+- OTHER, explained in the rationale
+
+Use NONE when the primary label is resolved; describe any residual concerns in the rationale. Do not collapse mixed positions into lack of context. Do not turn abstentions into CENTER to improve agreement.
+
+## Reading context, prior exposure and reviewer provenance
+
+All pilot reviewers should read **the same complete frozen text only**. The record stores the exact supplied text's SHA-256 plus the complete-frozen-text scope and full-read confirmation. Historical source JSON uses only trimmed `content_original`; article text is not copied into exports. A URL, current live page, headline, summary or remembered article is not an equivalent substitute.
+
+Do not open outside material for the judgment: full live articles, event background, party-policy panels, model answers or other reviewers' decisions. If you already did, retain the judgment but disclose what was read, its source/location and extent in the external-context field. Such cases are excluded from the strict blinded/frozen-text-only subset, not silently deleted.
+
+For every item, explicitly answer whether you previously saw model predictions, legacy dataset labels, or another reviewer's answers. Any Yes requires exposure notes. The project owner has previously seen some controlled-case model outputs; this must remain disclosed. The tool preserves exposure through save, reload, import, export and comparison. A post-discussion re-review cannot erase prior exposure or be represented as a new independent person.
+
+Each reviewer attests human manual authorship and independently made judgments. Machine-generated labels or rationales cannot qualify as independent human review. Use an alias consistently; aliases alone do not prove different people. The tool validates provenance fields, not real-world identity or honesty.
+
+### Important corpus context caveat
+
+The earlier **PoliticalBiasCorpus** annotation setup allowed annotators access to the full article, event background and party-policy panels; which optional context each worker actually used is unknown. A snippet-only model comparison may therefore differ from the original human reading context. This caveat is about that corpus, not a claim that its existing labels are wrong. Do not alter its released or worker labels. The pilot's fixed-text-only procedure is a new, explicitly narrower protocol; it cannot be retroactively attributed to the original corpus or to the separate Article-Bias-Prediction source dataset.
 
 ## Difficult cases
 
-1. Quotations: distinguish the quoted speaker from the article's framing. Reporting a left or right statement does not automatically endorse it. Evaluate attribution, criticism, selection and surrounding context. Do not infer omitted context you have not seen.
-2. Mixed positions: balance between opposing quotations can coexist with a strong authorial stance. Conversely, opposing author-endorsed positions may warrant UNCERTAIN rather than CENTER. Explain the dominant framing if you choose a directional label.
-3. Political names: praise or criticism of a named party is not by itself enough to establish ideology. Corruption, transparency and competence criticism can occur across ideological positions.
-4. Ordinary words: left/right directions, liberal quantities and conservative estimates are not ideological signals by themselves.
-5. Factual procedural news: CENTER may be appropriate when relevant political context is sufficient. A fragment such as “Taxes” normally lacks sufficient context to judge leaning.
-6. Loaded language: record it in notes if useful, but hostile tone alone does not determine political direction.
-7. International, religious, satirical or unfamiliar context: do not map it mechanically onto U.S. ideology. Use uncertainty when the mapping cannot be defended.
+1. Reporting a left/right quotation does not automatically endorse it. Read author narration, selection and surrounding context
+2. Opposing quotations can coexist with strong author framing; opposing author-endorsed positions may justify UNCERTAIN rather than CENTER
+3. Partisan names, corruption criticism, loaded tone and factual disagreement are not independent proof of ideological direction
+4. Ordinary “left/right,” “liberal amount” or “conservative estimate” are not political signals
+5. Procedural political reporting may be CENTER when the complete text supports that judgment; “Taxes” does not supply enough context
+6. Do not map unfamiliar international, religious or satirical context mechanically onto U.S. ideology
 
-## Every completed judgment must contain
+## Required completed record
 
-- Confirmation that the entire frozen text was read.
-- Relevance and final label.
-- Human confidence: low, medium or high. This is not a model probability.
-- A brief paraphrase of the textual evidence and an explanation of attribution or ambiguity where relevant.
-- Reviewer identifier and completion time. Use aliases rather than sensitive personal information.
+- Full frozen text read, exact snapshot hash and external-context disclosure
+- Relevance, author framing, derived final label, and optional policy-axis assessment status
+- Attribution, context sufficiency and uncertainty reason
+- Confidence low/medium/high (not a probability) and a paraphrased rationale of at least 15 characters
+- Human reviewer identity, timezone-aware completion time, exposure answers and necessary notes
+- Review phase, pass ID and, after initial calibration, agreed rubric freeze ID
 
-Evidence notes should paraphrase news articles rather than copy long passages. Skip unavailable or corrupted material with a reason; never label from the headline or URL alone.
+Skip unavailable/corrupt text with a reason. Never judge from a URL alone. Exact-span annotation is deferred in v2; no offsets are fabricated. Rationale paraphrases remain required.
 
-## Independent review and adjudication
+## First 10, discussion, freeze and re-review
 
-Rahim and a second reviewer should use separate review IDs and preferably separate browser profiles. Work independently, without model scores, legacy labels or the other person's decisions. Each reviewer exports their own JSON. Complete the first 10 items, compare interpretations, and refine the rubric before proceeding. Record any rubric changes; if changed, re-review the first 10 independently under the final pilot rubric. Do not count pre-discussion and post-discussion answers as independent agreement.
+Two humans use distinct consistent IDs and preferably separate browser profiles. Independently review P001–P010 under `initial_independent_10`, without consulting one another. Export both passes before discussion. Discuss rule ambiguities, document the agreed interpretation/change and assign a shared `rubric_freeze_id` in a separate calibration record. Do not change rubric text without a version change after it is frozen.
 
-Use compare_reviews.py to measure agreement on identical fully reviewed items and produce a disagreement queue. Report relevance agreement, five-label agreement and Cohen's kappa, with denominators. A third reviewer or documented consensus adjudicates disagreements using the full text and evidence. Preserve both original judgments. Agreement measures consistency, not objective correctness.
+If rules change, independently re-review the first 10 under `post_discussion_rereview`, preserve earlier exports and disclose any remembered model/peer answers. Use a new `review_pass_id` but the same reviewer ID. Do not count pre/post-discussion passes as distinct reviewers. Continue remaining items under `frozen_main` and the agreed freeze. The UI records these phases; humans must actually carry out the discussion/freeze process.
+
+Compare same-rubric exports. The report gives all-paired descriptive diagnostics, same-phase/same-freeze results and a stricter blinded/frozen-text-only subset. Author-framing agreement uses pairs both deemed political; policy-axis agreement excludes NOT_ASSESSED/NOT_APPLICABLE. Every axis includes denominator, exclusions, agreements/disagreements and a 95% Wilson interval for raw agreement. Kappa is a descriptive point estimate, undefined in degenerate cases; no kappa interval is claimed. Items clustered by source/event violate simple independence assumptions, so Wilson intervals may be too narrow. Small samples are not certification.
+
+Keep natural articles and synthetic controls separate. The queue preserves original records and flags disagreements, uncertainty, prior exposure, external context and different rounds/freezes. A third human or documented human consensus may adjudicate with reasoning. Comparison does not choose a winner, manufacture machine gold, or approve a label. Agreement is consistency, not objective accuracy.
 
 ## Separation from future evaluation
 
-All 100 pilot items are development material because the rubric and workflow are adjusted using them. Do not place them in the later frozen final test, even after consensus. Do not claim model accuracy from this pilot. Synthetic and natural-news results must stay separate. The historical public articles may overlap old checkpoint training, and the publisher sources are not an independent sample of today's media.
-
-After the pilot, collect a separate contemporary evaluation set with documented usage rights, source/event/time separation, independent review and adjudication. Register class/slice sample sizes and acceptance gates before evaluating candidates. Keep development, calibration and final-test IDs and content hashes separate.
-
-## Prior exposure to model answers
-
-Record in your evidence notes if you have already seen model predictions, legacy dataset labels, or another reviewer's answers for an item. The project owner has seen some controlled-case model outputs during debugging, so those judgments cannot be described as fully blinded. Keep that exposure in the annotation provenance. A separate reviewer should avoid the diagnostic reports until submitting their independent review. The pilot remains development material regardless of agreement.
+All 100 pilot items remain development material, even after adjudication. Historical articles may overlap checkpoint training and do not represent current media. Synthetic controls test behaviors, not real-world performance. A future accuracy claim requires a separate rights-reviewed, contemporary, source/event/time-separated evaluation set, independent human review/adjudication, locked model and decision policy, and pre-registered class/slice sample sizes and acceptance gates.

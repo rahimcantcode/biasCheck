@@ -1,54 +1,66 @@
-# The first 100-example review pilot
+# Human annotation pilot v2
 
-Prepared 2026-09-29. Human reviews completed: **0**. No gold labels assigned.
+Prepared 2026-10-02. Completed human reviews: **0**. No human gold labels, model retraining or improved-accuracy claim.
 
-- 60 real historical articles from 12 dataset source identifiers and 41 topics.
-- 40 original AI-authored controlled examples addressing ordinary nonpolitical text, political word false positives, procedural reporting, policy positions, attribution, mixed views, and inadequate context.
-- No news article text is redistributed here. The manifest stores original links, IDs and frozen text hashes; article text is loaded locally from the source dataset.
-- No model predictions or inherited dataset class labels appear in the review screen or manifest. Sample selection uses source/topic/length diversity, not class labels, and excludes the 60 articles from our earlier model comparison. This does not establish independence from historical model training.
+The 100 examples are unchanged: 60 natural historical articles from 12 source identifiers and 41 topics, plus 40 AI-authored controlled examples. Text, IDs and order are copied exactly from frozen v1. News article text is not redistributed. Selection excludes the earlier 60-article model comparison, but independence from historical checkpoint training is unknown.
+
+## What changed
+
+v2 separates primary political AUTHOR FRAMING from optional author-endorsed issue-policy stance. No explicit policy stance does not mean CENTER. Required fields now cover attribution, sufficient versus missing/mixed context, uncertainty reason, exact frozen reading context, external context, prior model/legacy-label/peer-answer exposure, human manual authorship, review phase and rubric freeze.
+
+`pilot_manifest.json` and `legacy_v1/` preserve v1; `pilot_manifest_v2.json` is the new version. The v2 reviewer uses a different local-storage namespace. Existing v1 exports are never silently reinterpreted as v2; preserve them and conduct a new human review. No completed annotations have been added.
 
 ## Start reviewing
 
-Open **Bias_Checker_Review_Pilot.html** in your browser. The 40 controlled examples are immediately available. Choose a unique reviewer ID such as `Rahim-A` and click **Open my workspace**. Read RUBRIC.md first.
+1. Read **RUBRIC.md** and open **Bias_Checker_Review_Pilot.html**
+2. Enter a consistent unique reviewer alias and attest human manual independent judgment
+3. The 40 controlled examples are verified locally. Click **Load article snapshots** for the 60 historical texts, or select the pinned source dataset's `data/jsons` folder
+4. Both reviewers independently review P001–P010, export, discuss ambiguities, agree/freeze the rubric, and re-review independently if rules change. Keep earlier exports and disclose prior peer/model answers
+5. Continue the remaining items under the shared freeze. Save each item; export every pass frequently
 
-For the 60 historical articles, click **Load article snapshots**. The page downloads the pinned files directly from GitHub and verifies their hashes. If downloads are blocked or you prefer offline review, obtain the pinned source dataset on your own computer:
+Remote loading retrieves only pinned GitHub source JSONs and verifies `content_original.trim()` against the frozen hash. The viewer does not display legacy labels. For offline snapshots:
 
 ```bash
 git clone https://github.com/ramybaly/Article-Bias-Prediction research-data
 git -C research-data checkout ced8111a720948e6a410e52031ace99c4e53f096
 ```
 
-In the review page, choose the dataset's `data/jsons` folder. Only the 60 matching filenames are read. Each text hash must match the frozen manifest before a judgment can be saved. Read the source JSON's `content_original` only; do not consult its `bias_text` legacy label. The viewer hides that label automatically.
-
-If the browser blocks local folder/hash features, serve the annotation folder locally using `python -m http.server 8765 --bind 127.0.0.1` and open `http://localhost:8765/Bias_Checker_Review_Pilot.html`.
-
-Do not substitute changed live article text for a frozen snapshot. The original URLs are references, not verified replacements. If a source file is unavailable, record a skip with a reason.
-
-Save each judgment before moving on. Export your JSON frequently. Local browser storage is convenient, not a durable backup. Article text is not sent to a server, stored in review exports, or transmitted to a model. Exported files contain your ID, judgments, paraphrased rationales and timestamps.
-
-A second reviewer should work independently with a separate reviewer ID and browser profile. Review the first 10 items, discuss rule ambiguities, and then independently re-review those items if the rubric changes. Do not treat the earlier and later passes as independent reviewers.
-
-## Compare completed reviews
+Read only the supplied frozen text. Live article URLs, event background and party-policy panels are outside this pilot's reading context; any use must be disclosed. If browser hashing/storage is blocked, serve this folder locally:
 
 ```bash
-python compare_reviews.py --first review-Rahim-A.json --second review-reviewer-B.json --output agreement.json
+python -m http.server 8765 --bind 127.0.0.1
 ```
 
-The tool validates identities, frozen text hashes, required evidence and label consistency. It reports relevance and final-label agreement, Cohen's kappa, paired denominators, historical versus controlled slices, and an adjudication queue. It never manufactures missing judgments or approves gold labels.
+Open `http://localhost:8765/Bias_Checker_Review_Pilot.html`. Each reviewer should use a separate browser profile. Exports contain aliases, structured judgments, provenance, paraphrased rationales and timestamps, not full article text. Browser storage is not a backup. Import validates the entire v2 export before modifying a workspace and preserves exposure/context fields. Replacing a saved review or import requires confirmation; retain the previous export first.
 
-Preserve the two independent exports. Adjudicate differences with documented reasoning and reviewer identity. A future gold dataset requires completed adjudication and explicit human sign-off. All pilot items remain development data, excluded from the later final evaluation.
-
-## Reproduce
-
-From the repository root, with the pinned dataset at `../research-data`:
+## Compare two human exports
 
 ```bash
-python research/annotation/build_pilot.py
+python research/annotation/compare_reviews.py \
+  --first review-A-v2.json --second review-B-v2.json \
+  --output agreement.json
+```
+
+Validation rejects wrong pilot/rubric, duplicate item IDs, empty/inconsistent reviewer identities, machine/nonhuman provenance, missing exposure/context, unread text, mismatched hashes and inconsistent axis labels. Repeated passes or case variants of the same alias cannot count as different reviewers. This validates self-attestations, not real-world human identity.
+
+The report contains per-axis raw agreement, agree/disagree counts, denominators, excluded counts, 95% Wilson intervals, descriptive Cohen's kappa, natural/synthetic slices, same-round and strict blinded/frozen-text-only subsets. Optional policy NOT_ASSESSED/NOT_APPLICABLE pairs are excluded from that axis. Author framing uses pairs both judged political. Intervals assume independent items and can understate uncertainty for clustered sources/events; agreement is not accuracy.
+
+The disagreement queue retains both original judgments plus uncertainty/exposure/context/round flags. It leaves adjudication empty and `gold_labels_approved` false. Preserve original exports, document human adjudication, and keep every pilot item out of any future independent final test. No machine prediction serves as gold.
+
+## Reproduce and test
+
+```bash
+python research/annotation/build_v2_manifest.py
 python research/annotation/render_reviewer.py
+python -m pytest tests/test_annotation.py tests/test_annotation_audit.py tests/test_annotation_dom.py -q
 ```
 
-The seed and frozen manifest preserve selection/order. Do not regenerate IDs after annotation starts. Change the pilot version if content, ordering or rubric changes.
+The v2 builder derives a new manifest from frozen v1 without altering items. The standalone HTML embeds the manifest and reviewer script. Original v1 files under `legacy_v1/` are preserved snapshots, not the active workflow. Do not regenerate sample selection after reviews start. Bump the pilot/rubric version for future content, ordering, schema or instruction changes.
 
-## What this does not complete
+The Node DOM/event-fixture regression verifies save/reload/export/import, provenance rejection/preservation, and interrupted navigation using the actual reviewer script and HTML control IDs. It needs Node and otherwise explicitly skips. It does not launch a browser or establish visual layout/browser compatibility; real-browser QA remains unverified. The Python suite always validates schema and comparison behavior.
 
-No independent human annotation, contemporary news collection, model retraining, accuracy measurement or production release is claimed. The historical dataset's source availability and reuse rights must be reviewed before further distribution or commercial use. Synthetic examples stress specific behaviors but do not estimate real-world performance.
+## Corpus context caveat and remaining work
+
+The earlier PoliticalBiasCorpus annotation interface allowed full-article, event-background and party-policy-panel access; actual optional-context use per worker is unknown. Its released labels are preserved. This v2 fixed-text protocol does not retroactively change that corpus's construct or equate snippet-only model context with the original human context. It is also distinct from the Article-Bias-Prediction dataset providing this pilot's historical snapshots.
+
+Independent humans still need to complete the pilot. Contemporary, rights-reviewed data collection, independent adjudication, a separate frozen evaluation and pre-registered release criteria are still required. Exact span annotations are deferred; v2 records paraphrases and attribution without fabricated spans.

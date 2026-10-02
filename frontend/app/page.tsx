@@ -7,6 +7,7 @@ import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { ResultsPanel } from "@/components/ResultsPanel";
 import { analyzeInput, Mode, PredictResponse } from "@/lib/api";
+import { createRequestGuard } from "@/lib/requestGuard";
 
 export default function HomePage() {
   const [input, setInput] = useState("");
@@ -14,8 +15,25 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<PredictResponse | null>(null);
-  const requestSequence = useRef(0);
+  const requests = useRef(createRequestGuard());
   const resultsRef = useRef<HTMLElement | null>(null);
+
+  function invalidateAnalysis() {
+    requests.current.invalidate();
+    setLoading(false);
+    setResults(null);
+    setError(null);
+  }
+
+  function handleInputChange(value: string) {
+    invalidateAnalysis();
+    setInput(value);
+  }
+
+  function handleModeChange(value: Mode) {
+    invalidateAnalysis();
+    setMode(value);
+  }
 
   async function handleAnalyze() {
     if (!input.trim()) {
@@ -24,15 +42,15 @@ export default function HomePage() {
       return;
     }
 
-    const sequence = ++requestSequence.current;
+    const sequence = requests.current.begin();
     setLoading(true);
     setError(null);
 
     try {
       const response = await analyzeInput(input, mode);
-      if (sequence === requestSequence.current) setResults(response);
+      if (requests.current.isCurrent(sequence)) setResults(response);
     } catch (analysisError) {
-      if (sequence !== requestSequence.current) return;
+      if (!requests.current.isCurrent(sequence)) return;
       setResults(null);
       setError(
         analysisError instanceof Error
@@ -40,16 +58,13 @@ export default function HomePage() {
           : "Analysis failed. Please try again."
       );
     } finally {
-      if (sequence === requestSequence.current) setLoading(false);
+      if (requests.current.isCurrent(sequence)) setLoading(false);
     }
   }
 
   function handleClear() {
-    requestSequence.current += 1;
-    setLoading(false);
+    invalidateAnalysis();
     setInput("");
-    setResults(null);
-    setError(null);
   }
 
   useEffect(() => {
@@ -66,8 +81,8 @@ export default function HomePage() {
         mode={mode}
         loading={loading}
         results={results}
-        onInputChange={setInput}
-        onModeChange={setMode}
+        onInputChange={handleInputChange}
+        onModeChange={handleModeChange}
         onSubmit={handleAnalyze}
         onClear={handleClear}
       />
