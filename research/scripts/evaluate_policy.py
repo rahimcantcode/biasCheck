@@ -34,15 +34,19 @@ def evaluate(report,policy,validation):
                      'probabilities':{labels[i]:float(score) for i,score in enumerate(scores)},
                      'calibrated':True,'policy_simulation':True})
     metrics=summarize(rows)
-    requirements={'macro_f1':metrics.get('macro_f1',0)>=.85,'per_class_recall':all(metrics.get('per_class',{}).get(k,{}).get('recall',0)>=.8 for k in ['LEFT','CENTER','RIGHT']),
-      'selective_accuracy':(metrics.get('selective_accuracy') or 0)>=.9,'coverage':(metrics.get('coverage') or 0)>=.8,
+    requirements={'political_macro_f1':(metrics.get('political_macro_f1') or 0)>=.85,'political_per_class_recall':all(metrics.get('political_per_class',{}).get(k,{}).get('recall',0)>=.8 for k in ['LEFT','CENTER','RIGHT']),
+      'political_selective_accuracy':(metrics.get('political_selective_accuracy') or 0)>=.9,'political_coverage':(metrics.get('political_coverage') or 0)>=.8,
       'nonpolitical_false_labels':metrics['nonpolitical_n']>=100 and metrics['nonpolitical_false_label_rate']<=.05,
-      'political_sample_size':metrics['eligible_n']>=300,
+      'political_sample_size':metrics['political_n']>=300,
       # No post-hoc tolerance may be invented after seeing final-test outcomes.
-      # This intentionally stays false until a reviewed uncertainty protocol is frozen.
-      'uncertainty_protocol_frozen':False}
+      # Both intentionally stay false until reviewed all-population and uncertainty criteria are frozen.
+      'uncertainty_protocol_frozen':False,
+      'all_population_acceptance_criterion_frozen':False}
     return {'metrics':metrics,'proposed_point_estimate_gates':requirements,'point_estimate_gates_pass':all(requirements.values()),'release_approved':False,
       'limitations':['Point-estimate goals are provisional, not evidence that population error limits pass',
+                     'Preregister an all-population accepted-label criterion and uncertainty acceptance treatment before final testing; no threshold is supplied here',
+                     'UNCERTAIN is not reliable negative gold; strict all-accepted reference match is not established correctness on those items',
+                     'Metrics depend on the evaluation mix and do not establish representative traffic performance',
                      'Uncertainty tolerance, interval rules, per-class supports and independent cluster counts must be frozen before final testing',
                      'Requires confidence intervals, source/event/time leakage review, per-slice review and operational validation before approval','Provenance fields are supplied assertions requiring human audit'],'predictions':rows}
 

@@ -26,23 +26,44 @@ is unknown. The model's snippet reconstruction therefore does not establish full
 matched human/model information. Historical result files are retained unchanged.
 Source: [pinned annotation interface](https://github.com/ksolaiman/PoliticalBiasCorpus/blob/b193ee173936b281183ca1dc101ae4de215a0e5c/mturk_task_templates/BiasLabelMain.html#L103-L108).
 
-Evaluation schema v2 separates `raw_macro_f1`, `raw_per_class` and
-`raw_confusion_matrix` from decision-aware `macro_f1`, `per_class` and
-`decision_confusion_matrix`. An abstention counts as a missed correct prediction
-for class recall/F1; the matrix has an explicit ABSTAIN column. Accepted accuracy
-is reported with its denominator, overall coverage and class-specific coverage.
-Calibration/test model bindings, preprocessing versions, label mappings and modes must match; malformed
-or nonfinite logits fail closed. Marginal Wilson intervals are diagnostic only
-and do not account for correlated episodes or repeated model selection.
+Evaluation schema v3 keeps `raw_macro_f1`, `raw_per_class` and
+`raw_confusion_matrix` separate from decision-aware `macro_f1`, `per_class` and
+`decision_confusion_matrix`. These class metrics use only LEFT/CENTER/RIGHT
+reference rows. Abstention counts as a missed correct prediction for class
+recall/F1. `political_selective_accuracy` uses accepted political-reference rows;
+`political_coverage` uses all political-reference rows. The legacy
+`selective_accuracy`, `accepted_n`, `eligible_n` and `coverage` names remain
+political-only aliases, not all-input metrics.
+
+`all_accepted_n` counts every classified input, and `all_input_coverage` divides
+that count by all inputs. This is classified-label coverage: a valid abstention
+is a processed response but does not count as an accepted label.
+`all_accepted_reference_match` divides exact accepted
+label/reference matches by every accepted input, including NONPOLITICAL and
+UNCERTAIN. UNCERTAIN is not reliable negative gold, so a nonmatch there does not
+establish a classification error. Report its `uncertain_acceptance_rate`
+separately; the legacy `uncertain_false_label_rate` is only an alias for that
+acceptance rate. `accepted_reference_match_excluding_uncertain` uses the explicit
+`non_uncertain_accepted_n` denominator, retaining accepted NONPOLITICAL false
+labels and excluding UNCERTAIN. Exclusion does not establish the validity of the
+remaining references. The `full_population_decision_confusion_matrix` contains
+all five reference rows and LEFT/CENTER/RIGHT/ABSTAIN prediction columns, even
+for empty input. These rates describe the supplied evaluation mix, not
+representative traffic. Calibration/test model bindings, preprocessing versions,
+label mappings and modes must match; malformed or nonfinite logits fail closed.
+Marginal Wilson intervals are diagnostic only and do not account for correlated
+episodes or repeated model selection.
 
 The historical point-estimate goals are provisional. Before independent testing,
 freeze the full protocol: task/input context, human annotation provenance,
 candidate/checkpoint/prompt/preprocessing, coverage policy, per-class and slice
-supports, independent cluster counts, an uncertainty false-label tolerance,
-minimum meaningful improvement and interval decision rules. The evaluator's
-`uncertainty_protocol_frozen` gate deliberately remains false until a reviewed
-protocol is implemented. It never approves a release. A perfect raw classifier
-cannot pass product recall by abstaining on its difficult class, and 89 old corpus
+supports, independent cluster counts, an all-population accepted-label criterion,
+uncertainty acceptance treatment, minimum meaningful improvement and interval
+decision rules. No all-population or uncertainty threshold may be invented after
+viewing final-test outcomes. The evaluator's `uncertainty_protocol_frozen` and
+`all_population_acceptance_criterion_frozen` gates deliberately remain false
+until a reviewed protocol is implemented. It never approves a release. A perfect
+raw classifier cannot pass product recall by abstaining on its difficult class, and 89 old corpus
 items cannot certify contemporary end-to-end performance.
 
 See [phrase evidence implementation](PHRASE_EVIDENCE.md) for the experimental
@@ -119,7 +140,7 @@ Before approval, evaluate candidate thresholds offline on a separate frozen huma
 2. Use two independent annotators with adjudication. Record agreement, disputed cases, spans and rationales. Distinguish the author's framing from quoted views; record mixed/ambiguous texts as UNCERTAIN. CENTER requires sufficient relevant evidence, not an absence of political keywords.
 3. Train and validate political relevance separately from ideology. Include recipes, sports, local events, ordinary policy descriptions, quotations, satire, short inputs, long articles and mixed viewpoints. Preserve a relevance test set.
 4. Calibrate on validation only. Freeze checkpoint, preprocessing, aggregation, thresholds and accepted modes. Sentence-level support needs sentence-specific annotation and evaluation; an article benchmark does not validate it.
-5. Proposed targets: macro F1 >= .85, each ideology recall >= .80, accepted-label accuracy >= .90 at coverage >= .80, nonpolitical false-label rate <= .05. These are goals, not achieved performance. Report denominators, confidence intervals and slice results. Acceptance thresholds and sample sizes must be agreed before final testing.
+5. Proposed targets: macro F1 >= .85, each ideology recall >= .80, political-only accepted-label accuracy >= .90 at political-reference coverage >= .80, nonpolitical false-label rate <= .05. These are goals, not achieved performance. Report denominators, confidence intervals and slice results. All-population accepted-label and uncertainty criteria, acceptance thresholds and sample sizes must be agreed before final testing.
 6. Test operational behavior in staging: actual model load, hashes, repeatability, frontend/API compatibility, long inputs, response time, memory, health checks, URL-fetch egress restrictions and rollback. Deploy frontend and backend together because the response contract changed.
 
 No automated policy approval, VPS deployment, relevance model, final accuracy claim or formal report is included in this branch.

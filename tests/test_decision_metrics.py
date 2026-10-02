@@ -19,9 +19,10 @@ def test_large_finite_logits_normalize_without_nan():
     assert scores.tolist()==[1.,0.,0.] and reason is None
 
 
-def row(gold, accepted=True):
-    return dict(gold=gold, raw_label=gold, decision='classified' if accepted else 'abstained',
-                label=gold if accepted else None)
+def row(gold, accepted=True, prediction=None):
+    prediction = prediction or (gold if gold in ['LEFT','CENTER','RIGHT'] else 'LEFT')
+    return dict(gold=gold, raw_label=prediction, decision='classified' if accepted else 'abstained',
+                label=prediction if accepted else None)
 
 
 def test_perfect_raw_scores_cannot_hide_abstained_class():
@@ -52,6 +53,104 @@ def test_wrong_accepted_prediction_and_out_of_scope_errors_are_visible():
     assert result['uncertain_false_label_rate']==0
     assert result['marginal_binomial_diagnostics']['uncertain_false_label_rate'][1]>.7
     assert result['raw_confusion_matrix'][0]==[1,0,0]
+
+
+def test_out_of_scope_acceptance_cannot_inflate_all_accepted_reference_match():
+    result = summarize([row('LEFT'), row('NONPOLITICAL'), row('UNCERTAIN')])
+    assert result['political_selective_accuracy'] == 1
+    assert result['political_n'] == result['political_accepted_n'] == 1
+    assert result['political_coverage'] == 1
+    assert result['all_accepted_n'] == 3 and result['all_input_coverage'] == 1
+    assert result['all_accepted_reference_match_n'] == 1
+    assert result['all_accepted_reference_match'] == pytest.approx(1/3)
+    assert result['non_uncertain_accepted_n'] == 2
+    assert result['non_uncertain_accepted_reference_match_n'] == 1
+    assert result['accepted_reference_match_excluding_uncertain'] == .5
+    assert result['uncertain_accepted_n'] == 1 and result['uncertain_acceptance_rate'] == 1
+    assert result['full_population_decision_confusion_rows'] == ['LEFT','CENTER','RIGHT','NONPOLITICAL','UNCERTAIN']
+    assert result['full_population_decision_confusion_columns'] == ['LEFT','CENTER','RIGHT','ABSTAIN']
+    assert result['full_population_decision_confusion_matrix'] == [
+        [1,0,0,0], [0,0,0,0], [0,0,0,0], [1,0,0,0], [1,0,0,0]]
+    for alias, target in result['metric_aliases'].items():
+        assert result[alias] == result[target]
+    intervals = result['marginal_binomial_diagnostics']
+    assert intervals['all_accepted_reference_match'][1] < intervals['political_selective_accuracy'][1]
+    assert intervals['uncertain_false_label_rate'] == intervals['uncertain_acceptance_rate']
+    assert 'not established classification errors' in result['metric_definitions']['all_accepted_reference_match']
+
+
+def test_full_population_matrix_preserves_wrong_labels_and_all_abstention_rows():
+    result = summarize([
+        row('LEFT', prediction='RIGHT'), row('CENTER'), row('RIGHT', False),
+        row('NONPOLITICAL', prediction='CENTER'), row('NONPOLITICAL', False),
+        row('UNCERTAIN', prediction='RIGHT'), row('UNCERTAIN', False),
+    ])
+    assert result['political_selective_accuracy'] == .5
+    assert result['political_coverage'] == pytest.approx(2/3)
+    assert result['all_accepted_n'] == 4 and result['all_input_coverage'] == pytest.approx(4/7)
+    assert result['all_accepted_reference_match'] == .25
+    assert result['accepted_reference_match_excluding_uncertain'] == pytest.approx(1/3)
+    assert result['non_uncertain_accepted_n'] == 3
+    assert result['nonpolitical_false_label_rate'] == result['uncertain_acceptance_rate'] == .5
+    assert result['full_population_decision_confusion_matrix'] == [
+        [0,0,1,0], [0,1,0,0], [0,0,0,1], [0,1,0,1], [0,0,1,1]]
+    assert sum(map(sum, result['full_population_decision_confusion_matrix'])) == result['n']
+
+
+def test_every_reference_prediction_pair_has_a_population_matrix_cell():
+    rows = [row(gold, prediction != 'ABSTAIN', None if prediction == 'ABSTAIN' else prediction)
+            for gold in ['LEFT','CENTER','RIGHT','NONPOLITICAL','UNCERTAIN']
+            for prediction in ['LEFT','CENTER','RIGHT','ABSTAIN']]
+    result = summarize(rows)
+    assert result['full_population_decision_confusion_matrix'] == [[1,1,1,1]] * 5
+    assert result['n'] == 20 and result['all_accepted_n'] == 15
+    assert result['political_n'] == 12 and result['political_accepted_n'] == 9
+    assert result['non_uncertain_accepted_n'] == 12
+    assert result['all_accepted_reference_match_n'] == 3
+    assert result['political_selective_accuracy'] == pytest.approx(1/3)
+    assert result['all_accepted_reference_match'] == .2
+    assert result['accepted_reference_match_excluding_uncertain'] == .25
+    assert result['all_input_coverage'] == result['political_coverage'] == .75
+
+
+def test_all_abstained_population_has_no_accepted_precision():
+    result = summarize([row(gold, False) for gold in ['LEFT','CENTER','RIGHT','NONPOLITICAL','UNCERTAIN']])
+    assert result['all_accepted_n'] == result['non_uncertain_accepted_n'] == 0
+    assert result['all_input_coverage'] == result['political_coverage'] == 0
+    assert result['all_accepted_reference_match'] is None
+    assert result['accepted_reference_match_excluding_uncertain'] is None
+    assert result['political_selective_accuracy'] is None
+    assert result['nonpolitical_false_label_rate'] == result['uncertain_acceptance_rate'] == 0
+    assert result['full_population_decision_confusion_matrix'] == [[0,0,0,1]] * 5
+    for metric in ['all_accepted_reference_match', 'accepted_reference_match_excluding_uncertain', 'political_selective_accuracy']:
+        assert result['marginal_binomial_diagnostics'][metric] is None
+
+
+def test_empty_population_keeps_complete_matrix_and_undefined_rates():
+    result = summarize([])
+    assert result['n'] == result['all_accepted_n'] == result['non_uncertain_accepted_n'] == 0
+    assert result['full_population_decision_confusion_matrix'] == [[0,0,0,0]] * 5
+    assert result['decision_confusion_matrix'] == [[0,0,0,0]] * 3
+    for metric in ['political_selective_accuracy', 'political_coverage', 'all_input_coverage',
+                   'all_accepted_reference_match', 'accepted_reference_match_excluding_uncertain',
+                   'nonpolitical_false_label_rate', 'uncertain_acceptance_rate']:
+        assert result[metric] is None
+        assert result['marginal_binomial_diagnostics'][metric] is None
+
+
+@pytest.mark.parametrize('accepted', [True, False])
+def test_all_uncertain_population_does_not_invent_reference_precision(accepted):
+    result = summarize([row('UNCERTAIN', accepted), row('UNCERTAIN', accepted, prediction='RIGHT')])
+    assert result['political_n'] == result['political_accepted_n'] == result['non_uncertain_accepted_n'] == 0
+    assert result['political_selective_accuracy'] is None and result['political_coverage'] is None
+    assert result['accepted_reference_match_excluding_uncertain'] is None
+    assert result['all_accepted_n'] == result['uncertain_accepted_n'] == (2 if accepted else 0)
+    assert result['all_input_coverage'] == result['uncertain_acceptance_rate'] == (1 if accepted else 0)
+    if accepted:
+        assert result['all_accepted_reference_match'] == 0
+    else:
+        assert result['all_accepted_reference_match'] is None
+    assert sum(map(sum, result['full_population_decision_confusion_matrix'])) == 2
 
 
 @pytest.mark.parametrize('mutation',[{'decision':'classified','label':None},{'decision':'abstained','label':'LEFT'},
@@ -102,6 +201,37 @@ def test_missing_uncertainty_protocol_blocks_release_and_keeps_policy_unapproved
     test,policy,valid=reports();result=evaluate(test,policy,valid)
     assert not result['point_estimate_gates_pass']
     assert not result['proposed_point_estimate_gates']['uncertainty_protocol_frozen']
+    assert not result['proposed_point_estimate_gates']['all_population_acceptance_criterion_frozen']
+    assert 'political_selective_accuracy' in result['proposed_point_estimate_gates']
+    assert 'political_coverage' in result['proposed_point_estimate_gates']
+    assert 'selective_accuracy' not in result['proposed_point_estimate_gates']
+    assert any('Preregister an all-population' in note for note in result['limitations'])
+    assert not result['release_approved'] and not policy['release_approved']
+
+
+def test_provisional_political_gates_cannot_certify_all_population_acceptance():
+    test, policy, valid = reports()
+    test['predictions'] = []
+    for gold, logits, count in [('LEFT', [10,0,0], 100), ('CENTER', [0,10,0], 100),
+                               ('RIGHT', [0,0,10], 100), ('NONPOLITICAL', [0,0,0], 100),
+                               ('UNCERTAIN', [10,0,0], 100)]:
+        for index in range(count):
+            item_id = f'test-{gold}-{index}'
+            test['predictions'].append({**row(gold), 'id': item_id, 'text_sha256': item_id,
+                                        'logits': logits, 'token_count': 40})
+    result = evaluate(test, policy, valid)
+    gates = result['proposed_point_estimate_gates']
+    for gate in ['political_macro_f1', 'political_per_class_recall', 'political_selective_accuracy',
+                 'political_coverage', 'nonpolitical_false_labels', 'political_sample_size']:
+        assert gates[gate]
+    assert result['metrics']['political_selective_accuracy'] == 1
+    assert result['metrics']['all_accepted_n'] == 400
+    assert result['metrics']['all_accepted_reference_match'] == .75
+    assert result['metrics']['accepted_reference_match_excluding_uncertain'] == 1
+    assert result['metrics']['uncertain_acceptance_rate'] == 1
+    assert not gates['uncertainty_protocol_frozen']
+    assert not gates['all_population_acceptance_criterion_frozen']
+    assert not result['point_estimate_gates_pass']
     assert not result['release_approved'] and not policy['release_approved']
 
 

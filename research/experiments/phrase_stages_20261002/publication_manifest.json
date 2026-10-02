@@ -1,0 +1,154 @@
+{
+  "purpose": "Historical development-only source snapshot for v4/v5 replay; not imported by serving",
+  "original_bundle_sha256": "bb3c52913fcab32acd9058c7923d56ca7327decd334579f045952c550eae3e11",
+  "files": [
+    {
+      "path": "backend/__init__.py",
+      "original_sha256": "0a264e8412ca99f6c01fab94914cd2ee6d1c89fb6a7eccfacdd3554e721a9829",
+      "publication_sha256": "0a264e8412ca99f6c01fab94914cd2ee6d1c89fb6a7eccfacdd3554e721a9829",
+      "publication_change": null
+    },
+    {
+      "path": "backend/evidence.py",
+      "original_sha256": "8130ecec8948da6b4095dedefd7aef73856d1f99ebd1ffccccc9364965864198",
+      "publication_sha256": "8130ecec8948da6b4095dedefd7aef73856d1f99ebd1ffccccc9364965864198",
+      "publication_change": null
+    },
+    {
+      "path": "backend/main.py",
+      "original_sha256": "53827745d145539a613605ccf269bc9db64ccd999ca89618556d186ec8fa6135",
+      "publication_sha256": "53827745d145539a613605ccf269bc9db64ccd999ca89618556d186ec8fa6135",
+      "publication_change": null
+    },
+    {
+      "path": "backend/phrase_contract_v2.py",
+      "original_sha256": "67f6c5b7e18085f52e7e3fbaba64ce5cd1371981c23145281ddf3d86e01e0ada",
+      "publication_sha256": "67f6c5b7e18085f52e7e3fbaba64ce5cd1371981c23145281ddf3d86e01e0ada",
+      "publication_change": null
+    },
+    {
+      "path": "backend/phrase_pipeline_v3.py",
+      "original_sha256": "25f77f12035e4e0b73a4f1a8e7bf26a149b17cdb19eb99626471fb8d17f8ad70",
+      "publication_sha256": "25f77f12035e4e0b73a4f1a8e7bf26a149b17cdb19eb99626471fb8d17f8ad70",
+      "publication_change": null
+    },
+    {
+      "path": "baseline_source/backend/phrase_pipeline_v3.py",
+      "original_sha256": "0fadbf01ea4b848b1145d5b310589c061c549655a3fb80addc0231b78834797e",
+      "publication_sha256": "0fadbf01ea4b848b1145d5b310589c061c549655a3fb80addc0231b78834797e",
+      "publication_change": null
+    },
+    {
+      "path": "baseline_source/research/scripts/probe_phrase_pipeline_v3.py",
+      "original_sha256": "bf38583d452271f1879994b6697a437c007bc8999fcc48471ecb2814cda36167",
+      "publication_sha256": "fe18399c5604379886ec82792b9ad5f51435e4b27d0c969c554103b544c7d76e",
+      "publication_change": "Removed a hardcoded environment-only scrubber literal; inference functions unchanged"
+    },
+    {
+      "path": "research/scripts/probe_local_phrase_evidence.py",
+      "original_sha256": "ff1ed94bc66467f9d9161fec88fcdc43e1084f10570dd99c19bbbd2191ccaba2",
+      "publication_sha256": "ff1ed94bc66467f9d9161fec88fcdc43e1084f10570dd99c19bbbd2191ccaba2",
+      "publication_change": null
+    },
+    {
+      "path": "research/scripts/probe_phrase_contract_v2.py",
+      "original_sha256": "20a827720cf153f76c393802eb4cfcd1bc2856cf2a8fd17ded42f5090b0707f6",
+      "publication_sha256": "20a827720cf153f76c393802eb4cfcd1bc2856cf2a8fd17ded42f5090b0707f6",
+      "publication_change": null
+    },
+    {
+      "path": "research/scripts/probe_phrase_evidence.py",
+      "original_sha256": "129d3fcf104754c0e515737dfaeaf74344b5ee2a1497ab63e1ec43dc52a07738",
+      "publication_sha256": "129d3fcf104754c0e515737dfaeaf74344b5ee2a1497ab63e1ec43dc52a07738",
+      "publication_change": null
+    },
+    {
+      "path": "research/scripts/probe_phrase_pipeline_v3.py",
+      "original_sha256": "445583d0a3891c77bc8df9c1d0e683d66dc9dc6711464ddf7db2268fa061fe59",
+      "publication_sha256": "fd6e5be000faeb1b4d6e2a219fcd28b8293c9e14b18e31fccaebf314516d48a9",
+      "publication_change": "Removed a hardcoded environment-only scrubber literal; inference functions unchanged; Generalized internal reviewer identifier in metadata only; original hash retained"
+    },
+    {
+      "path": "summarize_v5.py",
+      "original_sha256": "0f65062e2b7742f4bdf2af639859514e60ab235183e8b3ce170e9bfa91a76c0f",
+      "publication_sha256": "0f65062e2b7742f4bdf2af639859514e60ab235183e8b3ce170e9bfa91a76c0f",
+      "publication_change": null
+    },
+    {
+      "path": "tests/test_phrase_pipeline_v3.py",
+      "original_sha256": "d48c5a2a8f5c5186881a4e376f9fb30db4e1309922bb5bdda0544e1239d64abb",
+      "publication_sha256": "d48c5a2a8f5c5186881a4e376f9fb30db4e1309922bb5bdda0544e1239d64abb",
+      "publication_change": null
+    },
+    {
+      "path": "tests/test_phrase_precision_v5.py",
+      "original_sha256": "6fba7d9c568f21a6abdea4ea0443271f1cf39b6cc7eedb8874f66aa15cc7aa17",
+      "publication_sha256": "6fba7d9c568f21a6abdea4ea0443271f1cf39b6cc7eedb8874f66aa15cc7aa17",
+      "publication_change": null
+    },
+    {
+      "path": "tests/test_phrase_recall_v4.py",
+      "original_sha256": "9cd9ed9e74eb3881c4e1a9c701d1441a2c7cc07046de8cba2e4412b8e5c5e427",
+      "publication_sha256": "9cd9ed9e74eb3881c4e1a9c701d1441a2c7cc07046de8cba2e4412b8e5c5e427",
+      "publication_change": null
+    },
+    {
+      "path": "v5_experiment.py",
+      "original_sha256": "d2a35d813172eea1f2bf8fb7f2c5df9026f901b23492afaf197fcaf5c65dfbb2",
+      "publication_sha256": "d2a35d813172eea1f2bf8fb7f2c5df9026f901b23492afaf197fcaf5c65dfbb2",
+      "publication_change": null
+    },
+    {
+      "path": "demonstrations.json",
+      "original_sha256": "4c2355ee0752d73d60a267b03b0594e3a36bf779850138df8d57f2b250556505",
+      "publication_sha256": "4c2355ee0752d73d60a267b03b0594e3a36bf779850138df8d57f2b250556505",
+      "publication_change": null
+    },
+    {
+      "path": "direction_demonstrations.json",
+      "original_sha256": "adb4cefbbb5a9cba36d84b5586163fd644cf36814eb3a1ea88f19928cd30739e",
+      "publication_sha256": "adb4cefbbb5a9cba36d84b5586163fd644cf36814eb3a1ea88f19928cd30739e",
+      "publication_change": null
+    },
+    {
+      "path": "EXPERIMENT_PLAN.md",
+      "original_sha256": "e58d0091ed941aea8d93872deb176a6a12919a7286599a61ebd13f7d28417002",
+      "publication_sha256": "e58d0091ed941aea8d93872deb176a6a12919a7286599a61ebd13f7d28417002",
+      "publication_change": null
+    },
+    {
+      "path": "V5_PLAN.md",
+      "original_sha256": "850acb52e9eca3a5f8cbdb9680f0aa7e7291290e46fc559fa23c97fd76907f5e",
+      "publication_sha256": "850acb52e9eca3a5f8cbdb9680f0aa7e7291290e46fc559fa23c97fd76907f5e",
+      "publication_change": null
+    },
+    {
+      "path": "V5_RESULT.md",
+      "original_sha256": "135fabcfba5dfa16aa4f0ec101fc417763231678e42588a72f89db10f457f453",
+      "publication_sha256": "135fabcfba5dfa16aa4f0ec101fc417763231678e42588a72f89db10f457f453",
+      "publication_change": null
+    },
+    {
+      "path": "research/checkpoints/phrase-pipeline-v3-20261002/results.json",
+      "publication_sha256": "050942a426376fc9304944e8fb70fbedb0073906d83896b233906a211509994b",
+      "publication_change": "Sanitized publication record substituted for local raw path; original record/protocol hashes retained within record. Model choices, predictions and metrics unchanged."
+    },
+    {
+      "path": "research/checkpoints/phrase-recall-v4-20261002/results.json",
+      "publication_sha256": "205b31b5066277e3281085b891b0f6fd949a97f620397690926f247294e0d09d",
+      "publication_change": "Sanitized publication record substituted for local raw path; original record/protocol hashes retained within record. Model choices, predictions and metrics unchanged."
+    },
+    {
+      "path": "results_v5.json",
+      "publication_sha256": "a182a7abc1973a56fb5c949154721ae95abc3f1324630adc15867a6da4fb79aa",
+      "publication_change": "Sanitized publication record substituted for local raw path; original record/protocol hashes retained within record. Model choices, predictions and metrics unchanged."
+    },
+    {
+      "path": "transfer32_fixture.json",
+      "original_sha256": "e353e6a3f7b3884886e3af6256a2929c7d8a73530fb436fe5d204bc7c4c88065",
+      "publication_sha256": "e353e6a3f7b3884886e3af6256a2929c7d8a73530fb436fe5d204bc7c4c88065",
+      "publication_change": null
+    }
+  ],
+  "release_approved": false
+}

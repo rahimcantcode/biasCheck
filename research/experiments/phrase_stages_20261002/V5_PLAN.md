@@ -1,0 +1,19 @@
+# V5 direction rejection experiment
+
+Independent v4 audit confirmed 25 exact/minimal spans, one broader adequate, seven spurious and one unsafe negation-clipped span. Two unquoted views were falsely attributed to quoted speakers. The unchanged direction model emitted LEFT/RIGHT for all34 candidates and NO_DIRECTION for none. Higher extraction recall therefore does not make v4 safe.
+
+## Single controlled change
+Append eight new demonstrations only to v4's direction system prompt: two LEFT, two RIGHT and four NO_DIRECTION. The negative demonstrations cover a reported policy fact, a clause clipped out of a rejected view, an untrusted classifier instruction, and uncertainty. Positive examples preserve substantive policy direction, direct quoted voice and required negation. Keep the preceding direction prompt byte-identical. Extraction and speaker remain byte-identical v4, including v4 extraction demonstrations. No learned model changes, additional stages, keyword rules, output repairs, label filters or metric changes.
+
+## Freeze and data separation
+Freeze this script, demonstrations, all imported model/validation/evaluation code, test, full prompt text, model/runtime identity, source schema, decoding parameters and sealed fixture/manifest hashes before any v5 inference. Preparing the protocol may hash opaque sealed bytes but must not parse or inspect case text or expectations. The independent reviewer owns32 new synthetic transfer cases and sends only file locations, counts, hashes and broad coverage before freeze. Do not open sealed cases until execution after freeze and do not inspect their output between v4/v5 arms. The sealed89 and726 existing corpus partitions remain unopened.
+
+The runner first evaluates v5 on the same38 reused development cases. Then it runs v4 once on all32 new transfer cases and v5 once on those same32 cases. Neither transfer arm is scored until both complete. No adjustment based on development or transfer outcomes is allowed within this experiment. Data remains English US short-context AI-authored diagnostic content; newly untouched does not mean human gold, independent event sampling or news deployment validity.
+
+## Fidelity and accounting
+Use existing official pinned CPU llama.cpp and existing verified Qwen3-4B-Instruct-2507 GGUF. Full source enters all stages. Every stage uses exact token preflight,1024-token output reservation plus16 safety tokens in4096 context, unique literal occurrence alignment, cap16 and fail-closed no-truncation semantics. Every case and raw output remains recorded. Direction and speaker both run for every nonempty candidate set. No retries, case omissions, semantic run resumes or repairs. Any stage failure remains uncovered in fixed denominators.
+
+Primary metrics stay full exact boundaries+direction+speaker and author-only rendering, with all spans/cases and missing outputs retained. Also report exact precision, false highlights on zero-expected-span inputs, unsafe negation/clipping, false voice, candidate abstention and per-suite/slice counts. Existing overlap and axis-specific metrics remain explicitly secondary. Independent qualitative AI review checks source scope and semantic errors; it cannot replace exact results. Compare extraction decisions between paired arms and disclose if identical prompts produce any variation.
+
+## Decision
+A completed paired transfer evaluation and independent output review finish this experiment. A recall/precision improvement justifies further research, not serving. Report all regressions, failures, extraction changes and latency. The small synthetic sample cannot certify high accuracy, prompt-injection resistance, long-document behavior or deployment readiness. No serving, external publishing or deployment changes. Any later experiment requires a new freeze and new untouched data as appropriate.

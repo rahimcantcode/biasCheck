@@ -1,0 +1,66 @@
+[
+  {
+    "source": "The porch light is broken, but stronger limits on factory emissions are good.",
+    "spans": [
+      {
+        "text": "stronger limits on factory emissions are good",
+        "context": ""
+      }
+    ],
+    "reason": "A policy evaluation amid unrelated detail"
+  },
+  {
+    "source": "The council agenda lists a discussion of prison funding for Tuesday.",
+    "spans": [],
+    "reason": "Agenda information without a policy preference"
+  },
+  {
+    "source": "A guest said, \"Private school vouchers should be expanded.\"",
+    "spans": [
+      {
+        "text": "Private school vouchers should be expanded",
+        "context": ""
+      }
+    ],
+    "reason": "A directly quoted policy preference"
+  },
+  {
+    "source": "This recipe requires three eggs.",
+    "spans": [],
+    "reason": "Nonpolitical information"
+  },
+  {
+    "source": "Federal prisons should emphasize rehabilitation, while citizens should be allowed to carry firearms.",
+    "spans": [
+      {
+        "text": "Federal prisons should emphasize rehabilitation",
+        "context": ""
+      },
+      {
+        "text": "citizens should be allowed to carry firearms",
+        "context": ""
+      }
+    ],
+    "reason": "Two distinct policy preferences"
+  },
+  {
+    "source": "The senator is a disgrace.",
+    "spans": [],
+    "reason": "An insult without a policy preference"
+  },
+  {
+    "source": "The state must not cut public housing support.",
+    "spans": [
+      {
+        "text": "The state must not cut public housing support",
+        "context": ""
+      }
+    ],
+    "reason": "A policy demand with its complete negation"
+  },
+  {
+    "source": "What is the proposed emissions limit?",
+    "spans": [],
+    "reason": "A question without an expressed policy preference"
+  }
+]
