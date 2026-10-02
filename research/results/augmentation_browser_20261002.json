@@ -1,0 +1,140 @@
+{
+  "purpose": "Synthetic footer variants of first training excerpt; diagnostic sensitivity only",
+  "selection": "First training ID, not selected by label or prediction",
+  "health": {
+    "status": "ok",
+    "model": {
+      "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+      "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+      "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+      "id2label": {
+        "0": "LEFT",
+        "1": "RIGHT",
+        "2": "CENTER"
+      },
+      "aggregation": "new_token_weighted_logit_mean_v1",
+      "max_length": 512,
+      "stride": 64,
+      "demo_mode": true,
+      "transformers": "4.57.1",
+      "torch": "2.6.0+cpu",
+      "tokenizers": "0.22.2"
+    },
+    "release_approved": false
+  },
+  "browser": "154.0.8037.93",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "started_at": "2026-10-02T05:55:22.292Z",
+  "cases": [
+    {
+      "id": "010d924f-4636-45ce-a97e-703055a109ad-original",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.993377,
+          "RIGHT": 0.005376,
+          "CENTER": 0.001247
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 97,
+        "tokens_processed": 97,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "010d924f-4636-45ce-a97e-703055a109ad-variant-0",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.993377,
+          "RIGHT": 0.005376,
+          "CENTER": 0.001247
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 97,
+        "tokens_processed": 97,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "010d924f-4636-45ce-a97e-703055a109ad-variant-1",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.980073,
+          "RIGHT": 0.011427,
+          "CENTER": 0.008501
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 114,
+        "tokens_processed": 114,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "010d924f-4636-45ce-a97e-703055a109ad-variant-2",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "RIGHT",
+        "label_id": 1,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.000365,
+          "RIGHT": 0.99949,
+          "CENTER": 0.000145
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 137,
+        "tokens_processed": 137,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    }
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "screenshots": {
+    "010d924f-4636-45ce-a97e-703055a109ad-original.png": "de34834edcb2ba5c9a7fc62e88f9be7c94250bced9705c24726b299c81bc8ba9",
+    "010d924f-4636-45ce-a97e-703055a109ad-variant-2.png": "a6c0f7890c06cb6af02cb982a3424938963c293859dad48fa5215587db9ecc1a",
+    "010d924f-4636-45ce-a97e-703055a109ad-variant-0.png": "768ec4416165a0aa7602fa0a2a988c9c13ae9a9377a25c50cd827c8a80e2bcb9",
+    "010d924f-4636-45ce-a97e-703055a109ad-variant-1.png": "0552fdd1345497d99dd6c6c7407dd7087447dbce3f95aa6d88ae8ec8b69c1f15",
+    "mobile.png": "5c8453e1568a7d3c68b55d6a7fea935346c029165d7768c5c450d6cfa1bc8b14"
+  }
+}

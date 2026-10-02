@@ -1,5 +1,75 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 04:21 UTC: training-only footer augmentation CV
+
+Ran five-fold GroupKFold on the 115 training articles (42 source event strings),
+with 23 held-out articles per fold. Neither the 66-item validation file nor the
+reserved test was read. Footer hashes were already known from earlier development
+work, so this is not independent final evaluation. Event-string grouping still
+does not establish event-family independence. No labels or frozen splits changed.
+
+Per fold, fit word/bigram TF-IDF on original training-fold texts only and reuse
+that vocabulary/IDF for baseline and augmentation. Both heads use C=1, balanced
+classes, seed20261001, max_iter=1000. Augmentation supplies cleaned text plus one
+copy with each known footer appended. Each copy has sample weight 1/3, preserving
+original article loss mass and class proportions. All copies remain in the same
+fold; no duplicated article can enter both fitted and held-out data. Two fixed
+footer templates are extracted from training input, not held-out validation/test.
+Ten fitted heads and their vectorizers are retained locally.
+
+| Pooled held-out-training metric | Baseline | Augmented |
+| --- | ---: | ---: |
+| Original-label matches /115 | 58 | 57 |
+| Original-label agreement | .5043 | .4957 |
+| Macro-F1 | .4423 | .4382 |
+| Unanimous matches /54 | 25 | 24 |
+| All three footer variants agree /115 | 54 | 87 |
+| Variant consistency | .4696 | .7565 |
+
+Augmented LEFT/CENTER/RIGHT recalls: .6316/.1538/.5686. All 115 original items
+received a prediction. Original agreement differences by fold: -1, -1, 0, +2, -1
+matches (each denominator 23). For fixed pooled out-of-fold predictions, an
+event-string bootstrap (5000 draws, seed20261001) gives a paired agreement
+difference interval [-.0472,.0313]. Shared fitted folds, previously seen training
+data and possible event-family dependence limit inference; this is not an
+independent generalization interval.
+
+The augmentation increased consistency but did not improve original-label
+agreement. Among variant-consistent items, 24 baseline and 43 augmented original
+predictions still disagreed with their reference labels. Stable predictions can
+be wrong; no consistency score is presented as accuracy. Appending publisher
+notices creates artificial stress-test views, not genuine publisher provenance or
+new human-approved examples. Human reference labels apply to the original text.
+
+GPT-6 Astra Medium reviewed the design via the terminal CLI. Advice retained in
+`research/data/augmentation-advice-20261002.txt`: group-string aliases, unstratified
+small folds and prior footer discovery limit independence; evaluate articles and
+events, not augmented rows. No new paid compute was purchased.
+
+Live-browser diagnostic used the first training item by existing order (not label
+or score), plus three constructed variants. Original/clean returned LEFT .993377;
+copyright notice returned LEFT .980073; licensing notice returned RIGHT .999490.
+All were single-window, untruncated responses. The original article's reference is
+CENTER, so the directional flip does not establish a corrected prediction. Four
+HTTP 200 responses, no page/request errors or mobile overflow; mobile screenshot
+inspected. Local Chromium fallback, WebGL disabled, not cloud. Production was not
+modified; health retains original weight hash and unapproved demo status.
+
+Artifacts: `research/checkpoints/footer-augmentation-cv-20261002/` contains the
+pre-run protocol, all fold train/held IDs, ten model/vectorizer files with hashes,
+original and counterfactual out-of-fold predictions, and browser input snapshots.
+Sanitized `results/footer_augmentation_cv_20261002.json` adds full metrics, runtime
+versions, per-fold results and uncertainty; a copy is in parent outputs.
+`results/augmentation_browser_20261002.json` stores responses and screenshot hashes;
+raw UI responses/screenshots are in parent `outputs/live-browser-augmentation-20261002/`.
+Three augmentation tests and five exact-cleaning tests passed.
+
+Reproduce: `python3 research/scripts/footer_augmentation_cv.py --data
+research/data/pbc-snippets-20261001/train.jsonl --output <fresh-directory>`.
+Decision: retain a robustness research result, reject any accuracy-improvement
+claim, and do not deploy. More invariance alone has not addressed the very low
+CENTER recall or the annotation/task-definition problems.
+
 ## 2026-10-02 03:12 UTC: exact-footer 2x2 training ablation
 
 Trained matched raw and cleaned TF-IDF word/bigram logistic-regression heads with
