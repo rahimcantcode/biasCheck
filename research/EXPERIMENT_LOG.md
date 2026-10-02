@@ -1,5 +1,77 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 00:09 UTC: structured author-stance prototype
+
+Implemented `scripts/stance_contract.py`, an offline research comparator using
+GPT-6 Astra Medium through the authorized Codex CLI. No trained weights changed.
+Output separates political relevance, author stance, attributed stances, exact
+evidence spans and rationale. Author stance supports LEFT/CENTER/RIGHT/MIXED/
+INSUFFICIENT, so it is not directly interchangeable with the production three-way
+classifier. Nonpolitical text receives political=false plus INSUFFICIENT, not
+CENTER. Schema validation rejects extra fields, invalid types/labels, missing or
+duplicate IDs; semantic checks reject nonexistent/empty evidence, unsupported
+directional outputs and inconsistent nonpolitical fields. Exact evidence presence
+does not prove a rationale is true or evidence supports the conclusion.
+
+Fixed prompt tested on the previous six quotation controls and six additional
+AI-authored controls. The additional fixture was written before reading the first
+batch predictions; the prompt was not changed between batches. These are targeted
+development diagnostics, not an independent human benchmark. All 12 responses
+passed final schema/evidence validation. Outputs: LEFT 1, RIGHT 2, CENTER 5, MIXED 1,
+INSUFFICIENT 3; two were nonpolitical and one was a political-context fragment.
+No accuracy, macro-F1 or human-gold success claim is made.
+
+| Case | Astra author stance | Relevant attribution |
+| --- | --- | --- |
+| Left endorsement | LEFT | None |
+| Left attribution | CENTER | LEFT |
+| Right endorsement | RIGHT | None |
+| Right attribution | CENTER | RIGHT |
+| Balanced attribution | CENTER | LEFT and RIGHT |
+| Cooking quotation | INSUFFICIENT; nonpolitical | None |
+| Health-care plus gun-rights endorsement | MIXED | None |
+| Factual hearing | CENTER | None |
+| Reject higher taxes; endorse tax cuts | RIGHT | LEFT |
+| Quoted progressive witness | CENTER | LEFT |
+| Taxes fragment | INSUFFICIENT | None |
+| Parser instruction quoted as data | INSUFFICIENT; nonpolitical | None |
+
+Live-browser comparison on the six additional controls: production returned LEFT
+for five and abstained on the short fragment (raw LEFT .996151). The other raw
+Left scores were .996848, .998535, .998927, .998175 and .996518 in fixture order.
+All six form submissions HTTP 200; no page errors, failed requests or mobile
+horizontal overflow. Mixed-endorsement desktop screenshot visually inspected.
+Local Chromium fallback with WebGL disabled, not a cloud-browser run. No new
+production deployment. These observations do not establish a causal benefit of
+the structured prompt versus the previous Astra prompt, which was not rerun here.
+
+Negative result/infrastructure repair: global Python lacked jsonschema. Initial
+tests failed; the first model call finished but its local validation failed. Raw
+output was retained and validated later without a repeated inference call. Its
+original manifest deliberately still has an empty completed-batches list. Created
+isolated `research/checkpoints/stance-runtime` with jsonschema==4.23.0; application
+dependencies unchanged. Import now occurs before any paid/inference work so a
+missing dependency fails early. Nine focused validator tests pass. Final validator
+also revalidated both raw batches after adding two consistency checks.
+
+Artifacts: `results/stance_contract_20261002.json` includes prompt/input/output/
+validator hashes, both raw predictions, run manifests, dependency versions,
+coverage, browser responses and screenshot hashes. Hosted Astra weights/hash are
+not available; do not imply reproducibility of server-side weights. Raw CLI logs
+are local under `research/data/astra-stance-{contract,challenge}-20261002/`.
+Screenshots: parent workspace `outputs/live-browser-stance-20261002/`.
+
+Reproduce in an isolated environment using `research/stance_requirements.txt`,
+then `python research/scripts/stance_contract.py --input
+research/fixtures/stance_challenge_20261002.json --output <fresh-directory>`.
+Run `python -m unittest discover -s tests -p test_stance_contract.py -v` with that
+same environment. No reserved corpus test access, human relabeling or training.
+
+Decision: promising diagnostic behavior; retain research-only status. Production
+integration needs fresh independently annotated passages, complete coverage and
+per-class evaluation, robustness and latency/cost checks, and an approved inference
+deployment route. An authenticated research CLI is not a product API service.
+
 ## 2026-10-01 23:08 UTC: annotation-policy audit and quotation probes
 
 No training or model selection this run. Implemented `annotation_audit.py` to
