@@ -125,6 +125,16 @@ Replace EXACT_BASE_COMMIT with the verified immutable model revision. An empty o
 
 ## Evaluation and calibration
 
+New evaluation reports and calibration policies must include complete
+`inference_runtime` schema 1 metadata: exact torch/transformers/tokenizers,
+window-preparation implementation, observed device/dtype/attention backend and
+batch size. Calibration checks it before fitting; offline policy evaluation and
+serving require exact identity equality. Missing or partial legacy identities
+are rejected even when both sides omit them. Keep historical reports unchanged;
+regenerate evaluation under the intended runtime rather than assigning newer
+versions to old results. See [Python security review](../docs/python-security.md).
+
+
 ```bash
 python research/scripts/evaluate.py --input research/data/valid.jsonl --model bias_model --split validation --output research/results/current_validation.json
 python research/scripts/calibrate.py --validation research/results/human_validation.json --output research/checkpoints/candidate_policy.json

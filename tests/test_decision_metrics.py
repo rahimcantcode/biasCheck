@@ -162,6 +162,7 @@ def test_invalid_decisions_fail_closed(mutation):
 def reports():
     metadata=dict(weights_sha256='w',config_sha256='c',tokenizer_sha256='t',aggregation='a',
                   max_length=512,stride=64,preprocessing='exact-text-v2',id2label={'0':'LEFT','1':'CENTER','2':'RIGHT'})
+    metadata['inference_runtime']=dict(schema_version=1,torch='2.13.0+cpu',transformers='5.10.4',tokenizers='0.22.2',window_preparation='tokenizers_verified_post_processor_v1',device='cpu',dtype='torch.float32',attention_implementation='sdpa',batch_size=4)
     policy={**metadata,'schema_version':1,'release_approved':False,'temperature':1.,'min_confidence':.7,
             'min_margin':.2,'min_tokens':30,'validated_modes':['article'],'calibration_data_sha256':'validation'}
     def report(split):

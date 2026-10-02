@@ -1,5 +1,5 @@
-# Reuse the pinned backend and research dependencies without changing serving
-# requirements. Install the official CPU torch wheel first; see docs/testing-ci.md.
+# Reuse the pinned backend and research dependencies. Install the official CPU
+# torch wheel first; see docs/testing-ci.md and docs/python-security.md.
 -r research/requirements.txt
 
 # Restrict accidental Python test connections to synthetic loopback fixtures.

@@ -1,9 +1,12 @@
 """Fit only on validation; never marks a policy as approved for deployment."""
-import argparse,hashlib,json
+import argparse,hashlib,json,sys
+from copy import deepcopy
 from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 import numpy as np
 from scipy.optimize import minimize_scalar
 from scipy.special import logsumexp,softmax
+from backend.model import validate_inference_runtime
 
 
 def fit(report,target=.9,min_coverage=.8):
@@ -11,6 +14,13 @@ def fit(report,target=.9,min_coverage=.8):
     provenance=report.get('annotation_provenance') or {}
     if not provenance.get('human_reviewed') or not provenance.get('reference'):
         raise ValueError('Documented human-reviewed validation labels are required.')
+    metadata = report.get('model') or {}
+    if not metadata.get('preprocessing'):
+        raise ValueError('Calibration requires versioned preprocessing metadata; regenerate legacy evaluation reports.')
+    try:
+        runtime = validate_inference_runtime(metadata.get('inference_runtime'))
+    except RuntimeError as exc:
+        raise ValueError(f'Calibration requires complete inference_runtime metadata: {exc}') from exc
     rows=[r for r in report['predictions'] if r['gold'] in ['LEFT','CENTER','RIGHT']]
     if len(rows)<100:raise ValueError('At least 100 validation examples are required.')
     mapping={v:int(k) for k,v in report['model']['id2label'].items()}
@@ -27,9 +37,8 @@ def fit(report,target=.9,min_coverage=.8):
             coverage=float(mask.mean());accuracy=float(correct[mask].mean()) if mask.any() else 0
             if coverage>=min_coverage and accuracy>=target and (best is None or coverage>best[0]):best=(coverage,float(threshold),float(margin),accuracy)
     if best is None:raise ValueError('Validation does not meet requested accuracy/coverage. Do not release.')
-    if not report['model'].get('preprocessing'):
-        raise ValueError('Calibration requires versioned preprocessing metadata; regenerate legacy evaluation reports.')
     policy={k:report['model'][k] for k in ['weights_sha256','config_sha256','tokenizer_sha256','aggregation','max_length','stride','preprocessing']}
+    policy['inference_runtime'] = deepcopy(runtime)
     policy.update(schema_version=1,temperature=temperature,min_confidence=best[1],min_margin=best[2],min_tokens=30,
         validated_modes=[report['mode']],calibration_data_sha256=report['data_sha256'],validation_coverage=best[0],
         validation_selective_accuracy=best[3],release_approved=False,

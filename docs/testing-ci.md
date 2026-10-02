@@ -64,10 +64,11 @@ source .venv-ci/bin/activate
 export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
 export NEXT_TELEMETRY_DISABLED=1 TOKENIZERS_PARALLELISM=false
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONHASHSEED=0
-python -m pip install --only-binary=:all: 'torch==2.6.0+cpu' --index-url https://download.pytorch.org/whl/cpu
+python -m pip install --only-binary=:all: --index-url https://pypi.org/simple 'pip==26.2'
+python -m pip install --only-binary=:all: 'torch==2.13.0+cpu' --index-url https://download.pytorch.org/whl/cpu
 python -m pip install --only-binary=:all: -r requirements-test.txt
 python -m pip check
-python -c "import torch; assert torch.__version__ == '2.6.0+cpu' and torch.version.cuda is None, torch.__version__"
+python -c "import torch; assert torch.__version__ == '2.13.0+cpu' and torch.version.cuda is None, torch.__version__"
 python -m pytest -q tests --disable-socket --allow-hosts=127.0.0.1 --allow-unix-socket
 cd frontend
 npm ci --no-audit --no-fund
@@ -84,6 +85,12 @@ Python/Node patch releases within their selected lines, and the hosted runner
 image are not fully locked. This is reproducible test configuration, not a claim
 of bit-for-bit hermetic builds. A full platform-specific hash lock can be added
 as a separately validated dependency-maintenance change.
+
+The dependency-runtime test saves and reloads a tiny randomly initialized
+RoBERTa model to check the same lazy imports and loading-info API used by the
+backend. It downloads no model and measures no classification accuracy. See
+[Python security review](python-security.md) for the separate actual-checkpoint
+smoke, dependency audit scope, CPU-wheel coverage gap, and remaining limits.
 
 ## Official action pins
 

@@ -1,0 +1,1510 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-02T21:02:08.574409+00:00",
+  "scope": "Local Python dependency maintenance; not a production deployment or accuracy validation",
+  "release_approved": false,
+  "historical_experiment_environment_modified": false,
+  "python_version": "3.12.14",
+  "audit_tool": {
+    "name": "pip-audit",
+    "version": "2.10.1",
+    "service": "pypi",
+    "ignore_advisories": []
+  },
+  "baseline_original": {
+    "source_file_sha256": "b5ad985794ea5d01273c1f2c035b8c78fffdb4d5d5729c67a5ef84838a320646",
+    "inventory_count": 69,
+    "audited_count": 68,
+    "raw_advisory_records": 36,
+    "distinct_package_advisory_groups": 20,
+    "affected_packages": 7,
+    "skipped": [
+      {
+        "name": "torch",
+        "skip_reason": "Dependency not found on PyPI and could not be audited: torch (2.6.0+cpu)"
+      }
+    ],
+    "findings": [
+      {
+        "package": "protobuf",
+        "version": "5.29.5",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-0994",
+              "GHSA-7gcm-g887-7qv7",
+              "PYSEC-2026-1805"
+            ],
+            "reported_fixed_versions": [
+              "5.29.6",
+              "6.33.5"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "pytest",
+        "version": "8.3.5",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2025-71176",
+              "GHSA-6w46-j5rx-g56g",
+              "PYSEC-2026-1845"
+            ],
+            "reported_fixed_versions": [
+              "9.0.3"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "requests",
+        "version": "2.32.5",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-25645",
+              "GHSA-gc5v-m9x4-r6x2",
+              "PYSEC-2026-2275"
+            ],
+            "reported_fixed_versions": [
+              "2.33.0"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "sentencepiece",
+        "version": "0.2.0",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-1260",
+              "GHSA-38vq-g6vr-w8wf",
+              "PYSEC-2026-1909"
+            ],
+            "reported_fixed_versions": [
+              "0.2.1"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "setuptools",
+        "version": "78.1.0",
+        "advisories": [
+          {
+            "ids": [
+              "BIT-setuptools-2025-47273",
+              "CVE-2025-47273",
+              "GHSA-5rjg-fvgr-3xxf",
+              "PYSEC-2025-49"
+            ],
+            "reported_fixed_versions": [
+              "78.1.1"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "BIT-setuptools-2026-59890",
+              "CVE-2026-59890",
+              "GHSA-h35f-9h28-mq5c",
+              "PYSEC-2026-3447"
+            ],
+            "reported_fixed_versions": [
+              "83.0.0"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "starlette",
+        "version": "0.46.2",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2025-54121",
+              "GHSA-2c2j-9gv5-cj73",
+              "PYSEC-2026-1941"
+            ],
+            "reported_fixed_versions": [
+              "0.47.2"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2025-62727",
+              "GHSA-7f5h-v6xp-fcq8",
+              "PYSEC-2026-1942"
+            ],
+            "reported_fixed_versions": [
+              "0.49.1"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-48710",
+              "GHSA-86qp-5c8j-p5mr",
+              "PYSEC-2026-161",
+              "X41-2026-002"
+            ],
+            "reported_fixed_versions": [
+              "1.0.1"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-48817",
+              "GHSA-x746-7m8f-x49c",
+              "PYSEC-2026-2280"
+            ],
+            "reported_fixed_versions": [
+              "1.1.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-48818",
+              "GHSA-wqp7-x3pw-xc5r",
+              "PYSEC-2026-2281"
+            ],
+            "reported_fixed_versions": [
+              "1.1.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-54282",
+              "GHSA-jp82-jpqv-5vv3",
+              "PYSEC-2026-248"
+            ],
+            "reported_fixed_versions": [
+              "1.3.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-54283",
+              "GHSA-82w8-qh3p-5jfq",
+              "PYSEC-2026-249"
+            ],
+            "reported_fixed_versions": [
+              "1.3.1"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "transformers",
+        "version": "4.57.1",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2025-14929",
+              "PYSEC-2025-217"
+            ],
+            "reported_fixed_versions": [],
+            "raw_record_count": 1
+          },
+          {
+            "ids": [
+              "CVE-2025-14930",
+              "PYSEC-2025-218"
+            ],
+            "reported_fixed_versions": [],
+            "raw_record_count": 1
+          },
+          {
+            "ids": [
+              "CVE-2026-1839",
+              "GHSA-69w3-r845-3855",
+              "PYSEC-2026-2288"
+            ],
+            "reported_fixed_versions": [
+              "5.0.0",
+              "5.0.0rc3"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-4372",
+              "GHSA-29pf-2h5f-8g72",
+              "PYSEC-2026-2289"
+            ],
+            "reported_fixed_versions": [
+              "5.3.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-5241",
+              "GHSA-fgcw-684q-jj6r",
+              "PYSEC-2026-2290"
+            ],
+            "reported_fixed_versions": [
+              "5.5.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-80047",
+              "GHSA-x9r9-c232-4q39",
+              "PYSEC-2026-4174"
+            ],
+            "reported_fixed_versions": [],
+            "raw_record_count": 1
+          },
+          {
+            "ids": [
+              "CVE-2026-9856",
+              "GHSA-xrqw-3rrv-vx5w",
+              "PYSEC-2026-3929"
+            ],
+            "reported_fixed_versions": [
+              "5.10.0"
+            ],
+            "raw_record_count": 1
+          }
+        ]
+      }
+    ]
+  },
+  "baseline_expanded_including_installer": {
+    "source_file_sha256": "a53c8eef071084f1df3542e4763bc9005c77d7de2a4a25b0a036678bd5b01f36",
+    "inventory_count": 70,
+    "audited_count": 69,
+    "raw_advisory_records": 48,
+    "distinct_package_advisory_groups": 26,
+    "affected_packages": 8,
+    "skipped": [
+      {
+        "name": "torch",
+        "skip_reason": "Dependency not found on PyPI and could not be audited: torch (2.6.0+cpu)"
+      }
+    ],
+    "findings": [
+      {
+        "package": "pip",
+        "version": "25.0.1",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2025-8869",
+              "GHSA-4xh5-x5gv-qwph",
+              "PYSEC-2026-1795"
+            ],
+            "reported_fixed_versions": [
+              "25.3"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-13346",
+              "GHSA-qwm4-qh6w-59xr",
+              "PYSEC-2026-3721"
+            ],
+            "reported_fixed_versions": [
+              "26.2",
+              "26.2.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-1703",
+              "GHSA-6vgw-5pg2-w6jp",
+              "PYSEC-2026-1796"
+            ],
+            "reported_fixed_versions": [
+              "26.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-3219",
+              "GHSA-58qw-9mgm-455v",
+              "PYSEC-2026-2875"
+            ],
+            "reported_fixed_versions": [
+              "26.1"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-6357",
+              "GHSA-jp4c-xjxw-mgf9",
+              "PYSEC-2026-2876"
+            ],
+            "reported_fixed_versions": [
+              "26.1"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-8643",
+              "GHSA-wf93-45jw-7689",
+              "PYSEC-2026-196"
+            ],
+            "reported_fixed_versions": [
+              "26.1.2"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "protobuf",
+        "version": "5.29.5",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-0994",
+              "GHSA-7gcm-g887-7qv7",
+              "PYSEC-2026-1805"
+            ],
+            "reported_fixed_versions": [
+              "5.29.6",
+              "6.33.5"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "pytest",
+        "version": "8.3.5",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2025-71176",
+              "GHSA-6w46-j5rx-g56g",
+              "PYSEC-2026-1845"
+            ],
+            "reported_fixed_versions": [
+              "9.0.3"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "requests",
+        "version": "2.32.5",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-25645",
+              "GHSA-gc5v-m9x4-r6x2",
+              "PYSEC-2026-2275"
+            ],
+            "reported_fixed_versions": [
+              "2.33.0"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "sentencepiece",
+        "version": "0.2.0",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-1260",
+              "GHSA-38vq-g6vr-w8wf",
+              "PYSEC-2026-1909"
+            ],
+            "reported_fixed_versions": [
+              "0.2.1"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "setuptools",
+        "version": "78.1.0",
+        "advisories": [
+          {
+            "ids": [
+              "BIT-setuptools-2025-47273",
+              "CVE-2025-47273",
+              "GHSA-5rjg-fvgr-3xxf",
+              "PYSEC-2025-49"
+            ],
+            "reported_fixed_versions": [
+              "78.1.1"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "BIT-setuptools-2026-59890",
+              "CVE-2026-59890",
+              "GHSA-h35f-9h28-mq5c",
+              "PYSEC-2026-3447"
+            ],
+            "reported_fixed_versions": [
+              "83.0.0"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "starlette",
+        "version": "0.46.2",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2025-54121",
+              "GHSA-2c2j-9gv5-cj73",
+              "PYSEC-2026-1941"
+            ],
+            "reported_fixed_versions": [
+              "0.47.2"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2025-62727",
+              "GHSA-7f5h-v6xp-fcq8",
+              "PYSEC-2026-1942"
+            ],
+            "reported_fixed_versions": [
+              "0.49.1"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-48710",
+              "GHSA-86qp-5c8j-p5mr",
+              "PYSEC-2026-161",
+              "X41-2026-002"
+            ],
+            "reported_fixed_versions": [
+              "1.0.1"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-48817",
+              "GHSA-x746-7m8f-x49c",
+              "PYSEC-2026-2280"
+            ],
+            "reported_fixed_versions": [
+              "1.1.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-48818",
+              "GHSA-wqp7-x3pw-xc5r",
+              "PYSEC-2026-2281"
+            ],
+            "reported_fixed_versions": [
+              "1.1.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-54282",
+              "GHSA-jp82-jpqv-5vv3",
+              "PYSEC-2026-248"
+            ],
+            "reported_fixed_versions": [
+              "1.3.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-54283",
+              "GHSA-82w8-qh3p-5jfq",
+              "PYSEC-2026-249"
+            ],
+            "reported_fixed_versions": [
+              "1.3.1"
+            ],
+            "raw_record_count": 2
+          }
+        ]
+      },
+      {
+        "package": "transformers",
+        "version": "4.57.1",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2025-14929",
+              "PYSEC-2025-217"
+            ],
+            "reported_fixed_versions": [],
+            "raw_record_count": 1
+          },
+          {
+            "ids": [
+              "CVE-2025-14930",
+              "PYSEC-2025-218"
+            ],
+            "reported_fixed_versions": [],
+            "raw_record_count": 1
+          },
+          {
+            "ids": [
+              "CVE-2026-1839",
+              "GHSA-69w3-r845-3855",
+              "PYSEC-2026-2288"
+            ],
+            "reported_fixed_versions": [
+              "5.0.0",
+              "5.0.0rc3"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-4372",
+              "GHSA-29pf-2h5f-8g72",
+              "PYSEC-2026-2289"
+            ],
+            "reported_fixed_versions": [
+              "5.3.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-5241",
+              "GHSA-fgcw-684q-jj6r",
+              "PYSEC-2026-2290"
+            ],
+            "reported_fixed_versions": [
+              "5.5.0"
+            ],
+            "raw_record_count": 2
+          },
+          {
+            "ids": [
+              "CVE-2026-80047",
+              "GHSA-x9r9-c232-4q39",
+              "PYSEC-2026-4174"
+            ],
+            "reported_fixed_versions": [],
+            "raw_record_count": 1
+          },
+          {
+            "ids": [
+              "CVE-2026-9856",
+              "GHSA-xrqw-3rrv-vx5w",
+              "PYSEC-2026-3929"
+            ],
+            "reported_fixed_versions": [
+              "5.10.0"
+            ],
+            "raw_record_count": 1
+          }
+        ]
+      }
+    ]
+  },
+  "after_expanded_including_installer": {
+    "source_file_sha256": "da96436f4554d858cab7b7d91a9912d8cedb903f585b08b9e5aa2b8f27990148",
+    "inventory_count": 77,
+    "audited_count": 76,
+    "raw_advisory_records": 0,
+    "distinct_package_advisory_groups": 0,
+    "affected_packages": 0,
+    "skipped": [
+      {
+        "name": "torch",
+        "skip_reason": "Dependency not found on PyPI and could not be audited: torch (2.13.0+cpu)"
+      }
+    ],
+    "findings": []
+  },
+  "cpu_wheel_supplement": {
+    "method": "Query the official PyPI base version separately; the +cpu build is still explicitly skipped by pip-audit. Base-version metadata is not a binary-specific audit.",
+    "before": {
+      "installed_version": "2.6.0+cpu",
+      "queried_base_version": "2.6.0",
+      "raw_advisory_records": 24,
+      "distinct_advisory_groups": 22,
+      "advisories": [
+        {
+          "ids": [
+            "BIT-pytorch-2025-2148",
+            "CVE-2025-2148",
+            "GHSA-c678-jfcj-6jmf",
+            "PYSEC-2025-189"
+          ],
+          "reported_fixed_versions": [],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-2149",
+            "CVE-2025-2149",
+            "GHSA-x3gm-94wq-g975",
+            "PYSEC-2025-190"
+          ],
+          "reported_fixed_versions": [],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-2953",
+            "CVE-2025-2953",
+            "GHSA-3749-ghw9-m3mg",
+            "PYSEC-2025-191"
+          ],
+          "reported_fixed_versions": [
+            "2.7.1-rc1"
+          ],
+          "raw_record_count": 2
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-2998",
+            "CVE-2025-2998",
+            "GHSA-f4hp-rmr7-r7v8",
+            "PYSEC-2025-192"
+          ],
+          "reported_fixed_versions": [],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-2999",
+            "CVE-2025-2999",
+            "GHSA-vgrw-7cvw-pwgx",
+            "PYSEC-2025-193"
+          ],
+          "reported_fixed_versions": [
+            "2.9.1"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-3000",
+            "CVE-2025-3000",
+            "GHSA-rrmf-rvhw-rf47",
+            "PYSEC-2025-194"
+          ],
+          "reported_fixed_versions": [
+            "2.13.0"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-3001",
+            "CVE-2025-3001",
+            "GHSA-qfhq-4f3w-5fph",
+            "PYSEC-2025-195"
+          ],
+          "reported_fixed_versions": [
+            "2.10.0"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-3730",
+            "CVE-2025-3730",
+            "GHSA-887c-mr87-cxwp",
+            "PYSEC-2026-1970"
+          ],
+          "reported_fixed_versions": [
+            "2.8.0"
+          ],
+          "raw_record_count": 2
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-46148",
+            "CVE-2025-46148",
+            "PYSEC-2025-198"
+          ],
+          "reported_fixed_versions": [
+            "2.7.0"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-46149",
+            "CVE-2025-46149",
+            "PYSEC-2025-199"
+          ],
+          "reported_fixed_versions": [
+            "2.7.0"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-46150",
+            "CVE-2025-46150",
+            "PYSEC-2025-200"
+          ],
+          "reported_fixed_versions": [
+            "2.7.0"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-46152",
+            "CVE-2025-46152",
+            "PYSEC-2025-201"
+          ],
+          "reported_fixed_versions": [
+            "2.7.0"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-46153",
+            "CVE-2025-46153",
+            "PYSEC-2025-202"
+          ],
+          "reported_fixed_versions": [
+            "2.7.0"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-55551",
+            "CVE-2025-55551",
+            "PYSEC-2025-203"
+          ],
+          "reported_fixed_versions": [
+            "2.9.0"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-55552",
+            "CVE-2025-55552",
+            "PYSEC-2025-204"
+          ],
+          "reported_fixed_versions": [
+            "2.9.0"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-55553",
+            "CVE-2025-55553",
+            "PYSEC-2025-205"
+          ],
+          "reported_fixed_versions": [
+            "2.7.1"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-55554",
+            "CVE-2025-55554",
+            "PYSEC-2025-206"
+          ],
+          "reported_fixed_versions": [
+            "2.9.0"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-55557",
+            "CVE-2025-55557",
+            "PYSEC-2025-207"
+          ],
+          "reported_fixed_versions": [
+            "2.7.1"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-55558",
+            "CVE-2025-55558",
+            "PYSEC-2025-208"
+          ],
+          "reported_fixed_versions": [
+            "2.7.1"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2025-55560",
+            "CVE-2025-55560",
+            "PYSEC-2025-209"
+          ],
+          "reported_fixed_versions": [
+            "2.7.1"
+          ],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "BIT-pytorch-2026-4538",
+            "CVE-2026-4538",
+            "PYSEC-2026-139"
+          ],
+          "reported_fixed_versions": [],
+          "raw_record_count": 1
+        },
+        {
+          "ids": [
+            "CVE-2026-24747",
+            "GHSA-63cw-57p8-fm3p",
+            "PYSEC-2026-2286"
+          ],
+          "reported_fixed_versions": [
+            "2.10.0"
+          ],
+          "raw_record_count": 1
+        }
+      ],
+      "source": "https://pypi.org/pypi/torch/2.6.0/json"
+    },
+    "after": {
+      "installed_version": "2.13.0+cpu",
+      "queried_base_version": "2.13.0",
+      "audit": {
+        "source_file_sha256": "7a3b6666822c207dbd6f6b75040ffb629cd0debe42e28be42e3963cb41d3693d",
+        "inventory_count": 1,
+        "audited_count": 1,
+        "raw_advisory_records": 0,
+        "distinct_package_advisory_groups": 0,
+        "affected_packages": 0,
+        "skipped": [],
+        "findings": []
+      },
+      "source": "https://pypi.org/pypi/torch/2.13.0/json"
+    }
+  },
+  "installed_versions_before": {
+    "annotated-types": "0.8.0",
+    "anyio": "4.15.1",
+    "attrs": "26.1.0",
+    "babel": "2.18.0",
+    "beautifulsoup4": "4.13.4",
+    "certifi": "2026.7.22",
+    "charset-normalizer": "3.5.2",
+    "click": "8.5.0",
+    "cloudpickle": "3.1.2",
+    "courlan": "1.4.0",
+    "dateparser": "1.4.3",
+    "fastapi": "0.115.14",
+    "filelock": "3.32.3",
+    "fsspec": "2026.7.0",
+    "h11": "0.16.0",
+    "hf-xet": "1.6.0",
+    "htmldate": "1.11.0",
+    "httpcore": "1.0.9",
+    "httpx": "0.28.1",
+    "huggingface_hub": "0.36.2",
+    "idna": "3.20",
+    "iniconfig": "2.3.0",
+    "jinja2": "3.1.6",
+    "joblib": "1.6.0",
+    "jsonschema": "4.25.1",
+    "jsonschema-specifications": "2025.9.1",
+    "justext": "3.0.2",
+    "lxml": "6.1.3",
+    "lxml_html_clean": "0.4.5",
+    "markupsafe": "3.0.3",
+    "mpmath": "1.3.0",
+    "networkx": "3.6.1",
+    "numpy": "2.2.6",
+    "packaging": "26.3",
+    "pip": "25.0.1",
+    "pluggy": "1.6.0",
+    "protobuf": "5.29.5",
+    "pydantic": "2.11.7",
+    "pydantic_core": "2.33.2",
+    "pysbd": "0.3.4",
+    "pytest": "8.3.5",
+    "pytest-socket": "0.7.0",
+    "python-dateutil": "2.9.0.post0",
+    "pytz": "2026.4",
+    "pyyaml": "6.0.3",
+    "referencing": "0.37.0",
+    "regex": "2026.9.29",
+    "requests": "2.32.5",
+    "rpds-py": "2026.6.3",
+    "safetensors": "0.5.3",
+    "scikit-learn": "1.6.1",
+    "scipy": "1.15.3",
+    "sentencepiece": "0.2.0",
+    "setuptools": "78.1.0",
+    "six": "1.17.0",
+    "soupsieve": "2.10",
+    "starlette": "0.46.2",
+    "sympy": "1.13.1",
+    "threadpoolctl": "3.7.0",
+    "tld": "0.13.2",
+    "tokenizers": "0.22.2",
+    "torch": "2.6.0+cpu",
+    "tqdm": "4.70.1",
+    "trafilatura": "2.0.0",
+    "transformers": "4.57.1",
+    "typing_extensions": "4.16.0",
+    "typing-inspection": "0.4.4",
+    "tzlocal": "5.4.4",
+    "urllib3": "2.8.0",
+    "uvicorn": "0.34.3"
+  },
+  "installed_versions_after": {
+    "annotated-doc": "0.0.5",
+    "annotated-types": "0.8.0",
+    "anyio": "4.15.1",
+    "attrs": "26.1.0",
+    "babel": "2.18.0",
+    "beautifulsoup4": "4.13.4",
+    "certifi": "2026.7.22",
+    "charset-normalizer": "3.5.2",
+    "click": "8.5.0",
+    "cloudpickle": "3.1.2",
+    "courlan": "1.4.0",
+    "dateparser": "1.4.3",
+    "fastapi": "0.135.4",
+    "filelock": "3.32.3",
+    "fsspec": "2026.7.0",
+    "h11": "0.16.0",
+    "hf-xet": "1.6.0",
+    "htmldate": "1.11.0",
+    "httpcore": "1.0.9",
+    "httpx": "0.28.1",
+    "huggingface_hub": "1.33.0",
+    "idna": "3.20",
+    "iniconfig": "2.3.0",
+    "jinja2": "3.1.6",
+    "joblib": "1.6.0",
+    "jsonschema": "4.23.0",
+    "jsonschema-specifications": "2025.9.1",
+    "justext": "3.0.2",
+    "lxml": "6.1.3",
+    "lxml_html_clean": "0.4.5",
+    "markdown-it-py": "4.2.0",
+    "markupsafe": "3.0.3",
+    "mdurl": "0.1.2",
+    "mpmath": "1.3.0",
+    "networkx": "3.6.1",
+    "numpy": "2.2.6",
+    "packaging": "26.3",
+    "pip": "26.2",
+    "pluggy": "1.6.0",
+    "protobuf": "5.29.6",
+    "pydantic": "2.11.7",
+    "pydantic_core": "2.33.2",
+    "pygments": "2.21.0",
+    "pysbd": "0.3.4",
+    "pytest": "9.0.3",
+    "pytest-socket": "0.7.0",
+    "python-dateutil": "2.9.0.post0",
+    "pytz": "2026.4",
+    "pyyaml": "6.0.3",
+    "referencing": "0.37.0",
+    "regex": "2026.9.29",
+    "requests": "2.33.0",
+    "rich": "15.0.0",
+    "rpds-py": "2026.6.3",
+    "safetensors": "0.5.3",
+    "scikit-learn": "1.6.1",
+    "scipy": "1.15.3",
+    "sentencepiece": "0.2.1",
+    "setuptools": "83.0.0",
+    "shellingham": "1.5.4",
+    "six": "1.17.0",
+    "soupsieve": "2.10",
+    "starlette": "1.3.1",
+    "sympy": "1.14.0",
+    "threadpoolctl": "3.7.0",
+    "tld": "0.13.2",
+    "tokenizers": "0.22.2",
+    "torch": "2.13.0+cpu",
+    "tqdm": "4.70.1",
+    "trafilatura": "2.0.0",
+    "transformers": "5.10.4",
+    "typer": "0.27.2",
+    "typing_extensions": "4.16.0",
+    "typing-inspection": "0.4.4",
+    "tzlocal": "5.4.4",
+    "urllib3": "2.8.0",
+    "uvicorn": "0.34.3"
+  },
+  "installed_changes": {
+    "annotated-doc": {
+      "before": null,
+      "after": "0.0.5"
+    },
+    "fastapi": {
+      "before": "0.115.14",
+      "after": "0.135.4"
+    },
+    "huggingface_hub": {
+      "before": "0.36.2",
+      "after": "1.33.0"
+    },
+    "jsonschema": {
+      "before": "4.25.1",
+      "after": "4.23.0"
+    },
+    "markdown-it-py": {
+      "before": null,
+      "after": "4.2.0"
+    },
+    "mdurl": {
+      "before": null,
+      "after": "0.1.2"
+    },
+    "pip": {
+      "before": "25.0.1",
+      "after": "26.2"
+    },
+    "protobuf": {
+      "before": "5.29.5",
+      "after": "5.29.6"
+    },
+    "pygments": {
+      "before": null,
+      "after": "2.21.0"
+    },
+    "pytest": {
+      "before": "8.3.5",
+      "after": "9.0.3"
+    },
+    "requests": {
+      "before": "2.32.5",
+      "after": "2.33.0"
+    },
+    "rich": {
+      "before": null,
+      "after": "15.0.0"
+    },
+    "sentencepiece": {
+      "before": "0.2.0",
+      "after": "0.2.1"
+    },
+    "setuptools": {
+      "before": "78.1.0",
+      "after": "83.0.0"
+    },
+    "shellingham": {
+      "before": null,
+      "after": "1.5.4"
+    },
+    "starlette": {
+      "before": "0.46.2",
+      "after": "1.3.1"
+    },
+    "sympy": {
+      "before": "1.13.1",
+      "after": "1.14.0"
+    },
+    "torch": {
+      "before": "2.6.0+cpu",
+      "after": "2.13.0+cpu"
+    },
+    "transformers": {
+      "before": "4.57.1",
+      "after": "5.10.4"
+    },
+    "typer": {
+      "before": null,
+      "after": "0.27.2"
+    }
+  },
+  "selected_official_metadata": [
+    {
+      "name": "fastapi",
+      "version": "0.135.4",
+      "requires_python": ">=3.10",
+      "requires_dist": [
+        "starlette>=0.46.0",
+        "pydantic>=2.9.0",
+        "typing-extensions>=4.8.0",
+        "typing-inspection>=0.4.2",
+        "annotated-doc>=0.0.2"
+      ],
+      "vulnerabilities": [],
+      "url": "https://pypi.org/pypi/fastapi/0.135.4/json",
+      "uploaded": "2026-04-16T11:39:29.385761Z"
+    },
+    {
+      "name": "starlette",
+      "version": "1.3.1",
+      "requires_python": ">=3.10",
+      "requires_dist": [
+        "anyio<5,>=3.6.2",
+        "typing-extensions>=4.10.0; python_version < \"3.13\""
+      ],
+      "vulnerabilities": [],
+      "url": "https://pypi.org/pypi/starlette/1.3.1/json",
+      "uploaded": "2026-06-12T09:23:10.017643Z"
+    },
+    {
+      "name": "transformers",
+      "version": "5.10.4",
+      "requires_python": ">=3.10.0",
+      "requires_dist": [
+        "huggingface-hub<2.0,>=1.5.0",
+        "numpy>=1.17",
+        "packaging>=20.0",
+        "pyyaml>=5.1",
+        "regex>=2025.10.22",
+        "tokenizers<=0.23.0,>=0.22.0",
+        "typer",
+        "safetensors>=0.4.3",
+        "tqdm>=4.27"
+      ],
+      "vulnerabilities": [],
+      "url": "https://pypi.org/pypi/transformers/5.10.4/json",
+      "uploaded": "2026-06-15T17:28:26.210334Z"
+    },
+    {
+      "name": "protobuf",
+      "version": "5.29.6",
+      "requires_python": ">=3.8",
+      "requires_dist": [],
+      "vulnerabilities": [],
+      "url": "https://pypi.org/pypi/protobuf/5.29.6/json",
+      "uploaded": "2026-02-04T22:54:25.805175Z"
+    },
+    {
+      "name": "pytest",
+      "version": "9.0.3",
+      "requires_python": ">=3.10",
+      "requires_dist": [
+        "colorama>=0.4; sys_platform == \"win32\"",
+        "exceptiongroup>=1; python_version < \"3.11\"",
+        "iniconfig>=1.0.1",
+        "packaging>=22",
+        "pluggy<2,>=1.5",
+        "pygments>=2.7.2",
+        "tomli>=1; python_version < \"3.11\""
+      ],
+      "vulnerabilities": [],
+      "url": "https://pypi.org/pypi/pytest/9.0.3/json",
+      "uploaded": "2026-04-07T17:16:16.130051Z"
+    },
+    {
+      "name": "requests",
+      "version": "2.33.0",
+      "requires_python": ">=3.10",
+      "requires_dist": [
+        "charset_normalizer<4,>=2",
+        "idna<4,>=2.5",
+        "urllib3<3,>=1.26",
+        "certifi>=2023.5.7"
+      ],
+      "vulnerabilities": [],
+      "url": "https://pypi.org/pypi/requests/2.33.0/json",
+      "uploaded": "2026-03-25T15:10:40.382036Z"
+    },
+    {
+      "name": "sentencepiece",
+      "version": "0.2.1",
+      "requires_python": ">=3.9",
+      "requires_dist": [],
+      "vulnerabilities": [],
+      "url": "https://pypi.org/pypi/sentencepiece/0.2.1/json",
+      "uploaded": "2025-08-12T06:58:59.807765Z"
+    },
+    {
+      "name": "setuptools",
+      "version": "83.0.0",
+      "requires_python": ">=3.10",
+      "requires_dist": [],
+      "vulnerabilities": [],
+      "url": "https://pypi.org/pypi/setuptools/83.0.0/json",
+      "uploaded": "2026-07-04T15:31:20.885481Z"
+    }
+  ],
+  "tests": {
+    "pip_check": "passed",
+    "cpu_build_assertion": "passed",
+    "shell_syntax": "passed",
+    "diff_whitespace": "passed",
+    "full_suite_command": "HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONHASHSEED=0 .venv-security-test/bin/python -m pytest -q tests --disable-socket --allow-hosts=127.0.0.1 --allow-unix-socket",
+    "full_suite": "561 passed, 4 warnings, 76 subtests passed in 6.17s",
+    "synthetic_runtime_adapter_tests": 16,
+    "legacy_runtime_adapter_tests": "16 passed in 3.49s",
+    "post_cache_fix_focused_audit_tests": "58 passed, sockets disabled; latest aggregate suite predates this audit-only cache fix"
+  },
+  "tokenizer_parity": {
+    "exact_match": true,
+    "cases": [
+      {
+        "token_count": 20,
+        "token_ids_sha256": "17341f17b56d02c0fdc4d0c506377b1d11620f3d6471d0c9fa2ff4282db6cfd9",
+        "windows_sha256": "2b346c86524742b012c7e2188722d080e3ad85d8c33c1739f06aa0b370f5a79c",
+        "features_sha256": "978d9a63e53c2dd0fa1e1fcba9291d6f25302bb42462f7a38ef91f71e246c0fe",
+        "chunk_count": 1
+      },
+      {
+        "token_count": 27,
+        "token_ids_sha256": "230327c0e4baad39a2d3d181e73455ff4c466b6f634dfbd18660072e70b515b5",
+        "windows_sha256": "4da9f4cb4a931a5dd90d0f5353448a5ed3b618918f33fde6a8477f363e4dc4bd",
+        "features_sha256": "8e3564b1c37d30a7456de3992fd7adca2daaf5d0eeea050a020f01b8fe2eeeea",
+        "chunk_count": 1
+      },
+      {
+        "token_count": 1431,
+        "token_ids_sha256": "a52d8e17b245515f6748758fac7c3198b78a2e77b9f56b87dd3dfd2b2ce7ca77",
+        "windows_sha256": "5743a851e6e3599f0ecfefb13ff8af0acccfe7f9f2bf6a545d3616e121877d0e",
+        "features_sha256": "e5415fa9ffd7723f052006e4ca4f958eacd5408ed2daad1f4eb21c583b6fb534",
+        "chunk_count": 4
+      }
+    ]
+  },
+  "original_checkpoint_smoke": {
+    "status": "passed",
+    "before_passed": true,
+    "after_passed": true,
+    "before_versions": {
+      "transformers": "4.57.1",
+      "tokenizers": "0.22.2",
+      "torch": "2.6.0+cpu",
+      "fastapi": "0.115.14",
+      "starlette": "0.46.2"
+    },
+    "after_versions": {
+      "transformers": "5.10.4",
+      "tokenizers": "0.22.2",
+      "torch": "2.13.0+cpu",
+      "fastapi": "0.135.4",
+      "starlette": "1.3.1"
+    },
+    "before_inference_runtime": {
+      "schema_version": 1,
+      "torch": "2.6.0+cpu",
+      "transformers": "4.57.1",
+      "tokenizers": "0.22.2",
+      "window_preparation": "transformers_special_token_builder_v1",
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "attention_implementation": "sdpa",
+      "batch_size": 4
+    },
+    "after_inference_runtime": {
+      "schema_version": 1,
+      "torch": "2.13.0+cpu",
+      "transformers": "5.10.4",
+      "tokenizers": "0.22.2",
+      "window_preparation": "tokenizers_verified_post_processor_v1",
+      "device": "cpu",
+      "dtype": "torch.float32",
+      "attention_implementation": "sdpa",
+      "batch_size": 4
+    },
+    "metadata_field_names_equal": true,
+    "artifact_and_processing_metadata_equal": true,
+    "model_artifacts": {
+      "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+      "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+      "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917"
+    },
+    "cases": [
+      {
+        "name": "short",
+        "before_logits": [
+          4.579524993896484,
+          -2.4155917167663574,
+          -1.7447547912597656
+        ],
+        "after_logits": [
+          4.579524993896484,
+          -2.4155919551849365,
+          -1.7447545528411865
+        ],
+        "max_absolute_logit_delta": 2.384185791015625e-07,
+        "max_absolute_score_delta": 0.0,
+        "logits_within_tolerance": true,
+        "coverage_and_decision_equal": true
+      },
+      {
+        "name": "unicode",
+        "before_logits": [
+          5.124523162841797,
+          -2.381169557571411,
+          -2.060546398162842
+        ],
+        "after_logits": [
+          5.124523639678955,
+          -2.381169557571411,
+          -2.060546875
+        ],
+        "max_absolute_logit_delta": 4.76837158203125e-07,
+        "max_absolute_score_delta": 0.0,
+        "logits_within_tolerance": true,
+        "coverage_and_decision_equal": true
+      },
+      {
+        "name": "multiwindow",
+        "before_logits": [
+          3.978331174323977,
+          -2.8922064529274993,
+          -0.5946138081102418
+        ],
+        "after_logits": [
+          3.9783302033222445,
+          -2.8922072803116112,
+          -0.5946125248818027
+        ],
+        "max_absolute_logit_delta": 1.2832284390640325e-06,
+        "max_absolute_score_delta": 0.0,
+        "logits_within_tolerance": true,
+        "coverage_and_decision_equal": true
+      }
+    ],
+    "health_status": 200,
+    "predict_status": 200,
+    "health_release_approved": false,
+    "response_top_level_keys_equal": true,
+    "parity_tolerances": {
+      "logit_atol": 1e-05,
+      "logit_rtol": 0.0001,
+      "rounded_score_atol": 1e-05
+    },
+    "parity_passed": true,
+    "both_environments_used_same_current_compatibility_code": true,
+    "legacy_predictions_equal_prechange_baseline": true,
+    "metadata_addition_vs_prechange_baseline": [
+      "inference_runtime"
+    ]
+  },
+  "rejected_intermediate_configurations": [
+    {
+      "transformers": "5.10.4",
+      "torch": "2.6.0+cpu",
+      "reason": "Actual RoBERTa import failed: torch.float8_e8m0fnu absent. Existing synthetic tests alone did not catch it."
+    },
+    {
+      "transformers": "5.10.4",
+      "torch": "2.13.0+cpu",
+      "adapter": "unmodified v4 tokenizer call",
+      "reason": "Actual inference failed: build_inputs_with_special_tokens removed in Transformers v5. Added explicit token-preserving post-processor adapter and tests."
+    }
+  ],
+  "limits": [
+    "No production environment was inspected or changed. Historical research runs still used the original dependencies.",
+    "No claim of zero risk: advisory feeds can be incomplete, stale or inaccurate; a clean scan is not exploitability proof.",
+    "The CPU wheel uses supplemental base-version advisory coverage, not binary-specific assurance.",
+    "Only the default original RoBERTa checkpoint is covered by the real-model smoke; optional PoliticalDEBATE and research training jobs were not rerun.",
+    "Python transitive dependencies are recorded but not fully hash-locked; future resolution can differ.",
+    "No independently validated bias accuracy, calibrated confidence, load capacity, or release approval is established."
+  ],
+  "exposure_review": {
+    "starlette": "Serving dependency. Inspected app uses explicit GET/POST routes with JSON inputs. No FileResponse, StaticFiles, HTTPEndpoint, request.form or request.url-based trust checks were found. Does not prove deployment-wide absence; framework still updated.",
+    "requests": "Article HTTP client is serving-reachable; vulnerable extract_zipped_paths direct-call usage was not found.",
+    "protobuf": "No application ParseDict handler accepting nested Any messages found.",
+    "sentencepiece": "Trusted local tokenizer assets only; no user-supplied model file upload endpoint found.",
+    "transformers": "Application loads local sequence classifiers and safetensors. No X-CLIP/GLM4 conversion, LightGlue, custom generation, untrusted Trainer resume or arbitrary user-selected model repository path in the serving routes. Research training/save_pretrained entry points have broader exposure and must continue to use trusted artifacts.",
+    "torch": "Original CPU baseline includes advisory records for invalid-operator inputs, compilation, packed sequences and checkpoint deserialization. Serving uses fixed eager RoBERTa and safetensors, not torch.load, PT2, TorchScript or caller-defined tensors/operators. This is scoped source-path analysis, not a claim that every torch record is exploitable or irrelevant.",
+    "pip_setuptools_pytest": "Installer/build/test tooling, not ordinary HTTP handlers. Local temporary paths, source-archive extraction and source-distribution creation are relevant maintenance surfaces."
+  },
+  "ci_audit_gate": {
+    "implemented": true,
+    "ci_outbound_step_enabled": false,
+    "recurring_queries_authorized": false,
+    "synthetic_tests_passed": 58,
+    "local_existing_report_coverage_validation": "passed",
+    "live_validation": "passed_authorized_one_time_run",
+    "outbound_payload": "Installed Python package names and versions only",
+    "destination": "https://pypi.org",
+    "unexpected_skips_or_advisories_allowed": false,
+    "live_result_sha256": "a83e12a8ebc96982c281350cb24e600be4b4889598601b170b9145349d4be955",
+    "installed_coverage": {
+      "advisory_count": 0,
+      "audited_count": 76,
+      "inventory_count": 77,
+      "skips": [
+        {
+          "name": "torch",
+          "skip_reason": "Dependency not found on PyPI and could not be audited: torch (2.13.0+cpu)"
+        }
+      ]
+    },
+    "base_version_coverage": {
+      "advisory_count": 0,
+      "audited_count": 1,
+      "inventory_count": 1,
+      "skips": []
+    },
+    "audit_exit_codes": {
+      "installed": 0,
+      "torch_base_version": 0
+    },
+    "auditor_version": "2.10.1",
+    "auditor_installer_version": "25.0.1",
+    "audited_scope": "Target runtime only; isolated auditor tooling is not included in target inventory",
+    "cache_handling": "Temporary writable PIP_CACHE_DIR; unexpected diagnostics remain fatal",
+    "historical_failed_cache_warning_result_sha256": "a4e7cb55e1910774594ee4e1c785e530caa060082e9fe36fb174be76142d374e"
+  },
+  "reviewed_source_sha256": {
+    "backend/model.py": "d4e881c56c9e7d33cbb674be2cee42f4e41647669d6a32228c12ec14bf5d9b76",
+    "backend/requirements.txt": "60b326fab4fe8967970cd6314acc36fcc63950f82ac4ef35371e6259cb7080a6",
+    "backend/setup_env.sh": "fdcbb6d6f73aabdc67bd39c5ed3b792ee882f14792980a40fc2cfc29eff0b067",
+    "requirements-test.txt": "c5819b58a22e4a21f67a7ff1c6d10fcd0ff24de2a47cc20c53e205897b6855b2",
+    "research/requirements.txt": "d4c9a106aff01456d288f42adbec981da9cacce7e03a4f843a48e38412be5c78",
+    "research/scripts/calibrate.py": "a8da25d0417f8f3db734985363f843ffbc6f01a552af982c0de137dccd09d083",
+    "tests/test_python_dependency_runtime.py": "08ad0e9b68d9f6b0afc01fabffa1729732d44fcd1b70055baa97ad0d7cbebfde",
+    "research/scripts/audit_python_dependencies.py": "a27be53ef246acf98ee228601a468ae6e1002fd17661ec55b683d534ba8f9121",
+    "tests/test_python_dependency_audit.py": "c1ea843bbeeafb2fd2a4d954ae0117db832060a81e10f8ab7d3f101a02e59ba9"
+  },
+  "runtime_policy_binding": {
+    "schema_version": 1,
+    "fields": [
+      "schema_version",
+      "torch",
+      "transformers",
+      "tokenizers",
+      "window_preparation",
+      "device",
+      "dtype",
+      "attention_implementation",
+      "batch_size"
+    ],
+    "legacy_or_partial_identity_accepted": false,
+    "unknown_observed_values_accepted": false,
+    "identity_changes_require_new_calibration": true,
+    "historical_reports_rewritten": false
+  }
+}

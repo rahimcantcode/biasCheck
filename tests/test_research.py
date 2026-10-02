@@ -27,6 +27,7 @@ def test_abstention_is_not_accuracy():
 def test_offline_policy_rejects_reused_test():
     from research.scripts.evaluate_policy import evaluate
     metadata=dict(weights_sha256='w',config_sha256='c',tokenizer_sha256='t',aggregation='a',max_length=512,stride=64,preprocessing='exact-text-v2',id2label={'0':'LEFT','1':'CENTER','2':'RIGHT'})
+    metadata['inference_runtime']=dict(schema_version=1,torch='2.13.0+cpu',transformers='5.10.4',tokenizers='0.22.2',window_preparation='tokenizers_verified_post_processor_v1',device='cpu',dtype='torch.float32',attention_implementation='sdpa',batch_size=4)
     policy={**metadata,'schema_version':1,'release_approved':False,'temperature':1.,'min_confidence':.7,'min_margin':.2,'min_tokens':30,'validated_modes':['article'],'calibration_data_sha256':'same'}
     report={'model':metadata,'split':'test','data_sha256':'same','annotation_provenance':{'human_reviewed':True,'reference':'synthetic unit test fixture'}}
     with pytest.raises(ValueError,match='identical'):evaluate(report,policy,{**report,'split':'validation'})

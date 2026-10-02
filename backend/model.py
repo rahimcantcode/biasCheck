@@ -1,5 +1,6 @@
 """Full-document inference and model-bound calibration, with no silent truncation."""
 from functools import lru_cache
+from copy import deepcopy
 from pathlib import Path
 import hashlib
 import json
@@ -16,6 +17,12 @@ except ImportError:
 MAX_LENGTH = 512
 AGGREGATION = 'new_token_weighted_logit_mean_v1'
 PREPROCESSING = 'plain_text_exact_url_article_extraction_v2'
+WINDOW_PREPARATION_LEGACY = 'transformers_special_token_builder_v1'
+WINDOW_PREPARATION_PROCESSOR = 'tokenizers_verified_post_processor_v1'
+INFERENCE_RUNTIME_FIELDS = frozenset({
+    'schema_version', 'torch', 'transformers', 'tokenizers',
+    'window_preparation', 'device', 'dtype', 'attention_implementation', 'batch_size',
+})
 
 
 def sha256(path):
@@ -71,7 +78,45 @@ def model_metadata():
         'demo_mode': os.getenv('BIASCHECK_DEMO_MODE', '0') == '1',
         'transformers': transformers.__version__, 'torch': torch.__version__,
         'tokenizers': tokenizers.__version__,
+        'inference_runtime': inference_runtime(get_model(), get_tokenizer()),
     }
+
+
+def validate_inference_runtime(runtime):
+    """Require a complete versioned identity, including for legacy-vs-legacy use."""
+    if not isinstance(runtime, dict) or set(runtime) != INFERENCE_RUNTIME_FIELDS:
+        raise RuntimeError('Missing or incomplete inference_runtime identity; regenerate legacy evaluation reports')
+    if type(runtime['schema_version']) is not int or runtime['schema_version'] != 1:
+        raise RuntimeError('Unsupported inference_runtime schema_version')
+    for key in INFERENCE_RUNTIME_FIELDS - {'schema_version', 'batch_size'}:
+        if not isinstance(runtime[key], str) or not runtime[key].strip() or runtime[key] != runtime[key].strip():
+            raise RuntimeError(f'Invalid inference_runtime identity: {key}')
+    for key in INFERENCE_RUNTIME_FIELDS - {'schema_version', 'batch_size'}:
+        if runtime[key].lower() in {'unknown', 'none', 'null', 'unset', 'unavailable', 'auto'}:
+            raise RuntimeError(f'Unobserved inference_runtime identity: {key}')
+    if runtime['window_preparation'] not in {WINDOW_PREPARATION_LEGACY, WINDOW_PREPARATION_PROCESSOR}:
+        raise RuntimeError('Unsupported inference_runtime window_preparation')
+    if type(runtime['batch_size']) is not int or not 1 <= runtime['batch_size'] <= 8:
+        raise RuntimeError('Invalid inference_runtime identity: batch_size')
+    return runtime
+
+
+def inference_runtime(model, tokenizer):
+    """Describe the loaded model's actual numeric/runtime configuration."""
+    import transformers, tokenizers
+    devices = {str(parameter.device) for parameter in model.parameters()}
+    dtypes = {str(parameter.dtype) for parameter in model.parameters()}
+    if len(devices) != 1 or len(dtypes) != 1:
+        raise RuntimeError('Cannot bind calibration to a mixed or unknown model device/dtype')
+    return validate_inference_runtime({
+        'schema_version': 1, 'torch': str(torch.__version__),
+        'transformers': transformers.__version__, 'tokenizers': tokenizers.__version__,
+        'window_preparation': WINDOW_PREPARATION_LEGACY if callable(
+            getattr(tokenizer, 'build_inputs_with_special_tokens', None)) else WINDOW_PREPARATION_PROCESSOR,
+        'device': devices.pop(), 'dtype': dtypes.pop(),
+        'attention_implementation': getattr(model.config, '_attn_implementation', None),
+        'batch_size': get_settings().batch_size,
+    })
 
 
 def token_windows(ids, capacity=510, stride=64):
@@ -86,10 +131,47 @@ def token_windows(ids, capacity=510, stride=64):
             break
 
 
+def prepare_window_features(tokenizer, encoded_text, windows, capacity, stride=64):
+    """Add special tokens without decoding or changing already-tokenized windows.
+
+    Transformers v4 exposes a builder; v5 uses the Tokenizers post-processor.
+    The fallback checks every content ID against our existing coverage windows
+    and fails closed if the tokenizer produces a different partition.
+    """
+    builder = getattr(tokenizer, 'build_inputs_with_special_tokens', None)
+    if callable(builder):
+        return [{'input_ids': builder(ids)} for ids, _, _, _ in windows]
+    encodings = getattr(encoded_text, 'encodings', None)
+    backend = getattr(tokenizer, 'backend_tokenizer', None)
+    processor = getattr(backend, 'post_processor', None)
+    if not encodings or len(encodings) != 1 or processor is None:
+        raise RuntimeError('Tokenizer cannot safely prepare token windows')
+    encoding = deepcopy(encodings[0])
+    encoding.truncate(capacity, stride=stride, direction='right')
+    partitions = [encoding, *encoding.overflowing]
+    if len(partitions) != len(windows):
+        raise RuntimeError('Tokenizer changed token window boundaries')
+    features = []
+    special_count = tokenizer.num_special_tokens_to_add(pair=False)
+    for partition, (ids, _, _, _) in zip(partitions, windows):
+        if partition.ids != ids:
+            raise RuntimeError('Tokenizer changed token window content')
+        prepared = processor.process(partition, add_special_tokens=True)
+        content = [token for token, special in zip(prepared.ids, prepared.special_tokens_mask) if not special]
+        if content != ids or len(prepared.ids) != len(ids) + special_count:
+            raise RuntimeError('Tokenizer changed content while adding special tokens')
+        features.append({'input_ids': prepared.ids})
+    return features
+
+
 def validate_policy(policy, metadata):
     for key in ('weights_sha256', 'config_sha256', 'tokenizer_sha256', 'aggregation', 'max_length', 'stride', 'preprocessing'):
         if key not in metadata or key not in policy or policy[key] != metadata[key]:
             raise RuntimeError(f'Calibration policy does not match model: {key}')
+    expected_runtime = validate_inference_runtime(metadata.get('inference_runtime'))
+    policy_runtime = validate_inference_runtime(policy.get('inference_runtime'))
+    if policy_runtime != expected_runtime:
+        raise RuntimeError('Calibration policy does not match model: inference_runtime')
     if policy.get('schema_version') != 1 or not isinstance(policy.get('release_approved'), bool):
         raise RuntimeError('Invalid decision policy schema')
     for key in ('temperature', 'min_confidence', 'min_margin'):
@@ -152,20 +234,21 @@ def classify_scores(logits, token_count, mode, policy):
 
 def predict_text(text, mode='article'):
     tokenizer, model = get_tokenizer(), get_model()
-    ids = tokenizer(text, add_special_tokens=False, truncation=False, verbose=False)['input_ids']
+    encoded_text = tokenizer(text, add_special_tokens=False, truncation=False, verbose=False)
+    ids = encoded_text['input_ids']
     if not ids:
         raise ValueError('No analyzable tokens')
     capacity = int(min(MAX_LENGTH, tokenizer.model_max_length)) - tokenizer.num_special_tokens_to_add(pair=False)
     windows = list(token_windows(ids, capacity))
     if len(windows) > get_settings().max_windows:
         raise ValueError('Article exceeds the processing limit. Please use shorter text.')
+    features = prepare_window_features(tokenizer, encoded_text, windows, capacity)
     weighted = np.zeros(3, dtype=np.float64)
     batch_size = get_settings().batch_size
     with torch.inference_mode():
         for offset in range(0, len(windows), batch_size):
             batch = windows[offset:offset + batch_size]
-            features = [{'input_ids': tokenizer.build_inputs_with_special_tokens(w)} for w,_,_,_ in batch]
-            encoded = tokenizer.pad(features, padding=True, return_tensors='pt', verbose=False)
+            encoded = tokenizer.pad(features[offset:offset + batch_size], padding=True, return_tensors='pt', verbose=False)
             logits = model(**encoded).logits.cpu().numpy()
             for (_,_,_,weight), row in zip(batch, logits):
                 weighted += row.astype(np.float64) * weight
