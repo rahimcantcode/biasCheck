@@ -1,0 +1,210 @@
+{
+  "purpose": "Paired nuisance sensitivity, not accuracy or mechanism proof",
+  "repeat_selection": "Post hoc repeat of first pair after observing a flip; initial pair selection was first affected validation ID per footer hash",
+  "repeat_exact_match": true,
+  "health_after": {
+    "status": "ok",
+    "model": {
+      "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+      "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+      "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+      "id2label": {
+        "0": "LEFT",
+        "1": "RIGHT",
+        "2": "CENTER"
+      },
+      "aggregation": "new_token_weighted_logit_mean_v1",
+      "max_length": 512,
+      "stride": 64,
+      "demo_mode": true,
+      "transformers": "4.57.1",
+      "torch": "2.6.0+cpu",
+      "tokenizers": "0.22.2"
+    },
+    "release_approved": false
+  },
+  "runs": [
+    {
+      "started_at": "2026-10-02T03:15:40.452Z",
+      "environment": "local Chromium driving public deployed site; not cloud browser",
+      "browser": "154.0.8037.93",
+      "page_errors": [],
+      "failed_requests": [],
+      "mobile_overflow": false,
+      "cases": [
+        {
+          "id": "2e7c871c-54a8-424d-931a-199a7e5c6070-raw",
+          "status": 200,
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.020736,
+              "RIGHT": 0.97567,
+              "CENTER": 0.003595
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 141,
+            "tokens_processed": 141,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          }
+        },
+        {
+          "id": "2e7c871c-54a8-424d-931a-199a7e5c6070-clean",
+          "status": 200,
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.995493,
+              "RIGHT": 0.004351,
+              "CENTER": 0.000156
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 124,
+            "tokens_processed": 124,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          }
+        },
+        {
+          "id": "16504ef2-5578-4012-8b7c-c444f8b4c423-raw",
+          "status": 200,
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.000372,
+              "RIGHT": 0.999483,
+              "CENTER": 0.000145
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 133,
+            "tokens_processed": 133,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          }
+        },
+        {
+          "id": "16504ef2-5578-4012-8b7c-c444f8b4c423-clean",
+          "status": 200,
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.001186,
+              "RIGHT": 0.998094,
+              "CENTER": 0.00072
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 93,
+            "tokens_processed": 93,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          }
+        }
+      ],
+      "screenshot_sha256": {
+        "16504ef2-5578-4012-8b7c-c444f8b4c423-clean.png": "ce36e11fd05e6d16b914110b03fade3eb85947ec550c8b8fdc5e333ab25f66ee",
+        "2e7c871c-54a8-424d-931a-199a7e5c6070-raw.png": "67f3810738abb7faab498619fd424a1fefdee6653de2e8c372828975058a73b2",
+        "mobile.png": "4b4a2ba88d4c97c7a79350a5223d613c60da48d468b436424ec200f930c4270d",
+        "16504ef2-5578-4012-8b7c-c444f8b4c423-raw.png": "2fe145c058adeba340e9a0fe139d998fef0798d2f2d586fdb4feb37ddf405006",
+        "2e7c871c-54a8-424d-931a-199a7e5c6070-clean.png": "b9d34e29d3d0e2a8dbdf68f8c00d477722d60d2952d7207695b39c3d5b7790ad"
+      }
+    },
+    {
+      "started_at": "2026-10-02T03:16:43.927Z",
+      "environment": "local Chromium driving public deployed site; not cloud browser",
+      "browser": "154.0.8037.93",
+      "page_errors": [],
+      "failed_requests": [],
+      "mobile_overflow": false,
+      "cases": [
+        {
+          "id": "2e7c871c-54a8-424d-931a-199a7e5c6070-raw",
+          "status": 200,
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.020736,
+              "RIGHT": 0.97567,
+              "CENTER": 0.003595
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 141,
+            "tokens_processed": 141,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          }
+        },
+        {
+          "id": "2e7c871c-54a8-424d-931a-199a7e5c6070-clean",
+          "status": 200,
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.995493,
+              "RIGHT": 0.004351,
+              "CENTER": 0.000156
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 124,
+            "tokens_processed": 124,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          }
+        }
+      ],
+      "screenshot_sha256": {
+        "2e7c871c-54a8-424d-931a-199a7e5c6070-raw.png": "cdbb59fccb0dd71ffea55f5bab0097e06df0c7e8b4e17bc0640669a19aea19d2",
+        "mobile.png": "d00ad9ddd2c47543080d1cd0d3f02ad5de062ff52ff46eee3d63f582a84f7545",
+        "2e7c871c-54a8-424d-931a-199a7e5c6070-clean.png": "b9d34e29d3d0e2a8dbdf68f8c00d477722d60d2952d7207695b39c3d5b7790ad"
+      }
+    }
+  ]
+}

@@ -1,5 +1,81 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 03:12 UTC: exact-footer 2x2 training ablation
+
+Trained matched raw and cleaned TF-IDF word/bigram logistic-regression heads with
+fixed C=1, balanced classes, seed20261001, min_df=2, max_features=20000, sublinear
+TF and max_iter=1000. Same settings as the prior raw baseline; vocabulary/IDF fit
+on each training view only. Removed only complete paragraphs matching the two
+normalized hashes recorded in the previous audit. No broad publisher-name filter,
+label changes, original-file edits, test access or deployment. The selection of
+these footers was development-informed, not an independently specified transform.
+
+Affected 14/115 training and 12/66 validation items. Both full views retained all
+items; unchanged items preserve their exact text. Derived cleaned JSONL files,
+source/clean hashes, protocol and model weights are local in
+`research/checkpoints/pbc-boilerplate-20261002/`. No exact cross-split duplicates
+were introduced. Raw/raw label predictions reproduced the prior baseline exactly.
+
+| Training view | Evaluation view | Matches /66 | Macro-F1 | Unanimous matches /33 |
+| --- | --- | ---: | ---: | ---: |
+| Raw | Raw | 39 | .5432 | 13 |
+| Raw | Clean | 42 | .6123 | 16 |
+| Clean | Raw | 40 | .5610 | 14 |
+| Clean | Clean | 42 | .6074 | 16 |
+
+Raw/clean gained four matches and lost one. Clean/clean gained six and lost three
+relative to raw/raw. Among the 12 affected validation items, matches rose from
+5/12 to 8/12 (raw/clean) or 9/12 (clean/clean). For the 54 unaffected items,
+raw/clean stayed 34/54 while clean/clean fell to 33/54. Retraining therefore changes
+more than the removed tokens' direct contribution. No winning cell was selected
+for deployment. All four results are retained, not only the best metric.
+
+Event-string-cluster bootstrap (5000, seed20261001) paired agreement difference
+intervals versus raw/raw: raw/clean [0,.0988], clean/clean [-.0333,.1449]. These are
+exploratory reused-validation intervals; the previous event-family dependence
+caveat still applies. Annotators saw raw text, so cleaned-view agreement is a proxy
+and does not establish task-matched independent accuracy. 63.6% is far below target.
+
+GPT-6 Astra Medium reviewed the design using the terminal CLI; advice retained at
+`research/data/boilerplate-advice-20261002.txt`. Important caveat: a flip establishes
+sensitivity to the intervention, not a specific learned shortcut mechanism. Removal
+also changes token adjacency, length and TF-IDF normalization.
+
+Live-browser test: chose the first affected validation ID for each footer hash,
+before observing live responses; evaluated raw and cleaned versions. One article
+changed RIGHT (.975670) to LEFT (.995493) after removing only a copyright/reprint
+paragraph, with one model window and no truncation in either version. A post hoc
+repeat of that pair reproduced both overall responses exactly. Its original two
+annotators were Right/Center; the cleaned prediction moves away from both, though
+no human judgments on cleaned text were collected. The other article remained
+RIGHT (.999483 to .998094). Thus the linear-model result does not authorize a
+production-wide cleaning change.
+
+Six total browser submissions across initial/repeat runs returned HTTP 200. No
+page errors, failed requests or mobile overflow; repeat mobile screenshot visually
+inspected. Local Chromium fallback, WebGL disabled, not cloud. Production health
+still reports original hash 548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d,
+demo mode, release unapproved. Raw UI responses/screenshots remain in parent
+`outputs/live-browser-boilerplate-20261002/` and `outputs/live-browser-boilerplate-recheck-20261002/`.
+
+Five new exact-cleaning tests and five prior corpus tests passed. Committed
+`results/boilerplate_ablation_20261002.json` preserves four evaluations, raw per-ID
+predictions/probabilities, changes, per-class/strict/slice metrics, model hashes,
+runtime versions and bootstrap results; `boilerplate_browser_20261002.json` records
+browser outputs, repeat selection and screenshot hashes. User-facing metrics copy
+is in parent outputs. Full copyrighted text and fitted joblib weights remain local.
+
+Reproduce the training cells with `python3 research/scripts/boilerplate_ablation.py
+--data research/data/pbc-snippets-20261001 --baseline
+research/checkpoints/pbc-snippets-tfidf-20261001/training_results.json --output
+<fresh-directory>`. Tests: `python3 -m unittest discover -s tests -p
+test_boilerplate_ablation.py -v`.
+
+Decision: preserve as a modest development lead and a reproducible production
+sensitivity failure, not verified high accuracy. No production preprocessing or
+model replacement. Any cleaned-text candidate needs separately validated annotation
+compatibility, robustness and task-matched independent evaluation.
+
 ## 2026-10-02 02:11 UTC: development split and boilerplate audit
 
 Audited all 7,590 train/validation pairs (115 x 66) without accessing the reserved
