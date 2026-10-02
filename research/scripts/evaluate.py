@@ -15,9 +15,21 @@ def summarize(rows):
         'nonpolitical_n':len(negatives),'nonpolitical_false_label_rate':sum(r['decision']=='classified' for r in negatives)/len(negatives) if negatives else None}
     if eligible:
         y=[r['gold'] for r in eligible];p=[r['raw_label'] for r in eligible];labels=['LEFT','CENTER','RIGHT']
+        for row in eligible:
+            if row['decision'] not in {'classified','abstained'} or (row['decision']=='classified' and row['label'] not in labels) or (row['decision']=='abstained' and row['label'] is not None):
+                raise ValueError('Inconsistent delivered decision and label')
+        delivered=[r['label'] if r['decision']=='classified' else 'ABSTAIN' for r in eligible]
         report.update(raw_accuracy=accuracy_score(y,p),macro_f1=f1_score(y,p,labels=labels,average='macro',zero_division=0),
             confusion_order=labels,confusion_matrix=confusion_matrix(y,p,labels=labels).tolist(),
             per_class=classification_report(y,p,labels=labels,output_dict=True,zero_division=0))
+        report['delivered']={
+            'correct_fraction':sum(a==b for a,b in zip(y,delivered))/len(y),
+            'macro_f1':f1_score(y,delivered,labels=labels,average='macro',zero_division=0),
+            'per_class':classification_report(y,delivered,labels=labels,output_dict=True,zero_division=0),
+            'confusion_rows':labels,'confusion_columns':labels+['ABSTAIN'],
+            'confusion_matrix':confusion_matrix(y,delivered,labels=labels+['ABSTAIN']).tolist()[:3],
+            'per_class_coverage':{label:sum(r['decision']=='classified' for r in eligible if r['gold']==label)/y.count(label) if y.count(label) else None for label in labels},
+            'definition':'All eligible examples retained; abstentions count as false negatives for their reference class.'}
     return report
 
 

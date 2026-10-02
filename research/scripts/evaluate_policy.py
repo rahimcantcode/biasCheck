@@ -2,11 +2,22 @@
 import argparse,hashlib,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
-from backend.model import validate_policy,classify_scores
 from research.scripts.evaluate import summarize
 
+def point_estimate_gates(metrics):
+    delivered=metrics.get('delivered',{})
+    return {'raw_accuracy':(metrics.get('raw_accuracy') or 0)>=.9,
+      'macro_f1':metrics.get('macro_f1',0)>=.85,
+      'per_class_recall':all(metrics.get('per_class',{}).get(k,{}).get('recall',0)>=.8 for k in ['LEFT','CENTER','RIGHT']),
+      'delivered_macro_f1':delivered.get('macro_f1',0)>=.85,
+      'delivered_per_class_recall':all(delivered.get('per_class',{}).get(k,{}).get('recall',0)>=.8 for k in ['LEFT','CENTER','RIGHT']),
+      'selective_accuracy':(metrics.get('selective_accuracy') or 0)>=.9,
+      'coverage':(metrics.get('coverage') or 0)>=.8,
+      'nonpolitical_false_labels':metrics['nonpolitical_n']>=100 and metrics['nonpolitical_false_label_rate']<=.05,
+      'political_sample_size':metrics['eligible_n']>=300}
 
 def evaluate(report,policy,validation):
+    from backend.model import validate_policy,classify_scores
     validate_policy(policy,report['model'])
     if report['split']!='test' or validation['split']!='validation':raise ValueError('Separate test and validation reports required')
     for item in [report,validation]:
@@ -27,10 +38,7 @@ def evaluate(report,policy,validation):
     unknown=[r for r in rows if r['gold']=='UNCERTAIN']
     metrics['uncertain_n']=len(unknown)
     metrics['uncertain_false_label_rate']=sum(r['decision']=='classified' for r in unknown)/len(unknown) if unknown else None
-    requirements={'macro_f1':metrics.get('macro_f1',0)>=.85,'per_class_recall':all(metrics.get('per_class',{}).get(k,{}).get('recall',0)>=.8 for k in ['LEFT','CENTER','RIGHT']),
-      'selective_accuracy':(metrics.get('selective_accuracy') or 0)>=.9,'coverage':(metrics.get('coverage') or 0)>=.8,
-      'nonpolitical_false_labels':metrics['nonpolitical_n']>=100 and metrics['nonpolitical_false_label_rate']<=.05,
-      'political_sample_size':metrics['eligible_n']>=300}
+    requirements=point_estimate_gates(metrics)
     return {'metrics':metrics,'proposed_point_estimate_gates':requirements,'point_estimate_gates_pass':all(requirements.values()),'release_approved':False,
       'limitations':['Requires confidence intervals, source/event/time leakage review, per-slice review and operational validation before approval','Provenance fields are supplied assertions requiring human audit'],'predictions':rows}
 

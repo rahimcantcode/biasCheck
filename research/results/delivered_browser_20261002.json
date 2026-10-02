@@ -1,0 +1,94 @@
+{
+  "started_at": "2026-10-02T20:46:00.953Z",
+  "finished_at": "2026-10-02T20:46:17.601Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.95",
+  "url": "https://bias.r4him.tech/",
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "selection": "Recheck prior confidence diagnostic trio; not representative accuracy sample",
+  "cases": [
+    {
+      "id": "f30a2928-7ad4-48d3-82a1-dc02b1cbf2f0",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "CENTER",
+        "label_id": 2,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.000109,
+          "RIGHT": 0.000184,
+          "CENTER": 0.999707
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 186,
+        "tokens_processed": 186,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "16504ef2-5578-4012-8b7c-c444f8b4c423",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "RIGHT",
+        "label_id": 1,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.000372,
+          "RIGHT": 0.999483,
+          "CENTER": 0.000145
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 133,
+        "tokens_processed": 133,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "b840383b-2266-48a1-bfef-91d652ec3f62",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.498178,
+          "RIGHT": 0.495545,
+          "CENTER": 0.006277
+        },
+        "decision": "abstained",
+        "reason": "uncertain",
+        "token_count": 286,
+        "tokens_processed": 286,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    }
+  ],
+  "screenshots": {
+    "b840383b-2266-48a1-bfef-91d652ec3f62.png": "927a72c1b447d7448a69bcbc8afe4e797d0fe001ba7528c16c102e160eed6d15",
+    "f30a2928-7ad4-48d3-82a1-dc02b1cbf2f0.png": "7ad85b81489eeb08b62cb60bf924f52f70fae47e8d284b0005fd21f1836efef8",
+    "mobile.png": "a8b2b3213d9d46651efd33fa2cae4f7b891a8cc638fed1428538ec8b626ccb5c",
+    "16504ef2-5578-4012-8b7c-c444f8b4c423.png": "a4c130f0ea67bfb62b681464a470a68f70537996de31a7f32f79946fd68e1a6f"
+  }
+}

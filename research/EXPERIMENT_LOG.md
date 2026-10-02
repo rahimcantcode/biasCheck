@@ -1,5 +1,44 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 20:25 UTC: delivered-label metrics and release-check gap
+
+The offline policy evaluator gated 90% selective accuracy but not 90% raw
+accuracy; its F1/recall gates described raw predictions, not delivered labels.
+Added an explicit raw-accuracy gate and delivered macro-F1/per-class recall
+gates (.85/.80). Existing metrics retain their definitions for compatibility.
+New delivered metrics keep every eligible example, treating abstention as a
+false negative for its reference class, with a 3x4 confusion matrix and coverage
+by true class. No ABSTAIN target class is averaged into political macro-F1.
+Inconsistent classified/abstained labels now fail evaluation. Backend imports
+are deferred until policy simulation so pure metric/gate tests need no model.
+
+Six focused tests passed: complete abstention with perfect raw predictions,
+missing-class coverage, wrong labels versus abstention, selective-success/raw-
+failure, inconsistent decisions, and class-specific abstention hidden by overall
+coverage. GPT-6 Astra Medium reviewed the method via the terminal client; advice
+is local at research/data/delivered-metrics-advice-20261002.txt. Selective accuracy
+and coverage are distinct from all-example delivered correctness. In particular,
+.90 selective accuracy at .80 coverage only guarantees .72 delivered correctness.
+These gates do not claim 90% delivered correctness or population guarantees.
+
+Applied the metrics retrospectively to the hash-matched 66 stored development
+responses: raw agreement 31/66=.4697, delivered correct fraction 30/66=.4545,
+selective agreement 30/65=.4615, coverage 65/66=.9848, delivered macro-F1 .4102.
+Delivered Left/Center/Right recall is .6842/.0952/.5769. Only coverage passes
+the illustrative gates; sample-size and nonpolitical requirements also fail.
+No actual independent test, calibration, training, threshold change or deployment
+occurred. Corpus labels remain disputed/research-only, and reserved test untouched.
+
+Saved ID-aligned predictions, metadata, input hashes and metrics at
+research/results/delivered_metrics_20261002.json. Local Chromium fallback rechecked
+the prior confidence diagnostic trio on the public site: HTTP 200 for all, with
+the same two classified cases and one abstention. No page errors, failed requests
+or mobile overflow; mobile screenshot inspected. Raw evidence is in
+outputs/live-browser-delivered-20261002; sanitized results and screenshot hashes
+are research/results/delivered_browser_20261002.json. This is production smoke
+coverage, not a new accuracy sample. Independent human evaluation remains missing;
+the evaluator continues to return release_approved=false unconditionally.
+
 ## 2026-10-02 19:18 UTC heartbeat: human-review import integrity
 
 Shifted this bounded run from marginal classifier variants to evaluation-data
