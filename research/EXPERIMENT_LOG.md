@@ -1,5 +1,47 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 22:41 UTC heartbeat: nested grouped learning curve
+
+Trained 15 word-based logistic models across the five frozen training folds.
+For each fold, sorted source event strings were shuffled once using NumPy
+default_rng(20261002+fold), with zero-based fold numbering. Nested prefixes
+of ceil(25%), ceil(50%) and 100% of training groups retain whole groups.
+Refit TF-IDF separately on every subset: word1,2, min_df2, max_features20000,
+sublinear_tf, default L2 normalization. Logistic C1, balanced classes, max_iter1000,
+random_state20261001, default lbfgs. Held-out fold remains identical across sizes.
+All subsets contained all three classes; no reseeding or substitutions occurred.
+
+| Training event-group fraction | Articles per fold | OOF matches /115 | Macro-F1 |
+| --- | --- | ---: | ---: |
+| .25 | 27,25,18,35,35 | 31 (.2696) | .2435 |
+| .50 | 36,42,57,55,51 | 38 (.3304) | .2688 |
+| 1.00 | 92,92,92,92,92 | 58 (.5043) | .4423 |
+
+All full-size OOF predictions exactly reproduced the previous word baseline.
+Maximum solver iterations was 14. Two focused unit tests passed for whole-group
+nesting, coverage, determinism and input preservation. Saved per-fold scores,
+actual label/group counts, vocabulary sizes, subset IDs, raw OOF probabilities,
+runtime versions and model hashes in research/results/learning_curve_20261002.json.
+All 15 fitted models and pre-fit protocol are retained locally under
+research/checkpoints/learning-curve-20261002/. Source input/fold hashes verified.
+
+This curve is sensitive to both sample size and changing topic/class composition.
+One ordering per fold cannot estimate ordering uncertainty or justify extrapolating
+to 90% accuracy; group fractions are not article fractions. Fold scores are not
+independent replicates. GPT-6 Astra Medium reviewed the method via the terminal
+client; advice is research/data/learning-curve-advice-20261002.txt. No validation
+or reserved-test use, calibration, model selection or production deployment.
+Corpus revision b193ee173936b281183ca1dc101ae4de215a0e5c remains noncommercial,
+research-only and label-disputed; exact event-string grouping does not prove
+event-family independence. Independent human product evaluation remains absent.
+
+Local Chromium fallback repeated production smoke tests on ordered training
+examples 4-6: all HTTP 200 and LEFT, no page errors, failed requests or mobile
+overflow. Mobile screenshot inspected. Raw evidence is retained in
+outputs/live-browser-learning-curve-20261002; sanitized outputs and screenshot
+hashes in research/results/learning_curve_browser_20261002.json. These checks
+do not evaluate the undeployed learning-curve models or establish accuracy.
+
 ## 2026-10-02 21:38 UTC heartbeat: fixed soft-voting ensemble
 
 Evaluated a fixed 50/50 probability average of the saved word and semantic OOF
