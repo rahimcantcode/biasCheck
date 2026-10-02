@@ -1,5 +1,68 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 01:10 UTC: structured comparator on real validation excerpts
+
+Ran the unchanged structured prompt from ecc32c8 on all 66 frozen validation
+excerpts through GPT-6 Astra Medium. Protocol saved before inference in
+`results/structured_validation_protocol_20261002.json`. Eleven sequential batches
+of six, 356.6 seconds total subprocess time; hosted model weights/revision unknown.
+No prompt changes, retries, relabeling, training or reserved-test access. All 66
+outputs passed schema and exact-span checks. No item was silently dropped.
+
+Implemented `scripts/evaluate_structured_stance.py` to validate hashes, input text
+identity and complete ID coverage, retaining MIXED and INSUFFICIENT in both the
+denominator and 3x5 confusion matrix. Secondary conditional agreement always
+reports coverage. Five new evaluator tests and nine prior contract tests passed.
+
+| Metric | Structured author stance | Previous forced-three-way Astra |
+| --- | ---: | ---: |
+| Released-label matches /66 | 27 | 35 |
+| Released-label agreement | .4091 | .5303 |
+| Macro-F1, three reference classes | .3563 | .5214 |
+| Three-way output coverage | 64/66 | 66/66 |
+| Conditional three-way agreement | 27/64 (.4219) | 35/66 (.5303) |
+| Unanimous matches /33 | 24 | 27 |
+| Disputed matches /33 | 3 | 8 |
+
+Structured output counts: CENTER 50, LEFT 7, RIGHT 7, INSUFFICIENT 2, MIXED 0;
+all 66 identified as political. LEFT/CENTER/RIGHT recall: .1579/.9048/.1923.
+Confusion rows LEFT/CENTER/RIGHT, columns LEFT/CENTER/RIGHT/MIXED/INSUFFICIENT:
+[[3,14,1,0,1],[1,19,1,0,0],[3,17,5,0,1]]. Eleven outputs changed from the previous
+Astra labels; nine previously matching outputs became unmatched and one changed
+in the opposite direction. Event-cluster bootstrap over 19 events, 5000 draws,
+seed20261002: paired agreement difference interval [-.2174,-.0312]. This quantifies
+reused-validation uncertainty, not independent task-matched product quality.
+
+Error review: eight of the nine lost matches became CENTER, with rationales
+distinguishing criticism, ridicule, or partisan framing from explicit policy
+endorsement; the ninth withheld judgment on a critical headline plus biography.
+Four lost matches were in the unanimous subset. This supports a task-definition
+concern: requiring overt ideological policy endorsement can miss the broader
+political framing that corpus annotators labeled. It does not prove all original
+labels are correct. The source's partisan-directed disagreement resolution remains
+a limitation. Prompt framing, schema, batch size (6 vs 8), and hosted-model
+nondeterminism were not isolated, so no schema-specific causal claim is warranted.
+
+Real-browser regression check on the same six saved article excerpts: six HTTP
+200 responses, identical overall results to the earlier production audit; no page
+errors, failed requests or horizontal overflow at mobile size. Mobile screenshot
+visually inspected. Local Chromium 154.0.8037.93 fallback, WebGL disabled, not cloud.
+Sanitized browser outputs/hashes: `results/structured_browser_20261002.json`;
+screenshots in parent `outputs/live-browser-structured-validation-20261002/`.
+
+Main sanitized evidence: `results/structured_validation_20261002.json` with raw
+label predictions, all metrics, strata, uncertainty, hashes and run manifest;
+copy in parent outputs. Full raw model outputs, evidence spans, rationales and CLI
+logs remain local at `research/data/astra-structured-validation-20261002/`.
+Reproduction instructions added to research README. No deployment occurred.
+
+Decision: reject this structured prompt as a demonstrated accuracy improvement.
+Its strong synthetic-control behavior did not carry over to this corpus comparison.
+Retain the output validator and coverage-aware evaluator. Further work should
+separately define ideological policy stance and partisan framing/affect, preserving
+attribution, rather than repeatedly adjusting prompts against these 66 excerpts.
+Fresh task-matched independent human evaluation remains required for release.
+
 ## 2026-10-02 00:09 UTC: structured author-stance prototype
 
 Implemented `scripts/stance_contract.py`, an offline research comparator using

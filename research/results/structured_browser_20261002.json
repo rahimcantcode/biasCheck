@@ -1,0 +1,171 @@
+{
+  "purpose": "Repeated real-excerpt frontend smoke test, not an accuracy estimate",
+  "browser": "154.0.8037.93",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "started_at": "2026-10-02T01:14:04.970Z",
+  "all_six_overall_results_identical_to_prior": true,
+  "cases": [
+    {
+      "id": "0294a28d-68cd-4001-857e-f1656a4b3495",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "CENTER",
+        "label_id": 2,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.043642,
+          "RIGHT": 0.00297,
+          "CENTER": 0.953388
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 107,
+        "tokens_processed": 107,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "0a066170-32ee-4871-9a2c-4431689a220d",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.995794,
+          "RIGHT": 0.003899,
+          "CENTER": 0.000306
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 107,
+        "tokens_processed": 107,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "0b0e4793-c778-432e-a738-d95bc92adf8b",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.996331,
+          "RIGHT": 0.003523,
+          "CENTER": 0.000147
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 244,
+        "tokens_processed": 244,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "14a46c4a-a46e-4c7d-8d29-56efc2c4056f",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.995402,
+          "RIGHT": 0.002525,
+          "CENTER": 0.002073
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 89,
+        "tokens_processed": 89,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "162dd30f-423e-42b3-8ac4-73731bc4fa59",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "RIGHT",
+        "label_id": 1,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.003925,
+          "RIGHT": 0.993974,
+          "CENTER": 0.002101
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 251,
+        "tokens_processed": 251,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "16504ef2-5578-4012-8b7c-c444f8b4c423",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "RIGHT",
+        "label_id": 1,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.000372,
+          "RIGHT": 0.999483,
+          "CENTER": 0.000145
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 133,
+        "tokens_processed": 133,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    }
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "screenshot_sha256": {
+    "0294a28d-68cd-4001-857e-f1656a4b3495.png": "ee4693d69716a464eb7ecadcb16f606caae3a8e61814d888bc86b9d3bffb01fc",
+    "162dd30f-423e-42b3-8ac4-73731bc4fa59.png": "775dc92632fd1c01f8ae7fe24c28c238b58aa4207f37b4831469b4678b5b8aa6",
+    "mobile.png": "1db8831600e49d337856796b361105809a88ffa59768de46845c79f66e7a4d97",
+    "14a46c4a-a46e-4c7d-8d29-56efc2c4056f.png": "8a5e9b622e39c49dffa63c1ed76b5b9fd7f8f11a7b065b37a04224b814bdf2bf",
+    "0b0e4793-c778-432e-a738-d95bc92adf8b.png": "e8921a07a7bb8694d0c8324fa9217eee908e169b7229df86d22d731e30768ca2",
+    "16504ef2-5578-4012-8b7c-c444f8b4c423.png": "61dd9a8fe3385232cbb37aa3f6d247df31f68bd559c7f9b5d2d6b53d2f8fb08e",
+    "0a066170-32ee-4871-9a2c-4431689a220d.png": "4b7485725f388ef13d12686271aa474172700f357e0fa0cc8e9b3f320daaf8ef"
+  }
+}

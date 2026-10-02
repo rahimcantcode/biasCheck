@@ -1,0 +1,18 @@
+{
+  "purpose": "Exploratory comparison on reused development data; not independent product accuracy",
+  "input": "research/data/pbc-snippets-20261001/validation_blind.json",
+  "reference": "research/data/pbc-snippets-20261001/validation.jsonl",
+  "n": 66,
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "prompt_source": "research/scripts/stance_contract.py at ecc32c8",
+  "prompt_changes_permitted": false,
+  "reserved_test_access": false,
+  "primary_denominator": "All 66 validation excerpts, including MIXED and INSUFFICIENT",
+  "reference_agreement": "Exact LEFT/CENTER/RIGHT agreement only; MIXED and INSUFFICIENT count as unmatched, not CENTER",
+  "coverage": "Report returned, schema-valid, three-way, MIXED, INSUFFICIENT and nonpolitical counts separately",
+  "comparison": "Previous frozen three-way Astra predictions aligned by ID; no new selection",
+  "strata": ["all", "unanimous annotators", "disputed annotators"],
+  "limitations": ["Reused validation data", "Corpus labels resolve Center/partisan disputes toward partisan", "Construct mismatch with author-stance task", "Noncommercial corpus, research-only"],
+  "release_approved": false
+}

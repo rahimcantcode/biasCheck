@@ -7,6 +7,25 @@ Scope: English U.S. political news ideology. Political leaning is separate from 
 
 See EXPERIMENT_LOG.md and results/. Results from the old session are explicitly marked when raw outputs were lost. New experiments preserve per-example predictions without redistributing article text. The public Baly dataset may overlap existing checkpoint training, so its scores are exploratory. No independent human-reviewed final test has been completed.
 
+## Structured stance comparator
+
+The offline Astra Medium comparator separates author stance from attributed
+positions. It is not wired into production and its outputs are not human labels.
+Use an isolated Python environment with `research/stance_requirements.txt`.
+The preserved October 2 protocol is `results/structured_validation_protocol_20261002.json`.
+
+```bash
+python research/scripts/stance_contract.py --input research/data/pbc-snippets-20261001/validation_blind.json --output research/data/NEW-STRUCTURED-RUN
+python research/scripts/evaluate_structured_stance.py --data research/data/pbc-snippets-20261001/validation.jsonl --directory research/data/NEW-STRUCTURED-RUN --previous research/results/corpus_comparison_20261001.json --output research/results/NEW-STRUCTURED-COMPARISON.json
+python -m unittest discover -s tests -p 'test_*stance*.py' -v
+```
+
+The evaluator retains MIXED and INSUFFICIENT in the denominator and five-column
+confusion matrix. Conditional three-way agreement is only a secondary metric with
+explicit coverage. It verifies raw-output hashes, exact evidence spans, all IDs
+and blinded/reference text identity. Released-label agreement is not independent
+product accuracy, particularly given the corpus's disputed-label resolution.
+
 ## Environment and data
 
 From the repository root, use Python 3.12. Install CPU PyTorch from its CPU wheel index first, then `pip install -r research/requirements.txt` and `pip check`. GPU runners need the matching PyTorch build. Use a separate virtual environment. Never patch installed package compatibility checks.
