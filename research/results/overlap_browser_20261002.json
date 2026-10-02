@@ -1,0 +1,66 @@
+{
+  "purpose": "Browser check of overlap-audit cases, not an accuracy benchmark",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.93",
+  "started_at": "2026-10-02T02:16:12.714Z",
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "cases": [
+    {
+      "id": "3b32473d-1100-4805-878c-647604858a73",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "RIGHT",
+        "label_id": 1,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.000376,
+          "RIGHT": 0.999471,
+          "CENTER": 0.000153
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 124,
+        "tokens_processed": 124,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "fc6ff4a0-93bc-4cf7-9c71-e7b93131876c",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999327,
+          "RIGHT": 0.000422,
+          "CENTER": 0.000252
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 153,
+        "tokens_processed": 153,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    }
+  ],
+  "screenshots": {
+    "3b32473d-1100-4805-878c-647604858a73.png": "c296c45721975212329489c857a60c49db8f805d4c1a07114e8f6a4f903aeff4",
+    "fc6ff4a0-93bc-4cf7-9c71-e7b93131876c.png": "c3f1146e6ef9436b9a6cf08958dfc7ea2f0bd0fd85063e505074fb4e30468e4c",
+    "mobile.png": "cb923f228063f8c9b9143010aeff53f04d25c9e27fbb8914b3957dfab104fce5"
+  }
+}

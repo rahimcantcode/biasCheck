@@ -5,6 +5,13 @@ Scope: English U.S. political news ideology. Political leaning is separate from 
 
 ## Completed evidence
 
+October 2 audit correction: PoliticalBiasCorpus partitions are disjoint by
+normalized **event string**, not demonstrated independent event families. A shared
+Franken-allegations episode crosses train/validation under different subevent
+descriptions, and publisher boilerplate crosses both partitions. Frozen partitions
+and old results remain unchanged. See `results/development_overlap_review_20261002.json`
+and the experiment log; the reviewed exclusion sensitivity is not a new benchmark.
+
 See EXPERIMENT_LOG.md and results/. Results from the old session are explicitly marked when raw outputs were lost. New experiments preserve per-example predictions without redistributing article text. The public Baly dataset may overlap existing checkpoint training, so its scores are exploratory. No independent human-reviewed final test has been completed.
 
 ## Structured stance comparator

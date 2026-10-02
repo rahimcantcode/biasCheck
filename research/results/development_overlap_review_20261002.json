@@ -1,0 +1,19 @@
+{
+  "reviewer_type": "AI-assisted research inspection, not independent human adjudication",
+  "audit": "development_overlap_detail_20261002.json",
+  "selection_rule": "Inspect highest cosine and highest lexical-overlap pairs regardless of threshold flags; labels and model scores not used for selection",
+  "event_family_definition": "The same specific originating allegations and directly ensuing political responses, broader than an individual response subevent",
+  "family_description": "Leeann Tweeden allegations concerning Al Franken on the 2006 USO tour, ethics-probe calls, and political reactions to those allegations",
+  "train_ids": ["189d85a4-be9b-45c1-afaf-ba6a88e5ec64", "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47", "81d149d2-3fd5-4815-86ef-9c615fd86f28", "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d", "b3e7ea43-4af5-449e-92a1-2642cf35a7a7"],
+  "validation_ids": ["fc6ff4a0-93bc-4cf7-9c71-e7b93131876c"],
+  "reviewed_pair": {"train_id": "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d", "validation_id": "fc6ff4a0-93bc-4cf7-9c71-e7b93131876c"},
+  "finding": "Distinct excerpt text and source event strings, but shared originating news episode across development partitions",
+  "not_established": ["Duplicate articles", "Exhaustive event-family audit", "Model exploitation or inflated accuracy", "Publisher independence", "Pretraining independence", "Test independence"],
+  "shared_paragraph_review": [
+    {"sha256": "9d8863723d831cbc7379f4ce548ebe95c6112f24fd467564349d57b9d07296e7", "interpretation": "Publisher licensing boilerplate", "train_n": 12, "validation_n": 7},
+    {"sha256": "49d99ae25ab648533a98e51bac27300c69d32a3079294f4d4c7fcda01e900474", "interpretation": "Publisher copyright/reprint notice", "train_n": 2, "validation_n": 5}
+  ],
+  "decision": "Preserve original partitions and labels; qualify event-disjoint as event-string-disjoint. Report full results alongside exploratory one-group exclusion sensitivity.",
+  "reserved_test_read": false,
+  "release_approved": false
+}

@@ -1,5 +1,86 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 02:11 UTC: development split and boilerplate audit
+
+Audited all 7,590 train/validation pairs (115 x 66) without accessing the reserved
+test. Added `scripts/audit_development_overlap.py`, verifying feature alignment and
+input hashes before computing normalized five-word shingle overlap and cosine
+similarity using the already-frozen MiniLM vectors. Preset heuristic candidates:
+cosine >=.85 OR Jaccard >=.30 OR shorter-set containment >=.50 with >=20 shared
+five-grams. No pair crossed these thresholds, and no ID, normalized full-text hash
+or exact normalized event string crossed partitions. These checks are not proof
+of semantic independence. Top 20 lexical/semantic pairs and all nearest training
+neighbors are retained for review regardless of flags.
+
+AI-assisted inspection of the highest-cosine pair found a shared originating news
+episode: allegations by Leeann Tweeden about Al Franken on a 2006 USO tour and
+the ensuing ethics-probe/political response. Five training excerpts cover the
+allegations and ethics-probe calls; one validation excerpt covers reactions to
+Trump's response to those same allegations. Source event descriptions differ.
+Closest pair cosine .7669, Jaccard .00725, so the preset detector missed this
+family relationship. Texts are not exact duplicates on inspection. Define family
+here as the same specific originating allegations and directly ensuing responses,
+not merely shared actors or broad subject matter. This is not an exhaustive audit
+or independent human adjudication, and it does not prove model exploitation.
+
+**Correction to earlier wording:** the original split is event-string-group-disjoint,
+not established event-family-independent. Historical manifests and partitions stay
+unchanged. Future preparation metadata and README now explicitly qualify this.
+Shared healthcare, North Korea and other topics in remaining nearest pairs do not
+by themselves establish duplicate events; no further event groups were merged.
+
+Highest lexical overlap was publisher licensing boilerplate, not shared story
+content: 30 shared five-grams, Jaccard .2158. An added exact normalized paragraph
+audit (minimum eight words) found a 34-word licensing paragraph in 12 training and
+7 validation excerpts, plus a 12-word copyright/reprint notice in 2 training and
+5 validation excerpts. These are source cues and non-story material, not automatic
+label leakage proof. Because the frozen text matches what annotators saw, no
+paragraph was removed and no labels were changed. Future cleaned-text datasets
+would require their own version and annotation-compatibility assessment.
+
+GPT-6 Astra Medium reviewed the interpretation through the terminal CLI. Advice
+retained locally at `research/data/overlap-review-20261002.txt`: a single reviewed
+family cannot establish prevalence or performance inflation; threshold misses do
+not establish absence of leakage; exclusions change sample composition.
+
+Exploratory sensitivity removes the single validation member of that reviewed
+family solely for this report. Full scores remain primary; no split was rewritten,
+candidate selected, or model retrained. Released-label agreement:
+
+| Model | All 66 | Excluding reviewed family, 65 |
+| --- | ---: | ---: |
+| Production RoBERTa | .4697 | .4769 |
+| Prior Astra prompt | .5303 | .5231 |
+| TF-IDF word C=1 | .5909 | .6000 |
+| Frozen MiniLM C=.1 | .5606 | .5692 |
+
+Differences are under one percentage point and do not explain the overall failure
+to meet targets. The smaller slice is neither independent nor a repaired test set.
+No uncertainty interval for unseen-family generalization can be inferred from one
+reviewed family's removal. Other relationships and pretraining overlap remain open.
+
+Seven focused overlap tests passed. Two affected real excerpts were submitted
+through the public browser form: HTTP 200 for both, no page errors, failed requests
+or mobile overflow; mobile screenshot inspected. Production predicted RIGHT
+(.999471) for the boilerplate case and LEFT (.999327) for the reviewed event case;
+these are uncalibrated scores, not correctness probabilities. Local Chromium
+fallback, not cloud; no deployment.
+
+Artifacts: `results/development_overlap_20261002.json` preserves the first audit;
+`development_overlap_detail_20261002.json` adds paragraph analysis;
+`development_overlap_review_20261002.json` records review provenance/IDs;
+`overlap_sensitivity_20261002.json` retains full and sliced metrics;
+`overlap_browser_20261002.json` preserves sanitized responses/screenshot hashes.
+Raw screenshots/UI responses are in parent `outputs/live-browser-overlap-20261002/`.
+Reproduce audit with `python3 research/scripts/audit_development_overlap.py --data
+research/data/pbc-snippets-20261001 --features research/data/minilm-snippets-features.npz
+--output <fresh-path>`. Sensitivity script accepts --data (validation JSONL),
+--comparison (original comparison JSON), --review (review JSON), --output.
+
+Decision: preserve the audit and stricter metadata; no high-accuracy claim. Future
+evaluation needs reviewed episode-family grouping and explicit treatment of source
+boilerplate, without retroactively presenting this reused validation as independent.
+
 ## 2026-10-02 01:10 UTC: structured comparator on real validation excerpts
 
 Ran the unchanged structured prompt from ecc32c8 on all 66 frozen validation
