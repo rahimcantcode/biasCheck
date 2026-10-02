@@ -11,6 +11,11 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
+try:
+    from .spans import validate_spans, span_agreement
+except ImportError:  # direct CLI invocation
+    from spans import validate_spans, span_agreement
+
 LABELS = {'LEFT', 'CENTER', 'RIGHT', 'NONPOLITICAL', 'UNCERTAIN'}
 FRAMING = {'LEFT', 'CENTER', 'RIGHT', 'UNCERTAIN', 'NOT_APPLICABLE'}
 POLICY = {'NOT_ASSESSED', 'NO_EXPLICIT_STANCE', 'LEFT', 'CENTER', 'RIGHT', 'MIXED', 'UNCERTAIN', 'NOT_APPLICABLE'}
@@ -34,7 +39,7 @@ def timestamp(value):
         return False
 
 
-def validate(review, manifest):
+def validate(review, manifest, snapshots=None):
     if not isinstance(review, dict) or not isinstance(manifest, dict):
         raise ValueError('Review and manifest must be JSON objects')
     if (manifest.get('schema_version') != 2 or manifest.get('rubric_version') != 'v2'
@@ -113,8 +118,7 @@ def validate(review, manifest):
             raise ValueError('Resolved political author framing requires sufficient context')
         if row.get('confidence') not in {'low', 'medium', 'high'} or not nonempty(row.get('rationale'), 15):
             raise ValueError('Missing review evidence')
-        if row.get('evidence_spans'):
-            raise ValueError('Exact-span exports are not implemented in v2; use paraphrased evidence')
+        validate_spans(row, known[item_id], snapshots)
         result[item_id] = row
     return result
 
@@ -163,8 +167,8 @@ def blinded(row):
             and row['review_phase'] != 'post_discussion_rereview')
 
 
-def compare(first, second, manifest):
-    a, b = validate(first, manifest), validate(second, manifest)
+def compare(first, second, manifest, snapshots=None):
+    a, b = validate(first, manifest, snapshots), validate(second, manifest, snapshots)
     if first['reviewer_id'].casefold() == second['reviewer_id'].casefold():
         raise ValueError('Two distinct independent human reviewers required; repeat passes are not new reviewers')
     common = sorted(set(a) & set(b))
@@ -181,8 +185,12 @@ def compare(first, second, manifest):
             flags.append('external_context')
         if any(a[key]['prior_exposure'][f] or b[key]['prior_exposure'][f] for f in EXPOSURE):
             flags.append('prior_exposure')
+        if any(validate_spans(row, items[key], snapshots)['verification'] == 'unverified_missing_snapshot' for row in (a[key], b[key])):
+            flags.append('span_source_unverified')
         if a[key]['review_phase'] != b[key]['review_phase'] or a[key].get('rubric_freeze_id') != b[key].get('rubric_freeze_id'):
             flags.append('different_review_round_or_freeze')
+        if a[key].get('span_status', 'NOT_ASSESSED') != b[key].get('span_status', 'NOT_ASSESSED') or a[key].get('evidence_spans', []) != b[key].get('evidence_spans', []):
+            fields.append('evidence_spans')
         if fields or flags:
             disagreements.append({'id': key, 'kind': items[key]['kind'], 'disagreement_axes': fields,
                                   'review_flags': flags, 'reviewer_a': a[key], 'reviewer_b': b[key],
@@ -199,11 +207,15 @@ def compare(first, second, manifest):
         'completed': [len(a), len(b)], 'paired_n': len(common),
         'missing_or_skipped_ids': sorted(set(items) - set(common)),
         'per_axis': axes, 'label_agreement': axes['label'], 'relevance_agreement': axes['relevance'],
-        'same_round': {'paired_n': len(same_round), 'per_axis': per_axis(same_round)},
-        'blinded_frozen_text_only': {'paired_n': len(strictly_blinded), 'per_axis': per_axis(strictly_blinded)},
+        'same_round': {'paired_n': len(same_round), 'per_axis': per_axis(same_round),
+                       'span_agreement': span_agreement(same_round, items, snapshots)},
+        'blinded_frozen_text_only': {'paired_n': len(strictly_blinded), 'per_axis': per_axis(strictly_blinded),
+                                    'span_agreement': span_agreement(strictly_blinded, items, snapshots)},
         'slices': {kind: {'paired_n': sum(items[k]['kind'] == kind for k in common),
                           'per_axis': per_axis([(a[k], b[k]) for k in common if items[k]['kind'] == kind])}
                    for kind in ['historical_article', 'controlled_example']},
+        'span_agreement': span_agreement(pairs, items, snapshots),
+        'span_slices': {kind: span_agreement([(a[k], b[k]) for k in common if items[k]['kind'] == kind], items, snapshots) for kind in ['historical_article', 'controlled_example']},
         'disagreements': disagreements, 'gold_labels_approved': False,
         'limitations': [
             'Agreement measures consistency, not accuracy; no gold labels are created',
@@ -223,8 +235,20 @@ def main():
     parser.add_argument('--second', type=Path, required=True)
     parser.add_argument('--manifest', type=Path, default=Path(__file__).with_name('pilot_manifest_v2.json'))
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--snapshots', type=Path, help='Pinned dataset data/jsons folder, required to verify historical span offsets')
     args = parser.parse_args()
-    result = compare(json.loads(args.first.read_text()), json.loads(args.second.read_text()), json.loads(args.manifest.read_text()))
+    manifest = json.loads(args.manifest.read_text())
+    snapshots = {}
+    if args.snapshots:
+        for item in manifest['items']:
+            if item.get('dataset_id'):
+                path = args.snapshots / (str(item['dataset_id']) + '.json')
+                if path.exists():
+                    data = json.loads(path.read_text())
+                    if str(data.get('ID')) != str(item['dataset_id']):
+                        raise ValueError('Span source snapshot ID mismatch')
+                    snapshots[item['id']] = data['content_original'].strip()
+    result = compare(json.loads(args.first.read_text()), json.loads(args.second.read_text()), manifest, snapshots)
     args.output.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps({k: v for k, v in result.items() if k not in ['disagreements', 'missing_or_skipped_ids']}, indent=2))
 

@@ -1,6 +1,31 @@
 # Working experiment log (not a final report)
 
 
+## 2026-10-02: exact human-span collection follow-through
+
+Extended the existing v2 pilot with a versioned exact-span workflow rather than
+leaving phrase supervision uncollectable. Humans enter an exact phrase and its
+occurrence, then independently select LEFT/RIGHT and AUTHOR/QUOTED/UNKNOWN.
+Unicode codepoint offsets and source hashes are verified; duplicate/overlapping
+or mismatched spans are rejected. NO_DIRECTIONAL_SPANS is distinct from
+NOT_ASSESSED. Nothing is prefilled from model outputs or article labels.
+
+Historical imports/restored workspaces require pinned snapshots loaded first.
+Missing or changed snapshots cannot overwrite saved reviews. Offline comparison
+without historical snapshots marks spans unverified and excludes them from span
+agreement. Symmetric exact-span agreement is reported separately for natural and
+synthetic items, same-round pairs and the blinded/frozen-text-only subset, each
+with its own denominator. Neither reviewer is treated as gold.
+
+59 targeted annotation/schema/DOM/span tests and the final aggregate of 225 Python
+tests passed. Frontend verification remains 33 tests plus typecheck/build. Human
+reviews remain zero.
+Manual exact-phrase entry is supported; drag selection and actual-browser copy
+behavior are not verified. There is no automatic pilot-export-to-production/gold
+conversion: human adjudication, a source/hash-preserving conversion and a separate
+independent evaluation remain required. Research-draft publication is approved;
+model release and deployment remain rejected.
+
 ## 2026-10-02: bounded baselines, supervision sensitivity and phrase-evidence groundwork
 
 ### Training-only comparisons (no production promotion)

@@ -2,8 +2,8 @@
 const pilot=JSON.parse(document.getElementById('pilot-data').textContent),$=id=>document.getElementById(id),texts=new Map();
 const fields=['relevance','author_framing','issue_policy_stance','attribution','context_sufficiency','uncertainty_reason','confidence','rationale','review_phase','review_pass_id','rubric_freeze_id'];
 const exposures=['model_predictions','legacy_labels','other_reviewer_answers'];
-const formFields=[...fields,...exposures,'exposure_notes','external_context_used','external_context_notes','read','skip'];
-let current=0,active='',answers={},dirty=false,loading=false;
+const formFields=['span_status','span_quote','span_occurrence','span_direction','span_attribution',...fields,...exposures,'exposure_notes','external_context_used','external_context_notes','read','skip'];
+let current=0,active='',answers={},dirty=false,loading=false,draftSpans=[];
 const key=()=>pilot.pilot_id+':'+active;
 const allowed={relevance:['POLITICAL','NONPOLITICAL','UNCERTAIN'],author_framing:['LEFT','CENTER','RIGHT','UNCERTAIN','NOT_APPLICABLE'],issue_policy_stance:['NOT_ASSESSED','NO_EXPLICIT_STANCE','LEFT','CENTER','RIGHT','MIXED','UNCERTAIN','NOT_APPLICABLE'],attribution:['AUTHOR_NARRATION','QUOTED_SPEAKERS_ONLY','MIXED_AUTHOR_AND_QUOTES','NO_STANCE_EXPRESSED','UNCLEAR'],context_sufficiency:['SUFFICIENT','INSUFFICIENT','UNCERTAIN'],uncertainty_reason:['NONE','INSUFFICIENT_CONTEXT','MIXED_AUTHOR_POSITIONS','ATTRIBUTION_UNCLEAR','SARCASM_OR_AMBIGUITY','OUTSIDE_US_SCHEME','OTHER'],confidence:['low','medium','high'],review_phase:['initial_independent_10','post_discussion_rereview','frozen_main']};
 const nonempty=(value,min=1)=>typeof value==='string'&&value.trim().length>=min;
@@ -38,10 +38,44 @@ function validateReview(review){
     if((row.label==='UNCERTAIN')===(row.uncertainty_reason==='NONE'))throw Error('Choose a reason for UNCERTAIN; choose NONE for a resolved primary label.');
     if(['LEFT','CENTER','RIGHT'].includes(row.label)&&row.context_sufficiency!=='SUFFICIENT')throw Error('Resolved political author framing requires sufficient context.');
     if(!nonempty(row.rationale,15))throw Error('Explain your evidence in at least 15 characters.');
-    if(row.evidence_spans&&(!Array.isArray(row.evidence_spans)||row.evidence_spans.length))throw Error('Exact-span exports are not implemented in v2.');
+    validateSpans(row,known.get(row.id));
   }
   return review;
 }
+function validateSpans(row,item){
+  const status=row.span_status===undefined?'NOT_ASSESSED':row.span_status,spans=row.evidence_spans===undefined?[]:row.evidence_spans;
+  if(!['NOT_ASSESSED','NO_DIRECTIONAL_SPANS','ANNOTATED'].includes(status)||!Array.isArray(spans))throw Error('Invalid span status or spans array.');
+  if((status!=='NOT_ASSESSED'||spans.length)&&row.span_protocol_version!==1)throw Error('Span protocol version 1 required.');
+  if((status==='ANNOTATED')!==Boolean(spans.length))throw Error('ANNOTATED needs spans; no-span/unassessed records must have none.');
+  const text=texts.get(item.id);if(status!=='NOT_ASSESSED'&&text===undefined)throw Error('Load the exact verified source snapshot before opening, importing or saving span-reviewed items. After a page reload, load pinned article snapshots first, then open your workspace again.');
+  const codepoints=text===undefined?null:Array.from(text);let end=-1;
+  for(const span of spans){
+    if(!span||!Number.isSafeInteger(span.start)||!Number.isSafeInteger(span.end)||span.start<0||span.end<=span.start||span.start<end)throw Error('Spans must be nonempty, sorted, nonoverlapping Unicode codepoint offsets.');
+    end=span.end;
+    if(span.source_text_sha256!==item.text_sha256)throw Error('Span source hash mismatch.');
+    if(!['LEFT','RIGHT'].includes(span.direction)||!['AUTHOR','QUOTED','UNKNOWN'].includes(span.attribution))throw Error('Span direction and attribution required.');
+    if(typeof span.text!=='string'||!span.text.trim()||Array.from(span.text).length!==span.end-span.start||!codepoints||span.end>codepoints.length||codepoints.slice(span.start,span.end).join('')!==span.text)throw Error('Span text must exactly match the verified source offsets.');
+  }
+}
+function renderSpans(){
+  $('span_list').replaceChildren();for(let i=0;i<draftSpans.length;i++){const span=draftSpans[i],option=document.createElement('option');option.value=String(i);option.textContent='['+span.start+', '+span.end+') '+span.direction+' / '+span.attribution+': '+span.text;$('span_list').appendChild(option);}
+  $('addSpan').disabled=!active||!texts.has(pilot.items[current].id)||loading;$('removeSpan').disabled=!draftSpans.length||loading;
+}
+function exactOccurrences(text,quote){const hits=[];let cursor=0;while(cursor<=text.length){const found=text.indexOf(quote,cursor);if(found<0)break;hits.push(Array.from(text.slice(0,found)).length);cursor=found+1;}return hits;}
+$('addSpan').onclick=()=>{
+  const item=pilot.items[current],text=texts.get(item.id),quote=$('span_quote').value;
+  if(!active||text===undefined||loading){message('Load the verified text and open your workspace first.');return;}
+  if(!quote.trim()){message('Copy an exact nonempty phrase from the verified text.');return;}
+  const hits=exactOccurrences(text,quote);if(!hits.length){message('Phrase not found exactly. Preserve original wording, punctuation, spaces and negation.');return;}
+  const raw=$('span_occurrence').value,occurrence=raw===''&&hits.length===1?1:Number(raw);
+  if(!Number.isSafeInteger(occurrence)||occurrence<1||occurrence>hits.length){message('Found '+hits.length+' exact occurrences. Enter which occurrence number you mean.');return;}
+  const span={start:hits[occurrence-1],end:hits[occurrence-1]+Array.from(quote).length,text:quote,source_text_sha256:item.text_sha256,direction:$('span_direction').value,attribution:$('span_attribution').value};
+  const proposed=[...draftSpans,span].sort((a,b)=>a.start-b.start);
+  try{validateSpans({span_status:'ANNOTATED',span_protocol_version:1,evidence_spans:proposed},item);}catch(e){message(e.message);return;}
+  draftSpans=proposed;$('span_status').value='ANNOTATED';dirty=true;renderSpans();message('Exact span added to this unsaved judgment. Read its surrounding context before saving.');
+};
+$('removeSpan').onclick=()=>{const selected=Number($('span_list').value);if($('span_list').value===''||!Number.isInteger(selected)||!draftSpans[selected])return;draftSpans.splice(selected,1);if(!draftSpans.length)$('span_status').value='NOT_ASSESSED';dirty=true;renderSpans();};
+$('span_status').onchange=()=>{if($('span_status').value!=='ANNOTATED'&&draftSpans.length){if(!confirm('Remove these unsaved span selections?')){$('span_status').value='ANNOTATED';return;}draftSpans=[];renderSpans();}dirty=true;};
 function store(){try{localStorage.setItem(key(),JSON.stringify(envelope()));return true;}catch(e){message('Browser storage failed. Export before closing.');return false;}}
 function progress(){$('progress').textContent=Object.values(answers).filter(x=>x.status==='reviewed').length+' / '+pilot.items.length+' reviewed';}
 function syncLabel(){$('derived_label').textContent=derived($('relevance').value,$('author_framing').value)||'not selected';}
@@ -52,6 +86,7 @@ function render(){
   $('source').replaceChildren();if(item.url){const link=document.createElement('a');link.href=item.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Original URL (outside review context; may differ from frozen text)';$('source').appendChild(link);}else $('source').textContent='Original AI-authored diagnostic text. No human gold label assigned.';
   $('hash').textContent='Exact supplied text SHA-256: '+item.text_sha256;
   $('read').checked=a.full_text_read===true;
+  draftSpans=(a.evidence_spans||[]).map(span=>({...span}));$('span_status').value=a.span_status||'NOT_ASSESSED';for(const field of ['span_quote','span_occurrence','span_direction','span_attribution'])$(field).value='';renderSpans();
   for(const field of fields)$(field).value=a[field]||(field==='issue_policy_stance'?'NOT_ASSESSED':'');
   for(const field of exposures)$(field).value=typeof a.prior_exposure?.[field]==='boolean'?String(a.prior_exposure[field]):'';
   $('exposure_notes').value=a.prior_exposure?.notes||'';
@@ -82,6 +117,7 @@ $('save').onclick=()=>{
   const item=pilot.items[current];if(!active||!texts.has(item.id)||!$('read').checked||loading||!$('human').checked||!$('independent').checked){message('Read the complete verified text and confirm the checkbox.');return;}
   const row={id:item.id,status:'reviewed',reviewer_id:active,rubric_version:'v2',text_sha256:item.text_sha256,full_text_read:true,completed_at:new Date().toISOString()};
   for(const field of fields)row[field]=$(field).value.trim();row.label=derived(row.relevance,row.author_framing);
+  row.span_protocol_version=1;row.span_status=$('span_status').value;row.evidence_spans=draftSpans.map(span=>({...span}));
   row.prior_exposure={notes:$('exposure_notes').value.trim()};for(const field of exposures)row.prior_exposure[field]=$(field).value===''?null:$(field).value==='true';
   row.text_context={scope:'complete_frozen_text',text_sha256:item.text_sha256,external_context_used:$('external_context_used').value===''?null:$('external_context_used').value==='true',external_context_notes:$('external_context_notes').value.trim()};
   try{validateReview(envelope([row]));}catch(e){message(e.message);return;}

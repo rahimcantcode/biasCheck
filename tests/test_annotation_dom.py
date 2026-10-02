@@ -21,7 +21,7 @@ def test_reviewer_dom_provenance_save_import_export():
     )
     assert result.returncode == 0, result.stderr
     output = json.loads(result.stdout)
-    assert output['checks'] == 24
+    assert output['checks'] == 50
     manifest = json.loads((ROOT / 'research/annotation/pilot_manifest_v2.json').read_text())
     # The actual exported event-fixture payload must also satisfy the Python validator.
     assert len(validate(output['exported'], manifest)) == 1

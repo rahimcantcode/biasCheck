@@ -77,7 +77,7 @@ The earlier **PoliticalBiasCorpus** annotation setup allowed annotators access t
 - Human reviewer identity, timezone-aware completion time, exposure answers and necessary notes
 - Review phase, pass ID and, after initial calibration, agreed rubric freeze ID
 
-Skip unavailable/corrupt text with a reason. Never judge from a URL alone. Exact-span annotation is deferred in v2; no offsets are fabricated. Rationale paraphrases remain required.
+Skip unavailable/corrupt text with a reason. Never judge from a URL alone. The versioned exact-span extension below is available. Rationale paraphrases remain required.
 
 ## First 10, discussion, freeze and re-review
 
@@ -92,3 +92,19 @@ Keep natural articles and synthetic controls separate. The queue preserves origi
 ## Separation from future evaluation
 
 All 100 pilot items remain development material, even after adjudication. Historical articles may overlap checkpoint training and do not represent current media. Synthetic controls test behaviors, not real-world performance. A future accuracy claim requires a separate rights-reviewed, contemporary, source/event/time-separated evaluation set, independent human review/adjudication, locked model and decision policy, and pre-registered class/slice sample sizes and acceptance gates.
+
+## Exact directional phrase spans: extension protocol 1
+
+This extension adds optional span collection without reinterpreting earlier v2 records: missing span fields mean NOT_ASSESSED. There are still **0 completed human reviews**. Do not infer spans from an article label, a model, inherited labels or another reviewer. Human independence and exposure disclosure apply to both article and span judgments.
+
+Read the entire frozen text first. Copy a short exact evidence phrase into the span control. Keep negation, qualifiers and enough local wording to preserve meaning; for example, do not shorten “does not support higher taxes” to “support higher taxes.” Select which occurrence you mean if the wording repeats. No text is normalized or changed. Choose its local LEFT/RIGHT direction and AUTHOR/QUOTED/UNKNOWN attribution yourself. A quote can be directional even when the article is not, and a span's direction need not equal the article framing. The surrounding article and paraphrased rationale remain part of the annotation context. If no defensible local directional span exists, choose NO_DIRECTIONAL_SPANS rather than inventing evidence. NOT_ASSESSED is not a negative span example.
+
+Offsets use zero-based Unicode codepoints with an exclusive end, measured in the exact frozen text. An emoji outside the BMP counts as one codepoint; combining marks retain their original codepoints. Exports include exact short evidence text, offsets, LEFT/RIGHT, attribution and source-text SHA-256 per span. Occurrence mapping is exact and overlapping/duplicate selections are rejected to avoid double counting. Choose one complete meaningful phrase instead of nested selections. These short excerpts are intentionally exported for human review; full articles are not included.
+
+UI imports and workspace restores of span-reviewed items require their exact verified snapshots to be loaded first. After reloading the page, load the pinned article snapshots before reopening your reviewer workspace; article text is not persisted with browser annotations. A blocked restore preserves the saved data. Offline comparison always checks structure/source hash and checks exact offsets/text against embedded controlled text or supplied historical snapshots. Historical spans without an explicit matching snapshot are marked unverified_missing_snapshot and excluded from exact-span agreement; they cannot qualify as gold. Supply --snapshots PATH_TO_DATA_JSONS to verify them. A changed snapshot is rejected, never substituted.
+
+Span agreement uses exact boundaries + direction + attribution with symmetric reviewer-normalized overlap fractions and F1; neither reviewer is ground truth. It reports denominators, unassessed/missing-snapshot exclusions and both-empty cases separately; two empty span sets do not become perfect precision/recall. Natural/synthetic results stay separate. Exact-match disagreement may reflect different boundaries rather than conflicting ideology; humans must adjudicate with context. Verified offsets establish faithful text extraction, not correct politics. No tool automatically approves gold spans, including fully verified matches. Preserve independent exports before adjudication.
+
+### Handoff boundary
+
+Raw reviewer exports do not automatically become gold data or production inputs. Human adjudication/sign-off and a separately validated, source/hash/offset/provenance-preserving conversion are still required. No such automatic conversion is implemented. Adjudicated pilot examples remain development material and require a separate independent evaluation before any model or production-policy claim.

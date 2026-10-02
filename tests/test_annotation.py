@@ -200,3 +200,34 @@ def test_standalone_html_is_current_and_no_labels_added():
     script = (FOLDER / 'reviewer.js').read_text().replace('</script', '<\\/script')
     assert (FOLDER / 'Bias_Checker_Review_Pilot.html').read_text() == template.replace('__PILOT_DATA__', payload).replace('__REVIEWER_SCRIPT__', script)
     assert 'source_url' not in {key for row in M['items'] for key in row}
+
+
+def test_span_agreement_in_same_round_and_blinded_subsets():
+    index = next(i for i, item in enumerate(M['items']) if item['kind'] == 'controlled_example')
+    first, second = review(label='LEFT', index=index), review('reviewer-B', label='LEFT', index=index)
+    item = M['items'][index]
+    for record in (first, second):
+        record['annotations'][0].update(span_protocol_version=1, span_status='ANNOTATED', evidence_spans=[{
+            'start': 0, 'end': 12, 'text': item['text'][:12], 'source_text_sha256': item['text_sha256'],
+            'direction': 'RIGHT', 'attribution': 'QUOTED',
+        }])
+    result = compare(first, second, M)
+    for subset in ('same_round', 'blinded_frozen_text_only'):
+        spans = result[subset]['span_agreement']
+        assert spans['paired_items'] == spans['verified_assessed_pairs'] == 1
+        assert spans['exact_matched_span_n'] == 1
+        assert spans['gold_qualified'] is False
+    first['annotations'][0]['prior_exposure'].update(model_predictions=True, notes='Previously saw synthetic fixture model output.')
+    result = compare(first, second, M)
+    assert result['same_round']['span_agreement']['verified_assessed_pairs'] == 1
+    assert result['blinded_frozen_text_only']['span_agreement']['paired_items'] == 0
+    assert result['blinded_frozen_text_only']['span_agreement']['symmetric_exact_span_f1'] is None
+
+
+def test_span_agreement_round_mismatch_excluded_from_subset_denominators():
+    first, second = review(), review('reviewer-B')
+    second['annotations'][0].update(review_phase='frozen_main', rubric_freeze_id='fixture-freeze')
+    result = compare(first, second, M)
+    assert result['span_agreement']['paired_items'] == 1
+    assert result['same_round']['span_agreement']['paired_items'] == 0
+    assert result['blinded_frozen_text_only']['span_agreement']['paired_items'] == 0
