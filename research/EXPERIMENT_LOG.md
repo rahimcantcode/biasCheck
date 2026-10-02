@@ -1,5 +1,40 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 21:38 UTC heartbeat: fixed soft-voting ensemble
+
+Evaluated a fixed 50/50 probability average of the saved word and semantic OOF
+heads on all 115 training articles. No new fitting, calibration, weight search,
+validation or reserved-test access. Input hashes, unique complete ID alignment,
+matching fold IDs, probability simplex and argmax consistency are checked. Class
+columns align by name, with predetermined LEFT/CENTER/RIGHT tie order. Four unit
+tests passed. Source head hashes, fold IDs, encoder provenance, raw ensemble
+probabilities and metrics are preserved in research/results/ensemble_oof_20261002.json.
+
+The ensemble matched 61/115 (.5304, macro-F1 .4992), versus 58/115 for either
+component, and 27/54 unanimous examples versus 25/54. Left/Center/Right recall
+is .5526/.3077/.6275. Against the word head it corrected 13 errors and introduced
+10, a three-article net gain on repeatedly explored training data, not independent
+evidence of improvement. No deployment or high-accuracy claim is justified.
+
+Components agreed on 70/115 articles (.6087 coverage), with only 41/70 reference
+matches (.5857). Both were wrong on 40 articles. Either-component-correct count
+is 75/115: a hindsight perfect-selection diagnostic, not attainable performance
+or an upper bound on probability averaging (which can choose a third class).
+Model agreement is not validated confidence and discarding disagreements does
+not establish accuracy. No abstention policy was adopted.
+
+GPT-6 Astra Medium reviewed the design through the terminal client; local advice
+is research/data/ensemble-advice-20261002.txt. Balanced-class probabilities remain
+uncalibrated, exact event-string grouping is not proven event-family independence,
+and disputed noncommercial corpus labels are not task-matched independent gold.
+All candidate outputs remain research-only. Local Chromium fallback submitted
+the first three training-order component disagreements to production: all HTTP
+200 and LEFT, with no page errors, failed requests or mobile overflow. Mobile
+screenshot inspected. This is functional production smoke coverage, not testing
+of the undeployed ensemble. Raw responses/screenshots are retained at
+outputs/live-browser-ensemble-20261002; sanitized results and screenshot hashes
+are research/results/ensemble_browser_20261002.json.
+
 ## 2026-10-02 20:25 UTC: delivered-label metrics and release-check gap
 
 The offline policy evaluator gated 90% selective accuracy but not 90% raw

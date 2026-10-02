@@ -1,0 +1,2093 @@
+{
+  "purpose": "Fixed training OOF ensemble, not independent product evaluation",
+  "release_approved": false,
+  "reserved_test_read": false,
+  "validation_read": false,
+  "settings": {
+    "word_weight": 0.5,
+    "semantic_weight": 0.5,
+    "tie_order": [
+      "LEFT",
+      "CENTER",
+      "RIGHT"
+    ],
+    "tuned": false
+  },
+  "inputs": {
+    "research/data/pbc-snippets-20261001/train.jsonl": "5ebefc86e5da25784649b895753219207913cbcb042b85e7e90fdf4b84f2d1b9",
+    "research/results/hybrid_cv_20261002.json": "51a5fde599e979dd26ffa5a91c4efe7ff515b067cc08177d4bc735268ffa2294"
+  },
+  "component_folds_and_hashes": [
+    {
+      "fold": 0,
+      "train_ids": [
+        "010d924f-4636-45ce-a97e-703055a109ad",
+        "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+        "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+        "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+        "066f8616-6722-4660-8e73-da8a8effc0ff",
+        "091773c9-9457-4534-b764-d19057a39204",
+        "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+        "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+        "12a2cac7-29e3-4c16-af08-44d81096949d",
+        "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+        "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+        "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+        "1d5931db-2c9d-432f-8990-87cc90fff517",
+        "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+        "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+        "207874b1-507e-45db-9009-a4768e26b33b",
+        "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+        "259b95ba-221b-42c2-b490-a318b5c75b00",
+        "260a13e9-9055-4c48-8a2f-135c3a704b95",
+        "29c46291-ae3c-4e26-8b51-abd7127b4047",
+        "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+        "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+        "31593fab-912f-41f8-9281-f08b634afd32",
+        "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+        "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+        "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+        "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+        "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+        "41806cca-34c9-4660-874a-e8efe4f5e95d",
+        "43353164-939f-4d58-9856-6577b3a49389",
+        "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+        "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+        "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+        "53b48721-43eb-4114-afda-bca5720c80e7",
+        "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+        "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+        "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+        "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+        "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+        "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+        "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+        "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+        "722c87c9-3448-4495-b04b-336303346fd3",
+        "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+        "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+        "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+        "806dfa97-a252-4382-bb37-a819b4e24383",
+        "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+        "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+        "84acc2dc-be73-4d88-b14d-e4ac37995887",
+        "86a181e7-d173-4fca-be54-be2102d966a7",
+        "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+        "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+        "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+        "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+        "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+        "8f615eca-f4e0-4ddd-a616-851837f47415",
+        "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+        "9025a66a-eb2e-4110-b410-1c708ae65208",
+        "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+        "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+        "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+        "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+        "aa8235a0-3302-4f83-936b-2728d2914613",
+        "abb5dddf-2180-490b-bda1-851927d3b958",
+        "b256eb0c-9e71-4d14-87db-1216be80a246",
+        "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+        "b4792829-fefb-40a9-b136-63e19bbed7f2",
+        "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+        "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+        "c6b09540-12f4-44b2-b28d-d2c15176288c",
+        "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+        "cbddcfac-40c1-4701-84ba-08b85495f7df",
+        "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+        "ce92bb57-d18b-4522-8a37-9678d96c8783",
+        "db078daf-d349-4793-b84e-d4df590abd67",
+        "dce53ead-1673-4e93-85c1-90df34e888ac",
+        "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+        "e009eceb-8760-4619-96e3-ec962682ef8e",
+        "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+        "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+        "ec451c07-8f7e-42a3-94e6-f0093072730e",
+        "eca8add1-249f-4a0d-9143-c339ad154257",
+        "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+        "ed2ef6cf-1f10-4a40-a73e-7736adea86b2",
+        "ef24221d-f700-4607-8919-f2097439d500",
+        "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+        "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+        "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+        "f7e3b4e1-18fb-49a4-9d09-366d14a45c08",
+        "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681",
+        "fce4fbaa-13b9-414b-a614-640975ac3728"
+      ],
+      "held_ids": [
+        "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+        "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+        "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+        "22db9529-bbc3-46b1-83ad-522571b4d065",
+        "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+        "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+        "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+        "35492fcc-28c7-499f-8822-711352bbcca0",
+        "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+        "76018171-0d3d-4533-b54b-faf97442777a",
+        "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+        "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+        "acf1b79e-3649-4285-899c-a1e37018581a",
+        "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+        "b272b82d-9a03-404a-990c-f305dc8f3050",
+        "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+        "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+        "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+        "d9253503-4ef4-466b-91c8-4db498f7face",
+        "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+        "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+        "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+        "fc9dd17a-43c2-4697-8de6-808ba7e2b323"
+      ],
+      "models": {
+        "word": {
+          "model_sha256": "a25dbfb8e07144a95749e44149b1d654436cf6601148b405040fb3f229a34c83",
+          "iterations": [
+            8
+          ]
+        },
+        "semantic": {
+          "model_sha256": "dc5b120b3abb53db0b7aa22c79c8d2518e7a8e3781014809829f13201af9fcdd",
+          "iterations": [
+            15
+          ]
+        },
+        "hybrid": {
+          "model_sha256": "30f06b3526897116edfe40979d7bca4b7db4b94d7e2137c6048a19a4c0b6c099",
+          "iterations": [
+            10
+          ]
+        }
+      }
+    },
+    {
+      "fold": 1,
+      "train_ids": [
+        "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+        "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+        "066f8616-6722-4660-8e73-da8a8effc0ff",
+        "091773c9-9457-4534-b764-d19057a39204",
+        "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+        "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+        "12a2cac7-29e3-4c16-af08-44d81096949d",
+        "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+        "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+        "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+        "1d5931db-2c9d-432f-8990-87cc90fff517",
+        "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+        "207874b1-507e-45db-9009-a4768e26b33b",
+        "22db9529-bbc3-46b1-83ad-522571b4d065",
+        "259b95ba-221b-42c2-b490-a318b5c75b00",
+        "260a13e9-9055-4c48-8a2f-135c3a704b95",
+        "29c46291-ae3c-4e26-8b51-abd7127b4047",
+        "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+        "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+        "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+        "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+        "31593fab-912f-41f8-9281-f08b634afd32",
+        "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+        "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+        "35492fcc-28c7-499f-8822-711352bbcca0",
+        "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+        "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+        "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+        "41806cca-34c9-4660-874a-e8efe4f5e95d",
+        "43353164-939f-4d58-9856-6577b3a49389",
+        "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+        "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+        "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+        "53b48721-43eb-4114-afda-bca5720c80e7",
+        "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+        "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+        "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+        "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+        "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+        "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+        "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+        "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+        "722c87c9-3448-4495-b04b-336303346fd3",
+        "76018171-0d3d-4533-b54b-faf97442777a",
+        "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+        "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+        "806dfa97-a252-4382-bb37-a819b4e24383",
+        "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+        "86a181e7-d173-4fca-be54-be2102d966a7",
+        "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+        "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+        "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+        "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+        "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+        "8f615eca-f4e0-4ddd-a616-851837f47415",
+        "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+        "9025a66a-eb2e-4110-b410-1c708ae65208",
+        "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+        "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+        "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+        "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+        "aa8235a0-3302-4f83-936b-2728d2914613",
+        "abb5dddf-2180-490b-bda1-851927d3b958",
+        "acf1b79e-3649-4285-899c-a1e37018581a",
+        "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+        "b256eb0c-9e71-4d14-87db-1216be80a246",
+        "b272b82d-9a03-404a-990c-f305dc8f3050",
+        "b4792829-fefb-40a9-b136-63e19bbed7f2",
+        "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+        "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+        "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+        "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+        "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+        "ce92bb57-d18b-4522-8a37-9678d96c8783",
+        "d9253503-4ef4-466b-91c8-4db498f7face",
+        "db078daf-d349-4793-b84e-d4df590abd67",
+        "dce53ead-1673-4e93-85c1-90df34e888ac",
+        "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+        "e009eceb-8760-4619-96e3-ec962682ef8e",
+        "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+        "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+        "ec451c07-8f7e-42a3-94e6-f0093072730e",
+        "eca8add1-249f-4a0d-9143-c339ad154257",
+        "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+        "ed2ef6cf-1f10-4a40-a73e-7736adea86b2",
+        "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+        "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+        "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+        "f7e3b4e1-18fb-49a4-9d09-366d14a45c08",
+        "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+        "fc9dd17a-43c2-4697-8de6-808ba7e2b323",
+        "fce4fbaa-13b9-414b-a614-640975ac3728"
+      ],
+      "held_ids": [
+        "010d924f-4636-45ce-a97e-703055a109ad",
+        "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+        "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+        "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+        "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+        "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+        "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+        "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+        "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+        "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+        "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+        "84acc2dc-be73-4d88-b14d-e4ac37995887",
+        "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+        "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+        "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+        "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+        "c6b09540-12f4-44b2-b28d-d2c15176288c",
+        "cbddcfac-40c1-4701-84ba-08b85495f7df",
+        "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+        "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+        "ef24221d-f700-4607-8919-f2097439d500",
+        "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+        "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681"
+      ],
+      "models": {
+        "word": {
+          "model_sha256": "d89954a9d709a749b1d8e9c995f718832bee26b66e89871c1b8b161a09753837",
+          "iterations": [
+            14
+          ]
+        },
+        "semantic": {
+          "model_sha256": "17914e23593d511a2cc9cbbfdc98300c01e1482149136750addf5081336cdb3a",
+          "iterations": [
+            11
+          ]
+        },
+        "hybrid": {
+          "model_sha256": "253a3b556d4598bb7b337d9ff213ba8cf1882115e3e02e3c393d446b46739a5d",
+          "iterations": [
+            12
+          ]
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "train_ids": [
+        "010d924f-4636-45ce-a97e-703055a109ad",
+        "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+        "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+        "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+        "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+        "066f8616-6722-4660-8e73-da8a8effc0ff",
+        "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+        "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+        "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+        "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+        "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+        "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+        "1d5931db-2c9d-432f-8990-87cc90fff517",
+        "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+        "207874b1-507e-45db-9009-a4768e26b33b",
+        "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+        "22db9529-bbc3-46b1-83ad-522571b4d065",
+        "259b95ba-221b-42c2-b490-a318b5c75b00",
+        "260a13e9-9055-4c48-8a2f-135c3a704b95",
+        "29c46291-ae3c-4e26-8b51-abd7127b4047",
+        "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+        "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+        "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+        "31593fab-912f-41f8-9281-f08b634afd32",
+        "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+        "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+        "35492fcc-28c7-499f-8822-711352bbcca0",
+        "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+        "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+        "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+        "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+        "41806cca-34c9-4660-874a-e8efe4f5e95d",
+        "43353164-939f-4d58-9856-6577b3a49389",
+        "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+        "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+        "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+        "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+        "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+        "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+        "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+        "722c87c9-3448-4495-b04b-336303346fd3",
+        "76018171-0d3d-4533-b54b-faf97442777a",
+        "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+        "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+        "806dfa97-a252-4382-bb37-a819b4e24383",
+        "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+        "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+        "84acc2dc-be73-4d88-b14d-e4ac37995887",
+        "86a181e7-d173-4fca-be54-be2102d966a7",
+        "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+        "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+        "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+        "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+        "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+        "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+        "8f615eca-f4e0-4ddd-a616-851837f47415",
+        "9025a66a-eb2e-4110-b410-1c708ae65208",
+        "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+        "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+        "aa8235a0-3302-4f83-936b-2728d2914613",
+        "abb5dddf-2180-490b-bda1-851927d3b958",
+        "acf1b79e-3649-4285-899c-a1e37018581a",
+        "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+        "b256eb0c-9e71-4d14-87db-1216be80a246",
+        "b272b82d-9a03-404a-990c-f305dc8f3050",
+        "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+        "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+        "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+        "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+        "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+        "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+        "c6b09540-12f4-44b2-b28d-d2c15176288c",
+        "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+        "cbddcfac-40c1-4701-84ba-08b85495f7df",
+        "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+        "ce92bb57-d18b-4522-8a37-9678d96c8783",
+        "d9253503-4ef4-466b-91c8-4db498f7face",
+        "db078daf-d349-4793-b84e-d4df590abd67",
+        "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+        "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+        "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+        "ec451c07-8f7e-42a3-94e6-f0093072730e",
+        "eca8add1-249f-4a0d-9143-c339ad154257",
+        "ed2ef6cf-1f10-4a40-a73e-7736adea86b2",
+        "ef24221d-f700-4607-8919-f2097439d500",
+        "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+        "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+        "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+        "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+        "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681",
+        "fc9dd17a-43c2-4697-8de6-808ba7e2b323",
+        "fce4fbaa-13b9-414b-a614-640975ac3728"
+      ],
+      "held_ids": [
+        "091773c9-9457-4534-b764-d19057a39204",
+        "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+        "12a2cac7-29e3-4c16-af08-44d81096949d",
+        "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+        "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+        "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+        "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+        "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+        "53b48721-43eb-4114-afda-bca5720c80e7",
+        "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+        "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+        "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+        "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+        "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+        "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+        "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+        "b4792829-fefb-40a9-b136-63e19bbed7f2",
+        "dce53ead-1673-4e93-85c1-90df34e888ac",
+        "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+        "e009eceb-8760-4619-96e3-ec962682ef8e",
+        "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+        "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+        "f7e3b4e1-18fb-49a4-9d09-366d14a45c08"
+      ],
+      "models": {
+        "word": {
+          "model_sha256": "e8bb0c8e3a4ac3edd806bc5d7a73901f94ba771bd6c8e8413f9611230d74504f",
+          "iterations": [
+            10
+          ]
+        },
+        "semantic": {
+          "model_sha256": "28104e500a5d632ecd9013cf10c69b4acfd55efb418166acfaa0cf5e69f49990",
+          "iterations": [
+            15
+          ]
+        },
+        "hybrid": {
+          "model_sha256": "4818eaaa20a2345a29fbb4027d1ec3c133fe6db0521f16a51a95ee3215f82d59",
+          "iterations": [
+            11
+          ]
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "train_ids": [
+        "010d924f-4636-45ce-a97e-703055a109ad",
+        "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+        "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+        "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+        "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+        "091773c9-9457-4534-b764-d19057a39204",
+        "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+        "12a2cac7-29e3-4c16-af08-44d81096949d",
+        "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+        "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+        "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+        "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+        "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+        "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+        "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+        "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+        "22db9529-bbc3-46b1-83ad-522571b4d065",
+        "259b95ba-221b-42c2-b490-a318b5c75b00",
+        "29c46291-ae3c-4e26-8b51-abd7127b4047",
+        "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+        "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+        "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+        "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+        "35492fcc-28c7-499f-8822-711352bbcca0",
+        "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+        "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+        "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+        "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+        "41806cca-34c9-4660-874a-e8efe4f5e95d",
+        "43353164-939f-4d58-9856-6577b3a49389",
+        "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+        "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+        "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+        "53b48721-43eb-4114-afda-bca5720c80e7",
+        "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+        "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+        "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+        "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+        "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+        "76018171-0d3d-4533-b54b-faf97442777a",
+        "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+        "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+        "806dfa97-a252-4382-bb37-a819b4e24383",
+        "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+        "84acc2dc-be73-4d88-b14d-e4ac37995887",
+        "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+        "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+        "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+        "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+        "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+        "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+        "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+        "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+        "9025a66a-eb2e-4110-b410-1c708ae65208",
+        "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+        "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+        "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+        "abb5dddf-2180-490b-bda1-851927d3b958",
+        "acf1b79e-3649-4285-899c-a1e37018581a",
+        "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+        "b256eb0c-9e71-4d14-87db-1216be80a246",
+        "b272b82d-9a03-404a-990c-f305dc8f3050",
+        "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+        "b4792829-fefb-40a9-b136-63e19bbed7f2",
+        "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+        "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+        "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+        "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+        "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+        "c6b09540-12f4-44b2-b28d-d2c15176288c",
+        "cbddcfac-40c1-4701-84ba-08b85495f7df",
+        "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+        "ce92bb57-d18b-4522-8a37-9678d96c8783",
+        "d9253503-4ef4-466b-91c8-4db498f7face",
+        "db078daf-d349-4793-b84e-d4df590abd67",
+        "dce53ead-1673-4e93-85c1-90df34e888ac",
+        "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+        "e009eceb-8760-4619-96e3-ec962682ef8e",
+        "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+        "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+        "eca8add1-249f-4a0d-9143-c339ad154257",
+        "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+        "ef24221d-f700-4607-8919-f2097439d500",
+        "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+        "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+        "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+        "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+        "f7e3b4e1-18fb-49a4-9d09-366d14a45c08",
+        "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+        "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681",
+        "fc9dd17a-43c2-4697-8de6-808ba7e2b323",
+        "fce4fbaa-13b9-414b-a614-640975ac3728"
+      ],
+      "held_ids": [
+        "066f8616-6722-4660-8e73-da8a8effc0ff",
+        "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+        "1d5931db-2c9d-432f-8990-87cc90fff517",
+        "207874b1-507e-45db-9009-a4768e26b33b",
+        "260a13e9-9055-4c48-8a2f-135c3a704b95",
+        "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+        "31593fab-912f-41f8-9281-f08b634afd32",
+        "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+        "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+        "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+        "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+        "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+        "722c87c9-3448-4495-b04b-336303346fd3",
+        "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+        "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+        "86a181e7-d173-4fca-be54-be2102d966a7",
+        "8f615eca-f4e0-4ddd-a616-851837f47415",
+        "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+        "aa8235a0-3302-4f83-936b-2728d2914613",
+        "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+        "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+        "ec451c07-8f7e-42a3-94e6-f0093072730e",
+        "ed2ef6cf-1f10-4a40-a73e-7736adea86b2"
+      ],
+      "models": {
+        "word": {
+          "model_sha256": "fc98fed5f06939a62a96f49e0e78191e167ff0e40503f6723a4f57f1336f2647",
+          "iterations": [
+            11
+          ]
+        },
+        "semantic": {
+          "model_sha256": "2df36790b9970b5dff826c8dd7fe24613dd53f70a4cada04cb30aa7594e95e09",
+          "iterations": [
+            12
+          ]
+        },
+        "hybrid": {
+          "model_sha256": "e1ea540f7f6263bd9cd7a9ab07c55b647e14ec95a9eac6a489fe65904121b29f",
+          "iterations": [
+            12
+          ]
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "train_ids": [
+        "010d924f-4636-45ce-a97e-703055a109ad",
+        "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+        "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+        "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+        "066f8616-6722-4660-8e73-da8a8effc0ff",
+        "091773c9-9457-4534-b764-d19057a39204",
+        "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+        "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+        "12a2cac7-29e3-4c16-af08-44d81096949d",
+        "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+        "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+        "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+        "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+        "1d5931db-2c9d-432f-8990-87cc90fff517",
+        "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+        "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+        "207874b1-507e-45db-9009-a4768e26b33b",
+        "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+        "22db9529-bbc3-46b1-83ad-522571b4d065",
+        "260a13e9-9055-4c48-8a2f-135c3a704b95",
+        "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+        "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+        "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+        "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+        "31593fab-912f-41f8-9281-f08b634afd32",
+        "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+        "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+        "35492fcc-28c7-499f-8822-711352bbcca0",
+        "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+        "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+        "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+        "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+        "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+        "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+        "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+        "53b48721-43eb-4114-afda-bca5720c80e7",
+        "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+        "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+        "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+        "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+        "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+        "722c87c9-3448-4495-b04b-336303346fd3",
+        "76018171-0d3d-4533-b54b-faf97442777a",
+        "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+        "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+        "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+        "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+        "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+        "84acc2dc-be73-4d88-b14d-e4ac37995887",
+        "86a181e7-d173-4fca-be54-be2102d966a7",
+        "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+        "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+        "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+        "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+        "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+        "8f615eca-f4e0-4ddd-a616-851837f47415",
+        "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+        "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+        "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+        "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+        "aa8235a0-3302-4f83-936b-2728d2914613",
+        "acf1b79e-3649-4285-899c-a1e37018581a",
+        "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+        "b272b82d-9a03-404a-990c-f305dc8f3050",
+        "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+        "b4792829-fefb-40a9-b136-63e19bbed7f2",
+        "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+        "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+        "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+        "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+        "c6b09540-12f4-44b2-b28d-d2c15176288c",
+        "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+        "cbddcfac-40c1-4701-84ba-08b85495f7df",
+        "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+        "d9253503-4ef4-466b-91c8-4db498f7face",
+        "dce53ead-1673-4e93-85c1-90df34e888ac",
+        "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+        "e009eceb-8760-4619-96e3-ec962682ef8e",
+        "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+        "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+        "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+        "ec451c07-8f7e-42a3-94e6-f0093072730e",
+        "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+        "ed2ef6cf-1f10-4a40-a73e-7736adea86b2",
+        "ef24221d-f700-4607-8919-f2097439d500",
+        "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+        "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+        "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+        "f7e3b4e1-18fb-49a4-9d09-366d14a45c08",
+        "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+        "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681",
+        "fc9dd17a-43c2-4697-8de6-808ba7e2b323"
+      ],
+      "held_ids": [
+        "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+        "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+        "259b95ba-221b-42c2-b490-a318b5c75b00",
+        "29c46291-ae3c-4e26-8b51-abd7127b4047",
+        "41806cca-34c9-4660-874a-e8efe4f5e95d",
+        "43353164-939f-4d58-9856-6577b3a49389",
+        "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+        "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+        "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+        "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+        "806dfa97-a252-4382-bb37-a819b4e24383",
+        "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+        "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+        "9025a66a-eb2e-4110-b410-1c708ae65208",
+        "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+        "abb5dddf-2180-490b-bda1-851927d3b958",
+        "b256eb0c-9e71-4d14-87db-1216be80a246",
+        "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+        "ce92bb57-d18b-4522-8a37-9678d96c8783",
+        "db078daf-d349-4793-b84e-d4df590abd67",
+        "eca8add1-249f-4a0d-9143-c339ad154257",
+        "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+        "fce4fbaa-13b9-414b-a614-640975ac3728"
+      ],
+      "models": {
+        "word": {
+          "model_sha256": "126ac61b299727a7b377fbe5f11915274ababe37206f0d774103018fb2f04ad3",
+          "iterations": [
+            12
+          ]
+        },
+        "semantic": {
+          "model_sha256": "03d32f7bc4868bd799aa82c1dd8154fcd28710df9b5a87779211ce1ba28140bd",
+          "iterations": [
+            15
+          ]
+        },
+        "hybrid": {
+          "model_sha256": "781918af8c69c74215cff2fe2ef9ff50c9881a172c21faff470768be67458368",
+          "iterations": [
+            16
+          ]
+        }
+      }
+    }
+  ],
+  "encoder": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "pooling": "masked_mean_then_normalize; new-token-weighted windows then normalize",
+    "capacity": 254,
+    "stride": 32
+  },
+  "metrics": {
+    "n": 115,
+    "accuracy": 0.5304347826086957,
+    "macro_f1": 0.4992005801974649,
+    "label_order": [
+      "LEFT",
+      "CENTER",
+      "RIGHT"
+    ],
+    "confusion_matrix": [
+      [
+        21,
+        3,
+        14
+      ],
+      [
+        8,
+        8,
+        10
+      ],
+      [
+        14,
+        5,
+        32
+      ]
+    ],
+    "per_class": {
+      "LEFT": {
+        "precision": 0.4883720930232558,
+        "recall": 0.5526315789473685,
+        "f1-score": 0.5185185185185185,
+        "support": 38.0
+      },
+      "CENTER": {
+        "precision": 0.5,
+        "recall": 0.3076923076923077,
+        "f1-score": 0.38095238095238093,
+        "support": 26.0
+      },
+      "RIGHT": {
+        "precision": 0.5714285714285714,
+        "recall": 0.6274509803921569,
+        "f1-score": 0.5981308411214953,
+        "support": 51.0
+      },
+      "accuracy": 0.5304347826086957,
+      "macro avg": {
+        "precision": 0.5199335548172758,
+        "recall": 0.4959249556772776,
+        "f1-score": 0.4992005801974649,
+        "support": 115.0
+      },
+      "weighted avg": {
+        "precision": 0.5278347537194857,
+        "recall": 0.5304347826086957,
+        "f1-score": 0.5227229435274945,
+        "support": 115.0
+      }
+    },
+    "strict_agreement": {
+      "n": 54,
+      "accuracy": 0.5,
+      "macro_f1": 0.5014009224535539,
+      "label_counts": {
+        "LEFT": 12,
+        "CENTER": 26,
+        "RIGHT": 16
+      }
+    }
+  },
+  "predictions": [
+    {
+      "id": "010d924f-4636-45ce-a97e-703055a109ad",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.3514050923395411,
+        "CENTER": 0.2684458868429057,
+        "RIGHT": 0.3801490208175533
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.31819243212651205,
+        "CENTER": 0.3856559494066365,
+        "RIGHT": 0.29615161846685145
+      },
+      "prediction": "CENTER",
+      "components_agree": true
+    },
+    {
+      "id": "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.45048299914679346,
+        "CENTER": 0.2580023011450532,
+        "RIGHT": 0.29151469970815336
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.34940782183281094,
+        "CENTER": 0.3458861482481464,
+        "RIGHT": 0.30470602991904266
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.32558577776924486,
+        "CENTER": 0.23483652815241782,
+        "RIGHT": 0.43957769407833736
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "066f8616-6722-4660-8e73-da8a8effc0ff",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.2764261823327533,
+        "CENTER": 0.2841024780397228,
+        "RIGHT": 0.43947133962752405
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "091773c9-9457-4534-b764-d19057a39204",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.38566060027709737,
+        "CENTER": 0.2685040632547703,
+        "RIGHT": 0.34583533646813236
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.40560810814460746,
+        "CENTER": 0.2570628969000562,
+        "RIGHT": 0.3373289949553364
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.3062098055399859,
+        "CENTER": 0.30930860703211094,
+        "RIGHT": 0.38448158742790317
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "12a2cac7-29e3-4c16-af08-44d81096949d",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.35815714864241344,
+        "CENTER": 0.2803904933578116,
+        "RIGHT": 0.36145235799977493
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.3462606200968379,
+        "CENTER": 0.3055072273583649,
+        "RIGHT": 0.3482321525447971
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.3386654441591832,
+        "CENTER": 0.31420881815733737,
+        "RIGHT": 0.34712573768347943
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.333445542490187,
+        "CENTER": 0.35847134793548874,
+        "RIGHT": 0.30808310957432433
+      },
+      "prediction": "CENTER",
+      "components_agree": false
+    },
+    {
+      "id": "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.36921221697208284,
+        "CENTER": 0.3174771407319693,
+        "RIGHT": 0.31331064229594785
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.46054189163703874,
+        "CENTER": 0.21366821215379556,
+        "RIGHT": 0.32578989620916565
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "1d5931db-2c9d-432f-8990-87cc90fff517",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.4164792577567607,
+        "CENTER": 0.29027524201467053,
+        "RIGHT": 0.29324550022856877
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.33545704947303967,
+        "CENTER": 0.23272805160168575,
+        "RIGHT": 0.4318148989252746
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.4027892513613731,
+        "CENTER": 0.3123583727855743,
+        "RIGHT": 0.2848523758530527
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "207874b1-507e-45db-9009-a4768e26b33b",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.1865066500012535,
+        "CENTER": 0.22662364023309065,
+        "RIGHT": 0.5868697097656559
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.310275193409984,
+        "CENTER": 0.22278141865788478,
+        "RIGHT": 0.4669433879321312
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "22db9529-bbc3-46b1-83ad-522571b4d065",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.317188691559692,
+        "CENTER": 0.34434627513635846,
+        "RIGHT": 0.3384650333039495
+      },
+      "prediction": "CENTER",
+      "components_agree": false
+    },
+    {
+      "id": "259b95ba-221b-42c2-b490-a318b5c75b00",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.41756911920265005,
+        "CENTER": 0.25998875678576006,
+        "RIGHT": 0.3224421240115899
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "260a13e9-9055-4c48-8a2f-135c3a704b95",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.29236307342398526,
+        "CENTER": 0.2816848603009384,
+        "RIGHT": 0.42595206627507626
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "29c46291-ae3c-4e26-8b51-abd7127b4047",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.2780888697488266,
+        "CENTER": 0.3416615585347562,
+        "RIGHT": 0.38024957171641716
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.33891344748283037,
+        "CENTER": 0.3086320143160197,
+        "RIGHT": 0.3524545382011499
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.461642110174856,
+        "CENTER": 0.258751147069245,
+        "RIGHT": 0.2796067427558989
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.40242963513581875,
+        "CENTER": 0.22394118834307647,
+        "RIGHT": 0.37362917652110483
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.2923433959497219,
+        "CENTER": 0.3702986894182697,
+        "RIGHT": 0.33735791463200826
+      },
+      "prediction": "CENTER",
+      "components_agree": false
+    },
+    {
+      "id": "31593fab-912f-41f8-9281-f08b634afd32",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.33016494630698723,
+        "CENTER": 0.24102708850726628,
+        "RIGHT": 0.42880796518574643
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.35778928792375064,
+        "CENTER": 0.27439516081231147,
+        "RIGHT": 0.3678155512639379
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.31075358880353154,
+        "CENTER": 0.33220239514728267,
+        "RIGHT": 0.3570440160491858
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "35492fcc-28c7-499f-8822-711352bbcca0",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.45169486580420715,
+        "CENTER": 0.2329303346610967,
+        "RIGHT": 0.3153747995346961
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.3061279172275786,
+        "CENTER": 0.2521347773172619,
+        "RIGHT": 0.44173730545515955
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.27350870767229757,
+        "CENTER": 0.32758891374205207,
+        "RIGHT": 0.39890237858565036
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.38031824025825767,
+        "CENTER": 0.3066013008264246,
+        "RIGHT": 0.31308045891531777
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.19859749900391915,
+        "CENTER": 0.20712630442386226,
+        "RIGHT": 0.5942761965722185
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.23862058031094086,
+        "CENTER": 0.21708283386765465,
+        "RIGHT": 0.5442965858214045
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "41806cca-34c9-4660-874a-e8efe4f5e95d",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.29744935842174913,
+        "CENTER": 0.2895120037830961,
+        "RIGHT": 0.4130386377951547
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "43353164-939f-4d58-9856-6577b3a49389",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.2819090381116167,
+        "CENTER": 0.3368669807297177,
+        "RIGHT": 0.38122398115866557
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.32374798883196787,
+        "CENTER": 0.3906922321746925,
+        "RIGHT": 0.2855597789933396
+      },
+      "prediction": "CENTER",
+      "components_agree": false
+    },
+    {
+      "id": "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.3307865861597459,
+        "CENTER": 0.24831905645228536,
+        "RIGHT": 0.42089435738796865
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.24527814495795325,
+        "CENTER": 0.3697264106780289,
+        "RIGHT": 0.3849954443640179
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "53b48721-43eb-4114-afda-bca5720c80e7",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.5566640784242933,
+        "CENTER": 0.19317601260585326,
+        "RIGHT": 0.2501599089698533
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.3917908445090717,
+        "CENTER": 0.29495870144621716,
+        "RIGHT": 0.3132504540447112
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.23291455197695654,
+        "CENTER": 0.32779525393977293,
+        "RIGHT": 0.4392901940832705
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.37759300603411244,
+        "CENTER": 0.29797823453898725,
+        "RIGHT": 0.3244287594269003
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.30957708636795334,
+        "CENTER": 0.26388778616703096,
+        "RIGHT": 0.4265351274650157
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.42252736943186064,
+        "CENTER": 0.24481855068915392,
+        "RIGHT": 0.3326540798789855
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.3157519253256431,
+        "CENTER": 0.335798679290643,
+        "RIGHT": 0.34844939538371383
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.29164506562144077,
+        "CENTER": 0.22565529543775392,
+        "RIGHT": 0.48269963894080536
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.2971313977255637,
+        "CENTER": 0.29821366672454325,
+        "RIGHT": 0.4046549355498932
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "722c87c9-3448-4495-b04b-336303346fd3",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.41194796367921216,
+        "CENTER": 0.3084438105553283,
+        "RIGHT": 0.2796082257654595
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "76018171-0d3d-4533-b54b-faf97442777a",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.36251384751495286,
+        "CENTER": 0.3395240689024003,
+        "RIGHT": 0.29796208358264686
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.31759671228982433,
+        "CENTER": 0.38111216368643935,
+        "RIGHT": 0.30129112402373637
+      },
+      "prediction": "CENTER",
+      "components_agree": true
+    },
+    {
+      "id": "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.29282054944832664,
+        "CENTER": 0.27676988610674064,
+        "RIGHT": 0.43040956444493284
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.2871214947371017,
+        "CENTER": 0.4003613251589836,
+        "RIGHT": 0.3125171801039147
+      },
+      "prediction": "CENTER",
+      "components_agree": false
+    },
+    {
+      "id": "806dfa97-a252-4382-bb37-a819b4e24383",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.3741030277761725,
+        "CENTER": 0.28111717622685245,
+        "RIGHT": 0.344779795996975
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.28994658147648145,
+        "CENTER": 0.23746973278619998,
+        "RIGHT": 0.47258368573731857
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.32437541285510524,
+        "CENTER": 0.30064301257903314,
+        "RIGHT": 0.3749815745658617
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "84acc2dc-be73-4d88-b14d-e4ac37995887",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.3659400060448922,
+        "CENTER": 0.39532086555062007,
+        "RIGHT": 0.23873912840448785
+      },
+      "prediction": "CENTER",
+      "components_agree": false
+    },
+    {
+      "id": "86a181e7-d173-4fca-be54-be2102d966a7",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.276233131718717,
+        "CENTER": 0.3607841263348101,
+        "RIGHT": 0.3629827419464729
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.4309748312913232,
+        "CENTER": 0.25354525813987205,
+        "RIGHT": 0.31547991056880476
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.3541489818277642,
+        "CENTER": 0.2578692926844415,
+        "RIGHT": 0.3879817254877943
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.24204058376355236,
+        "CENTER": 0.31745405562283313,
+        "RIGHT": 0.4405053606136145
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.3471627120432167,
+        "CENTER": 0.311196238626014,
+        "RIGHT": 0.34164104933076933
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.2773117420676582,
+        "CENTER": 0.29651495584329063,
+        "RIGHT": 0.4261733020890512
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.44540023759775293,
+        "CENTER": 0.3010041174509118,
+        "RIGHT": 0.25359564495133524
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.44606244184682875,
+        "CENTER": 0.2428124175818842,
+        "RIGHT": 0.3111251405712871
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "8f615eca-f4e0-4ddd-a616-851837f47415",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.3342898524878892,
+        "CENTER": 0.27174875724034603,
+        "RIGHT": 0.3939613902717647
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.4007131654221169,
+        "CENTER": 0.2567059718429723,
+        "RIGHT": 0.34258086273491084
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "9025a66a-eb2e-4110-b410-1c708ae65208",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.3370800398947683,
+        "CENTER": 0.2810834979344493,
+        "RIGHT": 0.3818364621707824
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.2883544761164457,
+        "CENTER": 0.32558744976067167,
+        "RIGHT": 0.3860580741228826
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.31007063954707226,
+        "CENTER": 0.35140334096839826,
+        "RIGHT": 0.3385260194845295
+      },
+      "prediction": "CENTER",
+      "components_agree": true
+    },
+    {
+      "id": "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.41094884350082905,
+        "CENTER": 0.23165444859929002,
+        "RIGHT": 0.357396707899881
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.3644237290233588,
+        "CENTER": 0.30098200997030844,
+        "RIGHT": 0.33459426100633277
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "aa8235a0-3302-4f83-936b-2728d2914613",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.2802634561767431,
+        "CENTER": 0.3113113640831633,
+        "RIGHT": 0.4084251797400935
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "abb5dddf-2180-490b-bda1-851927d3b958",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.42147425822421136,
+        "CENTER": 0.2996027479047042,
+        "RIGHT": 0.27892299387108443
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "acf1b79e-3649-4285-899c-a1e37018581a",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.4532551248454492,
+        "CENTER": 0.3060097405088458,
+        "RIGHT": 0.240735134645705
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.33984704868825844,
+        "CENTER": 0.3255726584813394,
+        "RIGHT": 0.33458029283040225
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "b256eb0c-9e71-4d14-87db-1216be80a246",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.355425243283974,
+        "CENTER": 0.3352872924504219,
+        "RIGHT": 0.30928746426560416
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "b272b82d-9a03-404a-990c-f305dc8f3050",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.3366435811772148,
+        "CENTER": 0.373882683473436,
+        "RIGHT": 0.28947373534934906
+      },
+      "prediction": "CENTER",
+      "components_agree": true
+    },
+    {
+      "id": "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.26958248818208763,
+        "CENTER": 0.32476812396122734,
+        "RIGHT": 0.4056493878566849
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "b4792829-fefb-40a9-b136-63e19bbed7f2",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.39958060130708867,
+        "CENTER": 0.2559659994459398,
+        "RIGHT": 0.34445339924697155
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.3097000299247365,
+        "CENTER": 0.3467853924661992,
+        "RIGHT": 0.34351457760906434
+      },
+      "prediction": "CENTER",
+      "components_agree": false
+    },
+    {
+      "id": "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.2741550285519227,
+        "CENTER": 0.37445829110835,
+        "RIGHT": 0.3513866803397273
+      },
+      "prediction": "CENTER",
+      "components_agree": false
+    },
+    {
+      "id": "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.3073339929436181,
+        "CENTER": 0.38784925689190297,
+        "RIGHT": 0.30481675016447896
+      },
+      "prediction": "CENTER",
+      "components_agree": false
+    },
+    {
+      "id": "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.34774534186304584,
+        "CENTER": 0.31019801480421194,
+        "RIGHT": 0.34205664333274227
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.19504593563272027,
+        "CENTER": 0.1823671286948195,
+        "RIGHT": 0.6225869356724603
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "c6b09540-12f4-44b2-b28d-d2c15176288c",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.31345972056389626,
+        "CENTER": 0.23423330667051584,
+        "RIGHT": 0.45230697276558784
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.39778347502415523,
+        "CENTER": 0.2531517405587623,
+        "RIGHT": 0.34906478441708255
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "cbddcfac-40c1-4701-84ba-08b85495f7df",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.29696541808471166,
+        "CENTER": 0.2245340782282274,
+        "RIGHT": 0.4785005036870609
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.2990073226289486,
+        "CENTER": 0.25959919685328714,
+        "RIGHT": 0.44139348051776434
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "ce92bb57-d18b-4522-8a37-9678d96c8783",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.35034260834969444,
+        "CENTER": 0.3083738344150278,
+        "RIGHT": 0.3412835572352777
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "d9253503-4ef4-466b-91c8-4db498f7face",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.41821562226815595,
+        "CENTER": 0.2940291847820708,
+        "RIGHT": 0.28775519294977325
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "db078daf-d349-4793-b84e-d4df590abd67",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.29748685222458293,
+        "CENTER": 0.30073989607812823,
+        "RIGHT": 0.40177325169728895
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "dce53ead-1673-4e93-85c1-90df34e888ac",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.34762805198306945,
+        "CENTER": 0.2742542729456471,
+        "RIGHT": 0.3781176750712836
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.3372633315112037,
+        "CENTER": 0.3141036675066491,
+        "RIGHT": 0.3486330009821471
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "e009eceb-8760-4619-96e3-ec962682ef8e",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.32091099637385023,
+        "CENTER": 0.32235202855988915,
+        "RIGHT": 0.3567369750662607
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.40164566046003575,
+        "CENTER": 0.33205473909743444,
+        "RIGHT": 0.2662996004425298
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.3088818569203986,
+        "CENTER": 0.38093484446846015,
+        "RIGHT": 0.31018329861114113
+      },
+      "prediction": "CENTER",
+      "components_agree": true
+    },
+    {
+      "id": "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.3188056608804515,
+        "CENTER": 0.332312189832062,
+        "RIGHT": 0.3488821492874865
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "ec451c07-8f7e-42a3-94e6-f0093072730e",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.4400848135366368,
+        "CENTER": 0.2765690704334458,
+        "RIGHT": 0.2833461160299174
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "eca8add1-249f-4a0d-9143-c339ad154257",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.3806033925813519,
+        "CENTER": 0.25928622324989675,
+        "RIGHT": 0.36011038416875135
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.32622230716102807,
+        "CENTER": 0.40016137328279344,
+        "RIGHT": 0.2736163195561785
+      },
+      "prediction": "CENTER",
+      "components_agree": false
+    },
+    {
+      "id": "ed2ef6cf-1f10-4a40-a73e-7736adea86b2",
+      "fold": 3,
+      "probabilities": {
+        "LEFT": 0.26205433486289714,
+        "CENTER": 0.28671760951491465,
+        "RIGHT": 0.4512280556221882
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "ef24221d-f700-4607-8919-f2097439d500",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.324692049157617,
+        "CENTER": 0.2532702261413907,
+        "RIGHT": 0.4220377247009922
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.3136718402912434,
+        "CENTER": 0.32735537330730696,
+        "RIGHT": 0.3589727864014497
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    },
+    {
+      "id": "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.3948336373140955,
+        "CENTER": 0.2820026774930333,
+        "RIGHT": 0.3231636851928712
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.39273928566452754,
+        "CENTER": 0.21592283158834732,
+        "RIGHT": 0.3913378827471251
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.20188069812850012,
+        "CENTER": 0.24752285319298717,
+        "RIGHT": 0.5505964486785127
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "f7e3b4e1-18fb-49a4-9d09-366d14a45c08",
+      "fold": 2,
+      "probabilities": {
+        "LEFT": 0.3584951210863295,
+        "CENTER": 0.28502317452180914,
+        "RIGHT": 0.35648170439186133
+      },
+      "prediction": "LEFT",
+      "components_agree": false
+    },
+    {
+      "id": "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.42228994643598083,
+        "CENTER": 0.3190586626387003,
+        "RIGHT": 0.25865139092531886
+      },
+      "prediction": "LEFT",
+      "components_agree": true
+    },
+    {
+      "id": "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681",
+      "fold": 1,
+      "probabilities": {
+        "LEFT": 0.252286842453395,
+        "CENTER": 0.24253477221808836,
+        "RIGHT": 0.5051783853285167
+      },
+      "prediction": "RIGHT",
+      "components_agree": true
+    },
+    {
+      "id": "fc9dd17a-43c2-4697-8de6-808ba7e2b323",
+      "fold": 0,
+      "probabilities": {
+        "LEFT": 0.21839836706741367,
+        "CENTER": 0.39765745092894944,
+        "RIGHT": 0.3839441820036369
+      },
+      "prediction": "CENTER",
+      "components_agree": false
+    },
+    {
+      "id": "fce4fbaa-13b9-414b-a614-640975ac3728",
+      "fold": 4,
+      "probabilities": {
+        "LEFT": 0.3528292838501242,
+        "CENTER": 0.2889448494130415,
+        "RIGHT": 0.3582258667368344
+      },
+      "prediction": "RIGHT",
+      "components_agree": false
+    }
+  ],
+  "corrected_vs_word": 13,
+  "regressed_vs_word": 10,
+  "both_components_wrong": 40,
+  "oracle_either_correct_n": 75,
+  "agreement_subset": {
+    "n": 70,
+    "coverage": 0.6086956521739131,
+    "matches": 41,
+    "agreement": 0.5857142857142857
+  },
+  "cautions": [
+    "Oracle either-correct count assumes perfect selection, not achievable performance or an upper bound for probability averaging",
+    "Agreement-only accuracy is selective and does not establish overall accuracy",
+    "Balanced-class probabilities are uncalibrated; equal weights are a fixed baseline",
+    "Event-string grouping is not proven event-family independence",
+    "Previously explored training data and noncommercial corpus; no release"
+  ]
+}
