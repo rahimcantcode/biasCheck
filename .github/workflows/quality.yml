@@ -1,0 +1,97 @@
+name: Quality checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'research/**'
+
+# All unspecified token permissions are disabled. No external secrets are used.
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Synthetic tests, types, and build
+    # Standard public runners are free. Do not consume private-repository minutes
+    # if this repository is later converted to private.
+    if: ${{ github.event.repository.private == false }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CI: 'true'
+      GIT_LFS_SKIP_SMUDGE: '1'
+      PIP_DISABLE_PIP_VERSION_CHECK: '1'
+      PIP_NO_CACHE_DIR: '1'
+      HF_HUB_OFFLINE: '1'
+      TRANSFORMERS_OFFLINE: '1'
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      TOKENIZERS_PARALLELISM: 'false'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out code without model weights or persisted credentials
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          lfs: false
+          submodules: false
+          fetch-depth: 1
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+          # No dependency-cache storage is created.
+
+      - name: Set up Node 22, including the Python suite's DOM fixture
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
+
+      - name: Install pinned CPU runtime and test requirements
+        run: |
+          python -m pip install --only-binary=:all: 'torch==2.6.0+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install --only-binary=:all: -r requirements-test.txt
+          python -m pip check
+          python -c "import torch; assert torch.__version__ == '2.6.0+cpu' and torch.version.cuda is None, torch.__version__"
+
+      - name: Run all Python synthetic and unit tests
+        timeout-minutes: 10
+        # Loopback is needed for a synthetic HTTP fixture; no model server is
+        # launched. Unix sockets support FastAPI's in-process async test client.
+        run: python -m pytest -q tests --disable-socket --allow-hosts=127.0.0.1 --allow-unix-socket
+
+      - name: Install locked frontend dependencies
+        working-directory: frontend
+        run: npm ci --no-audit --no-fund
+
+      - name: Audit all frontend dependencies for high or critical advisories
+        working-directory: frontend
+        run: npm audit --audit-level=high
+
+      - name: Run frontend unit tests
+        working-directory: frontend
+        run: npm test
+
+      - name: Check frontend types
+        working-directory: frontend
+        run: npm run lint
+
+      - name: Build frontend
+        working-directory: frontend
+        env:
+          NEXT_PUBLIC_API_BASE_URL: /api
+        run: npm run build

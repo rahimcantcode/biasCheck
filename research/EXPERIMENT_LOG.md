@@ -1,6 +1,80 @@
 # Working experiment log (not a final report)
 
 
+## 2026-10-02 18:00 UTC: real CPU model loop and broader human-reference evaluation
+
+An alternate public-weights runtime now works despite the earlier authenticated
+client initialization failure. Official llama.cpp b11349 was SHA-verified; original
+Qwen3-4B Q4_K_M weights were pinned to revision bc640142c66e1fdd12af0bd68f40445458f3869b
+and SHA7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5.
+One local slot, four CPU threads, 4096-token context, disabled thinking and no
+context shifting were tested. Exact token preflight, output limits, schema JSON,
+oversized-prompt rejection and loopback-only transport passed real runtime checks.
+Observed process RSS was about 4.6–4.7 GiB. This is not a verified VPS capacity/SLA.
+
+Original frozen phrase run: 24/38 structurally valid outputs; only 1/27 exact
+expected spans recovered. Unique-quote FORMAT-only replay raised validity to37/38,
+but semantic exact recovery only to3/27 and exposed more false highlights.
+The full-context v2 contract then produced34/38 valid outputs,11/27 exact spans
+recovered and11/35 exact precision. Author-only precision was11/34. Twelve cases
+without expected author spans received author highlights. Quotes, negation and
+context sensitivity remain serious failures. Original26 and former-transfer12
+are both development after inspection; descriptive IDs in the first original run
+were also a leakage/parity limitation, removed using opaque IDs in v2.
+
+All raw outputs and exact/secondary metrics are preserved in the sanitized
+publication records. The original frozen v2 record is retained locally unchanged;
+post-run reviewer/path sanitization is explicitly recorded. Imported-source hashes
+for that v2 run were captured during inference, with honest timing, then verified
+unchanged and metrics replayed. No source/label/attribution was silently corrected.
+The historical neutral_cases counter denotes zero expected spans, including some
+ambiguous or insufficient-context cases; it is not a nonpolitical population rate.
+
+A distinct human-majority reference challenge was prepared from the 2026 UK
+argument study: humans saw both Proposition and Locution and labelled presence
+of a political stance. No stance can still be about politics. It is NOT an
+absolute left/right or political-relevance dataset. Before inference, a fixed
+source/duplicate-group hash split reserved726 examples and exposed274 development
+examples. Episode independence is incomplete and underlying BBC rights unresolved.
+Source bytes and full transcripts stay git-ignored; no production training is
+claimed. The old66 development set and89 reserved corpus test were not evaluated.
+
+Fixed zero-shot original Qwen3-4B on all274 development rows:181 matches (66.06%),
+macro-F1 .6596, balanced accuracy .6937, full valid-output coverage. No-stance recall
+83/162=.5123; stance recall98/112=.875. There were79 false positives and14 false
+negatives. Unanimous-reference agreement92/118=.7797; disputed89/156=.5705.
+A constant no-stance prediction scores162/274=.5912. This is a modest native-task
+lead, not high accuracy and not product validation. Median observed local request
+latency2.04s; maximum5.07s. The726 held-out inputs remain sealed.
+
+The next controlled comparison uses the non-thinking Qwen3-4B-Instruct-2507
+checkpoint, with third-party Unsloth Q4_K_M revisiona06e946bb6b655725eafa393f4a9745d460374c9
+and SHA3605803b982cb64aead44f6c1b2ae36e3acdb41d8e46c8a94c6533bc4c67e597.
+The same v2 task prompt/schema/decoding is frozen; checkpoint, quantization publisher
+and embedded template change. Completed:28/38 structurally valid responses, but zero exact or labeled/attributed
+overlap matches.25/28 returned spans have unknown attribution; remaining narrator
+assignments are mainly quote/negation errors. Empty prediction envelopes also
+cause failures. Some phrase directions are sensible, but that does not satisfy the
+full contract. This checkpoint is also rejected for serving. See the preserved
+Instruct-2507 comparison; further work will separate source/speaker decisions
+rather than silently relabel unknown outputs.
+
+An actual FastAPI/old-RoBERTa/local-phrase-model smoke confirms integration, with
+source text and codepoint offsets preserved. The cat example still rejects safely;
+a same-sex-marriage statement yields an author LEFT span; a recipe yields no spans.
+The serving provider now verifies exact prompt+output capacity and runtime identity.
+No candidate is approved, deployed or promoted. Real-browser QA remains unverified.
+
+Production dependency audit found known Next/PostCSS/sharp/nanoid advisories.
+Compatible fixes and four additional development-package updates have now passed
+clean npm ci,33 frontend tests, typecheck, production build and zero-vulnerability
+production/full npm audits. Node>=20.9.0 is required. See the security evidence JSON.
+A public-standard-runner CI workflow is prepared with read-only permissions,
+pinned official actions and no secrets/deployment/artifact uploads. Its hosted run
+has not yet occurred. Locally the outbound-network-restricted Python suite passes
+355 tests with dependencies consistent. Engineering checks are not model accuracy.
+
+
 ## 2026-10-02: exact human-span collection follow-through
 
 Extended the existing v2 pilot with a versioned exact-span workflow rather than

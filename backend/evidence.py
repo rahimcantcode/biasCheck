@@ -249,6 +249,7 @@ def _extract_local_evidence(original: str) -> dict[str, Any]:
     endpoint = os.getenv("PHRASE_EVIDENCE_ENDPOINT", "")
     model = os.getenv("PHRASE_EVIDENCE_MODEL", "")
     input_bound = os.getenv("PHRASE_EVIDENCE_MAX_INPUT_CHARS", "")
+    output_bound = os.getenv("PHRASE_EVIDENCE_MAX_OUTPUT_TOKENS", "1024")
     if not endpoint or not model or not input_bound:
         result["reason"] = "Local phrase provider requires an endpoint, model, and explicit full-context input limit"
         return result
@@ -264,7 +265,9 @@ def _extract_local_evidence(original: str) -> dict[str, Any]:
         if len(original) > maximum:
             result["reason"] = "Article exceeds the local model's configured full-context limit; no text was sent or truncated"
             return result
-        payload = {"model": model, "temperature": 0, "max_tokens": 8192,
+        if not output_bound.isascii() or not output_bound.isdecimal() or not 1 <= int(output_bound) <= 4096:
+            raise EvidenceValidationError("Invalid model output token limit")
+        payload = {"model": model, "temperature": 0, "max_tokens": int(output_bound),
                    "messages": [{"role": "system", "content": EVIDENCE_SYSTEM_PROMPT},
                                 {"role": "user", "content": json.dumps([{"id": "article", "text": original}], ensure_ascii=False)}],
                    "response_format": {"type": "json_schema", "json_schema": {
@@ -306,6 +309,7 @@ def _extract_local_evidence(original: str) -> dict[str, Any]:
         prediction = predictions["article"]
         spans = validate_prediction(original, prediction)
         result.update(status="available", spans=spans, reason=prediction["reason"], model=model,
+                      max_output_tokens=int(output_bound),
                       extraction_contract=EXTRACTION_CONTRACT,
                       prompt_sha256=hashlib.sha256(EVIDENCE_SYSTEM_PROMPT.encode()).hexdigest())
     except requests.RequestException:
@@ -318,14 +322,14 @@ def _extract_local_evidence(original: str) -> dict[str, Any]:
 def extract_phrase_evidence(original_text: str, cache_path: str | Path | None = None) -> dict[str, Any]:
     """Disabled unless a cache or loopback self-hosted provider is opted into.
 
-    PHRASE_EVIDENCE_PROVIDER: disabled (default), cache, or local_structured.
+    PHRASE_EVIDENCE_PROVIDER: disabled (default), cache, local_structured or llama_cpp.
     An explicit cache_path or legacy PHRASE_EVIDENCE_CACHE opts into cache-only.
     local_structured additionally requires PHRASE_EVIDENCE_ENDPOINT,
     PHRASE_EVIDENCE_MODEL and PHRASE_EVIDENCE_MAX_INPUT_CHARS. No account CLI,
     API keys, redirects, proxies, external hosts, or silently truncated context.
     A configured endpoint is a capability, not a claim its model is validated.
     Operators must size the model's token context for the full system prompt,
-    whole article and up to 8192 completion tokens, and configure the server to
+    whole article and the configured completion budget (1024 by default), and configure the server to
     reject overflow instead of context-shifting/truncating. The character limit
     cannot establish the actual tokenizer/context bound or verify server behavior.
     """
@@ -346,5 +350,11 @@ def extract_phrase_evidence(original_text: str, cache_path: str | Path | None = 
         return _extract_cached_evidence(original_text)
     if provider == "local_structured":
         return _extract_local_evidence(original_text)
+    if provider == "llama_cpp":
+        if __package__:
+            from .llama_evidence import extract_llama_evidence
+        else:
+            from llama_evidence import extract_llama_evidence
+        return extract_llama_evidence(original_text)
     response.update(status="invalid", reason="Unknown experimental phrase provider")
     return response

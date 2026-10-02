@@ -103,3 +103,51 @@ errors, document coverage and minimality on independently human-annotated natura
 text. An empty highlighter cannot pass via undefined precision, and exact substring
 matching alone does not establish a correct political interpretation. Current
 research is not a production release or a high-accuracy claim.
+
+## Later October 2 update: actual CPU inference now works
+
+The earlier account-client failure is preserved as historical evidence. A separate
+public-weights route now runs real local inference: verified Qwen3-4B Q4_K_M with
+pinned llama.cpp b11349, using roughly 4.6–4.7 GiB process RSS on the cloud test
+machine. No research-account proxy or external model API is involved.
+
+`local_phrase_baseline_20261002.json` preserves the first 38 actual short-input
+responses. A second contract iteration is preserved in
+`phrase_contract_v2_20261002_publication.json`. Valid formatting improved from
+24/38 to 34/38, but only 11/35 returned spans matched the exact phrase, direction
+and attribution. Twelve cases without expected author spans received author
+highlights. These are development fixtures, not independent human truth; the
+historical `neutral_cases` metric means no expected spans and includes ambiguous
+negation/insufficient-context cases. Do not call it a population nonpolitical rate.
+Neither candidate is approved for serving. V2 stays outside the serving path.
+
+The actual app-to-model smoke succeeds through the `llama_cpp` provider and
+preserves its honest failures: the cat example was rejected, a same-sex-marriage
+statement produced an author-attributed LEFT span, and a recipe produced no spans.
+This establishes an arbitrary-text inference path, not high phrase accuracy.
+
+The `llama_cpp` provider adds an exact prompt-token preflight using the identical
+chat payload, verifies actual per-slot context and runtime build, reserves output
+plus a safety margin, and checks actual token usage and complete output. Its
+configuration additionally requires `PHRASE_EVIDENCE_CONTEXT_TOKENS`,
+`PHRASE_EVIDENCE_RUNTIME_FINGERPRINT` and a launch-verified
+`PHRASE_EVIDENCE_MODEL_SHA256`. Output budget defaults to 1024 tokens and can be
+bounded explicitly with `PHRASE_EVIDENCE_MAX_OUTPUT_TOKENS`. The weight hash is an
+operator assertion tied to a verified launcher, not proof supplied by a JSON model
+name. The whole provider remains disabled by default.
+
+Reproducible setup is described by `research/local_phrase_runtime.json` and
+`research/scripts/setup_local_phrase_runtime.py`. The latter fetches immutable
+HTTPS artifacts, checks byte sizes/SHA-256 and safely extracts the Linux x64
+runtime. `research/scripts/local_cpu_runtime.py` owns one loopback-only process,
+verifies installed bytes before launch, and does not inherit account tokens.
+Model/license references and quantization publisher are explicit. A newer
+Unsloth-published Q4_K_M of Qwen3-4B-Instruct-2507 is a separate candidate, not an
+approved replacement. It is not a Qwen-published GGUF.
+
+A separate, human-labelled UK argument dataset now has 274 development and 726
+reserved examples. Original Qwen3-4B matched 181/274 majority judgments (66.1%,
+macro-F1 .660) on whether a stance is expressed. This is neither political-topic
+relevance nor absolute LEFT/RIGHT, and the sample was model-condition-selected.
+Its 726 reserved examples and the old 89-item corpus holdout remain unevaluated.
+Underlying transcript rights and complete episode independence remain unresolved.

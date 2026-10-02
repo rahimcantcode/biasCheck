@@ -1,0 +1,316 @@
+{
+  "purpose": "Actual original classifier plus local phrase model API smoke, development only",
+  "release_approved": false,
+  "attempts": [
+    {
+      "input": "my cat is pretty and taxing the rich is good",
+      "http_status": 200,
+      "elapsed_seconds": 19.700698840002588,
+      "response": {
+        "source_type": "text",
+        "resolved_text": "my cat is pretty and taxing the rich is good",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": null,
+          "label_id": null,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.965754,
+            "RIGHT": 0.027017,
+            "CENTER": 0.007229
+          },
+          "decision": "abstained",
+          "reason": "model_not_validated",
+          "token_count": 10,
+          "tokens_processed": 10,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": null,
+            "label_id": null,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.965754,
+              "RIGHT": 0.027017,
+              "CENTER": 0.007229
+            },
+            "decision": "abstained",
+            "reason": "model_not_validated",
+            "token_count": 10,
+            "tokens_processed": 10,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "my cat is pretty and taxing the rich is good",
+            "start": 0,
+            "end": 44
+          }
+        ],
+        "warnings": [
+          "This checkpoint has not passed independent validation. Political labels are withheld; experimental scores are available below.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language.",
+          "Phrase evidence could not be verified against this exact article, so no phrases were highlighted."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "preprocessing": "plain_text_exact_url_article_extraction_v2",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": false,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        },
+        "evidence_spans": [],
+        "evidence_status": "invalid",
+        "evidence_metadata": {
+          "evidence_source": "experimental_phrase_classifier",
+          "source_text_sha256": "5e03142283c3db37b17dd1f2dbab6ffdd19d11da607e8c8ef438f98a4834404a",
+          "offset_unit": "unicode_code_point",
+          "calibrated": false,
+          "release_approved": false,
+          "reason": "Local model identity, capacity or evidence validation failed; no highlights shown",
+          "provider": "llama_cpp",
+          "input_tokens": 531,
+          "context_tokens": 4096,
+          "max_output_tokens": 1024
+        }
+      }
+    },
+    {
+      "input": "The government must not prohibit same-sex couples from marrying.",
+      "http_status": 200,
+      "elapsed_seconds": 8.67653948500083,
+      "response": {
+        "source_type": "text",
+        "resolved_text": "The government must not prohibit same-sex couples from marrying.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": null,
+          "label_id": null,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998839,
+            "RIGHT": 0.000582,
+            "CENTER": 0.000579
+          },
+          "decision": "abstained",
+          "reason": "model_not_validated",
+          "token_count": 12,
+          "tokens_processed": 12,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": null,
+            "label_id": null,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998839,
+              "RIGHT": 0.000582,
+              "CENTER": 0.000579
+            },
+            "decision": "abstained",
+            "reason": "model_not_validated",
+            "token_count": 12,
+            "tokens_processed": 12,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "The government must not prohibit same-sex couples from marrying.",
+            "start": 0,
+            "end": 64
+          }
+        ],
+        "warnings": [
+          "This checkpoint has not passed independent validation. Political labels are withheld; experimental scores are available below.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language.",
+          "Phrase highlights are experimental full-context model suggestions, separately generated from the article classifier. They are not validated explanations or accuracy estimates."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "preprocessing": "plain_text_exact_url_article_extraction_v2",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": false,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        },
+        "evidence_spans": [
+          {
+            "start": 0,
+            "end": 64,
+            "text": "The government must not prohibit same-sex couples from marrying.",
+            "label": "LEFT",
+            "attribution": "author",
+            "status": "experimental",
+            "rationale": "Support for same-sex marriage rights is a progressive policy stance."
+          }
+        ],
+        "evidence_status": "available",
+        "evidence_metadata": {
+          "evidence_source": "experimental_phrase_classifier",
+          "source_text_sha256": "0d5c811b0338417f336da5f84ffda9ae67a80b65ebd1880f9ff317969a125a7e",
+          "offset_unit": "unicode_code_point",
+          "calibrated": false,
+          "release_approved": false,
+          "reason": "The statement directly supports a progressive policy stance by advocating for the right of same-sex couples to marry, which is a key issue in left-leaning political discourse.",
+          "provider": "llama_cpp",
+          "input_tokens": 531,
+          "context_tokens": 4096,
+          "max_output_tokens": 1024,
+          "model": "Qwen/Qwen3-4B-GGUF",
+          "model_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+          "runtime_fingerprint": "b11349-fb4b2737a",
+          "identity_source": "Operator configuration; check pinned server launch manifest",
+          "prompt_sha256": "dc4a347db79c9a329af3517609c5efb3e3c8de22933c2982bde6dc8a9f0b0fba",
+          "extraction_contract": "exact-quotes-full-context-v1",
+          "elapsed_seconds": 8.60455626700059
+        }
+      }
+    },
+    {
+      "input": "Combine the flour and eggs, then bake the cake for twenty minutes.",
+      "http_status": 200,
+      "elapsed_seconds": 3.1957118159989477,
+      "response": {
+        "source_type": "text",
+        "resolved_text": "Combine the flour and eggs, then bake the cake for twenty minutes.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": null,
+          "label_id": null,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.983004,
+            "RIGHT": 0.002398,
+            "CENTER": 0.014598
+          },
+          "decision": "abstained",
+          "reason": "model_not_validated",
+          "token_count": 15,
+          "tokens_processed": 15,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": null,
+            "label_id": null,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.983004,
+              "RIGHT": 0.002398,
+              "CENTER": 0.014598
+            },
+            "decision": "abstained",
+            "reason": "model_not_validated",
+            "token_count": 15,
+            "tokens_processed": 15,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "Combine the flour and eggs, then bake the cake for twenty minutes.",
+            "start": 0,
+            "end": 66
+          }
+        ],
+        "warnings": [
+          "This checkpoint has not passed independent validation. Political labels are withheld; experimental scores are available below.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language.",
+          "Phrase highlights are experimental full-context model suggestions, separately generated from the article classifier. They are not validated explanations or accuracy estimates."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "preprocessing": "plain_text_exact_url_article_extraction_v2",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": false,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        },
+        "evidence_spans": [],
+        "evidence_status": "available",
+        "evidence_metadata": {
+          "evidence_source": "experimental_phrase_classifier",
+          "source_text_sha256": "be9be1b20229c69ed047c2e28d1cb8dc6d4628d8ec907ebaafd9b494211a083d",
+          "offset_unit": "unicode_code_point",
+          "calibrated": false,
+          "release_approved": false,
+          "reason": "No directional policy or ideological stance clauses were found in the text.",
+          "provider": "llama_cpp",
+          "input_tokens": 534,
+          "context_tokens": 4096,
+          "max_output_tokens": 1024,
+          "model": "Qwen/Qwen3-4B-GGUF",
+          "model_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+          "runtime_fingerprint": "b11349-fb4b2737a",
+          "identity_source": "Operator configuration; check pinned server launch manifest",
+          "prompt_sha256": "dc4a347db79c9a329af3517609c5efb3e3c8de22933c2982bde6dc8a9f0b0fba",
+          "extraction_contract": "exact-quotes-full-context-v1",
+          "elapsed_seconds": 3.1156255820023944
+        }
+      }
+    }
+  ],
+  "publication_source_sha256": "037f8924d20396be432454be68a0eaa38fa8d2292d0479fe60b0bd24cd973e17"
+}

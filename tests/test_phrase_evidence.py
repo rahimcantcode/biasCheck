@@ -368,8 +368,21 @@ class LocalStructuredProviderTests(unittest.TestCase):
         self.assertEqual(payload["messages"][0]["role"], "system")
         self.assertEqual(payload["messages"][1]["role"], "user")
         self.assertTrue(payload["response_format"]["json_schema"]["strict"])
+        self.assertEqual(payload["max_tokens"], 1024)
         self.assertEqual(result["source_text_sha256"], text_sha256(original))
         self.assertEqual(result["spans"][0]["start"], original.index(QUOTE))
+
+    def test_explicit_output_budget_is_enforced_in_request(self):
+        with patch.dict(os.environ, {"PHRASE_EVIDENCE_MAX_OUTPUT_TOKENS": "512"}):
+            result = extract_phrase_evidence(TEXT)
+        self.assertEqual(result["max_output_tokens"], 512)
+        self.assertEqual(self.server.received[0]["payload"]["max_tokens"], 512)
+
+    def test_invalid_output_budget_sends_nothing(self):
+        for value in ("0", "-1", "8192", "1024.5", "１０２４"):
+            with self.subTest(value=value), patch.dict(os.environ, {"PHRASE_EVIDENCE_MAX_OUTPUT_TOKENS": value}):
+                self.assertEqual(extract_phrase_evidence(TEXT)["status"], "invalid")
+        self.assertEqual(self.server.received, [])
 
     def test_quoted_output_keeps_attribution_for_ui_suppression(self):
         original = 'A guest said "' + QUOTE + '." I disagree.'
