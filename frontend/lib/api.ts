@@ -4,6 +4,18 @@ export type Mode = "article" | "sentence" | "paragraph";
 export type SourceType = "text" | "url";
 export type Label = "LEFT" | "RIGHT" | "CENTER";
 
+// Half-open Unicode code-point offsets into the exact resolved_text string.
+// These annotations are experimental evidence, never segment-label shortcuts.
+export interface EvidenceSpan {
+  start: number;
+  end: number;
+  text: string;
+  label: "LEFT" | "RIGHT";
+  attribution: "author" | "quoted" | "unknown";
+  status: "experimental";
+  rationale?: string;
+}
+
 export interface PredictionProbabilities {
   LEFT: number;
   RIGHT: number;
@@ -41,6 +53,16 @@ export interface PredictResponse {
   model: { weights_sha256: string; aggregation: string };
   source_type: SourceType;
   resolved_text: string;
+  evidence_spans?: EvidenceSpan[];
+  evidence_status?: "available" | "unavailable" | "invalid";
+  evidence_metadata?: {
+    offset_unit?: "unicode_code_point";
+    evidence_source?: string;
+    source_text_sha256?: string;
+    reason?: string | null;
+    calibrated?: boolean;
+    release_approved?: boolean;
+  };
   mode: Mode;
   results: SegmentResult[];
 }

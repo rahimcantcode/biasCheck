@@ -27,7 +27,9 @@ def fit(report,target=.9,min_coverage=.8):
             coverage=float(mask.mean());accuracy=float(correct[mask].mean()) if mask.any() else 0
             if coverage>=min_coverage and accuracy>=target and (best is None or coverage>best[0]):best=(coverage,float(threshold),float(margin),accuracy)
     if best is None:raise ValueError('Validation does not meet requested accuracy/coverage. Do not release.')
-    policy={k:report['model'][k] for k in ['weights_sha256','config_sha256','tokenizer_sha256','aggregation','max_length','stride']}
+    if not report['model'].get('preprocessing'):
+        raise ValueError('Calibration requires versioned preprocessing metadata; regenerate legacy evaluation reports.')
+    policy={k:report['model'][k] for k in ['weights_sha256','config_sha256','tokenizer_sha256','aggregation','max_length','stride','preprocessing']}
     policy.update(schema_version=1,temperature=temperature,min_confidence=best[1],min_margin=best[2],min_tokens=30,
         validated_modes=[report['mode']],calibration_data_sha256=report['data_sha256'],validation_coverage=best[0],
         validation_selective_accuracy=best[3],release_approved=False,

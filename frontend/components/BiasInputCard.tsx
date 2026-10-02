@@ -1,11 +1,13 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-import { Globe, LoaderCircle, RotateCcw, Sparkles, TextSearch } from "lucide-react";
+import { FormEvent, useRef, useState } from "react";
+import { Globe, LoaderCircle, RotateCcw, Sparkles, TextSearch, Upload } from "lucide-react";
 
 import { ModeTabs } from "@/components/ModeTabs";
 import { Mode } from "@/lib/api";
 import { DEMO_ARTICLE, QUICK_ACTIONS } from "@/lib/constants";
+import { readArticleUpload } from "@/lib/upload";
+import { createRequestGuard } from "@/lib/requestGuard";
 
 interface BiasInputCardProps {
   mode: Mode;
@@ -27,15 +29,46 @@ export function BiasInputCard({
   onClear,
 }: BiasInputCardProps) {
   const [focused, setFocused] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [uploadedName, setUploadedName] = useState<string | null>(null);
+  const uploadRequests = useRef(createRequestGuard());
+
+  function replaceInput(value: string) {
+    uploadRequests.current.invalidate();
+    setUploading(false);
+    setUploadError(null);
+    setUploadedName(null);
+    onInputChange(value);
+  }
+
+  async function handleUpload(file: File) {
+    const sequence = uploadRequests.current.begin();
+    setUploading(true);
+    setUploadError(null);
+    setUploadedName(null);
+    try {
+      const text = await readArticleUpload(file);
+      if (!uploadRequests.current.isCurrent(sequence)) return;
+      onInputChange(text);
+      setUploadedName(file.name);
+    } catch (error) {
+      if (!uploadRequests.current.isCurrent(sequence)) return;
+      setUploadError(error instanceof Error ? error.message : "This file could not be read. Please try again.");
+    } finally {
+      if (uploadRequests.current.isCurrent(sequence)) setUploading(false);
+    }
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (uploading) return;
     await onSubmit();
   }
 
   function handleQuickAction(action: string) {
     if (action === "Paste a news article") {
-      onInputChange(DEMO_ARTICLE);
+      replaceInput(DEMO_ARTICLE);
       return;
     }
 
@@ -69,7 +102,7 @@ export function BiasInputCard({
               Live analysis workspace
             </div>
             <p className="text-sm text-slate-400">
-              Paste an English news article or its URL for a contextual political-leaning estimate.
+              Paste an English news article, upload a .txt file, or enter its URL for an experimental political-leaning estimate.
             </p>
           </div>
 
@@ -85,12 +118,33 @@ export function BiasInputCard({
             <textarea
               id="article-input"
               value={input}
-              onChange={(event) => onInputChange(event.target.value)}
+              onChange={(event) => replaceInput(event.target.value)}
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               placeholder="Paste article text here, or enter a full URL like https://example.com/story"
               className="min-h-[220px] w-full resize-none rounded-[1.2rem] border border-white/8 bg-slate-950/70 px-4 py-4 text-sm leading-7 text-slate-100 outline-none placeholder:text-slate-500"
             />
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-white/10 px-3 py-2 text-xs text-slate-200 transition hover:bg-white/5 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-blue-300">
+                <Upload aria-hidden="true" className="h-3.5 w-3.5" />
+                Upload .txt
+                <input
+                  type="file"
+                  accept=".txt,text/plain"
+                  aria-label="Upload a UTF-8 text article"
+                  aria-describedby="article-upload-help"
+                  className="sr-only"
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    event.target.value = "";
+                    if (file) void handleUpload(file);
+                  }}
+                />
+              </label>
+              <p id="article-upload-help" className="text-xs text-slate-500">UTF-8 .txt only · Up to 100,000 characters</p>
+            </div>
+            <p role="status" className="mt-2 break-words text-xs text-slate-400">{uploading ? "Reading your text file…" : uploadedName ? `${uploadedName} loaded. Select Analyze when ready.` : null}</p>
+            {uploadError && <p role="alert" className="mt-2 text-sm text-red-200">{uploadError}</p>}
           </div>
 
           <div className="flex flex-col justify-between rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-4">
@@ -115,7 +169,7 @@ export function BiasInputCard({
             <div className="mt-4 flex flex-col gap-3">
               <button
                 type="submit"
-                disabled={loading || !input.trim()}
+                disabled={loading || uploading || !input.trim()}
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
@@ -123,7 +177,7 @@ export function BiasInputCard({
               </button>
               <button
                 type="button"
-                onClick={onClear}
+                onClick={() => { replaceInput(""); onClear(); }}
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/[0.06]"
               >
                 <RotateCcw className="h-4 w-4" />

@@ -12,11 +12,13 @@ This research branch analyzes full article context and exposes experimental mode
 
 ## Article reading experience
 
+- UTF-8 `.txt` upload and pasted text preserve exact Unicode and whitespace. Supported experimental phrase evidence appears blue for LEFT and red for RIGHT, with neutral text unchanged.
+- Phrase evidence uses a separate disabled-by-default provider. The new self-hosted adapter still needs a rights-cleared model, capacity testing and independent span validation. No phrase model has passed those gates. See [phrase evidence status and setup](research/PHRASE_EVIDENCE.md).
 - Article mode now requests article inference. Overall results are computed from the document, independently of passage scores.
 - Long documents use overlapping windows with explicit token coverage. Inputs exceeding the processing limit are rejected rather than silently truncated.
 - Sentence and paragraph modes preserve exact text offsets. Their scores remain experimental until separately validated.
 - Unapproved or uncertain results have no political label or partisan coloring. Raw scores are available as experimental diagnostics, not probabilities of correctness.
-- Backend response version 0.3 includes `overall`, nullable labels, offsets, warnings, coverage and model hashes. Deploy frontend and backend together; old clients are not compatible.
+- Backend response version 0.4 includes `overall`, nullable labels, offsets, warnings, coverage, model hashes and source-bound experimental evidence spans. Deploy frontend and backend together; older clients do not implement the phrase contract.
 
 See [research workflow](research/README.md) and [experiment log](research/EXPERIMENT_LOG.md). No newly validated model or production deployment is claimed.
 

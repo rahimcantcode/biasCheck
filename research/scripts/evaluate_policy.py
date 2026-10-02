@@ -8,13 +8,20 @@ from research.scripts.evaluate import summarize
 
 def evaluate(report,policy,validation):
     validate_policy(policy,report['model'])
+    validate_policy(policy,validation['model'])
+    if report['model']['id2label']!=validation['model']['id2label']:raise ValueError('Calibration label mapping mismatch')
     if report['split']!='test' or validation['split']!='validation':raise ValueError('Separate test and validation reports required')
     for item in [report,validation]:
         record=item.get('annotation_provenance') or {}
         if not record.get('human_reviewed') or not record.get('reference'):raise ValueError('Actual human annotation provenance required')
     if policy['calibration_data_sha256']!=validation['data_sha256']:raise ValueError('Wrong calibration dataset')
     if report['data_sha256']==validation['data_sha256']:raise ValueError('Test and validation are identical')
+    if report['mode']!=validation['mode']:raise ValueError('Test and calibration modes must match')
+    if validation['mode'] not in policy['validated_modes']:raise ValueError('Calibration mode not validated')
     for field in ['id','text_sha256']:
+        for item in [report,validation]:
+            values=[r[field] for r in item['predictions']]
+            if len(values)!=len(set(values)):raise ValueError(f'Duplicate evaluation {field}')
         if {r[field] for r in report['predictions']}&{r[field] for r in validation['predictions']}:raise ValueError(f'Test/validation overlap: {field}')
     if report['mode'] not in policy['validated_modes']:raise ValueError('Mode not calibrated')
     # In-memory simulation only. The source policy stays unapproved on disk.
@@ -22,17 +29,22 @@ def evaluate(report,policy,validation):
     labels={int(k):v for k,v in report['model']['id2label'].items()}
     for row in report['predictions']:
         scores,reason=classify_scores(row['logits'],row['token_count'],report['mode'],candidate)
-        rows.append({**row,'label':labels[int(scores.argmax())] if reason is None else None,'decision':'classified' if reason is None else 'abstained','reason':reason})
+        rows.append({**row,'label':labels[int(scores.argmax())] if reason is None else None,
+                     'decision':'classified' if reason is None else 'abstained','reason':reason,
+                     'probabilities':{labels[i]:float(score) for i,score in enumerate(scores)},
+                     'calibrated':True,'policy_simulation':True})
     metrics=summarize(rows)
-    unknown=[r for r in rows if r['gold']=='UNCERTAIN']
-    metrics['uncertain_n']=len(unknown)
-    metrics['uncertain_false_label_rate']=sum(r['decision']=='classified' for r in unknown)/len(unknown) if unknown else None
     requirements={'macro_f1':metrics.get('macro_f1',0)>=.85,'per_class_recall':all(metrics.get('per_class',{}).get(k,{}).get('recall',0)>=.8 for k in ['LEFT','CENTER','RIGHT']),
       'selective_accuracy':(metrics.get('selective_accuracy') or 0)>=.9,'coverage':(metrics.get('coverage') or 0)>=.8,
       'nonpolitical_false_labels':metrics['nonpolitical_n']>=100 and metrics['nonpolitical_false_label_rate']<=.05,
-      'political_sample_size':metrics['eligible_n']>=300}
+      'political_sample_size':metrics['eligible_n']>=300,
+      # No post-hoc tolerance may be invented after seeing final-test outcomes.
+      # This intentionally stays false until a reviewed uncertainty protocol is frozen.
+      'uncertainty_protocol_frozen':False}
     return {'metrics':metrics,'proposed_point_estimate_gates':requirements,'point_estimate_gates_pass':all(requirements.values()),'release_approved':False,
-      'limitations':['Requires confidence intervals, source/event/time leakage review, per-slice review and operational validation before approval','Provenance fields are supplied assertions requiring human audit'],'predictions':rows}
+      'limitations':['Point-estimate goals are provisional, not evidence that population error limits pass',
+                     'Uncertainty tolerance, interval rules, per-class supports and independent cluster counts must be frozen before final testing',
+                     'Requires confidence intervals, source/event/time leakage review, per-slice review and operational validation before approval','Provenance fields are supplied assertions requiring human audit'],'predictions':rows}
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--test',type=Path,required=True);p.add_argument('--validation',type=Path,required=True);p.add_argument('--policy',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()

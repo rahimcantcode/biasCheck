@@ -3,6 +3,51 @@
 These are working research notes and tools, not a final report or an approved model release.
 Scope: English U.S. political news ideology. Political leaning is separate from factual accuracy and loaded language. Nonpolitical input and insufficient evidence are not CENTER.
 
+## October 2 implementation and evaluation contract
+
+The primary target is the **article author's political framing in the supplied
+text**, not merely explicit endorsement of a policy. Relevance, whose view is
+expressed, insufficient evidence and mixed positions are distinct axes. No stated
+policy preference does not establish centrist ideology. Phrase evidence is a
+separate task; an article-level label is never inherited as a phrase-level label.
+
+The 66 corpus validation items have been reused for development. Do not perform
+another winner-selection round on them. The 89 reserved items remain sealed;
+training-only grouped experiments can proceed without opening those files. The
+new bounded linear comparison joins the previously reviewed shared-episode
+training aliases before group assignment, but this is not an exhaustive episode
+audit or a new independent benchmark. CC-BY-NC-SA corpus-derived artifacts remain
+noncommercial research until deployment rights are resolved.
+
+The original PoliticalBiasCorpus annotation interface displayed title and three
+excerpts, and also encouraged annotators to consult full articles and event
+background (with party-principle context available). Actual extra-context usage
+is unknown. The model's snippet reconstruction therefore does not establish fully
+matched human/model information. Historical result files are retained unchanged.
+Source: [pinned annotation interface](https://github.com/ksolaiman/PoliticalBiasCorpus/blob/b193ee173936b281183ca1dc101ae4de215a0e5c/mturk_task_templates/BiasLabelMain.html#L103-L108).
+
+Evaluation schema v2 separates `raw_macro_f1`, `raw_per_class` and
+`raw_confusion_matrix` from decision-aware `macro_f1`, `per_class` and
+`decision_confusion_matrix`. An abstention counts as a missed correct prediction
+for class recall/F1; the matrix has an explicit ABSTAIN column. Accepted accuracy
+is reported with its denominator, overall coverage and class-specific coverage.
+Calibration/test model bindings, preprocessing versions, label mappings and modes must match; malformed
+or nonfinite logits fail closed. Marginal Wilson intervals are diagnostic only
+and do not account for correlated episodes or repeated model selection.
+
+The historical point-estimate goals are provisional. Before independent testing,
+freeze the full protocol: task/input context, human annotation provenance,
+candidate/checkpoint/prompt/preprocessing, coverage policy, per-class and slice
+supports, independent cluster counts, an uncertainty false-label tolerance,
+minimum meaningful improvement and interval decision rules. The evaluator's
+`uncertainty_protocol_frozen` gate deliberately remains false until a reviewed
+protocol is implemented. It never approves a release. A perfect raw classifier
+cannot pass product recall by abstaining on its difficult class, and 89 old corpus
+items cannot certify contemporary end-to-end performance.
+
+See [phrase evidence implementation](PHRASE_EVIDENCE.md) for the experimental
+highlighting contract and its separate inference and fidelity blockers.
+
 ## Completed evidence
 
 October 2 audit correction: PoliticalBiasCorpus partitions are disjoint by

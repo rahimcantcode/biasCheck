@@ -61,7 +61,8 @@ def model_metadata():
     manifest = verify_checkpoint()
     return {'engine': 'political_nli', 'model_id': MODEL_ID, 'revision': REVISION,
             'weights_sha256': manifest['files']['model.safetensors'], 'artifact_sha256': manifest['files'], 'aggregation': 'overlapping_windows_mean_entailment_v1',
-            'decision_rules': 'development_v2_mixed_guard', 'validation_status': 'development_only', 'release_approved': False,
+            'decision_rules': 'development_v2_mixed_guard', 'preprocessing': 'plain_text_exact_url_article_extraction_v2',
+            'validation_status': 'development_only', 'release_approved': False,
             'hypotheses': HYPOTHESES, 'score_type': 'independent_entailment'}
 
 def assess(scores, token_count):

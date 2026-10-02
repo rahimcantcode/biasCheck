@@ -47,7 +47,7 @@ export function HeroSection({
               See how your article leans
             </h1>
             <p className="mx-auto mt-5 max-w-3xl text-balance text-base leading-8 text-slate-300 sm:text-lg">
-              Paste article text or a URL to explore experimental political-leaning assessments. Results can be uncertain and should be checked against the text.
+              Paste article text, upload a .txt file, or enter a URL to explore experimental political-leaning assessments. Results can be uncertain and should be checked against the text.
             </p>
           </div>
 
@@ -71,7 +71,7 @@ export function HeroSection({
                 : "Read the original text alongside the model’s assessment."}
             </div>
             <div className="hidden h-4 w-px bg-white/10 sm:block" />
-            <p>Clear model estimates use color. Uncertain results stay uncolored.</p>
+            <p>Supported expressions can be highlighted. Phrase annotations remain experimental.</p>
           </div>
         </div>
       </div>
