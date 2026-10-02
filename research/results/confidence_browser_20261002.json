@@ -1,0 +1,97 @@
+{
+  "started_at": "2026-10-02T17:38:03.187Z",
+  "finished_at": "2026-10-02T17:38:44.505Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.95",
+  "url": "https://bias.r4him.tech/",
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "selection": "Highest-confidence reference mismatch, highest-confidence match, lowest-confidence case; selected development diagnostics, not representative accuracy sample",
+  "cases": [
+    {
+      "id": "f30a2928-7ad4-48d3-82a1-dc02b1cbf2f0",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "CENTER",
+        "label_id": 2,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.000109,
+          "RIGHT": 0.000184,
+          "CENTER": 0.999707
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 186,
+        "tokens_processed": 186,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "scores_reproduced_exactly": true
+    },
+    {
+      "id": "16504ef2-5578-4012-8b7c-c444f8b4c423",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "RIGHT",
+        "label_id": 1,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.000372,
+          "RIGHT": 0.999483,
+          "CENTER": 0.000145
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 133,
+        "tokens_processed": 133,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "scores_reproduced_exactly": true
+    },
+    {
+      "id": "b840383b-2266-48a1-bfef-91d652ec3f62",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.498178,
+          "RIGHT": 0.495545,
+          "CENTER": 0.006277
+        },
+        "decision": "abstained",
+        "reason": "uncertain",
+        "token_count": 286,
+        "tokens_processed": 286,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "scores_reproduced_exactly": true
+    }
+  ],
+  "screenshots": {
+    "16504ef2-5578-4012-8b7c-c444f8b4c423.png": "d9c8737b0fd504fdf37ffbd944ab62e675801c587e514b5036db8b893ebf41d5",
+    "b840383b-2266-48a1-bfef-91d652ec3f62.png": "09f0290d0752ff099d7fa3ba8b212bb7323bc1ea0fffffbf2d0fdb5a3274f1a0",
+    "f30a2928-7ad4-48d3-82a1-dc02b1cbf2f0.png": "06324d82cd80aa54d0bb7f71c2570935d2fef0b4aacf5801e7d2143d4e8c0910",
+    "mobile.png": "f08febae7eccee14361ac2d0e361112d32fb5bfc790ed4eb273c81633cef4316"
+  }
+}

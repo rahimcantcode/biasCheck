@@ -1,5 +1,59 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 16:53 UTC: deployed confidence and abstention audit
+
+Audited all 66 stored development responses against their hash-matched snippet
+references. No training, calibration, threshold selection, or reserved-test
+access. Added a fail-closed alignment/simplex/argmax validator and fixed-threshold
+confidence audit with eight unit tests. GPT-6 Astra Medium reviewed the design
+through the terminal client; advice is retained locally in
+research/data/confidence-audit-advice-20261002.txt. No competing research process
+or pre-existing uncommitted changes was found before work began.
+
+Raw argmax agreement is 31/66 (.4697), while mean maximum score is .9761.
+Displayed decisions differ: production classified 65/66 (.9848 coverage), with
+30/65 reference matches (.4615), and abstained on one raw-correct prediction.
+
+| Fixed maximum-score threshold | Retained | Matches | Coverage | Agreement |
+| --- | ---: | ---: | ---: | ---: |
+| .50 | 65 | 30 | .9848 | .4615 |
+| .80 | 64 | 30 | .9697 | .4688 |
+| .90 | 61 | 29 | .9242 | .4754 |
+| .95 | 59 | 29 | .8939 | .4915 |
+| .99 | 53 | 25 | .8030 | .4717 |
+| .999 | 24 | 8 | .3636 | .3333 |
+
+Top-label ECE with ten fixed equal-width bins is .5217; confidence/correctness
+rank AUC is .4286 (ties receive half credit). Multiclass Brier sum is 1.0417
+(range 0-2); natural-log NLL is 3.6076, using rounded stored probabilities and
+a 1e-12 clipping floor. ECE is a noisy descriptive statistic on this small set,
+not a population estimate. Unanimous subset results are separately preserved:
+13/33 raw matches, mean score .9615, ECE .5980, rank AUC .3346. Subgroup coverage
+denominators are the subgroup size, not the full corpus.
+
+Even an oracle selecting correct predictions first cannot exceed 31/53=.5849
+agreement while retaining at least 80% of these 66 unchanged predictions.
+This finite-sample bound is not an achievable confidence policy or a bound on
+future models. Raising confidence thresholds is not supported as a remedy.
+Two-annotator disagreement, source/task mismatch and repeated development use
+remain caveats; this is not independently demonstrated product accuracy.
+
+Public-site browser recheck selected the highest-score mismatch, highest-score
+match, and lowest-score case from this audit (explicit diagnostic selection).
+Local Chromium fallback was used because no cloud-browser tool was exposed.
+All three returned HTTP 200 and exactly reproduced stored scores. The low-score
+case displayed "No reliable label"; high-score cases remained classified.
+No page errors, failed requests, or mobile overflow; mobile screenshot inspected.
+Raw audit/screenshots: outputs/live-browser-confidence-20261002. Sanitized browser
+summary and screenshot hashes: research/results/confidence_browser_20261002.json.
+
+Metric formulas, full ID-aligned probabilities, displayed decisions and source/
+model hashes are retained in research/results/confidence_audit_20261002.json.
+Original corpus revision b193ee173936b281183ca1dc101ae4de215a0e5c, source labels,
+splits and noncommercial restrictions remain unchanged. No deployment or release
+approval. Next model work must improve task-matched discrimination, not merely
+increase abstention or present high scores as validated confidence.
+
 ## 2026-10-02 05:59 UTC: original human-rating dual-axis baseline
 
 Recovered 230 original party-sentiment ratings for the 115 training IDs from
