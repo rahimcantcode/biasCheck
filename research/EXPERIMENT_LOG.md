@@ -1,5 +1,58 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 05:59 UTC: original human-rating dual-axis baseline
+
+Recovered 230 original party-sentiment ratings for the 115 training IDs from
+the corpus main-task CSV. The main annotation template encodes Republican
+positive sentiment positively but Democratic positive sentiment negatively:
+Republican valence = q1/5, Democratic valence = -q2/5. Decoding their difference
+reproduces every saved individual worker label. Decoding the true mean axes
+also reproduces all 115 released training labels. This is a mapping check,
+not predictive accuracy. No worker identifiers were retained.
+
+The source CSV initially failed UTF-8 decoding; Latin-1 was used to recover
+ASCII IDs and numeric fields. The full source CSV was scanned and hashed,
+with rating processing restricted to the training-ID allowlist. Nontraining
+ratings were not retained or used. Neither validation nor reserved-test
+partition files were opened. Retained source assignment statuses are 145
+Approved and 85 Submitted; no new human adjudication occurred.
+
+Reused the previous five event-string-grouped folds and verified hashes of
+their fitted TF-IDF vectorizers. Fit five two-output Ridge heads (alpha=1,
+solver=lsqr) on mean human valences. The fixed, untuned Center threshold is
+absolute axis difference <= .125, half the .25 minimum nonzero two-worker
+mean difference increment. All 115 articles have one out-of-fold prediction.
+
+| Training cross-validation metric | Dual-axis Ridge | Prior logistic |
+| --- | ---: | ---: |
+| Released-label matches /115 | 34 | 58 |
+| Agreement | .2957 | .5043 |
+| Macro-F1 | .2855 | .4423 |
+
+Ridge predicts Center for 81/115 articles. Left/Center/Right recall is
+.1842/.6923/.1765. Republican/Democratic valence MAE is .2700/.2478,
+worse than the always-neutral baseline (.2478/.2304). Reject this candidate;
+no threshold search or deployment. This negative result does not establish
+that party-affect modeling in general cannot work. GPT-6 Astra Medium reviewed
+the bounded method through the installed terminal client; review is retained
+locally at research/data/dual-axis-advice-20261002.txt.
+
+Evidence: research/results/dual_axis_cv_20261002.json contains rating provenance,
+fold IDs, hashes, parameters, raw predictions and runtime versions. Five fitted
+models and protocol are local in research/checkpoints/dual-axis-cv-20261002/.
+Six new unit tests cover sign, threshold, invalid ratings, training-ID filtering
+and label reconstruction. Corpus revision b193ee173936b281183ca1dc101ae4de215a0e5c
+and its noncommercial license still apply; all candidate artifacts are research-only.
+Event-string grouping does not establish event-family independence.
+
+Production browser testing used local Chromium 154.0.8037.95, not a cloud browser.
+The first three ordered training examples returned HTTP 200 and LEFT/LEFT/CENTER;
+there were no page errors, failed requests or mobile overflow. Mobile screenshot
+was visually inspected. Raw audit/screenshots are in outputs/live-browser-dual-axis-20261002;
+sanitized summary and screenshot hashes are research/results/dual_axis_browser_20261002.json.
+This is functional smoke coverage, not an accuracy estimate. No high-accuracy
+claim or production change is warranted; independent human evaluation remains missing.
+
 ## 2026-10-02 04:21 UTC: training-only footer augmentation CV
 
 Ran five-fold GroupKFold on the 115 training articles (42 source event strings),

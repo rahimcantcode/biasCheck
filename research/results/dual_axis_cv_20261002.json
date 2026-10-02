@@ -1,0 +1,3680 @@
+{
+  "purpose": "Training-only development model; not independent evaluation",
+  "release_approved": false,
+  "reserved_test_file_read": false,
+  "validation_file_read": false,
+  "raw_annotation_access": "CSV scanned and filtered to training allowlist; nontraining rating values not retained or used",
+  "data_sha256": "5ebefc86e5da25784649b895753219207913cbcb042b85e7e90fdf4b84f2d1b9",
+  "annotation_csv_sha256": "7a307d94641435bbc86269f0437f6d71de791a4f7e6a1c3963add82d790fc272",
+  "fold_manifest_sha256": "c27733198c96f449c0dc700f81ec425cdb1c31cabd374f1f1c71bc978e68e086",
+  "protocol": {
+    "axes": [
+      "Republican valence",
+      "Democratic valence"
+    ],
+    "q2_sign_inverted": true,
+    "target": "Mean of two human ratings, divided by5",
+    "ridge_alpha": 1.0,
+    "solver": "lsqr",
+    "threshold": 0.125,
+    "threshold_basis": "Half smallest nonzero two-worker mean difference increment; fixed, untuned"
+  },
+  "human_training_ratings": {
+    "66a204f7-2e58-4f9b-a582-ddf603d34e5f": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      }
+    ],
+    "86c6bb83-f7a3-4cf8-81d9-67068c5ea591": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "f85c15d1-ca42-4c76-9859-c3975ebdfda4": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "32fb5e1d-8073-4c49-bddb-b0826d40f2b7": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "44fb9c2f-9323-4544-9b7b-9788c5b041fa": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "1d5c739f-5e4b-4be8-8a42-13d8a62eca40": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.5,
+        "source_status": "Submitted"
+      }
+    ],
+    "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "eca8add1-249f-4a0d-9143-c339ad154257": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "fc9dd17a-43c2-4697-8de6-808ba7e2b323": [
+      {
+        "republican_valence": 1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      }
+    ],
+    "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Submitted"
+      }
+    ],
+    "31593fab-912f-41f8-9281-f08b634afd32": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "22db9529-bbc3-46b1-83ad-522571b4d065": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "b3e7ea43-4af5-449e-92a1-2642cf35a7a7": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "f7e3b4e1-18fb-49a4-9d09-366d14a45c08": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "29c46291-ae3c-4e26-8b51-abd7127b4047": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "1c61bd7b-4273-42ac-a1b2-0661ec6212b1": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "dd6287f6-f598-4082-b3b2-5f798c4b4b31": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "207874b1-507e-45db-9009-a4768e26b33b": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "3560b060-d18d-4e5d-92d8-618e51aa46fc": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "35a8c7f6-c43d-4f7b-b081-4af30219afbc": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      }
+    ],
+    "5693a6f3-e4b1-4c03-aeb6-0b68d9191465": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "9025a66a-eb2e-4110-b410-1c708ae65208": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "e945fde5-31fc-4cb2-9ef5-55eba23ce93b": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "b4792829-fefb-40a9-b136-63e19bbed7f2": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "1d5931db-2c9d-432f-8990-87cc90fff517": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": 0.5,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "1b8a9395-94b4-4183-9b16-f12bd692aadd": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "8d5d88da-79b1-43a0-bb6c-75f60fe6520e": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "b965e522-18e6-46ff-8d65-fee6a7ea48ec": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "806dfa97-a252-4382-bb37-a819b4e24383": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      }
+    ],
+    "879f74e0-0600-4451-a4a1-390a2f8d34b1": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "c88a87fc-a2dd-4835-aac4-605757b0a1b9": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "01cf769b-136c-483d-8e7f-d59e6a7b4dbe": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "8462881f-a8b7-48c6-92e9-294f2cfd6a15": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "066f8616-6722-4660-8e73-da8a8effc0ff": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "9a9e4cdf-252c-413d-b6fa-f29c16af2dce": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "8f615eca-f4e0-4ddd-a616-851837f47415": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": 0.5,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "2f8919db-7911-49fb-9511-3a49d8bf04ed": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "1bac511a-ab59-4820-8558-74d9cdf0f86f": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "189d85a4-be9b-45c1-afaf-ba6a88e5ec64": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "fce4fbaa-13b9-414b-a614-640975ac3728": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "b71fb6be-5524-4c37-84df-cb4e95d34f2b": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "62fc683e-4692-4b82-9fbb-f7f34b8d78c1": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "abb5dddf-2180-490b-bda1-851927d3b958": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "b8e266a9-1c3b-483a-8ee8-a490da31195b": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "010d924f-4636-45ce-a97e-703055a109ad": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "cbddcfac-40c1-4701-84ba-08b85495f7df": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "9bc878a0-3f63-4702-b300-fe52ecbe153e": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "ed2ef6cf-1f10-4a40-a73e-7736adea86b2": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "ce92bb57-d18b-4522-8a37-9678d96c8783": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "53b48721-43eb-4114-afda-bca5720c80e7": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "ec451c07-8f7e-42a3-94e6-f0093072730e": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Submitted"
+      }
+    ],
+    "81d149d2-3fd5-4815-86ef-9c615fd86f28": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "efb9e12b-9389-4e1d-9c54-5e1f692b154f": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 1.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      }
+    ],
+    "b272b82d-9a03-404a-990c-f305dc8f3050": [
+      {
+        "republican_valence": 1.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "dce53ead-1673-4e93-85c1-90df34e888ac": [
+      {
+        "republican_valence": 1.0,
+        "democratic_valence": -1.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Submitted"
+      }
+    ],
+    "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "43353164-939f-4d58-9856-6577b3a49389": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "061bce91-0472-4600-b6eb-ba06ccfbd32c": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "414e686e-3b2f-4f8c-af53-2ee17d454cf9": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      }
+    ],
+    "e054b4ff-6926-4acf-b52d-f19aabd7d523": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "84acc2dc-be73-4d88-b14d-e4ac37995887": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "0b2f7734-6169-4ac7-a84e-e09e4f87861b": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "260a13e9-9055-4c48-8a2f-135c3a704b95": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "40db9799-3725-43eb-86a5-d02c9e0cd24c": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "db078daf-d349-4793-b84e-d4df590abd67": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "259b95ba-221b-42c2-b490-a318b5c75b00": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "aa8235a0-3302-4f83-936b-2728d2914613": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "2cd002af-bd38-4acb-8b25-124e0b246ad6": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "949eae79-0e2d-4eff-98c4-12ce38adc27f": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "1722436e-a76e-404d-aed9-fb946f9ef7aa": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "b256eb0c-9e71-4d14-87db-1216be80a246": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "8fe239d5-2f6a-42c1-9055-0db8b46ad837": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "12a2cac7-29e3-4c16-af08-44d81096949d": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -1.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Submitted"
+      }
+    ],
+    "86a181e7-d173-4fca-be54-be2102d966a7": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "ef24221d-f700-4607-8919-f2097439d500": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "35492fcc-28c7-499f-8822-711352bbcca0": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "6684a164-fc0f-432c-a65f-fc60b5811e2e": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "8b880a68-71f1-4b42-9f74-7b968bf5f9c3": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 0.5,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "5c03197a-ae18-42c6-bddf-27ef6b62c050": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Submitted"
+      }
+    ],
+    "2eb8dc69-f50b-4fb7-9bae-66850a181086": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "8f3e3f29-baae-4a70-97a6-62b8e5c42f72": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 1.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      }
+    ],
+    "41806cca-34c9-4660-874a-e8efe4f5e95d": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "ecc2b3f8-e42d-4c23-8832-e652536e843a": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "f4968a57-2ea3-4aa3-b955-e4008bf97356": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "47b1cbef-e1b0-46ef-903f-c8c86cac968f": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Submitted"
+      }
+    ],
+    "6ed901bd-e66d-4993-92ec-9da8fd445e8f": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "acf1b79e-3649-4285-899c-a1e37018581a": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "4c3878a5-0893-4f95-b479-eef7f111e7eb": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      }
+    ],
+    "c6b09540-12f4-44b2-b28d-d2c15176288c": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      }
+    ],
+    "cdce33da-56b1-47e8-a5ee-10ba7ff6a971": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "1f946ea1-8c95-4b92-9530-5c596c4e469b": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "e009eceb-8760-4619-96e3-ec962682ef8e": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "76018171-0d3d-4533-b54b-faf97442777a": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "0c51ca10-7520-4fc3-b42d-325d5e22e1fd": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "c40ca18a-b9ab-4ca9-9090-0be827f47539": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "d9253503-4ef4-466b-91c8-4db498f7face": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "091773c9-9457-4534-b764-d19057a39204": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.5,
+        "source_status": "Approved"
+      }
+    ],
+    "ea6288f7-7730-4d1c-835b-a18365f9c4ec": [
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": 0.5,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "722c87c9-3448-4495-b04b-336303346fd3": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Submitted"
+      }
+    ],
+    "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95": [
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -1.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07": [
+      {
+        "republican_valence": 0.5,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      },
+      {
+        "republican_valence": 0.0,
+        "democratic_valence": -0.0,
+        "source_status": "Approved"
+      }
+    ],
+    "f5bdcc87-eea0-4006-9860-f21d4241ff57": [
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 0.5,
+        "source_status": "Submitted"
+      },
+      {
+        "republican_valence": -1.0,
+        "democratic_valence": 1.0,
+        "source_status": "Approved"
+      }
+    ]
+  },
+  "predictions": [
+    {
+      "id": "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.16345639136915766,
+        -0.12178763703813103
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.19800404426481116,
+        -0.09967328933626393
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+      "fold": 0,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.19904822545780496,
+        -0.047631509163711436
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "22db9529-bbc3-46b1-83ad-522571b4d065",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1253901192193081,
+        -0.18215824841825395
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.08719795387449664,
+        -0.10305339611904757
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.03696692201985924,
+        -0.11390752228360926
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.155300444365832,
+        -0.06513256425023772
+      ],
+      "reference_mean_valence": [
+        0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "35492fcc-28c7-499f-8822-711352bbcca0",
+      "fold": 0,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.22132708219397296,
+        -0.07726508349072553
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.04856709524853875,
+        -0.10921949935783443
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "76018171-0d3d-4533-b54b-faf97442777a",
+      "fold": 0,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.210091699106864,
+        -0.07022905050437238
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.07420273574112675,
+        -0.13687550741301377
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1871282026644109,
+        -0.08470538288673118
+      ],
+      "reference_mean_valence": [
+        0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "acf1b79e-3649-4285-899c-a1e37018581a",
+      "fold": 0,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.28653651434361405,
+        -0.03806176518334248
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+      "fold": 0,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.22600140012083858,
+        -0.07088009284152973
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        -0.5
+      ]
+    },
+    {
+      "id": "b272b82d-9a03-404a-990c-f305dc8f3050",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.20536004433952199,
+        -0.08408686902269324
+      ],
+      "reference_mean_valence": [
+        0.5,
+        -0.5
+      ]
+    },
+    {
+      "id": "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.19812188716439688,
+        -0.11801065472705774
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.12436231515506298,
+        -0.149962193763221
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.75
+      ]
+    },
+    {
+      "id": "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+      "fold": 0,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.27407981985987395,
+        -0.012624990453149021
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "d9253503-4ef4-466b-91c8-4db498f7face",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.19329948620286702,
+        -0.08030064450631932
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+      "fold": 0,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.27035873242414515,
+        -0.07876916113429577
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.11283352908500252,
+        -0.11144815041706255
+      ],
+      "reference_mean_valence": [
+        0.75,
+        -1.0
+      ]
+    },
+    {
+      "id": "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+      "fold": 0,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1637159818664276,
+        -0.06654185144625753
+      ],
+      "reference_mean_valence": [
+        0.25,
+        -0.25
+      ]
+    },
+    {
+      "id": "fc9dd17a-43c2-4697-8de6-808ba7e2b323",
+      "fold": 0,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        0.022345076838292094,
+        -0.15303046079793053
+      ],
+      "reference_mean_valence": [
+        0.5,
+        -0.5
+      ]
+    },
+    {
+      "id": "010d924f-4636-45ce-a97e-703055a109ad",
+      "fold": 1,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        -0.01835798949384529,
+        -0.19513273620673738
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+      "fold": 1,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.21446403045112813,
+        -0.07148731092593508
+      ],
+      "reference_mean_valence": [
+        -0.75,
+        0.25
+      ]
+    },
+    {
+      "id": "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.07533777656882305,
+        -0.17825395760136384
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.25
+      ]
+    },
+    {
+      "id": "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.10106335515833689,
+        -0.112986530494653
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.2049997004992044,
+        -0.09614017568966084
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1846323395563873,
+        -0.1303367669492791
+      ],
+      "reference_mean_valence": [
+        0.5,
+        -0.25
+      ]
+    },
+    {
+      "id": "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.134297000593449,
+        -0.09756583513475567
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1537364268713271,
+        -0.13249079548704523
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.25
+      ]
+    },
+    {
+      "id": "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+      "fold": 1,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        0.05130328713197707,
+        -0.18383063747232276
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "id": "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.15525630909556457,
+        -0.11362101831285581
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.75
+      ]
+    },
+    {
+      "id": "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+      "fold": 1,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        0.05961296439768071,
+        -0.18853332900051667
+      ],
+      "reference_mean_valence": [
+        0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "84acc2dc-be73-4d88-b14d-e4ac37995887",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1408687880808516,
+        -0.05285932030670416
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1687860132502865,
+        -0.10544156771922525
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.10220332972632538,
+        -0.1820687681741679
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.25
+      ]
+    },
+    {
+      "id": "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.08380351380246906,
+        -0.09029951425424873
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+      "fold": 1,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        0.09518221361177026,
+        -0.30348011143526255
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "c6b09540-12f4-44b2-b28d-d2c15176288c",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.12283214147037289,
+        -0.18072157846345183
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "cbddcfac-40c1-4701-84ba-08b85495f7df",
+      "fold": 1,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        -0.049891561749089985,
+        -0.19527714591709608
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        -0.5
+      ]
+    },
+    {
+      "id": "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.08512657491593545,
+        -0.1441790052447251
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.25
+      ]
+    },
+    {
+      "id": "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.0448694335160503,
+        -0.08299364000001089
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.25
+      ]
+    },
+    {
+      "id": "ef24221d-f700-4607-8919-f2097439d500",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.16055521144370305,
+        -0.15178948008175017
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+      "fold": 1,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.08907262595477292,
+        -0.08015911929237643
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        -0.25
+      ]
+    },
+    {
+      "id": "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681",
+      "fold": 1,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        0.08055920665994323,
+        -0.2367290361667464
+      ],
+      "reference_mean_valence": [
+        0.25,
+        -0.75
+      ]
+    },
+    {
+      "id": "091773c9-9457-4534-b764-d19057a39204",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.14254736881088365,
+        -0.14546276904683492
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        -0.25
+      ]
+    },
+    {
+      "id": "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+      "fold": 2,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.2191138910399011,
+        -0.009721197793982422
+      ],
+      "reference_mean_valence": [
+        0.25,
+        -0.25
+      ]
+    },
+    {
+      "id": "12a2cac7-29e3-4c16-af08-44d81096949d",
+      "fold": 2,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.19354328843327134,
+        -0.06827499638584474
+      ],
+      "reference_mean_valence": [
+        0.25,
+        -0.75
+      ]
+    },
+    {
+      "id": "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.16240146949091416,
+        -0.0494706152005457
+      ],
+      "reference_mean_valence": [
+        -1.0,
+        0.5
+      ]
+    },
+    {
+      "id": "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.11795264973332997,
+        -0.11055218821243402
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.07786285488851895,
+        -0.1312739159160188
+      ],
+      "reference_mean_valence": [
+        0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.15565985269168386,
+        -0.08780614729780697
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+      "fold": 2,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        0.0340045718460968,
+        -0.2194053498778228
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.25
+      ]
+    },
+    {
+      "id": "53b48721-43eb-4114-afda-bca5720c80e7",
+      "fold": 2,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.30488065648655105,
+        0.004038858725644884
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+      "fold": 2,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.2083818061969869,
+        -0.03160994280188775
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        -0.25
+      ]
+    },
+    {
+      "id": "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.14297620120193416,
+        -0.10436161751778275
+      ],
+      "reference_mean_valence": [
+        0.25,
+        -0.25
+      ]
+    },
+    {
+      "id": "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1408219126484377,
+        -0.10760196608147546
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.25
+      ]
+    },
+    {
+      "id": "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.17254159490039792,
+        -0.05731487056887154
+      ],
+      "reference_mean_valence": [
+        0.75,
+        -0.75
+      ]
+    },
+    {
+      "id": "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+      "fold": 2,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.17156062723362714,
+        -0.02804198908028467
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.0792977178261901,
+        -0.18296466649661855
+      ],
+      "reference_mean_valence": [
+        0.25,
+        -0.25
+      ]
+    },
+    {
+      "id": "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.09302319507488954,
+        -0.07341351214432794
+      ],
+      "reference_mean_valence": [
+        0.25,
+        -0.5
+      ]
+    },
+    {
+      "id": "b4792829-fefb-40a9-b136-63e19bbed7f2",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.140446639388678,
+        -0.0567713588364666
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "dce53ead-1673-4e93-85c1-90df34e888ac",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.14477320368102148,
+        -0.02579905568326886
+      ],
+      "reference_mean_valence": [
+        0.5,
+        -0.75
+      ]
+    },
+    {
+      "id": "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.12083338910605768,
+        -0.10271021097253474
+      ],
+      "reference_mean_valence": [
+        0.25,
+        -0.25
+      ]
+    },
+    {
+      "id": "e009eceb-8760-4619-96e3-ec962682ef8e",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.13662242108189432,
+        -0.1200970836244202
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.18763342377869513,
+        -0.07229695754439333
+      ],
+      "reference_mean_valence": [
+        -0.75,
+        0.5
+      ]
+    },
+    {
+      "id": "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+      "fold": 2,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        -0.09495620118800105,
+        -0.30880880999740773
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "f7e3b4e1-18fb-49a4-9d09-366d14a45c08",
+      "fold": 2,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1895784746270876,
+        -0.07224929324450197
+      ],
+      "reference_mean_valence": [
+        -0.75,
+        0.5
+      ]
+    },
+    {
+      "id": "066f8616-6722-4660-8e73-da8a8effc0ff",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.11659724308297152,
+        -0.11371492477926419
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.25
+      ]
+    },
+    {
+      "id": "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.07187928918842147,
+        -0.11895492877995163
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "1d5931db-2c9d-432f-8990-87cc90fff517",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.18471006773048346,
+        -0.0631935794445265
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.25
+      ]
+    },
+    {
+      "id": "207874b1-507e-45db-9009-a4768e26b33b",
+      "fold": 3,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        0.057051680804267035,
+        -0.2863083568843854
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "260a13e9-9055-4c48-8a2f-135c3a704b95",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.052863878482758066,
+        -0.14923872639217506
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.25
+      ]
+    },
+    {
+      "id": "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.10432102156055412,
+        -0.13643883152630304
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "31593fab-912f-41f8-9281-f08b634afd32",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.11828624999665228,
+        -0.1345418105894368
+      ],
+      "reference_mean_valence": [
+        -0.75,
+        0.0
+      ]
+    },
+    {
+      "id": "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+      "fold": 3,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        -0.039873897435301425,
+        -0.21656953815731947
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.25
+      ]
+    },
+    {
+      "id": "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+      "fold": 3,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        0.1786662214581741,
+        -0.3815053701859788
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1567058231596409,
+        -0.10496919068403403
+      ],
+      "reference_mean_valence": [
+        -0.75,
+        0.5
+      ]
+    },
+    {
+      "id": "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.14540935406112457,
+        -0.049975780586344665
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.02037547167184696,
+        -0.13165138140748972
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "722c87c9-3448-4495-b04b-336303346fd3",
+      "fold": 3,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.2142061958947126,
+        -0.05759018720290615
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.11279823030913658,
+        -0.10421359985424772
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.09482411813279747,
+        -0.17875194333641306
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.25
+      ]
+    },
+    {
+      "id": "86a181e7-d173-4fca-be54-be2102d966a7",
+      "fold": 3,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        -0.02762611476946015,
+        -0.1933553111940208
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "8f615eca-f4e0-4ddd-a616-851837f47415",
+      "fold": 3,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        -0.022574672550509232,
+        -0.1917397565566914
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.25
+      ]
+    },
+    {
+      "id": "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+      "fold": 3,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.2080574779412109,
+        -0.052576821165819826
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "aa8235a0-3302-4f83-936b-2728d2914613",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.09821553069078173,
+        -0.14047805581641437
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+      "fold": 3,
+      "prediction": "LEFT",
+      "predicted_valence": [
+        -0.19498254190086087,
+        -0.06409283597176757
+      ],
+      "reference_mean_valence": [
+        0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.09376290879986954,
+        -0.13462857382155646
+      ],
+      "reference_mean_valence": [
+        -0.25,
+        0.25
+      ]
+    },
+    {
+      "id": "ec451c07-8f7e-42a3-94e6-f0093072730e",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.17777730073023498,
+        -0.07800202954273343
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.25
+      ]
+    },
+    {
+      "id": "ed2ef6cf-1f10-4a40-a73e-7736adea86b2",
+      "fold": 3,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.026166433477800462,
+        -0.14347587106083998
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.10299205807195336,
+        -0.12706445437915653
+      ],
+      "reference_mean_valence": [
+        0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.09073635631431429,
+        -0.16598449242460603
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "259b95ba-221b-42c2-b490-a318b5c75b00",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.0997677114998504,
+        -0.060206479388386164
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "29c46291-ae3c-4e26-8b51-abd7127b4047",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.07246742199718759,
+        -0.1502260147372303
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "41806cca-34c9-4660-874a-e8efe4f5e95d",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.045578271108853485,
+        -0.15518156267242267
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "43353164-939f-4d58-9856-6577b3a49389",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.07401866250674374,
+        -0.156801645361609
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.10787162404971196,
+        -0.16783260477026776
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.5
+      ]
+    },
+    {
+      "id": "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+      "fold": 4,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        -0.046555314705281306,
+        -0.1928268931552058
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.25
+      ]
+    },
+    {
+      "id": "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.09481529469863723,
+        -0.073169904404567
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+      "fold": 4,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        0.00818670178530144,
+        -0.2366900746348362
+      ],
+      "reference_mean_valence": [
+        0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "806dfa97-a252-4382-bb37-a819b4e24383",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.12598031910200738,
+        -0.1193820757601492
+      ],
+      "reference_mean_valence": [
+        0.25,
+        -1.0
+      ]
+    },
+    {
+      "id": "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+      "fold": 4,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        -0.08892663481530658,
+        -0.23165107772608484
+      ],
+      "reference_mean_valence": [
+        0.25,
+        -0.25
+      ]
+    },
+    {
+      "id": "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.14739289395646543,
+        -0.0836606929449524
+      ],
+      "reference_mean_valence": [
+        -0.75,
+        0.25
+      ]
+    },
+    {
+      "id": "9025a66a-eb2e-4110-b410-1c708ae65208",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.07342559772137276,
+        -0.1426418494555453
+      ],
+      "reference_mean_valence": [
+        0.0,
+        -0.25
+      ]
+    },
+    {
+      "id": "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1146636678001565,
+        -0.14802921686728238
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "abb5dddf-2180-490b-bda1-851927d3b958",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.10329879341700104,
+        -0.08165264118528531
+      ],
+      "reference_mean_valence": [
+        0.25,
+        0.0
+      ]
+    },
+    {
+      "id": "b256eb0c-9e71-4d14-87db-1216be80a246",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.11136978961992655,
+        -0.04440364601448629
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+      "fold": 4,
+      "prediction": "RIGHT",
+      "predicted_valence": [
+        -0.050938923760981636,
+        -0.23199383040620805
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.25
+      ]
+    },
+    {
+      "id": "ce92bb57-d18b-4522-8a37-9678d96c8783",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.09335209713120785,
+        -0.13891977854151816
+      ],
+      "reference_mean_valence": [
+        -0.5,
+        0.0
+      ]
+    },
+    {
+      "id": "db078daf-d349-4793-b84e-d4df590abd67",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.09809407881130247,
+        -0.21061251297844064
+      ],
+      "reference_mean_valence": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "eca8add1-249f-4a0d-9143-c339ad154257",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.1263627079473413,
+        -0.11159232482238071
+      ],
+      "reference_mean_valence": [
+        -0.75,
+        0.25
+      ]
+    },
+    {
+      "id": "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.15284410216228447,
+        -0.1681400502683873
+      ],
+      "reference_mean_valence": [
+        -1.0,
+        0.75
+      ]
+    },
+    {
+      "id": "fce4fbaa-13b9-414b-a614-640975ac3728",
+      "fold": 4,
+      "prediction": "CENTER",
+      "predicted_valence": [
+        -0.11696426544122701,
+        -0.13150475065980405
+      ],
+      "reference_mean_valence": [
+        -0.75,
+        0.0
+      ]
+    }
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "train_ids": [
+        "010d924f-4636-45ce-a97e-703055a109ad",
+        "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+        "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+        "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+        "066f8616-6722-4660-8e73-da8a8effc0ff",
+        "091773c9-9457-4534-b764-d19057a39204",
+        "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+        "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+        "12a2cac7-29e3-4c16-af08-44d81096949d",
+        "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+        "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+        "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+        "1d5931db-2c9d-432f-8990-87cc90fff517",
+        "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+        "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+        "207874b1-507e-45db-9009-a4768e26b33b",
+        "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+        "259b95ba-221b-42c2-b490-a318b5c75b00",
+        "260a13e9-9055-4c48-8a2f-135c3a704b95",
+        "29c46291-ae3c-4e26-8b51-abd7127b4047",
+        "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+        "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+        "31593fab-912f-41f8-9281-f08b634afd32",
+        "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+        "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+        "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+        "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+        "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+        "41806cca-34c9-4660-874a-e8efe4f5e95d",
+        "43353164-939f-4d58-9856-6577b3a49389",
+        "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+        "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+        "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+        "53b48721-43eb-4114-afda-bca5720c80e7",
+        "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+        "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+        "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+        "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+        "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+        "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+        "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+        "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+        "722c87c9-3448-4495-b04b-336303346fd3",
+        "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+        "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+        "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+        "806dfa97-a252-4382-bb37-a819b4e24383",
+        "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+        "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+        "84acc2dc-be73-4d88-b14d-e4ac37995887",
+        "86a181e7-d173-4fca-be54-be2102d966a7",
+        "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+        "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+        "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+        "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+        "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+        "8f615eca-f4e0-4ddd-a616-851837f47415",
+        "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+        "9025a66a-eb2e-4110-b410-1c708ae65208",
+        "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+        "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+        "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+        "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+        "aa8235a0-3302-4f83-936b-2728d2914613",
+        "abb5dddf-2180-490b-bda1-851927d3b958",
+        "b256eb0c-9e71-4d14-87db-1216be80a246",
+        "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+        "b4792829-fefb-40a9-b136-63e19bbed7f2",
+        "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+        "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+        "c6b09540-12f4-44b2-b28d-d2c15176288c",
+        "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+        "cbddcfac-40c1-4701-84ba-08b85495f7df",
+        "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+        "ce92bb57-d18b-4522-8a37-9678d96c8783",
+        "db078daf-d349-4793-b84e-d4df590abd67",
+        "dce53ead-1673-4e93-85c1-90df34e888ac",
+        "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+        "e009eceb-8760-4619-96e3-ec962682ef8e",
+        "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+        "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+        "ec451c07-8f7e-42a3-94e6-f0093072730e",
+        "eca8add1-249f-4a0d-9143-c339ad154257",
+        "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+        "ed2ef6cf-1f10-4a40-a73e-7736adea86b2",
+        "ef24221d-f700-4607-8919-f2097439d500",
+        "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+        "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+        "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+        "f7e3b4e1-18fb-49a4-9d09-366d14a45c08",
+        "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681",
+        "fce4fbaa-13b9-414b-a614-640975ac3728"
+      ],
+      "held_ids": [
+        "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+        "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+        "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+        "22db9529-bbc3-46b1-83ad-522571b4d065",
+        "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+        "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+        "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+        "35492fcc-28c7-499f-8822-711352bbcca0",
+        "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+        "76018171-0d3d-4533-b54b-faf97442777a",
+        "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+        "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+        "acf1b79e-3649-4285-899c-a1e37018581a",
+        "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+        "b272b82d-9a03-404a-990c-f305dc8f3050",
+        "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+        "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+        "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+        "d9253503-4ef4-466b-91c8-4db498f7face",
+        "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+        "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+        "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+        "fc9dd17a-43c2-4697-8de6-808ba7e2b323"
+      ],
+      "model_sha256": "8111ce6ded1ec3e169b82bb947e5374785d625f6f0fbe3eaa6c9051eebffad7f"
+    },
+    {
+      "fold": 1,
+      "train_ids": [
+        "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+        "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+        "066f8616-6722-4660-8e73-da8a8effc0ff",
+        "091773c9-9457-4534-b764-d19057a39204",
+        "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+        "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+        "12a2cac7-29e3-4c16-af08-44d81096949d",
+        "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+        "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+        "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+        "1d5931db-2c9d-432f-8990-87cc90fff517",
+        "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+        "207874b1-507e-45db-9009-a4768e26b33b",
+        "22db9529-bbc3-46b1-83ad-522571b4d065",
+        "259b95ba-221b-42c2-b490-a318b5c75b00",
+        "260a13e9-9055-4c48-8a2f-135c3a704b95",
+        "29c46291-ae3c-4e26-8b51-abd7127b4047",
+        "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+        "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+        "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+        "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+        "31593fab-912f-41f8-9281-f08b634afd32",
+        "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+        "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+        "35492fcc-28c7-499f-8822-711352bbcca0",
+        "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+        "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+        "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+        "41806cca-34c9-4660-874a-e8efe4f5e95d",
+        "43353164-939f-4d58-9856-6577b3a49389",
+        "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+        "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+        "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+        "53b48721-43eb-4114-afda-bca5720c80e7",
+        "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+        "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+        "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+        "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+        "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+        "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+        "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+        "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+        "722c87c9-3448-4495-b04b-336303346fd3",
+        "76018171-0d3d-4533-b54b-faf97442777a",
+        "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+        "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+        "806dfa97-a252-4382-bb37-a819b4e24383",
+        "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+        "86a181e7-d173-4fca-be54-be2102d966a7",
+        "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+        "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+        "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+        "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+        "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+        "8f615eca-f4e0-4ddd-a616-851837f47415",
+        "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+        "9025a66a-eb2e-4110-b410-1c708ae65208",
+        "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+        "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+        "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+        "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+        "aa8235a0-3302-4f83-936b-2728d2914613",
+        "abb5dddf-2180-490b-bda1-851927d3b958",
+        "acf1b79e-3649-4285-899c-a1e37018581a",
+        "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+        "b256eb0c-9e71-4d14-87db-1216be80a246",
+        "b272b82d-9a03-404a-990c-f305dc8f3050",
+        "b4792829-fefb-40a9-b136-63e19bbed7f2",
+        "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+        "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+        "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+        "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+        "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+        "ce92bb57-d18b-4522-8a37-9678d96c8783",
+        "d9253503-4ef4-466b-91c8-4db498f7face",
+        "db078daf-d349-4793-b84e-d4df590abd67",
+        "dce53ead-1673-4e93-85c1-90df34e888ac",
+        "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+        "e009eceb-8760-4619-96e3-ec962682ef8e",
+        "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+        "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+        "ec451c07-8f7e-42a3-94e6-f0093072730e",
+        "eca8add1-249f-4a0d-9143-c339ad154257",
+        "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+        "ed2ef6cf-1f10-4a40-a73e-7736adea86b2",
+        "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+        "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+        "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+        "f7e3b4e1-18fb-49a4-9d09-366d14a45c08",
+        "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+        "fc9dd17a-43c2-4697-8de6-808ba7e2b323",
+        "fce4fbaa-13b9-414b-a614-640975ac3728"
+      ],
+      "held_ids": [
+        "010d924f-4636-45ce-a97e-703055a109ad",
+        "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+        "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+        "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+        "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+        "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+        "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+        "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+        "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+        "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+        "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+        "84acc2dc-be73-4d88-b14d-e4ac37995887",
+        "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+        "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+        "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+        "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+        "c6b09540-12f4-44b2-b28d-d2c15176288c",
+        "cbddcfac-40c1-4701-84ba-08b85495f7df",
+        "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+        "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+        "ef24221d-f700-4607-8919-f2097439d500",
+        "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+        "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681"
+      ],
+      "model_sha256": "1e28a45520af9895772e474f7190b350ad41420cda02f4c573066ad20b9a586b"
+    },
+    {
+      "fold": 2,
+      "train_ids": [
+        "010d924f-4636-45ce-a97e-703055a109ad",
+        "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+        "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+        "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+        "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+        "066f8616-6722-4660-8e73-da8a8effc0ff",
+        "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+        "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+        "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+        "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+        "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+        "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+        "1d5931db-2c9d-432f-8990-87cc90fff517",
+        "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+        "207874b1-507e-45db-9009-a4768e26b33b",
+        "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+        "22db9529-bbc3-46b1-83ad-522571b4d065",
+        "259b95ba-221b-42c2-b490-a318b5c75b00",
+        "260a13e9-9055-4c48-8a2f-135c3a704b95",
+        "29c46291-ae3c-4e26-8b51-abd7127b4047",
+        "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+        "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+        "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+        "31593fab-912f-41f8-9281-f08b634afd32",
+        "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+        "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+        "35492fcc-28c7-499f-8822-711352bbcca0",
+        "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+        "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+        "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+        "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+        "41806cca-34c9-4660-874a-e8efe4f5e95d",
+        "43353164-939f-4d58-9856-6577b3a49389",
+        "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+        "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+        "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+        "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+        "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+        "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+        "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+        "722c87c9-3448-4495-b04b-336303346fd3",
+        "76018171-0d3d-4533-b54b-faf97442777a",
+        "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+        "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+        "806dfa97-a252-4382-bb37-a819b4e24383",
+        "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+        "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+        "84acc2dc-be73-4d88-b14d-e4ac37995887",
+        "86a181e7-d173-4fca-be54-be2102d966a7",
+        "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+        "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+        "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+        "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+        "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+        "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+        "8f615eca-f4e0-4ddd-a616-851837f47415",
+        "9025a66a-eb2e-4110-b410-1c708ae65208",
+        "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+        "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+        "aa8235a0-3302-4f83-936b-2728d2914613",
+        "abb5dddf-2180-490b-bda1-851927d3b958",
+        "acf1b79e-3649-4285-899c-a1e37018581a",
+        "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+        "b256eb0c-9e71-4d14-87db-1216be80a246",
+        "b272b82d-9a03-404a-990c-f305dc8f3050",
+        "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+        "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+        "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+        "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+        "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+        "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+        "c6b09540-12f4-44b2-b28d-d2c15176288c",
+        "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+        "cbddcfac-40c1-4701-84ba-08b85495f7df",
+        "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+        "ce92bb57-d18b-4522-8a37-9678d96c8783",
+        "d9253503-4ef4-466b-91c8-4db498f7face",
+        "db078daf-d349-4793-b84e-d4df590abd67",
+        "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+        "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+        "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+        "ec451c07-8f7e-42a3-94e6-f0093072730e",
+        "eca8add1-249f-4a0d-9143-c339ad154257",
+        "ed2ef6cf-1f10-4a40-a73e-7736adea86b2",
+        "ef24221d-f700-4607-8919-f2097439d500",
+        "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+        "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+        "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+        "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+        "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681",
+        "fc9dd17a-43c2-4697-8de6-808ba7e2b323",
+        "fce4fbaa-13b9-414b-a614-640975ac3728"
+      ],
+      "held_ids": [
+        "091773c9-9457-4534-b764-d19057a39204",
+        "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+        "12a2cac7-29e3-4c16-af08-44d81096949d",
+        "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+        "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+        "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+        "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+        "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+        "53b48721-43eb-4114-afda-bca5720c80e7",
+        "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+        "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+        "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+        "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+        "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+        "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+        "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+        "b4792829-fefb-40a9-b136-63e19bbed7f2",
+        "dce53ead-1673-4e93-85c1-90df34e888ac",
+        "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+        "e009eceb-8760-4619-96e3-ec962682ef8e",
+        "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+        "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+        "f7e3b4e1-18fb-49a4-9d09-366d14a45c08"
+      ],
+      "model_sha256": "53c80503e1be66f2f2f2999ae6e0263904cd9a4fdf2874ea245e552dde200b91"
+    },
+    {
+      "fold": 3,
+      "train_ids": [
+        "010d924f-4636-45ce-a97e-703055a109ad",
+        "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+        "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+        "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+        "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+        "091773c9-9457-4534-b764-d19057a39204",
+        "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+        "12a2cac7-29e3-4c16-af08-44d81096949d",
+        "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+        "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+        "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+        "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+        "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+        "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+        "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+        "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+        "22db9529-bbc3-46b1-83ad-522571b4d065",
+        "259b95ba-221b-42c2-b490-a318b5c75b00",
+        "29c46291-ae3c-4e26-8b51-abd7127b4047",
+        "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+        "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+        "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+        "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+        "35492fcc-28c7-499f-8822-711352bbcca0",
+        "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+        "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+        "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+        "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+        "41806cca-34c9-4660-874a-e8efe4f5e95d",
+        "43353164-939f-4d58-9856-6577b3a49389",
+        "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+        "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+        "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+        "53b48721-43eb-4114-afda-bca5720c80e7",
+        "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+        "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+        "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+        "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+        "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+        "76018171-0d3d-4533-b54b-faf97442777a",
+        "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+        "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+        "806dfa97-a252-4382-bb37-a819b4e24383",
+        "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+        "84acc2dc-be73-4d88-b14d-e4ac37995887",
+        "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+        "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+        "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+        "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+        "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+        "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+        "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+        "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+        "9025a66a-eb2e-4110-b410-1c708ae65208",
+        "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+        "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+        "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+        "abb5dddf-2180-490b-bda1-851927d3b958",
+        "acf1b79e-3649-4285-899c-a1e37018581a",
+        "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+        "b256eb0c-9e71-4d14-87db-1216be80a246",
+        "b272b82d-9a03-404a-990c-f305dc8f3050",
+        "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+        "b4792829-fefb-40a9-b136-63e19bbed7f2",
+        "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+        "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+        "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+        "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+        "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+        "c6b09540-12f4-44b2-b28d-d2c15176288c",
+        "cbddcfac-40c1-4701-84ba-08b85495f7df",
+        "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+        "ce92bb57-d18b-4522-8a37-9678d96c8783",
+        "d9253503-4ef4-466b-91c8-4db498f7face",
+        "db078daf-d349-4793-b84e-d4df590abd67",
+        "dce53ead-1673-4e93-85c1-90df34e888ac",
+        "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+        "e009eceb-8760-4619-96e3-ec962682ef8e",
+        "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+        "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+        "eca8add1-249f-4a0d-9143-c339ad154257",
+        "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+        "ef24221d-f700-4607-8919-f2097439d500",
+        "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+        "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+        "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+        "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+        "f7e3b4e1-18fb-49a4-9d09-366d14a45c08",
+        "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+        "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681",
+        "fc9dd17a-43c2-4697-8de6-808ba7e2b323",
+        "fce4fbaa-13b9-414b-a614-640975ac3728"
+      ],
+      "held_ids": [
+        "066f8616-6722-4660-8e73-da8a8effc0ff",
+        "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+        "1d5931db-2c9d-432f-8990-87cc90fff517",
+        "207874b1-507e-45db-9009-a4768e26b33b",
+        "260a13e9-9055-4c48-8a2f-135c3a704b95",
+        "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+        "31593fab-912f-41f8-9281-f08b634afd32",
+        "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+        "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+        "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+        "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+        "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+        "722c87c9-3448-4495-b04b-336303346fd3",
+        "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+        "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+        "86a181e7-d173-4fca-be54-be2102d966a7",
+        "8f615eca-f4e0-4ddd-a616-851837f47415",
+        "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+        "aa8235a0-3302-4f83-936b-2728d2914613",
+        "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+        "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+        "ec451c07-8f7e-42a3-94e6-f0093072730e",
+        "ed2ef6cf-1f10-4a40-a73e-7736adea86b2"
+      ],
+      "model_sha256": "f16a44747a961b9efb3d42a292a232f50a290f5fd50bf76e5540f04853d60acc"
+    },
+    {
+      "fold": 4,
+      "train_ids": [
+        "010d924f-4636-45ce-a97e-703055a109ad",
+        "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+        "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+        "061bce91-0472-4600-b6eb-ba06ccfbd32c",
+        "066f8616-6722-4660-8e73-da8a8effc0ff",
+        "091773c9-9457-4534-b764-d19057a39204",
+        "0b2f7734-6169-4ac7-a84e-e09e4f87861b",
+        "0c51ca10-7520-4fc3-b42d-325d5e22e1fd",
+        "12a2cac7-29e3-4c16-af08-44d81096949d",
+        "189d85a4-be9b-45c1-afaf-ba6a88e5ec64",
+        "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+        "1bac511a-ab59-4820-8558-74d9cdf0f86f",
+        "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+        "1d5931db-2c9d-432f-8990-87cc90fff517",
+        "1d5c739f-5e4b-4be8-8a42-13d8a62eca40",
+        "1f946ea1-8c95-4b92-9530-5c596c4e469b",
+        "207874b1-507e-45db-9009-a4768e26b33b",
+        "21e7e2c1-a501-4fc5-a2b8-caec6d25ae95",
+        "22db9529-bbc3-46b1-83ad-522571b4d065",
+        "260a13e9-9055-4c48-8a2f-135c3a704b95",
+        "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+        "2eb8dc69-f50b-4fb7-9bae-66850a181086",
+        "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+        "2f8919db-7911-49fb-9511-3a49d8bf04ed",
+        "31593fab-912f-41f8-9281-f08b634afd32",
+        "32fb5e1d-8073-4c49-bddb-b0826d40f2b7",
+        "33ed677d-ab9b-4daf-bb26-1cd095d7dfa5",
+        "35492fcc-28c7-499f-8822-711352bbcca0",
+        "3560b060-d18d-4e5d-92d8-618e51aa46fc",
+        "35a8c7f6-c43d-4f7b-b081-4af30219afbc",
+        "3b9bdced-a52e-45b5-ab4b-6c0d8224ae07",
+        "40db9799-3725-43eb-86a5-d02c9e0cd24c",
+        "414e686e-3b2f-4f8c-af53-2ee17d454cf9",
+        "44fb9c2f-9323-4544-9b7b-9788c5b041fa",
+        "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+        "53b48721-43eb-4114-afda-bca5720c80e7",
+        "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+        "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+        "6684a164-fc0f-432c-a65f-fc60b5811e2e",
+        "66a204f7-2e58-4f9b-a582-ddf603d34e5f",
+        "6d6e0d6f-ada1-4f61-a660-9a63b51a51e3",
+        "722c87c9-3448-4495-b04b-336303346fd3",
+        "76018171-0d3d-4533-b54b-faf97442777a",
+        "76e341dd-87c6-4a62-b079-a0c4a6e0a5cc",
+        "7976d18f-9fe0-4ef3-a1aa-bdbadd84fc47",
+        "7c2cb8c3-1d40-4dae-89e1-e2f6b2e90caf",
+        "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+        "8462881f-a8b7-48c6-92e9-294f2cfd6a15",
+        "84acc2dc-be73-4d88-b14d-e4ac37995887",
+        "86a181e7-d173-4fca-be54-be2102d966a7",
+        "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+        "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+        "8d5d88da-79b1-43a0-bb6c-75f60fe6520e",
+        "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+        "8f3e3f29-baae-4a70-97a6-62b8e5c42f72",
+        "8f615eca-f4e0-4ddd-a616-851837f47415",
+        "8fe239d5-2f6a-42c1-9055-0db8b46ad837",
+        "949eae79-0e2d-4eff-98c4-12ce38adc27f",
+        "9bc878a0-3f63-4702-b300-fe52ecbe153e",
+        "9de8c9f5-d894-4cbb-a5d5-bf60dfd95fb1",
+        "aa8235a0-3302-4f83-936b-2728d2914613",
+        "acf1b79e-3649-4285-899c-a1e37018581a",
+        "af7d66b5-403d-4aab-ac1b-4cb22d9de9fa",
+        "b272b82d-9a03-404a-990c-f305dc8f3050",
+        "b3e7ea43-4af5-449e-92a1-2642cf35a7a7",
+        "b4792829-fefb-40a9-b136-63e19bbed7f2",
+        "b71fb6be-5524-4c37-84df-cb4e95d34f2b",
+        "b8e266a9-1c3b-483a-8ee8-a490da31195b",
+        "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+        "c40ca18a-b9ab-4ca9-9090-0be827f47539",
+        "c6b09540-12f4-44b2-b28d-d2c15176288c",
+        "c88a87fc-a2dd-4835-aac4-605757b0a1b9",
+        "cbddcfac-40c1-4701-84ba-08b85495f7df",
+        "cdce33da-56b1-47e8-a5ee-10ba7ff6a971",
+        "d9253503-4ef4-466b-91c8-4db498f7face",
+        "dce53ead-1673-4e93-85c1-90df34e888ac",
+        "dd6287f6-f598-4082-b3b2-5f798c4b4b31",
+        "e009eceb-8760-4619-96e3-ec962682ef8e",
+        "e054b4ff-6926-4acf-b52d-f19aabd7d523",
+        "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+        "ea6288f7-7730-4d1c-835b-a18365f9c4ec",
+        "ec451c07-8f7e-42a3-94e6-f0093072730e",
+        "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+        "ed2ef6cf-1f10-4a40-a73e-7736adea86b2",
+        "ef24221d-f700-4607-8919-f2097439d500",
+        "efb9e12b-9389-4e1d-9c54-5e1f692b154f",
+        "f4968a57-2ea3-4aa3-b955-e4008bf97356",
+        "f6978ce2-eb8b-4dde-96c4-7d8aa260a32e",
+        "f7e3b4e1-18fb-49a4-9d09-366d14a45c08",
+        "f85c15d1-ca42-4c76-9859-c3975ebdfda4",
+        "fc8acb27-8bc0-4a47-ae27-4bc8b47c4681",
+        "fc9dd17a-43c2-4697-8de6-808ba7e2b323"
+      ],
+      "held_ids": [
+        "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+        "1722436e-a76e-404d-aed9-fb946f9ef7aa",
+        "259b95ba-221b-42c2-b490-a318b5c75b00",
+        "29c46291-ae3c-4e26-8b51-abd7127b4047",
+        "41806cca-34c9-4660-874a-e8efe4f5e95d",
+        "43353164-939f-4d58-9856-6577b3a49389",
+        "4c3878a5-0893-4f95-b479-eef7f111e7eb",
+        "5c03197a-ae18-42c6-bddf-27ef6b62c050",
+        "5fc252d5-58de-4ab2-9fa1-0a4ba1f15cff",
+        "6ed901bd-e66d-4993-92ec-9da8fd445e8f",
+        "806dfa97-a252-4382-bb37-a819b4e24383",
+        "879f74e0-0600-4451-a4a1-390a2f8d34b1",
+        "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+        "9025a66a-eb2e-4110-b410-1c708ae65208",
+        "9a9e4cdf-252c-413d-b6fa-f29c16af2dce",
+        "abb5dddf-2180-490b-bda1-851927d3b958",
+        "b256eb0c-9e71-4d14-87db-1216be80a246",
+        "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+        "ce92bb57-d18b-4522-8a37-9678d96c8783",
+        "db078daf-d349-4793-b84e-d4df590abd67",
+        "eca8add1-249f-4a0d-9143-c339ad154257",
+        "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+        "fce4fbaa-13b9-414b-a614-640975ac3728"
+      ],
+      "model_sha256": "34ff3baac587bb2a26c07eecf6c58b84a2c2d4f3e7f79ba48e1c5888b0bdd0a5"
+    }
+  ],
+  "metrics": {
+    "n": 115,
+    "accuracy": 0.2956521739130435,
+    "macro_f1": 0.2855258075358305,
+    "label_order": [
+      "LEFT",
+      "CENTER",
+      "RIGHT"
+    ],
+    "confusion_matrix": [
+      [
+        7,
+        26,
+        5
+      ],
+      [
+        4,
+        18,
+        4
+      ],
+      [
+        5,
+        37,
+        9
+      ]
+    ],
+    "per_class": {
+      "LEFT": {
+        "precision": 0.4375,
+        "recall": 0.18421052631578946,
+        "f1-score": 0.25925925925925924,
+        "support": 38.0
+      },
+      "CENTER": {
+        "precision": 0.2222222222222222,
+        "recall": 0.6923076923076923,
+        "f1-score": 0.3364485981308411,
+        "support": 26.0
+      },
+      "RIGHT": {
+        "precision": 0.5,
+        "recall": 0.17647058823529413,
+        "f1-score": 0.2608695652173913,
+        "support": 51.0
+      },
+      "accuracy": 0.2956521739130435,
+      "macro avg": {
+        "precision": 0.3865740740740741,
+        "recall": 0.3509962689529253,
+        "f1-score": 0.2855258075358305,
+        "support": 115.0
+      },
+      "weighted avg": {
+        "precision": 0.41654589371980677,
+        "recall": 0.2956521739130435,
+        "f1-score": 0.2774248976464407,
+        "support": 115.0
+      }
+    },
+    "strict_agreement": {
+      "n": 54,
+      "accuracy": 0.42592592592592593,
+      "macro_f1": 0.32996632996632996,
+      "label_counts": {
+        "LEFT": 12,
+        "CENTER": 26,
+        "RIGHT": 16
+      }
+    }
+  },
+  "valence_mae": [
+    0.2700316014840152,
+    0.24783172183149726
+  ],
+  "zero_valence_mae": [
+    0.24782608695652175,
+    0.23043478260869565
+  ],
+  "previous_logistic_metrics": {
+    "n": 115,
+    "accuracy": 0.5043478260869565,
+    "macro_f1": 0.442341748116168,
+    "label_order": [
+      "LEFT",
+      "CENTER",
+      "RIGHT"
+    ],
+    "confusion_matrix": [
+      [
+        22,
+        2,
+        14
+      ],
+      [
+        10,
+        4,
+        12
+      ],
+      [
+        15,
+        4,
+        32
+      ]
+    ],
+    "per_class": {
+      "LEFT": {
+        "precision": 0.46808510638297873,
+        "recall": 0.5789473684210527,
+        "f1-score": 0.5176470588235295,
+        "support": 38.0
+      },
+      "CENTER": {
+        "precision": 0.4,
+        "recall": 0.15384615384615385,
+        "f1-score": 0.2222222222222222,
+        "support": 26.0
+      },
+      "RIGHT": {
+        "precision": 0.5517241379310345,
+        "recall": 0.6274509803921569,
+        "f1-score": 0.5871559633027523,
+        "support": 51.0
+      },
+      "accuracy": 0.5043478260869565,
+      "macro avg": {
+        "precision": 0.4732697481046711,
+        "recall": 0.45341483421978773,
+        "f1-score": 0.442341748116168,
+        "support": 115.0
+      },
+      "weighted avg": {
+        "precision": 0.4897840441481387,
+        "recall": 0.5043478260869565,
+        "f1-score": 0.4816810447088023,
+        "support": 115.0
+      }
+    },
+    "strict_agreement": {
+      "n": 54,
+      "accuracy": 0.46296296296296297,
+      "macro_f1": 0.44793085768695523,
+      "label_counts": {
+        "LEFT": 12,
+        "CENTER": 26,
+        "RIGHT": 16
+      }
+    }
+  },
+  "mean_target_decode_matches": 115,
+  "smallest_observed_nonzero_target_difference": 0.25,
+  "source_status_counts": {
+    "Approved": 145,
+    "Submitted": 85
+  },
+  "runtime": {
+    "scikit-learn": "1.8.0",
+    "numpy": "2.4.2",
+    "scipy": "1.17.0",
+    "joblib": "1.5.3"
+  },
+  "source_question_template_sha256": "b285aa74c1b38da232f99d007df1f672122aea8cb9748d8db0a7b0959a62ca2f",
+  "source_revision": "b193ee173936b281183ca1dc101ae4de215a0e5c"
+}

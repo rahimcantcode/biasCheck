@@ -1,0 +1,94 @@
+{
+  "started_at": "2026-10-02T06:59:37.314Z",
+  "finished_at": "2026-10-02T07:00:04.416Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.95",
+  "url": "https://bias.r4him.tech/",
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "purpose": "Ordered first three training examples; production functional smoke test, not accuracy evaluation",
+  "cases": [
+    {
+      "id": "010d924f-4636-45ce-a97e-703055a109ad",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.993377,
+          "RIGHT": 0.005376,
+          "CENTER": 0.001247
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 97,
+        "tokens_processed": 97,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.994163,
+          "RIGHT": 0.005053,
+          "CENTER": 0.000784
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 152,
+        "tokens_processed": 152,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "CENTER",
+        "label_id": 2,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.001637,
+          "RIGHT": 0.004395,
+          "CENTER": 0.993968
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 156,
+        "tokens_processed": 156,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    }
+  ],
+  "screenshots": {
+    "010d924f-4636-45ce-a97e-703055a109ad.png": "f88206eddd6343bee57f48fc0b3e142f5da1fa87afc9bd15b28d8262228ec2cf",
+    "01cf769b-136c-483d-8e7f-d59e6a7b4dbe.png": "fcc2569619aa7d06c3435ea2dc66c5647c35556dfb5feada01738b9326309b32",
+    "01dbbdbe-e1ed-4a8e-8f52-a1cc3a8765be.png": "bc2a69d46411c24efabd0521667ff9c03db5a4ead06eac8926842dd4d92c9f9c",
+    "mobile.png": "ba0899835a603c5e8c056521a9886f96f907d6f9fc6a292a8a1181d5503d5f41"
+  }
+}
