@@ -1,5 +1,57 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 18:13 UTC: fixed lexical/semantic hybrid training CV
+
+Trained ten new classifier heads: five semantic-only and five hybrid models,
+using the same 115 training IDs and five frozen event-string-grouped folds as
+the footer experiment. Reused five hash-verified word-model baselines and their
+fold-local TF-IDF vocabularies. Settings were fixed before fitting: logistic
+C=1, balanced classes within each training fold, seed 20261001, max_iter=1000,
+lbfgs. Hybrid features concatenate TF-IDF and frozen MiniLM vectors, each scaled
+by 1/sqrt(2). All word rows were checked to be nonzero and unit L2 norm in every
+fold; semantic rows were finite unit vectors. Equal block norms do not establish
+equal influence or equivalent regularization across representations.
+
+Only the training member of the existing NPZ was loaded. Its full container and
+metadata were hashed, but validation vectors were not indexed. No validation
+partition or reserved test was opened. Source/feature hash and ID alignment,
+split uniqueness, event-string separation and complete OOF coverage were checked.
+Frozen encoder revision/pooling/windowing, runtime versions, model hashes,
+fold IDs and all 345 OOF predictions/probability vectors are retained.
+
+| Training OOF result | Word | Semantic | Hybrid |
+| --- | ---: | ---: | ---: |
+| Released-label matches /115 | 58 | 58 | 59 |
+| Agreement | .5043 | .5043 | .5130 |
+| Macro-F1 | .4423 | .4794 | .4847 |
+| Unanimous matches /54 | 25 | 25 | 25 |
+| Center recall | .1538 | .3462 | .3077 |
+
+Against word predictions, semantic corrected 17 errors and regressed 17;
+hybrid corrected 12 and regressed 11. An interim commentary mistakenly said
+8/7 for hybrid; corrected immediately after calculating the saved-prediction
+counts. Maximum solver iterations across all heads was 16, below the limit.
+The one-example net gain does not establish improvement or justify deployment.
+No settings search, calibration or threshold changes followed. Three focused
+tests passed (feature scaling/validation and split-integrity checks).
+
+GPT-6 Astra Medium reviewed the design through the installed terminal client;
+local advice is research/data/hybrid-cv-advice-20261002.txt. This remains exploratory
+training OOF evidence affected by prior development choices, disputed labels,
+possible shared event families and unknown encoder pretraining overlap. Corpus
+revision b193ee173936b281183ca1dc101ae4de215a0e5c and noncommercial research-only
+restrictions remain unchanged. Independent human product evaluation is missing.
+
+Evidence: research/results/hybrid_cv_20261002.json; fitted models and pre-fit
+protocol in research/checkpoints/hybrid-cv-20261002/. A one-off report-enrichment
+command initially failed with a SyntaxError before writing; corrected and rerun.
+Production was not changed. Local Chromium fallback (154.0.8037.95) submitted
+ordered training examples 4-6 to the public site. All returned HTTP 200 and LEFT;
+no page errors, failed requests or mobile overflow. Mobile screenshot inspected.
+This is functional production smoke coverage, not evaluation of the new models.
+Raw responses/screenshots: outputs/live-browser-hybrid-20261002; sanitized browser
+summary and screenshot hashes: research/results/hybrid_browser_20261002.json.
+
 ## 2026-10-02 16:53 UTC: deployed confidence and abstention audit
 
 Audited all 66 stored development responses against their hash-matched snippet
