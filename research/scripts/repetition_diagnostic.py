@@ -9,7 +9,7 @@ from pathlib import Path
 def distinct_context(text):
     """Research-only context view; unchanged text when no duplicates exist."""
     seen=set();kept=[];duplicate=False
-    for paragraph in re.split(r'\n\s*\n',text):
+    for paragraph in re.split(r'\r?\n\s*\r?\n',text):
         key=' '.join(paragraph.split())
         if key and key in seen:
             duplicate=True
@@ -19,7 +19,7 @@ def distinct_context(text):
 
 
 def diagnose(text):
-    paragraphs=[' '.join(p.split()) for p in re.split(r'\n\s*\n',text) if p.strip()]
+    paragraphs=[' '.join(p.split()) for p in re.split(r'\r?\n\s*\r?\n',text) if p.strip()]
     unique=list(dict.fromkeys(paragraphs))
     words=sum(len(p.split()) for p in paragraphs)
     unique_words=sum(len(p.split()) for p in unique)

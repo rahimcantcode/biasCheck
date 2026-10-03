@@ -1,0 +1,94 @@
+{
+  "started_at": "2026-10-03T08:29:02.872Z",
+  "finished_at": "2026-10-03T08:29:29.661Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.95",
+  "url": "https://bias.r4him.tech/",
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "purpose": "Development repetition format challenge, not political accuracy",
+  "cases": [
+    {
+      "id": "single-newlines",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.996872,
+          "RIGHT": 0.001225,
+          "CENTER": 0.001903
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 87,
+        "tokens_processed": 87,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "spaces-only",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999442,
+          "RIGHT": 0.00041,
+          "CENTER": 0.000148
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 80,
+        "tokens_processed": 80,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "repeat-plus-body",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "CENTER",
+        "label_id": 2,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.285067,
+          "RIGHT": 0.018203,
+          "CENTER": 0.69673
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 181,
+        "tokens_processed": 181,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    }
+  ],
+  "screenshots": {
+    "spaces-only.png": "e6ef392eb608062ba4bcfb9870a690a22c9c2465573aa0e8971e2b787f7aa3d9",
+    "repeat-plus-body.png": "46201587e01c356d2a378efa8520ac6d8028602f7a52be1bfe1fd8d16a759a97",
+    "mobile.png": "79260ad6cf23220e39a109c26ef5f461fbd6b5f0520e7d85d6f9bb094a502e8f",
+    "single-newlines.png": "a515682199cbb836b27f4f929d21b20b3a83129378ca08290ab222ca181cae40"
+  }
+}

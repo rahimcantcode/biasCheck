@@ -1,5 +1,41 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03 08:10 UTC: repetition-format challenge and CRLF repair
+
+Constructed ten deterministic development cases from the first training title
+and its body: single headline, three exact-paragraph formats, four known-gap
+formats, body alone, and repeated title plus body. No political gold labels
+assigned. Reused and verified all tokenizer files from the previous shadow run.
+An added test failed because CRLF paragraph splitting retained a carriage return
+in the first distinct paragraph (11 context tokens instead of 10). Fixed the
+research-only splitter to consume CRLF separators. Eight repetition/challenge
+tests now pass; initial and corrected offline runs are both retained locally.
+
+Corrected shadow counts: blank-line, CRLF and within-paragraph whitespace
+variants all reduce to 10 tokens. Single-newline, space-only, numbered and
+punctuation-varied repetitions retain 87/80/110/101 tokens and evade the narrow
+candidate. Body-only remains 85 tokens; repeated-title-plus-body reduces from
+181 to 97, preserving additional context rather than rejecting all repetition.
+This is a ten-case post hoc challenge, not an independent robustness rate,
+false-positive estimate or proof of semantic sufficiency. The candidate is not
+approved as a general solution and remains disconnected from production.
+
+Local Chromium fallback tested single-newline, space-only and repeated-plus-body
+inputs on production. All HTTP 200; results LEFT (.996872), LEFT (.999442), and
+CENTER (.696730), respectively. No page errors, failed requests or mobile
+overflow; mobile screenshot inspected. The first two confirm continued
+classification of formatting variants of the short repeated headline. The last
+is a context diagnostic, not a human-labeled correctness judgment.
+
+Evidence: research/results/repetition_challenge_20261003.json and
+research/results/repetition_challenge_browser_20261003.json; exact constructed
+texts retained under research/checkpoints/repetition-challenge-crlf-fixed-20261003/;
+initial pre-fix results under research/checkpoints/repetition-challenge-20261003/.
+Raw browser responses/screenshots: outputs/live-browser-repetition-challenge-20261003.
+No fitting, validation/reserved-test access, political relabeling or deployment.
+This run extends engineering tests; no new ML model review claimed. Corpus
+restrictions and missing independent human product evaluation remain unchanged.
+
 ## 2026-10-03 07:02 UTC: distinct-paragraph context shadow candidate
 
 Implemented an offline-only minimum-context candidate following the repeated-
