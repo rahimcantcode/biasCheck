@@ -1,0 +1,575 @@
+{
+  "candidate": {
+    "model_id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+    "model_revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+    "source_revision": "a363e434e73b4b4f74dac5a959139cb86f30cfd6",
+    "prompt_source_url": "https://raw.githubusercontent.com/VectorInstitute/unbias-plus/a363e434e73b4b4f74dac5a959139cb86f30cfd6/src/unbias_plus/prompt.py",
+    "prompt_file_sha256": "a699ac703467d11fd99ebc9e66d158b7de15bedcd04b737a75104eeb603f1d02",
+    "prompt": "verbatim upstream SYSTEM_PROMPT and USER_TEMPLATE",
+    "preprocessing": "none, exact original text including quotations",
+    "thinking": false,
+    "temperature": 0,
+    "max_output_tokens": 2048,
+    "release_approved": false
+  },
+  "runtime": {
+    "schema_version": 1,
+    "model_id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+    "model_revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+    "weights_path": "/tmp/unbias-v2-q4/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2-Q4_K_M.gguf",
+    "weights_sha256": "7f771dbb1739fe840655850784c1cea759185aa456cde0644bdb1425d89969c9",
+    "weights_bytes": 5027784064,
+    "quantization": "Q4_K_M requantized from locally generated Q8_0",
+    "conversion_source_revision": "fb4b2737a808a3fb7c2117a498f43815dc9be53e",
+    "runtime_fingerprint": "b11349-fb4b2737a",
+    "context_tokens": 8192,
+    "threads": 4,
+    "max_output_tokens": 2048,
+    "runtime_server_path": "/workspace/scratch/629523a223d6/biasCheck/research/checkpoints/unbias-runtime/bin/llama-b11349/llama-server",
+    "runtime_server_sha256": "f1fe3730c84c6fb397e6807bf6bc7b9572f322dcaa1f342ad1b4c92dca74bce8",
+    "conversion_manifest": "research/experiments/unbias_20261003/conversion_manifest.json",
+    "quality_caveat": "Locally derived Q8_0 then Q4_K_M requantization of the pinned official V2 checkpoint; not the full-precision original and not a claim of equivalent model quality."
+  },
+  "fixture_sha256": "8f62609cbf91579ce8d9c89fb683c6c5f06452b0e044bbf09b4d74e3105ee815",
+  "provenance": "New AI-authored synthetic diagnostics, not human-validated accuracy",
+  "rows": [
+    {
+      "id": "D01",
+      "text": "The proposed corporate tax increase is a reckless tax grab. Congress will debate the bill on Tuesday.",
+      "text_sha256": "44759bcdc220ef69137396ffa79b7a2f3e6ee39be6ad8b8a4b551c4acd38e5c8",
+      "expected_spans": [
+        {
+          "text": "reckless tax grab",
+          "start": 41,
+          "end": 58,
+          "occurrence": 0,
+          "attribution": "author",
+          "reason": "The narrator uses a pejorative characterization of the proposed tax policy."
+        }
+      ],
+      "exact_input_tokens": 1787,
+      "raw_http_status": 200,
+      "raw_http_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"severity\\\": 4,\\n  \\\"biased_segments\\\": [\\n    {\\n      \\\"original\\\": \\\"proposed corporate tax increase\\\",\\n      \\\"replacement\\\": \\\"proposed corporate tax increase\\\",\\n      \\\"severity\\\": \\\"Low\\\",\\n      \\\"bias_type\\\": \\\"opinion_as_fact\\\",\\n      \\\"reasoning\\\": \\\"The phrase presents a policy position as a settled description rather than a neutral policy description.\\\"\\n    },\\n    {\\n      \\\"original\\\": \\\"is a reckless tax grab\\\",\\n      \\\"replacement\\\": \\\"would increase taxes\\\",\\n      \\\"severity\\\": \\\"Medium\\\",\\n      \\\"bias_type\\\": \\\"opinion_as_fact\\\",\\n      \\\"reasoning\\\": \\\"This is an evaluative judgment presented as fact, with charged wording.\\\"\\n    }\\n  ],\\n  \\\"unbiased_text\\\": \\\"The proposed corporate tax increase would increase taxes. Congress will debate the bill on Tuesday.\\\"\\n}\"}}],\"created\":1791054008,\"model\":\"unbias-plus-v2\",\"system_fingerprint\":\"b11349-fb4b2737a\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":171,\"prompt_tokens\":1787,\"total_tokens\":1958,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-4gypX0kMnxjXA1k3hCo1C4qQA1rz9ymZ\",\"timings\":{\"cache_n\":0,\"prompt_n\":1787,\"prompt_ms\":49292.631,\"prompt_per_token_ms\":27.584012870733073,\"prompt_per_second\":36.252883316372376,\"predicted_n\":171,\"predicted_ms\":20326.132,\"predicted_per_token_ms\":119.56548235294119,\"predicted_per_second\":8.36361782950145}}",
+      "raw_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"severity\": 4,\n  \"biased_segments\": [\n    {\n      \"original\": \"proposed corporate tax increase\",\n      \"replacement\": \"proposed corporate tax increase\",\n      \"severity\": \"Low\",\n      \"bias_type\": \"opinion_as_fact\",\n      \"reasoning\": \"The phrase presents a policy position as a settled description rather than a neutral policy description.\"\n    },\n    {\n      \"original\": \"is a reckless tax grab\",\n      \"replacement\": \"would increase taxes\",\n      \"severity\": \"Medium\",\n      \"bias_type\": \"opinion_as_fact\",\n      \"reasoning\": \"This is an evaluative judgment presented as fact, with charged wording.\"\n    }\n  ],\n  \"unbiased_text\": \"The proposed corporate tax increase would increase taxes. Congress will debate the bill on Tuesday.\"\n}"
+            }
+          }
+        ],
+        "created": 1791054008,
+        "model": "unbias-plus-v2",
+        "system_fingerprint": "b11349-fb4b2737a",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 171,
+          "prompt_tokens": 1787,
+          "total_tokens": 1958,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "id": "chatcmpl-4gypX0kMnxjXA1k3hCo1C4qQA1rz9ymZ",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 1787,
+          "prompt_ms": 49292.631,
+          "prompt_per_token_ms": 27.584012870733073,
+          "prompt_per_second": 36.252883316372376,
+          "predicted_n": 171,
+          "predicted_ms": 20326.132,
+          "predicted_per_token_ms": 119.56548235294119,
+          "predicted_per_second": 8.36361782950145
+        }
+      },
+      "native_result": {
+        "severity": 4,
+        "biased_segments": [
+          {
+            "original": "proposed corporate tax increase",
+            "replacement": "proposed corporate tax increase",
+            "severity": "Low",
+            "bias_type": "opinion_as_fact",
+            "reasoning": "The phrase presents a policy position as a settled description rather than a neutral policy description."
+          },
+          {
+            "original": "is a reckless tax grab",
+            "replacement": "would increase taxes",
+            "severity": "Medium",
+            "bias_type": "opinion_as_fact",
+            "reasoning": "This is an evaluative judgment presented as fact, with charged wording."
+          }
+        ],
+        "unbiased_text": "The proposed corporate tax increase would increase taxes. Congress will debate the bill on Tuesday."
+      },
+      "status": "suggestions",
+      "source_sha256": "44759bcdc220ef69137396ffa79b7a2f3e6ee39be6ad8b8a4b551c4acd38e5c8",
+      "spans": [
+        {
+          "text": "proposed corporate tax increase",
+          "start": 4,
+          "end": 35,
+          "attribution": "unknown",
+          "reason": "The phrase presents a policy position as a settled description rather than a neutral policy description.",
+          "bias_type": "opinion_as_fact",
+          "native_index": 0
+        },
+        {
+          "text": "is a reckless tax grab",
+          "start": 36,
+          "end": 58,
+          "attribution": "unknown",
+          "reason": "This is an evaluative judgment presented as fact, with charged wording.",
+          "bias_type": "opinion_as_fact",
+          "native_index": 1
+        }
+      ],
+      "rejected": [],
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "exact_span_metrics": {
+        "true_positive": 0,
+        "false_positive": 2,
+        "false_negative": 1
+      },
+      "elapsed_seconds": 69.65338773799886
+    },
+    {
+      "id": "D02",
+      "text": "The bill would increase the corporate tax rate from 21 percent to 25 percent. The committee voted 12 to 8 to send it to the full chamber.",
+      "text_sha256": "8fb7b3dedf23d63d7eb1bc732acc710f4a63bb9168df18b2787c41985b751f75",
+      "expected_spans": [],
+      "exact_input_tokens": 1804,
+      "raw_http_status": 200,
+      "raw_http_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"severity\\\": 0,\\n  \\\"biased_segments\\\": [],\\n  \\\"unbiased_text\\\": \\\"The bill would increase the corporate tax rate from 21 percent to 25 percent. The committee voted 12 to 8 to send it to the full chamber.\\\"\\n}\"}}],\"created\":1791054017,\"model\":\"unbias-plus-v2\",\"system_fingerprint\":\"b11349-fb4b2737a\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":59,\"prompt_tokens\":1804,\"total_tokens\":1863,\"prompt_tokens_details\":{\"cached_tokens\":1760}},\"id\":\"chatcmpl-xbs2CgISHMw7LdsEm9r6j0iOx5UrB5Zp\",\"timings\":{\"cache_n\":1760,\"prompt_n\":44,\"prompt_ms\":2198.341,\"prompt_per_token_ms\":49.962295454545455,\"prompt_per_second\":20.015093199826598,\"predicted_n\":59,\"predicted_ms\":7221.211,\"predicted_per_token_ms\":124.50363793103449,\"predicted_per_second\":8.031893819471554}}",
+      "raw_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"severity\": 0,\n  \"biased_segments\": [],\n  \"unbiased_text\": \"The bill would increase the corporate tax rate from 21 percent to 25 percent. The committee voted 12 to 8 to send it to the full chamber.\"\n}"
+            }
+          }
+        ],
+        "created": 1791054017,
+        "model": "unbias-plus-v2",
+        "system_fingerprint": "b11349-fb4b2737a",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 59,
+          "prompt_tokens": 1804,
+          "total_tokens": 1863,
+          "prompt_tokens_details": {
+            "cached_tokens": 1760
+          }
+        },
+        "id": "chatcmpl-xbs2CgISHMw7LdsEm9r6j0iOx5UrB5Zp",
+        "timings": {
+          "cache_n": 1760,
+          "prompt_n": 44,
+          "prompt_ms": 2198.341,
+          "prompt_per_token_ms": 49.962295454545455,
+          "prompt_per_second": 20.015093199826598,
+          "predicted_n": 59,
+          "predicted_ms": 7221.211,
+          "predicted_per_token_ms": 124.50363793103449,
+          "predicted_per_second": 8.031893819471554
+        }
+      },
+      "native_result": {
+        "severity": 0,
+        "biased_segments": [],
+        "unbiased_text": "The bill would increase the corporate tax rate from 21 percent to 25 percent. The committee voted 12 to 8 to send it to the full chamber."
+      },
+      "status": "no_suggestions",
+      "source_sha256": "8fb7b3dedf23d63d7eb1bc732acc710f4a63bb9168df18b2787c41985b751f75",
+      "spans": [],
+      "rejected": [],
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "exact_span_metrics": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "elapsed_seconds": 9.460399761999724
+    },
+    {
+      "id": "D03",
+      "text": "Congress should increase the corporate tax rate from 21 percent to 25 percent. I support the proposal and want lawmakers to vote for it.",
+      "text_sha256": "c60a41f2b1eacddfa351ae76fd730ceea19e347980674e0d5dd87acbdff032c7",
+      "expected_spans": [],
+      "exact_input_tokens": 1798,
+      "raw_http_status": 200,
+      "raw_http_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"severity\\\": 0,\\n  \\\"biased_segments\\\": [],\\n  \\\"unbiased_text\\\": \\\"Congress should increase the corporate tax rate from 21 percent to 25 percent. I support the proposal and want lawmakers to vote for it.\\\"\\n}\"}}],\"created\":1791054025,\"model\":\"unbias-plus-v2\",\"system_fingerprint\":\"b11349-fb4b2737a\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":53,\"prompt_tokens\":1798,\"total_tokens\":1851,\"prompt_tokens_details\":{\"cached_tokens\":1759}},\"id\":\"chatcmpl-3bleFuYI4az9IAlOSapQx8kGVO9EEy4G\",\"timings\":{\"cache_n\":1759,\"prompt_n\":39,\"prompt_ms\":1898.857,\"prompt_per_token_ms\":48.688641025641026,\"prompt_per_second\":20.538671421807962,\"predicted_n\":53,\"predicted_ms\":6174.056,\"predicted_per_token_ms\":118.73184615384615,\"predicted_per_second\":8.42234019257357}}",
+      "raw_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"severity\": 0,\n  \"biased_segments\": [],\n  \"unbiased_text\": \"Congress should increase the corporate tax rate from 21 percent to 25 percent. I support the proposal and want lawmakers to vote for it.\"\n}"
+            }
+          }
+        ],
+        "created": 1791054025,
+        "model": "unbias-plus-v2",
+        "system_fingerprint": "b11349-fb4b2737a",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 53,
+          "prompt_tokens": 1798,
+          "total_tokens": 1851,
+          "prompt_tokens_details": {
+            "cached_tokens": 1759
+          }
+        },
+        "id": "chatcmpl-3bleFuYI4az9IAlOSapQx8kGVO9EEy4G",
+        "timings": {
+          "cache_n": 1759,
+          "prompt_n": 39,
+          "prompt_ms": 1898.857,
+          "prompt_per_token_ms": 48.688641025641026,
+          "prompt_per_second": 20.538671421807962,
+          "predicted_n": 53,
+          "predicted_ms": 6174.056,
+          "predicted_per_token_ms": 118.73184615384615,
+          "predicted_per_second": 8.42234019257357
+        }
+      },
+      "native_result": {
+        "severity": 0,
+        "biased_segments": [],
+        "unbiased_text": "Congress should increase the corporate tax rate from 21 percent to 25 percent. I support the proposal and want lawmakers to vote for it."
+      },
+      "status": "no_suggestions",
+      "source_sha256": "c60a41f2b1eacddfa351ae76fd730ceea19e347980674e0d5dd87acbdff032c7",
+      "spans": [],
+      "rejected": [],
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "exact_span_metrics": {
+        "true_positive": 0,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "elapsed_seconds": 8.096879077998892
+    },
+    {
+      "id": "D04",
+      "text": "Senator Lee called the proposed corporate tax increase \u201ca reckless tax grab.\u201d The reporter did not state whether she agreed with that characterization.",
+      "text_sha256": "916f4e96bab4acee6eda72a5d0747a613f666cdb0e01ca1a693418cb74c9a974",
+      "expected_spans": [
+        {
+          "text": "reckless tax grab",
+          "start": 58,
+          "end": 75,
+          "occurrence": 0,
+          "attribution": "quoted",
+          "reason": "Senator Lee supplies the evaluative phrase; the passage does not establish reporter endorsement."
+        }
+      ],
+      "exact_input_tokens": 1794,
+      "raw_http_status": 200,
+      "raw_http_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"severity\\\": 3,\\n  \\\"biased_segments\\\": [\\n    {\\n      \\\"original\\\": \\\"a reckless tax grab\\\",\\n      \\\"replacement\\\": \\\"a tax increase\\\",\\n      \\\"severity\\\": \\\"Medium\\\",\\n      \\\"bias_type\\\": \\\"opinion_as_fact\\\",\\n      \\\"reasoning\\\": \\\"Presents an evaluative judgment about the tax increase as fact.\\\"\\n    }\\n  ],\\n  \\\"unbiased_text\\\": \\\"Senator Lee called the proposed corporate tax increase \u201ca tax increase.\u201d The reporter did not state whether she agreed with that characterization.\\\"\\n}\"}}],\"created\":1791054040,\"model\":\"unbias-plus-v2\",\"system_fingerprint\":\"b11349-fb4b2737a\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":110,\"prompt_tokens\":1794,\"total_tokens\":1904,\"prompt_tokens_details\":{\"cached_tokens\":1759}},\"id\":\"chatcmpl-mS3KVjhnVWvQ4O17Vqi6Cc6uoNzwCf9d\",\"timings\":{\"cache_n\":1759,\"prompt_n\":35,\"prompt_ms\":1659.404,\"prompt_per_token_ms\":47.411542857142855,\"prompt_per_second\":21.091910107484374,\"predicted_n\":110,\"predicted_ms\":13247.971,\"predicted_per_token_ms\":121.54101834862385,\"predicted_per_second\":8.227675015291021}}",
+      "raw_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"severity\": 3,\n  \"biased_segments\": [\n    {\n      \"original\": \"a reckless tax grab\",\n      \"replacement\": \"a tax increase\",\n      \"severity\": \"Medium\",\n      \"bias_type\": \"opinion_as_fact\",\n      \"reasoning\": \"Presents an evaluative judgment about the tax increase as fact.\"\n    }\n  ],\n  \"unbiased_text\": \"Senator Lee called the proposed corporate tax increase \u201ca tax increase.\u201d The reporter did not state whether she agreed with that characterization.\"\n}"
+            }
+          }
+        ],
+        "created": 1791054040,
+        "model": "unbias-plus-v2",
+        "system_fingerprint": "b11349-fb4b2737a",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 110,
+          "prompt_tokens": 1794,
+          "total_tokens": 1904,
+          "prompt_tokens_details": {
+            "cached_tokens": 1759
+          }
+        },
+        "id": "chatcmpl-mS3KVjhnVWvQ4O17Vqi6Cc6uoNzwCf9d",
+        "timings": {
+          "cache_n": 1759,
+          "prompt_n": 35,
+          "prompt_ms": 1659.404,
+          "prompt_per_token_ms": 47.411542857142855,
+          "prompt_per_second": 21.091910107484374,
+          "predicted_n": 110,
+          "predicted_ms": 13247.971,
+          "predicted_per_token_ms": 121.54101834862385,
+          "predicted_per_second": 8.227675015291021
+        }
+      },
+      "native_result": {
+        "severity": 3,
+        "biased_segments": [
+          {
+            "original": "a reckless tax grab",
+            "replacement": "a tax increase",
+            "severity": "Medium",
+            "bias_type": "opinion_as_fact",
+            "reasoning": "Presents an evaluative judgment about the tax increase as fact."
+          }
+        ],
+        "unbiased_text": "Senator Lee called the proposed corporate tax increase \u201ca tax increase.\u201d The reporter did not state whether she agreed with that characterization."
+      },
+      "status": "suggestions",
+      "source_sha256": "916f4e96bab4acee6eda72a5d0747a613f666cdb0e01ca1a693418cb74c9a974",
+      "spans": [
+        {
+          "text": "a reckless tax grab",
+          "start": 56,
+          "end": 75,
+          "attribution": "unknown",
+          "reason": "Presents an evaluative judgment about the tax increase as fact.",
+          "bias_type": "opinion_as_fact",
+          "native_index": 0
+        }
+      ],
+      "rejected": [],
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "exact_span_metrics": {
+        "true_positive": 0,
+        "false_positive": 1,
+        "false_negative": 1
+      },
+      "elapsed_seconds": 14.935171983001055
+    },
+    {
+      "id": "D05",
+      "text": "Senator Lee called the bill \u201ca reckless tax grab.\u201d I agree with that description: this bill is a reckless tax grab.",
+      "text_sha256": "9a6f1bf3eebb500fd434b97514ccc331e173a820792fc42596190316e82ee091",
+      "expected_spans": [
+        {
+          "text": "reckless tax grab",
+          "start": 31,
+          "end": 48,
+          "occurrence": 0,
+          "attribution": "quoted",
+          "reason": "The first occurrence is explicitly attributed to Senator Lee."
+        },
+        {
+          "text": "reckless tax grab",
+          "start": 97,
+          "end": 114,
+          "occurrence": 1,
+          "attribution": "author",
+          "reason": "The second occurrence is the narrator\u2019s own explicit evaluative characterization."
+        }
+      ],
+      "exact_input_tokens": 1793,
+      "raw_http_status": 200,
+      "raw_http_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"severity\\\": 4,\\n  \\\"biased_segments\\\": [\\n    {\\n      \\\"original\\\": \\\"called the bill \u201ca reckless tax grab.\u201d\\\",\\n      \\\"replacement\\\": \\\"described the bill as a tax increase.\\\",\\n      \\\"severity\\\": \\\"Medium\\\",\\n      \\\"bias_type\\\": \\\"loaded_language\\\",\\n      \\\"reasoning\\\": \\\"\u201cTax grab\u201d is charged wording that frames the bill as illegitimate.\\\"\\n    },\\n    {\\n      \\\"original\\\": \\\"I agree with that description: this bill is a reckless tax grab.\\\",\\n      \\\"replacement\\\": \\\"I agree with that description: this bill is a tax increase.\\\",\\n      \\\"severity\\\": \\\"Medium\\\",\\n      \\\"bias_type\\\": \\\"loaded_language\\\",\\n      \\\"reasoning\\\": \\\"\u201cTax grab\u201d is charged wording that frames the bill as illegitimate.\\\"\\n    }\\n  ],\\n  \\\"unbiased_text\\\": \\\"Senator Lee described the bill as a tax increase. I agree with that description: this bill is a tax increase.\\\"\\n}\"}}],\"created\":1791054067,\"model\":\"unbias-plus-v2\",\"system_fingerprint\":\"b11349-fb4b2737a\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":196,\"prompt_tokens\":1793,\"total_tokens\":1989,\"prompt_tokens_details\":{\"cached_tokens\":1763}},\"id\":\"chatcmpl-gMbl8P7qHCntf1onZ3kTeS4jm6OaPPvb\",\"timings\":{\"cache_n\":1763,\"prompt_n\":30,\"prompt_ms\":1639.523,\"prompt_per_token_ms\":54.65076666666666,\"prompt_per_second\":18.298004968518285,\"predicted_n\":196,\"predicted_ms\":24975.924,\"predicted_per_token_ms\":128.08166153846153,\"predicted_per_second\":7.807518953052549}}",
+      "raw_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"severity\": 4,\n  \"biased_segments\": [\n    {\n      \"original\": \"called the bill \u201ca reckless tax grab.\u201d\",\n      \"replacement\": \"described the bill as a tax increase.\",\n      \"severity\": \"Medium\",\n      \"bias_type\": \"loaded_language\",\n      \"reasoning\": \"\u201cTax grab\u201d is charged wording that frames the bill as illegitimate.\"\n    },\n    {\n      \"original\": \"I agree with that description: this bill is a reckless tax grab.\",\n      \"replacement\": \"I agree with that description: this bill is a tax increase.\",\n      \"severity\": \"Medium\",\n      \"bias_type\": \"loaded_language\",\n      \"reasoning\": \"\u201cTax grab\u201d is charged wording that frames the bill as illegitimate.\"\n    }\n  ],\n  \"unbiased_text\": \"Senator Lee described the bill as a tax increase. I agree with that description: this bill is a tax increase.\"\n}"
+            }
+          }
+        ],
+        "created": 1791054067,
+        "model": "unbias-plus-v2",
+        "system_fingerprint": "b11349-fb4b2737a",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 196,
+          "prompt_tokens": 1793,
+          "total_tokens": 1989,
+          "prompt_tokens_details": {
+            "cached_tokens": 1763
+          }
+        },
+        "id": "chatcmpl-gMbl8P7qHCntf1onZ3kTeS4jm6OaPPvb",
+        "timings": {
+          "cache_n": 1763,
+          "prompt_n": 30,
+          "prompt_ms": 1639.523,
+          "prompt_per_token_ms": 54.65076666666666,
+          "prompt_per_second": 18.298004968518285,
+          "predicted_n": 196,
+          "predicted_ms": 24975.924,
+          "predicted_per_token_ms": 128.08166153846153,
+          "predicted_per_second": 7.807518953052549
+        }
+      },
+      "native_result": {
+        "severity": 4,
+        "biased_segments": [
+          {
+            "original": "called the bill \u201ca reckless tax grab.\u201d",
+            "replacement": "described the bill as a tax increase.",
+            "severity": "Medium",
+            "bias_type": "loaded_language",
+            "reasoning": "\u201cTax grab\u201d is charged wording that frames the bill as illegitimate."
+          },
+          {
+            "original": "I agree with that description: this bill is a reckless tax grab.",
+            "replacement": "I agree with that description: this bill is a tax increase.",
+            "severity": "Medium",
+            "bias_type": "loaded_language",
+            "reasoning": "\u201cTax grab\u201d is charged wording that frames the bill as illegitimate."
+          }
+        ],
+        "unbiased_text": "Senator Lee described the bill as a tax increase. I agree with that description: this bill is a tax increase."
+      },
+      "status": "suggestions",
+      "source_sha256": "9a6f1bf3eebb500fd434b97514ccc331e173a820792fc42596190316e82ee091",
+      "spans": [
+        {
+          "text": "called the bill \u201ca reckless tax grab.\u201d",
+          "start": 12,
+          "end": 50,
+          "attribution": "unknown",
+          "reason": "\u201cTax grab\u201d is charged wording that frames the bill as illegitimate.",
+          "bias_type": "loaded_language",
+          "native_index": 0
+        },
+        {
+          "text": "I agree with that description: this bill is a reckless tax grab.",
+          "start": 51,
+          "end": 115,
+          "attribution": "unknown",
+          "reason": "\u201cTax grab\u201d is charged wording that frames the bill as illegitimate.",
+          "bias_type": "loaded_language",
+          "native_index": 1
+        }
+      ],
+      "rejected": [],
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "exact_span_metrics": {
+        "true_positive": 0,
+        "false_positive": 2,
+        "false_negative": 2
+      },
+      "elapsed_seconds": 26.64079328599837
+    },
+    {
+      "id": "D06",
+      "text": "The reckless goalkeeper left the net empty, and the visiting team scored. The coach called the play a disaster after the match.",
+      "text_sha256": "d3890c9b17be4f78491866638128d78ed9580fd3893433b91933ad81487eb61a",
+      "expected_spans": [],
+      "exact_input_tokens": 1793,
+      "raw_http_status": 200,
+      "raw_http_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"severity\\\": 4,\\n  \\\"biased_segments\\\": [\\n    {\\n      \\\"original\\\": \\\"The reckless goalkeeper\\\",\\n      \\\"replacement\\\": \\\"The goalkeeper\\\",\\n      \\\"severity\\\": \\\"Medium\\\",\\n      \\\"bias_type\\\": \\\"opinion_as_fact\\\",\\n      \\\"reasoning\\\": \\\"\u201cReckless\u201d is an unattributed evaluative judgment about the goalkeeper.\\\"\\n    },\\n    {\\n      \\\"original\\\": \\\"called the play a disaster\\\",\\n      \\\"replacement\\\": \\\"criticized the play\\\",\\n      \\\"severity\\\": \\\"Medium\\\",\\n      \\\"bias_type\\\": \\\"sensationalism\\\",\\n      \\\"reasoning\\\": \\\"\u201cDisaster\u201d is dramatic, evaluative wording that heightens the criticism.\\\"\\n    }\\n  ],\\n  \\\"unbiased_text\\\": \\\"The goalkeeper left the net empty, and the visiting team scored. The coach criticized the play after the match.\\\"\\n}\"}}],\"created\":1791054090,\"model\":\"unbias-plus-v2\",\"system_fingerprint\":\"b11349-fb4b2737a\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":175,\"prompt_tokens\":1793,\"total_tokens\":1968,\"prompt_tokens_details\":{\"cached_tokens\":1759}},\"id\":\"chatcmpl-hQKX4mYiXvvNO2YWVwHEmYY5r9cBZVRa\",\"timings\":{\"cache_n\":1759,\"prompt_n\":34,\"prompt_ms\":1626.009,\"prompt_per_token_ms\":47.82379411764706,\"prompt_per_second\":20.910093363566865,\"predicted_n\":175,\"predicted_ms\":21395.347,\"predicted_per_token_ms\":122.9617643678161,\"predicted_per_second\":8.132609393995805}}",
+      "raw_response": {
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"severity\": 4,\n  \"biased_segments\": [\n    {\n      \"original\": \"The reckless goalkeeper\",\n      \"replacement\": \"The goalkeeper\",\n      \"severity\": \"Medium\",\n      \"bias_type\": \"opinion_as_fact\",\n      \"reasoning\": \"\u201cReckless\u201d is an unattributed evaluative judgment about the goalkeeper.\"\n    },\n    {\n      \"original\": \"called the play a disaster\",\n      \"replacement\": \"criticized the play\",\n      \"severity\": \"Medium\",\n      \"bias_type\": \"sensationalism\",\n      \"reasoning\": \"\u201cDisaster\u201d is dramatic, evaluative wording that heightens the criticism.\"\n    }\n  ],\n  \"unbiased_text\": \"The goalkeeper left the net empty, and the visiting team scored. The coach criticized the play after the match.\"\n}"
+            }
+          }
+        ],
+        "created": 1791054090,
+        "model": "unbias-plus-v2",
+        "system_fingerprint": "b11349-fb4b2737a",
+        "object": "chat.completion",
+        "usage": {
+          "completion_tokens": 175,
+          "prompt_tokens": 1793,
+          "total_tokens": 1968,
+          "prompt_tokens_details": {
+            "cached_tokens": 1759
+          }
+        },
+        "id": "chatcmpl-hQKX4mYiXvvNO2YWVwHEmYY5r9cBZVRa",
+        "timings": {
+          "cache_n": 1759,
+          "prompt_n": 34,
+          "prompt_ms": 1626.009,
+          "prompt_per_token_ms": 47.82379411764706,
+          "prompt_per_second": 20.910093363566865,
+          "predicted_n": 175,
+          "predicted_ms": 21395.347,
+          "predicted_per_token_ms": 122.9617643678161,
+          "predicted_per_second": 8.132609393995805
+        }
+      },
+      "native_result": {
+        "severity": 4,
+        "biased_segments": [
+          {
+            "original": "The reckless goalkeeper",
+            "replacement": "The goalkeeper",
+            "severity": "Medium",
+            "bias_type": "opinion_as_fact",
+            "reasoning": "\u201cReckless\u201d is an unattributed evaluative judgment about the goalkeeper."
+          },
+          {
+            "original": "called the play a disaster",
+            "replacement": "criticized the play",
+            "severity": "Medium",
+            "bias_type": "sensationalism",
+            "reasoning": "\u201cDisaster\u201d is dramatic, evaluative wording that heightens the criticism."
+          }
+        ],
+        "unbiased_text": "The goalkeeper left the net empty, and the visiting team scored. The coach criticized the play after the match."
+      },
+      "status": "suggestions",
+      "source_sha256": "d3890c9b17be4f78491866638128d78ed9580fd3893433b91933ad81487eb61a",
+      "spans": [
+        {
+          "text": "The reckless goalkeeper",
+          "start": 0,
+          "end": 23,
+          "attribution": "unknown",
+          "reason": "\u201cReckless\u201d is an unattributed evaluative judgment about the goalkeeper.",
+          "bias_type": "opinion_as_fact",
+          "native_index": 0
+        },
+        {
+          "text": "called the play a disaster",
+          "start": 84,
+          "end": 110,
+          "attribution": "unknown",
+          "reason": "\u201cDisaster\u201d is dramatic, evaluative wording that heightens the criticism.",
+          "bias_type": "sensationalism",
+          "native_index": 1
+        }
+      ],
+      "rejected": [],
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "exact_span_metrics": {
+        "true_positive": 0,
+        "false_positive": 2,
+        "false_negative": 0
+      },
+      "elapsed_seconds": 23.046575705000578
+    }
+  ],
+  "counts": {
+    "completed": 6,
+    "partial_failure": 0,
+    "failed": 0
+  }
+}

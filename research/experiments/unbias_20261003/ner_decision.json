@@ -1,0 +1,30 @@
+{
+  "decision": "Do not promote compact NER fallback",
+  "basis": "New six-case synthetic scope-alignment diagnostics only",
+  "completed": 6,
+  "failures": 0,
+  "exact_expected_spans_found": 4,
+  "total_emitted_spans": 17,
+  "additional_spans": 13,
+  "negative_control_cases_with_highlights": [
+    "D02",
+    "D03",
+    "D06"
+  ],
+  "speaker_attribution": "unsupported, preserved unknown",
+  "runtime_seconds_per_case": [
+    0.053613764999681734,
+    0.07019712700002856,
+    0.06371601000046212,
+    0.044179735999932745,
+    0.04168462599955092,
+    0.04768650099958904
+  ],
+  "peak_process_rss_bytes": 738553856,
+  "not_established": [
+    "Natural passage precision or recall",
+    "Human-validated quality",
+    "Performance of UnBias-Plus 8B V2",
+    "Production readiness"
+  ]
+}

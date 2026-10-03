@@ -1,0 +1,54 @@
+{
+  "model_id": "newsmediabias/UnBIAS-NER",
+  "revision": "0aff43fa27ef142169ee9e0ae63ed756b88918d6",
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 3999,
+      "sha256": "9a26668ce4e2108f58a3a79f39da8694b477a0c5837040043d6c69618f0a859f",
+      "source_url": "https://huggingface.co/newsmediabias/UnBIAS-NER/resolve/0aff43fa27ef142169ee9e0ae63ed756b88918d6/README.md"
+    },
+    {
+      "file": "added_tokens.json",
+      "bytes": 82,
+      "sha256": "909e96cb32d92ce728a01bc99850cbba26196d74115c17ebeb019275412588f2",
+      "source_url": "https://huggingface.co/newsmediabias/UnBIAS-NER/resolve/0aff43fa27ef142169ee9e0ae63ed756b88918d6/added_tokens.json"
+    },
+    {
+      "file": "config.json",
+      "bytes": 813,
+      "sha256": "e4a7f9403a202e582224d7829c3c76e399ba1afe3c5120c2b2c8004d745a86a2",
+      "source_url": "https://huggingface.co/newsmediabias/UnBIAS-NER/resolve/0aff43fa27ef142169ee9e0ae63ed756b88918d6/config.json"
+    },
+    {
+      "file": "pytorch_model.bin",
+      "bytes": 435643561,
+      "sha256": "c72c146c3b12bfb5c5fb37d07a1bd0f62c7a6d6e4e90a4999fb3179b7d63e600",
+      "source_url": "https://huggingface.co/newsmediabias/UnBIAS-NER/resolve/0aff43fa27ef142169ee9e0ae63ed756b88918d6/pytorch_model.bin"
+    },
+    {
+      "file": "special_tokens_map.json",
+      "bytes": 125,
+      "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+      "source_url": "https://huggingface.co/newsmediabias/UnBIAS-NER/resolve/0aff43fa27ef142169ee9e0ae63ed756b88918d6/special_tokens_map.json"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 711661,
+      "sha256": "25b74cc6090cc9aff5d2de6904d7ac7056c71953d3aa7330b48c69129b7c131d",
+      "source_url": "https://huggingface.co/newsmediabias/UnBIAS-NER/resolve/0aff43fa27ef142169ee9e0ae63ed756b88918d6/tokenizer.json"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "bytes": 1225,
+      "sha256": "f0e74c9a3d212eae95fedd8a3ac6e6b3fa14470cd49f7796ac3aba21ab64b1e8",
+      "source_url": "https://huggingface.co/newsmediabias/UnBIAS-NER/resolve/0aff43fa27ef142169ee9e0ae63ed756b88918d6/tokenizer_config.json"
+    },
+    {
+      "file": "vocab.txt",
+      "bytes": 231508,
+      "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+      "source_url": "https://huggingface.co/newsmediabias/UnBIAS-NER/resolve/0aff43fa27ef142169ee9e0ae63ed756b88918d6/vocab.txt"
+    }
+  ]
+}

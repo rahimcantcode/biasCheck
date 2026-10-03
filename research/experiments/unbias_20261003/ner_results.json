@@ -1,0 +1,1622 @@
+{
+  "experiment": "new synthetic fallback diagnostic; not the unavailable 30-passage comparison",
+  "model_id": "newsmediabias/UnBIAS-NER",
+  "revision": "0aff43fa27ef142169ee9e0ae63ed756b88918d6",
+  "fixture_sha256": "8f62609cbf91579ce8d9c89fb683c6c5f06452b0e044bbf09b4d74e3105ee815",
+  "runtime": {
+    "torch": "2.6.0+cpu",
+    "transformers": "4.57.1",
+    "python": "3.12.14",
+    "device": "cpu",
+    "threads": 4,
+    "cuda_available": false
+  },
+  "load_seconds": 0.18652264999946055,
+  "human_validated": false,
+  "rows": [
+    {
+      "id": "D01",
+      "text": "The proposed corporate tax increase is a reckless tax grab. Congress will debate the bill on Tuesday.",
+      "text_sha256": "44759bcdc220ef69137396ffa79b7a2f3e6ee39be6ad8b8a4b551c4acd38e5c8",
+      "input_tokens": 21,
+      "status": "suggestions",
+      "spans": [
+        {
+          "start": 23,
+          "end": 26,
+          "text": "tax",
+          "attribution": "unknown"
+        },
+        {
+          "start": 41,
+          "end": 58,
+          "text": "reckless tax grab",
+          "attribution": "unknown"
+        },
+        {
+          "start": 60,
+          "end": 68,
+          "text": "Congress",
+          "attribution": "unknown"
+        },
+        {
+          "start": 74,
+          "end": 89,
+          "text": "debate the bill",
+          "attribution": "unknown"
+        }
+      ],
+      "source_sha256": "44759bcdc220ef69137396ffa79b7a2f3e6ee39be6ad8b8a4b551c4acd38e5c8",
+      "orphan_i_count": 1,
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "raw_tokens": [
+        {
+          "token_id": 101,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            0,
+            3
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3818,
+          "offset": [
+            4,
+            12
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 5971,
+          "offset": [
+            13,
+            22
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 4171,
+          "offset": [
+            23,
+            26
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 3623,
+          "offset": [
+            27,
+            35
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2003,
+          "offset": [
+            36,
+            38
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1037,
+          "offset": [
+            39,
+            40
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 18555,
+          "offset": [
+            41,
+            49
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 4171,
+          "offset": [
+            50,
+            53
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 6723,
+          "offset": [
+            54,
+            58
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            58,
+            59
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3519,
+          "offset": [
+            60,
+            68
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 2097,
+          "offset": [
+            69,
+            73
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 5981,
+          "offset": [
+            74,
+            80
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            81,
+            84
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 3021,
+          "offset": [
+            85,
+            89
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 2006,
+          "offset": [
+            90,
+            92
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 9857,
+          "offset": [
+            93,
+            100
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            100,
+            101
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 102,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        }
+      ],
+      "exact_span_metrics": {
+        "true_positive": 1,
+        "false_positive": 3,
+        "false_negative": 0
+      },
+      "expected_spans": [
+        {
+          "text": "reckless tax grab",
+          "start": 41,
+          "end": 58,
+          "occurrence": 0,
+          "attribution": "author",
+          "reason": "The narrator uses a pejorative characterization of the proposed tax policy."
+        }
+      ],
+      "elapsed_seconds": 0.053613764999681734
+    },
+    {
+      "id": "D02",
+      "text": "The bill would increase the corporate tax rate from 21 percent to 25 percent. The committee voted 12 to 8 to send it to the full chamber.",
+      "text_sha256": "8fb7b3dedf23d63d7eb1bc732acc710f4a63bb9168df18b2787c41985b751f75",
+      "input_tokens": 31,
+      "status": "suggestions",
+      "spans": [
+        {
+          "start": 28,
+          "end": 46,
+          "text": "corporate tax rate",
+          "attribution": "unknown"
+        },
+        {
+          "start": 124,
+          "end": 136,
+          "text": "full chamber",
+          "attribution": "unknown"
+        }
+      ],
+      "source_sha256": "8fb7b3dedf23d63d7eb1bc732acc710f4a63bb9168df18b2787c41985b751f75",
+      "orphan_i_count": 0,
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "raw_tokens": [
+        {
+          "token_id": 101,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            0,
+            3
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3021,
+          "offset": [
+            4,
+            8
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2052,
+          "offset": [
+            9,
+            14
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3623,
+          "offset": [
+            15,
+            23
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            24,
+            27
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 5971,
+          "offset": [
+            28,
+            37
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 4171,
+          "offset": [
+            38,
+            41
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 3446,
+          "offset": [
+            42,
+            46
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 2013,
+          "offset": [
+            47,
+            51
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2538,
+          "offset": [
+            52,
+            54
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3867,
+          "offset": [
+            55,
+            62
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2000,
+          "offset": [
+            63,
+            65
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2423,
+          "offset": [
+            66,
+            68
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3867,
+          "offset": [
+            69,
+            76
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            76,
+            77
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            78,
+            81
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2837,
+          "offset": [
+            82,
+            91
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 5444,
+          "offset": [
+            92,
+            97
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2260,
+          "offset": [
+            98,
+            100
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2000,
+          "offset": [
+            101,
+            103
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1022,
+          "offset": [
+            104,
+            105
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2000,
+          "offset": [
+            106,
+            108
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 4604,
+          "offset": [
+            109,
+            113
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2009,
+          "offset": [
+            114,
+            116
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2000,
+          "offset": [
+            117,
+            119
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            120,
+            123
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2440,
+          "offset": [
+            124,
+            128
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 4574,
+          "offset": [
+            129,
+            136
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            136,
+            137
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 102,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        }
+      ],
+      "exact_span_metrics": {
+        "true_positive": 0,
+        "false_positive": 2,
+        "false_negative": 0
+      },
+      "expected_spans": [],
+      "elapsed_seconds": 0.07019712700002856
+    },
+    {
+      "id": "D03",
+      "text": "Congress should increase the corporate tax rate from 21 percent to 25 percent. I support the proposal and want lawmakers to vote for it.",
+      "text_sha256": "c60a41f2b1eacddfa351ae76fd730ceea19e347980674e0d5dd87acbdff032c7",
+      "input_tokens": 29,
+      "status": "suggestions",
+      "spans": [
+        {
+          "start": 29,
+          "end": 47,
+          "text": "corporate tax rate",
+          "attribution": "unknown"
+        },
+        {
+          "start": 81,
+          "end": 88,
+          "text": "support",
+          "attribution": "unknown"
+        },
+        {
+          "start": 111,
+          "end": 123,
+          "text": "lawmakers to",
+          "attribution": "unknown"
+        },
+        {
+          "start": 124,
+          "end": 132,
+          "text": "vote for",
+          "attribution": "unknown"
+        }
+      ],
+      "source_sha256": "c60a41f2b1eacddfa351ae76fd730ceea19e347980674e0d5dd87acbdff032c7",
+      "orphan_i_count": 0,
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "raw_tokens": [
+        {
+          "token_id": 101,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3519,
+          "offset": [
+            0,
+            8
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2323,
+          "offset": [
+            9,
+            15
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3623,
+          "offset": [
+            16,
+            24
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            25,
+            28
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 5971,
+          "offset": [
+            29,
+            38
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 4171,
+          "offset": [
+            39,
+            42
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 3446,
+          "offset": [
+            43,
+            47
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 2013,
+          "offset": [
+            48,
+            52
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2538,
+          "offset": [
+            53,
+            55
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3867,
+          "offset": [
+            56,
+            63
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2000,
+          "offset": [
+            64,
+            66
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2423,
+          "offset": [
+            67,
+            69
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3867,
+          "offset": [
+            70,
+            77
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            77,
+            78
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1045,
+          "offset": [
+            79,
+            80
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2490,
+          "offset": [
+            81,
+            88
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            89,
+            92
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 6378,
+          "offset": [
+            93,
+            101
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1998,
+          "offset": [
+            102,
+            105
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2215,
+          "offset": [
+            106,
+            110
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2375,
+          "offset": [
+            111,
+            114
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 12088,
+          "offset": [
+            114,
+            120
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 2000,
+          "offset": [
+            121,
+            123
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 3789,
+          "offset": [
+            124,
+            128
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 2005,
+          "offset": [
+            129,
+            132
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 2009,
+          "offset": [
+            133,
+            135
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            135,
+            136
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 102,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        }
+      ],
+      "exact_span_metrics": {
+        "true_positive": 0,
+        "false_positive": 4,
+        "false_negative": 0
+      },
+      "expected_spans": [],
+      "elapsed_seconds": 0.06371601000046212
+    },
+    {
+      "id": "D04",
+      "text": "Senator Lee called the proposed corporate tax increase \u201ca reckless tax grab.\u201d The reporter did not state whether she agreed with that characterization.",
+      "text_sha256": "916f4e96bab4acee6eda72a5d0747a613f666cdb0e01ca1a693418cb74c9a974",
+      "input_tokens": 29,
+      "status": "suggestions",
+      "spans": [
+        {
+          "start": 58,
+          "end": 75,
+          "text": "reckless tax grab",
+          "attribution": "unknown"
+        },
+        {
+          "start": 134,
+          "end": 150,
+          "text": "characterization",
+          "attribution": "unknown"
+        }
+      ],
+      "source_sha256": "916f4e96bab4acee6eda72a5d0747a613f666cdb0e01ca1a693418cb74c9a974",
+      "orphan_i_count": 0,
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "raw_tokens": [
+        {
+          "token_id": 101,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 5205,
+          "offset": [
+            0,
+            7
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3389,
+          "offset": [
+            8,
+            11
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2170,
+          "offset": [
+            12,
+            18
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            19,
+            22
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3818,
+          "offset": [
+            23,
+            31
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 5971,
+          "offset": [
+            32,
+            41
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 4171,
+          "offset": [
+            42,
+            45
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3623,
+          "offset": [
+            46,
+            54
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1523,
+          "offset": [
+            55,
+            56
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1037,
+          "offset": [
+            56,
+            57
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 18555,
+          "offset": [
+            58,
+            66
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 4171,
+          "offset": [
+            67,
+            70
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 6723,
+          "offset": [
+            71,
+            75
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            75,
+            76
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1524,
+          "offset": [
+            76,
+            77
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            78,
+            81
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 6398,
+          "offset": [
+            82,
+            90
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2106,
+          "offset": [
+            91,
+            94
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2025,
+          "offset": [
+            95,
+            98
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2110,
+          "offset": [
+            99,
+            104
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3251,
+          "offset": [
+            105,
+            112
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2016,
+          "offset": [
+            113,
+            116
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3530,
+          "offset": [
+            117,
+            123
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2007,
+          "offset": [
+            124,
+            128
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2008,
+          "offset": [
+            129,
+            133
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 23191,
+          "offset": [
+            134,
+            150
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            150,
+            151
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 102,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        }
+      ],
+      "exact_span_metrics": {
+        "true_positive": 1,
+        "false_positive": 1,
+        "false_negative": 0
+      },
+      "expected_spans": [
+        {
+          "text": "reckless tax grab",
+          "start": 58,
+          "end": 75,
+          "occurrence": 0,
+          "attribution": "quoted",
+          "reason": "Senator Lee supplies the evaluative phrase; the passage does not establish reporter endorsement."
+        }
+      ],
+      "elapsed_seconds": 0.044179735999932745
+    },
+    {
+      "id": "D05",
+      "text": "Senator Lee called the bill \u201ca reckless tax grab.\u201d I agree with that description: this bill is a reckless tax grab.",
+      "text_sha256": "9a6f1bf3eebb500fd434b97514ccc331e173a820792fc42596190316e82ee091",
+      "input_tokens": 28,
+      "status": "suggestions",
+      "spans": [
+        {
+          "start": 31,
+          "end": 48,
+          "text": "reckless tax grab",
+          "attribution": "unknown"
+        },
+        {
+          "start": 97,
+          "end": 114,
+          "text": "reckless tax grab",
+          "attribution": "unknown"
+        }
+      ],
+      "source_sha256": "9a6f1bf3eebb500fd434b97514ccc331e173a820792fc42596190316e82ee091",
+      "orphan_i_count": 0,
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "raw_tokens": [
+        {
+          "token_id": 101,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 5205,
+          "offset": [
+            0,
+            7
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3389,
+          "offset": [
+            8,
+            11
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2170,
+          "offset": [
+            12,
+            18
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            19,
+            22
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3021,
+          "offset": [
+            23,
+            27
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1523,
+          "offset": [
+            28,
+            29
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1037,
+          "offset": [
+            29,
+            30
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 18555,
+          "offset": [
+            31,
+            39
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 4171,
+          "offset": [
+            40,
+            43
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 6723,
+          "offset": [
+            44,
+            48
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            48,
+            49
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1524,
+          "offset": [
+            49,
+            50
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1045,
+          "offset": [
+            51,
+            52
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 5993,
+          "offset": [
+            53,
+            58
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2007,
+          "offset": [
+            59,
+            63
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2008,
+          "offset": [
+            64,
+            68
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 6412,
+          "offset": [
+            69,
+            80
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1024,
+          "offset": [
+            80,
+            81
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2023,
+          "offset": [
+            82,
+            86
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3021,
+          "offset": [
+            87,
+            91
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2003,
+          "offset": [
+            92,
+            94
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1037,
+          "offset": [
+            95,
+            96
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 18555,
+          "offset": [
+            97,
+            105
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 4171,
+          "offset": [
+            106,
+            109
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 6723,
+          "offset": [
+            110,
+            114
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            114,
+            115
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 102,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        }
+      ],
+      "exact_span_metrics": {
+        "true_positive": 2,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "expected_spans": [
+        {
+          "text": "reckless tax grab",
+          "start": 31,
+          "end": 48,
+          "occurrence": 0,
+          "attribution": "quoted",
+          "reason": "The first occurrence is explicitly attributed to Senator Lee."
+        },
+        {
+          "text": "reckless tax grab",
+          "start": 97,
+          "end": 114,
+          "occurrence": 1,
+          "attribution": "author",
+          "reason": "The second occurrence is the narrator\u2019s own explicit evaluative characterization."
+        }
+      ],
+      "elapsed_seconds": 0.04168462599955092
+    },
+    {
+      "id": "D06",
+      "text": "The reckless goalkeeper left the net empty, and the visiting team scored. The coach called the play a disaster after the match.",
+      "text_sha256": "d3890c9b17be4f78491866638128d78ed9580fd3893433b91933ad81487eb61a",
+      "input_tokens": 27,
+      "status": "suggestions",
+      "spans": [
+        {
+          "start": 4,
+          "end": 23,
+          "text": "reckless goalkeeper",
+          "attribution": "unknown"
+        },
+        {
+          "start": 52,
+          "end": 60,
+          "text": "visiting",
+          "attribution": "unknown"
+        },
+        {
+          "start": 102,
+          "end": 110,
+          "text": "disaster",
+          "attribution": "unknown"
+        }
+      ],
+      "source_sha256": "d3890c9b17be4f78491866638128d78ed9580fd3893433b91933ad81487eb61a",
+      "orphan_i_count": 0,
+      "attribution_supported": false,
+      "offset_unit": "unicode_codepoint",
+      "end_exclusive": true,
+      "raw_tokens": [
+        {
+          "token_id": 101,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            0,
+            3
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 18555,
+          "offset": [
+            4,
+            12
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 9653,
+          "offset": [
+            13,
+            23
+          ],
+          "label": "I-BIAS"
+        },
+        {
+          "token_id": 2187,
+          "offset": [
+            24,
+            28
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            29,
+            32
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 5658,
+          "offset": [
+            33,
+            36
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 4064,
+          "offset": [
+            37,
+            42
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1010,
+          "offset": [
+            42,
+            43
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1998,
+          "offset": [
+            44,
+            47
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            48,
+            51
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 5873,
+          "offset": [
+            52,
+            60
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 2136,
+          "offset": [
+            61,
+            65
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 3195,
+          "offset": [
+            66,
+            72
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            72,
+            73
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            74,
+            77
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2873,
+          "offset": [
+            78,
+            83
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2170,
+          "offset": [
+            84,
+            90
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            91,
+            94
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2377,
+          "offset": [
+            95,
+            99
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1037,
+          "offset": [
+            100,
+            101
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 7071,
+          "offset": [
+            102,
+            110
+          ],
+          "label": "B-BIAS"
+        },
+        {
+          "token_id": 2044,
+          "offset": [
+            111,
+            116
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1996,
+          "offset": [
+            117,
+            120
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 2674,
+          "offset": [
+            121,
+            126
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 1012,
+          "offset": [
+            126,
+            127
+          ],
+          "label": "O"
+        },
+        {
+          "token_id": 102,
+          "offset": [
+            0,
+            0
+          ],
+          "label": "O"
+        }
+      ],
+      "exact_span_metrics": {
+        "true_positive": 0,
+        "false_positive": 3,
+        "false_negative": 0
+      },
+      "expected_spans": [],
+      "elapsed_seconds": 0.04768650099958904
+    }
+  ],
+  "peak_process_rss_bytes": 738553856,
+  "counts": {
+    "completed": 6,
+    "failed": 0,
+    "true_positive": 4,
+    "false_positive": 13,
+    "false_negative": 0
+  },
+  "interpretation": "Six AI-authored synthetic cases only. Exact boundaries are diagnostic; no model ranking or general accuracy estimate. Speaker attribution is unsupported."
+}

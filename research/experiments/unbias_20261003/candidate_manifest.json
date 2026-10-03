@@ -1,0 +1,13 @@
+{
+  "model_id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+  "model_revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+  "source_revision": "a363e434e73b4b4f74dac5a959139cb86f30cfd6",
+  "prompt_source_url": "https://raw.githubusercontent.com/VectorInstitute/unbias-plus/a363e434e73b4b4f74dac5a959139cb86f30cfd6/src/unbias_plus/prompt.py",
+  "prompt_file_sha256": "a699ac703467d11fd99ebc9e66d158b7de15bedcd04b737a75104eeb603f1d02",
+  "prompt": "verbatim upstream SYSTEM_PROMPT and USER_TEMPLATE",
+  "preprocessing": "none, exact original text including quotations",
+  "thinking": false,
+  "temperature": 0,
+  "max_output_tokens": 2048,
+  "release_approved": false
+}
