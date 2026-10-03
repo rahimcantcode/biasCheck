@@ -3,10 +3,10 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
-from repetition_diagnostic import distinct_context
+from repetition_diagnostic import distinct_context,repetition_context
 
 
-def run(data, probe, audit, tokenizer_dir, output):
+def run(data, probe, audit, tokenizer_dir, output, periodic=False):
     from transformers import AutoTokenizer
     import transformers
     if output.exists():raise ValueError('Use a new output path')
@@ -22,7 +22,7 @@ def run(data, probe, audit, tokenizer_dir, output):
         if case['result']['model']['tokenizer_sha256']!=tokenizer_hash:
             raise ValueError('Tokenizer differs from production')
     def measure(row):
-        original=row['text'];context=distinct_context(original)
+        original=row['text'];context=(repetition_context if periodic else distinct_context)(original)
         raw=len(tokenizer(original,add_special_tokens=False,truncation=False)['input_ids'])
         distinct=len(tokenizer(context,add_special_tokens=False,truncation=False)['input_ids'])
         return {'id':row['id'],'raw_tokens':raw,'distinct_context_tokens':distinct,
@@ -40,13 +40,14 @@ def run(data, probe, audit, tokenizer_dir, output):
     report={'purpose':'Research-only shadow minimum-context gate, not classifier accuracy',
         'release_approved':False,'validation_read':False,'reserved_test_read':False,
         'tokenizer_sha256':tokenizer_hash,'tokenizer_files':hashes,'transformers':transformers.__version__,
-        'threshold':12,'rule':'min(original tokens, distinct-paragraph-view tokens) < 12',
+        'threshold':12,'rule':'min(original tokens, context-view tokens) < 12',
+        'context_view':'exact whole-input word cycles, otherwise distinct paragraphs' if periodic else 'distinct paragraphs',
         'records':records,'probes':probes,'n':len(rows),
         'changed_context_n':sum(r['text_changed'] for r in records),
         'new_short_n':sum(r['candidate_short'] and not r['raw_short'] for r in records),
         'inputs':{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in (data,probe,audit)},
         'cautions':['Does not change model input, scores or deployed policy',
-                    'Exact duplicate paragraphs only, not general semantic novelty detection',
+                    'Exact patterns only, not general semantic novelty detection',
                     'Training corpus audit cannot validate human coverage or legitimate repetition',
                     'Candidate built after observing the probe failure, not independent validation']}
     output.write_text(json.dumps(report,indent=2)+'\n')
@@ -56,4 +57,5 @@ def run(data, probe, audit, tokenizer_dir, output):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     for name in ('data','probe','audit','tokenizer_dir','output'):parser.add_argument('--'+name.replace('_','-'),type=Path,required=True)
-    args=parser.parse_args();run(args.data,args.probe,args.audit,args.tokenizer_dir,args.output)
+    parser.add_argument('--periodic',action='store_true')
+    args=parser.parse_args();run(args.data,args.probe,args.audit,args.tokenizer_dir,args.output,args.periodic)

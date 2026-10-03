@@ -2,7 +2,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'research'/'scripts'))
-from repetition_diagnostic import diagnose,distinct_context
+from repetition_diagnostic import diagnose,distinct_context,repetition_context
 
 
 class RepetitionTests(unittest.TestCase):
@@ -32,3 +32,21 @@ class RepetitionTests(unittest.TestCase):
     def test_repeated_context_reduces_to_first_occurrence(self):
         self.assertEqual(distinct_context('One  headline\n\nOne headline\n\nDifferent'),
                          'One  headline\n\nDifferent')
+
+    def test_whole_input_cycles_ignore_whitespace_only(self):
+        for separator in (' ','\n','\n\n','\r\n'):
+            self.assertEqual(repetition_context(separator.join(['One headline']*8)),'One headline')
+
+    def test_partial_cycle_preserved(self):
+        self.assertEqual(repetition_context('One headline One headline Extra'),'One headline One headline Extra')
+
+    def test_negation_and_case_prevent_cycle(self):
+        for text in ('Policy approved Policy not approved','US policy us policy'):
+            self.assertEqual(repetition_context(text),text)
+
+    def test_empty_periodic_view(self):
+        self.assertEqual(repetition_context(''),'')
+
+    def test_periodic_falls_back_to_paragraph_context(self):
+        self.assertEqual(repetition_context('One headline\n\nOne headline\n\nNew evidence'),
+                         'One headline\n\nNew evidence')

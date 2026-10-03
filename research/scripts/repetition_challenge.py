@@ -3,7 +3,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
-from repetition_diagnostic import distinct_context
+from repetition_diagnostic import distinct_context,repetition_context
 
 
 def cases(title,body):
@@ -21,7 +21,7 @@ def cases(title,body):
     ]
 
 
-def run(data,tokenizer_dir,prior,output):
+def run(data,tokenizer_dir,prior,output,periodic=False):
     from transformers import AutoTokenizer
     if output.exists():raise ValueError('Use a new output directory')
     tokenizer=AutoTokenizer.from_pretrained(tokenizer_dir,local_files_only=True)
@@ -33,7 +33,7 @@ def run(data,tokenizer_dir,prior,output):
     title,body=source['text'].split('\n\n',1)
     records=[]
     for id,kind,text in cases(title,body):
-        context=distinct_context(text)
+        context=(repetition_context if periodic else distinct_context)(text)
         raw=len(tokenizer(text,add_special_tokens=False,truncation=False)['input_ids'])
         distinct=len(tokenizer(context,add_special_tokens=False,truncation=False)['input_ids'])
         records.append({'id':id,'kind':kind,'text':text,'text_sha256':hashlib.sha256(text.encode()).hexdigest(),
@@ -43,7 +43,7 @@ def run(data,tokenizer_dir,prior,output):
         'source_training_id':source['id'],'tokenizer_sha256':previous['tokenizer_sha256'],
         'input_sha256':hashlib.sha256(data.read_bytes()).hexdigest(),
         'prior_sha256':hashlib.sha256(prior.read_bytes()).hexdigest(),
-        'threshold':12,'records':[{k:v for k,v in r.items() if k!='text'} for r in records],
+        'threshold':12,'periodic':periodic,'records':[{k:v for k,v in r.items() if k!='text'} for r in records],
         'cautions':['Post hoc development cases, not independent evaluation',
                     'Additional context is not a human judgment of sufficiency or relevance',
                     'No accuracy, general bypass rate or false-positive estimate is claimed']}
@@ -57,4 +57,5 @@ def run(data,tokenizer_dir,prior,output):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     for name in ('data','tokenizer_dir','prior','output'):parser.add_argument('--'+name.replace('_','-'),type=Path,required=True)
-    a=parser.parse_args();run(a.data,a.tokenizer_dir,a.prior,a.output)
+    parser.add_argument('--periodic',action='store_true')
+    a=parser.parse_args();run(a.data,a.tokenizer_dir,a.prior,a.output,a.periodic)

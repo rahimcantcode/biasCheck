@@ -1,5 +1,38 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03 10:34 UTC: exact whole-input repetition shadow extension
+
+Added an opt-in periodic context view to the research runners; default paragraph
+candidate remains available and previous results unchanged. The new view detects
+only complete, exact word-sequence cycles across the entire input, preserving
+case, punctuation and order. It returns one shortest cycle, or falls back to
+the existing distinct-paragraph view. No classifier inputs or production code
+changed. Thirteen repetition/challenge tests pass, including partial-cycle,
+negation, case and empty-input controls.
+
+On the fixed ten-case development challenge, single-newline and space-only
+copies now reduce from 87/80 to 10 context tokens and would be withheld. The
+three exact-paragraph variants still reduce to 10. Numbered/punctuation variants
+remain unhandled (110/101 tokens). Body-only stays 85; repeated-title-plus-body
+retains 97 tokens of context. These post hoc cases are not independent validation,
+and avoiding exclusion of two additional-context controls does not establish a
+human false-positive rate. No broader semantic-equivalence detector is claimed.
+
+Shadow audit of all 115 training records still changes one context view with zero
+new short-context exclusions. Tokenizer constituent hashes and live probe token
+counts verified as before. Results: research/results/periodic_challenge_20261003.json
+and research/results/periodic_guard_training_20261003.json. Exact constructed
+texts retained in research/checkpoints/repetition-periodic-20261003/.
+
+Local Chromium fallback repeated the three previous live format cases. Production
+still returns LEFT/LEFT/CENTER with unchanged scores because the candidate is
+not deployed. HTTP 200 throughout; no page errors, failed requests or mobile
+overflow; mobile screenshot inspected. Raw evidence: outputs/live-browser-periodic-20261003;
+sanitized results and screenshot hashes: research/results/periodic_browser_20261003.json.
+No fitting, validation/reserved-test use, calibration or deployment. This is an
+engineering extension, not a model-accuracy improvement or a new ML model review.
+Corpus restrictions and missing independent human evaluation remain unchanged.
+
 ## 2026-10-03 08:10 UTC: repetition-format challenge and CRLF repair
 
 Constructed ten deterministic development cases from the first training title

@@ -18,6 +18,16 @@ def distinct_context(text):
     return '\n\n'.join(kept) if duplicate else text
 
 
+def repetition_context(text):
+    """Research view for exact whole-input word cycles, then paragraph copies."""
+    words=text.split()
+    # Only exact complete cycles qualify; preserve case, punctuation and order.
+    for width in range(1,len(words)//2+1):
+        if len(words)%width==0 and all(word==words[i%width] for i,word in enumerate(words)):
+            return ' '.join(words[:width])
+    return distinct_context(text)
+
+
 def diagnose(text):
     paragraphs=[' '.join(p.split()) for p in re.split(r'\r?\n\s*\r?\n',text) if p.strip()]
     unique=list(dict.fromkeys(paragraphs))

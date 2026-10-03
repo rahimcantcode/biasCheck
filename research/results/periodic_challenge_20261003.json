@@ -1,0 +1,99 @@
+{
+  "purpose": "AI-constructed development formatting challenge; no human political labels",
+  "release_approved": false,
+  "reserved_test_read": false,
+  "validation_read": false,
+  "source_training_id": "010d924f-4636-45ce-a97e-703055a109ad",
+  "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+  "input_sha256": "5ebefc86e5da25784649b895753219207913cbcb042b85e7e90fdf4b84f2d1b9",
+  "prior_sha256": "6ea4a076474127eae88539e91b8dc5099ba2aa54201ec6762c8ca29ee2e701f8",
+  "threshold": 12,
+  "periodic": true,
+  "records": [
+    {
+      "id": "single",
+      "kind": "base",
+      "text_sha256": "412a4c619ba4e67e5ffae8a4a0e9775a88ccad1b6b40968f710d3c51225f1172",
+      "raw_tokens": 10,
+      "distinct_tokens": 10,
+      "candidate_short": true
+    },
+    {
+      "id": "blank-lines",
+      "kind": "exact-paragraph",
+      "text_sha256": "260bef5babfbe41b2d1ee404a1f83e331b07711d4e86e0f4c8bf4b47ed36556e",
+      "raw_tokens": 94,
+      "distinct_tokens": 10,
+      "candidate_short": true
+    },
+    {
+      "id": "crlf",
+      "kind": "exact-paragraph",
+      "text_sha256": "e2f881f3b06c0617cd580f7ce9f9bdd19e4abda76e856c9bc0f16f232b8dbbbb",
+      "raw_tokens": 108,
+      "distinct_tokens": 10,
+      "candidate_short": true
+    },
+    {
+      "id": "spaces-in-paragraphs",
+      "kind": "exact-paragraph",
+      "text_sha256": "0779b9a06a398ff5619babfac5037f46e15709c3d68da168c77df171cc4dae97",
+      "raw_tokens": 122,
+      "distinct_tokens": 10,
+      "candidate_short": true
+    },
+    {
+      "id": "single-newlines",
+      "kind": "known-gap",
+      "text_sha256": "fb15f70da78bfc61033f294923f870976da8147ba0123d60637d5785e8f9a8c9",
+      "raw_tokens": 87,
+      "distinct_tokens": 10,
+      "candidate_short": true
+    },
+    {
+      "id": "spaces-only",
+      "kind": "known-gap",
+      "text_sha256": "be9ad4c416bcf4ff6420c8cb94ac17422107e52afcc33a4484c798b9a27a9405",
+      "raw_tokens": 80,
+      "distinct_tokens": 10,
+      "candidate_short": true
+    },
+    {
+      "id": "numbered",
+      "kind": "known-gap",
+      "text_sha256": "b695c7aedb52e5b3ca9533e45359a457231dc1d81e28d6f37988d833c38d2bfc",
+      "raw_tokens": 110,
+      "distinct_tokens": 110,
+      "candidate_short": false
+    },
+    {
+      "id": "punctuation",
+      "kind": "known-gap",
+      "text_sha256": "cd945756ab7b326463d0ac4a2e6b7205724f509180bb35570c8e02fd3c8e626c",
+      "raw_tokens": 101,
+      "distinct_tokens": 101,
+      "candidate_short": false
+    },
+    {
+      "id": "body-control",
+      "kind": "additional-context",
+      "text_sha256": "91180e829e78b7dbe1b468b4f3e45b00a823f31f8dd0f642440e43a9a175d72c",
+      "raw_tokens": 85,
+      "distinct_tokens": 85,
+      "candidate_short": false
+    },
+    {
+      "id": "repeat-plus-body",
+      "kind": "additional-context",
+      "text_sha256": "661925973214052f5b69430e450f37ecdf3c89039ea53853f034289b6257cb4d",
+      "raw_tokens": 181,
+      "distinct_tokens": 97,
+      "candidate_short": false
+    }
+  ],
+  "cautions": [
+    "Post hoc development cases, not independent evaluation",
+    "Additional context is not a human judgment of sufficiency or relevance",
+    "No accuracy, general bypass rate or false-positive estimate is claimed"
+  ]
+}
