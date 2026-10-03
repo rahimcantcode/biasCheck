@@ -1,0 +1,67 @@
+{
+  "model_id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+  "model_revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+  "files": [
+    {
+      "file": "chat_template.jinja",
+      "bytes": 4761,
+      "sha256": "8428c815ac94d82064e35ff1e841dcbe260e7e53a8d0bd3b94afa2eefa9bccab",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/chat_template.jinja"
+    },
+    {
+      "file": "config.json",
+      "bytes": 1841,
+      "sha256": "edcfd602d24ecf9df22ff0f9c7b6609cdcb2c681aee1cce4cf7f84f381658977",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/config.json"
+    },
+    {
+      "file": "generation_config.json",
+      "bytes": 210,
+      "sha256": "d41d25f63fdd5e108e21f6bd0f23f20f54f81fa8784b8d69032c0eb5854f3aa8",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/generation_config.json"
+    },
+    {
+      "file": "model-00001-of-00004.safetensors",
+      "bytes": 4902257696,
+      "sha256": "1045e8b3fbc72f560138f4768dbbd5c5cf42e0e8eb7604a92e8ede54d03f2736",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00001-of-00004.safetensors"
+    },
+    {
+      "file": "model-00002-of-00004.safetensors",
+      "bytes": 4915960368,
+      "sha256": "d316b3dba62396978ca893e31cb3e4d6ac4d70e61f6d5c5f3643dda76b19cb82",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00002-of-00004.safetensors"
+    },
+    {
+      "file": "model-00003-of-00004.safetensors",
+      "bytes": 4983068496,
+      "sha256": "93405b197ce13cb5422ef042cabf0fc31c1ce8b923838b31cbeaeb207d6b10b8",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00003-of-00004.safetensors"
+    },
+    {
+      "file": "model-00004-of-00004.safetensors",
+      "bytes": 1580230264,
+      "sha256": "d89ca13d091a4a017ff260bd27338218dea366ba4a38773f30f74c27b97861c4",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00004-of-00004.safetensors"
+    },
+    {
+      "file": "model.safetensors.index.json",
+      "bytes": 32878,
+      "sha256": "3649bb967710edc0f995e3839a363a069482a1688216f87745248966751d0221",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model.safetensors.index.json"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 11423114,
+      "sha256": "d7430e9138b76e93fb6f93462394d236b411111aef53cb421ba97d2691040cca",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/tokenizer.json"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "bytes": 5333,
+      "sha256": "ae71a3ebb5392e2dddcef7c6ab49018c9482935215fb2689d37b277408a044dc",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/tokenizer_config.json"
+    }
+  ],
+  "download_elapsed_seconds": 187.07243871688843
+}

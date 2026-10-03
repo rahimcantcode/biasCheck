@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "fixture_id": "unbias_narrow_framing_synthetic_diagnostics_v1_20261003",
+  "created_utc": "2026-10-03T18:39:53.813778+00:00",
+  "origin": "newly_created_during_recovery_continuation",
+  "provenance": "AI-authored synthetic development diagnostics; not human annotations, not recovered prior pilot data, and not independent evaluation.",
+  "frozen_before_first_inference_on_this_fixture": true,
+  "source_encoding": "UTF-8",
+  "offset_convention": "zero-based, half-open Unicode code-point indices in the exact text; no normalization or trimming",
+  "occurrence_convention": "zero-based index among all exact literal occurrences in the original text",
+  "scope": "Evaluative English-language U.S. political framing. Plain factual description and plain advocacy alone are negative controls. Quoted rhetoric is separately attributed, not automatically author endorsement.",
+  "evaluation_limits": [
+    "The native UnBias-Plus general-bias task can validly disagree with these narrow political-framing expectations; discrepancies are task-alignment findings, not automatically native-model errors.",
+    "These six short invented examples test feasibility and obvious failure modes. Passing does not establish accuracy, natural-passage performance, or readiness to replace production.",
+    "Exact span boundaries are AI-authored expectations. Alternative meaning-preserving boundaries require documented review; no automated semantic-credit claim is made.",
+    "Native outputs without attribution cannot establish attribution correctness even when their phrase text matches.",
+    "Off-topic output should be excluded by the narrow application scope. A native general-bias detector may appropriately flag language in the sports control."
+  ],
+  "cases": [
+    {
+      "id": "D01",
+      "category": "clear_author_cue",
+      "text": "The proposed corporate tax increase is a reckless tax grab. Congress will debate the bill on Tuesday.",
+      "text_sha256": "44759bcdc220ef69137396ffa79b7a2f3e6ee39be6ad8b8a4b551c4acd38e5c8",
+      "expected_scope": "in_scope",
+      "expected_spans": [
+        {
+          "text": "reckless tax grab",
+          "start": 41,
+          "end": 58,
+          "occurrence": 0,
+          "attribution": "author",
+          "reason": "The narrator uses a pejorative characterization of the proposed tax policy."
+        }
+      ],
+      "diagnostic_purpose": "Recover an explicit evaluative political phrase in the narrator voice."
+    },
+    {
+      "id": "D02",
+      "category": "neutral_factual_reporting",
+      "text": "The bill would increase the corporate tax rate from 21 percent to 25 percent. The committee voted 12 to 8 to send it to the full chamber.",
+      "text_sha256": "8fb7b3dedf23d63d7eb1bc732acc710f4a63bb9168df18b2787c41985b751f75",
+      "expected_scope": "in_scope",
+      "expected_spans": [],
+      "diagnostic_purpose": "Avoid inventing evaluative framing from factual tax details or a recorded vote."
+    },
+    {
+      "id": "D03",
+      "category": "plain_advocacy",
+      "text": "Congress should increase the corporate tax rate from 21 percent to 25 percent. I support the proposal and want lawmakers to vote for it.",
+      "text_sha256": "c60a41f2b1eacddfa351ae76fd730ceea19e347980674e0d5dd87acbdff032c7",
+      "expected_scope": "in_scope",
+      "expected_spans": [],
+      "diagnostic_purpose": "Ordinary policy advocacy alone is outside the narrow evaluative-language positive label."
+    },
+    {
+      "id": "D04",
+      "category": "quoted_cue",
+      "text": "Senator Lee called the proposed corporate tax increase “a reckless tax grab.” The reporter did not state whether she agreed with that characterization.",
+      "text_sha256": "916f4e96bab4acee6eda72a5d0747a613f666cdb0e01ca1a693418cb74c9a974",
+      "expected_scope": "in_scope",
+      "expected_spans": [
+        {
+          "text": "reckless tax grab",
+          "start": 58,
+          "end": 75,
+          "occurrence": 0,
+          "attribution": "quoted",
+          "reason": "Senator Lee supplies the evaluative phrase; the passage does not establish reporter endorsement."
+        }
+      ],
+      "diagnostic_purpose": "Preserve curly quotation marks and distinguish a quoted cue from author endorsement."
+    },
+    {
+      "id": "D05",
+      "category": "repeated_cue_distinct_voices",
+      "text": "Senator Lee called the bill “a reckless tax grab.” I agree with that description: this bill is a reckless tax grab.",
+      "text_sha256": "9a6f1bf3eebb500fd434b97514ccc331e173a820792fc42596190316e82ee091",
+      "expected_scope": "in_scope",
+      "expected_spans": [
+        {
+          "text": "reckless tax grab",
+          "start": 31,
+          "end": 48,
+          "occurrence": 0,
+          "attribution": "quoted",
+          "reason": "The first occurrence is explicitly attributed to Senator Lee."
+        },
+        {
+          "text": "reckless tax grab",
+          "start": 97,
+          "end": 114,
+          "occurrence": 1,
+          "attribution": "author",
+          "reason": "The second occurrence is the narrator’s own explicit evaluative characterization."
+        }
+      ],
+      "diagnostic_purpose": "Return both exact occurrences while preserving their distinct speaker attribution."
+    },
+    {
+      "id": "D06",
+      "category": "off_topic_evaluative_wording",
+      "text": "The reckless goalkeeper left the net empty, and the visiting team scored. The coach called the play a disaster after the match.",
+      "text_sha256": "d3890c9b17be4f78491866638128d78ed9580fd3893433b91933ad81487eb61a",
+      "expected_scope": "out_of_scope",
+      "expected_spans": [],
+      "diagnostic_purpose": "Sports criticism can be evaluative without being evaluative political framing."
+    }
+  ],
+  "counts": {
+    "cases": 6,
+    "cases_with_expected_spans": 3,
+    "expected_spans": 4,
+    "author_spans": 2,
+    "quoted_spans": 2
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "decision": "Do not promote or deploy either candidate on this evidence",
+  "next_candidate_to_evaluate": "UnBias-Plus 8B V2 with documented scope/attribution adaptation",
+  "evaluation": "six newly AI-authored synthetic diagnostics; no natural-passage or human-validated accuracy claim",
+  "native_configuration": "official V2 checkpoint locally converted BF16 -> Q8_0 -> Q4_K_M, original upstream prompt, four CPU threads, 8192 context, deterministic decoding",
+  "native": {
+    "completed": 6,
+    "failures": 0,
+    "partial_failures": 0,
+    "emitted_spans": 7,
+    "exact_boundary_counts": {
+      "true_positive": 0,
+      "false_positive": 7,
+      "false_negative": 4
+    },
+    "source_valid_spans": 7,
+    "negative_controls_without_highlights": [
+      "D02",
+      "D03"
+    ],
+    "out_of_scope_control_highlighted": [
+      "D06"
+    ],
+    "false_policy_description_highlight": "proposed corporate tax increase",
+    "attribution": "unsupported; every displayed span unknown",
+    "latency_seconds": [
+      69.65338773799886,
+      9.460399761999724,
+      8.096879077998892,
+      14.935171983001055,
+      26.64079328599837,
+      23.046575705000578
+    ],
+    "median_seconds": 18.990873844000816,
+    "peak_server_rss_bytes": 8321818624
+  },
+  "ner": {
+    "completed": 6,
+    "emitted_spans": 17,
+    "exact_expected_spans": 4,
+    "additional_spans": 13,
+    "all_three_negative_controls_highlighted": true,
+    "attribution": "unsupported"
+  },
+  "boundary_interpretation": "All four intended native cue occurrences lie inside broader emitted spans. This is a literal containment observation, not semantic precision/recall credit. Exact-boundary scorer records zero exact matches.",
+  "release_approved": false,
+  "blockers_for_release": [
+    "No recovered 30-passage framing pilot or comparable framing baseline",
+    "No human reference evaluation",
+    "Native scope includes sports criticism; task needs political scope handling",
+    "No native speaker attribution and overbroad spans",
+    "One unsupported flag on neutral policy description",
+    "Cold prompt latency about70seconds and peak serverRSS7.75GiB on this environment"
+  ],
+  "reserved_tests_opened": false,
+  "training_performed": false,
+  "production_modified": false
+}

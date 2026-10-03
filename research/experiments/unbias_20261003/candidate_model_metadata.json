@@ -1,0 +1,179 @@
+{
+  "_id": "6a55778a4aaa174ca87f23d6",
+  "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "tags": [
+    "safetensors",
+    "qwen3",
+    "8b",
+    "bias-detection",
+    "news-debiasing",
+    "fine-tuned",
+    "unsloth",
+    "sft",
+    "conversational",
+    "text-generation",
+    "en",
+    "dataset:vector-institute/unbias-plus-dataset",
+    "arxiv:2606.23412",
+    "base_model:Qwen/Qwen3-8B",
+    "base_model:finetune:Qwen/Qwen3-8B",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "downloads": 93,
+  "likes": 1,
+  "modelId": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+  "author": "vector-institute",
+  "sha": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+  "lastModified": "2026-07-15T14:28:51.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "Qwen3ForCausalLM"
+    ],
+    "model_type": "qwen3",
+    "tokenizer_config": {
+      "bos_token": null,
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|PAD_TOKEN|>",
+      "unk_token": null,
+      "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0].role == 'system' %}\n        {{- messages[0].content + '\\n\\n' }}\n    {%- endif %}\n    {{- \"# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0].content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for forward_message in messages %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- set message = messages[index] %}\n    {%- set current_content = message.content if message.content is not none else '' %}\n    {%- set tool_start = '<tool_response>' %}\n    {%- set tool_start_length = tool_start|length %}\n    {%- set start_of_message = current_content[:tool_start_length] %}\n    {%- set tool_end = '</tool_response>' %}\n    {%- set tool_end_length = tool_end|length %}\n    {%- set start_pos = (current_content|length) - tool_end_length %}\n    {%- if start_pos < 0 %}\n        {%- set start_pos = 0 %}\n    {%- endif %}\n    {%- set end_of_message = current_content[start_pos:] %}\n    {%- if ns.multi_step_tool and message.role == \"user\" and not(start_of_message == tool_start and end_of_message == tool_end) %}\n        {%- set ns.multi_step_tool = false %}\n        {%- set ns.last_query_index = index %}\n    {%- endif %}\n{%- endfor %}\n{%- for message in messages %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set content = message.content %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is defined and message.reasoning_content is not none %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in message.content %}\n                {%- set content = (message.content.split('</think>')|last).lstrip('\\n') %}\n                {%- set reasoning_content = (message.content.split('</think>')|first).rstrip('\\n') %}\n                {%- set reasoning_content = (reasoning_content.split('<think>')|last).lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {%- if loop.last or (not loop.last and reasoning_content) %}\n                {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content.strip('\\n') + '\\n</think>\\n\\n' + content.lstrip('\\n') }}\n            {%- else %}\n                {{- '<|im_start|>' + message.role + '\\n' + content }}\n            {%- endif %}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if (loop.first and content) or (not loop.first) %}\n                    {{- '\\n' }}\n                {%- endif %}\n                {%- if tool_call.function %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {{- '<tool_call>\\n{\"name\": \"' }}\n                {{- tool_call.name }}\n                {{- '\", \"arguments\": ' }}\n                {%- if tool_call.arguments is string %}\n                    {{- tool_call.arguments }}\n                {%- else %}\n                    {{- tool_call.arguments | tojson }}\n                {%- endif %}\n                {{- '}\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.first or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\\n\\n</think>\\n\\n' }}\n    {%- endif %}\n{%- endif %}"
+    },
+    "chat_template_jinja": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0].role == 'system' %}\n        {{- messages[0].content + '\\n\\n' }}\n    {%- endif %}\n    {{- \"# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0].content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for forward_message in messages %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- set message = messages[index] %}\n    {%- set current_content = message.content if message.content is not none else '' %}\n    {%- set tool_start = '<tool_response>' %}\n    {%- set tool_start_length = tool_start|length %}\n    {%- set start_of_message = current_content[:tool_start_length] %}\n    {%- set tool_end = '</tool_response>' %}\n    {%- set tool_end_length = tool_end|length %}\n    {%- set start_pos = (current_content|length) - tool_end_length %}\n    {%- if start_pos < 0 %}\n        {%- set start_pos = 0 %}\n    {%- endif %}\n    {%- set end_of_message = current_content[start_pos:] %}\n    {%- if ns.multi_step_tool and message.role == \"user\" and not(start_of_message == tool_start and end_of_message == tool_end) %}\n        {%- set ns.multi_step_tool = false %}\n        {%- set ns.last_query_index = index %}\n    {%- endif %}\n{%- endfor %}\n{%- for message in messages %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set content = message.content %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is defined and message.reasoning_content is not none %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in message.content %}\n                {%- set content = (message.content.split('</think>')|last).lstrip('\\n') %}\n                {%- set reasoning_content = (message.content.split('</think>')|first).rstrip('\\n') %}\n                {%- set reasoning_content = (reasoning_content.split('<think>')|last).lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {%- if loop.last or (not loop.last and reasoning_content) %}\n                {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content.strip('\\n') + '\\n</think>\\n\\n' + content.lstrip('\\n') }}\n            {%- else %}\n                {{- '<|im_start|>' + message.role + '\\n' + content }}\n            {%- endif %}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if (loop.first and content) or (not loop.first) %}\n                    {{- '\\n' }}\n                {%- endif %}\n                {%- if tool_call.function %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {{- '<tool_call>\\n{\"name\": \"' }}\n                {{- tool_call.name }}\n                {{- '\", \"arguments\": ' }}\n                {%- if tool_call.arguments is string %}\n                    {{- tool_call.arguments }}\n                {%- else %}\n                    {{- tool_call.arguments | tojson }}\n                {%- endif %}\n                {{- '}\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.first or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\\n\\n</think>\\n\\n' }}\n    {%- endif %}\n{%- endif %}"
+  },
+  "cardData": {
+    "license": "apache-2.0",
+    "base_model": "Qwen/Qwen3-8B",
+    "datasets": [
+      "vector-institute/unbias-plus-dataset"
+    ],
+    "language": [
+      "en"
+    ],
+    "tags": [
+      "qwen3",
+      "8b",
+      "bias-detection",
+      "news-debiasing",
+      "fine-tuned",
+      "unsloth",
+      "sft",
+      "conversational"
+    ],
+    "pipeline_tag": "text-generation"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes",
+      "blobId": "52373fe24473b1aa44333d318f578ae6bf04b49b",
+      "size": 1570
+    },
+    {
+      "rfilename": "README.md",
+      "blobId": "eab3f3336c72e73c6ab3de165bbb07ed924547ed",
+      "size": 11170
+    },
+    {
+      "rfilename": "chat_template.jinja",
+      "blobId": "e079919f9b4d02f48174e13460832412a131ea3d",
+      "size": 4761
+    },
+    {
+      "rfilename": "config.json",
+      "blobId": "ad27e268155eca78fed54914f71058d12f601e30",
+      "size": 1841
+    },
+    {
+      "rfilename": "generation_config.json",
+      "blobId": "4c318741e9ea7a4eef3bb67e5285d085b40ea823",
+      "size": 210
+    },
+    {
+      "rfilename": "model-00001-of-00004.safetensors",
+      "blobId": "e6607878e7f636ea2ec9989803f8537c8979000d",
+      "size": 4902257696,
+      "lfs": {
+        "sha256": "1045e8b3fbc72f560138f4768dbbd5c5cf42e0e8eb7604a92e8ede54d03f2736",
+        "size": 4902257696,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00002-of-00004.safetensors",
+      "blobId": "a573a97ad328a5da59623a8b398e2f8e3aa72012",
+      "size": 4915960368,
+      "lfs": {
+        "sha256": "d316b3dba62396978ca893e31cb3e4d6ac4d70e61f6d5c5f3643dda76b19cb82",
+        "size": 4915960368,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00003-of-00004.safetensors",
+      "blobId": "ea0511c59641fa05f7c03c22e353188fb7b36ea8",
+      "size": 4983068496,
+      "lfs": {
+        "sha256": "93405b197ce13cb5422ef042cabf0fc31c1ce8b923838b31cbeaeb207d6b10b8",
+        "size": 4983068496,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model-00004-of-00004.safetensors",
+      "blobId": "0d9632487b1ea4021090cb6670fd03eb07a88f08",
+      "size": 1580230264,
+      "lfs": {
+        "sha256": "d89ca13d091a4a017ff260bd27338218dea366ba4a38773f30f74c27b97861c4",
+        "size": 1580230264,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model.safetensors.index.json",
+      "blobId": "10c7a17197289024c4b2801e53b9662e95f5ad83",
+      "size": 32878
+    },
+    {
+      "rfilename": "tokenizer.json",
+      "blobId": "7edcf722addb6c9290899bdb0555a96b2017c7cc",
+      "size": 11423114,
+      "lfs": {
+        "sha256": "d7430e9138b76e93fb6f93462394d236b411111aef53cb421ba97d2691040cca",
+        "size": 11423114,
+        "pointerSize": 133
+      }
+    },
+    {
+      "rfilename": "tokenizer_config.json",
+      "blobId": "24d5e7cb8dc242654b5a5d89683b07969ea27852",
+      "size": 5333
+    }
+  ],
+  "spaces": [],
+  "createdAt": "2026-07-13T23:40:58.000Z",
+  "safetensors": {
+    "parameters": {
+      "BF16": 8190735360
+    },
+    "total": 8190735360
+  },
+  "usedStorage": 16392939938
+}

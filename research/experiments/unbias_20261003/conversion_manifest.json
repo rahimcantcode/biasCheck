@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-03T18:54:33.383823+00:00",
+  "complete": true,
+  "model_id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+  "model_revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+  "input_manifest": {
+    "model_id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+    "model_revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+    "files": [
+      {
+        "file": "chat_template.jinja",
+        "bytes": 4761,
+        "sha256": "8428c815ac94d82064e35ff1e841dcbe260e7e53a8d0bd3b94afa2eefa9bccab",
+        "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/chat_template.jinja"
+      },
+      {
+        "file": "config.json",
+        "bytes": 1841,
+        "sha256": "edcfd602d24ecf9df22ff0f9c7b6609cdcb2c681aee1cce4cf7f84f381658977",
+        "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/config.json"
+      },
+      {
+        "file": "generation_config.json",
+        "bytes": 210,
+        "sha256": "d41d25f63fdd5e108e21f6bd0f23f20f54f81fa8784b8d69032c0eb5854f3aa8",
+        "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/generation_config.json"
+      },
+      {
+        "file": "model-00001-of-00004.safetensors",
+        "bytes": 4902257696,
+        "sha256": "1045e8b3fbc72f560138f4768dbbd5c5cf42e0e8eb7604a92e8ede54d03f2736",
+        "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00001-of-00004.safetensors"
+      },
+      {
+        "file": "model-00002-of-00004.safetensors",
+        "bytes": 4915960368,
+        "sha256": "d316b3dba62396978ca893e31cb3e4d6ac4d70e61f6d5c5f3643dda76b19cb82",
+        "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00002-of-00004.safetensors"
+      },
+      {
+        "file": "model-00003-of-00004.safetensors",
+        "bytes": 4983068496,
+        "sha256": "93405b197ce13cb5422ef042cabf0fc31c1ce8b923838b31cbeaeb207d6b10b8",
+        "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00003-of-00004.safetensors"
+      },
+      {
+        "file": "model-00004-of-00004.safetensors",
+        "bytes": 1580230264,
+        "sha256": "d89ca13d091a4a017ff260bd27338218dea366ba4a38773f30f74c27b97861c4",
+        "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00004-of-00004.safetensors"
+      },
+      {
+        "file": "model.safetensors.index.json",
+        "bytes": 32878,
+        "sha256": "3649bb967710edc0f995e3839a363a069482a1688216f87745248966751d0221",
+        "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model.safetensors.index.json"
+      },
+      {
+        "file": "tokenizer.json",
+        "bytes": 11423114,
+        "sha256": "d7430e9138b76e93fb6f93462394d236b411111aef53cb421ba97d2691040cca",
+        "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/tokenizer.json"
+      },
+      {
+        "file": "tokenizer_config.json",
+        "bytes": 5333,
+        "sha256": "ae71a3ebb5392e2dddcef7c6ab49018c9482935215fb2689d37b277408a044dc",
+        "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/tokenizer_config.json"
+      }
+    ],
+    "download_elapsed_seconds": 187.07243871688843
+  },
+  "input_manifest_sha256": "35f38f091174d713dff6032101987fbbbe35a9d2f2a393a55d1fdfe39d327d3a",
+  "conversion_source_revision": "fb4b2737a808a3fb7c2117a498f43815dc9be53e",
+  "conversion_source": {
+    "revision": "fb4b2737a808a3fb7c2117a498f43815dc9be53e",
+    "source_url": "https://github.com/ggml-org/llama.cpp/archive/fb4b2737a808a3fb7c2117a498f43815dc9be53e.tar.gz",
+    "archive_sha256": "694497da4112aead51f4471c30919fea4b678add57b6de19ac2f61c0d72282d6",
+    "archive_bytes": 37768104,
+    "root": "/tmp/llama-b11349-conversion-source/llama.cpp-fb4b2737a808a3fb7c2117a498f43815dc9be53e",
+    "selection": "converter, conversion modules, gguf-py, requirements, LICENSE",
+    "elapsed_seconds": 6.469260376999955
+  },
+  "source_converter_sha256": "e9a1da876330bbce9687541ab31736542a01b4ac43c6686126514a50f122fb7f",
+  "script_sha256": "44376abf7185cf4e28f360e7e5bf170465c73f752c7a2805b66732c31cc56d36",
+  "dependencies": {
+    "torch": "2.6.0+cpu",
+    "transformers": "4.57.1",
+    "numpy": "2.2.6",
+    "sentencepiece": "0.2.1",
+    "huggingface_hub": "0.36.2",
+    "safetensors": "0.6.2"
+  },
+  "stages": [
+    {
+      "name": "conversion_q8",
+      "command": [
+        "/tmp/bias-eval-venv/bin/python",
+        "/tmp/llama-b11349-conversion-source/llama.cpp-fb4b2737a808a3fb7c2117a498f43815dc9be53e/convert_hf_to_gguf.py",
+        "/tmp/unbias-v2-bf16",
+        "--outfile",
+        "/tmp/unbias-v2-q4/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2-Q8_0.gguf",
+        "--outtype",
+        "q8_0"
+      ],
+      "started_utc": "2026-10-03T18:54:43.956639+00:00",
+      "log": "research/experiments/unbias_20261003/conversion_q8.log",
+      "peak_sampled_rss_bytes": 4228788224,
+      "peak_sampled_anon_bytes": 4045905920,
+      "complete": true,
+      "exit_code": 0,
+      "elapsed_seconds": 52.53998103900085,
+      "completed_utc": "2026-10-03T18:55:36.496981+00:00",
+      "children_cumulative_peak_rss_kib": 4129676
+    },
+    {
+      "name": "conversion_q4",
+      "command": [
+        "/workspace/scratch/629523a223d6/biasCheck/research/checkpoints/unbias-runtime/bin/llama-b11349/llama-quantize",
+        "--allow-requantize",
+        "--max-buffer-size",
+        "512",
+        "/tmp/unbias-v2-q4/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2-Q8_0.gguf",
+        "/tmp/unbias-v2-q4/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2-Q4_K_M.gguf",
+        "Q4_K_M",
+        "4"
+      ],
+      "started_utc": "2026-10-03T18:55:51.243629+00:00",
+      "log": "research/experiments/unbias_20261003/conversion_q4.log",
+      "peak_sampled_rss_bytes": 1164251136,
+      "peak_sampled_anon_bytes": 494227456,
+      "complete": true,
+      "exit_code": 0,
+      "elapsed_seconds": 133.20117733200095,
+      "completed_utc": "2026-10-03T18:58:04.445151+00:00",
+      "children_cumulative_peak_rss_kib": 4600224
+    }
+  ],
+  "deleted_regenerable_source_shards": [
+    {
+      "file": "model-00001-of-00004.safetensors",
+      "bytes": 4902257696,
+      "sha256": "1045e8b3fbc72f560138f4768dbbd5c5cf42e0e8eb7604a92e8ede54d03f2736",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00001-of-00004.safetensors"
+    },
+    {
+      "file": "model-00002-of-00004.safetensors",
+      "bytes": 4915960368,
+      "sha256": "d316b3dba62396978ca893e31cb3e4d6ac4d70e61f6d5c5f3643dda76b19cb82",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00002-of-00004.safetensors"
+    },
+    {
+      "file": "model-00003-of-00004.safetensors",
+      "bytes": 4983068496,
+      "sha256": "93405b197ce13cb5422ef042cabf0fc31c1ce8b923838b31cbeaeb207d6b10b8",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00003-of-00004.safetensors"
+    },
+    {
+      "file": "model-00004-of-00004.safetensors",
+      "bytes": 1580230264,
+      "sha256": "d89ca13d091a4a017ff260bd27338218dea366ba4a38773f30f74c27b97861c4",
+      "source_url": "https://huggingface.co/vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2/resolve/01a0c8e97ab44b9d2e56d86b6298f2cc74df1222/model-00004-of-00004.safetensors"
+    }
+  ],
+  "quality_caveat": "Locally derived Q8_0 then Q4_K_M requantization of the pinned official V2 checkpoint; not the full-precision original and not a claim of equivalent model quality.",
+  "memory_policy": "4 CPU threads; default lazy converter; no temp copy; stop if child anonymous memory exceeds 7 GiB; Q4 quantizer buffer 512 MiB.",
+  "source_hashes_reverified_utc": "2026-10-03T18:54:43.953194+00:00",
+  "source_tensor_summary": {
+    "tensor_count": 399,
+    "parameter_count": 8190735360,
+    "dtype_counts": {
+      "BF16": 399
+    }
+  },
+  "runtime": {
+    "fingerprint": "b11349-fb4b2737a",
+    "server_sha256": "f1fe3730c84c6fb397e6807bf6bc7b9572f322dcaa1f342ad1b4c92dca74bce8",
+    "quantizer_sha256": "6f4d425615050d59241fa5c858848216da08ed37f62aaeb1bb0981a6890785e1"
+  },
+  "disk_available_before_conversion_bytes": 13064605696,
+  "q8_validation": {
+    "path": "/tmp/unbias-v2-q4/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2-Q8_0.gguf",
+    "bytes": 8709518720,
+    "sha256": "abb0d186ceab21d108e6b7046a8942227687a65d848ba67c857ca2402f285fb3",
+    "tensor_count": 399,
+    "parameter_count": 8190735360,
+    "tensor_type_counts": {
+      "Q8_0": 254,
+      "F32": 145
+    },
+    "architecture": "qwen3",
+    "numeric_q8_scales_and_f32_checked": true,
+    "elapsed_seconds": 14.448897332998968,
+    "validation_scope": "All tensor ranges, count, parameter count, architecture, chat template; all Q8 scales and F32 values finite when requested. This is not inference or model-quality validation."
+  },
+  "disk_available_before_q4_bytes": 20735852544,
+  "q4_validation": {
+    "path": "/tmp/unbias-v2-q4/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2-Q4_K_M.gguf",
+    "bytes": 5027784064,
+    "sha256": "7f771dbb1739fe840655850784c1cea759185aa456cde0644bdb1425d89969c9",
+    "tensor_count": 399,
+    "parameter_count": 8190735360,
+    "tensor_type_counts": {
+      "Q6_K": 37,
+      "F32": 145,
+      "Q4_K": 217
+    },
+    "architecture": "qwen3",
+    "numeric_q8_scales_and_f32_checked": false,
+    "elapsed_seconds": 8.809366869998485,
+    "validation_scope": "All tensor ranges, count, parameter count, architecture, chat template; all Q8 scales and F32 values finite when requested. This is not inference or model-quality validation."
+  },
+  "completed_utc": "2026-10-03T18:58:13.360297+00:00"
+}

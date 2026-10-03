@@ -1,0 +1,252 @@
+{
+  "reviewer": "independent runtime and source-offset review",
+  "decision": "Continue research evaluation of the locally quantized UnBias-Plus V2 candidate; do not replace production. Do not promote compact NER fallback.",
+  "release_approved": false,
+  "review_scope": "Existing six frozen AI-authored synthetic diagnostics only; no inference reruns, new prompts, natural-passage evaluation, or human validation.",
+  "input_records": [
+    {
+      "file": "native_results.json",
+      "sha256": "b2eb4d0bb3e347bdbc45e5a238b5f26da6f336a8ede7867a3649b23564110d82"
+    },
+    {
+      "file": "native_runtime_measurement.json",
+      "sha256": "362aa647f542e1a5573938404e11920879203488e3ed5a8493b4d2711ff2e647"
+    },
+    {
+      "file": "diagnostics.json",
+      "sha256": "8f62609cbf91579ce8d9c89fb683c6c5f06452b0e044bbf09b4d74e3105ee815"
+    },
+    {
+      "file": "ner_results.json",
+      "sha256": "b4f35da2bfdbccf22c1853e820e368f7ec7d0b8f64c627f88de0f20ba473ebb0"
+    }
+  ],
+  "native_candidate": {
+    "model_id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+    "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+    "quantization": "Q4_K_M requantized from locally generated Q8_0",
+    "weights_sha256": "7f771dbb1739fe840655850784c1cea759185aa456cde0644bdb1425d89969c9"
+  },
+  "operational_result": {
+    "cases": 6,
+    "completed": 6,
+    "partial_failures": 0,
+    "failures": 0,
+    "http_200_responses": 6,
+    "stop_completions": 6,
+    "rejected_segments": 0,
+    "runner_exit_code": 0,
+    "meaning": "No recorded HTTP, completion, JSON, context, fingerprint, schema, or span-adaptation failures in this run; this does not establish model correctness."
+  },
+  "source_integrity": {
+    "raw_text_matches_frozen_fixture": true,
+    "all_source_hashes_match": true,
+    "raw_http_body_matches_parsed_response": true,
+    "native_json_matches_returned_message": true,
+    "all_spans_match_exact_unique_original_substrings": true,
+    "verified_spans": 7,
+    "offset_unit": "unicode_codepoint",
+    "end_exclusive": true,
+    "spans": [
+      {
+        "case_id": "D01",
+        "start": 4,
+        "end": 35,
+        "text": "proposed corporate tax increase",
+        "native_index": 0
+      },
+      {
+        "case_id": "D01",
+        "start": 36,
+        "end": 58,
+        "text": "is a reckless tax grab",
+        "native_index": 1
+      },
+      {
+        "case_id": "D04",
+        "start": 56,
+        "end": 75,
+        "text": "a reckless tax grab",
+        "native_index": 0
+      },
+      {
+        "case_id": "D05",
+        "start": 12,
+        "end": 50,
+        "text": "called the bill “a reckless tax grab.”",
+        "native_index": 0
+      },
+      {
+        "case_id": "D05",
+        "start": 51,
+        "end": 115,
+        "text": "I agree with that description: this bill is a reckless tax grab.",
+        "native_index": 1
+      },
+      {
+        "case_id": "D06",
+        "start": 0,
+        "end": 23,
+        "text": "The reckless goalkeeper",
+        "native_index": 0
+      },
+      {
+        "case_id": "D06",
+        "start": 84,
+        "end": 110,
+        "text": "called the play a disaster",
+        "native_index": 1
+      }
+    ]
+  },
+  "boundary_findings": {
+    "native_exact_span_counts": {
+      "true_positive": 0,
+      "false_positive": 7,
+      "false_negative": 4
+    },
+    "expected_cue_occurrences": 4,
+    "expected_cue_occurrences_contained_within_prediction": 4,
+    "exact_expected_span_matches": 0,
+    "containment_records": [
+      {
+        "case_id": "D01",
+        "expected_start": 41,
+        "expected_end": 58,
+        "containing_prediction_indices": [
+          1
+        ]
+      },
+      {
+        "case_id": "D04",
+        "expected_start": 58,
+        "expected_end": 75,
+        "containing_prediction_indices": [
+          0
+        ]
+      },
+      {
+        "case_id": "D05",
+        "expected_start": 31,
+        "expected_end": 48,
+        "containing_prediction_indices": [
+          0
+        ]
+      },
+      {
+        "case_id": "D05",
+        "expected_start": 97,
+        "expected_end": 114,
+        "containing_prediction_indices": [
+          1
+        ]
+      }
+    ],
+    "interpretation": "All four expected cue occurrences are contained inside broader returned spans. None has the exact frozen expected boundaries. Containment is a literal source-position observation, not semantic accuracy or validated recall."
+  },
+  "content_findings": [
+    {
+      "case_id": "D01",
+      "finding": "The candidate returns the cue inside a broader span, and additionally flags neutral policy wording.",
+      "extra_flag": "proposed corporate tax increase",
+      "extra_flag_start": 4,
+      "extra_flag_end": 35,
+      "native_replacement_is_unchanged": true,
+      "review_judgment": "The extra flag is unsupported under the frozen narrow framing rubric."
+    },
+    {
+      "case_ids": [
+        "D02",
+        "D03"
+      ],
+      "finding": "No highlights for the neutral factual policy report or plain policy advocacy controls."
+    },
+    {
+      "case_id": "D04",
+      "finding": "The returned span includes the quoted cue, but attribution remains unknown. Its explanation calls the phrase an evaluative judgment presented as fact and does not distinguish the speaker from the reporter."
+    },
+    {
+      "case_id": "D05",
+      "finding": "Two broader unique spans contain the two repeated cue occurrences, preserving both locations. Neither span establishes author versus quoted attribution."
+    },
+    {
+      "case_id": "D06",
+      "finding": "Two highlights appear in the sports control, which is outside the narrow political-framing application scope.",
+      "native_spans": [
+        "The reckless goalkeeper",
+        "called the play a disaster"
+      ],
+      "review_judgment": "This is a scope mismatch for the intended application; a broad bias detector may legitimately flag evaluative sports language."
+    }
+  ],
+  "attribution": {
+    "supported": false,
+    "native_emitted_spans": 7,
+    "native_spans_with_unknown_attribution": 7,
+    "ner_emitted_spans": 17,
+    "ner_spans_with_unknown_attribution": 17,
+    "conclusion": "Neither tested model supplies verified speaker attribution. Matching quoted words does not establish attribution correctness."
+  },
+  "six_case_comparison": {
+    "native_emitted_spans": 7,
+    "ner_emitted_spans": 17,
+    "native_exact_span_counts": {
+      "true_positive": 0,
+      "false_positive": 7,
+      "false_negative": 4
+    },
+    "ner_exact_span_counts": {
+      "true_positive": 4,
+      "false_positive": 13,
+      "false_negative": 0
+    },
+    "control_ids": [
+      "D02",
+      "D03",
+      "D06"
+    ],
+    "native_controls_with_highlights": [
+      "D06"
+    ],
+    "ner_controls_with_highlights": [
+      "D02",
+      "D03",
+      "D06"
+    ],
+    "interpretation": "The native candidate avoided highlights in two controls where NER highlighted text. NER matched all four frozen cue boundaries but emitted 13 additional spans. Native emitted broader cue spans, an additional neutral-policy flag, and two off-topic highlights. This tiny fixture does not justify a general model ranking."
+  },
+  "measured_runtime": {
+    "device": "CPU",
+    "threads": 4,
+    "native_elapsed_seconds_by_case": {
+      "D01": 69.65338773799886,
+      "D02": 9.460399761999724,
+      "D03": 8.096879077998892,
+      "D04": 14.935171983001055,
+      "D05": 26.64079328599837,
+      "D06": 23.046575705000578
+    },
+    "native_peak_sampled_server_rss_bytes": 8321818624,
+    "native_peak_sampled_server_rss_gib": 7.750297546386719,
+    "native_first_case_cached_prompt_tokens": 0,
+    "later_native_cases_use_prompt_cache": true,
+    "ner_elapsed_seconds_by_case": {
+      "D01": 0.053613764999681734,
+      "D02": 0.07019712700002856,
+      "D03": 0.06371601000046212,
+      "D04": 0.044179735999932745,
+      "D05": 0.04168462599955092,
+      "D06": 0.04768650099958904
+    },
+    "interpretation": "First native case was uncached; subsequent cases reused the prompt cache. These latencies are not uniformly cold-start measurements. Native measured RSS is close to the 8 GiB environment limit."
+  },
+  "limitations": [
+    "Six short AI-authored development diagnostics only; expected boundaries and judgments are not human-validated.",
+    "This is not the unavailable prior 30-natural-passage comparison or the planned fresh 100-passage evaluation.",
+    "Tested local Q8_0-to-Q4_K_M requantization, not full-precision official weights; equivalence is not established.",
+    "Exact-boundary metrics penalize broader spans; four literal containment matches are not semantic-quality measurements.",
+    "No model supplies speaker attribution, and native output does not enforce narrow political topic scope.",
+    "No production readiness, natural-passage accuracy, general recall, general precision, or comparative model ranking is established."
+  ],
+  "next_step_recommendation": "Retain this candidate for a documented natural-passage evaluation with scope and attribution checks and a boundary-aware review rubric. Preserve the current production model until the planned comparison and staging checks support a change."
+}
