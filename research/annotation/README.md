@@ -24,6 +24,19 @@ If the browser blocks local folder/hash features, serve the annotation folder lo
 
 Do not substitute changed live article text for a frozen snapshot. The original URLs are references, not verified replacements. If a source file is unavailable, record a skip with a reason.
 
+### Offline snapshot bundle
+
+The **Offline snapshot bundle** file picker accepts the local `texts.json` emitted
+by `research/scripts/pilot_context_audit.py`: an array of `{id, text}` records for
+all 100 frozen pilot items. The existing verified copy is at
+`research/checkpoints/pilot-context-20261003/texts.json` (not committed).
+Every ID must occur exactly once and every text must match its manifest SHA-256.
+Missing, duplicate, unknown, or altered items reject the entire import without
+changing loaded texts. Loading preserves the current unsaved judgment. No
+predictions or labels are imported, and no network request is made by this path.
+Keep article snapshots local; source reuse rights have not been cleared for
+redistribution. This is still a development pilot, not an independent test set.
+
 Save each judgment before moving on. Export your JSON frequently. Local browser storage is convenient, not a durable backup. Article text is not sent to a server, stored in review exports, or transmitted to a model. Exported files contain your ID, judgments, paraphrased rationales and timestamps.
 
 A second reviewer should work independently with a separate reviewer ID and browser profile. Review the first 10 items, discuss rule ambiguities, and then independently re-review those items if the rubric changes. Do not treat the earlier and later passes as independent reviewers.

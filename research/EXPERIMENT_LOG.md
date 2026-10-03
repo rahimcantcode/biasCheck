@@ -1,5 +1,39 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03 15:15 UTC heartbeat: offline human-review preparation
+
+Implemented an offline snapshot-bundle importer in the existing review page.
+It accepts only the complete frozen 100-ID manifest, validates every text hash,
+rejects duplicate/unknown/missing IDs, and stages all records before changing
+loaded texts. Unsaved judgments survive import. No labels or predictions are
+imported, and no human judgments were created during tests. Pilot remains
+development-only; this does not supply independent accuracy evidence.
+
+Local Chromium 154 (cloud browser unavailable) verified four atomic rejection
+cases, successful 100-item import, draft preservation and displayed article
+content. Zero HTTP requests during offline import, zero page errors, no mobile
+horizontal overflow. Desktop/mobile screenshots retained and mobile inspected.
+Bundle, manifest and generated-viewer hashes recorded in
+research/results/offline_review_20261003.json. Test timestamps reflect actual
+execution (18:31 UTC), later than the heartbeat's start timestamp.
+
+Annotation tests: 18 pytest checks passed in stance-runtime; 4 audit unittest
+checks passed in system Python. Initial combined pytest collection failed because
+stance-runtime lacks numpy; reran separately with existing appropriate runtimes,
+without changing dependencies. git diff --check passed.
+
+Live public-site form checks repeated the three frozen headline repetition
+probes: one copy withheld, four LEFT, eight CENTER. All HTTP 200, no page errors,
+failed requests or mobile overflow. This reconfirms an existing failure, not a
+new finding or gold-label metric. Sanitized evidence in
+research/results/offline_review_browser_20261003.json; raw responses and PNGs in
+outputs/live-browser-offline-review-20261003. Production unchanged.
+
+User-facing local reviewer HTML and offline snapshots copied to outputs; article
+snapshots remain local and are not committed or publicly deployed. README now
+documents bundle validation and reuse restrictions. No model training, new Astra
+review, reserved test access, commercial-use clearance or release claimed.
+
 ## 2026-10-03 12:04 UTC: broader frozen-pilot context audit
 
 Audited the opt-in periodic/distinct-paragraph candidate on the existing unlabeled

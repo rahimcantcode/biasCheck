@@ -1,0 +1,89 @@
+{
+  "started_at": "2026-10-03T18:30:54.663Z",
+  "finished_at": "2026-10-03T18:31:12.730Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.95",
+  "cases": [
+    {
+      "id": "headline-repeat-1",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998968,
+          "RIGHT": 0.000777,
+          "CENTER": 0.000255
+        },
+        "decision": "abstained",
+        "reason": "insufficient_context",
+        "token_count": 10,
+        "tokens_processed": 10,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "screenshot_sha256": "d749c139eead1bf1c8ef877f3198de5216200bc3b15b84e8b5f4de1ab66735de"
+    },
+    {
+      "id": "headline-repeat-4",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998627,
+          "RIGHT": 0.000874,
+          "CENTER": 0.000499
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 46,
+        "tokens_processed": 46,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "screenshot_sha256": "3edad9814c2570a3dfdfd8160b9c9a5fa766345d3f3fcf62f2c16ceaabcccf50"
+    },
+    {
+      "id": "headline-repeat-8",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "CENTER",
+        "label_id": 2,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.00038,
+          "RIGHT": 0.000414,
+          "CENTER": 0.999207
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 94,
+        "tokens_processed": 94,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "screenshot_sha256": "1f27bb2731366200f09dde54c24c31720137b508fb595d85ff3cc58290880da8"
+    }
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false
+}

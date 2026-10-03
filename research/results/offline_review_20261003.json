@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-10-03T18:31:33.361Z",
+  "browser": "154.0.8037.95",
+  "browser_location": "local Chromium fallback",
+  "checks": [
+    "missing item rejected atomically",
+    "duplicate ID rejected atomically",
+    "unknown ID rejected atomically",
+    "late changed text rejected atomically",
+    "all 100 loaded",
+    "unsaved draft preserved",
+    "verified article rendered"
+  ],
+  "bundle_sha256": "78f22044b2e2f654c898618e8e75be85fe0d6bd6507f11c5253a4aca3d4cd209",
+  "viewer_sha256": "aea62bf7b05f222ceef50d94a11d6b84fe95cb70d2f93b19a5b508c2bbaf362c",
+  "manifest_sha256": "97ddc6db156e472065c9091b35b08ecea6885b58f0817ebf7c72c163ba09bcf7",
+  "page_errors": [],
+  "network_requests": [],
+  "mobile_overflow": false,
+  "human_annotations_created": 0
+}
