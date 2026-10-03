@@ -1,0 +1,94 @@
+{
+  "started_at": "2026-10-03T15:12:27.306Z",
+  "finished_at": "2026-10-03T15:12:53.321Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.95",
+  "url": "https://bias.r4him.tech/",
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "purpose": "First three verified historical pilot articles, functional full-input smoke only; no human political gold",
+  "cases": [
+    {
+      "id": "P001",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.997545,
+          "RIGHT": 0.000445,
+          "CENTER": 0.00201
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 1534,
+        "tokens_processed": 1534,
+        "chunk_count": 4,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "P002",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.997974,
+          "RIGHT": 0.001528,
+          "CENTER": 0.000499
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 1046,
+        "tokens_processed": 1046,
+        "chunk_count": 3,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "P003",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "RIGHT",
+        "label_id": 1,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.010964,
+          "RIGHT": 0.965109,
+          "CENTER": 0.023927
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 1535,
+        "tokens_processed": 1535,
+        "chunk_count": 4,
+        "truncated": false,
+        "calibrated": false
+      }
+    }
+  ],
+  "screenshots": {
+    "P001.png": "d756675e188d91c60332eebcc97b0e4553f342ed142caac6c023a459a6cd5ea5",
+    "P002.png": "d7ea49fe8f8ade6185ddebc87a82e788f066dd7abc553c5c9abbc32fa49eba4b",
+    "P003.png": "c923dc10a21709fae5d25efd87101066d68e73f79335383e712dfde8c8d0ea54",
+    "mobile.png": "dc3ea782b7342d85bd2269efa12263c36eb647f637562d14f0d1c234b4fa0896"
+  }
+}

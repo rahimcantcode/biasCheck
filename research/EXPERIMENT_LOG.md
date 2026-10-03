@@ -1,5 +1,41 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03 12:04 UTC: broader frozen-pilot context audit
+
+Audited the opt-in periodic/distinct-paragraph candidate on the existing unlabeled
+rubric pilot: 60 historical articles and 40 AI-authored controlled examples. The
+expected ../research-data checkout was absent, so retrieved only the 60 manifest
+IDs from pinned ramybaly/Article-Bias-Prediction revision
+ced8111a720948e6a410e52031ace99c4e53f096. Read content_original, not inherited bias
+labels; verified stripped historical text and controlled text against every
+manifest SHA-256. All 100 verified, zero failures or substituted snapshots.
+Local retained texts are research-only and not committed/redistributed.
+
+Historical articles: two context views changed, zero new minimum-context
+exclusions, zero originally short. P019 changed 1496->1488 tokenizer tokens;
+P093 changed 505->481. Controlled examples: zero changed views or new exclusions;
+P016 was already below the original minimum. All tokenizer files matched the
+previous production-bound fingerprint. Candidate threshold remains 12, unchanged.
+One focused frozen-text integrity test passed. These are compatibility counts,
+not human-reviewed false-positive rates, political accuracy or semantic relevance.
+The pilot is development-only, and human_reviewed remains false.
+
+Saved per-item counts, IDs, frozen hashes, source links, failures, source revision
+and summary in research/results/pilot_context_20261003.json. Exact verified texts
+and browser selection are local in research/checkpoints/pilot-context-20261003/.
+No model fitting, calibration, PoliticalBiasCorpus reserved-test use, or deployment.
+Dataset reuse rights still require review before redistribution/commercial use.
+This engineering audit makes no new model-review or high-accuracy claim.
+
+Local Chromium fallback submitted the first three verified historical pilot
+articles (P001/P002/P003) to production. All HTTP 200, labels LEFT/LEFT/RIGHT,
+token counts 1534/1046/1535, windows 4/3/4, no truncation. No page errors,
+failed requests or mobile overflow. Raw outputs/screenshots retained at
+outputs/live-browser-pilot-context-20261003, with sanitized results and screenshot
+hashes in research/results/pilot_context_browser_20261003.json. These functional
+checks have no human gold labels and are not accuracy evidence. Candidate remains
+offline; numbered/punctuation repetition gaps and human-validation needs persist.
+
 ## 2026-10-03 10:34 UTC: exact whole-input repetition shadow extension
 
 Added an opt-in periodic context view to the research runners; default paragraph
