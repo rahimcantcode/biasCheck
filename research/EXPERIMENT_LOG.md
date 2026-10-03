@@ -1,5 +1,40 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03 20:25 UTC heartbeat: paired stance and attribution diagnostic
+
+After P005's pro-market LEFT result, froze six AI-authored inputs before execution:
+original P005, explicit rejection, neutral quotation, neutral-preface variant,
+original P006 safety-net endorsement, and neutral quotation of P006. Exact inputs
+in research/data/attribution-diagnostic-20261003.json. No human labels assigned.
+This small selected diagnostic cannot establish accuracy, generalization, or the
+cause of sensitivity. No tuning, candidate selection or reserved-test access.
+
+Requested method-only critique using codex exec --ephemeral -m gpt-6-astra with
+model_reasoning_effort="medium", read-only sandbox, explicit no-tools/no-files/
+no-network instruction. It completed without tool use; saved response in
+research/data/attribution-method-review-20261003.txt. Parent model unchanged.
+Astra cautioned against correctness claims and recommended reporting full score
+distributions, including the original-versus-neutral-preface comparison.
+
+Real public-site form submissions via local Chromium fallback (cloud browser
+unavailable), 20:26:08-20:26:17 UTC: all six HTTP 200, all LEFT, zero abstentions.
+LEFT scores: original .945672, rejection .995734, quote .999112, neutral preface
+.974841, safety-net .997547, safety-net quote .999091. No label or decision flips.
+Total variation from market original: rejection .050062, quotation .053440,
+preface .0291685, safety-net endorsement .051875. Safety-net quotation TV .001544.
+These describe outputs only; they are not accuracy, recall, or evidence that
+quotation must always receive a particular political label. Wording and stance
+effects are confounded, and raw softmax is not calibrated correctness.
+
+All response model metadata matched: production weights 548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d;
+tokenizer bundle 4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917.
+No truncation, page errors, failed requests or mobile overflow; inspected mobile
+screenshot. Raw responses, text and screenshots in outputs/live-browser-attribution-20261003.
+Summary preserves every score, text/input/audit/screenshot hash and full model
+metadata in research/results/attribution_diagnostic_20261003.json. Reusable summary
+script rejects changed inputs, incomplete/duplicate cases and changed metadata;
+four focused tests passed. Production unchanged; no model improvement claimed.
+
 ## 2026-10-03 18:33 UTC heartbeat: prevent silent annotation storage failure
 
 Found a concrete review integrity bug: both save and skip handlers ignored the

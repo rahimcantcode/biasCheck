@@ -1,0 +1,268 @@
+{
+  "purpose": "AI-authored paired diagnostic; not human gold or accuracy",
+  "human_reviewed": false,
+  "started_at": "2026-10-03T20:26:08.007Z",
+  "finished_at": "2026-10-03T20:26:17.032Z",
+  "model": {
+    "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+    "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+    "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+    "id2label": {
+      "0": "LEFT",
+      "1": "RIGHT",
+      "2": "CENTER"
+    },
+    "aggregation": "new_token_weighted_logit_mean_v1",
+    "max_length": 512,
+    "stride": 64,
+    "demo_mode": true,
+    "transformers": "4.57.1",
+    "torch": "2.6.0+cpu",
+    "tokenizers": "0.22.2"
+  },
+  "cases": [
+    {
+      "id": "market-endorsement",
+      "text_sha256": "7d4048ce6086cfc4d4eadfae93c72e44e2621411478a40bbb8f7022f08743834",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.945672,
+          "RIGHT": 0.034656,
+          "CENTER": 0.019672
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 38,
+        "tokens_processed": 38,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "market-rejection",
+      "text_sha256": "d76eb4ed5a5966aeee3f81ed3bd0c776c34b478401004d1f92e17599f873cb8f",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.995734,
+          "RIGHT": 0.001905,
+          "CENTER": 0.002361
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 38,
+        "tokens_processed": 38,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "market-quotation",
+      "text_sha256": "145733bf15651a7431c05653ccae96a92170a6f9b66f1e4a32641fe7756f4835",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999112,
+          "RIGHT": 0.000338,
+          "CENTER": 0.00055
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 58,
+        "tokens_processed": 58,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "market-preface",
+      "text_sha256": "5e8a177847bc18eb528f520794b10f480e83b7ba1fe5a0b5738e9f0dbf138494",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.974841,
+          "RIGHT": 0.016789,
+          "CENTER": 0.008371
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 44,
+        "tokens_processed": 44,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "safety-net-endorsement",
+      "text_sha256": "46880a89725c551f32a1c955fc48fe41d45058c72bf34fa80f04d0d219ca21f6",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.997547,
+          "RIGHT": 0.001085,
+          "CENTER": 0.001368
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 40,
+        "tokens_processed": 40,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "safety-net-quotation",
+      "text_sha256": "d35bb0f8c1fba747f260afef9a7a38395d4cd8ca4c6fa93bff0d6bd369fd642d",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999091,
+          "RIGHT": 0.000363,
+          "CENTER": 0.000546
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 60,
+        "tokens_processed": 60,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    }
+  ],
+  "label_counts": {
+    "LEFT": 6
+  },
+  "abstentions": 0,
+  "pairs": [
+    {
+      "first": "market-endorsement",
+      "second": "market-rejection",
+      "released_label_changed": false,
+      "raw_label_changed": false,
+      "decision_changed": false,
+      "score_deltas": {
+        "LEFT": 0.05006200000000005,
+        "CENTER": -0.017311,
+        "RIGHT": -0.032751
+      },
+      "total_variation": 0.05006200000000002
+    },
+    {
+      "first": "market-endorsement",
+      "second": "market-quotation",
+      "released_label_changed": false,
+      "raw_label_changed": false,
+      "decision_changed": false,
+      "score_deltas": {
+        "LEFT": 0.05344000000000004,
+        "CENTER": -0.019122,
+        "RIGHT": -0.034318
+      },
+      "total_variation": 0.05344000000000002
+    },
+    {
+      "first": "market-endorsement",
+      "second": "market-preface",
+      "released_label_changed": false,
+      "raw_label_changed": false,
+      "decision_changed": false,
+      "score_deltas": {
+        "LEFT": 0.029169,
+        "CENTER": -0.011300999999999999,
+        "RIGHT": -0.017867
+      },
+      "total_variation": 0.0291685
+    },
+    {
+      "first": "safety-net-endorsement",
+      "second": "safety-net-quotation",
+      "released_label_changed": false,
+      "raw_label_changed": false,
+      "decision_changed": false,
+      "score_deltas": {
+        "LEFT": 0.0015439999999999898,
+        "CENTER": -0.000822,
+        "RIGHT": -0.000722
+      },
+      "total_variation": 0.0015439999999999948
+    },
+    {
+      "first": "market-endorsement",
+      "second": "safety-net-endorsement",
+      "released_label_changed": false,
+      "raw_label_changed": false,
+      "decision_changed": false,
+      "score_deltas": {
+        "LEFT": 0.051875000000000004,
+        "CENTER": -0.018303999999999997,
+        "RIGHT": -0.033571
+      },
+      "total_variation": 0.051875000000000004
+    }
+  ],
+  "browser": "154.0.8037.95",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "limitations": [
+    "Six selected AI-authored cases are not representative",
+    "No accuracy or correctness inferred from flips or invariance",
+    "Wording, stance and attribution effects are confounded",
+    "Softmax scores are not calibrated correctness probabilities"
+  ],
+  "input_file_sha256": "b5476fe5eb85e52b918e70535d1fdbe73ca85c958e91f997c3988f8960fb79e6",
+  "audit_file_sha256": "7b93542e02d6723e130b11b706f534ce777ed53abe0cb357db9bb21d7c9adf4f",
+  "screenshots_sha256": {
+    "market-endorsement.png": "4a74a12ffb9f01f71c67f1b17847bcc3b529232e1f8469f1ebbaa2682aa18876",
+    "market-preface.png": "4b3a38da99d4db46e09ec9e8c3ad2be8b79a8c86783509c106b8ec80744532f0",
+    "market-quotation.png": "3551be5a41132ca340a29dae3c8dc30c988427af4de0e41cf280afa31ebdab4e",
+    "market-rejection.png": "944baf996e779367e6eaf043b9bc221c198b729d205ceddc6e4a3768946bc553",
+    "mobile.png": "28a6dd32cfd59899a902e3aa73a47bfccae0cc1c3627bbc8048b881d6b91f6f9",
+    "safety-net-endorsement.png": "c55b6007fb9415505d54570fd8b27c7ca0d86267c8739e427bb57dca12a2a9f7",
+    "safety-net-quotation.png": "2f6fcca90ded9492575c5750cc88d110148d98d19dce4166d4394258312cd258"
+  }
+}

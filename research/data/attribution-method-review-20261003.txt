@@ -1,0 +1,5 @@
+The six fixed cases can reveal sensitivity to stance, quotation, and framing, but cannot establish political correctness or accuracy. Without human labels, neither the initial LEFT assignment nor any flip establishes an error. The .945672 softmax value reflects the model’s output, not a validated probability that its interpretation is correct.
+
+The frozen model and absence of tuning keep the comparison consistent, but six selected cases from AI-authored text cannot support general claims about political bias or performance on human writing. Changes may reflect wording or presentation as well as stance; unchanged labels may conceal substantial shifts in score distributions.
+
+One useful paired comparison is the original endorsement versus the same endorsement with a neutral preface. Differences indicate framing sensitivity for that pair, though they cannot establish its cause or generality. Report label flips, full distributions, raw scores, and abstentions descriptively, never as accuracy.
