@@ -1,0 +1,403 @@
+{
+  "purpose": "Training-only heuristic cross-fold overlap audit; not proof of leakage",
+  "validation_read": false,
+  "reserved_test_read": false,
+  "split_changes": false,
+  "data_sha256": "5ebefc86e5da25784649b895753219207913cbcb042b85e7e90fdf4b84f2d1b9",
+  "feature_container_sha256": "4d0467bb925632ddfe2148000958e1e4288825f8cda08dad52f096e37ec90a7c",
+  "feature_metadata_sha256": "12527888710bd2603a3f3871c5b3c5018fcd23f9a799e6a582f925f3a3a4b79f",
+  "folds_sha256": "c27733198c96f449c0dc700f81ec425cdb1c31cabd374f1f1c71bc978e68e086",
+  "selection_uses_labels": false,
+  "shingling": "Unique contiguous five-word tuples from lowercase regex word tokens",
+  "containment": "Shared shingle count divided by smaller set size; symmetric",
+  "empty_shingle_sets": "Rejected before analysis",
+  "thresholds": {
+    "cosine": 0.85,
+    "clean_jaccard": 0.3,
+    "clean_containment": 0.5,
+    "minimum_shared_5grams": 20
+  },
+  "row_count": 115,
+  "cross_fold_pair_count": 5290,
+  "flagged_pair_count": 0,
+  "exposed_ids": [],
+  "exposed_by_fold": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0
+  },
+  "flagged_pairs": [],
+  "limitations": [
+    "Similar topics, quotations and style are not duplicate proof",
+    "No flags does not prove independence",
+    "Footer stripping affects lexical overlap only; semantic embeddings remain raw",
+    "No human event-family adjudication or fold repair performed"
+  ],
+  "all_pairs_sha256": "d44f5c25ecd76f0769ae1fb6763c962854a560fa38e76e5557316299b216b8f3",
+  "top_cosine_pairs": [
+    {
+      "first": "1c61bd7b-4273-42ac-a1b2-0661ec6212b1",
+      "second": "35492fcc-28c7-499f-8822-711352bbcca0",
+      "first_fold": 1,
+      "second_fold": 0,
+      "cosine": 0.6633132696151733,
+      "raw": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "clean": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "86e4b1f5-89a0-4b1f-abf6-65d25d16e99d",
+      "second": "8b880a68-71f1-4b42-9f74-7b968bf5f9c3",
+      "first_fold": 1,
+      "second_fold": 4,
+      "cosine": 0.6414576768875122,
+      "raw": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "clean": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "53b48721-43eb-4114-afda-bca5720c80e7",
+      "second": "8f615eca-f4e0-4ddd-a616-851837f47415",
+      "first_fold": 2,
+      "second_fold": 3,
+      "cosine": 0.6285902857780457,
+      "raw": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "clean": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "53b48721-43eb-4114-afda-bca5720c80e7",
+      "second": "722c87c9-3448-4495-b04b-336303346fd3",
+      "first_fold": 2,
+      "second_fold": 3,
+      "cosine": 0.6271908283233643,
+      "raw": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "clean": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+      "second": "e945fde5-31fc-4cb2-9ef5-55eba23ce93b",
+      "first_fold": 4,
+      "second_fold": 1,
+      "cosine": 0.6122411489486694,
+      "raw": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "clean": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+      "second": "806dfa97-a252-4382-bb37-a819b4e24383",
+      "first_fold": 3,
+      "second_fold": 4,
+      "cosine": 0.6038115620613098,
+      "raw": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "clean": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "86c6bb83-f7a3-4cf8-81d9-67068c5ea591",
+      "second": "f5bdcc87-eea0-4006-9860-f21d4241ff57",
+      "first_fold": 1,
+      "second_fold": 4,
+      "cosine": 0.5945633053779602,
+      "raw": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "clean": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "806dfa97-a252-4382-bb37-a819b4e24383",
+      "second": "aa8235a0-3302-4f83-936b-2728d2914613",
+      "first_fold": 4,
+      "second_fold": 3,
+      "cosine": 0.5870192050933838,
+      "raw": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "clean": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "35492fcc-28c7-499f-8822-711352bbcca0",
+      "second": "ec451c07-8f7e-42a3-94e6-f0093072730e",
+      "first_fold": 0,
+      "second_fold": 3,
+      "cosine": 0.5857657194137573,
+      "raw": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "clean": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "2cd002af-bd38-4acb-8b25-124e0b246ad6",
+      "second": "806dfa97-a252-4382-bb37-a819b4e24383",
+      "first_fold": 2,
+      "second_fold": 4,
+      "cosine": 0.5838180780410767,
+      "raw": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "clean": {
+        "shared_5grams": 0,
+        "jaccard": 0,
+        "shorter_containment": 0
+      },
+      "flag_reasons": []
+    }
+  ],
+  "top_clean_jaccard_pairs": [
+    {
+      "first": "1b8a9395-94b4-4183-9b16-f12bd692aadd",
+      "second": "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+      "first_fold": 0,
+      "second_fold": 4,
+      "cosine": 0.43122005462646484,
+      "raw": {
+        "shared_5grams": 2,
+        "jaccard": 0.011560693641618497,
+        "shorter_containment": 0.024691358024691357
+      },
+      "clean": {
+        "shared_5grams": 2,
+        "jaccard": 0.011560693641618497,
+        "shorter_containment": 0.024691358024691357
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "207874b1-507e-45db-9009-a4768e26b33b",
+      "second": "47b1cbef-e1b0-46ef-903f-c8c86cac968f",
+      "first_fold": 3,
+      "second_fold": 2,
+      "cosine": 0.26370978355407715,
+      "raw": {
+        "shared_5grams": 31,
+        "jaccard": 0.18562874251497005,
+        "shorter_containment": 0.32978723404255317
+      },
+      "clean": {
+        "shared_5grams": 1,
+        "jaccard": 0.007751937984496124,
+        "shorter_containment": 0.016666666666666666
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "22db9529-bbc3-46b1-83ad-522571b4d065",
+      "second": "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+      "first_fold": 0,
+      "second_fold": 4,
+      "cosine": 0.4300107955932617,
+      "raw": {
+        "shared_5grams": 2,
+        "jaccard": 0.00749063670411985,
+        "shorter_containment": 0.024691358024691357
+      },
+      "clean": {
+        "shared_5grams": 2,
+        "jaccard": 0.00749063670411985,
+        "shorter_containment": 0.024691358024691357
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "5693a6f3-e4b1-4c03-aeb6-0b68d9191465",
+      "second": "f7e3b4e1-18fb-49a4-9d09-366d14a45c08",
+      "first_fold": 3,
+      "second_fold": 2,
+      "cosine": 0.1851380616426468,
+      "raw": {
+        "shared_5grams": 3,
+        "jaccard": 0.007281553398058253,
+        "shorter_containment": 0.015306122448979591
+      },
+      "clean": {
+        "shared_5grams": 3,
+        "jaccard": 0.007281553398058253,
+        "shorter_containment": 0.015306122448979591
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "b965e522-18e6-46ff-8d65-fee6a7ea48ec",
+      "second": "ba32bc4e-212b-4d9f-bea7-4d6cb7448e9b",
+      "first_fold": 4,
+      "second_fold": 0,
+      "cosine": 0.49391406774520874,
+      "raw": {
+        "shared_5grams": 1,
+        "jaccard": 0.00625,
+        "shorter_containment": 0.0125
+      },
+      "clean": {
+        "shared_5grams": 1,
+        "jaccard": 0.00625,
+        "shorter_containment": 0.0125
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "43353164-939f-4d58-9856-6577b3a49389",
+      "second": "81d149d2-3fd5-4815-86ef-9c615fd86f28",
+      "first_fold": 4,
+      "second_fold": 1,
+      "cosine": 0.5148828029632568,
+      "raw": {
+        "shared_5grams": 1,
+        "jaccard": 0.004651162790697674,
+        "shorter_containment": 0.010638297872340425
+      },
+      "clean": {
+        "shared_5grams": 1,
+        "jaccard": 0.0055248618784530384,
+        "shorter_containment": 0.011363636363636364
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "0246f4f9-cf25-4a1f-97ad-2f46fd8272f1",
+      "second": "62fc683e-4692-4b82-9fbb-f7f34b8d78c1",
+      "first_fold": 4,
+      "second_fold": 3,
+      "cosine": 0.4166181683540344,
+      "raw": {
+        "shared_5grams": 1,
+        "jaccard": 0.00411522633744856,
+        "shorter_containment": 0.01
+      },
+      "clean": {
+        "shared_5grams": 1,
+        "jaccard": 0.00411522633744856,
+        "shorter_containment": 0.01
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "2f0ce987-3761-4f7b-bc2c-1ec5696f92fc",
+      "second": "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+      "first_fold": 3,
+      "second_fold": 0,
+      "cosine": 0.18960635364055634,
+      "raw": {
+        "shared_5grams": 1,
+        "jaccard": 0.00398406374501992,
+        "shorter_containment": 0.013333333333333334
+      },
+      "clean": {
+        "shared_5grams": 1,
+        "jaccard": 0.00398406374501992,
+        "shorter_containment": 0.013333333333333334
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "207874b1-507e-45db-9009-a4768e26b33b",
+      "second": "ecc2b3f8-e42d-4c23-8832-e652536e843a",
+      "first_fold": 3,
+      "second_fold": 2,
+      "cosine": 0.08415484428405762,
+      "raw": {
+        "shared_5grams": 1,
+        "jaccard": 0.003289473684210526,
+        "shorter_containment": 0.009615384615384616
+      },
+      "clean": {
+        "shared_5grams": 1,
+        "jaccard": 0.003703703703703704,
+        "shorter_containment": 0.014285714285714285
+      },
+      "flag_reasons": []
+    },
+    {
+      "first": "86a181e7-d173-4fca-be54-be2102d966a7",
+      "second": "8d7a6af4-fd80-4f55-b57f-1b8d52e02ff3",
+      "first_fold": 3,
+      "second_fold": 0,
+      "cosine": 0.3404831290245056,
+      "raw": {
+        "shared_5grams": 1,
+        "jaccard": 0.0027100271002710027,
+        "shorter_containment": 0.005649717514124294
+      },
+      "clean": {
+        "shared_5grams": 1,
+        "jaccard": 0.0027100271002710027,
+        "shorter_containment": 0.005649717514124294
+      },
+      "flag_reasons": []
+    }
+  ]
+}

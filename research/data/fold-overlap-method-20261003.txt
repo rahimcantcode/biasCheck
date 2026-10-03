@@ -1,0 +1,12 @@
+The audit is appropriate for describing **cross-fold overlap exposure within the 115 training rows**, subject to these reporting safeguards:
+
+- Use the existing five development folds unchanged. Exclude validation and test data entirely; do not train models.
+- Compute cosine similarity from the frozen, normalized MiniLM training embeddings. Compute five-word shingle overlap for both raw text and text after removing only the two previously fixed publisher footers.
+- Flag a cross-fold pair when **cosine ≥ .85 OR clean Jaccard ≥ .30 OR (clean containment ≥ .50 AND at least 20 common clean five-grams)**. The common-shingle requirement applies only to the containment branch.
+- Make the shingling convention and containment definition explicit. If containment is directional, retain both directions and identify how the existing rule uses them. Handle texts with fewer than five words explicitly; undefined overlap must not silently become zero.
+- Save every evaluated cross-fold pair once, with both row IDs, fold IDs, cosine, raw and clean overlap scores, common-shingle counts, and each flag reason. This preserves unflagged comparisons as well as flagged pairs.
+- Summarize evaluated and flagged pair counts by fold pair and flag reason, accounting for overlapping reasons. Report the number and proportion of distinct rows exposed overall and within each fold. Contrast raw and clean overlap to show the contribution of the fixed footers; pair counts alone can be dominated by a few repeated-text clusters.
+
+**Interpretation warning:** These measures identify semantic or textual overlap under the fixed rules. Flagged pairs do not prove leakage, and unflagged pairs do not establish independence. No folds, models, or parameters should change during this audit.
+
+This is a method-only critique; no data were accessed or results saved.

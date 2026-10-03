@@ -1,5 +1,39 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03 22:53 UTC heartbeat: training-fold overlap audit
+
+Audited 115 training rows across the five frozen event-string group folds, without
+validation/test reads, label-based selection, retraining or split changes. Checked
+feature alignment, source/fold hashes, normalized finite 384-dimension train-only
+MiniLM vectors, and unique complete held-ID coverage. Each unordered cross-fold
+pair was evaluated once: 5,290 pairs. Lexical scores use lowercase regex word
+tokens, unique contiguous five-grams, Jaccard and shared-count/minimum-set-size
+containment. Computed raw and fixed-footer-stripped lexical scores; semantic
+embeddings remained raw. Empty shingle sets are explicitly rejected; none occurred.
+
+Fixed flags: cosine >= .85 OR clean Jaccard >= .30 OR clean containment >= .50
+with >=20 shared five-grams. Zero flagged pairs, zero exposed rows in each fold.
+Maximum cosine .66331327; maximum clean Jaccard .01156069 (two shared five-grams).
+This is a negative overlap screen, not proof of event-family independence or an
+explanation for poor model performance. Thresholds were not adjusted after results.
+
+GPT-6 Astra Medium gave a no-tools method critique through the requested terminal
+route. Saved research/data/fold-overlap-method-20261003.txt. It cautioned against
+calling flags leakage or nonflags independence; clarified empty-shingle handling.
+An initial run and the subsequent explicit-empty-check run gave identical counts.
+Seven existing overlap-helper regression tests passed. All pair records retained
+in research/checkpoints/fold-overlap-20261003/all_pairs_verified.json, with its hash
+and top ten semantic/lexical pairs in research/results/fold_overlap_20261003.json.
+No model accuracy or new human annotations claimed.
+
+Public-site browser smoke test selected the highest-cosine pair without labels:
+1c61bd7b-4273-42ac-a1b2-0661ec6212b1 and 35492fcc-28c7-499f-8822-711352bbcca0.
+Both returned HTTP 200 / LEFT, scores .779822 and .998497. Production remains
+unchanged. Local Chromium fallback, no cloud browser available; no page errors,
+failed requests or mobile overflow. Raw responses and screenshots retained in
+outputs/live-browser-fold-overlap-20261003; sanitized model fingerprints and PNG
+hashes in research/results/fold_overlap_browser_20261003.json.
+
 ## 2026-10-03 21:42 UTC heartbeat: fixed character-feature training experiment
 
 Trained five character TF-IDF/logistic models on the existing 115-row training
