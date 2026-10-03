@@ -1,0 +1,125 @@
+{
+  "started_at": "2026-10-03T05:55:48.825Z",
+  "finished_at": "2026-10-03T05:55:55.358Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.95",
+  "url": "https://bias.r4him.tech/",
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "purpose": "Exact-headline repetition guard diagnostic; no political gold labels or accuracy",
+  "cases": [
+    {
+      "id": "headline-repeat-1",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998968,
+          "RIGHT": 0.000777,
+          "CENTER": 0.000255
+        },
+        "decision": "abstained",
+        "reason": "insufficient_context",
+        "token_count": 10,
+        "tokens_processed": 10,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "repetition": {
+        "paragraph_n": 1,
+        "distinct_paragraph_n": 1,
+        "duplicate_paragraph_n": 0,
+        "word_count": 8,
+        "distinct_paragraph_word_count": 8,
+        "retained_word_fraction": 1.0,
+        "normalization": "Whitespace collapsed within paragraphs; case and punctuation preserved",
+        "text_sha256": "412a4c619ba4e67e5ffae8a4a0e9775a88ccad1b6b40968f710d3c51225f1172"
+      }
+    },
+    {
+      "id": "headline-repeat-4",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998627,
+          "RIGHT": 0.000874,
+          "CENTER": 0.000499
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 46,
+        "tokens_processed": 46,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "repetition": {
+        "paragraph_n": 4,
+        "distinct_paragraph_n": 1,
+        "duplicate_paragraph_n": 3,
+        "word_count": 32,
+        "distinct_paragraph_word_count": 8,
+        "retained_word_fraction": 0.25,
+        "normalization": "Whitespace collapsed within paragraphs; case and punctuation preserved",
+        "text_sha256": "7fd6b90da7100bfa801b131848faee0b2c0ad9a61e57115305cca2c8ddfd0fe4"
+      }
+    },
+    {
+      "id": "headline-repeat-8",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "CENTER",
+        "label_id": 2,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.00038,
+          "RIGHT": 0.000414,
+          "CENTER": 0.999207
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 94,
+        "tokens_processed": 94,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "repetition": {
+        "paragraph_n": 8,
+        "distinct_paragraph_n": 1,
+        "duplicate_paragraph_n": 7,
+        "word_count": 64,
+        "distinct_paragraph_word_count": 8,
+        "retained_word_fraction": 0.125,
+        "normalization": "Whitespace collapsed within paragraphs; case and punctuation preserved",
+        "text_sha256": "260bef5babfbe41b2d1ee404a1f83e331b07711d4e86e0f4c8bf4b47ed36556e"
+      }
+    }
+  ],
+  "screenshots": {
+    "headline-repeat-8.png": "1014701085b12181076d94bd9e6b2793b84f22e61695ce1b8a230fbe8e13209b",
+    "headline-repeat-1.png": "2ef8a9a081534fde91839988d82f7b29dedf11638fdf4a5a72a0bbea166bbb44",
+    "headline-repeat-4.png": "1cd069e359a05f964c5c1c462130388c68c4bdee775e4498ad80643b59606654",
+    "mobile.png": "555c0fbc1e4f36d00209195b775dba01472933447e338c791acbc57021c7b76e"
+  },
+  "release_approved": false
+}

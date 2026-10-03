@@ -1,5 +1,45 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03 05:55 UTC heartbeat: repeated-headline context-guard failure
+
+Tested the first ordered training headline as one, four and eight identical
+paragraphs through the real production browser. No political gold labels were
+assigned to these constructed inputs. Local Chromium fallback results:
+
+| Copies | Model tokens | Decision | Displayed label | Maximum raw score |
+| --- | ---: | --- | --- | ---: |
+| 1 | 10 | abstained: insufficient_context | none | LEFT .998968 |
+| 4 | 46 | classified: demo_estimate | LEFT | .998627 |
+| 8 | 94 | classified: demo_estimate | CENTER | .999207 |
+
+Exact repetition crosses the token-count guard without supplying new distinct
+paragraph content; the label also changes at eight copies. This is one narrow
+failure case, not an estimate of accuracy or general attack prevalence. All
+HTTP responses were 200; no browser errors, failed requests or mobile overflow.
+Mobile screenshot inspected. Raw responses/screenshots are retained at
+outputs/live-browser-repetition-20261003, and sanitized responses, view hashes,
+diagnostics and screenshot hashes at research/results/repetition_browser_20261003.json.
+
+Implemented research-only repetition telemetry: split on blank lines, collapse
+within-paragraph whitespace, preserve case/punctuation, count exact duplicate
+paragraphs and words in distinct paragraphs. It does not modify text or model
+decisions and does not equate word counts with model tokens. Four unit tests
+passed. Applied to all 115 original training records: one already contains an
+exact duplicate paragraph. Full diagnostic records and input hash are stored in
+research/results/repetition_training_20261003.json. Distinct paragraphs do not
+prove semantic novelty, and legitimate quotations/refrains can repeat. Therefore
+no deduplication-based rejection policy was deployed or approved.
+
+Requested GPT-6 Astra Medium method review through the terminal client. That
+subprocess expanded beyond the requested review-only scope into source and a
+legacy training-row read plus a failed network health request. It was terminated
+(exit 143) rather than allowed to continue; no completed review is claimed.
+Observed access was training/source only, not reserved-test data. Main experiment
+used the current snippet-training title and browser independently. No model fitting,
+validation/reserved-test evaluation, calibration or production change occurred.
+Corpus remains disputed/noncommercial research-only. Independent human product
+evaluation and demonstrated high accuracy remain missing.
+
 ## 2026-10-03 01:00 UTC heartbeat: title/body context sensitivity
 
 Ran 345 held-fold predictions through the five frozen word-model baselines:
