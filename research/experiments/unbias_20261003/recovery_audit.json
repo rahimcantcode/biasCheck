@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-03T18:39:53.813778+00:00",
+  "purpose": "Recovery record for a new UnBias-Plus comparison; no reconstruction of unavailable model results.",
+  "repository": "https://github.com/rahimcantcode/biasCheck.git",
+  "recovered_planning_commit": "9357c89ff54d20e148942c7be178465714f9bad2",
+  "recovered_planning_branch": "origin/planning/passage-framing-2026-10-03",
+  "planning_document": "research/plans/PASSAGE_FRAMING_PLAN_20261003.md",
+  "repository_evidence": "The available planning commit contains a proposal and explicitly states that no implementation or new inference was performed in that planning round. Later implementation claimed by conversation was not found in available fetched refs or readable local files.",
+  "unavailable_prior_artifacts": [
+    "The claimed 30 natural development passages under the narrow framing rubric",
+    "The claimed independent AI reviewer A/B and adjudicator exports with a 17-positive/13-negative split",
+    "The claimed framing-only API and UI with 142 framing tests",
+    "The claimed narrow-framing Qwen3-4B-Instruct-2507 prompt v2/v3 and paired pilot inference results"
+  ],
+  "available_older_artifacts": [
+    {
+      "path": "research/local_phrase_runtime.json",
+      "role": "Pinned llama.cpp CPU runtime and Qwen3 4B model identities; reusable infrastructure, not a narrow-framing baseline."
+    },
+    {
+      "path": "research/scripts/local_cpu_runtime.py",
+      "role": "Existing local CPU model runtime wrapper."
+    },
+    {
+      "path": "research/scripts/setup_local_phrase_runtime.py",
+      "role": "Reproducible runtime setup."
+    },
+    {
+      "path": "backend/evidence.py",
+      "role": "Original-text span validation and older directional phrase logic."
+    },
+    {
+      "path": "backend/phrase_contract_v2.py",
+      "role": "Older directional phrase contract; not the new narrow framing schema."
+    },
+    {
+      "path": "backend/phrase_pipeline_v3.py",
+      "role": "Older multistage directional phrase implementation."
+    },
+    {
+      "path": "research/results/local_phrase_baseline_20261002.json",
+      "role": "Saved real Qwen3-4B-GGUF synthetic directional-stance diagnostics; different construct from evaluative framing."
+    },
+    {
+      "path": "research/experiments/phrase_stages_20261002/",
+      "role": "Historical v3/v4/v5 directional phrase experiments and snapshots, documented as rejected for serving."
+    },
+    {
+      "path": "research/annotation/README.md",
+      "role": "Separate 100-item human-review workflow, documenting zero completed human reviews; not the missing 30-passage pilot."
+    }
+  ],
+  "retrieval_limits": [
+    "The independent recovery agent could not access Personal Context. The lead retrieved repository locations and the research report, but neither supplied the missing framing pilot files.",
+    "A read-only git ls-remote attempt failed because the configured browser proxy was unreachable. Available fetched refs were inspected; unpublished or inaccessible work cannot be ruled out.",
+    "No reserved final-test partitions or human-pilot texts were opened during this recovery audit."
+  ],
+  "new_artifacts": {
+    "diagnostics": "research/experiments/unbias_20261003/diagnostics.json",
+    "relationship_to_prior_work": "New synthetic fixture, not recovered data and not a substitute for the missing natural-passage pilot."
+  },
+  "continuation_constraints": [
+    "Do not relabel the older directional-stance baseline as a recovered narrow-framing baseline.",
+    "Any newly written narrow-framing prompt and runtime configuration is a new baseline.",
+    "Do not carry forward the claimed 17/13 adjudication split or 142-test result as verified current evidence.",
+    "Keep reserved test partitions closed; report this run as synthetic development diagnostics.",
+    "A future natural-passage comparison requires recovery of the actual prior fixture or explicit collection/versioning of a new fixture."
+  ]
+}

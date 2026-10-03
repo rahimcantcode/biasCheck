@@ -1,0 +1,119 @@
+{
+  "_id": "65246d20c2d9346083966802",
+  "id": "newsmediabias/UnBIAS-NER",
+  "private": false,
+  "pipeline_tag": "token-classification",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "pytorch",
+    "bert",
+    "token-classification",
+    "dataset:newsmediabias/BIAS-CONLL",
+    "license:mit",
+    "endpoints_compatible",
+    "region:us"
+  ],
+  "downloads": 14,
+  "likes": 0,
+  "modelId": "newsmediabias/UnBIAS-NER",
+  "author": "newsmediabias",
+  "sha": "0aff43fa27ef142169ee9e0ae63ed756b88918d6",
+  "lastModified": "2023-12-11T12:05:38.000Z",
+  "gated": false,
+  "disabled": false,
+  "mask_token": "[MASK]",
+  "widgetData": [
+    {
+      "text": "My name is Wolfgang and I live in Berlin"
+    },
+    {
+      "text": "My name is Sarah and I live in London"
+    },
+    {
+      "text": "My name is Clara and I live in Berkeley, California."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "BertForTokenClassification"
+    ],
+    "model_type": "bert",
+    "tokenizer_config": {
+      "cls_token": "[CLS]",
+      "mask_token": "[MASK]",
+      "pad_token": "[PAD]",
+      "sep_token": "[SEP]",
+      "unk_token": "[UNK]"
+    }
+  },
+  "cardData": {
+    "license": "mit",
+    "datasets": [
+      "newsmediabias/BIAS-CONLL"
+    ]
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForTokenClassification",
+    "pipeline_tag": "token-classification",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes",
+      "blobId": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+      "size": 1519
+    },
+    {
+      "rfilename": "README.md",
+      "blobId": "da63bdc9dca29510eed1af63ecf235ae5f99f739",
+      "size": 3999
+    },
+    {
+      "rfilename": "added_tokens.json",
+      "blobId": "f84095a3e2962f44bdd2f865e4333c35ae95d73f",
+      "size": 82
+    },
+    {
+      "rfilename": "config.json",
+      "blobId": "ec4864c5d7527cbefba608c7423a77127228b3b8",
+      "size": 813
+    },
+    {
+      "rfilename": "pytorch_model.bin",
+      "blobId": "8a99dd91f740683946cb475858557d084e258fac",
+      "size": 435643561,
+      "lfs": {
+        "sha256": "c72c146c3b12bfb5c5fb37d07a1bd0f62c7a6d6e4e90a4999fb3179b7d63e600",
+        "size": 435643561,
+        "pointerSize": 134
+      }
+    },
+    {
+      "rfilename": "special_tokens_map.json",
+      "blobId": "a8b3208c2884c4efb86e49300fdd3dc877220cdf",
+      "size": 125
+    },
+    {
+      "rfilename": "tokenizer.json",
+      "blobId": "0b67ee2f1759b05761cfb1575485d89d131d452b",
+      "size": 711661
+    },
+    {
+      "rfilename": "tokenizer_config.json",
+      "blobId": "1467a69470825d7ff5fd8fd70bc3a1778403ba59",
+      "size": 1225
+    },
+    {
+      "rfilename": "vocab.txt",
+      "blobId": "fb140275c155a9c7c5a3b3e0e77a9e839594a938",
+      "size": 231508
+    }
+  ],
+  "spaces": [
+    "newsmediabias/UnBIAS"
+  ],
+  "createdAt": "2023-10-09T21:14:08.000Z",
+  "usedStorage": 871242725
+}

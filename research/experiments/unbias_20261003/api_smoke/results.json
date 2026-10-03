@@ -1,0 +1,97 @@
+{
+  "kind": "live_quantized_model_http_api_smoke",
+  "runtime": {
+    "schema_version": 1,
+    "model_id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+    "model_revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+    "weights_path": "/tmp/unbias-v2-q4/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2-Q4_K_M.gguf",
+    "weights_sha256": "7f771dbb1739fe840655850784c1cea759185aa456cde0644bdb1425d89969c9",
+    "weights_bytes": 5027784064,
+    "quantization": "Q4_K_M requantized from locally generated Q8_0",
+    "conversion_source_revision": "fb4b2737a808a3fb7c2117a498f43815dc9be53e",
+    "runtime_fingerprint": "b11349-fb4b2737a",
+    "context_tokens": 8192,
+    "threads": 4,
+    "max_output_tokens": 2048,
+    "runtime_server_path": "/workspace/scratch/629523a223d6/biasCheck/research/checkpoints/unbias-runtime/bin/llama-b11349/llama-server",
+    "runtime_server_sha256": "f1fe3730c84c6fb397e6807bf6bc7b9572f322dcaa1f342ad1b4c92dca74bce8",
+    "conversion_manifest": "research/experiments/unbias_20261003/conversion_manifest.json",
+    "quality_caveat": "Locally derived Q8_0 then Q4_K_M requantization of the pinned official V2 checkpoint; not the full-precision original and not a claim of equivalent model quality."
+  },
+  "limitation": "Framing endpoint only; unrelated classifier startup bypassed using lifespan off. No website or quality validation.",
+  "rows": [
+    {
+      "id": "D01",
+      "http_status": 200,
+      "seconds": 73.12524045900136,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The proposed corporate tax increase is a reckless tax grab. Congress will debate the bill on Tuesday.",
+        "source_sha256": "44759bcdc220ef69137396ffa79b7a2f3e6ee39be6ad8b8a4b551c4acd38e5c8",
+        "spans": [
+          {
+            "start": 4,
+            "end": 35,
+            "text": "proposed corporate tax increase",
+            "attribution": "unknown",
+            "reason": "The phrase presents a policy position as a settled description rather than a neutral policy description.",
+            "bias_type": "opinion_as_fact",
+            "native_index": 0
+          },
+          {
+            "start": 36,
+            "end": 58,
+            "text": "is a reckless tax grab",
+            "attribution": "unknown",
+            "reason": "This is an evaluative judgment presented as fact, with charged wording.",
+            "bias_type": "opinion_as_fact",
+            "native_index": 1
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "D02",
+      "http_status": 200,
+      "seconds": 9.3878374349988,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "The bill would increase the corporate tax rate from 21 percent to 25 percent. The committee voted 12 to 8 to send it to the full chamber.",
+        "source_sha256": "8fb7b3dedf23d63d7eb1bc732acc710f4a63bb9168df18b2787c41985b751f75",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    }
+  ]
+}
