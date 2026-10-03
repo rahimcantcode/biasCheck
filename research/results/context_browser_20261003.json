@@ -1,0 +1,94 @@
+{
+  "started_at": "2026-10-03T05:52:57.003Z",
+  "finished_at": "2026-10-03T05:53:16.374Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.95",
+  "url": "https://bias.r4him.tech/",
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "selection": "First ordered training record, full/title/body views; diagnostic, no inherited altered-view gold",
+  "cases": [
+    {
+      "id": "010d924f-4636-45ce-a97e-703055a109ad-full",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.993377,
+          "RIGHT": 0.005376,
+          "CENTER": 0.001247
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 97,
+        "tokens_processed": 97,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "010d924f-4636-45ce-a97e-703055a109ad-title",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998968,
+          "RIGHT": 0.000777,
+          "CENTER": 0.000255
+        },
+        "decision": "abstained",
+        "reason": "insufficient_context",
+        "token_count": 10,
+        "tokens_processed": 10,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    },
+    {
+      "id": "010d924f-4636-45ce-a97e-703055a109ad-body",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.991419,
+          "RIGHT": 0.00567,
+          "CENTER": 0.002911
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 85,
+        "tokens_processed": 85,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      }
+    }
+  ],
+  "screenshots": {
+    "010d924f-4636-45ce-a97e-703055a109ad-full.png": "de34834edcb2ba5c9a7fc62e88f9be7c94250bced9705c24726b299c81bc8ba9",
+    "mobile.png": "ed9d9376bcc6f3a2d414138401b7bcf7f57d4cf79a92e657e659362f97a227ff",
+    "010d924f-4636-45ce-a97e-703055a109ad-title.png": "fdec342a2fb9fc84cc8ecb663dc5909d4a213918e67ffad43f56374282bc4e05",
+    "010d924f-4636-45ce-a97e-703055a109ad-body.png": "d7428588e9bddfcf93812b120d4ffeb7ac2043d4bebb5141f3be3e79e3f8ae5f"
+  }
+}

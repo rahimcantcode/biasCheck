@@ -1,5 +1,42 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03 01:00 UTC heartbeat: title/body context sensitivity
+
+Ran 345 held-fold predictions through the five frozen word-model baselines:
+full title+three snippets, title only, and three body snippets only, for all
+115 training records. All records had exactly four nonempty paragraphs; the
+splitter rejects unexpected structure. Original texts were not changed. No
+refitting, validation, reserved-test use or threshold tuning. Artifact and input
+hashes, fold membership and complete OOF coverage checked. Full predictions
+exactly reproduce the prior 58/115 baseline. Three focused tests passed.
+
+Title-only changed 43/115 labels (.3739), with mean probability total variation
+.05710 versus full. Removing the title changed 8/115 (.0696), mean variation
+.00875. Neither view produced any zero-feature rows. This suggests the body
+snippets contribute substantially for this frozen word model; it does not prove
+semantic understanding, absence of shortcuts, or passage-level accuracy.
+Removing content changes the evidence, so flips are not inherently errors.
+Only full inputs receive reference-label metrics. No article labels were
+inherited by the title/body views, and no altered-view accuracy was computed.
+
+GPT-6 Astra Medium reviewed the method via terminal client; advice is local in
+research/data/context-ablation-advice-20261003.txt. Reused training folds and
+disputed noncommercial corpus remain development-only; event-string separation
+does not establish event-family independence. All 345 probability vectors,
+text-view hashes, IDs, model hashes and source provenance are preserved in
+research/results/context_sensitivity_20261003.json; local browser inputs are
+research/checkpoints/context-sensitivity-20261003/browser_views.json.
+
+Production browser diagnostic used local Chromium fallback on the first ordered
+training record's three views. Full (97 tokens) and body (85 tokens) were LEFT;
+the 10-token title returned HTTP 200 but abstained with insufficient_context,
+despite raw LEFT probability .998968. This confirms one minimum-context guard
+case, not political accuracy or general robustness. All three requests succeeded;
+no page errors, failed requests or mobile overflow. Mobile screenshot inspected.
+Raw evidence: outputs/live-browser-context-20261003; sanitized results and screenshot
+hashes: research/results/context_browser_20261003.json. No deployment or model
+change. Independent task-matched human evaluation remains missing.
+
 ## 2026-10-02 23:59 UTC heartbeat: learning-curve ordering sensitivity
 
 Added a group-seed parameter to the existing learning-curve runner, preserving
