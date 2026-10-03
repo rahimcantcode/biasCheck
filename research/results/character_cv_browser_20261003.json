@@ -1,0 +1,100 @@
+{
+  "started_at": "2026-10-03T21:44:34.160Z",
+  "finished_at": "2026-10-03T21:44:42.963Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.95",
+  "selection": "First two frozen training rows; production smoke test, not candidate validation",
+  "cases": [
+    {
+      "id": "010d924f-4636-45ce-a97e-703055a109ad",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.993377,
+          "RIGHT": 0.005376,
+          "CENTER": 0.001247
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 97,
+        "tokens_processed": 97,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "text_sha256": "8ef259fd00f4cd7bf142dd6084bda069337c3d9f60ca18d0890c4ce8f75dff45",
+      "screenshot_sha256": "d6c416ecc5100da6b9615667cd144657b8918769e90acf5552861cd941744f43"
+    },
+    {
+      "id": "01cf769b-136c-483d-8e7f-d59e6a7b4dbe",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.994163,
+          "RIGHT": 0.005053,
+          "CENTER": 0.000784
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 152,
+        "tokens_processed": 152,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "text_sha256": "628e0011cc6b9b90394dfb3216da9ff69cfb3fb47bdfcedc7cc0668527af01ff",
+      "screenshot_sha256": "a70d4e0115beae20307506edf73ba84598b741ec3b679d3ae29bc69028f2eee1"
+    }
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false
+}

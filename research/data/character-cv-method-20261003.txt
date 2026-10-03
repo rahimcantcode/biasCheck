@@ -1,0 +1,14 @@
+This is a reasonable, tightly scoped development comparison. Fitting vocabulary within each training fold prevents vocabulary leakage; identical held-out rows support a paired comparison with the stored word baseline, provided that baseline also used fold-local fitting. Preserved OOF scores, hashes, and splits strengthen auditability.
+
+Main limits:
+
+- **Only 115 rows:** estimates can be unstable and sensitive to individual examples and fold composition. Fold results are not independent replications.
+- **Incomplete event separation:** different event strings may describe the same event family across folds, allowing shared names or phrasing to inflate apparent generalization.
+- **Ambiguous signal:** character features may capture outlet style, entities, formatting, or annotation artifacts rather than political bias.
+- **Disputed labels and narrow inputs:** performance measures agreement with corpus labels from titles and snippets, not objective political bias or full-article understanding. Class balancing does not resolve label uncertainty.
+
+A **positive result** supports a relative advantage over the word baseline on these development splits. It does not establish generalization to unseen event families, validity of the bias construct, or deployment readiness.
+
+A **negative result** means this fixed character model showed no demonstrated advantage here; it does not establish that character features are generally ineffective. With so little data, a small difference in either direction may be inconclusive.
+
+No search and untouched reserved validation/test sets preserve the experiment’s development-only scope. The noncommercial restriction and no-deployment boundary remain applicable regardless of outcome.

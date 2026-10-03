@@ -1,5 +1,50 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03 21:42 UTC heartbeat: fixed character-feature training experiment
+
+Trained five character TF-IDF/logistic models on the existing 115-row training
+partition only. Reused frozen five event-string group folds from footer CV;
+verified input hash and baseline artifact hashes, partition completeness and
+event-string disjointness. Vocabulary fitted inside each training fold only.
+No validation or reserved test read. Event-family independence is not established.
+
+Fixed settings before training: char_wb ngrams 3-5, min_df=2, max_features=30000,
+sublinear_tf=True; logistic C=1, balanced classes, lbfgs, max_iter=1000,
+random_state=20261001. No search. Fold vocabularies 12293/12081/12028/12431/12658;
+iterations 9/8/12/10/11, no convergence warnings observed. Stored all five joblib
+models locally, protocol before fitting, hashes, split IDs and every OOF score.
+
+| Training-only grouped OOF | Word baseline | Character candidate |
+| --- | ---: | ---: |
+| Corpus-label matches | 58/115 | 55/115 |
+| Accuracy | .50435 | .47826 |
+| Macro-F1 | .44234 | .42247 |
+| LEFT recall | .57895 | .55263 |
+| CENTER recall | .15385 | .15385 |
+| RIGHT recall | .62745 | .58824 |
+| Unanimous-label matches | 25/54 | 26/54 |
+
+Character candidate corrected 7 and regressed 10 baseline predictions. Negative
+overall development result; no promotion or parameter adjustment. One extra
+unanimous-subset match does not override the overall result. Corpus labels are
+disputed and noncommercial; all models remain research-only. These reused small
+development folds cannot establish independent high accuracy.
+
+GPT-6 Astra Medium completed method-only critique using the requested terminal
+route, with tools/files/network prohibited; response saved in
+research/data/character-cv-method-20261003.txt. It highlighted small-sample
+instability, event-family overlap, possible style/entity artifacts and label
+uncertainty. No parent-model change claimed.
+
+Artifacts: research/checkpoints/character-cv-20261003, committed report
+research/results/character_cv_20261003.json, reusable research/scripts/character_cv.py.
+Live public-site browser smoke test used first two training rows, both HTTP 200
+and LEFT (.993377/.994163); production unchanged, not candidate validation.
+Local Chromium fallback, no cloud browser available; zero errors/failed requests
+or mobile overflow. Raw responses/screenshots in outputs/live-browser-character-cv-20261003,
+sanitized fingerprinted report research/results/character_cv_browser_20261003.json.
+Three existing feature/split-helper regression tests passed; git diff --check passed.
+
 ## 2026-10-03 20:25 UTC heartbeat: paired stance and attribution diagnostic
 
 After P005's pro-market LEFT result, froze six AI-authored inputs before execution:
