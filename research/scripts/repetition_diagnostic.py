@@ -6,6 +6,18 @@ import re
 from pathlib import Path
 
 
+def distinct_context(text):
+    """Research-only context view; unchanged text when no duplicates exist."""
+    seen=set();kept=[];duplicate=False
+    for paragraph in re.split(r'\n\s*\n',text):
+        key=' '.join(paragraph.split())
+        if key and key in seen:
+            duplicate=True
+            continue
+        seen.add(key);kept.append(paragraph)
+    return '\n\n'.join(kept) if duplicate else text
+
+
 def diagnose(text):
     paragraphs=[' '.join(p.split()) for p in re.split(r'\n\s*\n',text) if p.strip()]
     unique=list(dict.fromkeys(paragraphs))

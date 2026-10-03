@@ -1,0 +1,97 @@
+{
+  "started_at": "2026-10-03T07:04:49.429Z",
+  "finished_at": "2026-10-03T07:04:57.680Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.95",
+  "url": "https://bias.r4him.tech/",
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "purpose": "Repetition failure recheck; offline candidate not deployed",
+  "cases": [
+    {
+      "id": "headline-repeat-1",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998968,
+          "RIGHT": 0.000777,
+          "CENTER": 0.000255
+        },
+        "decision": "abstained",
+        "reason": "insufficient_context",
+        "token_count": 10,
+        "tokens_processed": 10,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "reproduced": true
+    },
+    {
+      "id": "headline-repeat-4",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998627,
+          "RIGHT": 0.000874,
+          "CENTER": 0.000499
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 46,
+        "tokens_processed": 46,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "reproduced": true
+    },
+    {
+      "id": "headline-repeat-8",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "CENTER",
+        "label_id": 2,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.00038,
+          "RIGHT": 0.000414,
+          "CENTER": 0.999207
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 94,
+        "tokens_processed": 94,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "reproduced": true
+    }
+  ],
+  "screenshots": {
+    "headline-repeat-8.png": "367ea2256aeb1e686ca3e7a63f11666fcca96615ab6eda43bda5929fe1673dc9",
+    "headline-repeat-1.png": "f0f5ec55b8e2c3867a0d0ea4f7a91d9be65df4d085f2f4703212aeffd93718fe",
+    "headline-repeat-4.png": "1cd069e359a05f964c5c1c462130388c68c4bdee775e4498ad80643b59606654",
+    "mobile.png": "71bb3644b3a90e0eabe0bc0e3ca84542f8f5a25daab2ac23e0c1f9a0215697db"
+  }
+}

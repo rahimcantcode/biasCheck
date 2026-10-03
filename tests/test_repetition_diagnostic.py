@@ -2,7 +2,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'research'/'scripts'))
-from repetition_diagnostic import diagnose
+from repetition_diagnostic import diagnose,distinct_context
 
 
 class RepetitionTests(unittest.TestCase):
@@ -24,3 +24,11 @@ class RepetitionTests(unittest.TestCase):
         r=diagnose(' \n\n ')
         self.assertEqual(r['paragraph_n'],0)
         self.assertIsNone(r['retained_word_fraction'])
+
+    def test_distinct_input_preserved_byte_for_byte(self):
+        text='  US policy\n\n\nSecond   paragraph\n'
+        self.assertEqual(distinct_context(text),text)
+
+    def test_repeated_context_reduces_to_first_occurrence(self):
+        self.assertEqual(distinct_context('One  headline\n\nOne headline\n\nDifferent'),
+                         'One  headline\n\nDifferent')

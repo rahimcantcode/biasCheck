@@ -1,5 +1,42 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03 07:02 UTC: distinct-paragraph context shadow candidate
+
+Implemented an offline-only minimum-context candidate following the repeated-
+headline failure. Model input/scores are not changed. The candidate compares
+min(original token count, token count of first occurrences of distinct paragraphs)
+against the existing demo threshold of 12. Duplicate matching collapses whitespace
+but preserves case and punctuation. Inputs without duplicate paragraphs remain
+byte-for-byte unchanged. This is not semantic novelty detection or an adopted
+production rule. Six repetition tests passed, including unchanged-input and
+first-occurrence preservation cases.
+
+Used the local RoBERTa tokenizer with the legacy isolated runtime (transformers
+4.41.2). Initial validation incorrectly compared a tokenizer.json single-file
+hash to production's bundle fingerprint and failed closed before evaluation.
+Corrected the fingerprint calculation to the exact production convention:
+SHA256 of sorted filename+file-hash concatenation. All constituent file hashes
+are retained. Bundle matches production 4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917.
+Local original token counts reproduce all three live probes exactly (10/46/94).
+Distinct-paragraph context is 10 tokens for all three; the candidate would withhold
+the four/eight-copy cases that production classified. It leaves the original
+short-headline abstention unchanged.
+
+Applied the candidate only to 115 training records: one context view changes,
+but zero additional inputs fall below the minimum. This is not a validated
+false-positive rate or human coverage guarantee. Legitimate quotations/refrains,
+same-paragraph repetition and paraphrases remain untested limitations. No
+classifier training, validation/reserved-test use, threshold search, calibration
+or deployment. All corpus/licensing and missing independent-human-evaluation
+caveats remain. No new ML model review is claimed for this engineering test.
+
+Full shadow records, view hashes, inputs, tokenizer files and runtime version:
+research/results/context_guard_shadow_20261003.json. Fresh local Chromium browser
+checks reproduced all three production outputs exactly; the live flaw remains
+because the candidate is not deployed. No page errors, failed requests or mobile
+overflow; mobile screenshot inspected. Raw evidence is outputs/live-browser-context-shadow-20261003;
+sanitized results and screenshot hashes are research/results/context_shadow_browser_20261003.json.
+
 ## 2026-10-03 05:55 UTC heartbeat: repeated-headline context-guard failure
 
 Tested the first ordered training headline as one, four and eight identical
