@@ -62,3 +62,13 @@ The recorded native run is immutable. For another inference run, use `python res
 Recover or explicitly rebuild a versioned natural-passage development set and a task-matched baseline. Freeze one documented adaptation for political scope, minimal boundaries and attribution before that comparison. Then evaluate on fresh independent human references. Keep the current website unchanged until the task and operational gates are met.
 
 No training, human validation, reserved-test access, merge or production deployment occurred.
+
+## Subsequent opt-in API integration
+
+The user subsequently authorized an experimental API integration and smoke test.
+`POST /framing` is now gated by `BIASCHECK_UNBIAS_ENABLED=1` and disabled by
+default. See `docs/unbias-framing.md` and `api_smoke/` for the contract, full
+HTTP response records, test environment, and limitations. Both live smoke
+requests passed; 23 API tests and 39 adapter tests passed. No frontend change,
+production deployment, model promotion, or human quality validation occurred.
+The earlier research decision remains in force.

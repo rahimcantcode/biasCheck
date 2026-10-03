@@ -1,0 +1,10 @@
+{
+  "api_tests_passed": 23,
+  "adapter_tests_passed": 39,
+  "live_requests_completed": 2,
+  "first_attempt": "API failed to start because beautifulsoup4 was missing from the test environment; no inference request was made. Installed repository dependency and reran in a new output directory.",
+  "deployment": "unchanged",
+  "full_application_startup_tested": false,
+  "frontend_tested": false,
+  "quality_evaluation_completed": false
+}

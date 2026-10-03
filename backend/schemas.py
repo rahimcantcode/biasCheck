@@ -57,3 +57,29 @@ class HealthResponse(BaseModel):
     status: str
     model: dict
     release_approved: bool
+
+class FramingRequest(BaseModel):
+    text: str = Field(min_length=1, max_length=100_000)
+
+class FramingSpan(BaseModel):
+    start: int = Field(ge=0, strict=True)
+    end: int = Field(gt=0, strict=True)
+    text: str
+    attribution: Literal['unknown']
+    reason: str
+    bias_type: str
+    native_index: int
+
+class FramingResponse(BaseModel):
+    status: Literal['suggestions', 'no_suggestions', 'partial_failure']
+    resolved_text: str
+    source_sha256: str
+    spans: list[FramingSpan]
+    rejected: list[dict]
+    attribution_supported: Literal[False]
+    offset_unit: Literal['unicode_codepoint']
+    end_exclusive: Literal[True]
+    experimental: Literal[True]
+    release_approved: Literal[False]
+    model: dict
+    warnings: list[str]

@@ -94,3 +94,29 @@ def _predict(request: PredictRequest):
     except Exception as exc:
         logger.exception('Prediction failed')
         raise HTTPException(status_code=503, detail='Analysis is temporarily unavailable.') from exc
+
+# Framing has a separate contract: never coerce wording categories to LEFT/RIGHT.
+if __package__:
+    from .schemas import FramingRequest, FramingResponse
+    from .unbias import client as unbias_client
+else:
+    from schemas import FramingRequest, FramingResponse
+    from unbias import client as unbias_client
+
+@app.post('/framing', response_model=FramingResponse)
+def framing(request: FramingRequest):
+    if not unbias_client.enabled():
+        raise HTTPException(status_code=404, detail='Experimental framing is disabled.')
+    if not request.text.strip():
+        raise HTTPException(status_code=400, detail='Please provide passage text.')
+    if not _inference_lock.acquire(blocking=False):
+        raise HTTPException(status_code=503, detail='The model is busy. Please try again shortly.')
+    try:
+        return unbias_client.analyze(request.text)
+    except unbias_client.FramingInputTooLong as exc:
+        raise HTTPException(status_code=413, detail='Passage exceeds the model context. Use shorter text.') from exc
+    except unbias_client.FramingUnavailable as exc:
+        logger.warning('Experimental framing unavailable: %s', exc)
+        raise HTTPException(status_code=503, detail='Experimental framing is temporarily unavailable.') from exc
+    finally:
+        _inference_lock.release()
