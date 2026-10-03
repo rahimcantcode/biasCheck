@@ -33,8 +33,8 @@ export function HeroSection({
 
       <div className="pointer-events-none absolute right-0 top-0 z-10 h-72 w-72 rounded-full bg-blue-500/12 blur-3xl" />
       <div className="pointer-events-none absolute right-24 top-16 z-10 h-40 w-40 rounded-full bg-indigo-400/10 blur-3xl" />
-      <div className="pointer-events-none absolute right-20 top-28 z-10 h-1.5 w-72 rotate-[28deg] rounded-full bg-gradient-to-r from-blue-400/0 via-blue-300/70 to-cyan-200/10 blur-sm" />
-      <div className="pointer-events-none absolute right-10 top-10 z-10 h-1.5 w-56 rotate-[35deg] rounded-full bg-gradient-to-r from-indigo-300/0 via-indigo-300/60 to-transparent blur-sm" />
+      <div className="pointer-events-none absolute right-20 top-28 z-10 h-1.5 w-72 rotate-[28deg] rounded-full bg-gradient-to-r from-blue-400/0 via-blue-300/70 to-cyan-200/10 blur-xs" />
+      <div className="pointer-events-none absolute right-10 top-10 z-10 h-1.5 w-56 rotate-[35deg] rounded-full bg-gradient-to-r from-indigo-300/0 via-indigo-300/60 to-transparent blur-xs" />
 
       <div className="relative z-20 mx-auto flex min-h-[calc(100vh-88px)] w-full max-w-7xl items-center px-6 pb-20 pt-10 lg:px-8">
         <div className="w-full space-y-10">

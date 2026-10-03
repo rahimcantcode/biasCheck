@@ -40,7 +40,7 @@ export function ArticleText({ parts, showHighlights, selected, onSelect }: Artic
               }
               if (event.key === "Escape") onSelect(null);
             }}
-            className={`cursor-pointer rounded-sm underline decoration-1 underline-offset-[5px] transition-colors hover:brightness-125 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300 ${HIGHLIGHTS[span.label]} ${active ? "outline outline-1 outline-offset-2 outline-slate-400" : ""}`}
+            className={`cursor-pointer rounded-xs underline decoration-1 underline-offset-[5px] transition-colors hover:brightness-125 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-300 ${HIGHLIGHTS[span.label]} ${active ? "outline outline-1 outline-offset-2 outline-slate-400" : ""}`}
           >
             {part.text}
           </mark>

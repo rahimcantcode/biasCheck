@@ -21,7 +21,7 @@ export function ModeTabs({ value, onChange }: ModeTabsProps) {
             className={cn(
               "flex-1 rounded-xl px-4 py-2.5 text-sm font-medium transition sm:flex-none",
               active
-                ? "bg-white text-slate-950 shadow-sm"
+                ? "bg-white text-slate-950 shadow-xs"
                 : "text-slate-300 hover:bg-white/5 hover:text-white"
             )}
           >

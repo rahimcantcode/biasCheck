@@ -1,0 +1,141 @@
+{
+  "before": {
+    "purpose": "Local browser UI contracts with mocked predictions; no accuracy or live deployment test",
+    "generated_at_utc": "2026-10-03T14:14:15.034Z",
+    "browser": "134.0.6998.35",
+    "viewports": [
+      {
+        "name": "desktop",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "layout": {
+          "horizontalOverflow": false,
+          "inputWidth": 780,
+          "background": "rgb(7, 11, 20)",
+          "aboutColor": "rgb(219, 234, 254)",
+          "aboutDisplay": "flex"
+        },
+        "highlightStyle": {
+          "radius": "2px",
+          "textDecoration": "underline",
+          "background": "rgba(59, 130, 246, 0.2)",
+          "color": "rgb(191, 219, 254)",
+          "cursor": "pointer"
+        },
+        "api_fixture_modes": [
+          "article",
+          "sentence",
+          "paragraph"
+        ],
+        "exact_source": true,
+        "keyboard_highlight_selection": true,
+        "passage_inspector": true,
+        "clear": true,
+        "page_errors": []
+      },
+      {
+        "name": "mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "layout": {
+          "horizontalOverflow": false,
+          "inputWidth": 274,
+          "background": "rgb(7, 11, 20)",
+          "aboutColor": "rgb(219, 234, 254)",
+          "aboutDisplay": "none"
+        },
+        "highlightStyle": {
+          "radius": "2px",
+          "textDecoration": "underline",
+          "background": "rgba(59, 130, 246, 0.2)",
+          "color": "rgb(191, 219, 254)",
+          "cursor": "pointer"
+        },
+        "api_fixture_modes": [
+          "article",
+          "sentence",
+          "paragraph"
+        ],
+        "exact_source": true,
+        "keyboard_highlight_selection": true,
+        "passage_inspector": true,
+        "clear": true,
+        "page_errors": []
+      }
+    ]
+  },
+  "after": {
+    "purpose": "Local browser UI contracts with mocked predictions; no accuracy or live deployment test",
+    "generated_at_utc": "2026-10-03T14:17:12.253Z",
+    "browser": "134.0.6998.35",
+    "viewports": [
+      {
+        "name": "desktop",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "layout": {
+          "horizontalOverflow": false,
+          "inputWidth": 780,
+          "background": "rgb(7, 11, 20)",
+          "aboutColor": "rgb(219, 234, 254)",
+          "aboutDisplay": "flex"
+        },
+        "highlightStyle": {
+          "radius": "2px",
+          "textDecoration": "underline",
+          "background": "oklab(0.623018 -0.0332199 -0.185032 / 0.2)",
+          "color": "rgb(191, 219, 254)",
+          "cursor": "pointer"
+        },
+        "api_fixture_modes": [
+          "article",
+          "sentence",
+          "paragraph"
+        ],
+        "exact_source": true,
+        "keyboard_highlight_selection": true,
+        "passage_inspector": true,
+        "clear": true,
+        "page_errors": []
+      },
+      {
+        "name": "mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "layout": {
+          "horizontalOverflow": false,
+          "inputWidth": 274,
+          "background": "rgb(7, 11, 20)",
+          "aboutColor": "rgb(219, 234, 254)",
+          "aboutDisplay": "none"
+        },
+        "highlightStyle": {
+          "radius": "2px",
+          "textDecoration": "underline",
+          "background": "oklab(0.623018 -0.0332199 -0.185032 / 0.2)",
+          "color": "rgb(191, 219, 254)",
+          "cursor": "pointer"
+        },
+        "api_fixture_modes": [
+          "article",
+          "sentence",
+          "paragraph"
+        ],
+        "exact_source": true,
+        "keyboard_highlight_selection": true,
+        "passage_inspector": true,
+        "clear": true,
+        "page_errors": []
+      }
+    ]
+  },
+  "scope": "Before/after local frontend only, Chromium134 desktop and mobile viewport. All API responses were explicit synthetic fixtures. No live inference or Safari/Firefox test."
+}

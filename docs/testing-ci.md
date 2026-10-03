@@ -14,8 +14,11 @@ GitHub token has only `contents: read`, and checkout does not persist it.
 See [runner specifications](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)
 and [Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions).
 
-As of this configuration update (2026-10-02), the hosted workflow has not yet
-run. Local validation does not establish that a GitHub Actions run has passed.
+Hosted quality checks passed on research commit `4268bab` in
+[run 37066293070](https://github.com/rahimcantcode/biasCheck/actions/runs/37066293070),
+completed 2026-10-02 and verified through GitHub on 2026-10-03. That result applies
+to that commit, not later changes. Local validation and a production build alone
+do not establish that a new commit passed hosted CI or was deployed.
 
 ## What a green run establishes
 

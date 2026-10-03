@@ -1,5 +1,12 @@
 # Human annotation pilot v2
 
+October 3 follow-through: a source-verified, development-only adjudication
+validator is now available in `validate_adjudication.py`. It binds the original
+manifest and two v2 review exports, requires explicit third-human decisions,
+and leaves unresolved items unresolved. It does not authorize training, create
+independent final-test gold, or approve a model. See the practical
+[pilot and adjudication instructions](../team_20261003/ANNOTATION_PILOT.md).
+
 Prepared 2026-10-02. Completed human reviews: **0**. No human gold labels, model retraining or improved-accuracy claim.
 
 The 100 examples are unchanged: 60 natural historical articles from 12 source identifiers and 41 topics, plus 40 AI-authored controlled examples. Text, IDs and order are copied exactly from frozen v1. News article text is not redistributed. Selection excludes the earlier 60-article model comparison, but independence from historical checkpoint training is unknown.

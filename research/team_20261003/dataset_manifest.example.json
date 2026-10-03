@@ -1,0 +1,60 @@
+{
+  "schema_version": "biascheck-dataset-intake-v1",
+  "dataset_id": "synthetic-schema-demonstration-not-gold",
+  "purpose": "Schema demonstration only. This is generated text, not independently human-labeled evidence.",
+  "task": {
+    "id": "article_author_framing",
+    "version": "proposed-team-20261003-v1",
+    "scope": "Identify framing expressed by the author of the supplied English passage, separate from attributed quotations and publisher identity.",
+    "label_source": "human_text_annotation"
+  },
+  "development_only": true,
+  "final_test_eligible": false,
+  "gold_labels_approved": false,
+  "release_approved": false,
+  "exposure_ledger": [],
+  "independence_audit": {
+    "status": "pending"
+  },
+  "evaluation_freeze": {
+    "protocol_sha256": null,
+    "candidate_sha256": null,
+    "test_opened": false
+  },
+  "records": [
+    {
+      "id": "SCHEMA-EXAMPLE-001",
+      "task": "article_author_framing",
+      "kind": "synthetic",
+      "split": "development",
+      "text": "Synthetic schema demonstration: the council scheduled a meeting for Tuesday.",
+      "text_sha256": "9ee8e3849b65aa772836c1697afd4f0a515456f38bb01df257e3c2db6f6092b6",
+      "story_group": "synthetic-schema-example",
+      "duplicate_group": null,
+      "development_only": true,
+      "final_test_eligible": false,
+      "exposure": {
+        "pilot": false,
+        "development": true,
+        "model_selection": false,
+        "training": false,
+        "calibration": false
+      },
+      "source": {
+        "url": "urn:biascheck:synthetic-schema-demonstration:001",
+        "publisher": "AI-authored schema demonstration",
+        "acquired_at": "2026-10-03",
+        "rights_status": "documented",
+        "rights_basis": "Generated schema-example text only; this declaration conveys no rights for any external corpus.",
+        "rights_reference": "research/team_20261003/dataset_manifest.example.json",
+        "allowed_uses": [
+          "annotation",
+          "evaluation"
+        ]
+      },
+      "review": {
+        "status": "pending"
+      }
+    }
+  ]
+}

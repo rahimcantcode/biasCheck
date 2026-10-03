@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-03T14:06:49.112883+00:00",
+  "purpose": "Unlabeled archival source intake only; not a benchmark or training corpus",
+  "retrieval_mode": "saved_api_snapshots",
+  "extraction_version": "top_level_paragraphs_before_heading_v1",
+  "limitations": [
+    "Two convenience-selected articles from one source; no class balance or representativeness",
+    "Page revision does not freeze transcluded templates; raw response hash binds actual bytes",
+    "Rights and extraction review pending; no model or human labels generated",
+    "Examples inspected by the research team are permanently development material"
+  ],
+  "items": [
+    {
+      "id": "wikinews-5004396",
+      "title": "White House deletes Truth Social post portraying Obamas as apes",
+      "source_revision": 5004396,
+      "source_url": "https://en.wikinews.org/w/index.php?oldid=5004396",
+      "publication_date": "2026-02-07",
+      "source": "Wikinews contributors",
+      "raw_response_sha256": "fe05a3df0205e4ac1736e06988b2cb71d2dc55cd918c9e59f6c6e3df2dcfa3ee",
+      "text_sha256": "cee039b0462a472f8d01477b616e6e1347931591887cd41b9e708c8dd8af7216",
+      "text_context": "title_and_extracted_top_level_paragraphs",
+      "paragraph_count": 10,
+      "character_count": 1653,
+      "word_count": 272,
+      "split": "development",
+      "label": null,
+      "human_review_count": 0,
+      "annotation_status": "unreviewed",
+      "extraction_review_status": "pending_human_comparison_with_source",
+      "rights": {
+        "policy_url": "https://en.wikinews.org/w/index.php?title=Wikinews:Copyright&oldid=4991371",
+        "policy_indicated_license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "embedded_rights_observed": [
+          "CC-BY 2.5"
+        ],
+        "review_status": "pending_page_specific_rights_review",
+        "metadata_conflict": true,
+        "approved_uses": [],
+        "attribution": "White House deletes Truth Social post portraying Obamas as apes by Wikinews contributors; revision 5004396.",
+        "modification_notice": "HTML stripped; title and top-level paragraphs retained; whitespace normalized; date, navigation, images, references and later sections omitted."
+      },
+      "final_test_eligible": false,
+      "training_approved": false
+    },
+    {
+      "id": "wikinews-5013866",
+      "title": "Former Major League Baseball pitcher Julio Teherán retires",
+      "source_revision": 5013866,
+      "source_url": "https://en.wikinews.org/w/index.php?oldid=5013866",
+      "publication_date": "2026-03-11",
+      "source": "Wikinews contributors",
+      "raw_response_sha256": "7fe22c50334c63314fd81cd42da592dec61b50e3b67b43e7747ad465b6eb2a16",
+      "text_sha256": "598d0a22350763f0bbcb2b6dcf26119ebff43bb625dc256dc4c87be1f0b128c6",
+      "text_context": "title_and_extracted_top_level_paragraphs",
+      "paragraph_count": 4,
+      "character_count": 1017,
+      "word_count": 172,
+      "split": "development",
+      "label": null,
+      "human_review_count": 0,
+      "annotation_status": "unreviewed",
+      "extraction_review_status": "pending_human_comparison_with_source",
+      "rights": {
+        "policy_url": "https://en.wikinews.org/w/index.php?title=Wikinews:Copyright&oldid=4991371",
+        "policy_indicated_license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "embedded_rights_observed": [
+          "CC-BY 2.5"
+        ],
+        "review_status": "pending_page_specific_rights_review",
+        "metadata_conflict": true,
+        "approved_uses": [],
+        "attribution": "Former Major League Baseball pitcher Julio Teherán retires by Wikinews contributors; revision 5013866.",
+        "modification_notice": "HTML stripped; title and top-level paragraphs retained; whitespace normalized; date, navigation, images, references and later sections omitted."
+      },
+      "final_test_eligible": false,
+      "training_approved": false
+    }
+  ],
+  "release_approved": false
+}

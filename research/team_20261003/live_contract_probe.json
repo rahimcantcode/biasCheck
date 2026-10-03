@@ -1,0 +1,49 @@
+{
+  "generated_at_utc": "2026-10-03T13:57:45.340853+00:00",
+  "api_base_url": "https://bias.r4him.tech/api",
+  "purpose": "synthetic HTTP contract smoke, not accuracy or load evaluation",
+  "prediction_requests_enabled": true,
+  "checks": [
+    {
+      "name": "health",
+      "passed": true,
+      "release_approved": false,
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu"
+      }
+    },
+    {
+      "name": "article",
+      "http_status": 200,
+      "passed": false,
+      "error": "Pasted source text was rewritten",
+      "elapsed_seconds": 10.859
+    },
+    {
+      "name": "sentence",
+      "http_status": 200,
+      "passed": false,
+      "error": "Pasted source text was rewritten",
+      "elapsed_seconds": 0.842
+    },
+    {
+      "name": "paragraph",
+      "http_status": 200,
+      "passed": false,
+      "error": "Pasted source text was rewritten",
+      "elapsed_seconds": 0.618
+    },
+    {
+      "name": "invalid_empty",
+      "http_status": 400,
+      "passed": true,
+      "elapsed_seconds": 0.191
+    }
+  ],
+  "passed": false,
+  "elapsed_seconds": 12.691
+}
