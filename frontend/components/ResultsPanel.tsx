@@ -15,6 +15,13 @@ interface ResultsPanelProps {
 
 const LABELS: Label[] = ["LEFT", "CENTER", "RIGHT"];
 const ASSESSMENTS: Record<string, string> = { nonpolitical: "No political content detected", insufficient_context: "More context needed", uncertain: "Uncertain", mixed_or_conflicting: "Mixed or conflicting signals" };
+const WITHHELD_REASONS: Record<string, string> = {
+  insufficient_context: "There is not enough context for a final label.",
+  uncertain: "The model's signals are too uncertain for a final label.",
+  model_not_validated: "This model has not passed independent validation.",
+  mode_not_validated: "This analysis mode has not passed independent validation.",
+  experimental_model_not_validated: "This experimental model has not passed independent validation.",
+};
 const NAMES = { LEFT: "Left", CENTER: "Center", RIGHT: "Right" };
 const TEXT_COLORS = { LEFT: "text-blue-300", CENTER: "text-slate-200", RIGHT: "text-red-300" };
 const BAR_COLORS = { LEFT: "bg-blue-400", CENTER: "bg-slate-500", RIGHT: "bg-red-400" };
@@ -159,15 +166,21 @@ function ArticleReader({ data }: { data: PredictResponse }) {
         <ArticleText parts={parts} showHighlights={showColors} selected={selected} onSelect={setSelected} />
       </div>
 
-      {data.mode !== "article" && data.overall.score_type === "independent_entailment" && (
+      {data.mode !== "article" && (
         <details className="border-t border-white/10 px-6 py-5 sm:px-10">
-          <summary className="cursor-pointer text-sm text-slate-300">Inspect experimental passage assessments</summary>
+          <summary className="cursor-pointer text-sm text-slate-300">Inspect experimental passage estimates</summary>
+          <p className="mt-3 text-xs leading-6 text-slate-400">Passage estimates can be wrong, and quoted views may differ from the author's position. These scores do not identify specific biased expressions and are not probabilities of correctness.</p>
           <ol className="mt-4 space-y-5">
             {data.results.map(result => (
               <li key={result.segment_index} className="rounded-lg border border-white/10 p-4 text-sm">
-                <p className="font-medium text-slate-200">{result.tentative_label ? `Tentative ${NAMES[result.tentative_label]}` : ASSESSMENTS[result.assessment ?? ""] ?? "Uncertain"}</p>
+                <p className="font-medium text-slate-200">{result.decision === "classified" && result.label
+                  ? `Experimental ${NAMES[result.label]} estimate`
+                  : result.tentative_label
+                    ? `Tentative ${NAMES[result.tentative_label]}`
+                    : ASSESSMENTS[result.assessment ?? result.reason ?? ""] ?? "No reliable label"}</p>
+                {result.decision === "abstained" && <p className="mt-1 text-xs text-slate-400">Final label withheld. {WITHHELD_REASONS[result.reason ?? ""] ?? "The available context does not support a final label."}</p>}
                 <p className="mt-2 whitespace-pre-wrap text-slate-400">{result.text}</p>
-                <p className="mt-2 text-xs text-slate-500">Independent support: {LABELS.map(label => `${NAMES[label]} ${(result.probabilities[label] * 100).toFixed(1)}%`).join(" / ")}</p>
+                <p className="mt-2 text-xs text-slate-500">{result.score_type === "independent_entailment" ? "Independent model support" : result.calibrated ? "Model support scores" : "Uncalibrated model support"}: {LABELS.map(label => `${NAMES[label]} ${(result.probabilities[label] * 100).toFixed(1)}%`).join(" / ")}</p>
               </li>
             ))}
           </ol>

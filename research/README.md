@@ -1,5 +1,11 @@
 # Reproducible bias-classifier experiments
 
+The [October 3 data-quality checkpoint](team_20261003/README.md) adds an audited
+dataset registry, human adjudication validation, split/provenance intake checks,
+independent replay of published development results, and an opt-in staging probe.
+It also records a tiny unlabeled source-acquisition pilot. These are research
+infrastructure improvements, not new model accuracy or production approval.
+
 These are working research notes and tools, not a final report or an approved model release.
 Scope: English U.S. political news ideology. Political leaning is separate from factual accuracy and loaded language. Nonpolitical input and insufficient evidence are not CENTER.
 

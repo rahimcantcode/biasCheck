@@ -1,0 +1,104 @@
+{
+  "validator_schema": "biascheck-dataset-intake-v1",
+  "structurally_valid": true,
+  "declared_final_evaluation_prerequisites_met": false,
+  "release_approved": false,
+  "gold_labels_approved": false,
+  "human_provenance_verified": false,
+  "rights_verified": false,
+  "record_count": 2,
+  "split_counts": {
+    "development": 2
+  },
+  "errors": [],
+  "prerequisite_blockers": [
+    {
+      "code": "rights_unresolved",
+      "location": "records[0]",
+      "message": "Rights are not declared documented for this record."
+    },
+    {
+      "code": "rights_use_missing",
+      "location": "records[0]",
+      "message": "Declared uses must permit annotation and evaluation before that work."
+    },
+    {
+      "code": "unfinished_human_review",
+      "location": "records[0]",
+      "message": "Incomplete or unresolved review is not a completed human reference."
+    },
+    {
+      "code": "rights_unresolved",
+      "location": "records[1]",
+      "message": "Rights are not declared documented for this record."
+    },
+    {
+      "code": "rights_use_missing",
+      "location": "records[1]",
+      "message": "Declared uses must permit annotation and evaluation before that work."
+    },
+    {
+      "code": "unfinished_human_review",
+      "location": "records[1]",
+      "message": "Incomplete or unresolved review is not a completed human reference."
+    },
+    {
+      "code": "evaluation_not_frozen",
+      "location": "evaluation_freeze",
+      "message": "No candidate/protocol freeze has been declared."
+    },
+    {
+      "code": "evaluation_not_frozen",
+      "location": "evaluation_freeze.protocol_sha256",
+      "message": "An exact protocol and candidate hash is required before final evaluation."
+    },
+    {
+      "code": "evaluation_not_frozen",
+      "location": "evaluation_freeze.candidate_sha256",
+      "message": "An exact protocol and candidate hash is required before final evaluation."
+    },
+    {
+      "code": "test_not_sealed",
+      "location": "evaluation_freeze.test_opened",
+      "message": "A sealed final test must be declared before candidate evaluation."
+    },
+    {
+      "code": "missing_evaluation_split",
+      "location": "records",
+      "message": "No calibration records are declared."
+    },
+    {
+      "code": "missing_evaluation_split",
+      "location": "records",
+      "message": "No final_test records are declared."
+    },
+    {
+      "code": "independence_not_audited",
+      "location": "independence_audit",
+      "message": "Curated story/duplicate groups and exposure-ledger completeness need a documented independent audit."
+    }
+  ],
+  "warnings": [
+    {
+      "code": "declarations_not_proof",
+      "location": "$",
+      "message": "Human identity, independence, blinding, rights, and exposure are declarations; this program does not independently verify them."
+    },
+    {
+      "code": "near_duplicate_limit",
+      "location": "$",
+      "message": "Story groups, semantic duplicates, translated copies, source-query variants, and outside exposure need independent audit."
+    },
+    {
+      "code": "heldout_handling",
+      "location": "$",
+      "message": "The program reads only this manifest. A held-out custodian should run it locally; do not expose final-test text or labels to model developers."
+    }
+  ],
+  "release_requirements_outside_this_check": [
+    "Independent review of rights and human annotation provenance",
+    "Task-matched performance, uncertainty intervals, calibration, and coverage evaluation",
+    "Browser, security, load, deployment, and rollback verification",
+    "Recorded human release decision"
+  ]
+}

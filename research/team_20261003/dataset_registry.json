@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "audited_utc_date": "2026-10-03",
+  "repository_baseline": "4268bab42c1186ddcd1fee5b9b80ab4a2ae9f8a4",
+  "status": "research_inventory_not_training_or_release_approval",
+  "audit_method": "Read committed metadata/code and primary source documentation; no sealed inputs or new human reviews.",
+  "new_independent_human_reviews": 0,
+  "sealed_inputs_accessed": false,
+  "production_training_approved": false,
+  "datasets": [
+    {
+      "id": "original_checkpoint_training_mixture",
+      "status": "unreconstructed_historical_claim",
+      "claimed_sources": [
+        "AllSides",
+        "NewsMediaBias"
+      ],
+      "claimed_approximate_count": 53000,
+      "verified_count": null,
+      "source_urls": [],
+      "revision": null,
+      "label_origin": "unknown_at_record_level",
+      "rights": {
+        "status": "unresolved",
+        "license": null
+      },
+      "local_evidence": [
+        "research/EXPERIMENT_LOG.md"
+      ],
+      "permitted_project_role": "provenance_recovery",
+      "limitations": [
+        "Historical claim does not identify exact datasets, revisions, split IDs or checkpoint evaluation.",
+        "Do not equate this mixture with the later acquired Baly data or repeat 89 percent as verified."
+      ],
+      "provenance_search": {
+        "date": "2026-10-03",
+        "owner": "rahimcantcode",
+        "accessible_repository_metadata_count": 24,
+        "relevant_repository_names_found": [
+          "biasCheck"
+        ],
+        "repository_search_terms": [
+          "bias",
+          "classifier",
+          "training",
+          "archived:true bias",
+          "bias-classifier"
+        ],
+        "code_search_terms": [
+          "roberta",
+          "NewsMediaBias",
+          "train_test_split"
+        ],
+        "result": "No separate classifier repository, original notebook, dataset URLs, split IDs, or original evaluation run outputs recovered.",
+        "scope_limitations": [
+          "Connector-accessible metadata and indexed default branches only.",
+          "Does not exclude deleted, renamed, private/unconnected, nonindexed or different-owner repositories."
+        ],
+        "unrelated_repository_contents_opened": false,
+        "raw_training_or_holdout_data_opened": false
+      }
+    },
+    {
+      "id": "baly_article_bias_prediction",
+      "status": "existing_historical_research",
+      "source_urls": [
+        "https://github.com/ramybaly/Article-Bias-Prediction",
+        "https://aclanthology.org/2020.emnlp-main.404/"
+      ],
+      "revision": "ced8111a720948e6a410e52031ace99c4e53f096",
+      "upstream_repository_advertised_count": 37554,
+      "paper_reported_count": 34737,
+      "local_splits": {
+        "train": 23603,
+        "validation_development": 2356,
+        "test_prepared": 1300
+      },
+      "local_validation_labels": {
+        "LEFT": 1640,
+        "CENTER": 618,
+        "RIGHT": 98
+      },
+      "label_origin": "article_level_manual_ideology_as_described_by_authors",
+      "native_task": "Article LEFT/CENTER/RIGHT political ideology",
+      "source_orientation_is_article_gold": false,
+      "rights": {
+        "license": "Apache-2.0 repository LICENSE",
+        "license_url": "https://github.com/ramybaly/Article-Bias-Prediction/blob/ced8111a720948e6a410e52031ace99c4e53f096/LICENSE",
+        "license_git_blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+        "status": "underlying_article_permissions_not_independently_resolved"
+      },
+      "local_evidence": [
+        "research/results/data_manifest.json",
+        "research/scripts/prepare_data.py"
+      ],
+      "permitted_project_role": "historical_diagnostics_and_rubric_development",
+      "limitations": [
+        "Do not project article labels onto sentences or phrases.",
+        "Training exposure, ownership, event and syndication overlap unresolved.",
+        "Nonpolitical inputs are not CENTER.",
+        "Paper, upstream release and corrected project split are different counts."
+      ]
+    },
+    {
+      "id": "political_bias_corpus",
+      "status": "existing_historical_research",
+      "source_urls": [
+        "https://github.com/ksolaiman/PoliticalBiasCorpus"
+      ],
+      "revision": "b193ee173936b281183ca1dc101ae4de215a0e5c",
+      "released_human_derived_count": 270,
+      "strict_worker_agreement_count": 139,
+      "center_partisan_resolution_count": 131,
+      "local_splits": {
+        "train": 115,
+        "reused_development": 66,
+        "sealed_test": 89
+      },
+      "label_origin": "two_worker_labels_with_source_conflict_resolution",
+      "native_task": "Perceived article political framing",
+      "rights": {
+        "license": "CC-BY-NC-SA-4.0",
+        "license_url": "https://github.com/ksolaiman/PoliticalBiasCorpus/blob/b193ee173936b281183ca1dc101ae4de215a0e5c/LICENSE",
+        "license_git_blob_sha": "b1c8ce4b1d1fd791d1ab00f96f81dd0f8c81d7c5",
+        "status": "project_restricts_to_noncommercial_research"
+      },
+      "local_evidence": [
+        "research/results/corpus_comparison_20261001.json",
+        "research/results/development_overlap_review_20261002.json",
+        "research/scripts/corpus_experiment.py"
+      ],
+      "permitted_project_role": "preserve_historical_results_no_further_winner_selection_on_66",
+      "limitations": [
+        "Normalized event strings do not establish event-family independence.",
+        "Observed shared episode and publisher boilerplate cross train/development.",
+        "Title plus three snippets do not reproduce unknown extra context accessed by workers.",
+        "Strict-agreement subset is imbalanced and selection-biased."
+      ]
+    },
+    {
+      "id": "uk_argument_stance_human_challenge",
+      "status": "existing_auxiliary_task",
+      "source_urls": [
+        "https://github.com/anonymous-argumentation/Validating-Political-Position-Predictions-of-Arguments"
+      ],
+      "revision": "205cd7334deabefadb6f3e8e03f5671548e5c4ff",
+      "verified_count_from_committed_protocol": 1000,
+      "local_splits": {
+        "development": 274,
+        "sealed_test": 726
+      },
+      "label_origin": "three_human_votes_majority",
+      "native_task": "UK political stance presence in paired Proposition and Locution",
+      "rights": {
+        "license": "MIT repository LICENSE per frozen protocol",
+        "status": "underlying_broadcast_transcript_rights_unresolved"
+      },
+      "local_evidence": [
+        "research/results/argument_stance_protocol_20261002.json"
+      ],
+      "permitted_project_role": "native_task_research_only",
+      "limitations": [
+        "Model-conditioned source sampling is not deployment prevalence.",
+        "Stance absence does not mean NONPOLITICAL or CENTER.",
+        "Episode independence unresolved, including 12 unmatched source pairs.",
+        "No absolute U.S. ideological labels."
+      ]
+    },
+    {
+      "id": "human_pilot_v2",
+      "status": "frozen_unreviewed_development",
+      "source_urls": [],
+      "revision": "biascheck-rubric-pilot-20261002-v2",
+      "local_counts": {
+        "historical_natural": 60,
+        "ai_authored_controlled": 40,
+        "total": 100,
+        "completed_human_reviews_at_baseline": 0
+      },
+      "label_origin": "human_labels_not_yet_collected",
+      "native_task": "Author framing, relevance, context, attribution and exact directional spans",
+      "rights": {
+        "status": "historical_article_rights_require_review_separate_from_original_controls",
+        "license": null
+      },
+      "local_evidence": [
+        "research/annotation/pilot_manifest_v2.json",
+        "research/annotation/README.md",
+        "research/annotation/RUBRIC.md"
+      ],
+      "permitted_project_role": "rubric_development_never_final_test",
+      "limitations": [
+        "Two independent humans and documented adjudication remain required.",
+        "Prior exposure and external context must remain disclosed."
+      ]
+    },
+    {
+      "id": "synthetic_phrase_development",
+      "status": "exposed_development",
+      "source_urls": [],
+      "revision": "phrase_stages_20261002",
+      "local_counts": {
+        "initial_and_extension": 38,
+        "inspected_transfer": 32,
+        "total": 70
+      },
+      "label_origin": "ai_authored_expected_spans_not_human_gold",
+      "native_task": "Synthetic exact-span direction and attribution diagnostics",
+      "rights": {
+        "status": "project_authored_fixtures",
+        "license": "project_terms"
+      },
+      "local_evidence": [
+        "research/experiments/phrase_stages_20261002/V5_RESULT.md",
+        "research/experiments/phrase_stages_20261002/transfer32_fixture.json"
+      ],
+      "permitted_project_role": "regression_diagnostics",
+      "limitations": [
+        "All inspected transfer items are now development.",
+        "No population-accuracy or independent-human claim."
+      ]
+    },
+    {
+      "id": "babe",
+      "status": "metadata_reviewed_not_acquired",
+      "source_urls": [
+        "https://github.com/Media-Bias-Group/Neural-Media-Bias-Detection-Using-Distant-Supervision-With-BABE",
+        "https://aclanthology.org/2021.findings-emnlp.101/"
+      ],
+      "revision": null,
+      "observed_branch": "main",
+      "upstream_reported_sentence_count": 3700,
+      "label_origin": "expert_sentence_bias_opinion_and_marked_words",
+      "native_task": "Bias presence and opinion, not absolute political direction",
+      "rights": {
+        "license": "GNU Affero General Public License v3 repository LICENSE",
+        "license_url": "https://github.com/Media-Bias-Group/Neural-Media-Bias-Detection-Using-Distant-Supervision-With-BABE/blob/main/LICENSE",
+        "license_git_blob_sha": "0ad25db4bd1d86c452db3f9602ccdbe172438f52",
+        "status": "underlying_excerpt_rights_and_dataset_license_scope_unresolved"
+      },
+      "permitted_project_role": "candidate_auxiliary_bias_task_after_rights_review",
+      "limitations": [
+        "type column is outlet orientation, not sentence-level LEFT/RIGHT gold.",
+        "No bulk data acquired or revision pinned in this audit."
+      ]
+    },
+    {
+      "id": "basil_release_2",
+      "status": "metadata_reviewed_not_acquired",
+      "source_urls": [
+        "https://github.com/launchnlp/BASIL",
+        "https://arxiv.org/abs/1909.02670"
+      ],
+      "revision": null,
+      "observed_branch": "main",
+      "original_paper_counts": {
+        "articles": 300,
+        "bias_spans": 1727
+      },
+      "release_2_counts_recomputed": false,
+      "label_origin": "human_lexical_and_informational_bias_spans",
+      "native_task": "Entity-directed bias with quote attribution, not U.S. ideological direction",
+      "rights": {
+        "license": null,
+        "status": "not_established",
+        "check": "Root LICENSE lookup returned 404; no blanket permission inferred."
+      },
+      "permitted_project_role": "candidate_attribution_auxiliary_after_rights_review",
+      "limitations": [
+        "Release2 corrected quote speakers, polarity and offsets.",
+        "No article-level ideology inferred from span sentiment."
+      ]
+    },
+    {
+      "id": "wikinews_post2024_text_candidates",
+      "status": "pinned_metadata_seeds_for_unlabeled_development",
+      "source_urls": [
+        "https://en.wikinews.org/w/index.php?title=Wikinews:Copyright&oldid=4991371",
+        "https://en.wikinews.org/w/index.php?title=Wikinews:Archives&oldid=5023041",
+        "https://en.wikinews.org/wiki/Wikinews:Neutral_point_of_view"
+      ],
+      "revision": "per_item_revision_required",
+      "label_origin": "none",
+      "native_task": "Natural source text for subsequent independent human annotation",
+      "rights": {
+        "license": "CC-BY-4.0 for text created after 2024-12-16 unless otherwise specified",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "status": "conflicting_page_license_metadata_manual_review_required",
+        "attribution": "Wikinews, title, source revision URL, license URL, extraction/modification notice",
+        "images_excluded": true,
+        "observed_conflict": "Root collector observed CC-BY 2.5 citation metadata in both pinned rendered pages, while current copyright policy specifies CC BY4.0 for post2024 text; do not silently resolve."
+      },
+      "permitted_project_role": "small_unlabeled_archival_development_pool",
+      "limitations": [
+        "Archive notes closure scheduled May4 2026; not an ongoing late2026 news feed.",
+        "NPOV policy is not a gold CENTER label.",
+        "Limited source/genre coverage and unknown pretraining exposure.",
+        "No directional class balance guaranteed.",
+        "Rendered oldid may contain newer transcluded material; preserve actual response hashes and exclude unrelated templates from model input."
+      ]
+    }
+  ],
+  "acquisition_candidates": [
+    {
+      "id": "wikinews_revision_5004396",
+      "dataset_id": "wikinews_post2024_text_candidates",
+      "title": "White House deletes Truth Social post portraying Obamas as apes",
+      "url": "https://en.wikinews.org/w/index.php?title=White_House_deletes_Truth_Social_post_portraying_Obamas_as_apes&oldid=5004396",
+      "revision_id": 5004396,
+      "publication_date": "2026-02-07",
+      "selection_stratum": "political_reporting_with_quotes_and_criticism",
+      "label": null,
+      "human_reviewed": false,
+      "body_snapshot_sha256": null,
+      "body_acquired_by_this_audit": false,
+      "metadata_source_opened": true,
+      "final_test_eligible": false,
+      "rights_item_review_complete": false,
+      "rights_conflict": "Both rendered seed pages include CC-BY 2.5 citation metadata versus post2024 policy CC-BY4.0; root collector verified.",
+      "root_acquisition_summary": "research/team_20261003/wikinews_intake_summary.json",
+      "root_collector_acquired": true,
+      "root_acquisition_status": "unlabeled_development_intake_rights_and_extraction_review_pending"
+    },
+    {
+      "id": "wikinews_revision_5013866",
+      "dataset_id": "wikinews_post2024_text_candidates",
+      "title": "Former Major League Baseball pitcher Julio Teherán retires",
+      "url": "https://en.wikinews.org/w/index.php?title=Former_Major_League_Baseball_pitcher_Julio_Teher%C3%A1n_retires&oldid=5013866",
+      "revision_id": 5013866,
+      "publication_date": "2026-03-11",
+      "selection_stratum": "sports_reporting",
+      "label": null,
+      "human_reviewed": false,
+      "body_snapshot_sha256": null,
+      "body_acquired_by_this_audit": false,
+      "metadata_source_opened": true,
+      "final_test_eligible": false,
+      "rights_item_review_complete": false,
+      "rights_conflict": "Both rendered seed pages include CC-BY 2.5 citation metadata versus post2024 policy CC-BY4.0; root collector verified.",
+      "root_acquisition_summary": "research/team_20261003/wikinews_intake_summary.json",
+      "root_collector_acquired": true,
+      "root_acquisition_status": "unlabeled_development_intake_rights_and_extraction_review_pending"
+    }
+  ],
+  "acquisition_protocol": {
+    "new_pool_max_items_proposed": 20,
+    "initial_purpose": "development_only_context_relevance_and_attribution",
+    "api_endpoint": "https://en.wikinews.org/w/api.php",
+    "api_documentation": [
+      "https://www.mediawiki.org/wiki/API:Revisions",
+      "https://www.mediawiki.org/wiki/API:Categorymembers",
+      "https://www.mediawiki.org/wiki/API:Parsing_wikitext"
+    ],
+    "retrieval": "Pinned revisions, bounded sequential reads, item-date and notice checks, no images or recursive source crawling.",
+    "api_probe_status_by_dataset_agent": "blocked_unprivileged_shell_Operation_not_permitted",
+    "all_new_labels_initially_null": true,
+    "human_review_required": true,
+    "directional_training_lane": "Separately permissioned or commissioned contemporary multi-source news/opinion; preserve explicit ML training/evaluation/commercial-model terms and separate redistribution terms.",
+    "permission_requests_sent": false,
+    "production_release_approved": false,
+    "root_collector_followup": "Root acquired both API snapshots after network escalation and replayed them through collector; actual source/extraction hashes and pending rights are in wikinews_intake_summary.json. No approved annotation/training/evaluation uses."
+  }
+}

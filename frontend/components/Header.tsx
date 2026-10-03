@@ -4,7 +4,7 @@ export function Header() {
   return (
     <header className="relative z-20 mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-glow backdrop-blur">
+        <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-glow backdrop-blur-sm">
           <Orbit className="h-5 w-5 text-blue-200" />
         </div>
         <div>

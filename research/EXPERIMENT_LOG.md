@@ -1,5 +1,58 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03: concurrent data-quality team milestone
+
+Started an isolated `research/data-quality-team-2026-10-03` branch from
+`4268bab42c1186ddcd1fee5b9b80ab4a2ae9f8a4`, with six specialist agents and a lead.
+The full handoff, evidence ledger and reviewed limitations are in
+[`team_20261003/README.md`](team_20261003/README.md).
+
+Audited nine dataset resources and their distinct tasks/rights. Baly's authors
+describe manual article-level AllSides labels; the entire corpus must not be
+described as publisher-inherited. A targeted search of 24 accessible account
+repository metadata records plus relevant code queries did not recover a second
+training project or the original checkpoint's row/split lineage. That remains
+unresolved, not proof that no such files exist elsewhere.
+
+Added a development-only human adjudication validator, a corpus-intake validator
+for source hashes, review targets, rights declarations, duplicate/story groups
+and prior exposure, plus a proposed independent evaluation protocol. These tools
+check supplied declarations and integrity, not human identity or political truth.
+No completed human reviews or adjudications were created, and no sealed 89-item
+or 726-item corpus input was read.
+
+A new independent implementation replayed ten named publication records:
+924 article candidate/example decisions, 230 training out-of-fold decisions,
+254 phrase case/arm evaluations and 548 native stance response contracts. These
+are repeated development work units, not independent sample counts. Per-ID native
+stance gold is not published, so its correctness was checked only at the stated
+aggregate-arithmetic level. No new model inference, training or accuracy gain is
+claimed by that replay. Unanimous-only training still trades class recall rather
+than establishing a general improvement.
+
+Collected two pinned early-2026 Wikinews API snapshots as an unlabeled development
+acquisition smoke. Metadata preserves actual response/text hashes, extraction
+changes and source attribution. Both articles have unresolved policy-versus-
+embedded-license metadata, so no intended-use clearance or training eligibility
+is asserted. The intake correctly remains blocked for independent evaluation.
+Raw snapshots and extracted text stay in ignored local data storage.
+
+An opt-in live contract probe confirmed original RoBERTa weights, demo mode and
+unapproved release state. Article, paragraph and sentence requests returned 200
+but rewrote pasted text; empty input returned 400. These are contract observations,
+not accuracy measurements. The new research backend and the live server remain
+different versions. A frontend defect hiding default-engine passage estimates
+was corrected without turning segment labels into phrase evidence.
+
+Final targeted Python integration: **171 tests plus 74 subtests passed**, with
+socket restrictions permitting only synthetic loopback/Unix fixtures. Exact
+command, output and test-source hashes are in `team_20261003/python_verification.json`.
+The application workstream separately records its frontend dependency migration,
+audits, build and browser checks in `team_20261003/STAGING_READINESS.md`.
+Baseline hosted CI was directly verified on `4268bab`; later branch CI must be
+identified by its own commit/run. Nothing in this milestone approves a model,
+merges the research branch, or deploys the VPS.
+
 
 ## 2026-10-02 18:00 UTC: real CPU model loop and broader human-reference evaluation
 

@@ -89,7 +89,7 @@ export function BiasInputCard({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-[2rem] border bg-black/30 p-5 shadow-glow backdrop-blur transition sm:p-6 ${
+      className={`relative overflow-hidden rounded-[2rem] border bg-black/30 p-5 shadow-glow backdrop-blur-sm transition sm:p-6 ${
         focused ? "border-blue-400/30" : "border-white/10"
       }`}
     >
@@ -122,7 +122,7 @@ export function BiasInputCard({
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               placeholder="Paste article text here, or enter a full URL like https://example.com/story"
-              className="min-h-[220px] w-full resize-none rounded-[1.2rem] border border-white/8 bg-slate-950/70 px-4 py-4 text-sm leading-7 text-slate-100 outline-none placeholder:text-slate-500"
+              className="min-h-[220px] w-full resize-none rounded-[1.2rem] border border-white/8 bg-slate-950/70 px-4 py-4 text-sm leading-7 text-slate-100 outline-hidden placeholder:text-slate-500"
             />
             <div className="mt-3 flex flex-wrap items-center gap-3">
               <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-white/10 px-3 py-2 text-xs text-slate-200 transition hover:bg-white/5 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-blue-300">

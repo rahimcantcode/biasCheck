@@ -11,7 +11,7 @@ export function SegmentCard({ result }: SegmentCardProps) {
 
   return (
     <article
-      className={`relative overflow-hidden rounded-3xl border bg-white/[0.03] p-5 shadow-glow backdrop-blur ${styles.border}`}
+      className={`relative overflow-hidden rounded-3xl border bg-white/[0.03] p-5 shadow-glow backdrop-blur-sm ${styles.border}`}
     >
       <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${styles.glow} opacity-80`} />
 

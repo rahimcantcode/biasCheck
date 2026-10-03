@@ -1,0 +1,37 @@
+{
+  "created_at": "2026-10-03T14:16:09.250822+00:00",
+  "baseline_commit": "4268bab42c1186ddcd1fee5b9b80ab4a2ae9f8a4",
+  "scope": "Targeted research tools and existing annotation regression suite; no model inference or accuracy measurement",
+  "python": "3.12.14",
+  "command": [
+    ".venv-team/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_adjudication.py",
+    "tests/test_dataset_manifest.py",
+    "tests/test_research_baselines.py",
+    "tests/test_staging_probe.py",
+    "tests/test_wikinews_pilot.py",
+    "tests/test_annotation.py",
+    "tests/test_annotation_spans.py",
+    "tests/test_annotation_dom.py",
+    "--disable-socket",
+    "--allow-hosts=127.0.0.1",
+    "--allow-unix-socket"
+  ],
+  "exit_code": 0,
+  "stdout": "............................................. [ 26%]\n......................... [ 40%]\n........................................................................ [ 83%]\n.............................                                            [100%]\n171 passed, 74 subtests passed in 3.71s\n",
+  "stderr": "",
+  "test_source_sha256": {
+    "tests/test_adjudication.py": "bd72aa8e930ceebb459c7c0753aab2f8d5815f0a20723374df0146c1cff686a3",
+    "tests/test_dataset_manifest.py": "4493726b86738e6f375a5a3b0fc7be6ae6941b348f93efa26f08106dbbb5b0dc",
+    "tests/test_research_baselines.py": "699372c9355a8afc83a197cffce9fe19b7239ebbc953789d75c83e8896d7ddcb",
+    "tests/test_staging_probe.py": "6e17757a191da8658811da198a2fc1934ae52006d26018183d695c7672345b2d",
+    "tests/test_wikinews_pilot.py": "9e155f34a89b663eb2c0556035cb984809a14efbe49b6102251a7738de67d3f5",
+    "tests/test_annotation.py": "7802be40fc22a46e2898ab549ad81099bd0e90aa037c9c49dc517787fc6d5e45",
+    "tests/test_annotation_spans.py": "9166f6da657d0bace654b81cbe97d49e67b396c809a8263e99839fc1faa145cc",
+    "tests/test_annotation_dom.py": "9dbe99019dcc47d410318b4b48b65b95faeb7480f195682910547d99f87b7c22"
+  },
+  "release_approved": false
+}
