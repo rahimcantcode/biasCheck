@@ -1,5 +1,47 @@
 # Working experiment log (not a final report)
 
+## 2026-10-02 23:59 UTC heartbeat: learning-curve ordering sensitivity
+
+Added a group-seed parameter to the existing learning-curve runner, preserving
+default 20261002 and all model settings. Ran three prespecified additional base
+seeds 20261003, 20261004 and 20261005, each plus zero-based fold index. Forty-five
+new fits completed, with complete 115-article OOF coverage at every fraction.
+No missing-class failures, reseeding, hyperparameter selection, validation or
+reserved-test access. Three subset-integrity tests passed. All full-fraction
+predictions exactly reproduce the original 58/115 baseline.
+
+| Base seed | .25 groups matches /115 | .50 groups matches /115 | Full matches /115 |
+| --- | ---: | ---: | ---: |
+| 20261002 (previous) | 31 | 38 | 58 |
+| 20261003 | 50 | 50 | 58 |
+| 20261004 | 51 | 58 | 58 |
+| 20261005 | 53 | 51 | 58 |
+
+Quarter-group agreement ranges .2696-.4609 (macro-F1 .2435-.3989); half-group
+agreement ranges .3304-.5043 (macro-F1 .2688-.4171). The last ordering worsens
+from quarter to half, so the initial steep curve was not representative of all
+these orderings. Qualify the earlier observation: sample composition and group
+ordering substantially influence this small-data result. These descriptive ranges
+are NOT confidence intervals, and the runs reuse the same examples/folds rather
+than independent evaluation samples. No prediction about attaining 90% follows.
+
+GPT-6 Astra Medium reviewed the replication protocol via the terminal client;
+local advice is research/data/learning-replicates-advice-20261003.txt. All previous
+task mismatch, disputed-label, noncommercial corpus and event-family leakage
+caveats remain. No production release, calibration or threshold change. The
+candidate models remain research-only; independent human product gold is absent.
+
+All 45 fitted artifacts, pre-fit protocols, raw predictions, actual subset IDs,
+label counts and model hashes are retained locally under
+research/checkpoints/learning-replicate-{20261003,20261004,20261005}/.
+research/results/learning_replicates_20261003.json records hashes of those full
+run records, every curve, actual sample counts, runtime and convergence metadata.
+Local Chromium fallback repeated the three prior ensemble-disagreement smoke
+cases: HTTP 200 for all, no page errors, failed requests or mobile overflow.
+Mobile screenshot inspected. Raw evidence is outputs/live-browser-learning-replicates-20261003;
+sanitized outputs and screenshot hashes are research/results/learning_replicates_browser_20261003.json.
+These repeated browser checks are functional, not new accuracy evidence.
+
 ## 2026-10-02 22:41 UTC heartbeat: nested grouped learning curve
 
 Trained 15 word-based logistic models across the five frozen training folds.

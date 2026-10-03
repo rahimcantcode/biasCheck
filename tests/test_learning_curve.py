@@ -21,3 +21,9 @@ class LearningCurveTests(unittest.TestCase):
         saved=list(rows)
         self.assertEqual(subsets(rows,7),subsets(rows,7))
         self.assertEqual(rows,saved)
+
+    def test_order_changes_only_subsets_not_full_training_set(self):
+        rows=[{'id':str(i),'event':str(i)} for i in range(20)]
+        a,b=subsets(rows,20261002),subsets(rows,20261003)
+        self.assertNotEqual(a['0.25'],b['0.25'])
+        self.assertEqual(a['1.0'],b['1.0'])

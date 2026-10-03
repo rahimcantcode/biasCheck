@@ -22,7 +22,7 @@ def subsets(rows, seed):
             for fraction in (.25,.5,1.)}
 
 
-def run(data, folds, output):
+def run(data, folds, output, group_seed=20261002):
     if output.exists():raise ValueError('Use a new output directory')
     rows=[json.loads(line) for line in data.read_text().splitlines()]
     prior=json.loads(folds.read_text())
@@ -32,7 +32,7 @@ def run(data, folds, output):
     record={'purpose':'Training-only exploratory learning curve; not independent accuracy',
         'validation_read':False,'reserved_test_read':False,'release_approved':False,
         'data_sha256':digest,'fold_manifest_sha256':hashlib.sha256(folds.read_bytes()).hexdigest(),
-        'settings':{'fractions_of_event_groups':[.25,.5,1.], 'group_seed':'20261002+fold',
+        'settings':{'fractions_of_event_groups':[.25,.5,1.], 'group_seed':str(group_seed)+'+fold',
                     'vectorizer':'word1,2; min_df2; max_features20000; sublinear_tf; fit subset only',
                     'classifier':'LogisticRegression C1 balanced max_iter1000 random_state20261001',
                     'orderings_per_fold':1},
@@ -45,7 +45,7 @@ def run(data, folds, output):
         train=[lookup[id] for id in split['train_ids']]
         held=[lookup[id] for id in split['held_ids']]
         fold={'fold':split['fold'],'held_ids':split['held_ids'],'subsets':{}}
-        for fraction, selected in subsets(train,20261002+split['fold']).items():
+        for fraction, selected in subsets(train,group_seed+split['fold']).items():
             counts=Counter(r['label'] for r in selected)
             if set(counts)!={'LEFT','CENTER','RIGHT'}:raise ValueError('Subset lacks a class; do not search another seed')
             vectorizer=TfidfVectorizer(ngram_range=(1,2),min_df=2,max_features=20000,sublinear_tf=True)
@@ -80,4 +80,5 @@ def run(data, folds, output):
 if __name__=='__main__':
     p=argparse.ArgumentParser()
     for name in ('data','folds','output'):p.add_argument('--'+name,type=Path,required=True)
-    a=p.parse_args();run(a.data,a.folds,a.output)
+    p.add_argument('--group-seed',type=int,default=20261002)
+    a=p.parse_args();run(a.data,a.folds,a.output,a.group_seed)
