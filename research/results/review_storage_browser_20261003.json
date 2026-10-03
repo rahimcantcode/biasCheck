@@ -1,0 +1,67 @@
+{
+  "started_at": "2026-10-03T20:22:28.685Z",
+  "finished_at": "2026-10-03T20:22:52.339Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.95",
+  "pilot_id": "biascheck-rubric-pilot-20260929-v1",
+  "annotation_provenance": "AI-authored controlled examples; no human gold",
+  "cases": [
+    {
+      "id": "P005",
+      "text_sha256": "7d4048ce6086cfc4d4eadfae93c72e44e2621411478a40bbb8f7022f08743834",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.945672,
+          "RIGHT": 0.034656,
+          "CENTER": 0.019672
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 38,
+        "tokens_processed": 38,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "screenshot_sha256": "28a6d1c7c2172587c884fddf585c8f67b38b895c0188b2828905716c4512ea36"
+    },
+    {
+      "id": "P006",
+      "text_sha256": "46880a89725c551f32a1c955fc48fe41d45058c72bf34fa80f04d0d219ca21f6",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.997547,
+          "RIGHT": 0.001085,
+          "CENTER": 0.001368
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 40,
+        "tokens_processed": 40,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "screenshot_sha256": "1b0f8eba76680534c2e42164147dd052a14ab5f90dc54314596108d96b980c00"
+    }
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false
+}

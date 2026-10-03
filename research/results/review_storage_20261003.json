@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-10-03T20:22:44.001Z",
+  "browser": "154.0.8037.95",
+  "environment": "local Chromium fallback",
+  "checks": [
+    "save failure warning retained",
+    "navigation preserves pending warning and unload protection",
+    "workspace replacement blocked while storage pending",
+    "skip failure warning retained",
+    "in-memory records recoverable by export without false persistence claim",
+    "successful retry persists all pending records and clears warning"
+  ],
+  "page_errors": [],
+  "viewer_sha256": "45104c923430d2caa67e7bdddc2982c2f1e47c496cf9605393583297577771b2",
+  "synthetic_test_records": 2,
+  "human_annotations_created": 0,
+  "synthetic_exports_retained": false
+}

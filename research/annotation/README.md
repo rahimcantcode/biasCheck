@@ -39,6 +39,12 @@ redistribution. This is still a development pilot, not an independent test set.
 
 Save each judgment before moving on. Export your JSON frequently. Local browser storage is convenient, not a durable backup. Article text is not sent to a server, stored in review exports, or transmitted to a model. Exported files contain your ID, judgments, paraphrased rationales and timestamps.
 
+If browser storage fails, recorded judgments remain in memory and can still be
+exported. The warning persists across item navigation, and switching reviewer
+workspaces is blocked while records are unpersisted. Export before closing the
+tab. A subsequent successful save persists all recorded judgments and clears the
+storage warning; initiating a download alone does not prove it was saved to disk.
+
 A second reviewer should work independently with a separate reviewer ID and browser profile. Review the first 10 items, discuss rule ambiguities, and then independently re-review those items if the rubric changes. Do not treat the earlier and later passes as independent reviewers.
 
 ## Compare completed reviews

@@ -1,5 +1,40 @@
 # Working experiment log (not a final report)
 
+## 2026-10-03 18:33 UTC heartbeat: prevent silent annotation storage failure
+
+Found a concrete review integrity bug: both save and skip handlers ignored the
+store() failure result, cleared dirty, and replaced the storage-error message
+with success. Fixed using separate storagePending state: failed writes retain
+an explicit warning and unload protection, survive item navigation, and block
+workspace replacement. All in-memory records remain exportable. A later
+successful write persists the full answer map and clears the pending state.
+Download initiation does not falsely clear persistence warnings.
+
+Six local Chromium browser checks passed: save failure, navigation/unload guard,
+workspace-switch protection, skip failure, export recovery and full-map retry.
+Two synthetic test records existed only in an isolated browser and transient
+download, were clearly marked AUTOMATED TEST ONLY, and were not retained as
+annotations, evidence labels or human gold. Human reviews completed remains zero.
+Seven offline-bundle regression checks and 18 annotation pytest tests also passed.
+git diff --check passed. Reviewed storage-warning screenshot; other desktop/mobile
+regression images and exact viewer hash retained in outputs/review-storage-20261003
+and outputs/review-storage-bundle-regression-20261003. Test summaries committed in
+research/results/review_storage_20261003.json and review_storage_bundle_20261003.json.
+
+Used local Chromium fallback for actual public-site form tests (cloud browser
+not available). Frozen pilot controlled examples P005 and P006 were selected as
+the first two controlled items in manifest order, without examining predictions.
+P005 advocates private enterprise/lower taxes/fewer regulations and returned
+LEFT .945672; P006 advocates a stronger public safety net/wealth taxes and returned
+LEFT .997547. These are AI-authored diagnostic examples, not human gold or an
+accuracy estimate. Raw responses and screenshots retained under
+outputs/live-browser-review-storage-20261003; sanitized summary and hashes in
+research/results/review_storage_browser_20261003.json. Production unchanged.
+
+Updated local reviewer deliverable and README; no model/dataset changes, training,
+reserved test access, new Astra review or deployment claimed. This bounded
+engineering run safeguards future human annotation, not measured ML accuracy.
+
 ## 2026-10-03 15:15 UTC heartbeat: offline human-review preparation
 
 Implemented an offline snapshot-bundle importer in the existing review page.
