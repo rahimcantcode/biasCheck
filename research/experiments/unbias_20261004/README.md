@@ -33,3 +33,10 @@ python research/experiments/unbias_20261004/compare.py \
 
 Do not treat a stopped run as completed. The scorer requires all 60 outcomes,
 verified unchanged code, a completion timestamp and stopped owned runtime.
+
+## Completed outcome
+
+See `REPORT.md` and `comparison.json`. All 30 active refinement calls completed,
+but every one of the 51 highlights was retained unchanged. The refiner is rejected
+as a quality improvement and remains unwired to the API. The native structured
+output option remains an experimental reliability candidate.
