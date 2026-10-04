@@ -3,25 +3,19 @@
 import { FormEvent, useState } from "react";
 import { Globe, LoaderCircle, RotateCcw, Sparkles, TextSearch } from "lucide-react";
 
-import { ModeTabs } from "@/components/ModeTabs";
-import { Mode } from "@/lib/api";
-import { DEMO_ARTICLE, QUICK_ACTIONS } from "@/lib/constants";
+import { DEMO_ARTICLE } from "@/lib/constants";
 
 interface BiasInputCardProps {
-  mode: Mode;
   input: string;
   loading: boolean;
-  onModeChange: (mode: Mode) => void;
   onInputChange: (value: string) => void;
   onSubmit: () => Promise<void>;
   onClear: () => void;
 }
 
 export function BiasInputCard({
-  mode,
   input,
   loading,
-  onModeChange,
   onInputChange,
   onSubmit,
   onClear,
@@ -31,27 +25,6 @@ export function BiasInputCard({
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     await onSubmit();
-  }
-
-  function handleQuickAction(action: string) {
-    if (action === "Paste a news article") {
-      onInputChange(DEMO_ARTICLE);
-      return;
-    }
-
-    if (action === "Try article mode") {
-      onModeChange("article");
-      return;
-    }
-
-    if (action === "Analyze by sentence") {
-      onModeChange("sentence");
-      return;
-    }
-
-    if (action === "Analyze by paragraph") {
-      onModeChange("paragraph");
-    }
   }
 
   return (
@@ -73,16 +46,17 @@ export function BiasInputCard({
             </p>
           </div>
 
-          <ModeTabs value={mode} onChange={onModeChange} />
         </div>
 
         <div className="grid gap-4 lg:grid-cols-[1fr_280px]">
           <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-3">
-            <label className="mb-3 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-500">
+            <label htmlFor="article-input" className="mb-3 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-500">
               <TextSearch className="h-4 w-4" />
               Article text or URL
             </label>
             <textarea
+              id="article-input"
+              maxLength={100000}
               value={input}
               onChange={(event) => onInputChange(event.target.value)}
               onFocus={() => setFocused(true)}
@@ -97,18 +71,13 @@ export function BiasInputCard({
               <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
                 <div className="mb-2 flex items-center gap-2 text-sm font-medium text-white">
                   <Globe className="h-4 w-4 text-slate-300" />
-                  Input guidance
+                  How it works
                 </div>
-                <p className="text-sm leading-6 text-slate-400">
-                  Article mode combines an overall reading with sentence colors. Choose sentence or paragraph mode to inspect passages at your preferred level of detail.
+                <p id="how-it-works" className="text-sm leading-6 text-slate-400">
+                  Each sentence gets a left, center, or right label. The summary counts how many sentences received each label.
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Current mode</p>
-                <p className="mt-2 text-lg font-semibold text-white">
-                  {mode.charAt(0).toUpperCase() + mode.slice(1)} analysis
-                </p>
-              </div>
+
             </div>
 
             <div className="mt-4 flex flex-col gap-3">
@@ -133,16 +102,9 @@ export function BiasInputCard({
         </div>
 
         <div className="flex flex-wrap gap-3">
-          {QUICK_ACTIONS.map((action) => (
-            <button
-              key={action}
-              type="button"
-              onClick={() => handleQuickAction(action)}
-              className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 transition hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
-            >
-              {action}
-            </button>
-          ))}
+          <button type="button" onClick={() => onInputChange(DEMO_ARTICLE)} className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 transition hover:bg-white/[0.06]">
+            Try an example
+          </button>
         </div>
       </form>
     </div>

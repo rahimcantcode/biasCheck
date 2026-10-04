@@ -4,26 +4,22 @@ import { ArrowRight, Paperclip } from "lucide-react";
 
 import { AiHeroBackground } from "@/components/AiHeroBackground";
 import { BiasInputCard } from "@/components/BiasInputCard";
-import { Mode, PredictResponse } from "@/lib/api";
+import { PredictResponse } from "@/lib/api";
 
 interface HeroSectionProps {
   input: string;
-  mode: Mode;
   loading: boolean;
   results: PredictResponse | null;
   onInputChange: (value: string) => void;
-  onModeChange: (mode: Mode) => void;
   onSubmit: () => Promise<void>;
   onClear: () => void;
 }
 
 export function HeroSection({
   input,
-  mode,
   loading,
   results,
   onInputChange,
-  onModeChange,
   onSubmit,
   onClear,
 }: HeroSectionProps) {
@@ -41,22 +37,20 @@ export function HeroSection({
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-300">
               <Paperclip className="h-3.5 w-3.5 text-blue-200" />
-              Article, sentence, and paragraph political bias analysis
+              Sentence-by-sentence political bias analysis
             </div>
             <h1 className="mx-auto max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-6xl">
               See how your article leans
             </h1>
             <p className="mx-auto mt-5 max-w-3xl text-balance text-base leading-8 text-slate-300 sm:text-lg">
-              Paste article text or a URL, choose a mode, and get color-coded political bias predictions powered by a fine-tuned RoBERTa classifier.
+              Paste an article, see each sentence colored by political leaning, and get a simple breakdown of left, center, and right.
             </p>
           </div>
 
           <div className="mx-auto max-w-6xl">
             <BiasInputCard
-              mode={mode}
               input={input}
               loading={loading}
-              onModeChange={onModeChange}
               onInputChange={onInputChange}
               onSubmit={onSubmit}
               onClear={onClear}
@@ -67,7 +61,7 @@ export function HeroSection({
             <div className="flex items-center gap-2 text-slate-200">
               <ArrowRight className="h-4 w-4 text-blue-200" />
               {results
-                ? `Your article is ready below, with ${results.results.length} analyzed passages.`
+                ? `Your article is ready below, with ${results.results.length} analyzed sentences.`
                 : "Read the original article with political leaning woven into the text."}
             </div>
             <div className="hidden h-4 w-px bg-white/10 sm:block" />

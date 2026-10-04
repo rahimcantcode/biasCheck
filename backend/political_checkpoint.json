@@ -1,0 +1,14 @@
+{
+  "model_id": "matous-volf/political-leaning-deberta-large",
+  "revision": "36e135e33c24d2a1f6dbdb0eaa774d09e8dfb079",
+  "license": "CC-BY-NC-4.0",
+  "model_type": "deberta-v2",
+  "tokenizer_id": "microsoft/deberta-v3-large",
+  "tokenizer_revision": "64a8c8eab3e352a784c658aef62be1662607476f",
+  "label_map": {
+    "0": "LEFT",
+    "1": "CENTER",
+    "2": "RIGHT"
+  },
+  "source": "https://huggingface.co/matous-volf/political-leaning-deberta-large"
+}

@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { AlertTriangle, Check, Eye, EyeOff, ScanSearch } from "lucide-react";
 
 import type { Label, PredictResponse, SegmentResult } from "@/lib/api";
-import { buildArticleParts, summarizeArticle } from "@/lib/article";
+import { buildArticleParts } from "../lib/article";
 
 interface ResultsPanelProps {
   data: PredictResponse | null;
@@ -64,14 +64,14 @@ export function ResultsPanel({ data, loading, error }: ResultsPanelProps) {
     );
   }
 
-  return <ArticleReader data={data} />;
+  return <ArticleReader key={`${data.resolved_text}:${data.model.revision}`} data={data} />;
 }
 
 function ArticleReader({ data }: { data: PredictResponse }) {
   const [showColors, setShowColors] = useState(true);
   const [selected, setSelected] = useState<SegmentResult | null>(null);
   const parts = useMemo(() => buildArticleParts(data.resolved_text, data.results), [data]);
-  const summary = useMemo(() => summarizeArticle(data.results), [data]);
+  const summary = data.summary;
   const overall = summary?.label;
 
   return (
@@ -85,33 +85,30 @@ function ArticleReader({ data }: { data: PredictResponse }) {
           <div>
             <h2 id="article-reader-title" className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Your article, in perspective.</h2>
             <p className="mt-2 text-sm leading-6 text-slate-400">
-              {summary?.totalWords.toLocaleString() ?? 0} words
+              {summary.total_sentences.toLocaleString()} sentences
               <span aria-hidden="true" className="mx-2 text-slate-600">·</span>
-              {data.mode === "paragraph" ? "Paragraph" : "Sentence"} analysis
+              Sentence analysis
             </p>
           </div>
           {summary && (
             <div className="shrink-0 sm:text-right">
-              <p className="text-[10px] uppercase tracking-[0.18em] text-slate-500">Overall leaning</p>
+              <p className="text-[10px] uppercase tracking-[0.18em] text-slate-500">Overall sentence leaning</p>
               <p className={`mt-1 text-lg font-medium ${overall ? TEXT_COLORS[overall] : "text-slate-200"}`}>
-                {overall ? NAMES[overall] : "Mixed"}
+                {overall ? NAMES[overall] : "Tie"}
               </p>
             </div>
           )}
         </div>
         {summary && (
-          <details className="mt-6">
-            <summary className="w-fit cursor-pointer text-xs text-slate-400 transition hover:text-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300">
-              View score breakdown
-            </summary>
+          <div className="mt-6" aria-label="Sentence count breakdown">
             <div className="mt-4 flex h-1.5 overflow-hidden rounded-full" aria-hidden="true">
-              {LABELS.map((label) => <span key={label} className={BAR_COLORS[label]} style={{ width: `${summary.probabilities[label] * 100}%` }} />)}
+              {LABELS.map((label) => <span key={label} className={BAR_COLORS[label]} style={{ width: `${summary.shares[label] * 100}%` }} />)}
             </div>
             <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-400">
-              {LABELS.map((label) => <span key={label}>{NAMES[label]} <span className={TEXT_COLORS[label]}>{(summary.probabilities[label] * 100).toFixed(1)}%</span></span>)}
+              {LABELS.map((label) => <span key={label}>{NAMES[label]} <span className={TEXT_COLORS[label]}>{summary.counts[label]} ({(summary.shares[label] * 100).toFixed(1)}%)</span></span>)}
             </div>
-            <p className="mt-3 text-xs leading-5 text-slate-500">Average model scores, weighted by passage word count. These are predictions, not a measure of factual accuracy.</p>
-          </details>
+            <p className="mt-3 text-xs leading-5 text-slate-500">Each sentence counts once. The most common model label determines the overall leaning.</p>
+          </div>
         )}
       </header>
 
@@ -171,8 +168,8 @@ function ArticleReader({ data }: { data: PredictResponse }) {
       <footer className="border-t border-white/[0.08] bg-white/[0.015] px-6 py-5 sm:px-10">
         <p aria-live="polite" aria-atomic="true" className="text-xs leading-6 text-slate-400">
           {selected ? (
-            <><span className={`font-medium ${TEXT_COLORS[selected.label]}`}>{NAMES[selected.label]} leaning</span><span className="mx-2 text-slate-600">·</span>{(selected.probabilities[selected.label] * 100).toFixed(1)}% model score for this passage.</>
-          ) : showColors ? "Select any passage to inspect its prediction. Center text keeps its natural color." : "Plain reading view. Turn on Color bias to see the predictions in the text."}
+            <><span className={`font-medium ${TEXT_COLORS[selected.label]}`}>{NAMES[selected.label]} leaning</span><span className="mx-2 text-slate-600">·</span>{(selected.probabilities[selected.label] * 100).toFixed(1)}% model score for this sentence.</>
+          ) : showColors ? "Select any sentence to inspect its prediction. Center text keeps its natural color." : "Plain reading view. Turn on Color bias to see the predictions in the text."}
         </p>
       </footer>
     </section>

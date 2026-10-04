@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test": "tsc --project tsconfig.test.json && node --test .test-build/tests/*.test.js"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.0",

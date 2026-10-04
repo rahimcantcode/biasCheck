@@ -1,0 +1,108 @@
+{
+  "response": {
+    "source_type": "text",
+    "resolved_text": "We must protect abortion rights and expand access to reproductive healthcare. Abortion should be illegal because life begins at conception. The government should provide universal healthcare for all Americans. We must build a wall along the border to stop illegal immigration. Congress passed the bill on Tuesday. Tax cuts for the wealthy will benefit the whole economy.",
+    "mode": "sentence",
+    "results": [
+      {
+        "label": "LEFT",
+        "label_id": 0,
+        "probabilities": {
+          "LEFT": 0.999984,
+          "CENTER": 3e-06,
+          "RIGHT": 1.4e-05
+        },
+        "segment_index": 0,
+        "text": "We must protect abortion rights and expand access to reproductive healthcare.",
+        "start": 0,
+        "end": 77
+      },
+      {
+        "label": "RIGHT",
+        "label_id": 2,
+        "probabilities": {
+          "LEFT": 3.1e-05,
+          "CENTER": 1.8e-05,
+          "RIGHT": 0.999951
+        },
+        "segment_index": 1,
+        "text": "Abortion should be illegal because life begins at conception.",
+        "start": 78,
+        "end": 139
+      },
+      {
+        "label": "LEFT",
+        "label_id": 0,
+        "probabilities": {
+          "LEFT": 0.999986,
+          "CENTER": 1e-06,
+          "RIGHT": 1.2e-05
+        },
+        "segment_index": 2,
+        "text": "The government should provide universal healthcare for all Americans.",
+        "start": 140,
+        "end": 209
+      },
+      {
+        "label": "RIGHT",
+        "label_id": 2,
+        "probabilities": {
+          "LEFT": 0.000163,
+          "CENTER": 1e-05,
+          "RIGHT": 0.999827
+        },
+        "segment_index": 3,
+        "text": "We must build a wall along the border to stop illegal immigration.",
+        "start": 210,
+        "end": 276
+      },
+      {
+        "label": "LEFT",
+        "label_id": 0,
+        "probabilities": {
+          "LEFT": 0.998134,
+          "CENTER": 2.2e-05,
+          "RIGHT": 0.001843
+        },
+        "segment_index": 4,
+        "text": "Congress passed the bill on Tuesday.",
+        "start": 277,
+        "end": 313
+      },
+      {
+        "label": "RIGHT",
+        "label_id": 2,
+        "probabilities": {
+          "LEFT": 0.000214,
+          "CENTER": 2.9e-05,
+          "RIGHT": 0.999757
+        },
+        "segment_index": 5,
+        "text": "Tax cuts for the wealthy will benefit the whole economy.",
+        "start": 314,
+        "end": 370
+      }
+    ],
+    "summary": {
+      "total_sentences": 6,
+      "counts": {
+        "LEFT": 3,
+        "CENTER": 0,
+        "RIGHT": 3
+      },
+      "shares": {
+        "LEFT": 0.5,
+        "CENTER": 0.0,
+        "RIGHT": 0.5
+      },
+      "label": null,
+      "method": "sentence_vote"
+    },
+    "model": {
+      "model_id": "matous-volf/political-leaning-deberta-large",
+      "revision": "36e135e33c24d2a1f6dbdb0eaa774d09e8dfb079",
+      "license": "CC-BY-NC-4.0"
+    }
+  },
+  "elapsed_seconds": 1.1092626210011076
+}

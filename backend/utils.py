@@ -3,6 +3,7 @@ from typing import List, Tuple
 from urllib.parse import urlparse
 
 import requests
+import pysbd
 from bs4 import BeautifulSoup
 try:
     from .config import get_settings
@@ -92,4 +93,17 @@ def resolve_input(raw_input: str) -> Tuple[str, str]:
     value = raw_input.strip()
     if looks_like_url(value):
         return "url", fetch_article_text(value)
-    return "text", clean_text(value)
+    return "text", raw_input
+
+
+def sentence_spans(text: str):
+    spans = []
+    for span in pysbd.Segmenter(language='en', clean=False, char_span=True).segment(text):
+        start, end = span.start, span.end
+        while start < end and text[start].isspace():
+            start += 1
+        while end > start and text[end - 1].isspace():
+            end -= 1
+        if start < end:
+            spans.append((start, end))
+    return spans
