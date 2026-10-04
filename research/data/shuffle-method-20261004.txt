@@ -1,0 +1,6 @@
+- Five seeds give a coarse, unstable picture of control variability; 25 fits are not 25 independent replicates.
+- Independent fold-local shuffles do not define a single coherent permuted dataset across overlapping training subsets.
+- Preserved training class counts retain prevalence information; unchanged held-out labels retain event-specific structure.
+- Results depend on the frozen folds, stored TF-IDF representations, and fixed classifier; they cannot establish broader robustness or exclude leakage.
+- Baseline 58/115 and control differences remain descriptive, with limited event-level support.
+- `max_iter=1000` does not guarantee convergence; saved permutations, OOFs, and hashes support auditing, not validity.

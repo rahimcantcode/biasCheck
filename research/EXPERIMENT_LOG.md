@@ -1,5 +1,43 @@
 # Working experiment log (not a final report)
 
+## 2026-10-04 21:55 UTC heartbeat: corrupted-training-label controls
+
+Ran five fixed controls, seeds 20261004-20261008. For each frozen development fold,
+shuffled only its training labels with SeedSequence([seed,fold]); held labels
+unchanged, training class counts preserved. Reused verified fold-local word TF-IDF
+artifacts, balanced logistic C=1, max_iter=1000, random_state=20261001. 25 fits total,
+8-15 iterations, no convergence warnings observed. No parameter search, validation
+or reserved test read; original corpus labels/files unchanged.
+
+| Seed | Matches/115 | Accuracy | Macro-F1 |
+| --- | ---: | ---: | ---: |
+| 20261004 | 46 | .4000 | .31864 |
+| 20261005 | 41 | .35652 | .31898 |
+| 20261006 | 46 | .4000 | .30575 |
+| 20261007 | 42 | .36522 | .33374 |
+| 20261008 | 46 | .4000 | .31552 |
+
+Original unshuffled baseline: 58/115 (.50435), macro-F1 .44234. Baseline exceeds
+all five corrupted-label controls descriptively. This is not an inferential
+permutation test or p-value: folds overlap, shuffles are fold-local rather than
+a single globally permuted dataset, only five seeds were used, and prevalence
+information is preserved. Cannot establish no leakage, causality or high accuracy.
+Controls are not deployment candidates. Research-only noncommercial corpus.
+
+Protocol, all permutation indices/shuffled training labels, held/train IDs, 575
+OOF predictions with probabilities, 25 checkpoints and model hashes retained in
+research/checkpoints/shuffle-control-20261004. Report committed as
+research/results/shuffle_control_20261004.json and copied to user outputs. Verified
+all 25 checkpoint hashes/permutations and 575 probability-argmax predictions;
+three existing split/feature tests passed. Astra Medium no-tools method critique
+completed through requested terminal route; research/data/shuffle-method-20261004.txt.
+
+Two repeated frozen targeted public-browser probes returned HTTP 200, unchanged
+LEFT/RIGHT results, no page errors/failed requests/mobile overflow. Local Chromium
+fallback, cloud/agent-browser CLI unavailable as previously checked. Raw evidence
+outputs/live-browser-shuffle-control-20261004; sanitized model/screenshot hashes
+research/results/shuffle_control_browser_20261004.json. Production unchanged.
+
 ## 2026-10-04 18:58 UTC heartbeat: numeric calibration input contract
 
 Added shared numeric-report checks before calibration optimization and policy
