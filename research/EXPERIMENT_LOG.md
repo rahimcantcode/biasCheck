@@ -1,5 +1,38 @@
 # Working experiment log (not a final report)
 
+## 2026-10-04 15:22 UTC heartbeat: fixed linear SVM rejected
+
+Actual execution resumed around 17:50 UTC. Tested LinearSVC against the stored
+word logistic baseline, reusing identical fold-local vocabulary/IDF transforms
+on 115 training rows and five frozen event-string folds. Verified training and
+baseline hashes, split membership and complete unique OOF coverage. No validation
+or reserved test read. Fixed C=1, balanced classes, squared_hinge, l2, dual=auto,
+tol=1e-4, max_iter=10000, seed=20261001; no parameter search. All five fits completed
+in 26-28 iterations with no convergence warnings observed.
+
+SVM: 53/115 reference-label matches (.46087), macro-F1 .39604, recall LEFT .52632,
+CENTER .11538 (3/26), RIGHT .58824. Baseline remains 58/115 (.50435), macro-F1 .44234,
+CENTER 4/26. SVM corrected zero baseline errors and regressed five. Unanimous-label
+subset: 21/54 versus baseline 25/54. Full coverage without abstentions. Negative
+result for this fixed representation/configuration, not a claim about all SVMs.
+No promotion or threshold tuning; noncommercial disputed corpus remains research-only.
+
+Preserved raw decision scores (not probabilities), predictions, model hashes,
+fold IDs, settings, protocol and five checkpoints under
+research/checkpoints/svm-cv-20261004. Report research/results/svm_cv_20261004.json
+also copied to user outputs. Three existing feature/split regression tests passed;
+all 115 saved predictions verified against their maximum raw decision scores.
+GPT-6 Astra Medium completed a no-tools method critique via requested terminal
+route, saved research/data/svm-method-20261004.txt; parent model unchanged. It
+cautioned that decision-score scales need not be comparable between folds.
+
+Public browser smoke repeated the prior two targeted CENTER-reference misses:
+HTTP 200, unchanged LEFT .993377 and RIGHT .997867. Local Chromium fallback,
+agent-browser CLI/cloud browser unavailable as previously checked. Zero page
+errors/failed requests/mobile overflow. Raw evidence outputs/live-browser-svm-20261004;
+model fingerprints and screenshot hashes research/results/svm_browser_20261004.json.
+These checks concern unchanged production, not online candidate validation.
+
 ## 2026-10-04 13:40 UTC heartbeat: reject duplicate evaluation evidence
 
 Completed the duplicate-evidence check begun before intervening heartbeat
