@@ -1,0 +1,70 @@
+{
+  "kind": "aborted_development_attempt",
+  "reason": "All completed active calls produced contradictory action/selection fields; revise redundant output contract before full comparison.",
+  "recorded_rows": 10,
+  "outcomes": {
+    "failed": 6,
+    "skipped_no_spans": 3,
+    "skipped_upstream_failure": 1
+  },
+  "errors": {
+    "drop_has_bias_type": 6
+  },
+  "raw_sha256": "4318a62cf27b19d51b679bbcd97aedbce93a284483d95629cca45070f4861cfd",
+  "module_sha256": "2b1a5c587740e5fb9c09a55f2b7f6a7aa973dbe8a543e78820c4e13ff01b673e",
+  "session_exit_code": 130,
+  "complete_evaluation": false,
+  "release_approved": false,
+  "rows": [
+    {
+      "id": "7a1a604b-37ac-476f-8cdb-2e7c98705171:p1",
+      "refinement_status": "failed",
+      "error": "drop_has_bias_type"
+    },
+    {
+      "id": "81110ee8-ab27-467f-86f3-c26ed2ede9a4:p11",
+      "refinement_status": "skipped_no_spans",
+      "error": null
+    },
+    {
+      "id": "8eeda8bb-f396-49ed-b993-f0c6ed36715d:p9",
+      "refinement_status": "failed",
+      "error": "drop_has_bias_type"
+    },
+    {
+      "id": "0a64117e-518e-447b-a60f-2bdc2bf6ffe7:p0",
+      "refinement_status": "failed",
+      "error": "drop_has_bias_type"
+    },
+    {
+      "id": "de43e785-3d88-444a-8edd-e503a205ed71:p0",
+      "refinement_status": "skipped_no_spans",
+      "error": null
+    },
+    {
+      "id": "2eb35726-5228-4b2b-bf07-4710316916f2:p3",
+      "refinement_status": "failed",
+      "error": "drop_has_bias_type"
+    },
+    {
+      "id": "f462327d-7021-486b-a262-a1d2ffc4bc25:p2",
+      "refinement_status": "skipped_upstream_failure",
+      "error": null
+    },
+    {
+      "id": "855237a2-3aeb-4135-bec8-b9b3378e8ee8:p14",
+      "refinement_status": "skipped_no_spans",
+      "error": null
+    },
+    {
+      "id": "2052529f-cc0f-4e4d-9221-2236094f7de6:p33",
+      "refinement_status": "failed",
+      "error": "drop_has_bias_type"
+    },
+    {
+      "id": "9495dca7-8ae6-48c3-adf9-eb2df4901f0e:p0",
+      "refinement_status": "failed",
+      "error": "drop_has_bias_type"
+    }
+  ]
+}

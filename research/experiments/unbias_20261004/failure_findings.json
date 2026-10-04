@@ -1,0 +1,697 @@
+{
+  "kind": "targeted_failure_diagnostics_not_replacement_evaluation",
+  "schema_version": 1,
+  "release_approved": false,
+  "new_human_reviews": 0,
+  "hash_convention": "File hashes use raw bytes; object hashes use UTF-8 JSON with sorted keys, compact separators and ensure_ascii=False.",
+  "selection": "The seven request failures and one partial failure from the historical BASIL60 run; eight selected development cases, not a new random evaluation.",
+  "arms": {
+    "diagnose_native": {
+      "kind": "failure_reproduction_not_replacement_evaluation",
+      "created_utc": "2026-10-04T10:51:07.718612+00:00",
+      "completed_utc": "2026-10-04T10:54:56.425980+00:00",
+      "baseline_sha256": "ed50387d6751dbe611239229913a15b629d7abeeade1c7d56e28692ae77f22a3",
+      "fixture_sha256": "8d14e9cd7b8268aea9fa5a5f4aadf0873144cc827c178fa2d965fbe8cd3eb5da",
+      "code_sha256": {
+        "backend/unbias/client.py": "3a9338744c12c83c1a92367e0e92241d3ed888c240b6b170ef5d2338402df70e",
+        "backend/unbias/adapter.py": "4a19b559e96123815fa4b0df01f426a93c59fd4aef668f1f9c53c4a978df7e9d",
+        "backend/unbias/prompt.py": "a699ac703467d11fd99ebc9e66d158b7de15bedcd04b737a75104eeb603f1d02",
+        "research/experiments/unbias_20261004/diagnose.py": "eabff1b1dbafa899781280cd83e783757a37d2b6a8b834846463e2854ad42437",
+        "research/experiments/unbias_20261004/runtime.py": "fd2972f9cc69e0b29299d6ca44f5d55a7c54ad089181e8e5259c6e0097f80124"
+      },
+      "code_unchanged": true,
+      "structured_output": false,
+      "count": 8,
+      "complete_responses": 0,
+      "partial_failures": 1,
+      "hard_failures": 7,
+      "status_counts": {
+        "failure": 7,
+        "partial_failure": 1
+      },
+      "owned_process_stopped": true,
+      "runtime": {
+        "model_id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+        "model_revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+        "weights_sha256": "7f771dbb1739fe840655850784c1cea759185aa456cde0644bdb1425d89969c9",
+        "runtime_server_sha256": "f1fe3730c84c6fb397e6807bf6bc7b9572f322dcaa1f342ad1b4c92dca74bce8",
+        "runtime_fingerprint": "b11349-fb4b2737a",
+        "context_tokens": 8192,
+        "threads": 4,
+        "max_output_tokens": 2048,
+        "quantization": "Q4_K_M requantized from locally generated Q8_0"
+      },
+      "artifacts": [
+        {
+          "path": "research/data/unbias_20261004/diagnose_native/results.json",
+          "sha256": "2fe668bf9f5f80456c3d2edb3568d1b1a763c04690649cc47d2edfb57df74b8d"
+        },
+        {
+          "path": "research/data/unbias_20261004/diagnose_native/runtime.log",
+          "sha256": "2953b9f71437ba47e07aae012657cb9c2e057e743ed5b8a7975d8619bbf5f12a"
+        }
+      ],
+      "rows": [
+        {
+          "id": "f462327d-7021-486b-a262-a1d2ffc4bc25:p2",
+          "source_sha256": "c9a5b3a425bb2563d75ab409b8aae8bf3f36f05d95238c0a29bddb9e3219e244",
+          "status": "failure",
+          "seconds": 61.39805926301051,
+          "accepted_span_count": 0,
+          "rejected": [],
+          "error_stage": "native_json",
+          "error_code": "invalid_native_json",
+          "error_type": "FramingUnavailable",
+          "cause_type": "JSONDecodeError",
+          "observed_syntax_failure": "unescaped_quote",
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "e23d2945b39a887a848f42dd53b43453651ae09179f981eb6f399bcf70bc7814",
+              "envelope_sha256": "d4dd5cb3214da306032e385085484a258d56c096ca2157ab0d5d5c642c3ce54a",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "input_tokens": 1812
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "e23d2945b39a887a848f42dd53b43453651ae09179f981eb6f399bcf70bc7814",
+              "envelope_sha256": "9e012b4bb95c1b441915c7923d7b60de78e2072222dde2fc4695d221f87ff2fc",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "usage": {
+                "prompt_tokens": 1812,
+                "completion_tokens": 67,
+                "total_tokens": 1879
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "415822d3-fde6-4dca-bb9e-dc6e0692eb19:p35",
+          "source_sha256": "fbb22e5e65c3a3c6798fd5c7abba496d69e9f15f9480c5868a77f29484022015",
+          "status": "failure",
+          "seconds": 25.208545392000815,
+          "accepted_span_count": 0,
+          "rejected": [],
+          "error_stage": "native_json",
+          "error_code": "invalid_native_json",
+          "error_type": "FramingUnavailable",
+          "cause_type": "JSONDecodeError",
+          "observed_syntax_failure": "incomplete_object",
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "f27d97ee62d87cba0e55f08a57306ec68cb9f5b9238678a329d5409d49904119",
+              "envelope_sha256": "32b5f6009848ba466e53d5d47cddee82c6809256e51519d454b8f6769d820751",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "input_tokens": 1807
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "f27d97ee62d87cba0e55f08a57306ec68cb9f5b9238678a329d5409d49904119",
+              "envelope_sha256": "190f9dd0bc78cf484b17e101b97f83af87f376471d8ef75dd6bd1a5cdfcf4b30",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "usage": {
+                "prompt_tokens": 1807,
+                "completion_tokens": 187,
+                "total_tokens": 1994
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "48d9863f-62d0-487e-b928-8a169a5048c5:p25",
+          "source_sha256": "f840081e2e2a63e1cb2188f5ef8aa47f4b3660f604245bbfa20244455f133fee",
+          "status": "failure",
+          "seconds": 7.737683733997983,
+          "accepted_span_count": 0,
+          "rejected": [],
+          "error_stage": "native_json",
+          "error_code": "invalid_native_json",
+          "error_type": "FramingUnavailable",
+          "cause_type": "JSONDecodeError",
+          "observed_syntax_failure": "unescaped_quote",
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "62378dd2f77184f062d3125a2dea14d508b50c40c0513c8aa47a23df2d23ee62",
+              "envelope_sha256": "3931d2d37455644a9067cfac84b543a50017d368c2e2c51a3947e85e0e8858c8",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "input_tokens": 1794
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "62378dd2f77184f062d3125a2dea14d508b50c40c0513c8aa47a23df2d23ee62",
+              "envelope_sha256": "e6e0018218a867021c13b630b80540c0bc89f880c185c8777f5d22a9e82d1bd7",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "usage": {
+                "prompt_tokens": 1794,
+                "completion_tokens": 49,
+                "total_tokens": 1843
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "0a8a693b-41fa-4895-bbb5-d4521646eb72:p11",
+          "source_sha256": "7f7adb841991924f58eef9bf621ba13f721ee86ac245d6bd25d436042ad996d8",
+          "status": "failure",
+          "seconds": 33.95998221100308,
+          "accepted_span_count": 0,
+          "rejected": [],
+          "error_stage": "native_json",
+          "error_code": "invalid_native_json",
+          "error_type": "FramingUnavailable",
+          "cause_type": "JSONDecodeError",
+          "observed_syntax_failure": "unescaped_quote",
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "822665d7fe38da8397c4748a4cbd07cf90af7a0488bf6af6b249b271051fb411",
+              "envelope_sha256": "822c3089cda354d2c7193da8e305d120caad2455b7ac94b0367eaf00ad58505f",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "input_tokens": 1806
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "822665d7fe38da8397c4748a4cbd07cf90af7a0488bf6af6b249b271051fb411",
+              "envelope_sha256": "fcd5a07f5179f96c71ff7703080a5c5724452015261a3749ed37e7c7661ead4b",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "usage": {
+                "prompt_tokens": 1806,
+                "completion_tokens": 237,
+                "total_tokens": 2043
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f3d0ebba-4805-4def-b3ac-4359d5937556:p8",
+          "source_sha256": "edaa85dbf47b3d2678b5ef9b603d84f990c8dcc043089e80586c43ffe92150b8",
+          "status": "failure",
+          "seconds": 11.061501620992203,
+          "accepted_span_count": 0,
+          "rejected": [],
+          "error_stage": "native_json",
+          "error_code": "invalid_native_json",
+          "error_type": "FramingUnavailable",
+          "cause_type": "JSONDecodeError",
+          "observed_syntax_failure": "unescaped_quote",
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "f2b3048bcc03970fb39778a36294aaf4a5304af1ff69392485abcffc21c647c6",
+              "envelope_sha256": "50e721798344d11c27b405ceafa8fe7c0313a41ca002b5adb946b1a8d0a0e61e",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "input_tokens": 1802
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "f2b3048bcc03970fb39778a36294aaf4a5304af1ff69392485abcffc21c647c6",
+              "envelope_sha256": "277c95b5d5fee433ed97e31f9802c9213b0238230b4ae12c4ba8477de263e48e",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "usage": {
+                "prompt_tokens": 1802,
+                "completion_tokens": 73,
+                "total_tokens": 1875
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ded2909d-3f05-4ba2-a9f5-777a69b215db:p6",
+          "source_sha256": "d1713119b248d89da2bb9083ecb640acb8ad81a868cea55bb73fe8045f923f21",
+          "status": "failure",
+          "seconds": 22.047546431000228,
+          "accepted_span_count": 0,
+          "rejected": [],
+          "error_stage": "native_json",
+          "error_code": "invalid_native_json",
+          "error_type": "FramingUnavailable",
+          "cause_type": "JSONDecodeError",
+          "observed_syntax_failure": "unescaped_quote",
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "b342765244da66c550d20a17f773f7c32973a03d6b2e696646f9e3bc16234181",
+              "envelope_sha256": "32b5f6009848ba466e53d5d47cddee82c6809256e51519d454b8f6769d820751",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "input_tokens": 1807
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "b342765244da66c550d20a17f773f7c32973a03d6b2e696646f9e3bc16234181",
+              "envelope_sha256": "ca612df0914dc372785b847f804be93827bc3d588c1f559a40b18280253d0822",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "usage": {
+                "prompt_tokens": 1807,
+                "completion_tokens": 158,
+                "total_tokens": 1965
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "0acf2cec-34eb-4482-806d-efaf5d8a1501:p12",
+          "source_sha256": "79efce769985e6167fdcfd074298272321a3dc271bb7c492bbd610c94f7c2e3b",
+          "status": "failure",
+          "seconds": 29.870333629995002,
+          "accepted_span_count": 0,
+          "rejected": [],
+          "error_stage": "native_json",
+          "error_code": "invalid_native_json",
+          "error_type": "FramingUnavailable",
+          "cause_type": "JSONDecodeError",
+          "observed_syntax_failure": "unescaped_quote",
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "04e7e9aa6556fb8525a295287d53a71e305015a571e417744299f214f351e122",
+              "envelope_sha256": "f126f402a56871196f894a1d6ab54606296e0751e964d54a1cabc5c403fe5e31",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "input_tokens": 1811
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "04e7e9aa6556fb8525a295287d53a71e305015a571e417744299f214f351e122",
+              "envelope_sha256": "e4604b287b85e4771182514de1bae0c5d10a874bcad722d62b72c05242e503bc",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "usage": {
+                "prompt_tokens": 1811,
+                "completion_tokens": 214,
+                "total_tokens": 2025
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "0a21258c-2afe-48ad-ab32-1b7c1a9ec3c6:p0",
+          "source_sha256": "7c806b4c82f41926c97e75f20ea8a7c4e631ccbbfadf47fc783f7c10820fde3b",
+          "status": "partial_failure",
+          "seconds": 26.376989156007767,
+          "accepted_span_count": 1,
+          "rejected": [
+            {
+              "native_index": 1,
+              "reason": "unmatched_phrase"
+            }
+          ],
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "0e9f66560e7bfa7761bf3a4825a1e40ad76295b4a07e782cd2d08df245bc88f1",
+              "envelope_sha256": "d4dd5cb3214da306032e385085484a258d56c096ca2157ab0d5d5c642c3ce54a",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "input_tokens": 1812
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "0e9f66560e7bfa7761bf3a4825a1e40ad76295b4a07e782cd2d08df245bc88f1",
+              "envelope_sha256": "114890be838f2d7abe3443a000f621882786a556c0af0bfa9577ed0e123c4480",
+              "response_format_sha256": null,
+              "schema_sha256": null,
+              "usage": {
+                "prompt_tokens": 1812,
+                "completion_tokens": 200,
+                "total_tokens": 2012
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "diagnose_structured": {
+      "kind": "failure_reproduction_not_replacement_evaluation",
+      "created_utc": "2026-10-04T10:56:06.306641+00:00",
+      "completed_utc": "2026-10-04T10:59:48.593071+00:00",
+      "baseline_sha256": "ed50387d6751dbe611239229913a15b629d7abeeade1c7d56e28692ae77f22a3",
+      "fixture_sha256": "8d14e9cd7b8268aea9fa5a5f4aadf0873144cc827c178fa2d965fbe8cd3eb5da",
+      "code_sha256": {
+        "backend/unbias/client.py": "eb9d2576741d61166b7857eb726f187b2ee1ec32b4995f262cc76d9bbeba8288",
+        "backend/unbias/adapter.py": "4a19b559e96123815fa4b0df01f426a93c59fd4aef668f1f9c53c4a978df7e9d",
+        "backend/unbias/prompt.py": "a699ac703467d11fd99ebc9e66d158b7de15bedcd04b737a75104eeb603f1d02",
+        "backend/unbias/native_schema.py": "7104d07a1e98bccbfe288799f33f3ead23001e9dd55a0d40e81c62912d2d32e3",
+        "research/experiments/unbias_20261004/diagnose.py": "20df52686fabaee20f0e1fd8dd579c33bcf45ee36b7c0a5f3a1e5c9d6218d33d",
+        "research/experiments/unbias_20261004/runtime.py": "fd2972f9cc69e0b29299d6ca44f5d55a7c54ad089181e8e5259c6e0097f80124"
+      },
+      "code_unchanged": true,
+      "structured_output": true,
+      "count": 8,
+      "complete_responses": 6,
+      "partial_failures": 2,
+      "hard_failures": 0,
+      "status_counts": {
+        "no_suggestions": 3,
+        "suggestions": 3,
+        "partial_failure": 2
+      },
+      "owned_process_stopped": true,
+      "runtime": {
+        "model_id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+        "model_revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+        "weights_sha256": "7f771dbb1739fe840655850784c1cea759185aa456cde0644bdb1425d89969c9",
+        "runtime_server_sha256": "f1fe3730c84c6fb397e6807bf6bc7b9572f322dcaa1f342ad1b4c92dca74bce8",
+        "runtime_fingerprint": "b11349-fb4b2737a",
+        "context_tokens": 8192,
+        "threads": 4,
+        "max_output_tokens": 2048,
+        "quantization": "Q4_K_M requantized from locally generated Q8_0"
+      },
+      "artifacts": [
+        {
+          "path": "research/data/unbias_20261004/diagnose_structured/results.json",
+          "sha256": "0430e0690aa46710ce0a0dbdc872e9a9fe68f6afccce5e6c7b35dfef38cde180"
+        },
+        {
+          "path": "research/data/unbias_20261004/diagnose_structured/runtime.log",
+          "sha256": "25b1d639897e0754db8ea4f2283cf628c28a7ec9876ee42ad04c05ccbb06cba3"
+        }
+      ],
+      "rows": [
+        {
+          "id": "f462327d-7021-486b-a262-a1d2ffc4bc25:p2",
+          "source_sha256": "c9a5b3a425bb2563d75ab409b8aae8bf3f36f05d95238c0a29bddb9e3219e244",
+          "status": "no_suggestions",
+          "seconds": 60.16233533999184,
+          "accepted_span_count": 0,
+          "rejected": [],
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "7595f6928540fbe40703ac25063d9cf9564d1f3a37709a3db24892127e923957",
+              "envelope_sha256": "d4dd5cb3214da306032e385085484a258d56c096ca2157ab0d5d5c642c3ce54a",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "input_tokens": 1812
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "7595f6928540fbe40703ac25063d9cf9564d1f3a37709a3db24892127e923957",
+              "envelope_sha256": "b191e256f7e1bf26b10e1ecd17ccc92251773ff9e2a69bda1c6dc17b72d3681d",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "usage": {
+                "prompt_tokens": 1812,
+                "completion_tokens": 45,
+                "total_tokens": 1857
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "415822d3-fde6-4dca-bb9e-dc6e0692eb19:p35",
+          "source_sha256": "fbb22e5e65c3a3c6798fd5c7abba496d69e9f15f9480c5868a77f29484022015",
+          "status": "suggestions",
+          "seconds": 29.11641415800841,
+          "accepted_span_count": 2,
+          "rejected": [],
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "afd1d99f5190a06db0c9f625cf4846dcc0fc41a4d46e00136a801fa150ea21a2",
+              "envelope_sha256": "32b5f6009848ba466e53d5d47cddee82c6809256e51519d454b8f6769d820751",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "input_tokens": 1807
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "afd1d99f5190a06db0c9f625cf4846dcc0fc41a4d46e00136a801fa150ea21a2",
+              "envelope_sha256": "ed3a6572ba7db23e7f2d44d6b4ce308ba6a7989ac1821d9f664296e4190566ed",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "usage": {
+                "prompt_tokens": 1807,
+                "completion_tokens": 188,
+                "total_tokens": 1995
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "48d9863f-62d0-487e-b928-8a169a5048c5:p25",
+          "source_sha256": "f840081e2e2a63e1cb2188f5ef8aa47f4b3660f604245bbfa20244455f133fee",
+          "status": "no_suggestions",
+          "seconds": 5.13797542800603,
+          "accepted_span_count": 0,
+          "rejected": [],
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "7988cac7964d72a320effdfaab37a319bae3617b4bbf4a663cda4b40b7f13d1e",
+              "envelope_sha256": "3931d2d37455644a9067cfac84b543a50017d368c2e2c51a3947e85e0e8858c8",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "input_tokens": 1794
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "7988cac7964d72a320effdfaab37a319bae3617b4bbf4a663cda4b40b7f13d1e",
+              "envelope_sha256": "03c507277843d1b30cebbeec0a54fa090efb253b6db612fc6462265bb6b5fabc",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "usage": {
+                "prompt_tokens": 1794,
+                "completion_tokens": 27,
+                "total_tokens": 1821
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "0a8a693b-41fa-4895-bbb5-d4521646eb72:p11",
+          "source_sha256": "7f7adb841991924f58eef9bf621ba13f721ee86ac245d6bd25d436042ad996d8",
+          "status": "suggestions",
+          "seconds": 32.36128809199727,
+          "accepted_span_count": 3,
+          "rejected": [],
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "5abb08d896e8a11535fb7ff1e21469566c6512cc9367c8bced0fc0dcf7e7b846",
+              "envelope_sha256": "822c3089cda354d2c7193da8e305d120caad2455b7ac94b0367eaf00ad58505f",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "input_tokens": 1806
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "5abb08d896e8a11535fb7ff1e21469566c6512cc9367c8bced0fc0dcf7e7b846",
+              "envelope_sha256": "00311fbc1a92fe10e2cd5131dc137fd97b769308f7c181fc074934a03925dc66",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "usage": {
+                "prompt_tokens": 1806,
+                "completion_tokens": 232,
+                "total_tokens": 2038
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f3d0ebba-4805-4def-b3ac-4359d5937556:p8",
+          "source_sha256": "edaa85dbf47b3d2678b5ef9b603d84f990c8dcc043089e80586c43ffe92150b8",
+          "status": "no_suggestions",
+          "seconds": 9.23471205100941,
+          "accepted_span_count": 0,
+          "rejected": [],
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "5b62f847e03d56d916938c8e950dca2136dc13248b4d72aa3948241521bffed0",
+              "envelope_sha256": "50e721798344d11c27b405ceafa8fe7c0313a41ca002b5adb946b1a8d0a0e61e",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "input_tokens": 1802
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "5b62f847e03d56d916938c8e950dca2136dc13248b4d72aa3948241521bffed0",
+              "envelope_sha256": "1e9a705f453660be39f7b56ac179171948fb5f971e2a2ee86d33ffe45c0c5572",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "usage": {
+                "prompt_tokens": 1802,
+                "completion_tokens": 55,
+                "total_tokens": 1857
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ded2909d-3f05-4ba2-a9f5-777a69b215db:p6",
+          "source_sha256": "d1713119b248d89da2bb9083ecb640acb8ad81a868cea55bb73fe8045f923f21",
+          "status": "suggestions",
+          "seconds": 18.970040875996347,
+          "accepted_span_count": 1,
+          "rejected": [],
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "807d883aa4d6593807cb9904cf5cba4d3d7c16be496fe3a208fd89a953f900f8",
+              "envelope_sha256": "32b5f6009848ba466e53d5d47cddee82c6809256e51519d454b8f6769d820751",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "input_tokens": 1807
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "807d883aa4d6593807cb9904cf5cba4d3d7c16be496fe3a208fd89a953f900f8",
+              "envelope_sha256": "35f86d7d4be2012fad48924e4732fa3f51693ff00fb048cc2cc8aa910ba5538d",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "usage": {
+                "prompt_tokens": 1807,
+                "completion_tokens": 132,
+                "total_tokens": 1939
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "0acf2cec-34eb-4482-806d-efaf5d8a1501:p12",
+          "source_sha256": "79efce769985e6167fdcfd074298272321a3dc271bb7c492bbd610c94f7c2e3b",
+          "status": "partial_failure",
+          "seconds": 30.65501664900512,
+          "accepted_span_count": 1,
+          "rejected": [
+            {
+              "native_index": 1,
+              "reason": "unmatched_phrase"
+            }
+          ],
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "621f6845facb4f70f8e2e5316f4618d655060cd535357002fd22b231ffb3eaf4",
+              "envelope_sha256": "f126f402a56871196f894a1d6ab54606296e0751e964d54a1cabc5c403fe5e31",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "input_tokens": 1811
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "621f6845facb4f70f8e2e5316f4618d655060cd535357002fd22b231ffb3eaf4",
+              "envelope_sha256": "4e350392cb99477394fda26be133526e8a57840eb4e05eac0ca7b6f89a9dad73",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "usage": {
+                "prompt_tokens": 1811,
+                "completion_tokens": 215,
+                "total_tokens": 2026
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "0a21258c-2afe-48ad-ab32-1b7c1a9ec3c6:p0",
+          "source_sha256": "7c806b4c82f41926c97e75f20ea8a7c4e631ccbbfadf47fc783f7c10820fde3b",
+          "status": "partial_failure",
+          "seconds": 27.959080208995147,
+          "accepted_span_count": 1,
+          "rejected": [
+            {
+              "native_index": 1,
+              "reason": "unmatched_phrase"
+            }
+          ],
+          "transport": [
+            {
+              "path": "/v1/chat/completions/input_tokens",
+              "payload_sha256": "f6caf58624e470ee492e265555ecfd142382941ab8c5b8059e0e4c820c166b61",
+              "envelope_sha256": "d4dd5cb3214da306032e385085484a258d56c096ca2157ab0d5d5c642c3ce54a",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "input_tokens": 1812
+            },
+            {
+              "path": "/v1/chat/completions",
+              "payload_sha256": "f6caf58624e470ee492e265555ecfd142382941ab8c5b8059e0e4c820c166b61",
+              "envelope_sha256": "e2f02f186c857c20ea7c5c4d6e514186b17408fa5354ec3aa739d9349b4a3fb6",
+              "response_format_sha256": "7dc2ccc74146471917764b84f457a2d943edc0b27a794d547697a1b4edffb44b",
+              "schema_sha256": "158c46f36f7ce2040ad657543263d34ebad2601992b3f67cc5601dc958b6a8a6",
+              "usage": {
+                "prompt_tokens": 1812,
+                "completion_tokens": 200,
+                "total_tokens": 2012
+              },
+              "finish_reasons": [
+                "stop"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "comparison_checks": {
+    "same_case_order_and_source_hashes": true,
+    "payloads_identical_except_response_format": true,
+    "prompt_and_adapter_hashes_equal": true
+  },
+  "limits": [
+    "The original failed native completions were not retained; these reproductions do not retroactively establish their exact causes.",
+    "Targeted eight-case results do not establish new all-60 reliability or semantic improvement.",
+    "Two structured-arm cases still contain unmatched source phrases and remain partial failures; no fuzzy repair was applied.",
+    "No new human review or deployment approval."
+  ]
+}

@@ -1,0 +1,445 @@
+{
+  "caveat": "AI-authored short synthetic development passages and expectations; descriptive task-alignment results only. Overlap is not semantic correctness. Failed cases remain in rows. No baseline comparison or independent human evaluation.",
+  "total": 30,
+  "completed": 30,
+  "expected_spans": 21,
+  "predicted_spans": 23,
+  "exact_expected_matches": 0,
+  "overlapped_expected": 17,
+  "nonoverlapping_predictions": 5,
+  "negative_controls_completed": 12,
+  "negative_controls_with_highlights": 2,
+  "median_seconds": 14.138429732500299,
+  "rows": [
+    {
+      "id": "DEV01",
+      "category": "neutral",
+      "completed": true,
+      "status": "no_suggestions",
+      "expected": 0,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 54.091726463997475,
+      "highlights": []
+    },
+    {
+      "id": "DEV02",
+      "category": "neutral",
+      "completed": true,
+      "status": "no_suggestions",
+      "expected": 0,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 7.787871497002925,
+      "highlights": []
+    },
+    {
+      "id": "DEV03",
+      "category": "neutral",
+      "completed": true,
+      "status": "no_suggestions",
+      "expected": 0,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 6.258450916000584,
+      "highlights": []
+    },
+    {
+      "id": "DEV04",
+      "category": "neutral",
+      "completed": true,
+      "status": "no_suggestions",
+      "expected": 0,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 7.556062955998641,
+      "highlights": []
+    },
+    {
+      "id": "DEV05",
+      "category": "neutral",
+      "completed": true,
+      "status": "no_suggestions",
+      "expected": 0,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 6.374050406000606,
+      "highlights": []
+    },
+    {
+      "id": "DEV06",
+      "category": "neutral",
+      "completed": true,
+      "status": "no_suggestions",
+      "expected": 0,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 5.6598452909966,
+      "highlights": []
+    },
+    {
+      "id": "DEV07",
+      "category": "advocacy",
+      "completed": true,
+      "status": "no_suggestions",
+      "expected": 0,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 5.4330352550023235,
+      "highlights": []
+    },
+    {
+      "id": "DEV08",
+      "category": "advocacy",
+      "completed": true,
+      "status": "no_suggestions",
+      "expected": 0,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 5.719027351002296,
+      "highlights": []
+    },
+    {
+      "id": "DEV09",
+      "category": "advocacy",
+      "completed": true,
+      "status": "no_suggestions",
+      "expected": 0,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 6.349852810999437,
+      "highlights": []
+    },
+    {
+      "id": "DEV10",
+      "category": "advocacy",
+      "completed": true,
+      "status": "no_suggestions",
+      "expected": 0,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 5.720908326002245,
+      "highlights": []
+    },
+    {
+      "id": "DEV11",
+      "category": "loaded",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 1,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 0,
+      "seconds": 13.058533775998512,
+      "highlights": [
+        "a cruel assault on working families"
+      ]
+    },
+    {
+      "id": "DEV12",
+      "category": "loaded",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 2,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 1,
+      "seconds": 19.7792588049997,
+      "highlights": [
+        "another shameless giveaway to corporate donors",
+        "equipment"
+      ]
+    },
+    {
+      "id": "DEV13",
+      "category": "loaded",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 2,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 1,
+      "seconds": 24.220857313001034,
+      "highlights": [
+        "The governor finally confronted the radical bureaucrats strangling our economy.",
+        "The order suspends a reporting requirement."
+      ]
+    },
+    {
+      "id": "DEV14",
+      "category": "loaded",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 1,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 0,
+      "seconds": 14.642917776000104,
+      "highlights": [
+        "promoted a heartless attack on the poor"
+      ]
+    },
+    {
+      "id": "DEV15",
+      "category": "loaded",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 1,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 0,
+      "seconds": 13.935091155999544,
+      "highlights": [
+        "a heroic defense of freedom"
+      ]
+    },
+    {
+      "id": "DEV16",
+      "category": "loaded",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 1,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 0,
+      "seconds": 12.280852120999043,
+      "highlights": [
+        "a pathetic excuse for leadership"
+      ]
+    },
+    {
+      "id": "DEV17",
+      "category": "quoted",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 1,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 0,
+      "seconds": 14.341768309001054,
+      "highlights": [
+        "a cruel assault on working families"
+      ]
+    },
+    {
+      "id": "DEV18",
+      "category": "quoted",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 1,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 0,
+      "seconds": 15.1545764399998,
+      "highlights": [
+        "This is a shameless giveaway to corporate donors"
+      ]
+    },
+    {
+      "id": "DEV19",
+      "category": "quoted",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 2,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 0,
+      "seconds": 20.275559311998222,
+      "highlights": [
+        "radical bureaucrats",
+        "strangling our economy"
+      ]
+    },
+    {
+      "id": "DEV20",
+      "category": "quoted",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 1,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 0,
+      "seconds": 14.514571616000467,
+      "highlights": [
+        "called the measure a \u201cheartless attack on the poor.\u201d"
+      ]
+    },
+    {
+      "id": "DEV21",
+      "category": "quoted",
+      "completed": true,
+      "status": "partial_failure",
+      "expected": 1,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 13.505557332002354,
+      "highlights": []
+    },
+    {
+      "id": "DEV22",
+      "category": "quoted",
+      "completed": true,
+      "status": "partial_failure",
+      "expected": 1,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 15.040195436999056,
+      "highlights": []
+    },
+    {
+      "id": "DEV23",
+      "category": "repeated",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 2,
+      "predicted": 2,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 2,
+      "nonoverlapping_predictions": 0,
+      "seconds": 24.494149243997526,
+      "highlights": [
+        "called the plan \u201ca cruel assault on working families.\u201d",
+        "In my view, it is indeed a cruel assault on working families."
+      ]
+    },
+    {
+      "id": "DEV24",
+      "category": "repeated",
+      "completed": true,
+      "status": "partial_failure",
+      "expected": 2,
+      "predicted": 1,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 0,
+      "seconds": 21.131059088002075,
+      "highlights": [
+        "This shameless giveaway must end."
+      ]
+    },
+    {
+      "id": "DEV25",
+      "category": "negation",
+      "completed": true,
+      "status": "no_suggestions",
+      "expected": 1,
+      "predicted": 0,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 0,
+      "seconds": 6.792373005002446,
+      "highlights": []
+    },
+    {
+      "id": "DEV26",
+      "category": "negation",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 1,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 0,
+      "seconds": 16.276975992997905,
+      "highlights": [
+        "Calling every agency employee a \u201cradical bureaucrat\u201d is misleading."
+      ]
+    },
+    {
+      "id": "DEV27",
+      "category": "mixed",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 1,
+      "predicted": 1,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 1,
+      "nonoverlapping_predictions": 0,
+      "seconds": 13.44761010900038,
+      "highlights": [
+        "This disgraceful betrayal of voters"
+      ]
+    },
+    {
+      "id": "DEV28",
+      "category": "mixed",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 2,
+      "predicted": 2,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 2,
+      "nonoverlapping_predictions": 0,
+      "seconds": 21.4628867370011,
+      "highlights": [
+        "a heroic defense of freedom",
+        "a shameless giveaway"
+      ]
+    },
+    {
+      "id": "DEV29",
+      "category": "off_topic",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 0,
+      "predicted": 1,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 1,
+      "seconds": 14.887164584000857,
+      "highlights": [
+        "The striker delivered a pathetic excuse for a penalty kick."
+      ]
+    },
+    {
+      "id": "DEV30",
+      "category": "off_topic",
+      "completed": true,
+      "status": "suggestions",
+      "expected": 0,
+      "predicted": 2,
+      "exact_expected_matches": 0,
+      "overlapped_expected": 0,
+      "nonoverlapping_predictions": 2,
+      "seconds": 19.24896432999958,
+      "highlights": [
+        "a cruel king",
+        "a heroic defense"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "kind": "aborted_runtime_schema_incompatibility",
+  "reason": "Pinned llama.cpp oneOf conversion ignores sibling required and properties; generated objects omitted native_index/reason. Fix repeats complete object schema inside each branch, with identical prompt and validator.",
+  "recorded_rows": 11,
+  "outcomes": {
+    "failed": 7,
+    "skipped_no_spans": 3,
+    "skipped_upstream_failure": 1
+  },
+  "errors": {
+    "invalid_model_decision_schema": 7
+  },
+  "raw_sha256": "23807573908a65b808846a2f4a742b2ec50ef80b4be8baa3bf88a1eba9f0ea4b",
+  "module_sha256": "42b375db1b5569a1ef6f76e57bb6e126b31d31889c062206c837c9aabd4db3b1",
+  "session_exit_code": 130,
+  "complete_evaluation": false,
+  "release_approved": false,
+  "rows": [
+    {
+      "id": "7a1a604b-37ac-476f-8cdb-2e7c98705171:p1",
+      "refinement_status": "failed",
+      "error": "invalid_model_decision_schema"
+    },
+    {
+      "id": "81110ee8-ab27-467f-86f3-c26ed2ede9a4:p11",
+      "refinement_status": "skipped_no_spans",
+      "error": null
+    },
+    {
+      "id": "8eeda8bb-f396-49ed-b993-f0c6ed36715d:p9",
+      "refinement_status": "failed",
+      "error": "invalid_model_decision_schema"
+    },
+    {
+      "id": "0a64117e-518e-447b-a60f-2bdc2bf6ffe7:p0",
+      "refinement_status": "failed",
+      "error": "invalid_model_decision_schema"
+    },
+    {
+      "id": "de43e785-3d88-444a-8edd-e503a205ed71:p0",
+      "refinement_status": "skipped_no_spans",
+      "error": null
+    },
+    {
+      "id": "2eb35726-5228-4b2b-bf07-4710316916f2:p3",
+      "refinement_status": "failed",
+      "error": "invalid_model_decision_schema"
+    },
+    {
+      "id": "f462327d-7021-486b-a262-a1d2ffc4bc25:p2",
+      "refinement_status": "skipped_upstream_failure",
+      "error": null
+    },
+    {
+      "id": "855237a2-3aeb-4135-bec8-b9b3378e8ee8:p14",
+      "refinement_status": "skipped_no_spans",
+      "error": null
+    },
+    {
+      "id": "2052529f-cc0f-4e4d-9221-2236094f7de6:p33",
+      "refinement_status": "failed",
+      "error": "invalid_model_decision_schema"
+    },
+    {
+      "id": "9495dca7-8ae6-48c3-adf9-eb2df4901f0e:p0",
+      "refinement_status": "failed",
+      "error": "invalid_model_decision_schema"
+    },
+    {
+      "id": "9eaef0d4-421f-4eaf-a256-e2494ed0efae:p11",
+      "refinement_status": "failed",
+      "error": "invalid_model_decision_schema"
+    }
+  ]
+}

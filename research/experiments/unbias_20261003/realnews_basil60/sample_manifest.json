@@ -1,0 +1,1410 @@
+{
+  "schema": "basil60-realnews-v1",
+  "basil_revision": "4fdbc4f68d5ddae648990063cb6dd11424d96222",
+  "basil_archive_sha256": "95c7182970281df7b4524dfc4d48a897619a0779ce7810b7b139254a30b46100",
+  "training_dataset_revision": "2e0a842ca594549a510ac527e2222b82d04b9784",
+  "training_file_sha256": "ca1bf39446b8031d57c5c487790a8a69eff62078aad0ccb565cd7f9a8a861d6d",
+  "training_rows_checked": 5000,
+  "fixture_sha256": "8d14e9cd7b8268aea9fa5a5f4aadf0873144cc827c178fa2d965fbe8cd3eb5da",
+  "protocol_sha256": "7cedc8708801b748e4a614b39aa7f0fa667438c4df729a777ab14198edeffef1",
+  "annotation_source": "Published BASIL release-2 human reference annotations, unchanged",
+  "new_human_reviews": 0,
+  "training_independence_proven": false,
+  "audit_counts": {
+    "articles": 300,
+    "body_sentences": 7984,
+    "title_spans_excluded": 3,
+    "valid_body_spans": 1723,
+    "excluded_length_sentence": 1849,
+    "eligible_before_overlap": 6135,
+    "excluded_13gram_overlap": 0,
+    "eligible_after_overlap": 6135,
+    "selected_exact_normalized_training_containment": 0
+  },
+  "overlap_exclusions": [],
+  "sample_counts": {
+    "lexical": 20,
+    "unannotated": 20,
+    "informational": 20
+  },
+  "publishers": {
+    "fox": 20,
+    "nyt": 21,
+    "hpo": 17,
+    "NYT": 2
+  },
+  "event_count": 60,
+  "human_span_count": 41,
+  "quoted_human_span_count": 19,
+  "cases": [
+    {
+      "id": "7a1a604b-37ac-476f-8cdb-2e7c98705171:p1",
+      "source_sha256": "9388a74413de10ab6ea282b767bc084d8734e528a753ce21190d2c9795e5fdb9",
+      "stratum": "lexical",
+      "event_id": "84678e18-0b79-4570-9c9f-cb1cf88d968e",
+      "article_id": "7a1a604b-37ac-476f-8cdb-2e7c98705171",
+      "article_file": "articles/2013/84678e18-0b79-4570-9c9f-cb1cf88d968e_1.json",
+      "annotation_file": "annotations/2013/84678e18-0b79-4570-9c9f-cb1cf88d968e_1_ann.json",
+      "sentence_index": 1,
+      "article_sha256": "f50071a0c1530027d938f11accd363d3922144549e4bbc298e460dc097f2b0de",
+      "annotation_sha256": "bcb5f2cc385ef962961bc3f81038805f55967c4d7a334add5f003ea9b83ac8d9",
+      "publisher": "fox",
+      "date": "2013-05-23",
+      "word_count": 19,
+      "gold": [
+        {
+          "start": 89,
+          "end": 98,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Lois_Lerner",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "81110ee8-ab27-467f-86f3-c26ed2ede9a4:p11",
+      "source_sha256": "09680688a7d11317c2f9eaeb4fc151910b02649bcfe23dd376c32a10f9b2604f",
+      "stratum": "unannotated",
+      "event_id": "a4edca3f-931f-4785-8c3f-f3d8fa84cbec",
+      "article_id": "81110ee8-ab27-467f-86f3-c26ed2ede9a4",
+      "article_file": "articles/2015/a4edca3f-931f-4785-8c3f-f3d8fa84cbec_2.json",
+      "annotation_file": "annotations/2015/a4edca3f-931f-4785-8c3f-f3d8fa84cbec_2_ann.json",
+      "sentence_index": 11,
+      "article_sha256": "7cf87d2f9af2fb352aeb7e1fa2db32ad44dae0f73531a94c7be220b7321727eb",
+      "annotation_sha256": "e889ae5709ee01c2ceddd8385b2d5a5e94b542bfafe5df468388a4b544b055e4",
+      "publisher": "nyt",
+      "date": "2015-03-05",
+      "word_count": 24,
+      "gold": []
+    },
+    {
+      "id": "8eeda8bb-f396-49ed-b993-f0c6ed36715d:p9",
+      "source_sha256": "128991fc39ea84f0062569f1c2835fcc4f38be93de6148e3adb271877d2cbfbc",
+      "stratum": "lexical",
+      "event_id": "59f2f47c-5da0-4fbc-be6e-4f15d45d82e2",
+      "article_id": "8eeda8bb-f396-49ed-b993-f0c6ed36715d",
+      "article_file": "articles/2016/59f2f47c-5da0-4fbc-be6e-4f15d45d82e2_2.json",
+      "annotation_file": "annotations/2016/59f2f47c-5da0-4fbc-be6e-4f15d45d82e2_2_ann.json",
+      "sentence_index": 9,
+      "article_sha256": "ebb3a0592ef3189f05e4f752134aa0ff3a5959cec6da3719427028321ea0ced5",
+      "annotation_sha256": "6295f1ed41e68bab57407f927a4a5586a123c5ba0513068d865b81b71d063904",
+      "publisher": "hpo",
+      "date": "2016-03-25",
+      "word_count": 36,
+      "gold": [
+        {
+          "start": 187,
+          "end": 191,
+          "bias": "lex",
+          "quoted": true,
+          "speaker": "Donald_Trump",
+          "target": "Ted_Cruz",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "0a64117e-518e-447b-a60f-2bdc2bf6ffe7:p0",
+      "source_sha256": "7f6b3e2b9818bafb11d006a0779ac6d3031bcf9c7bcf93fbbee0e3d0649e2918",
+      "stratum": "lexical",
+      "event_id": "1b96a5db-8974-46d3-82d7-5dfef02f650e",
+      "article_id": "0a64117e-518e-447b-a60f-2bdc2bf6ffe7",
+      "article_file": "articles/2016/1b96a5db-8974-46d3-82d7-5dfef02f650e_2.json",
+      "annotation_file": "annotations/2016/1b96a5db-8974-46d3-82d7-5dfef02f650e_2_ann.json",
+      "sentence_index": 0,
+      "article_sha256": "7a9f6f5ae722e74c24f58e2f6fed04ef7ba2967021ede52131e186636aa8fe13",
+      "annotation_sha256": "040bb7556e872a8b03901904b7cc36842aa01fb82dc2567730e68a957bc096dd",
+      "publisher": "hpo",
+      "date": "2016-09-28",
+      "word_count": 36,
+      "gold": [
+        {
+          "start": 18,
+          "end": 31,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Barack_Obama",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "de43e785-3d88-444a-8edd-e503a205ed71:p0",
+      "source_sha256": "a048935860b35154aaf01cae12f0d0fd100c57c707614b9df945ea5230cfe231",
+      "stratum": "unannotated",
+      "event_id": "d3a1ce0a-fc48-4827-a278-8f0ce8c7a519",
+      "article_id": "de43e785-3d88-444a-8edd-e503a205ed71",
+      "article_file": "articles/2013/d3a1ce0a-fc48-4827-a278-8f0ce8c7a519_1.json",
+      "annotation_file": "annotations/2013/d3a1ce0a-fc48-4827-a278-8f0ce8c7a519_1_ann.json",
+      "sentence_index": 0,
+      "article_sha256": "24fec7fa80d179e59001ca18d7fdaf35e0413ea273bae29c6a464dce48a4a4df",
+      "annotation_sha256": "e126390ed179ea7be61b60addef2f8837dd006f4e6a244b507df0cf1dcf43270",
+      "publisher": "fox",
+      "date": "2013-01-30",
+      "word_count": 25,
+      "gold": []
+    },
+    {
+      "id": "2eb35726-5228-4b2b-bf07-4710316916f2:p3",
+      "source_sha256": "748efdf2fd1c953abd503d843f0cf3721c0eac30024cd74a8439db4df11037ac",
+      "stratum": "informational",
+      "event_id": "87609973-bd58-42a5-96e2-ee5aa47433f5",
+      "article_id": "2eb35726-5228-4b2b-bf07-4710316916f2",
+      "article_file": "articles/2018/87609973-bd58-42a5-96e2-ee5aa47433f5_2.json",
+      "annotation_file": "annotations/2018/87609973-bd58-42a5-96e2-ee5aa47433f5_2_ann.json",
+      "sentence_index": 3,
+      "article_sha256": "83458a559b5beaf3bef9345c36f664957981496c1cb8df56022bd3755b933ae3",
+      "annotation_sha256": "bc8545fc2464851944fdcae6ab66a671800cc960d6c5098b82b811ffd51e99ef",
+      "publisher": "nyt",
+      "date": "2018-01-02",
+      "word_count": 19,
+      "gold": [
+        {
+          "start": 37,
+          "end": 104,
+          "bias": "inf",
+          "quoted": false,
+          "speaker": "",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "f462327d-7021-486b-a262-a1d2ffc4bc25:p2",
+      "source_sha256": "c9a5b3a425bb2563d75ab409b8aae8bf3f36f05d95238c0a29bddb9e3219e244",
+      "stratum": "unannotated",
+      "event_id": "6b541575-99b1-40d2-8730-9bb868ee38ed",
+      "article_id": "f462327d-7021-486b-a262-a1d2ffc4bc25",
+      "article_file": "articles/2010/6b541575-99b1-40d2-8730-9bb868ee38ed_1.json",
+      "annotation_file": "annotations/2010/6b541575-99b1-40d2-8730-9bb868ee38ed_1_ann.json",
+      "sentence_index": 2,
+      "article_sha256": "f1916a97b19410be2c2c0a661d70d9598f77010b8e75b10ab8eb7d0972fabbfc",
+      "annotation_sha256": "b0956aa431f1a0e3ebb33c41e36c4b413c497234c21aece715194c5ebd58ecb1",
+      "publisher": "fox",
+      "date": "2010-06-14",
+      "word_count": 35,
+      "gold": []
+    },
+    {
+      "id": "855237a2-3aeb-4135-bec8-b9b3378e8ee8:p14",
+      "source_sha256": "cf233ac80c8b9a81baf4764afc17effa18e3b47d24599b258d991397b2e69cb0",
+      "stratum": "lexical",
+      "event_id": "70c75d68-bf65-46a6-a822-15c23d77a275",
+      "article_id": "855237a2-3aeb-4135-bec8-b9b3378e8ee8",
+      "article_file": "articles/2019/70c75d68-bf65-46a6-a822-15c23d77a275_3.json",
+      "annotation_file": "annotations/2019/70c75d68-bf65-46a6-a822-15c23d77a275_3_ann.json",
+      "sentence_index": 14,
+      "article_sha256": "af77cd3c6575253fc9e8c61d5562b8e18d8c6d6f4ce057cf1672075bdd2a5386",
+      "annotation_sha256": "1caa7aa74ba56e20810a967fdc839e2bc05468a124c58970751510416c9dae08",
+      "publisher": "hpo",
+      "date": "2019-01-22",
+      "word_count": 23,
+      "gold": [
+        {
+          "start": 33,
+          "end": 40,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "2052529f-cc0f-4e4d-9221-2236094f7de6:p33",
+      "source_sha256": "7eb123c31d94c480d69ccb8cc22df9f74844ad29449341d0d2fb47f64d3ab62e",
+      "stratum": "lexical",
+      "event_id": "526cabb7-02a3-4adb-8e90-ec781c40c498",
+      "article_id": "2052529f-cc0f-4e4d-9221-2236094f7de6",
+      "article_file": "articles/2013/526cabb7-02a3-4adb-8e90-ec781c40c498_3.json",
+      "annotation_file": "annotations/2013/526cabb7-02a3-4adb-8e90-ec781c40c498_3_ann.json",
+      "sentence_index": 33,
+      "article_sha256": "16617cce3c0aec1a169f661768a02364f6fb9def9a9fe49a50319fe92880547b",
+      "annotation_sha256": "de8687218bea54e3275da82e9bb45c33238649fa7ed6f45e70ddbcbdbaf09d50",
+      "publisher": "hpo",
+      "date": "2013-01-16",
+      "word_count": 39,
+      "gold": [
+        {
+          "start": 101,
+          "end": 120,
+          "bias": "lex",
+          "quoted": true,
+          "speaker": "other_anti",
+          "target": "Barack_Obama",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "9495dca7-8ae6-48c3-adf9-eb2df4901f0e:p0",
+      "source_sha256": "51a6cb6d78028627c52dc0e0713e2d2e6ed85fd557886d1dfba549706a480d3a",
+      "stratum": "lexical",
+      "event_id": "74708dbf-5dfc-4c66-8419-d7dbc00e4a06",
+      "article_id": "9495dca7-8ae6-48c3-adf9-eb2df4901f0e",
+      "article_file": "articles/2010/74708dbf-5dfc-4c66-8419-d7dbc00e4a06_1.json",
+      "annotation_file": "annotations/2010/74708dbf-5dfc-4c66-8419-d7dbc00e4a06_1_ann.json",
+      "sentence_index": 0,
+      "article_sha256": "a45c25b21d8e67c4d717f7a930e570cb793a40a7c5c9352033c5d6a8bbb2e8c1",
+      "annotation_sha256": "133fd1ca07dd121022df414a04848bec23b89341e1bd3e3e4ab34190a946ca2e",
+      "publisher": "nyt",
+      "date": "2010-12-12",
+      "word_count": 47,
+      "gold": [
+        {
+          "start": 191,
+          "end": 200,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Michael_Steele",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "9eaef0d4-421f-4eaf-a256-e2494ed0efae:p11",
+      "source_sha256": "2bd060130a60f1c34920c64184de2608aef9a36bad62ede1aee67d9045fbae8f",
+      "stratum": "lexical",
+      "event_id": "d4a4bc34-e48b-4485-86b2-f1daf4d464dd",
+      "article_id": "9eaef0d4-421f-4eaf-a256-e2494ed0efae",
+      "article_file": "articles/2016/d4a4bc34-e48b-4485-86b2-f1daf4d464dd_1.json",
+      "annotation_file": "annotations/2016/d4a4bc34-e48b-4485-86b2-f1daf4d464dd_1_ann.json",
+      "sentence_index": 11,
+      "article_sha256": "96ad0211dfb757edf04cacc0cde4679be8e6bb95d420a77dad8b140de9ca2232",
+      "annotation_sha256": "650c924e47de22079411705c3b866bc3b29567c9ea3b3fd7ed01f50908c9d2d2",
+      "publisher": "nyt",
+      "date": "2016-02-25",
+      "word_count": 20,
+      "gold": [
+        {
+          "start": 68,
+          "end": 74,
+          "bias": "lex",
+          "quoted": true,
+          "speaker": "Felipe_Calder",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "ddf67ae7-db39-4c44-a3ee-35a9220aa485:p12",
+      "source_sha256": "01dac716344f0d0a48e2e619dcb9728940cf0dceb68d42ca4049fd1dd0f4c69e",
+      "stratum": "lexical",
+      "event_id": "1e41e98b-9ac1-441d-b2c2-19d8f730c74a",
+      "article_id": "ddf67ae7-db39-4c44-a3ee-35a9220aa485",
+      "article_file": "articles/2019/1e41e98b-9ac1-441d-b2c2-19d8f730c74a_2.json",
+      "annotation_file": "annotations/2019/1e41e98b-9ac1-441d-b2c2-19d8f730c74a_2_ann.json",
+      "sentence_index": 12,
+      "article_sha256": "91bd63957b9ac69486c73116850de5409871387a8595d1c530cc46f294e02776",
+      "annotation_sha256": "1227d9abb78b44b9cef66f25b7973b5c332d3e7460bac4977c7cb1b476e7bb6d",
+      "publisher": "nyt",
+      "date": "2019-01-25",
+      "word_count": 47,
+      "gold": [
+        {
+          "start": 56,
+          "end": 136,
+          "bias": "inf",
+          "quoted": true,
+          "speaker": "other_anti",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        },
+        {
+          "start": 76,
+          "end": 88,
+          "bias": "lex",
+          "quoted": true,
+          "speaker": "other_anti",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "2114860f-e96f-41dd-b5e2-56f755b0e6f6:p22",
+      "source_sha256": "e6d40cf2117424f01784fba9f145ade3d376fab8c2e3d3ca67ed39d08ddc1b82",
+      "stratum": "unannotated",
+      "event_id": "005a2961-0c2e-4575-8eec-770ba52a08e0",
+      "article_id": "2114860f-e96f-41dd-b5e2-56f755b0e6f6",
+      "article_file": "articles/2011/005a2961-0c2e-4575-8eec-770ba52a08e0_2.json",
+      "annotation_file": "annotations/2011/005a2961-0c2e-4575-8eec-770ba52a08e0_2_ann.json",
+      "sentence_index": 22,
+      "article_sha256": "6f6f7a747eec4b71211fc62909ce5aa579d399dff27153732d9977130cc3e09c",
+      "annotation_sha256": "4efc1491fe6c699744b3695eaf4eb4da620ba8808be29033d0815ae3d6e2623d",
+      "publisher": "fox",
+      "date": "2011-04-07",
+      "word_count": 19,
+      "gold": []
+    },
+    {
+      "id": "415822d3-fde6-4dca-bb9e-dc6e0692eb19:p35",
+      "source_sha256": "fbb22e5e65c3a3c6798fd5c7abba496d69e9f15f9480c5868a77f29484022015",
+      "stratum": "unannotated",
+      "event_id": "ee05c9b3-529c-4268-ad72-19bd34f7197e",
+      "article_id": "415822d3-fde6-4dca-bb9e-dc6e0692eb19",
+      "article_file": "articles/2014/ee05c9b3-529c-4268-ad72-19bd34f7197e_1.json",
+      "annotation_file": "annotations/2014/ee05c9b3-529c-4268-ad72-19bd34f7197e_1_ann.json",
+      "sentence_index": 35,
+      "article_sha256": "c20376e6b4a7e9fd361a47bf2c8d8161310ea193499206fdc4ccd0d56e3b5f6d",
+      "annotation_sha256": "4feeb309339f09fc36ccc3152d60f24f0fc197502e3ba23a3187e4f162b28aac",
+      "publisher": "NYT",
+      "date": "2014-06-12",
+      "word_count": 34,
+      "gold": []
+    },
+    {
+      "id": "f75f0ffe-9f1d-4b90-8450-804a29544396:p2",
+      "source_sha256": "ab3d229817cf7e9e95d6b3c9e4b70fc79b1b328723c3fc1eb039f335b4e1ce93",
+      "stratum": "informational",
+      "event_id": "1f99798f-2b60-4ecb-b5f4-4aa7991e8ace",
+      "article_id": "f75f0ffe-9f1d-4b90-8450-804a29544396",
+      "article_file": "articles/2018/1f99798f-2b60-4ecb-b5f4-4aa7991e8ace_1.json",
+      "annotation_file": "annotations/2018/1f99798f-2b60-4ecb-b5f4-4aa7991e8ace_1_ann.json",
+      "sentence_index": 2,
+      "article_sha256": "a626138cd190e63fb7f747a98aff10552fc40ce5ac17e0ba3432331c1e4dfb31",
+      "annotation_sha256": "ceb2a97025755b0ff8f051dae13704063a7cddb0c6c057601bbacb60037d5b48",
+      "publisher": "fox",
+      "date": "2018-10-26",
+      "word_count": 32,
+      "gold": [
+        {
+          "start": 126,
+          "end": 167,
+          "bias": "inf",
+          "quoted": false,
+          "speaker": "",
+          "target": "Cesar_Sayoc",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "48d9863f-62d0-487e-b928-8a169a5048c5:p25",
+      "source_sha256": "f840081e2e2a63e1cb2188f5ef8aa47f4b3660f604245bbfa20244455f133fee",
+      "stratum": "unannotated",
+      "event_id": "13792511-5142-449f-8d3e-d77d790f65ec",
+      "article_id": "48d9863f-62d0-487e-b928-8a169a5048c5",
+      "article_file": "articles/2015/13792511-5142-449f-8d3e-d77d790f65ec_3.json",
+      "annotation_file": "annotations/2015/13792511-5142-449f-8d3e-d77d790f65ec_3_ann.json",
+      "sentence_index": 25,
+      "article_sha256": "d4361af642c287b8ff135518c584ec0c7078fb6810f009d48f0772f056259d50",
+      "annotation_sha256": "e5f707796738b15a86442cf34f0bd92dcb44719e398f51ae4b9364deefb3d40b",
+      "publisher": "hpo",
+      "date": "2015-06-30",
+      "word_count": 18,
+      "gold": []
+    },
+    {
+      "id": "0a8a693b-41fa-4895-bbb5-d4521646eb72:p11",
+      "source_sha256": "7f7adb841991924f58eef9bf621ba13f721ee86ac245d6bd25d436042ad996d8",
+      "stratum": "unannotated",
+      "event_id": "0ffb34cd-c367-4d90-aca7-7fcac3ed8f3d",
+      "article_id": "0a8a693b-41fa-4895-bbb5-d4521646eb72",
+      "article_file": "articles/2011/0ffb34cd-c367-4d90-aca7-7fcac3ed8f3d_2.json",
+      "annotation_file": "annotations/2011/0ffb34cd-c367-4d90-aca7-7fcac3ed8f3d_2_ann.json",
+      "sentence_index": 11,
+      "article_sha256": "6a498051523de57536fb3ff2d2860909aa762434a4618951f1fa24fd8fc12285",
+      "annotation_sha256": "8f86785898fde33c620e1e1a0f99c0630724985c7d3b3bc56d079a612870cfe7",
+      "publisher": "hpo",
+      "date": "2011-11-29",
+      "word_count": 31,
+      "gold": []
+    },
+    {
+      "id": "73e9fe54-0fdd-44ba-b29e-f59572dc47d5:p7",
+      "source_sha256": "80f9bbfbc6865c2097d31223d79433a152dd25e16717bb7c345565fc9737d242",
+      "stratum": "unannotated",
+      "event_id": "2153fb3e-6b09-410c-bfea-d095c49a54ba",
+      "article_id": "73e9fe54-0fdd-44ba-b29e-f59572dc47d5",
+      "article_file": "articles/2011/2153fb3e-6b09-410c-bfea-d095c49a54ba_1.json",
+      "annotation_file": "annotations/2011/2153fb3e-6b09-410c-bfea-d095c49a54ba_1_ann.json",
+      "sentence_index": 7,
+      "article_sha256": "cc127405a00c7735d8122bc6dea4467e551df6eb738387950d5dfac366048c6e",
+      "annotation_sha256": "2fc24193a0712a465f8560611d3ce185c66ca297266338a2ebe19b6a952ab7d7",
+      "publisher": "nyt",
+      "date": "2011-11-02",
+      "word_count": 43,
+      "gold": []
+    },
+    {
+      "id": "8d684d7c-3df0-4756-b11b-1cc153689164:p8",
+      "source_sha256": "1e8ae45b8cfccf4144e492c1631b8597980fd85980f5c0a7c65c6dc82e8790e4",
+      "stratum": "unannotated",
+      "event_id": "dd1e6e3b-f36c-4064-8ef9-940984e9afa2",
+      "article_id": "8d684d7c-3df0-4756-b11b-1cc153689164",
+      "article_file": "articles/2017/dd1e6e3b-f36c-4064-8ef9-940984e9afa2_2.json",
+      "annotation_file": "annotations/2017/dd1e6e3b-f36c-4064-8ef9-940984e9afa2_2_ann.json",
+      "sentence_index": 8,
+      "article_sha256": "71a484d350f9213438c97f9a764e9a61d49ac06c39bf7353d3d79e83a8417a4a",
+      "annotation_sha256": "3937a091a60bb94822cb52422de63428bec3b360aa1aaaf8a6fda683634ed219",
+      "publisher": "nyt",
+      "date": "2017-11-13",
+      "word_count": 33,
+      "gold": []
+    },
+    {
+      "id": "8b93035f-edd3-48b7-b617-59399ccddca4:p1",
+      "source_sha256": "d6344fb36a2dd21f2579434bef104d7f0588d30763c8ff7fc999be6670a9d04c",
+      "stratum": "informational",
+      "event_id": "2b9468af-4ab0-4f25-85f4-c3ef93d72006",
+      "article_id": "8b93035f-edd3-48b7-b617-59399ccddca4",
+      "article_file": "articles/2015/2b9468af-4ab0-4f25-85f4-c3ef93d72006_3.json",
+      "annotation_file": "annotations/2015/2b9468af-4ab0-4f25-85f4-c3ef93d72006_3_ann.json",
+      "sentence_index": 1,
+      "article_sha256": "3bddc7a5c7d1fd53c6e434402d0d8be719684868ac080dba19f7126696310fc6",
+      "annotation_sha256": "4443f7c721cc6dd1f64f862ef5b17f413f60ee53e6265c69854b98f21a6a50ea",
+      "publisher": "fox",
+      "date": "2015-02-25",
+      "word_count": 25,
+      "gold": [
+        {
+          "start": 102,
+          "end": 171,
+          "bias": "inf",
+          "quoted": false,
+          "speaker": "",
+          "target": "Benjamin_Netanyahu",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "bb209267-b337-41f2-8691-e2080f91da9e:p12",
+      "source_sha256": "268a2894e9c7f9c1f3f054fee0c4246ddda320810a48f165687aa62ed1ad293c",
+      "stratum": "unannotated",
+      "event_id": "aab91277-8d56-4844-a581-45630f873f49",
+      "article_id": "bb209267-b337-41f2-8691-e2080f91da9e",
+      "article_file": "articles/2019/aab91277-8d56-4844-a581-45630f873f49_2.json",
+      "annotation_file": "annotations/2019/aab91277-8d56-4844-a581-45630f873f49_2_ann.json",
+      "sentence_index": 12,
+      "article_sha256": "c42f9d697bf7a54da50c34cda0f7ec5eba602da1dd4bd1bb5c1d3a6cd04bbb07",
+      "annotation_sha256": "517c756d662715186f5cf39e32aad96da82faa15ffa6f6bbcd357513ba23a14d",
+      "publisher": "fox",
+      "date": "2019-01-25",
+      "word_count": 34,
+      "gold": []
+    },
+    {
+      "id": "c86aca6f-3cec-4089-8a0a-2746c2020474:p25",
+      "source_sha256": "69133361b23646caf57a55a604e5ffc74eb2b6d7e930f046f64fa4ffddc39632",
+      "stratum": "unannotated",
+      "event_id": "8dac6c12-b5ca-468c-a249-7e0ab42f6b52",
+      "article_id": "c86aca6f-3cec-4089-8a0a-2746c2020474",
+      "article_file": "articles/2015/8dac6c12-b5ca-468c-a249-7e0ab42f6b52_1.json",
+      "annotation_file": "annotations/2015/8dac6c12-b5ca-468c-a249-7e0ab42f6b52_1_ann.json",
+      "sentence_index": 25,
+      "article_sha256": "1e9c1aca2db81f75aec5bb35c4dfaf8b5cff8c08ff7e61ded1f8333949988c15",
+      "annotation_sha256": "194c31857ae9bd89646ae09541d139fe6225bd19fd13ccf19e457e04a1d1805e",
+      "publisher": "fox",
+      "date": "2015-06-15",
+      "word_count": 27,
+      "gold": []
+    },
+    {
+      "id": "40501fc8-6f72-4a91-bcb2-e54186b8fd4a:p6",
+      "source_sha256": "be6b5489ef09bb63092bd9322022bada2dea4a306e3569b2ec2f9bdad58c0866",
+      "stratum": "informational",
+      "event_id": "d16050b3-979f-4834-90db-b8823691b87e",
+      "article_id": "40501fc8-6f72-4a91-bcb2-e54186b8fd4a",
+      "article_file": "articles/2017/d16050b3-979f-4834-90db-b8823691b87e_2.json",
+      "annotation_file": "annotations/2017/d16050b3-979f-4834-90db-b8823691b87e_2_ann.json",
+      "sentence_index": 6,
+      "article_sha256": "309cfbd6e17f169e6cacef8977c2a4895551f8dc7d74ba5db07b374f67f86aa6",
+      "annotation_sha256": "4971d44747a39364f7a315cb5091556b0a5200e23c81cee02f71e97df76fe003",
+      "publisher": "nyt",
+      "date": "2017-05-31",
+      "word_count": 34,
+      "gold": [
+        {
+          "start": 0,
+          "end": 189,
+          "bias": "inf",
+          "quoted": true,
+          "speaker": "other_anti",
+          "target": "Kathy_Griffin",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "84e2edc9-1315-4bbc-95b6-8a20ace915c7:p14",
+      "source_sha256": "20764f2893561c43e5dd1a115de2df171f8e7bf294b803e6361a64c0f9daea5d",
+      "stratum": "unannotated",
+      "event_id": "a4f1d515-d7d9-4319-b2e0-4d56e9d45554",
+      "article_id": "84e2edc9-1315-4bbc-95b6-8a20ace915c7",
+      "article_file": "articles/2013/a4f1d515-d7d9-4319-b2e0-4d56e9d45554_1.json",
+      "annotation_file": "annotations/2013/a4f1d515-d7d9-4319-b2e0-4d56e9d45554_1_ann.json",
+      "sentence_index": 14,
+      "article_sha256": "06cda6c88a6b55a24972ee94a205815a0a01c8439c6dc9fd7da92e19c2cb7b39",
+      "annotation_sha256": "d57c097d2327015d08fb7a904f7d76e6e06df0fa3dae39a4534306877d16115e",
+      "publisher": "nyt",
+      "date": "2013-06-08",
+      "word_count": 62,
+      "gold": []
+    },
+    {
+      "id": "b79beb25-e671-42ee-9170-9bbf3037d520:p1",
+      "source_sha256": "8c311266ae01277a0162cba8cbf7470f76e5f974264c4aa2d0866444829b0b54",
+      "stratum": "lexical",
+      "event_id": "84b3c118-50d2-45a5-a91f-7ed95b5d0143",
+      "article_id": "b79beb25-e671-42ee-9170-9bbf3037d520",
+      "article_file": "articles/2017/84b3c118-50d2-45a5-a91f-7ed95b5d0143_2.json",
+      "annotation_file": "annotations/2017/84b3c118-50d2-45a5-a91f-7ed95b5d0143_2_ann.json",
+      "sentence_index": 1,
+      "article_sha256": "e88d3126721933c223b5e5bef65eb46ed71a7acccb4e8e995f76853b1173b710",
+      "annotation_sha256": "1bdb0cc6d2ee1de2418cda51eddabb6737d28da768ad46f35a6dc4b6d1cd2def",
+      "publisher": "nyt",
+      "date": "2017-01-20",
+      "word_count": 25,
+      "gold": [
+        {
+          "start": 28,
+          "end": 38,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Donald_Trump",
+          "polarity": "pos"
+        }
+      ]
+    },
+    {
+      "id": "9d39afe0-4041-4e06-86e5-ff2a92a08a32:p1",
+      "source_sha256": "fb67fe61539530bfc9e1a7b06b04403f90ea481185323472ee7e80547155df2e",
+      "stratum": "unannotated",
+      "event_id": "af4a3f41-eeb5-49fa-a276-e97c230b25f0",
+      "article_id": "9d39afe0-4041-4e06-86e5-ff2a92a08a32",
+      "article_file": "articles/2015/af4a3f41-eeb5-49fa-a276-e97c230b25f0_3.json",
+      "annotation_file": "annotations/2015/af4a3f41-eeb5-49fa-a276-e97c230b25f0_3_ann.json",
+      "sentence_index": 1,
+      "article_sha256": "d034da9dd0064ad94dc998e74353501595c04a1754312d7f66be92c2de94f400",
+      "annotation_sha256": "278005c0a8b2d0600eb6a431335c60e289006e3fa635dc6554e243aac8bf4272",
+      "publisher": "fox",
+      "date": "2015-05-05",
+      "word_count": 18,
+      "gold": []
+    },
+    {
+      "id": "75f1b2bf-d46d-4bc4-a917-62488d5bf352:p7",
+      "source_sha256": "82fc44581a54b6fb3c0853c093111d18e43fb1decf61aad1ba71b11a8d3d916c",
+      "stratum": "informational",
+      "event_id": "33521e65-12da-4521-b132-7b606243b0e4",
+      "article_id": "75f1b2bf-d46d-4bc4-a917-62488d5bf352",
+      "article_file": "articles/2014/33521e65-12da-4521-b132-7b606243b0e4_3.json",
+      "annotation_file": "annotations/2014/33521e65-12da-4521-b132-7b606243b0e4_3_ann.json",
+      "sentence_index": 7,
+      "article_sha256": "71fc1a0f72c54d5e1e4b2fdf4e2d6d58b77bd1cfd073a60c7d39fc1d4556c719",
+      "annotation_sha256": "09c7a99e7bb53b23d60d73e6cb5e2bbcb8aaeaffbbb37565e5167c38a2ce1db1",
+      "publisher": "hpo",
+      "date": "2014-04-25",
+      "word_count": 37,
+      "gold": [
+        {
+          "start": 121,
+          "end": 233,
+          "bias": "inf",
+          "quoted": true,
+          "speaker": "other_pro",
+          "target": "Michael_Grimm",
+          "polarity": "pos"
+        }
+      ]
+    },
+    {
+      "id": "3d65b2c4-6832-4bb0-812b-11025a6041f0:p13",
+      "source_sha256": "72e78a5151e32122b0894574cf182ec677249d4f9aa8d467e0e0c32ac8ee04b7",
+      "stratum": "lexical",
+      "event_id": "86e6e27d-1440-4879-8b13-0dd2d89f7281",
+      "article_id": "3d65b2c4-6832-4bb0-812b-11025a6041f0",
+      "article_file": "articles/2019/86e6e27d-1440-4879-8b13-0dd2d89f7281_1.json",
+      "annotation_file": "annotations/2019/86e6e27d-1440-4879-8b13-0dd2d89f7281_1_ann.json",
+      "sentence_index": 13,
+      "article_sha256": "6cde6f23cbe5bb2895e9b6c46ffb05e830ca27dd6f6db7d374e183ceb553c526",
+      "annotation_sha256": "dc608557fa3ac598194b5d0c943f1e419a6ba1a87025fd7b0d33aca76c21e7f3",
+      "publisher": "nyt",
+      "date": "2019-01-04",
+      "word_count": 38,
+      "gold": [
+        {
+          "start": 18,
+          "end": 24,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "94b195c8-1938-4ab9-9b38-2c24f4f652e0:p0",
+      "source_sha256": "5a20496fa881e5f44eec4a9b38dcf37b685d8a7b4dbb0db1bc4a39fe394a3509",
+      "stratum": "lexical",
+      "event_id": "96b7046f-f584-422f-a626-6f86a26dfd8b",
+      "article_id": "94b195c8-1938-4ab9-9b38-2c24f4f652e0",
+      "article_file": "articles/2014/96b7046f-f584-422f-a626-6f86a26dfd8b_3.json",
+      "annotation_file": "annotations/2014/96b7046f-f584-422f-a626-6f86a26dfd8b_3_ann.json",
+      "sentence_index": 0,
+      "article_sha256": "7d23d9c2e6d5a3728edfe846d2208236c26b8a4a9d47e942df8a299a54deed64",
+      "annotation_sha256": "bb4b88ab51d317208e5f62b3508ea2b60246e19ec339f6b0d76ebd180214ac64",
+      "publisher": "nyt",
+      "date": "2014-12-01",
+      "word_count": 35,
+      "gold": [
+        {
+          "start": 91,
+          "end": 99,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Elizabeth_Lauten",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "b152cae7-1552-48e0-8d23-b5cceb51915f:p11",
+      "source_sha256": "89bfd2966a0e055ae0a6ae443744052ae2c68cdd5c622a6483e0a25f1a718a10",
+      "stratum": "informational",
+      "event_id": "72fa9b13-4e59-4716-8df9-4c3580e7dddf",
+      "article_id": "b152cae7-1552-48e0-8d23-b5cceb51915f",
+      "article_file": "articles/2017/72fa9b13-4e59-4716-8df9-4c3580e7dddf_1.json",
+      "annotation_file": "annotations/2017/72fa9b13-4e59-4716-8df9-4c3580e7dddf_1_ann.json",
+      "sentence_index": 11,
+      "article_sha256": "3afe6499abd8343a01a03a0108febc9fac7399a3ca997684d8c8e8017baf1eda",
+      "annotation_sha256": "da42fad6610a6b13d4b91f019924f55370229dd4426da210a19df66ca7b0048c",
+      "publisher": "hpo",
+      "date": "2017-05-18",
+      "word_count": 26,
+      "gold": [
+        {
+          "start": 0,
+          "end": 144,
+          "bias": "inf",
+          "quoted": true,
+          "speaker": "other_anti",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "cf3767f6-71f7-4eb2-a5e8-956b1b16fc0d:p11",
+      "source_sha256": "4b7557fd820659bdfd9c8f599d20af9bcbc1739720893d6cff03208c1429355f",
+      "stratum": "informational",
+      "event_id": "76810849-0335-4ad3-9eaf-f0d9c5baceb6",
+      "article_id": "cf3767f6-71f7-4eb2-a5e8-956b1b16fc0d",
+      "article_file": "articles/2016/76810849-0335-4ad3-9eaf-f0d9c5baceb6_1.json",
+      "annotation_file": "annotations/2016/76810849-0335-4ad3-9eaf-f0d9c5baceb6_1_ann.json",
+      "sentence_index": 11,
+      "article_sha256": "d0fa80e679bff2891c9cdab83deb596aad56e7c0191e20b508a145c48f3315e6",
+      "annotation_sha256": "176745ac49921de92ddc75b0a866e9a6607b97d3647dc03ff50126bf3bcc2997",
+      "publisher": "fox",
+      "date": "2016-06-13",
+      "word_count": 21,
+      "gold": [
+        {
+          "start": 0,
+          "end": 126,
+          "bias": "inf",
+          "quoted": false,
+          "speaker": "",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "6b573b3f-9b68-4aac-996e-8bd06bf614b8:p4",
+      "source_sha256": "76468622893962ba2831a180a0dd961e7f7723de7ff6423721b1186248416664",
+      "stratum": "informational",
+      "event_id": "b764f81f-6d08-4d7c-b1a8-8961bed0a455",
+      "article_id": "6b573b3f-9b68-4aac-996e-8bd06bf614b8",
+      "article_file": "articles/2014/b764f81f-6d08-4d7c-b1a8-8961bed0a455_2.json",
+      "annotation_file": "annotations/2014/b764f81f-6d08-4d7c-b1a8-8961bed0a455_2_ann.json",
+      "sentence_index": 4,
+      "article_sha256": "c258b43545b3bea68a0ee2c5a64ddd6f93a0f9da7b883bc0deadf79ac102c571",
+      "annotation_sha256": "759ea072026e95a0ae9c532e00d572b2ce641fec81bf12fff69c30a248247995",
+      "publisher": "nyt",
+      "date": "2014-12-18",
+      "word_count": 26,
+      "gold": [
+        {
+          "start": 106,
+          "end": 188,
+          "bias": "inf",
+          "quoted": true,
+          "speaker": "Nebraska_and_Oklahoma_officials",
+          "target": "Colorado_officials",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "312676c4-7676-4bc8-a4e6-ed168947ba75:p33",
+      "source_sha256": "12686ccc0dd77c3455f3afc21e7900d8976d3667b403877b36bb3c6b085f77c6",
+      "stratum": "unannotated",
+      "event_id": "1bb79cc1-5d69-4136-a23d-6dbd300cbf25",
+      "article_id": "312676c4-7676-4bc8-a4e6-ed168947ba75",
+      "article_file": "articles/2013/1bb79cc1-5d69-4136-a23d-6dbd300cbf25_1.json",
+      "annotation_file": "annotations/2013/1bb79cc1-5d69-4136-a23d-6dbd300cbf25_1_ann.json",
+      "sentence_index": 33,
+      "article_sha256": "33fbdf745784cedc4a851223724c76f5a3ba506fd8ba5fbe29f7946010dd90ba",
+      "annotation_sha256": "cc0a07515832a54e5b15b682fdb63f7467bff967c5a0dfc65b3834918f59bcfa",
+      "publisher": "nyt",
+      "date": "2013-05-15",
+      "word_count": 22,
+      "gold": []
+    },
+    {
+      "id": "d5c8102a-ac43-4c17-ab3b-e84b9dcd5382:p9",
+      "source_sha256": "d828e31b8b3c8a37f74665bbc32b0a3c74c1b4fd03d76f22bdd94077ca939cb6",
+      "stratum": "informational",
+      "event_id": "8dc7ccfe-5cf0-482f-9101-a7c69881da4d",
+      "article_id": "d5c8102a-ac43-4c17-ab3b-e84b9dcd5382",
+      "article_file": "articles/2012/8dc7ccfe-5cf0-482f-9101-a7c69881da4d_3.json",
+      "annotation_file": "annotations/2012/8dc7ccfe-5cf0-482f-9101-a7c69881da4d_3_ann.json",
+      "sentence_index": 9,
+      "article_sha256": "e660a72c90fc4236ff8a73eca203400a83308a3037f340e1978b21adb5f1c74a",
+      "annotation_sha256": "162b07043c1b6da891849f6e09c4d9027d47031375ef030e4fedd4f99e5a006e",
+      "publisher": "hpo",
+      "date": "2012-05-09",
+      "word_count": 38,
+      "gold": [
+        {
+          "start": 119,
+          "end": 260,
+          "bias": "inf",
+          "quoted": true,
+          "speaker": "other_anti",
+          "target": "Barack_Obama",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "3b015abd-0e07-4329-85f6-7ae616cbda37:p15",
+      "source_sha256": "8731a7520e2e15fe0cadf96502ce97ec865931e78af31e536bb9b4d37ba2cdba",
+      "stratum": "informational",
+      "event_id": "7a97de89-1433-46f7-bcc2-f80b041cb9a0",
+      "article_id": "3b015abd-0e07-4329-85f6-7ae616cbda37",
+      "article_file": "articles/2016/7a97de89-1433-46f7-bcc2-f80b041cb9a0_3.json",
+      "annotation_file": "annotations/2016/7a97de89-1433-46f7-bcc2-f80b041cb9a0_3_ann.json",
+      "sentence_index": 15,
+      "article_sha256": "934e29c19b9df5b4812959a2fc6ef80e59daac72806677084c465c17828730f4",
+      "annotation_sha256": "b181635d0602e421845fe38e511d606e0d66d249aebc334d0bbc61ab6ebcbeec",
+      "publisher": "hpo",
+      "date": "2016-08-31",
+      "word_count": 36,
+      "gold": [
+        {
+          "start": 0,
+          "end": 86,
+          "bias": "inf",
+          "quoted": true,
+          "speaker": "other_anti",
+          "target": "Paul_LePage",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "01068367-cedb-432e-95ad-ccd754362c74:p8",
+      "source_sha256": "4d22c63b027b5883ead7ae1792951a842ca0562c8e054bc80db3a49fc90b0014",
+      "stratum": "lexical",
+      "event_id": "ad409798-ee94-4436-92c5-92669193be14",
+      "article_id": "01068367-cedb-432e-95ad-ccd754362c74",
+      "article_file": "articles/2018/ad409798-ee94-4436-92c5-92669193be14_2.json",
+      "annotation_file": "annotations/2018/ad409798-ee94-4436-92c5-92669193be14_2_ann.json",
+      "sentence_index": 8,
+      "article_sha256": "52214724012ed0422698c3305c63692ecee80432b4cdf0158b1d58372664b55f",
+      "annotation_sha256": "c4795272cd673af271a19ddd2b3c02388a3b44e1f151582ed65ba6aa6e283a68",
+      "publisher": "nyt",
+      "date": "2018-08-18",
+      "word_count": 24,
+      "gold": [
+        {
+          "start": 12,
+          "end": 17,
+          "bias": "lex",
+          "quoted": true,
+          "speaker": "Donald_Trump",
+          "target": "social_media_companies",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "af996942-a8ed-489c-b641-c16a5f8f804b:p0",
+      "source_sha256": "b68d4f2f96e4e229a99aa6c6acdd3cca40a1cf6c18abe3b28fe48c1771a1a1d4",
+      "stratum": "informational",
+      "event_id": "c21cb217-3e2c-49bd-884d-5c74a165ef10",
+      "article_id": "af996942-a8ed-489c-b641-c16a5f8f804b",
+      "article_file": "articles/2011/c21cb217-3e2c-49bd-884d-5c74a165ef10_3.json",
+      "annotation_file": "annotations/2011/c21cb217-3e2c-49bd-884d-5c74a165ef10_3_ann.json",
+      "sentence_index": 0,
+      "article_sha256": "ab48026f33e085eda891f63cabf0112252ce3359fdf020f493cfc9a4aec1be7e",
+      "annotation_sha256": "04c79f54847470a8e778be161abd989f230c448b48eadb28292df8e023af160d",
+      "publisher": "hpo",
+      "date": "2011-06-01",
+      "word_count": 34,
+      "gold": [
+        {
+          "start": 0,
+          "end": 79,
+          "bias": "inf",
+          "quoted": false,
+          "speaker": "",
+          "target": "Anthony_Weiner",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "f0a234a6-9142-44dd-abc3-e12336a00c75:p19",
+      "source_sha256": "ae7215852afce04e78b3107b959d5df7a316f5075124be7e0fc8170e87cb0e4c",
+      "stratum": "informational",
+      "event_id": "47a209b0-fc26-4a0a-a1fe-e4310d1d2419",
+      "article_id": "f0a234a6-9142-44dd-abc3-e12336a00c75",
+      "article_file": "articles/2017/47a209b0-fc26-4a0a-a1fe-e4310d1d2419_3.json",
+      "annotation_file": "annotations/2017/47a209b0-fc26-4a0a-a1fe-e4310d1d2419_3_ann.json",
+      "sentence_index": 19,
+      "article_sha256": "033a1c328cbb6dc48e5edb23d735fdcf6560f83aaf3720f23f637f3358f4e8ca",
+      "annotation_sha256": "08a9a5e66868f5bde8ca4f291acab3bc24aec1424e177babedead3da830b4a71",
+      "publisher": "hpo",
+      "date": "2017-03-25",
+      "word_count": 15,
+      "gold": [
+        {
+          "start": 0,
+          "end": 89,
+          "bias": "inf",
+          "quoted": false,
+          "speaker": "",
+          "target": "Democratic_lawmakers",
+          "polarity": "pos"
+        }
+      ]
+    },
+    {
+      "id": "d36907c6-327f-44c7-bea1-b8d1099436e7:p9",
+      "source_sha256": "f554e579f37ec09952359fb82482d507c440fa9941e1f4f6f97b9d6946560868",
+      "stratum": "unannotated",
+      "event_id": "58ed2376-35a0-453a-a08e-5cd87e3bdea5",
+      "article_id": "d36907c6-327f-44c7-bea1-b8d1099436e7",
+      "article_file": "articles/2014/58ed2376-35a0-453a-a08e-5cd87e3bdea5_1.json",
+      "annotation_file": "annotations/2014/58ed2376-35a0-453a-a08e-5cd87e3bdea5_1_ann.json",
+      "sentence_index": 9,
+      "article_sha256": "817d15b8924025a56563ac761bd437ab15ba9f814536e085344447970b26f786",
+      "annotation_sha256": "6debab7833df3beb592f042be839dfd26a3f2b172df6463ea6697a82add1384b",
+      "publisher": "fox",
+      "date": "2014-02-26",
+      "word_count": 33,
+      "gold": []
+    },
+    {
+      "id": "275aec12-0952-46f4-84d1-64815517fb93:p8",
+      "source_sha256": "7c03dba982da144cbd056fec491f31b6c557d9d75c5c390238d2bb0aa9c8569c",
+      "stratum": "informational",
+      "event_id": "3db93526-a344-4ea4-8772-3734d0cfdfb1",
+      "article_id": "275aec12-0952-46f4-84d1-64815517fb93",
+      "article_file": "articles/2011/3db93526-a344-4ea4-8772-3734d0cfdfb1_3.json",
+      "annotation_file": "annotations/2011/3db93526-a344-4ea4-8772-3734d0cfdfb1_3_ann.json",
+      "sentence_index": 8,
+      "article_sha256": "9c316a3f90855f27e014a61a0c1380f497be6c890b6608d85774176fa84da910",
+      "annotation_sha256": "63865df70b6be9d1af63cbe4235ee7a5d97aa973a6236dacfe341e3c83618f08",
+      "publisher": "nyt",
+      "date": "2011-12-07",
+      "word_count": 17,
+      "gold": [
+        {
+          "start": 109,
+          "end": 130,
+          "bias": "inf",
+          "quoted": true,
+          "speaker": "other_anti",
+          "target": "Rick_Perry",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "ea48f3f5-b83d-44f0-bfcd-dcc267262604:p13",
+      "source_sha256": "286740c47600f4296dd8b12a43a372898be4031faedbaa57fa3255fb2a5b5cbd",
+      "stratum": "informational",
+      "event_id": "0c78e748-efbf-417c-a8c1-beeb6480147f",
+      "article_id": "ea48f3f5-b83d-44f0-bfcd-dcc267262604",
+      "article_file": "articles/2017/0c78e748-efbf-417c-a8c1-beeb6480147f_1.json",
+      "annotation_file": "annotations/2017/0c78e748-efbf-417c-a8c1-beeb6480147f_1_ann.json",
+      "sentence_index": 13,
+      "article_sha256": "4d684a9a4641e7b80be998207af69b90ba4b434435873b432d10e3ffef485443",
+      "annotation_sha256": "4fcec26d4cded85d78340891b1cf84e38f24746cd44fa6133d8a354c56b9dfa7",
+      "publisher": "nyt",
+      "date": "2017-12-04",
+      "word_count": 23,
+      "gold": [
+        {
+          "start": 0,
+          "end": 125,
+          "bias": "inf",
+          "quoted": false,
+          "speaker": "",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "bf45994d-2159-4c28-9d63-ff12c5337bf5:p34",
+      "source_sha256": "4b9d2fd824ae468faa877b00a4bcf0edc7340671d5dc8b7f6716489c1d5eefc2",
+      "stratum": "unannotated",
+      "event_id": "85475456-f38e-4c30-895d-ca2c819c6af1",
+      "article_id": "bf45994d-2159-4c28-9d63-ff12c5337bf5",
+      "article_file": "articles/2010/85475456-f38e-4c30-895d-ca2c819c6af1_1.json",
+      "annotation_file": "annotations/2010/85475456-f38e-4c30-895d-ca2c819c6af1_1_ann.json",
+      "sentence_index": 34,
+      "article_sha256": "586bb779f3eb994adb97181fcdb60f761b5d21a32cc03c308a829a95d2070604",
+      "annotation_sha256": "4c6dcb36f16f4e4eb28b54ebfc62f1d3698e8f814edb8e44bb1d47295368e04d",
+      "publisher": "nyt",
+      "date": "2010-05-17",
+      "word_count": 30,
+      "gold": []
+    },
+    {
+      "id": "847d3a62-f06b-449e-8be1-f864e4d88a2d:p4",
+      "source_sha256": "fe1c239fee4119a023046e27b2acbf89e10a94026328bb3f4f39be0f4f530072",
+      "stratum": "informational",
+      "event_id": "2ec04201-2016-4227-baf7-ba8289058203",
+      "article_id": "847d3a62-f06b-449e-8be1-f864e4d88a2d",
+      "article_file": "articles/2012/2ec04201-2016-4227-baf7-ba8289058203_2.json",
+      "annotation_file": "annotations/2012/2ec04201-2016-4227-baf7-ba8289058203_2_ann.json",
+      "sentence_index": 4,
+      "article_sha256": "578178d3ff83bb86fa8776a5627916e8823355756e0207d22d08dd0e4b183491",
+      "annotation_sha256": "750be09c56fe207747c5778b33191501ff33875afeab9944a4b2219bd419b9a5",
+      "publisher": "hpo",
+      "date": "2012-08-14",
+      "word_count": 19,
+      "gold": [
+        {
+          "start": 0,
+          "end": 104,
+          "bias": "inf",
+          "quoted": true,
+          "speaker": "other_anti",
+          "target": "Obama_campaign",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "3bc7d2c3-d9b2-43d5-b34b-d36dd0b0ac49:p12",
+      "source_sha256": "a94288af6ed598fcd7d7fec33eec3ece73cebc0941f213222ad9bf4d8829f69f",
+      "stratum": "lexical",
+      "event_id": "b7021938-ff8d-42ea-adec-5704c0b65237",
+      "article_id": "3bc7d2c3-d9b2-43d5-b34b-d36dd0b0ac49",
+      "article_file": "articles/2019/b7021938-ff8d-42ea-adec-5704c0b65237_1.json",
+      "annotation_file": "annotations/2019/b7021938-ff8d-42ea-adec-5704c0b65237_1_ann.json",
+      "sentence_index": 12,
+      "article_sha256": "fd65e26ce9b710598fa042ad400fd224a5457794e8c0be3c0eb32a7f2a697fe4",
+      "annotation_sha256": "b90153194baf4760d08980b8cfab2f9db84df99818490f7823f5bb8322d6c4e3",
+      "publisher": "fox",
+      "date": "2019-03-28",
+      "word_count": 25,
+      "gold": [
+        {
+          "start": 45,
+          "end": 57,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Adam_Schiff",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "9e1c1946-d568-4435-a7fe-20df1bbf3618:p2",
+      "source_sha256": "18a71f886c37fdae4c66eb674285a90be8b6bb5509e38a0b76888dc700101368",
+      "stratum": "lexical",
+      "event_id": "97566c74-e000-49fb-b091-e6ec6e179de0",
+      "article_id": "9e1c1946-d568-4435-a7fe-20df1bbf3618",
+      "article_file": "articles/2011/97566c74-e000-49fb-b091-e6ec6e179de0_1.json",
+      "annotation_file": "annotations/2011/97566c74-e000-49fb-b091-e6ec6e179de0_1_ann.json",
+      "sentence_index": 2,
+      "article_sha256": "060fd23780dde5bc0b26c616fb21ebbdfbba02c0df9fab757218206dbf35fd52",
+      "annotation_sha256": "f287315e678fee97ba2deb1e6979b9da624b0502d0fa723369ba767e98b6915c",
+      "publisher": "NYT",
+      "date": "2011-12-13",
+      "word_count": 34,
+      "gold": [
+        {
+          "start": 147,
+          "end": 154,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "34ed48f7-3ad7-47ee-953d-906aad9b37fd:p0",
+      "source_sha256": "007ae89c63c16f66c094098a631e9ee5053e5ebc1563631a3f4b2175e340560e",
+      "stratum": "unannotated",
+      "event_id": "58f414e5-a122-49f5-819e-512d91069da5",
+      "article_id": "34ed48f7-3ad7-47ee-953d-906aad9b37fd",
+      "article_file": "articles/2017/58f414e5-a122-49f5-819e-512d91069da5_1.json",
+      "annotation_file": "annotations/2017/58f414e5-a122-49f5-819e-512d91069da5_1_ann.json",
+      "sentence_index": 0,
+      "article_sha256": "c129dacdf3cde37b8591820bbae39b3414abcb9ca1ad11e069c8719009f3fd24",
+      "annotation_sha256": "ca03810d472f762ba3f6d73456e5ebb4b6463c0c66df847bc441bbda9e8722ce",
+      "publisher": "fox",
+      "date": "2017-06-15",
+      "word_count": 43,
+      "gold": []
+    },
+    {
+      "id": "129e1589-1b56-41f7-9f3a-bea6caef5eb3:p6",
+      "source_sha256": "9e7814cb9ef54b207aff718887643b721c4902a1eb3b9ee238464c234028e89f",
+      "stratum": "lexical",
+      "event_id": "f11c2566-848a-4e29-b8c5-4de0a81114e4",
+      "article_id": "129e1589-1b56-41f7-9f3a-bea6caef5eb3",
+      "article_file": "articles/2012/f11c2566-848a-4e29-b8c5-4de0a81114e4_3.json",
+      "annotation_file": "annotations/2012/f11c2566-848a-4e29-b8c5-4de0a81114e4_3_ann.json",
+      "sentence_index": 6,
+      "article_sha256": "34898ceafe083b0701effb92f461563c3d6223d3b1e0d3b1411b93f77721d417",
+      "annotation_sha256": "00be48092ddc9132e3c693201f7bb20324a5a05cfd355ff4af49c4a370ed6442",
+      "publisher": "fox",
+      "date": "2012-04-23",
+      "word_count": 21,
+      "gold": [
+        {
+          "start": 79,
+          "end": 100,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Democrats",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "5e64563a-b779-4c45-973e-949f78acef0a:p2",
+      "source_sha256": "dca195b7af0f98960e3499d9937aa20332083d129f4406a784cafe12cf2e6263",
+      "stratum": "unannotated",
+      "event_id": "97b1305c-13ca-4b74-a56a-f459bd79dfaf",
+      "article_id": "5e64563a-b779-4c45-973e-949f78acef0a",
+      "article_file": "articles/2010/97b1305c-13ca-4b74-a56a-f459bd79dfaf_1.json",
+      "annotation_file": "annotations/2010/97b1305c-13ca-4b74-a56a-f459bd79dfaf_1_ann.json",
+      "sentence_index": 2,
+      "article_sha256": "52b0dd51eb0319d38ff23ac298b714cba576ce61d9843e2f10db7e5a2cc4789b",
+      "annotation_sha256": "2d5f83658d144bb39c5a923d6638ac9225ee9afa7dd2e7b6df94f2b3c3419177",
+      "publisher": "nyt",
+      "date": "2010-07-13",
+      "word_count": 24,
+      "gold": []
+    },
+    {
+      "id": "f3d0ebba-4805-4def-b3ac-4359d5937556:p8",
+      "source_sha256": "edaa85dbf47b3d2678b5ef9b603d84f990c8dcc043089e80586c43ffe92150b8",
+      "stratum": "informational",
+      "event_id": "6f95dcb9-e960-45ac-8c0e-91b85724c909",
+      "article_id": "f3d0ebba-4805-4def-b3ac-4359d5937556",
+      "article_file": "articles/2010/6f95dcb9-e960-45ac-8c0e-91b85724c909_3.json",
+      "annotation_file": "annotations/2010/6f95dcb9-e960-45ac-8c0e-91b85724c909_3_ann.json",
+      "sentence_index": 8,
+      "article_sha256": "aadd950e9bb31a9f677f07c7031a8b6aa6f510133116e481e77b5ee3db3ceda5",
+      "annotation_sha256": "7ced7ff93a928ddbc02d4d1da1e361a7f62feb6c21ee541b87ce9b2be035d668",
+      "publisher": "hpo",
+      "date": "2010-02-20",
+      "word_count": 29,
+      "gold": [
+        {
+          "start": 120,
+          "end": 150,
+          "bias": "inf",
+          "quoted": false,
+          "speaker": "",
+          "target": "Glenn_Beck",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "163ce2ad-53d4-4afb-a84c-ab42f2a088d0:p8",
+      "source_sha256": "735002b44bb7c4b63e21c41ffa5b42760b0eddb6f29ef60fbec4709f757d72e7",
+      "stratum": "lexical",
+      "event_id": "2f3e86b6-8443-47bd-9cd3-491c90a59fe9",
+      "article_id": "163ce2ad-53d4-4afb-a84c-ab42f2a088d0",
+      "article_file": "articles/2019/2f3e86b6-8443-47bd-9cd3-491c90a59fe9_3.json",
+      "annotation_file": "annotations/2019/2f3e86b6-8443-47bd-9cd3-491c90a59fe9_3_ann.json",
+      "sentence_index": 8,
+      "article_sha256": "87e036521f9466c76b7c9ccaa2f2e1d35a3e48ce77444c870cb2accd6d7c12f6",
+      "annotation_sha256": "66afa7e3662561c7113c9ac32f5c4a09f90655bdc9efa8a6ecb26836af2d298b",
+      "publisher": "nyt",
+      "date": "2019-03-08",
+      "word_count": 27,
+      "gold": [
+        {
+          "start": 77,
+          "end": 113,
+          "bias": "lex",
+          "quoted": true,
+          "speaker": "House_Republicans",
+          "target": "House_Democrats",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "ded2909d-3f05-4ba2-a9f5-777a69b215db:p6",
+      "source_sha256": "d1713119b248d89da2bb9083ecb640acb8ad81a868cea55bb73fe8045f923f21",
+      "stratum": "informational",
+      "event_id": "472158a1-4e39-4214-8397-904e66f2b4c5",
+      "article_id": "ded2909d-3f05-4ba2-a9f5-777a69b215db",
+      "article_file": "articles/2016/472158a1-4e39-4214-8397-904e66f2b4c5_2.json",
+      "annotation_file": "annotations/2016/472158a1-4e39-4214-8397-904e66f2b4c5_2_ann.json",
+      "sentence_index": 6,
+      "article_sha256": "8992a1a85175b49aca1f0c9f87a96a4c78d0632e806b7cd2dc876b369e3cfb27",
+      "annotation_sha256": "b6f85e22c57805bd30eba023a3dedf462cb123bfb1e735c8b48aa3b33a724d83",
+      "publisher": "fox",
+      "date": "2016-07-27",
+      "word_count": 32,
+      "gold": [
+        {
+          "start": 38,
+          "end": 223,
+          "bias": "inf",
+          "quoted": true,
+          "speaker": "Michael_Bloomberg",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "0acf2cec-34eb-4482-806d-efaf5d8a1501:p12",
+      "source_sha256": "79efce769985e6167fdcfd074298272321a3dc271bb7c492bbd610c94f7c2e3b",
+      "stratum": "informational",
+      "event_id": "7f9c83f7-3efa-4c7a-adef-3ebdeda96042",
+      "article_id": "0acf2cec-34eb-4482-806d-efaf5d8a1501",
+      "article_file": "articles/2015/7f9c83f7-3efa-4c7a-adef-3ebdeda96042_3.json",
+      "annotation_file": "annotations/2015/7f9c83f7-3efa-4c7a-adef-3ebdeda96042_3_ann.json",
+      "sentence_index": 12,
+      "article_sha256": "5c4e6c104d5d82dfb7e63e15f1a914dfffc83e3723dd140f2e2f257ea1398b93",
+      "annotation_sha256": "db16693ddc5433a5029782446768c8dc74ad4e2728581dd268707ccefe3acf4f",
+      "publisher": "hpo",
+      "date": "2015-05-13",
+      "word_count": 35,
+      "gold": [
+        {
+          "start": 110,
+          "end": 219,
+          "bias": "inf",
+          "quoted": false,
+          "speaker": "",
+          "target": "Marco_Rubio",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "cd941022-4457-4dd5-9a9c-d7aea113b54f:p3",
+      "source_sha256": "ec43b2c4999c49f2e9647d7e15c65aee0d163ccfa4f57e9dea3def0b1c806017",
+      "stratum": "informational",
+      "event_id": "8385a996-1afc-4778-a06d-7070a8f19e27",
+      "article_id": "cd941022-4457-4dd5-9a9c-d7aea113b54f",
+      "article_file": "articles/2016/8385a996-1afc-4778-a06d-7070a8f19e27_3.json",
+      "annotation_file": "annotations/2016/8385a996-1afc-4778-a06d-7070a8f19e27_3_ann.json",
+      "sentence_index": 3,
+      "article_sha256": "6ae98b0a7d67899b587daad168f18382186a24e4c7d05db04cb245ff398acbff",
+      "annotation_sha256": "574df60dbd06a3eb8b726917b9142dd6d3c66cee60b9b6ec970c25085909690d",
+      "publisher": "fox",
+      "date": "2016-07-13",
+      "word_count": 18,
+      "gold": [
+        {
+          "start": 0,
+          "end": 113,
+          "bias": "inf",
+          "quoted": true,
+          "speaker": "Donald_Trump",
+          "target": "Ruth_Bader_Ginsburg",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "6871de7a-47d9-4401-915c-9f75f50c3e9e:p10",
+      "source_sha256": "40b29bac83ff59dd753f0eb9f7e2357262464d8fa28ccfa4b48efb78b3bca271",
+      "stratum": "unannotated",
+      "event_id": "eadabee7-3db9-43c4-a485-3e8b1882cd3c",
+      "article_id": "6871de7a-47d9-4401-915c-9f75f50c3e9e",
+      "article_file": "articles/2016/eadabee7-3db9-43c4-a485-3e8b1882cd3c_2.json",
+      "annotation_file": "annotations/2016/eadabee7-3db9-43c4-a485-3e8b1882cd3c_2_ann.json",
+      "sentence_index": 10,
+      "article_sha256": "31fae9f4a4badccb44a3a7b063a92d5f0c1356c0b80338d6b69f2ea8a936b535",
+      "annotation_sha256": "3c00816be73291e934b9c827051b019931c70cc01e86266c23f5b7b4fca7082f",
+      "publisher": "fox",
+      "date": "2016-06-09",
+      "word_count": 21,
+      "gold": []
+    },
+    {
+      "id": "06ed783e-f462-4003-af6a-20ee3e69b6a4:p7",
+      "source_sha256": "f7bb95cb4268fdd01770dae1a918ba12882811af262956766746a4cabb6b997d",
+      "stratum": "informational",
+      "event_id": "3ae35b16-7f7f-4a5e-9f24-5ce724106a73",
+      "article_id": "06ed783e-f462-4003-af6a-20ee3e69b6a4",
+      "article_file": "articles/2019/3ae35b16-7f7f-4a5e-9f24-5ce724106a73_2.json",
+      "annotation_file": "annotations/2019/3ae35b16-7f7f-4a5e-9f24-5ce724106a73_2_ann.json",
+      "sentence_index": 7,
+      "article_sha256": "00a48d4ce54c56dbec3d6ee6a616772f1ac55cf210c35ec9c4ff7a7466663bfd",
+      "annotation_sha256": "ab6a15104831b8177b0204bae995f329604e21403559fb603c9f9f7c4af0eb8f",
+      "publisher": "fox",
+      "date": "2019-02-15",
+      "word_count": 19,
+      "gold": [
+        {
+          "start": 0,
+          "end": 28,
+          "bias": "inf",
+          "quoted": false,
+          "speaker": "",
+          "target": "Donald_Trump",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "70e6078e-6c9a-41e8-a832-e04e0931b31b:p16",
+      "source_sha256": "7687a6456fd9734325c115cf2ef12390ea7a998dcb3d8a5a43a2e6cbca369bf5",
+      "stratum": "lexical",
+      "event_id": "b5eefefb-2a33-45de-abe1-f855c94165f4",
+      "article_id": "70e6078e-6c9a-41e8-a832-e04e0931b31b",
+      "article_file": "articles/2012/b5eefefb-2a33-45de-abe1-f855c94165f4_2.json",
+      "annotation_file": "annotations/2012/b5eefefb-2a33-45de-abe1-f855c94165f4_2_ann.json",
+      "sentence_index": 16,
+      "article_sha256": "4c63829099c5a5d0efe90d5531c3e490bbcced407686a85db6e9d67374fcbdda",
+      "annotation_sha256": "4a8cd09f59cc5d5b39028e3b0c11e0d66482e910bad3f7c62f95db3b7bec6597",
+      "publisher": "hpo",
+      "date": "2012-10-12",
+      "word_count": 26,
+      "gold": [
+        {
+          "start": 109,
+          "end": 117,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Joe_Biden",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "e73469ad-2ec0-4b96-8b64-ec9cdc1cbfba:p12",
+      "source_sha256": "19d175470a9a0d8685b5973779acbaa524da49c3ef58bf84be3a943c5013a8fa",
+      "stratum": "lexical",
+      "event_id": "2a3fde8a-082a-4d8f-9567-f7e8366c0200",
+      "article_id": "e73469ad-2ec0-4b96-8b64-ec9cdc1cbfba",
+      "article_file": "articles/2018/2a3fde8a-082a-4d8f-9567-f7e8366c0200_1.json",
+      "annotation_file": "annotations/2018/2a3fde8a-082a-4d8f-9567-f7e8366c0200_1_ann.json",
+      "sentence_index": 12,
+      "article_sha256": "a499cf09150a40734613a88fda7707887a7b37cdf57143bfa952f71817ffb0c2",
+      "annotation_sha256": "fd8f4cff7441736403f6d73cfc1f73fb8df7dee24d78a7995773afe92ac4e10b",
+      "publisher": "fox",
+      "date": "2018-08-13",
+      "word_count": 17,
+      "gold": [
+        {
+          "start": 51,
+          "end": 61,
+          "bias": "lex",
+          "quoted": true,
+          "speaker": "Donald_Trump",
+          "target": "Peter_Strzok",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "0a21258c-2afe-48ad-ab32-1b7c1a9ec3c6:p0",
+      "source_sha256": "7c806b4c82f41926c97e75f20ea8a7c4e631ccbbfadf47fc783f7c10820fde3b",
+      "stratum": "lexical",
+      "event_id": "65cb14cb-2d27-41e5-a2be-6fd6314f4363",
+      "article_id": "0a21258c-2afe-48ad-ab32-1b7c1a9ec3c6",
+      "article_file": "articles/2012/65cb14cb-2d27-41e5-a2be-6fd6314f4363_1.json",
+      "annotation_file": "annotations/2012/65cb14cb-2d27-41e5-a2be-6fd6314f4363_1_ann.json",
+      "sentence_index": 0,
+      "article_sha256": "677be78a50ff90b281fa60ebcba9b91bdcf905f0753cf652bda80c735914bce2",
+      "annotation_sha256": "53ebd6eb176c502933b49377fca393762594c3bedf337fadbebad99df9874bfb",
+      "publisher": "nyt",
+      "date": "2012-02-19",
+      "word_count": 37,
+      "gold": [
+        {
+          "start": 100,
+          "end": 105,
+          "bias": "lex",
+          "quoted": true,
+          "speaker": "Rick_Santorum",
+          "target": "Barack_Obama",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "f004a025-4a04-4f96-9c6e-31418a55e325:p5",
+      "source_sha256": "78cc5825e8441076a48c42d32a2af42f7608ac9c003dd79ed19c4878735942a4",
+      "stratum": "lexical",
+      "event_id": "d1344998-0e7c-409e-aaad-df5be687fc94",
+      "article_id": "f004a025-4a04-4f96-9c6e-31418a55e325",
+      "article_file": "articles/2014/d1344998-0e7c-409e-aaad-df5be687fc94_3.json",
+      "annotation_file": "annotations/2014/d1344998-0e7c-409e-aaad-df5be687fc94_3_ann.json",
+      "sentence_index": 5,
+      "article_sha256": "15f7b3b01a89880cfc6c9d4ea190b118007a97eb0687cea0d3bfd58480a4da9a",
+      "annotation_sha256": "db61c36dd4a9003359ace910876d805511abcad6cd2c6e28ebf41d54871c977d",
+      "publisher": "hpo",
+      "date": "2014-01-23",
+      "word_count": 35,
+      "gold": [
+        {
+          "start": 153,
+          "end": 181,
+          "bias": "lex",
+          "quoted": false,
+          "speaker": "",
+          "target": "Chris_Christie",
+          "polarity": "neg"
+        }
+      ]
+    },
+    {
+      "id": "cdaba747-9514-4a92-b1a9-262da1be54ab:p37",
+      "source_sha256": "b9e6f53c6e5940a2afde707c130ac56ac1c3c3ed13e4cc7ab38d93adff1778eb",
+      "stratum": "unannotated",
+      "event_id": "0d10341a-9dba-4374-a524-814c300d1611",
+      "article_id": "cdaba747-9514-4a92-b1a9-262da1be54ab",
+      "article_file": "articles/2019/0d10341a-9dba-4374-a524-814c300d1611_1.json",
+      "annotation_file": "annotations/2019/0d10341a-9dba-4374-a524-814c300d1611_1_ann.json",
+      "sentence_index": 37,
+      "article_sha256": "a8f9c3edcb7bec71d1d179eeae9674feb640a023ecd3d3ab309317727d1a2b50",
+      "annotation_sha256": "6a14c0a87ae49764f632c968c52f4d85e5db7e462f2bc2eb79f421675c741838",
+      "publisher": "fox",
+      "date": "2019-01-04",
+      "word_count": 28,
+      "gold": []
+    }
+  ]
+}

@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "provenance": "AI-authored synthetic development set, frozen before inference. Not recovered pilot, natural news, independent human labels, or held-out accuracy evaluation.",
+  "scope": "Narrow evaluative political wording; ordinary advocacy and nonpolitical criticism excluded. Quoted and mentioned phrases should not imply narrator endorsement.",
+  "cases": [
+    {
+      "id": "DEV01",
+      "category": "neutral",
+      "text": "The council voted 6 to 3 to approve the housing proposal. The ordinance permits buildings of up to six stories near train stations.",
+      "text_sha256": "527d586e75b9c30009c3a3db4bbc585d49607d117c0a6a595a47171bf825a6ea",
+      "expected_spans": []
+    },
+    {
+      "id": "DEV02",
+      "category": "neutral",
+      "text": "The governor signed the budget on Friday. It allocates 240 million dollars to road maintenance and 90 million dollars to public transit.",
+      "text_sha256": "ebb2779f79c00e940bfd375e8075bf8484bc33c675c5ab84ea999e01e956f97e",
+      "expected_spans": []
+    },
+    {
+      "id": "DEV03",
+      "category": "neutral",
+      "text": "The proposed rule requires employers with more than 100 workers to submit an annual emissions report.",
+      "text_sha256": "10c989f81f94a57585fc45167ac603287e86ecfc565fc66245f5dabe4ccba314",
+      "expected_spans": []
+    },
+    {
+      "id": "DEV04",
+      "category": "neutral",
+      "text": "The candidate received 48 percent of the vote. Her opponent received 51 percent, with the remaining votes going to other candidates.",
+      "text_sha256": "98fadd93ca6579076dd07d85a46fe45de545f8e96ccea403ac31490b0ec2d77f",
+      "expected_spans": []
+    },
+    {
+      "id": "DEV05",
+      "category": "neutral",
+      "text": "The department reported that border encounters fell by 12 percent compared with the previous month.",
+      "text_sha256": "f63f3c0537ffde3fecafde8479e9fe32ffe83212298e08a5e9e168a0bfa3af74",
+      "expected_spans": []
+    },
+    {
+      "id": "DEV06",
+      "category": "neutral",
+      "text": "The court ruled that the agency lacked authority under the statute. Two judges dissented.",
+      "text_sha256": "6ee46b4cfd4ead8fd9c9fbaf8edd24c0abaddc582cfc433b6152f18562949a48",
+      "expected_spans": []
+    },
+    {
+      "id": "DEV07",
+      "category": "advocacy",
+      "text": "I support expanding public health insurance. Congress should pass the proposal this year.",
+      "text_sha256": "a4e7d3fb0ffdedd66604c3f7cfd902cce43f7ff39035cc816f407092e342ea60",
+      "expected_spans": []
+    },
+    {
+      "id": "DEV08",
+      "category": "advocacy",
+      "text": "I oppose the proposed tax increase. Lawmakers should keep the current rate.",
+      "text_sha256": "38999a66ed6f13791bd40a5f68ac55c13d302f2fb23bc5df5056c42f2cba2474",
+      "expected_spans": []
+    },
+    {
+      "id": "DEV09",
+      "category": "advocacy",
+      "text": "The city should build more housing near transit. I would vote for the zoning change.",
+      "text_sha256": "3fbb42f386f95d7c2827d7b6029dda73f2aeb2c53cdc5a330494e887fdf6e830",
+      "expected_spans": []
+    },
+    {
+      "id": "DEV10",
+      "category": "advocacy",
+      "text": "The government should reduce spending on this program. I favor a smaller federal budget.",
+      "text_sha256": "714fc3c6fefc66d7b8601700aa003c572e8408dfae85cd0b6cf6463d13a3809e",
+      "expected_spans": []
+    },
+    {
+      "id": "DEV11",
+      "category": "loaded",
+      "text": "The mayor unveiled a cruel assault on working families. The proposal reduces the rental assistance budget.",
+      "text_sha256": "321586747ceb27aaf2a30443e4b127b17407341eca861acfd81764efa7fdf9a6",
+      "expected_spans": [
+        {
+          "text": "cruel assault on working families",
+          "start": 21,
+          "end": 54,
+          "attribution": "author"
+        }
+      ]
+    },
+    {
+      "id": "DEV12",
+      "category": "loaded",
+      "text": "Congress approved another shameless giveaway to corporate donors. The bill changes the depreciation schedule for equipment.",
+      "text_sha256": "2bcc4a77cf34535267d278bf085bb877da538c165da54f22d691eda36ea10dd5",
+      "expected_spans": [
+        {
+          "text": "shameless giveaway to corporate donors",
+          "start": 26,
+          "end": 64,
+          "attribution": "author"
+        }
+      ]
+    },
+    {
+      "id": "DEV13",
+      "category": "loaded",
+      "text": "The governor finally confronted the radical bureaucrats strangling our economy. The order suspends a reporting requirement.",
+      "text_sha256": "d967ca38c5aa407be7db42e306bbaa1ab69a4e892be557a1f54ab496d86f7e8e",
+      "expected_spans": [
+        {
+          "text": "radical bureaucrats strangling our economy",
+          "start": 36,
+          "end": 78,
+          "attribution": "author"
+        }
+      ]
+    },
+    {
+      "id": "DEV14",
+      "category": "loaded",
+      "text": "The senator promoted a heartless attack on the poor. The measure changes eligibility for food assistance.",
+      "text_sha256": "5e5581a1264fee8398c200849732f55a2f1b95894b2eb2b63124a9e44d685ffd",
+      "expected_spans": [
+        {
+          "text": "heartless attack on the poor",
+          "start": 23,
+          "end": 51,
+          "attribution": "author"
+        }
+      ]
+    },
+    {
+      "id": "DEV15",
+      "category": "loaded",
+      "text": "The administration presented a heroic defense of freedom. Its proposal would limit federal oversight of local agencies.",
+      "text_sha256": "acf2c22d47d2a8918ff2556516e2305a1555a179c2980b57e0318c2e6ad13b66",
+      "expected_spans": [
+        {
+          "text": "heroic defense of freedom",
+          "start": 31,
+          "end": 56,
+          "attribution": "author"
+        }
+      ]
+    },
+    {
+      "id": "DEV16",
+      "category": "loaded",
+      "text": "The party offered a pathetic excuse for leadership. Its members postponed the budget vote.",
+      "text_sha256": "8056972ca396a45d1ba1b6e9c89fbc0665914e6116d10ff488714f7f13f0d038",
+      "expected_spans": [
+        {
+          "text": "pathetic excuse for leadership",
+          "start": 20,
+          "end": 50,
+          "attribution": "author"
+        }
+      ]
+    },
+    {
+      "id": "DEV17",
+      "category": "quoted",
+      "text": "The mayor called the proposal “a cruel assault on working families.” The council will vote on Tuesday.",
+      "text_sha256": "4786dd472a7c547fede17acb4f236862af00a91f7b875826f0a6fe44a1978a4b",
+      "expected_spans": [
+        {
+          "text": "cruel assault on working families",
+          "start": 33,
+          "end": 66,
+          "attribution": "quoted"
+        }
+      ]
+    },
+    {
+      "id": "DEV18",
+      "category": "quoted",
+      "text": "“This is a shameless giveaway to corporate donors,” the senator said. The reporter then described the bill’s depreciation provisions.",
+      "text_sha256": "d803022cb969afce25452434a2df6cf943dc6a68ce7bcf0ba2978e5307bab6cb",
+      "expected_spans": [
+        {
+          "text": "shameless giveaway to corporate donors",
+          "start": 11,
+          "end": 49,
+          "attribution": "quoted"
+        }
+      ]
+    },
+    {
+      "id": "DEV19",
+      "category": "quoted",
+      "text": "The governor described agency officials as “radical bureaucrats strangling our economy.” The agency declined to comment.",
+      "text_sha256": "5f89924852f09a1f06baf20cde058953b3a38af3b6be7e6b2d6795a7e3c7351c",
+      "expected_spans": [
+        {
+          "text": "radical bureaucrats strangling our economy",
+          "start": 44,
+          "end": 86,
+          "attribution": "quoted"
+        }
+      ]
+    },
+    {
+      "id": "DEV20",
+      "category": "quoted",
+      "text": "An advocate called the measure a “heartless attack on the poor.” The department said eligibility rules would change next year.",
+      "text_sha256": "1792184cac7d1ccc0058b7d9e084f0c1a5a293da6f9293146e46a518d11b02b1",
+      "expected_spans": [
+        {
+          "text": "heartless attack on the poor",
+          "start": 34,
+          "end": 62,
+          "attribution": "quoted"
+        }
+      ]
+    },
+    {
+      "id": "DEV21",
+      "category": "quoted",
+      "text": "A campaign statement described the proposal as a “heroic defense of freedom.” The article did not endorse that description.",
+      "text_sha256": "0c7381dceb913a716b015edace0d9ea67a6517b89c71d2757925746c4b0d3085",
+      "expected_spans": [
+        {
+          "text": "heroic defense of freedom",
+          "start": 50,
+          "end": 75,
+          "attribution": "quoted"
+        }
+      ]
+    },
+    {
+      "id": "DEV22",
+      "category": "quoted",
+      "text": "The opposition leader called the delay a “pathetic excuse for leadership.” Negotiations resume on Monday.",
+      "text_sha256": "dafe5e00664f2439cc9a0c69a35e662254ef7ffcc828f560f63cc4425f4c1063",
+      "expected_spans": [
+        {
+          "text": "pathetic excuse for leadership",
+          "start": 42,
+          "end": 72,
+          "attribution": "quoted"
+        }
+      ]
+    },
+    {
+      "id": "DEV23",
+      "category": "repeated",
+      "text": "The mayor called the plan “a cruel assault on working families.” In my view, it is indeed a cruel assault on working families.",
+      "text_sha256": "052c824d542340f0d86c9fb136882a31edfad8995fb9a5ff57847977939ea240",
+      "expected_spans": [
+        {
+          "text": "cruel assault on working families",
+          "start": 29,
+          "end": 62,
+          "attribution": "quoted"
+        },
+        {
+          "text": "cruel assault on working families",
+          "start": 92,
+          "end": 125,
+          "attribution": "author"
+        }
+      ]
+    },
+    {
+      "id": "DEV24",
+      "category": "repeated",
+      "text": "The senator said “shameless giveaway” twice: “This shameless giveaway must end.” The reporter recorded both remarks.",
+      "text_sha256": "e329d83759d24c85604e6886f962c6b879dccfe9f689c919cfbcdb5574e9268a",
+      "expected_spans": [
+        {
+          "text": "shameless giveaway",
+          "start": 18,
+          "end": 36,
+          "attribution": "quoted"
+        },
+        {
+          "text": "shameless giveaway",
+          "start": 51,
+          "end": 69,
+          "attribution": "quoted"
+        }
+      ]
+    },
+    {
+      "id": "DEV25",
+      "category": "negation",
+      "text": "The reporter explicitly rejected the phrase “heartless attack on the poor” and described the eligibility changes without adopting that characterization.",
+      "text_sha256": "1381cff3f8464777f94f30dbfffb517a58d7fa68cdfd18c6d34f7ad05dad96fa",
+      "expected_spans": [
+        {
+          "text": "heartless attack on the poor",
+          "start": 45,
+          "end": 73,
+          "attribution": "mentioned_not_endorsed"
+        }
+      ]
+    },
+    {
+      "id": "DEV26",
+      "category": "negation",
+      "text": "Calling every agency employee a “radical bureaucrat” is misleading. The article instead lists their statutory responsibilities.",
+      "text_sha256": "57ac51e4a6994fa851a48cd58c56118212d4c74a1457695718cf2ed4f5c432c5",
+      "expected_spans": [
+        {
+          "text": "radical bureaucrat",
+          "start": 33,
+          "end": 51,
+          "attribution": "mentioned_not_endorsed"
+        }
+      ]
+    },
+    {
+      "id": "DEV27",
+      "category": "mixed",
+      "text": "The committee voted 8 to 4. This disgraceful betrayal of voters now goes to the full chamber.",
+      "text_sha256": "d6ef8454920a9925b4c349972df2c3307832e97fcb83048a44e595b7ddae857e",
+      "expected_spans": [
+        {
+          "text": "disgraceful betrayal of voters",
+          "start": 33,
+          "end": 63,
+          "attribution": "author"
+        }
+      ]
+    },
+    {
+      "id": "DEV28",
+      "category": "mixed",
+      "text": "The bill lowers the tax rate by two percentage points. A supporter called it “a heroic defense of freedom,” while a critic called it “a shameless giveaway.”",
+      "text_sha256": "4127d125120d7fad583cbd45310aa2bb198ef52999c7809783dbe7f02fb827dc",
+      "expected_spans": [
+        {
+          "text": "heroic defense of freedom",
+          "start": 80,
+          "end": 105,
+          "attribution": "quoted"
+        },
+        {
+          "text": "shameless giveaway",
+          "start": 136,
+          "end": 154,
+          "attribution": "quoted"
+        }
+      ]
+    },
+    {
+      "id": "DEV29",
+      "category": "off_topic",
+      "text": "The striker delivered a pathetic excuse for a penalty kick. The visiting team won the match 2 to 1.",
+      "text_sha256": "2e031a287ad7a176bed875ea7826f33233feff1fc80174340d7643c1bbcb3afe",
+      "expected_spans": []
+    },
+    {
+      "id": "DEV30",
+      "category": "off_topic",
+      "text": "The film tells the story of a cruel king and a heroic defense of a mountain village. The review praises the soundtrack.",
+      "text_sha256": "6961a5f2c1e296600aac33afc8233962d9c2bcf33281510c781d0bb20c5d59ec",
+      "expected_spans": []
+    }
+  ]
+}

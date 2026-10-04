@@ -21,7 +21,7 @@ def wait(url,proc):
     raise RuntimeError('Startup timeout')
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--cases',type=Path);a=p.parse_args()
     a.output.mkdir(parents=True,exist_ok=False)
     m=json.loads((EXP/'native_runtime_manifest.json').read_text())
     binary=Path(m['runtime_server_path']);weights=Path(m['weights_path'])
@@ -44,11 +44,21 @@ def main():
             processes.append(api);wait('http://127.0.0.1:8093/openapi.json',api)
         report={'kind':'live_quantized_model_http_api_smoke','runtime':m,
                 'limitation':'Framing endpoint only; unrelated classifier startup bypassed using lifespan off. No website or quality validation.', 'rows':[]}
-        cases=json.loads((EXP/'diagnostics.json').read_text())['cases'][:2]
+        cases=json.loads(a.cases.read_text())['cases'] if a.cases else json.loads((EXP/'diagnostics.json').read_text())['cases'][:2]
+        if a.cases:
+            report['kind']='synthetic_development_http_api_run'
+            report['fixture_sha256']=sha(a.cases)
+            report['limitation']='AI-authored synthetic development expectations only; not an independent accuracy evaluation or baseline comparison. Classifier lifespan bypassed.'
         for case in cases:
             start=time.monotonic()
             req=urllib.request.Request('http://127.0.0.1:8093/framing',data=json.dumps({'text':case['text']}).encode(),headers={'Content-Type':'application/json'})
-            with urllib.request.urlopen(req,timeout=240) as r:body=json.load(r);status=r.status
+            try:
+                with urllib.request.urlopen(req,timeout=240) as r:body=json.load(r);status=r.status
+            except Exception as exc:
+                report['rows'].append({'id':case['id'],'seconds':time.monotonic()-start,'error':str(exc)})
+                (a.output/'results.json').write_text(json.dumps(report,indent=2)+'\n')
+                print(json.dumps({'case':case['id'],'error':str(exc)}),flush=True)
+                continue
             assert body['resolved_text']==case['text']
             assert all(case['text'][s['start']:s['end']]==s['text'] for s in body['spans'])
             report['rows'].append({'id':case['id'],'http_status':status,'seconds':time.monotonic()-start,'response':body})
