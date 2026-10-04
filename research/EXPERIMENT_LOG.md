@@ -1,5 +1,50 @@
 # Working experiment log (not a final report)
 
+## 2026-10-04 01:14 UTC heartbeat: CENTER-first hierarchy rejected
+
+Actual execution resumed around 05:19 UTC. Trained a fixed two-stage classifier
+inside each of the five frozen training-only event-string folds. Reused complete
+fold-local word TF-IDF transformation (vocabulary and IDF) after verifying artifact
+hashes. Stage one balanced binary CENTER/partisan used all fold training rows;
+stage two balanced LEFT/RIGHT used only partisan rows. Both logistic C=1, lbfgs,
+max_iter=1000, random_state=20261001. Fixed CENTER gate >=.5; otherwise conditional
+LEFT/RIGHT argmax. No threshold search. No validation or reserved test read.
+
+Saved joint scores CENTER=p, LEFT=(1-p)*qLEFT, RIGHT=(1-p)*qRIGHT; these sum to one
+but are not calibrated and intentionally need not share the hard-gate argmax.
+All 115 rows received OOF predictions (100% coverage, no abstentions).
+
+| Training-only OOF | Word baseline | Hierarchy |
+| --- | ---: | ---: |
+| Corpus-label matches | 58/115 | 55/115 |
+| Macro-F1 | .44234 | .35797 |
+| LEFT recall | .57895 | .57895 |
+| CENTER recall | .15385 (4/26) | 0 (0/26) |
+| RIGHT recall | .62745 | .64706 |
+| Unanimous-label matches | 25/54 | 20/54 |
+
+Only one row was predicted CENTER; its corpus label was RIGHT. CENTER-labeled
+rows' gate scores ranged .31706-.48346 (mean .43112); LEFT mean .41320, RIGHT
+mean .42804. Candidate failed the intended recall objective and is not promoted.
+This does not rule out hierarchical methods generally. Do not retune .5 from
+these held-out outcomes. No convergence warning observed; fits took 6-7 iterations.
+
+GPT-6 Astra Medium method-only critique completed through the requested terminal
+route, with no tools/files/network; saved research/data/hierarchy-method-20261004.txt.
+It stressed gate-error propagation, uncalibrated balanced-model scores and the
+development-only nature of the comparison. No parent model change claimed.
+Four tests passed for boundary, hard-gate/joint-score distinction and malformed
+probabilities. Checkpoints, protocol, split IDs, model hashes and all raw scores:
+research/checkpoints/hierarchy-cv-20261004. Committed report:
+research/results/hierarchy_cv_20261004.json. Corpus remains research-only due to
+noncommercial license and disputed labels; no independent high accuracy claimed.
+
+Local Chromium fallback repeated the prior frozen two-row live-browser smoke
+test; both HTTP 200, same LEFT outputs, zero page errors/failed requests/mobile
+overflow. It tested unchanged production, not the candidate. Raw evidence in
+outputs/live-browser-hierarchy-20261004, sanitized model and screenshot hashes in
+research/results/hierarchy_browser_20261004.json. No deployment performed.
+
 ## 2026-10-03 22:53 UTC heartbeat: training-fold overlap audit
 
 Audited 115 training rows across the five frozen event-string group folds, without
