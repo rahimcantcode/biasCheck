@@ -4,13 +4,15 @@ from pathlib import Path
 import numpy as np
 from scipy.optimize import minimize_scalar
 from scipy.special import logsumexp,softmax
+try:
+    from .report_contract import require_human_provenance
+except ImportError:
+    from report_contract import require_human_provenance
 
 
 def fit(report,target=.9,min_coverage=.8):
     if report['split']!='validation':raise ValueError('Only validation may be used for calibration.')
-    provenance=report.get('annotation_provenance') or {}
-    if not provenance.get('human_reviewed') or not provenance.get('reference'):
-        raise ValueError('Documented human-reviewed validation labels are required.')
+    require_human_provenance(report)
     rows=[r for r in report['predictions'] if r['gold'] in ['LEFT','CENTER','RIGHT']]
     if len(rows)<100:raise ValueError('At least 100 validation examples are required.')
     mapping={v:int(k) for k,v in report['model']['id2label'].items()}

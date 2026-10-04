@@ -3,6 +3,7 @@ import argparse,hashlib,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 from research.scripts.evaluate import summarize
+from research.scripts.report_contract import require_matching_reports
 
 def point_estimate_gates(metrics):
     delivered=metrics.get('delivered',{})
@@ -17,12 +18,10 @@ def point_estimate_gates(metrics):
       'political_sample_size':metrics['eligible_n']>=300}
 
 def evaluate(report,policy,validation):
+    require_matching_reports(report,validation)
     from backend.model import validate_policy,classify_scores
     validate_policy(policy,report['model'])
     if report['split']!='test' or validation['split']!='validation':raise ValueError('Separate test and validation reports required')
-    for item in [report,validation]:
-        record=item.get('annotation_provenance') or {}
-        if not record.get('human_reviewed') or not record.get('reference'):raise ValueError('Actual human annotation provenance required')
     if policy['calibration_data_sha256']!=validation['data_sha256']:raise ValueError('Wrong calibration dataset')
     if report['data_sha256']==validation['data_sha256']:raise ValueError('Test and validation are identical')
     for field in ['id','text_sha256']:

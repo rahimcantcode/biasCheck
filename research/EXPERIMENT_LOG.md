@@ -1,5 +1,37 @@
 # Working experiment log (not a final report)
 
+## 2026-10-04 05:22 UTC heartbeat: stricter calibration/evaluation report contract
+
+Fixed two offline validation risks. Both calibration and policy evaluation
+previously accepted truthy strings/numbers as human_reviewed, including "false".
+They now require literal boolean True plus a nonblank string provenance reference.
+Evaluation now also requires validation/test reports to match analysis mode,
+weight/config/tokenizer hashes, aggregation, max_length, stride and id2label.
+Missing model fields fail closed. Checks occur before backend inference import.
+These fields remain supplied assertions, not authentication of actual human work.
+
+Shared report_contract.py prevents differing checks in calibration and evaluation.
+No change to production inference, thresholds, datasets or model weights. Release
+approval remains false. Updated the existing reused-test fixture to include its
+analysis mode so it reaches its intended identical-dataset rejection.
+
+Eight new unit tests passed under system Python, including fit/evaluate entry
+point rejection before work, unchanged inputs on rejection, each model field,
+label-map differences, mode mismatch, nonboolean provenance, missing fingerprints
+and blank/nonstring reference. Six delivered-metric regression tests passed.
+Broader tests/test_research.py collection could not run: legacy runtime lacked
+tld/scipy/sklearn; system runtime with existing pytest/backend paths still lacked
+tld. No dependencies installed or environment files changed. Broader suite is
+explicitly unverified. git diff --check passed.
+
+Three frozen public-browser repetition probes returned HTTP 200, reproducing
+the known withheld/LEFT/CENTER pattern. No new accuracy finding. Local Chromium
+fallback, no cloud browser available; no page errors, failed requests or mobile
+overflow. Raw screenshots/responses outputs/live-browser-report-contract-20261004;
+sanitized model and screenshot hashes research/results/report_contract_browser_20261004.json.
+This was an engineering integrity fix, no new Astra ML review or model training
+claimed. Validation/test examples, including reserved corpus test, were not read.
+
 ## 2026-10-04 01:14 UTC heartbeat: CENTER-first hierarchy rejected
 
 Actual execution resumed around 05:19 UTC. Trained a fixed two-stage classifier
