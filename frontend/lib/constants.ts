@@ -16,19 +16,6 @@ function resolveApiBaseUrl() {
 
 export const API_BASE_URL = resolveApiBaseUrl();
 
-export const MODES = [
-  { value: "article", label: "Article" },
-  { value: "sentence", label: "Sentence" },
-  { value: "paragraph", label: "Paragraph" },
-] as const;
-
-export const QUICK_ACTIONS = [
-  "Paste a news article",
-  "Try article mode",
-  "Analyze by sentence",
-  "Analyze by paragraph",
-] as const;
-
 export const DEMO_ARTICLE = `The administration announced a wide-reaching economic plan today, arguing that the proposal would protect working families while reducing long-term deficits. Supporters described the measure as overdue and pragmatic, while critics said the messaging downplayed the burden on small businesses and overstated the likely impact on inflation. Analysts noted that the speech used contrasting language depending on the audience, framing the package as both fiscally restrained and historically ambitious.`;
 
 export const LABEL_STYLES = {

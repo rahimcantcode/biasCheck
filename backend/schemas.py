@@ -9,8 +9,8 @@ LabelName = Literal["LEFT", "RIGHT", "CENTER"]
 
 
 class PredictRequest(BaseModel):
-    input: str = Field(..., min_length=1, description="Raw article text or a URL.")
-    mode: Mode = "article"
+    input: str = Field(..., min_length=1, max_length=100_000, description="Raw article text or a URL.")
+    mode: Mode = "sentence"
 
 
 class PredictionResult(BaseModel):
@@ -22,6 +22,16 @@ class PredictionResult(BaseModel):
 class SegmentPrediction(PredictionResult):
     segment_index: int
     text: str
+    start: int
+    end: int
+
+
+class ArticleSummary(BaseModel):
+    total_sentences: int
+    counts: Dict[LabelName, int]
+    shares: Dict[LabelName, float]
+    label: LabelName | None
+    method: Literal['sentence_vote'] = 'sentence_vote'
 
 
 class PredictResponse(BaseModel):
@@ -29,7 +39,10 @@ class PredictResponse(BaseModel):
     resolved_text: str
     mode: Mode
     results: List[SegmentPrediction]
+    summary: ArticleSummary
+    model: dict
 
 
 class HealthResponse(BaseModel):
     status: str
+    model: dict

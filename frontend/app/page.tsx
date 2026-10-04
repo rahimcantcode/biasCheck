@@ -6,15 +6,23 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { ResultsPanel } from "@/components/ResultsPanel";
-import { analyzeInput, Mode, PredictResponse } from "@/lib/api";
+import { analyzeInput, PredictResponse } from "@/lib/api";
 
 export default function HomePage() {
   const [input, setInput] = useState("");
-  const [mode, setMode] = useState<Mode>("article");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<PredictResponse | null>(null);
+  const requestId = useRef(0);
   const resultsRef = useRef<HTMLElement | null>(null);
+
+  function handleInputChange(value: string) {
+    requestId.current += 1;
+    setInput(value);
+    setResults(null);
+    setError(null);
+    setLoading(false);
+  }
 
   async function handleAnalyze() {
     if (!input.trim()) {
@@ -23,13 +31,15 @@ export default function HomePage() {
       return;
     }
 
+    const currentRequest = ++requestId.current;
     setLoading(true);
     setError(null);
 
     try {
-      const response = await analyzeInput(input, mode);
-      setResults(response);
+      const response = await analyzeInput(input);
+      if (currentRequest === requestId.current) setResults(response);
     } catch (analysisError) {
+      if (currentRequest !== requestId.current) return;
       setResults(null);
       setError(
         analysisError instanceof Error
@@ -37,14 +47,12 @@ export default function HomePage() {
           : "Analysis failed. Please try again."
       );
     } finally {
-      setLoading(false);
+      if (currentRequest === requestId.current) setLoading(false);
     }
   }
 
   function handleClear() {
-    setInput("");
-    setResults(null);
-    setError(null);
+    handleInputChange("");
   }
 
   useEffect(() => {
@@ -58,11 +66,9 @@ export default function HomePage() {
       <Header />
       <HeroSection
         input={input}
-        mode={mode}
         loading={loading}
         results={results}
-        onInputChange={setInput}
-        onModeChange={setMode}
+        onInputChange={handleInputChange}
         onSubmit={handleAnalyze}
         onClear={handleClear}
       />

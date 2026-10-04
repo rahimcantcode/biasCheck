@@ -12,3 +12,9 @@ frontend/tsconfig.tsbuildinfo
 
 # Logs
 *.log
+
+# Downloaded pretrained checkpoints and test output
+models/
+**/__pycache__/
+.pytest_cache/
+frontend/.test-build/

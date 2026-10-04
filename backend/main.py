@@ -1,85 +1,68 @@
 import logging
-
+from contextlib import asynccontextmanager
+from threading import Lock
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-
+import requests
 try:
     from .config import get_settings
-    from .model import get_model, get_tokenizer, predict_text
+    from .model import get_model, get_tokenizer, model_metadata, predict_sentences
     from .schemas import HealthResponse, PredictRequest, PredictResponse, SegmentPrediction
-    from .utils import resolve_input, segment_text
-except ImportError:  # pragma: no cover - supports `uvicorn main:app` from backend/
+    from .summary import summarize_predictions
+    from .utils import resolve_input, sentence_spans
+except ImportError:
     from config import get_settings
-    from model import get_model, get_tokenizer, predict_text
+    from model import get_model, get_tokenizer, model_metadata, predict_sentences
     from schemas import HealthResponse, PredictRequest, PredictResponse, SegmentPrediction
-    from utils import resolve_input, segment_text
+    from summary import summarize_predictions
+    from utils import resolve_input, sentence_spans
 
-
-logger = logging.getLogger("biaschecker.backend")
+logger = logging.getLogger('biaschecker.backend')
 settings = get_settings()
+inference_lock = Lock()
 
-
-app = FastAPI(
-    title="Bias Checker API",
-    description="Political bias analysis API powered by a fine-tuned RoBERTa model.",
-    version="0.1.0",
-)
-
-if settings.allowed_origins:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=settings.allowed_origins,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-
-
-@app.on_event("startup")
-def warm_model() -> None:
-    # Warm the tokenizer and model on startup so the first request feels less cold.
-    logger.info("Starting Bias Checker backend with model directory: %s", settings.model_dir)
+@asynccontextmanager
+async def lifespan(app):
     get_tokenizer()
     get_model()
+    yield
 
+app = FastAPI(title='Bias Checker API', version='0.2.0', lifespan=lifespan)
+if settings.allowed_origins:
+    app.add_middleware(CORSMiddleware, allow_origins=settings.allowed_origins,
+                       allow_methods=['GET', 'POST'], allow_headers=['Content-Type'])
 
-@app.get("/health", response_model=HealthResponse)
-def health_check() -> HealthResponse:
-    return HealthResponse(status="ok")
+@app.get('/health', response_model=HealthResponse)
+def health_check():
+    return HealthResponse(status='ok', model=model_metadata())
 
-
-@app.post("/predict", response_model=PredictResponse)
-def predict(request: PredictRequest) -> PredictResponse:
+@app.post('/predict', response_model=PredictResponse)
+def predict(request: PredictRequest):
+    if not inference_lock.acquire(blocking=False):
+        raise HTTPException(status_code=503, detail='The model is busy. Please try again shortly.')
     try:
-        source_type, resolved_text = resolve_input(request.input)
-        if not resolved_text:
-            raise ValueError("Please provide article text or a valid article URL.")
-
-        segments = segment_text(resolved_text, request.mode)
-        if not segments:
-            raise ValueError("No analyzable content was found after preprocessing.")
-
-        results = []
-        for index, segment in enumerate(segments):
-            prediction = predict_text(segment)
-            results.append(
-                SegmentPrediction(
-                    segment_index=index,
-                    text=segment,
-                    label=prediction["label"],
-                    label_id=prediction["label_id"],
-                    probabilities=prediction["probabilities"],
-                )
-            )
-
-        return PredictResponse(
-            source_type=source_type,
-            resolved_text=resolved_text,
-            mode=request.mode,
-            results=results,
-        )
-    except HTTPException:
-        raise
-    except Exception as exc:
-        logger.exception("Prediction request failed")
+        source_type, text = resolve_input(request.input)
+        if not text.strip():
+            raise ValueError('Please paste article text or enter a valid article URL.')
+        if len(text) > 100_000:
+            raise ValueError('Please use an article with at most 100,000 characters.')
+        # Accept old client mode names, but always perform the same sentence workflow.
+        spans = sentence_spans(text)
+        if not spans:
+            raise ValueError('No sentences were found. Please paste article text.')
+        if len(spans) > settings.max_segments:
+            raise ValueError(f'Please use at most {settings.max_segments} sentences at a time.')
+        predictions = predict_sentences([text[start:end] for start, end in spans])
+        results = [SegmentPrediction(segment_index=i, text=text[start:end], start=start, end=end, **prediction)
+                   for i, ((start, end), prediction) in enumerate(zip(spans, predictions, strict=True))]
+        return PredictResponse(source_type=source_type, resolved_text=text, mode='sentence',
+                               results=results, summary=summarize_predictions(predictions), model=model_metadata())
+    except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except requests.RequestException as exc:
+        raise HTTPException(status_code=400, detail='Could not retrieve the article. Please paste its text.') from exc
+    except Exception as exc:
+        logger.exception('Prediction failed')
+        raise HTTPException(status_code=503, detail='Analysis is temporarily unavailable.') from exc
+    finally:
+        inference_lock.release()

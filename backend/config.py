@@ -6,7 +6,7 @@ from typing import List
 
 BACKEND_DIR = Path(__file__).resolve().parent
 REPO_ROOT = BACKEND_DIR.parent
-DEFAULT_MODEL_DIR = REPO_ROOT / "bias_model"
+DEFAULT_MODEL_DIR = REPO_ROOT / "models" / "political-leaning"
 
 
 class Settings:
@@ -22,6 +22,8 @@ class Settings:
         self.backend_host = os.getenv("BIASCHECK_BACKEND_HOST", "127.0.0.1")
         self.backend_port = int(os.getenv("BIASCHECK_BACKEND_PORT", "8000"))
         self.request_timeout = int(os.getenv("BIASCHECK_REQUEST_TIMEOUT", "10"))
+        self.max_segments = 300
+        self.batch_size = max(1, min(16, int(os.getenv("BIASCHECK_BATCH_SIZE", "8"))))
 
     @staticmethod
     def _parse_origins(raw_origins: str) -> List[str]:
