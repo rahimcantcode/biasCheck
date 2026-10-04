@@ -11,6 +11,28 @@ def row(gold, raw, accepted=True):
 
 
 class DeliveredMetricsTests(unittest.TestCase):
+    def test_unknown_reference_not_silently_dropped(self):
+        for gold in ('CENTRE', '', None, 'MIXED'):
+            with self.subTest(gold=gold), self.assertRaisesRegex(ValueError,'reference label'):
+                summarize([row('LEFT','LEFT'),row(gold,'RIGHT')])
+
+    def test_negative_and_uncertain_decisions_validated(self):
+        for gold in ('NONPOLITICAL','UNCERTAIN'):
+            for decision,label in [('error',None),('classified',None),('abstained','LEFT')]:
+                with self.subTest(gold=gold,decision=decision), self.assertRaises(ValueError):
+                    summarize([dict(gold=gold,raw_label='LEFT',decision=decision,label=label)])
+
+    def test_invalid_raw_label_rejected(self):
+        with self.assertRaisesRegex(ValueError,'raw political'):
+            summarize([{**row('LEFT','LEFT'),'raw_label':'UNKNOWN'}])
+
+    def test_valid_negative_counts_preserved(self):
+        result=summarize([row('NONPOLITICAL','LEFT'),row('NONPOLITICAL','RIGHT',False),row('UNCERTAIN','LEFT',False)])
+        self.assertEqual(result['n'],3)
+        self.assertEqual(result['nonpolitical_n'],2)
+        self.assertEqual(result['nonpolitical_false_label_rate'],.5)
+        self.assertIsNone(result['coverage'])
+
     def test_perfect_raw_with_abstentions_is_not_perfect_delivery(self):
         result=summarize([row(label,label,False) for label in ('LEFT','CENTER','RIGHT')])
         self.assertEqual(result['raw_accuracy'],1)

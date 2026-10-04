@@ -7,6 +7,14 @@ from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classifi
 
 
 def summarize(rows):
+    labels=['LEFT','CENTER','RIGHT']
+    for row in rows:
+        if row.get('gold') not in labels+['NONPOLITICAL','UNCERTAIN']:
+            raise ValueError('Unknown reference label; refusing to silently exclude a row')
+        if row.get('decision') not in {'classified','abstained'} or (row['decision']=='classified' and row.get('label') not in labels) or (row['decision']=='abstained' and row.get('label') is not None):
+            raise ValueError('Inconsistent delivered decision and label')
+        if row['gold'] in labels and row.get('raw_label') not in labels:
+            raise ValueError('Invalid raw political prediction')
     eligible=[r for r in rows if r['gold'] in ['LEFT','CENTER','RIGHT']]
     accepted=[r for r in eligible if r['decision']=='classified']
     negatives=[r for r in rows if r['gold']=='NONPOLITICAL']
@@ -15,9 +23,6 @@ def summarize(rows):
         'nonpolitical_n':len(negatives),'nonpolitical_false_label_rate':sum(r['decision']=='classified' for r in negatives)/len(negatives) if negatives else None}
     if eligible:
         y=[r['gold'] for r in eligible];p=[r['raw_label'] for r in eligible];labels=['LEFT','CENTER','RIGHT']
-        for row in eligible:
-            if row['decision'] not in {'classified','abstained'} or (row['decision']=='classified' and row['label'] not in labels) or (row['decision']=='abstained' and row['label'] is not None):
-                raise ValueError('Inconsistent delivered decision and label')
         delivered=[r['label'] if r['decision']=='classified' else 'ABSTAIN' for r in eligible]
         report.update(raw_accuracy=accuracy_score(y,p),macro_f1=f1_score(y,p,labels=labels,average='macro',zero_division=0),
             confusion_order=labels,confusion_matrix=confusion_matrix(y,p,labels=labels).tolist(),

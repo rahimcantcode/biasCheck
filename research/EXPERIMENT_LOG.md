@@ -1,5 +1,36 @@
 # Working experiment log (not a final report)
 
+## 2026-10-04 06:23 UTC heartbeat: prevent silent metric denominator loss
+
+Fixed summarize() accepting unknown reference labels by silently excluding them
+from political/negative metrics. It now rejects unknown labels (including typos
+and unsupported MIXED rather than silently mapping them). It validates delivered
+decision/label consistency for NONPOLITICAL and UNCERTAIN rows as well as political
+rows, and rejects invalid raw predictions on political examples. Valid negative
+rows remain counted; no model thresholds or behavior changed.
+
+Added four tests covering unknown references, malformed negative/uncertain
+decisions, invalid raw predictions and preserved valid-negative denominators.
+An initial test accidentally made both raw and delivered labels invalid and hit
+the earlier delivered-label check; corrected the fixture to isolate raw validation.
+
+Recovered the previously blocked selected research tests by installing the
+repository-pinned tld==0.13.2 with --no-deps into research/checkpoints/report-test-deps,
+not system or production packages. Ran system Python with existing local pytest
+and backend package paths appended: tests/test_research.py, test_report_contract.py,
+test_delivered_metrics.py. All 23 passed in 32.88s. One Torch/NumPy _ARRAY_API warning
+occurred during backend import; no numerical model inference was tested by this
+suite, so runtime inference compatibility is not established. No training or
+evaluation dataset examples were loaded. git diff --check passed.
+
+Repeated two frozen live public-site browser probes using local Chromium fallback
+(no cloud browser available). Both HTTP 200, same LEFT results as previous runs,
+no page errors/failed requests/mobile overflow. No new classifier finding. Raw
+responses/screenshots: outputs/live-browser-metric-contract-20261004. Sanitized
+model fingerprints and PNG hashes: research/results/metric_contract_browser_20261004.json.
+Production unchanged. No new Astra ML review or accuracy improvement claimed;
+this run repairs metric integrity and closes the selected-suite collection gap.
+
 ## 2026-10-04 05:22 UTC heartbeat: stricter calibration/evaluation report contract
 
 Fixed two offline validation risks. Both calibration and policy evaluation
