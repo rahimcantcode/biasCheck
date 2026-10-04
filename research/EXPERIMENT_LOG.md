@@ -1,5 +1,46 @@
 # Working experiment log (not a final report)
 
+## 2026-10-04 17:56 UTC heartbeat: conditional OOF uncertainty analysis
+
+Resampled the frozen six-approach shared-error report (word, semantic, hybrid,
+character, hierarchy, ensemble), not the later SVM report. Used only the 115
+training rows, verified their hashes/IDs/reference labels and aligned predictions.
+5,000 paired event-string cluster bootstrap draws, seed 20261004: uniformly draw
+42 groups with replacement, retain every row in each selected group, calculate
+sample-weighted accuracy and candidate-minus-word differences. No retraining,
+parameter adjustment, validation/test access or model selection.
+
+| Approach | Difference vs word (percentage points) | 95% percentile interval |
+| --- | ---: | ---: |
+| Semantic | 0 | [-9.09, 9.66] |
+| Hybrid | +0.87 | [-7.35, 8.77] |
+| Character | -2.61 | [-8.97, 4.20] |
+| Hierarchy | -2.61 | [-7.26, 2.48] |
+| Ensemble | +2.61 | [-5.05, 10.29] |
+
+All five difference intervals include zero. Ensemble accuracy percentile interval
+is [.42982,.62265], versus word [.38888,.61538]. This does not support a robust
+improvement claim. These are conditional exploratory intervals, not independent
+product confidence bounds: overlapping fitted folds, related events across group
+strings, disputed labels, repeated comparisons and training variability remain
+unaccounted for. No statistical significance claim or equivalence claim.
+
+Saved every replicate's group draw counts, accuracies and paired differences in
+research/checkpoints/oof-uncertainty-20261004/replicates.npz. Report includes artifact
+hashes, group/model ordering, row IDs/groups, settings and limitations:
+research/results/oof_uncertainty_20261004.json, also copied to outputs. Existing
+source report links raw predictions, fold IDs and model artifacts. Four tests
+passed for reproducibility, pairing, row weighting and malformed alignment.
+GPT-6 Astra Medium no-tools method critique completed via requested terminal
+route; research/data/oof-uncertainty-method-20261004.txt. Parent model unchanged.
+
+Two repeated targeted public-browser smoke probes returned HTTP 200 and unchanged
+LEFT/RIGHT outputs. Local Chromium fallback, cloud/agent-browser CLI unavailable
+as previously checked. No page errors/failed requests/mobile overflow. Raw
+responses/screenshots outputs/live-browser-oof-uncertainty-20261004; sanitized
+model/screenshot hashes research/results/oof_uncertainty_browser_20261004.json.
+Production unchanged; these browser probes are not part of bootstrap evidence.
+
 ## 2026-10-04 15:22 UTC heartbeat: fixed linear SVM rejected
 
 Actual execution resumed around 17:50 UTC. Tested LinearSVC against the stored
