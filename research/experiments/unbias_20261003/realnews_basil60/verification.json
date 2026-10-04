@@ -1,0 +1,18 @@
+{
+  "cases": 60,
+  "distinct_events": 60,
+  "independent_word_token_counts": {
+    "fp": 241,
+    "tp": 175,
+    "fn": 205
+  },
+  "independent_exact_boundary_matches": 3,
+  "source_bindings_unchanged": true,
+  "owned_processes_stopped": true,
+  "repeated_sample_preparation_identical": true,
+  "scoring_tests_passed": 7,
+  "raw_results_sha256": "ed50387d6751dbe611239229913a15b629d7abeeade1c7d56e28692ae77f22a3",
+  "summary_sha256": "dc405d0dbdada2989f268bba013381e3818ffbf5d2a190fa27cf74ec5fdf09b5",
+  "production_modified": false,
+  "remote_upload_attempted": false
+}

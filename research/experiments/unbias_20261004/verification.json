@@ -1,0 +1,69 @@
+{
+  "recorded_utc": "2026-10-04T11:23:35.646854+00:00",
+  "release_approved": false,
+  "production_modified": false,
+  "new_human_reviews": 0,
+  "training_performed": false,
+  "local_tests": {
+    "passed": 173,
+    "subtests_passed": 62,
+    "third_party_deprecation_warnings": true,
+    "commands": [
+      {
+        "command": "pytest tests/test_unbias_api.py tests/test_unbias_diagnostics.py tests/test_unbias_native_schema.py tests/test_unbias_structured.py tests/test_unbias_refinement.py tests/test_unbias_comparison.py -q",
+        "passed": 123,
+        "note": "Before the converter-specific regression was added; module contract tests then passed."
+      },
+      {
+        "command": "pytest research/experiments/unbias_20261003/realnews_basil60/test_score.py research/experiments/unbias_20261003/test_adapter.py tests/test_phrase_api.py -q",
+        "passed": 49,
+        "subtests_passed": 62
+      },
+      {
+        "command": "pytest tests/test_unbias_refinement.py::test_pinned_runtime_grammar_requires_all_fields -q",
+        "passed": 1,
+        "note": "Actual pinned native converter; no model inference."
+      }
+    ]
+  },
+  "structured_http_smoke": {
+    "raw_sha256": "58360c68817c01af740775183ce02907f5f1e2ba3982e40b87c17ee8c05c7110",
+    "command": "BIASCHECK_UNBIAS_STRUCTURED=1 python scripts/smoke_unbias_api.py --output research/data/unbias_20261004/structured_http_smoke",
+    "exit_code": 0,
+    "rows": [
+      {
+        "id": "D01",
+        "http_status": 200,
+        "status": "suggestions",
+        "spans": 2,
+        "seconds": 74.88758588899509,
+        "structured_output": true
+      },
+      {
+        "id": "D02",
+        "http_status": 200,
+        "status": "no_suggestions",
+        "spans": 0,
+        "seconds": 9.583317306998651,
+        "structured_output": true
+      }
+    ],
+    "limitation": "Two synthetic real HTTP framing requests, unrelated classifier lifespan disabled. No website, concurrency, accuracy or production validation."
+  },
+  "hosted_ci": {
+    "commit": "9ba53ecbb428a979368051b277e8835718a41d56",
+    "run_id": 37198321955,
+    "url": "https://github.com/rahimcantcode/biasCheck/actions/runs/37198321955",
+    "job_conclusion": "success",
+    "steps": "Python tests, frontend tests, npm audit, types and build all observed successful. Subsequent report/evidence-only updates not covered by this recorded SHA."
+  },
+  "hashes": {
+    "research/data/unbias_realnews_basil/cases.json": "8d14e9cd7b8268aea9fa5a5f4aadf0873144cc827c178fa2d965fbe8cd3eb5da",
+    "research/data/unbias_realnews_basil/run_v1/results.json": "ed50387d6751dbe611239229913a15b629d7abeeade1c7d56e28692ae77f22a3",
+    "research/data/unbias_20261004/refinement_v2_compat/results.json": "79b3650e5337b5a2115981c4075cb826fdb081301c6cb5ad34880010f7bc589e",
+    "backend/unbias/refinement.py": "4fd6a1b1ad8dabc93c845b43fff0c0924b37afc997b1ae17047d217987630253",
+    "research/experiments/unbias_20261004/compare.py": "c92f7e62389171552f19f007d633d9f3f4eeb39718bcf90eafac99f69aea6e5b",
+    "research/experiments/unbias_20261004/PROTOCOL.md": "d219efc8c68d9b89a0b606f67ee108bc1b67a02da2b22902c856a400b86765df",
+    "research/experiments/unbias_20261004/comparison.json": "cc79214f13d5d2465a574f20376dad121f669cfcfd26e9a706b0a988111d5d57"
+  }
+}

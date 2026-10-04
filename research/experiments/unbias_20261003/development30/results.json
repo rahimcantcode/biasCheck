@@ -1,0 +1,1074 @@
+{
+  "kind": "synthetic_development_http_api_run",
+  "runtime": {
+    "schema_version": 1,
+    "model_id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+    "model_revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+    "weights_path": "/tmp/unbias-v2-q4/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2-Q4_K_M.gguf",
+    "weights_sha256": "7f771dbb1739fe840655850784c1cea759185aa456cde0644bdb1425d89969c9",
+    "weights_bytes": 5027784064,
+    "quantization": "Q4_K_M requantized from locally generated Q8_0",
+    "conversion_source_revision": "fb4b2737a808a3fb7c2117a498f43815dc9be53e",
+    "runtime_fingerprint": "b11349-fb4b2737a",
+    "context_tokens": 8192,
+    "threads": 4,
+    "max_output_tokens": 2048,
+    "runtime_server_path": "/workspace/scratch/629523a223d6/biasCheck/research/checkpoints/unbias-runtime/bin/llama-b11349/llama-server",
+    "runtime_server_sha256": "f1fe3730c84c6fb397e6807bf6bc7b9572f322dcaa1f342ad1b4c92dca74bce8",
+    "conversion_manifest": "research/experiments/unbias_20261003/conversion_manifest.json",
+    "quality_caveat": "Locally derived Q8_0 then Q4_K_M requantization of the pinned official V2 checkpoint; not the full-precision original and not a claim of equivalent model quality."
+  },
+  "limitation": "AI-authored synthetic development expectations only; not an independent accuracy evaluation or baseline comparison. Classifier lifespan bypassed.",
+  "rows": [
+    {
+      "id": "DEV01",
+      "http_status": 200,
+      "seconds": 54.091726463997475,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "The council voted 6 to 3 to approve the housing proposal. The ordinance permits buildings of up to six stories near train stations.",
+        "source_sha256": "527d586e75b9c30009c3a3db4bbc585d49607d117c0a6a595a47171bf825a6ea",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV02",
+      "http_status": 200,
+      "seconds": 7.787871497002925,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "The governor signed the budget on Friday. It allocates 240 million dollars to road maintenance and 90 million dollars to public transit.",
+        "source_sha256": "ebb2779f79c00e940bfd375e8075bf8484bc33c675c5ab84ea999e01e956f97e",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV03",
+      "http_status": 200,
+      "seconds": 6.258450916000584,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "The proposed rule requires employers with more than 100 workers to submit an annual emissions report.",
+        "source_sha256": "10c989f81f94a57585fc45167ac603287e86ecfc565fc66245f5dabe4ccba314",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV04",
+      "http_status": 200,
+      "seconds": 7.556062955998641,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "The candidate received 48 percent of the vote. Her opponent received 51 percent, with the remaining votes going to other candidates.",
+        "source_sha256": "98fadd93ca6579076dd07d85a46fe45de545f8e96ccea403ac31490b0ec2d77f",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV05",
+      "http_status": 200,
+      "seconds": 6.374050406000606,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "The department reported that border encounters fell by 12 percent compared with the previous month.",
+        "source_sha256": "f63f3c0537ffde3fecafde8479e9fe32ffe83212298e08a5e9e168a0bfa3af74",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV06",
+      "http_status": 200,
+      "seconds": 5.6598452909966,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "The court ruled that the agency lacked authority under the statute. Two judges dissented.",
+        "source_sha256": "6ee46b4cfd4ead8fd9c9fbaf8edd24c0abaddc582cfc433b6152f18562949a48",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV07",
+      "http_status": 200,
+      "seconds": 5.4330352550023235,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "I support expanding public health insurance. Congress should pass the proposal this year.",
+        "source_sha256": "a4e7d3fb0ffdedd66604c3f7cfd902cce43f7ff39035cc816f407092e342ea60",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV08",
+      "http_status": 200,
+      "seconds": 5.719027351002296,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "I oppose the proposed tax increase. Lawmakers should keep the current rate.",
+        "source_sha256": "38999a66ed6f13791bd40a5f68ac55c13d302f2fb23bc5df5056c42f2cba2474",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV09",
+      "http_status": 200,
+      "seconds": 6.349852810999437,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "The city should build more housing near transit. I would vote for the zoning change.",
+        "source_sha256": "3fbb42f386f95d7c2827d7b6029dda73f2aeb2c53cdc5a330494e887fdf6e830",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV10",
+      "http_status": 200,
+      "seconds": 5.720908326002245,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "The government should reduce spending on this program. I favor a smaller federal budget.",
+        "source_sha256": "714fc3c6fefc66d7b8601700aa003c572e8408dfae85cd0b6cf6463d13a3809e",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV11",
+      "http_status": 200,
+      "seconds": 13.058533775998512,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The mayor unveiled a cruel assault on working families. The proposal reduces the rental assistance budget.",
+        "source_sha256": "321586747ceb27aaf2a30443e4b127b17407341eca861acfd81764efa7fdf9a6",
+        "spans": [
+          {
+            "start": 19,
+            "end": 54,
+            "text": "a cruel assault on working families",
+            "attribution": "unknown",
+            "reason": "Uses dramatic, emotionally charged wording to characterize the proposal.",
+            "bias_type": "sensationalism",
+            "native_index": 0
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV12",
+      "http_status": 200,
+      "seconds": 19.7792588049997,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "Congress approved another shameless giveaway to corporate donors. The bill changes the depreciation schedule for equipment.",
+        "source_sha256": "2bcc4a77cf34535267d278bf085bb877da538c165da54f22d691eda36ea10dd5",
+        "spans": [
+          {
+            "start": 18,
+            "end": 64,
+            "text": "another shameless giveaway to corporate donors",
+            "attribution": "unknown",
+            "reason": "Presents a subjective negative judgment about the bill as fact.",
+            "bias_type": "opinion_as_fact",
+            "native_index": 0
+          },
+          {
+            "start": 113,
+            "end": 122,
+            "text": "equipment",
+            "attribution": "unknown",
+            "reason": "Uses a broad term without specifying the equipment being discussed.",
+            "bias_type": "unsupported_generalization",
+            "native_index": 1
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV13",
+      "http_status": 200,
+      "seconds": 24.220857313001034,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The governor finally confronted the radical bureaucrats strangling our economy. The order suspends a reporting requirement.",
+        "source_sha256": "d967ca38c5aa407be7db42e306bbaa1ab69a4e892be557a1f54ab496d86f7e8e",
+        "spans": [
+          {
+            "start": 0,
+            "end": 79,
+            "text": "The governor finally confronted the radical bureaucrats strangling our economy.",
+            "attribution": "unknown",
+            "reason": "Uses dramatic and evaluative wording such as \u201cfinally,\u201d \u201cradical,\u201d and \u201cstrangling\u201d to frame the action and officials.",
+            "bias_type": "sensationalism",
+            "native_index": 0
+          },
+          {
+            "start": 80,
+            "end": 123,
+            "text": "The order suspends a reporting requirement.",
+            "attribution": "unknown",
+            "reason": "Presents an evaluative characterization of the requirement as fact without neutral framing.",
+            "bias_type": "opinion_as_fact",
+            "native_index": 1
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV14",
+      "http_status": 200,
+      "seconds": 14.642917776000104,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The senator promoted a heartless attack on the poor. The measure changes eligibility for food assistance.",
+        "source_sha256": "5e5581a1264fee8398c200849732f55a2f1b95894b2eb2b63124a9e44d685ffd",
+        "spans": [
+          {
+            "start": 12,
+            "end": 51,
+            "text": "promoted a heartless attack on the poor",
+            "attribution": "unknown",
+            "reason": "Uses morally charged wording that characterizes the policy as cruel and punitive.",
+            "bias_type": "loaded_language",
+            "native_index": 0
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV15",
+      "http_status": 200,
+      "seconds": 13.935091155999544,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The administration presented a heroic defense of freedom. Its proposal would limit federal oversight of local agencies.",
+        "source_sha256": "acf2c22d47d2a8918ff2556516e2305a1555a179c2980b57e0318c2e6ad13b66",
+        "spans": [
+          {
+            "start": 29,
+            "end": 56,
+            "text": "a heroic defense of freedom",
+            "attribution": "unknown",
+            "reason": "Presents a subjective positive evaluation of the administration's proposal as fact.",
+            "bias_type": "opinion_as_fact",
+            "native_index": 0
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV16",
+      "http_status": 200,
+      "seconds": 12.280852120999043,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The party offered a pathetic excuse for leadership. Its members postponed the budget vote.",
+        "source_sha256": "8056972ca396a45d1ba1b6e9c89fbc0665914e6116d10ff488714f7f13f0d038",
+        "spans": [
+          {
+            "start": 18,
+            "end": 50,
+            "text": "a pathetic excuse for leadership",
+            "attribution": "unknown",
+            "reason": "Presents a subjective negative judgment as fact.",
+            "bias_type": "opinion_as_fact",
+            "native_index": 0
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV17",
+      "http_status": 200,
+      "seconds": 14.341768309001054,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The mayor called the proposal \u201ca cruel assault on working families.\u201d The council will vote on Tuesday.",
+        "source_sha256": "4786dd472a7c547fede17acb4f236862af00a91f7b875826f0a6fe44a1978a4b",
+        "spans": [
+          {
+            "start": 31,
+            "end": 66,
+            "text": "a cruel assault on working families",
+            "attribution": "unknown",
+            "reason": "Uses dramatic, emotionally charged wording that intensifies the description of the proposal.",
+            "bias_type": "sensationalism",
+            "native_index": 0
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV18",
+      "http_status": 200,
+      "seconds": 15.1545764399998,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "\u201cThis is a shameless giveaway to corporate donors,\u201d the senator said. The reporter then described the bill\u2019s depreciation provisions.",
+        "source_sha256": "d803022cb969afce25452434a2df6cf943dc6a68ce7bcf0ba2978e5307bab6cb",
+        "spans": [
+          {
+            "start": 1,
+            "end": 49,
+            "text": "This is a shameless giveaway to corporate donors",
+            "attribution": "unknown",
+            "reason": "\u201cShameless giveaway\u201d is morally charged wording that frames the provision negatively.",
+            "bias_type": "loaded_language",
+            "native_index": 0
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV19",
+      "http_status": 200,
+      "seconds": 20.275559311998222,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The governor described agency officials as \u201cradical bureaucrats strangling our economy.\u201d The agency declined to comment.",
+        "source_sha256": "5f89924852f09a1f06baf20cde058953b3a38af3b6be7e6b2d6795a7e3c7351c",
+        "spans": [
+          {
+            "start": 44,
+            "end": 63,
+            "text": "radical bureaucrats",
+            "attribution": "unknown",
+            "reason": "Uses a charged political label that characterizes officials rather than neutrally identifying them.",
+            "bias_type": "loaded_language",
+            "native_index": 0
+          },
+          {
+            "start": 64,
+            "end": 86,
+            "text": "strangling our economy",
+            "attribution": "unknown",
+            "reason": "Uses a dramatic metaphor that intensifies the claim about economic impact.",
+            "bias_type": "sensationalism",
+            "native_index": 1
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV20",
+      "http_status": 200,
+      "seconds": 14.514571616000467,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "An advocate called the measure a \u201cheartless attack on the poor.\u201d The department said eligibility rules would change next year.",
+        "source_sha256": "1792184cac7d1ccc0058b7d9e084f0c1a5a293da6f9293146e46a518d11b02b1",
+        "spans": [
+          {
+            "start": 12,
+            "end": 64,
+            "text": "called the measure a \u201cheartless attack on the poor.\u201d",
+            "attribution": "unknown",
+            "reason": "\u201cHeartless attack\u201d is emotionally charged wording that frames the policy as cruel.",
+            "bias_type": "loaded_language",
+            "native_index": 0
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV21",
+      "http_status": 200,
+      "seconds": 13.505557332002354,
+      "response": {
+        "status": "partial_failure",
+        "resolved_text": "A campaign statement described the proposal as a \u201cheroic defense of freedom.\u201d The article did not endorse that description.",
+        "source_sha256": "0c7381dceb913a716b015edace0d9ea67a6517b89c71d2757925746c4b0d3085",
+        "spans": [],
+        "rejected": [
+          {
+            "native_index": 0,
+            "reason": "unmatched_phrase"
+          }
+        ],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV22",
+      "http_status": 200,
+      "seconds": 15.040195436999056,
+      "response": {
+        "status": "partial_failure",
+        "resolved_text": "The opposition leader called the delay a \u201cpathetic excuse for leadership.\u201d Negotiations resume on Monday.",
+        "source_sha256": "dafe5e00664f2439cc9a0c69a35e662254ef7ffcc828f560f63cc4425f4c1063",
+        "spans": [],
+        "rejected": [
+          {
+            "native_index": 0,
+            "reason": "unmatched_phrase"
+          }
+        ],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV23",
+      "http_status": 200,
+      "seconds": 24.494149243997526,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The mayor called the plan \u201ca cruel assault on working families.\u201d In my view, it is indeed a cruel assault on working families.",
+        "source_sha256": "052c824d542340f0d86c9fb136882a31edfad8995fb9a5ff57847977939ea240",
+        "spans": [
+          {
+            "start": 10,
+            "end": 64,
+            "text": "called the plan \u201ca cruel assault on working families.\u201d",
+            "attribution": "unknown",
+            "reason": "\u201cCruel assault\u201d is dramatic, alarmist wording that intensifies the criticism.",
+            "bias_type": "sensationalism",
+            "native_index": 0
+          },
+          {
+            "start": 65,
+            "end": 126,
+            "text": "In my view, it is indeed a cruel assault on working families.",
+            "attribution": "unknown",
+            "reason": "\u201cCruel assault\u201d is dramatic, alarmist wording that intensifies the criticism.",
+            "bias_type": "sensationalism",
+            "native_index": 1
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV24",
+      "http_status": 200,
+      "seconds": 21.131059088002075,
+      "response": {
+        "status": "partial_failure",
+        "resolved_text": "The senator said \u201cshameless giveaway\u201d twice: \u201cThis shameless giveaway must end.\u201d The reporter recorded both remarks.",
+        "source_sha256": "e329d83759d24c85604e6886f962c6b879dccfe9f689c919cfbcdb5574e9268a",
+        "spans": [
+          {
+            "start": 46,
+            "end": 79,
+            "text": "This shameless giveaway must end.",
+            "attribution": "unknown",
+            "reason": "\u201cShameless\u201d is morally charged wording that editorializes the policy.",
+            "bias_type": "loaded_language",
+            "native_index": 1
+          }
+        ],
+        "rejected": [
+          {
+            "native_index": 0,
+            "reason": "ambiguous_occurrence"
+          }
+        ],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV25",
+      "http_status": 200,
+      "seconds": 6.792373005002446,
+      "response": {
+        "status": "no_suggestions",
+        "resolved_text": "The reporter explicitly rejected the phrase \u201cheartless attack on the poor\u201d and described the eligibility changes without adopting that characterization.",
+        "source_sha256": "1381cff3f8464777f94f30dbfffb517a58d7fa68cdfd18c6d34f7ad05dad96fa",
+        "spans": [],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV26",
+      "http_status": 200,
+      "seconds": 16.276975992997905,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "Calling every agency employee a \u201cradical bureaucrat\u201d is misleading. The article instead lists their statutory responsibilities.",
+        "source_sha256": "57ac51e4a6994fa851a48cd58c56118212d4c74a1457695718cf2ed4f5c432c5",
+        "spans": [
+          {
+            "start": 0,
+            "end": 67,
+            "text": "Calling every agency employee a \u201cradical bureaucrat\u201d is misleading.",
+            "attribution": "unknown",
+            "reason": "The phrase \u201cevery agency employee\u201d makes a sweeping claim about all employees.",
+            "bias_type": "unsupported_generalization",
+            "native_index": 0
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV27",
+      "http_status": 200,
+      "seconds": 13.44761010900038,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The committee voted 8 to 4. This disgraceful betrayal of voters now goes to the full chamber.",
+        "source_sha256": "d6ef8454920a9925b4c349972df2c3307832e97fcb83048a44e595b7ddae857e",
+        "spans": [
+          {
+            "start": 28,
+            "end": 63,
+            "text": "This disgraceful betrayal of voters",
+            "attribution": "unknown",
+            "reason": "Presents a strongly evaluative judgment about the action as fact.",
+            "bias_type": "opinion_as_fact",
+            "native_index": 0
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV28",
+      "http_status": 200,
+      "seconds": 21.4628867370011,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The bill lowers the tax rate by two percentage points. A supporter called it \u201ca heroic defense of freedom,\u201d while a critic called it \u201ca shameless giveaway.\u201d",
+        "source_sha256": "4127d125120d7fad583cbd45310aa2bb198ef52999c7809783dbe7f02fb827dc",
+        "spans": [
+          {
+            "start": 78,
+            "end": 105,
+            "text": "a heroic defense of freedom",
+            "attribution": "unknown",
+            "reason": "Presents a subjective positive evaluation of the policy as fact.",
+            "bias_type": "opinion_as_fact",
+            "native_index": 0
+          },
+          {
+            "start": 134,
+            "end": 154,
+            "text": "a shameless giveaway",
+            "attribution": "unknown",
+            "reason": "Uses morally charged wording that intensifies the criticism.",
+            "bias_type": "loaded_language",
+            "native_index": 1
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV29",
+      "http_status": 200,
+      "seconds": 14.887164584000857,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The striker delivered a pathetic excuse for a penalty kick. The visiting team won the match 2 to 1.",
+        "source_sha256": "2e031a287ad7a176bed875ea7826f33233feff1fc80174340d7643c1bbcb3afe",
+        "spans": [
+          {
+            "start": 0,
+            "end": 59,
+            "text": "The striker delivered a pathetic excuse for a penalty kick.",
+            "attribution": "unknown",
+            "reason": "Presents a subjective negative judgment about the penalty kick as fact.",
+            "bias_type": "opinion_as_fact",
+            "native_index": 0
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    },
+    {
+      "id": "DEV30",
+      "http_status": 200,
+      "seconds": 19.24896432999958,
+      "response": {
+        "status": "suggestions",
+        "resolved_text": "The film tells the story of a cruel king and a heroic defense of a mountain village. The review praises the soundtrack.",
+        "source_sha256": "6961a5f2c1e296600aac33afc8233962d9c2bcf33281510c781d0bb20c5d59ec",
+        "spans": [
+          {
+            "start": 28,
+            "end": 40,
+            "text": "a cruel king",
+            "attribution": "unknown",
+            "reason": "Presents a moral judgment about the king as fact.",
+            "bias_type": "opinion_as_fact",
+            "native_index": 0
+          },
+          {
+            "start": 45,
+            "end": 61,
+            "text": "a heroic defense",
+            "attribution": "unknown",
+            "reason": "Uses an evaluative adjective to characterize the defense.",
+            "bias_type": "opinion_as_fact",
+            "native_index": 1
+          }
+        ],
+        "rejected": [],
+        "attribution_supported": false,
+        "offset_unit": "unicode_codepoint",
+        "end_exclusive": true,
+        "experimental": true,
+        "release_approved": false,
+        "model": {
+          "id": "vector-institute/Qwen3-8B-UnBias-Plus-SFT-Instruct-V2",
+          "revision": "01a0c8e97ab44b9d2e56d86b6298f2cc74df1222",
+          "quantization": "Q4_K_M via Q8_0"
+        },
+        "warnings": [
+          "Experimental wording suggestions, not political-direction labels or factual verification.",
+          "Speaker attribution is unsupported. Quoted wording does not establish author endorsement.",
+          "Highlight quality has not passed independent human validation."
+        ]
+      }
+    }
+  ],
+  "fixture_sha256": "35bdc60eb60f98f87318d8644320e54e752c9812e321c416f1de831e0bf9382d"
+}

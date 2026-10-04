@@ -1,0 +1,22 @@
+{
+  "decision": "Keep experimental; reject unchanged integration for production precise political highlighting",
+  "evidence": "60 BASIL original news sentences from 60 events with unchanged published human span references",
+  "word_token_precision": 0.4206730769230769,
+  "word_token_recall": 0.4605263157894737,
+  "lexical_cases_with_reference_word_overlap": 17,
+  "lexical_cases": 20,
+  "unannotated_cases_highlighted": 1,
+  "unannotated_cases": 20,
+  "http_failures": 7,
+  "partial_failures": 1,
+  "speaker_attribution_supported": false,
+  "median_cpu_seconds": 15.775394111999049,
+  "release_approved": false,
+  "training_performed": false,
+  "production_modified": false,
+  "new_human_reviews": 0,
+  "training_independence_proven": false,
+  "task_matched_learned_baseline_available": false,
+  "next_development_action": "Diagnose recorded API failures and oversized spans, then evaluate explicit attribution support; evaluate any adapted candidate separately. Do not continue testing unchanged candidate just to seek favorable scores.",
+  "persistence": "Committed locally only; prior upload block not retried."
+}

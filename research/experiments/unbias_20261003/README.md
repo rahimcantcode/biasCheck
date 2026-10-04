@@ -72,3 +72,7 @@ HTTP response records, test environment, and limitations. Both live smoke
 requests passed; 23 API tests and 39 adapter tests passed. No frontend change,
 production deployment, model promotion, or human quality validation occurred.
 The earlier research decision remains in force.
+
+## Subsequent real-news evaluation
+
+The unchanged quantized 8B API was evaluated on 60 BASIL news sentences with published human references. See [the full report](realnews_basil60/REPORT.md), [frozen protocol](realnews_basil60/PROTOCOL.md), and [text-free results](realnews_basil60/summary.json). Word-token precision was 42.1%, recall 46.1%; seven requests failed and one partially failed. Speaker attribution remains unsupported. This is archival cross-dataset evidence, not final deployment accuracy or a claim of model-training independence. The candidate remains experimental and the website was unchanged. Earlier experiment records remain historical and unmodified.

@@ -1149,3 +1149,32 @@ Calibration now requires an exact versioned inference-runtime identity: library 
 The specifically authorized one-time live dependency-audit gate passed: 77 installed inventory entries, 76 directly audited and no reported advisories; the one explicit PyTorch +cpu skip remains visible, with a clean upstream base-version supplement. This is not binary-specific or zero-risk assurance. A writable temporary audit cache corrected an earlier fail-closed cache warning without suppressing diagnostics. The new gate's offline regressions run in ordinary CI; recurring outbound Python audit queries are **not** enabled or assumed authorized. Existing frontend audit scope remains unchanged.
 
 Detailed observed versions, deduplicated original findings, exact source hashes, parity vectors, audit coverage and limitations: `results/python_security_20261002.json` and `../docs/python-security.md`. Optional NLI/training jobs, production inventory, real-browser interaction, penetration/load tests and OS/native-binary security assessment remain outside these completed checks. Nothing was deployed.
+
+## 2026-10-04 UTC: BASIL real-news evaluation of unchanged UnBias-Plus API
+
+Completed a frozen 60-sentence, 60-event sample with unchanged published BASIL release-2 human references: 20 lexical cases, 20 informational-only cases and 20 no-annotation controls. No machine labels were represented as human labels. No eligible candidate shared a normalized 13-word sequence with the released 5,000-row train_4 snapshot; training independence remains unproven. Original model, prompt, adapter and endpoint hashes were preserved.
+
+All 60 real HTTP outcomes were saved: 52 complete, seven failed, one partial. Token precision 175/416 = 42.1%, recall 175/380 = 46.1%, F1 .440; 17/20 lexical cases had a human lexical word covered. One of 20 controls was highlighted, 15 returned no suggestions, and four failed. Exact boundaries matched 3/41 reference spans; lenient one-to-one overlap matched 28/41. Attribution remains unknown for all 51 accepted highlights. CPU median 15.78 seconds, first request 60.54 seconds. These short archival sentence results are not full-article, ideology or production accuracy.
+
+Seven scoring tests passed; independent token/exact-boundary recounts and deterministic sample regeneration matched. No tuning, new human reviews, merge or deployment. Recommendation: reject the unchanged integration for production precise highlighting; retain only as a research candidate. Do not expand unchanged-model testing to seek a better score. Saved report, protocol, provenance, per-case text-free outputs, code and verification: `experiments/unbias_20261003/realnews_basil60/`. Raw source/HTTP snapshots remain in ignored local data. The prior GitHub upload block was not retried; this work is committed locally.
+
+## 2026-10-04: targeted reliability fix and rejected lexical refiner
+
+Instrumented reproductions of the eight failed/partial BASIL cases found seven
+invalid native JSON completions (six escaping errors, one missing closing brace).
+Opt-in native JSON grammar yielded six complete and two partial responses with
+no hard failures on that selected set. Exact-source checks and disabled defaults
+remain. This is targeted development evidence, not all-input reliability.
+
+A second-stage minimal lexical highlight experiment retained all 60 archived
+outcomes. After two explicitly archived incomplete contract/grammar attempts,
+all 30 active calls in the corrected run succeeded, keeping all 51 original
+highlights, narrowing none and dropping none. All token/span scores are unchanged;
+median added latency was 17.86 seconds. Reject this refiner as no demonstrated
+benefit. The original seven detector failures and one partial outcome remain.
+
+The runtime oneOf conversion incompatibility was verified with pinned source and
+a compiled converter probe, then fixed structurally without another semantic
+prompt change. Original baseline and candidate hashes remain auditable. No new
+human labels, training, deployment or high-accuracy claim. Complete evidence and
+next human-reviewed data gate: `experiments/unbias_20261004/REPORT.md`.
