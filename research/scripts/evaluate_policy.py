@@ -3,7 +3,7 @@ import argparse,hashlib,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 from research.scripts.evaluate import summarize
-from research.scripts.report_contract import require_matching_reports, require_unique_examples
+from research.scripts.report_contract import require_matching_reports, require_unique_examples, require_numeric_predictions
 
 def point_estimate_gates(metrics):
     delivered=metrics.get('delivered',{})
@@ -28,6 +28,8 @@ def evaluate(report,policy,validation):
         key=lambda row: row[field].lower() if field=='text_sha256' else row[field]
         if {key(r) for r in report['predictions']}&{key(r) for r in validation['predictions']}:raise ValueError(f'Test/validation overlap: {field}')
     if report['mode'] not in policy['validated_modes']:raise ValueError('Mode not calibrated')
+    require_numeric_predictions(report)
+    require_numeric_predictions(validation)
     from backend.model import validate_policy,classify_scores
     validate_policy(policy,report['model'])
     # In-memory simulation only. The source policy stays unapproved on disk.

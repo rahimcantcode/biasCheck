@@ -1,5 +1,31 @@
 # Working experiment log (not a final report)
 
+## 2026-10-04 18:58 UTC heartbeat: numeric calibration input contract
+
+Added shared numeric-report checks before calibration optimization and policy
+classification. Require complete string-index 0/1/2 mapping to LEFT/RIGHT/CENTER
+exactly once, three finite numeric logits per row, recognized reference labels,
+and nonnegative integer token counts. Booleans are rejected as logits/counts;
+strings, NaN/infinity, wrong vector dimensions and malformed class maps fail.
+Checks cover negative and uncertain rows too, before calibration filters them.
+No changes to model behavior, decision thresholds or dataset labels.
+
+Eight new tests include rejection before the optimizer and a positive synthetic
+120-row calibration fixture that still yields full coverage and release_approved
+false. The synthetic fixture stays in test memory and is not human evidence or
+a research accuracy result. All 38 selected regression tests passed in 13.66s
+(research, report contract, delivered metrics, unique examples, numeric reports).
+An earlier run of the seven rejection tests plus existing suite passed 37 tests;
+the positive control was then added. No dependencies installed. git diff --check
+passed. No validation/test dataset was opened, and no training or new Astra ML
+review is claimed. This is offline calibration/evaluation integrity work.
+
+Public-browser smoke repeated two frozen targeted examples: HTTP 200, unchanged
+LEFT/RIGHT outputs. Local Chromium fallback, agent-browser CLI/cloud unavailable
+as previously checked; zero page errors, failed requests or mobile overflow. Raw
+evidence outputs/live-browser-numeric-contract-20261004, sanitized model and PNG
+hashes research/results/numeric_contract_browser_20261004.json. Production unchanged.
+
 ## 2026-10-04 17:56 UTC heartbeat: conditional OOF uncertainty analysis
 
 Resampled the frozen six-approach shared-error report (word, semantic, hybrid,

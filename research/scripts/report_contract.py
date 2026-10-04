@@ -1,6 +1,25 @@
 """Fail-closed checks for supplied evaluation provenance; not human authentication."""
+import math
 MODEL_FIELDS = ('weights_sha256', 'config_sha256', 'tokenizer_sha256',
                 'aggregation', 'max_length', 'stride', 'id2label')
+
+
+def require_numeric_predictions(report):
+    mapping = report.get('model', {}).get('id2label')
+    if not isinstance(mapping, dict) or set(mapping) != {'0', '1', '2'} or any(not isinstance(v, str) for v in mapping.values()) or sorted(mapping.values()) != ['CENTER', 'LEFT', 'RIGHT']:
+        raise ValueError('Expected a complete three-class index mapping')
+    rows = report.get('predictions')
+    if not isinstance(rows, list) or not rows:
+        raise ValueError('Nonempty prediction list required')
+    for row in rows:
+        if not isinstance(row, dict) or row.get('gold') not in ('LEFT', 'CENTER', 'RIGHT', 'NONPOLITICAL', 'UNCERTAIN'):
+            raise ValueError('Invalid reference label')
+        logits = row.get('logits')
+        if not isinstance(logits, list) or len(logits) != 3 or any(type(v) not in (int, float) or not math.isfinite(v) for v in logits):
+            raise ValueError('Expected three finite numeric logits')
+        tokens = row.get('token_count')
+        if type(tokens) is not int or tokens < 0:
+            raise ValueError('Expected nonnegative integer token count')
 
 
 def require_unique_examples(report):
