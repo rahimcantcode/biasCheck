@@ -1,0 +1,141 @@
+{
+  "started_at": "2026-10-04T13:42:07.930Z",
+  "finished_at": "2026-10-04T13:42:46.929Z",
+  "browser": "154.0.8037.95",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "selection": "Frozen repetition smoke probes, not new accuracy evidence",
+  "cases": [
+    {
+      "id": "headline-repeat-1",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": null,
+        "label_id": null,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998968,
+          "RIGHT": 0.000777,
+          "CENTER": 0.000255
+        },
+        "decision": "abstained",
+        "reason": "insufficient_context",
+        "token_count": 10,
+        "tokens_processed": 10,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "screenshot_sha256": "f0f5ec55b8e2c3867a0d0ea4f7a91d9be65df4d085f2f4703212aeffd93718fe"
+    },
+    {
+      "id": "headline-repeat-4",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998627,
+          "RIGHT": 0.000874,
+          "CENTER": 0.000499
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 46,
+        "tokens_processed": 46,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "screenshot_sha256": "1cd069e359a05f964c5c1c462130388c68c4bdee775e4498ad80643b59606654"
+    },
+    {
+      "id": "headline-repeat-8",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "CENTER",
+        "label_id": 2,
+        "raw_label": "CENTER",
+        "probabilities": {
+          "LEFT": 0.00038,
+          "RIGHT": 0.000414,
+          "CENTER": 0.999207
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 94,
+        "tokens_processed": 94,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "screenshot_sha256": "fdca837f07bb5712dc3c01960f8d678d1b639caa11d6a991a183423c9619278b"
+    }
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false
+}

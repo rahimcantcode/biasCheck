@@ -5,14 +5,15 @@ import numpy as np
 from scipy.optimize import minimize_scalar
 from scipy.special import logsumexp,softmax
 try:
-    from .report_contract import require_human_provenance
+    from .report_contract import require_human_provenance, require_unique_examples
 except ImportError:
-    from report_contract import require_human_provenance
+    from report_contract import require_human_provenance, require_unique_examples
 
 
 def fit(report,target=.9,min_coverage=.8):
     if report['split']!='validation':raise ValueError('Only validation may be used for calibration.')
     require_human_provenance(report)
+    require_unique_examples(report)
     rows=[r for r in report['predictions'] if r['gold'] in ['LEFT','CENTER','RIGHT']]
     if len(rows)<100:raise ValueError('At least 100 validation examples are required.')
     mapping={v:int(k) for k,v in report['model']['id2label'].items()}

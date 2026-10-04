@@ -3,7 +3,7 @@ import argparse,hashlib,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 from research.scripts.evaluate import summarize
-from research.scripts.report_contract import require_matching_reports
+from research.scripts.report_contract import require_matching_reports, require_unique_examples
 
 def point_estimate_gates(metrics):
     delivered=metrics.get('delivered',{})
@@ -19,14 +19,17 @@ def point_estimate_gates(metrics):
 
 def evaluate(report,policy,validation):
     require_matching_reports(report,validation)
-    from backend.model import validate_policy,classify_scores
-    validate_policy(policy,report['model'])
     if report['split']!='test' or validation['split']!='validation':raise ValueError('Separate test and validation reports required')
     if policy['calibration_data_sha256']!=validation['data_sha256']:raise ValueError('Wrong calibration dataset')
     if report['data_sha256']==validation['data_sha256']:raise ValueError('Test and validation are identical')
+    require_unique_examples(report)
+    require_unique_examples(validation)
     for field in ['id','text_sha256']:
-        if {r[field] for r in report['predictions']}&{r[field] for r in validation['predictions']}:raise ValueError(f'Test/validation overlap: {field}')
+        key=lambda row: row[field].lower() if field=='text_sha256' else row[field]
+        if {key(r) for r in report['predictions']}&{key(r) for r in validation['predictions']}:raise ValueError(f'Test/validation overlap: {field}')
     if report['mode'] not in policy['validated_modes']:raise ValueError('Mode not calibrated')
+    from backend.model import validate_policy,classify_scores
+    validate_policy(policy,report['model'])
     # In-memory simulation only. The source policy stays unapproved on disk.
     candidate={**policy,'release_approved':True};rows=[]
     labels={int(k):v for k,v in report['model']['id2label'].items()}

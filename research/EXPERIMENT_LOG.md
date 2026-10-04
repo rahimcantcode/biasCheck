@@ -1,5 +1,40 @@
 # Working experiment log (not a final report)
 
+## 2026-10-04 13:40 UTC heartbeat: reject duplicate evaluation evidence
+
+Completed the duplicate-evidence check begun before intervening heartbeat
+messages; no separate experiments are claimed for those wakeups. Calibration and
+policy evaluation now require nonempty prediction arrays, object rows, nonblank
+string IDs and valid 64-hex text SHA-256 values. Duplicate IDs or text hashes
+within either report are rejected, including differently cased hash strings.
+Cross-report text-hash comparison also normalizes hexadecimal case.
+
+Checks run before calibration sample counting and policy scoring. Lightweight
+policy report checks now precede backend import, allowing malformed/overlapping
+reports to fail without loading inference dependencies. Existing policy binding
+still executes before any classification. No changes to policy thresholds,
+production inference, dataset labels or model weights. Exact byte-hash uniqueness
+does not establish semantic/source/event independence; paraphrases remain outside
+this check, and supplied hashes/provenance remain assertions requiring audit.
+
+Seven new tests cover preserved valid input, duplicate IDs, hash-case duplicates,
+empty/malformed rows, 100 repeated calibration rows, 300 repeated test rows and
+case-insensitive cross-split overlap. All 30 selected tests passed in 12.39s:
+test_research.py, test_report_contract.py, test_delivered_metrics.py,
+test_unique_examples.py. Used system Python plus existing local tld/pytest paths;
+no dependency installation this run. No backend import warning in this run, but
+that does not resolve the earlier numerical Torch/NumPy compatibility warning.
+git diff --check passed. No actual validation or reserved test examples read.
+This was an engineering integrity fix, not ML training or an Astra model review.
+
+Public browser smoke: three frozen repetition probes HTTP 200, unchanged known
+withheld/LEFT/CENTER outputs. No page errors/failed requests/mobile overflow.
+New browser skill was read; agent-browser CLI was not installed and no cloud
+browser was available, so used existing local Chromium/Playwright fallback.
+Raw responses and screenshots in outputs/live-browser-unique-evidence-20261004;
+sanitized model fingerprints and screenshot hashes in
+research/results/unique_evidence_browser_20261004.json. No deployment performed.
+
 ## 2026-10-04 09:54 UTC heartbeat: shared development-error audit
 
 Execution began around 10:04 UTC. Compared saved OOF predictions from six fixed
