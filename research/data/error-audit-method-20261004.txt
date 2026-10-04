@@ -1,0 +1,12 @@
+This is a sound **training-development error analysis**, provided the saved OOF artifacts are comparable. It is not independent accuracy validation.
+
+- Require exactly the same 115 unique IDs across word, semantic, hybrid, equal-vote ensemble, character, and CENTER-first hierarchy. Verify identical five-fold assignments, disjoint train/held membership, and that each prediction comes from the fold holding out that ID. Check that identical event strings never cross train/held boundaries.
+- Match saved data hashes, label versions, and fold manifests. These checks establish artifact consistency; predictions alone cannot prove how models were trained.
+- Count **all six wrong**, **all six correct**, and **prediction disagreement**. These are not mutually exclusive: all models can be wrong while disagreeing. Report denominators and cross-tabulate by original corpus class and unanimous versus disputed source labels, keeping label agreement distinct from model agreement.
+- Preserve one record per ID with its source reference, original reference label(s), label-agreement status, fold, and all six saved predictions. Document which existing reference label defines “correct”; do not relabel. Use only saved training OOF outputs—no validation/test data or new predictions.
+
+**All-model-wrong does not establish bad annotation.** Shared training data, representations, or decision rules can produce correlated errors; ambiguity and insufficient context also remain possible. Ensembles and hierarchies are not independent annotators.
+
+**Oracle any-correct is not achievable accuracy.** It uses the reference label to select a correct model retrospectively. It measures coverage among these saved outputs, not the performance of an available selection procedure.
+
+With tools, files, and network excluded, I have only critiqued the protocol; I have not verified artifacts, computed counts, or saved records.

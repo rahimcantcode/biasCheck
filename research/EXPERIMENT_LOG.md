@@ -1,5 +1,50 @@
 # Working experiment log (not a final report)
 
+## 2026-10-04 09:54 UTC heartbeat: shared development-error audit
+
+Execution began around 10:04 UTC. Compared saved OOF predictions from six fixed
+approaches: word, semantic, hybrid, equal-weight ensemble, character, CENTER-first
+hierarchy. Verified training-data hashes, ensemble component hash, complete unique
+115 IDs, matching held-fold assignments and exact train/held memberships. Reference
+folds also pass event-string disjointness checks. No new offline predictions,
+training, label edits, validation access or reserved test access.
+
+Across 115 examples: all six correct on 34, all six wrong on 34, at least one
+correct on 81, and predictions disagree on 57. Categories are not disjoint:
+different wrong labels can disagree. These are agreements with existing corpus
+reference labels, not product accuracy or independent human adjudication.
+
+| Reference slice | N | All six wrong | At least one correct |
+| --- | ---: | ---: | ---: |
+| LEFT | 38 | 10 | 28 |
+| CENTER | 26 | 16 | 10 |
+| RIGHT | 51 | 8 | 43 |
+| Unanimous source labels | 54 | 18 | 36 |
+| Disputed source labels | 61 | 16 | 45 |
+
+No CENTER example was correct under all six approaches. Shared failures therefore
+extend to unanimously annotated examples; disagreement between source reviewers
+alone cannot explain them. Conversely, unanimity is not proof of truth and
+all-model-wrong does not establish bad annotation. Models share data and are not
+independent annotators. The 81 any-correct count is retrospective oracle coverage,
+not achievable accuracy or an upper bound on future models.
+
+GPT-6 Astra Medium completed no-tools methodological critique via requested
+terminal route; response research/data/error-audit-method-20261004.txt. Four tests
+passed for duplicate/missing IDs, wrong folds and wrong consensus. All row IDs,
+text hashes, reference labels, annotation-agreement status and six predictions
+retained in research/results/shared_errors_20261004.json and user-facing outputs.
+Input reports preserve underlying raw scores, model hashes and dataset provenance.
+No model promotion; corpus remains noncommercial research-only.
+
+Targeted public-browser test selected the first two all-six-wrong CENTER-reference
+rows in training order. Production returned LEFT .993377 for 010d924f-4636-45ce-a97e-703055a109ad
+and RIGHT .997867 for 091773c9-9457-4534-b764-d19057a39204. This selection explicitly
+uses existing labels/errors and cannot estimate accuracy. Both HTTP 200; local
+Chromium fallback (cloud browser unavailable), zero errors/failed requests/mobile
+overflow. Raw evidence outputs/live-browser-shared-errors-20261004; sanitized
+report research/results/shared_errors_browser_20261004.json. Production unchanged.
+
 ## 2026-10-04 06:23 UTC heartbeat: prevent silent metric denominator loss
 
 Fixed summarize() accepting unknown reference labels by silently excluding them
