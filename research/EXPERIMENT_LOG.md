@@ -1,5 +1,42 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 18:17 UTC heartbeat: fixed unigram-only ablation
+
+Five fixed fits on the same 115-row training-only event-string folds. Cloned each
+baseline vectorizer, changed only ngram_range from (1,2) to (1,1), and refitted
+on fold-training text only. Cloned all balanced logistic classifier parameters
+unchanged (C=1, random_state=20261001). No validation/test reads or search.
+Convergence warnings treated as errors; none raised, 8-14 iterations.
+
+Unigram-only 56/115=.48696 accuracy, macro-F1 .43995, versus baseline 58/115=.50435
+and .44234. Recalls LEFT 22/38 unchanged; CENTER 5/26 versus 4/26; RIGHT 29/51
+versus 32/51. Unanimous held-out subset 26/54 versus 25/54. Two corrected and four
+regressed examples. Reject candidate: no aggregate improvement or high accuracy.
+
+Candidate vocabulary sizes 1110-1178 versus baseline 1972-2103. Neither approaches
+the 20000 feature cap, so cap competition is not binding here; TF-IDF row
+normalization still changes weights. This compares whole pipelines, not an
+isolated causal contribution of bigram information. Low held-out bigram coverage
+alone did not predict an improvement from removing bigrams. Small, repeatedly
+examined development folds and disputed noncommercial corpus labels remain limits.
+
+research/scripts/unigram_cv.py; checkpoints/unigram-cv-20261005 holds five models,
+protocol and results. research/results/unigram_cv_20261005.json retains data/fold
+hashes, train/held IDs, parameters, vocab sizes, model hashes, 230 predictions/
+probabilities and paired error changes; copied to outputs. Verified all five
+model hashes, classifier parameter equality, sole vectorizer parameter difference,
+unigram-only vocabularies, OOF coverage and probability argmax labels. Six existing
+coverage/fold tests passed. Astra Medium critique saved in
+research/data/unigram-method-20261005.txt.
+
+Public-browser smoke 18:18:51-18:18:57 UTC: two frozen examples HTTP 200 with
+unchanged LEFT .993377 / RIGHT .997867. Complete captures, no page errors/failed
+requests or mobile overflow. Local Chrome/Playwright fallback; agent-browser
+unavailable, no cloud browser tool. Repeated smoke only, not candidate validation.
+Raw evidence outputs/live-browser-unigram-20261005; sanitized hashes and model
+fingerprints research/results/unigram_browser_20261005.json. Production unchanged;
+no deployment or independent high-accuracy claim.
+
 ## 2026-10-05 16:08 UTC heartbeat: reject failed calibration optimization
 
 Reproduced an offline calibration bug with a synthetic report and mocked optimizer:
