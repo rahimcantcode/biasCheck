@@ -1,5 +1,6 @@
 """Fit only on validation; never marks a policy as approved for deployment."""
 import argparse,hashlib,json
+from collections import Counter
 from pathlib import Path
 import numpy as np
 from scipy.optimize import minimize_scalar
@@ -17,6 +18,9 @@ def fit(report,target=.9,min_coverage=.8):
     require_numeric_predictions(report)
     rows=[r for r in report['predictions'] if r['gold'] in ['LEFT','CENTER','RIGHT']]
     if len(rows)<100:raise ValueError('At least 100 validation examples are required.')
+    class_counts=Counter(r['gold'] for r in rows)
+    if set(class_counts)!={'LEFT','CENTER','RIGHT'}:
+        raise ValueError('Validation must contain all three political classes. Do not release.')
     mapping={v:int(k) for k,v in report['model']['id2label'].items()}
     y=np.array([mapping[r['gold']] for r in rows]);logits=np.array([r['logits'] for r in rows])
     def nll(log_t):
@@ -41,6 +45,7 @@ def fit(report,target=.9,min_coverage=.8):
     policy.update(schema_version=1,temperature=temperature,min_confidence=best[1],min_margin=best[2],min_tokens=30,
         validated_modes=[report['mode']],calibration_data_sha256=report['data_sha256'],validation_coverage=best[0],
         validation_selective_accuracy=best[3],release_approved=False,
+        validation_class_counts=dict(class_counts),
         limitations='Requires independent test and relevance evaluation. Minimum context is an engineering guard, not a nonpolitical classifier.')
     return policy
 

@@ -1,5 +1,31 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 20:42 UTC heartbeat: calibration reference-class coverage
+
+Reproduced a calibration gap with 120 synthetic rows: replacing an entire class
+with another correctly predicted class still allowed a candidate. Added a check
+that political validation rows include LEFT, CENTER and RIGHT before optimization.
+Candidate policies now retain validation_class_counts. Existing total minimum,
+optimizer bounds, threshold search and release_approved=False remain unchanged.
+
+The missing-class regression failed before the patch; 29 selected tests passed
+afterward (optimizer, numeric reports, provenance and unique examples). New tests
+exercise each missing class and verify the saved 40/40/40 synthetic class counts.
+No human annotations were generated. Presence is only a necessary condition, not
+sufficient sample size, representative coverage or proof of each-class accuracy;
+independent evaluation and uncertainty analysis remain necessary.
+
+Engineering-only run: no real calibration report or corpus split accessed, no
+model training, no Astra ML review requested, no deployment or accuracy claim.
+
+Actual browser audit 21:20:06-21:20:29 UTC, later than trigger: two frozen cases
+HTTP 200, unchanged LEFT .993377 / RIGHT .997867, complete captures, no page
+errors/failed requests or mobile overflow. Local Chrome/Playwright fallback;
+agent-browser unavailable, no cloud browser tool. Raw responses/screenshots:
+outputs/live-browser-calibration-classes-20261005. Sanitized fingerprints/hashes:
+research/results/calibration_classes_browser_20261005.json. Repeated production
+smoke only; not evidence of improved accuracy.
+
 ## 2026-10-05 19:33 UTC heartbeat: per-category reviewer agreement
 
 Extended annotation/compare_reviews.py without changing existing raw agreement,

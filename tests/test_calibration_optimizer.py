@@ -40,5 +40,21 @@ class OptimizerTests(unittest.TestCase):
         self.assertEqual(result['validation_coverage'], 1.)
         self.assertTrue(np.isfinite(result['temperature']))
 
+    def test_missing_reference_class_rejected(self):
+        for absent in ('LEFT','CENTER','RIGHT'):
+            r=report()
+            replacement='LEFT' if absent!='LEFT' else 'RIGHT'
+            index={v:int(k) for k,v in r['model']['id2label'].items()}[replacement]
+            for row in r['predictions']:
+                if row['gold']==absent:
+                    row['gold']=replacement
+                    row['logits']=[3. if j==index else -2. for j in range(3)]
+            with self.subTest(absent=absent),self.assertRaisesRegex(ValueError,'all three political classes'):
+                fit(r)
+
+    def test_candidate_retains_reference_class_counts(self):
+        result=fit(report())
+        self.assertEqual(result['validation_class_counts'],{'LEFT':40,'CENTER':40,'RIGHT':40})
+
 
 if __name__ == '__main__': unittest.main()
