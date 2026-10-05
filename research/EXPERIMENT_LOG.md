@@ -1,5 +1,31 @@
 # Working experiment log (not a final report)
 
+## 2026-10-04 22:57 UTC heartbeat: raw-label scoring consistency
+
+Fixed offline policy evaluation to reconstruct raw labels from validated logits
+and the model's id2label mapping, instead of trusting a potentially stale stored
+raw_label. Original labels remain in source_report_raw_label for audit. Ties
+use first-index argmax; abstentions remain separate from raw predictions. Inputs
+are not mutated and release_approved remains false. This prevents stale labels
+from either inflating or depressing reported raw accuracy; it is not a model gain.
+
+43 selected research/report-contract/metric tests passed, including five new
+consistency tests for both stale-label directions, abstention, null source label,
+and custom mapping/ties. Integration fixtures mock backend classification and
+policy validation to isolate report assembly; they do not verify numerical model
+inference. No corpus split, training run, or independent human evaluation was
+performed. No Astra ML review was requested for this engineering-only change.
+
+Public browser audit actually ran October 5, 00:43:37-00:44:00 UTC (later than the
+trigger). Used existing local Chrome/Playwright fallback; no cloud browser was
+available and agent-browser CLI was unavailable. Two frozen targeted examples
+again returned HTTP 200, LEFT .993377 and RIGHT .997867 respectively. No page
+errors, failed requests, or mobile horizontal overflow. Repeated selected errors
+are smoke checks only, not a representative accuracy estimate. Raw responses and
+screenshots: outputs/live-browser-raw-consistency-20261004; sanitized model
+fingerprints and screenshot hashes: research/results/raw_consistency_browser_20261004.json.
+Production unchanged; no deployment or high-accuracy claim.
+
 ## 2026-10-04 21:55 UTC heartbeat: corrupted-training-label controls
 
 Ran five fixed controls, seeds 20261004-20261008. For each frozen development fold,

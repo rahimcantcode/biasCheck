@@ -3,7 +3,7 @@ import argparse,hashlib,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 from research.scripts.evaluate import summarize
-from research.scripts.report_contract import require_matching_reports, require_unique_examples, require_numeric_predictions
+from research.scripts.report_contract import require_matching_reports, require_unique_examples, require_numeric_predictions, raw_label_from_logits
 
 def point_estimate_gates(metrics):
     delivered=metrics.get('delivered',{})
@@ -37,7 +37,9 @@ def evaluate(report,policy,validation):
     labels={int(k):v for k,v in report['model']['id2label'].items()}
     for row in report['predictions']:
         scores,reason=classify_scores(row['logits'],row['token_count'],report['mode'],candidate)
-        rows.append({**row,'label':labels[int(scores.argmax())] if reason is None else None,'decision':'classified' if reason is None else 'abstained','reason':reason})
+        rows.append({**row,'source_report_raw_label':row.get('raw_label'),
+            'raw_label':raw_label_from_logits(row,report['model']['id2label']),
+            'label':labels[int(scores.argmax())] if reason is None else None,'decision':'classified' if reason is None else 'abstained','reason':reason})
     metrics=summarize(rows)
     unknown=[r for r in rows if r['gold']=='UNCERTAIN']
     metrics['uncertain_n']=len(unknown)

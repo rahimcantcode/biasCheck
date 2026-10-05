@@ -4,6 +4,12 @@ MODEL_FIELDS = ('weights_sha256', 'config_sha256', 'tokenizer_sha256',
                 'aggregation', 'max_length', 'stride', 'id2label')
 
 
+def raw_label_from_logits(row, mapping):
+    # Numeric report validation runs first; ties match first-index argmax.
+    index = max(range(3), key=lambda i: row['logits'][i])
+    return mapping[str(index)]
+
+
 def require_numeric_predictions(report):
     mapping = report.get('model', {}).get('id2label')
     if not isinstance(mapping, dict) or set(mapping) != {'0', '1', '2'} or any(not isinstance(v, str) for v in mapping.values()) or sorted(mapping.values()) != ['CENTER', 'LEFT', 'RIGHT']:
