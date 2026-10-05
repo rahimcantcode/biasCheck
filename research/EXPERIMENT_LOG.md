@@ -1,5 +1,31 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 16:08 UTC heartbeat: reject failed calibration optimization
+
+Reproduced an offline calibration bug with a synthetic report and mocked optimizer:
+success=False with a finite x=0 still produced a candidate policy. Added checks
+requiring optimizer success, finite objective/solution, and a solution within the
+existing log-temperature bounds [-3,3]. Also reject invalid calibrated score
+shape, nonfinite/out-of-range probabilities, and non-unit row sums before threshold
+search. Existing optimizer bounds and threshold-search settings are unchanged.
+
+Regression failed before the patch (expected ValueError not raised), then 27
+selected tests passed: four new optimizer tests plus numeric, provenance and
+unique-example checks. New tests cover failed optimization, nonfinite/out-of-bound
+results, invalid softmax output and a real successful synthetic fit that still
+produces release_approved=False. Fixtures are synthetic, not human evidence.
+No existing corpus reports or reserved test accessed; no new training, calibration
+of a real candidate, deployment or approval. Engineering-only work, no Astra ML
+review requested. This prevents invalid experiment artifacts, not an accuracy gain.
+
+Actual live-browser smoke 18:15:10-18:15:38 UTC, later than trigger: two frozen
+examples HTTP 200 with unchanged LEFT .993377 / RIGHT .997867. Complete captures,
+no page errors/failed requests or mobile overflow. Local Chrome/Playwright fallback
+(agent-browser unavailable; no cloud browser tool). Raw evidence:
+outputs/live-browser-optimizer-guard-20261005; sanitized model/screenshot hashes:
+research/results/optimizer_guard_browser_20261005.json. Repeated smoke only;
+independent human evaluation and high accuracy still unproven.
+
 ## 2026-10-05 15:00 UTC heartbeat: frozen vocabulary coverage audit
 
 Audited all 115 training-only OOF rows using their verified saved fold vectorizers

@@ -22,8 +22,14 @@ def fit(report,target=.9,min_coverage=.8):
     def nll(log_t):
         z=logits/np.exp(log_t)
         return np.mean(logsumexp(z,axis=1)-z[np.arange(len(y)),y])
-    temperature=float(np.exp(minimize_scalar(nll,bounds=(-3,3),method='bounded').x))
-    scores=softmax(logits/temperature,axis=1);rank=np.sort(scores,axis=1);correct=scores.argmax(1)==y
+    optimized=minimize_scalar(nll,bounds=(-3,3),method='bounded')
+    if not optimized.success or not np.isfinite(optimized.x) or not -3 <= optimized.x <= 3 or not np.isfinite(optimized.fun):
+        raise ValueError('Temperature optimization failed or returned an invalid result. Do not release.')
+    temperature=float(np.exp(optimized.x))
+    scores=softmax(logits/temperature,axis=1)
+    if scores.shape!=logits.shape or not np.isfinite(scores).all() or (scores<0).any() or (scores>1).any() or not np.allclose(scores.sum(axis=1),1,atol=1e-10,rtol=0):
+        raise ValueError('Invalid calibrated probabilities. Do not release.')
+    rank=np.sort(scores,axis=1);correct=scores.argmax(1)==y
     token_counts=np.array([r['token_count'] for r in rows]);best=None
     for threshold in np.linspace(1/3,.99,80):
         for margin in np.linspace(0,.8,41):
