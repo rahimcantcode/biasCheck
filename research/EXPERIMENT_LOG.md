@@ -1,5 +1,57 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 06:58 UTC heartbeat: withhold disputed supervision
+
+Five fixed fits, one per frozen training-only event-string fold. Cloned each
+saved balanced logistic estimator (C=1, unchanged parameters), then fit only on
+unanimous-label fold-training rows: supervised counts 42/40/44/46/44, versus 92
+full-training rows each. Kept frozen vectorizers fitted on ALL fold-training text,
+including excluded-label texts; no held-out text used for fitting. This tests
+withholding disputed supervision, not removing those texts from representation.
+Convergence warnings treated as errors; none raised, 7-10 iterations.
+
+| OOF metric on unchanged 115 rows | Full supervision | Unanimous-only supervision |
+| --- | ---: | ---: |
+| Correct | 58 | 44 |
+| Accuracy | .50435 | .38261 |
+| Macro-F1 | .44234 | .37638 |
+| LEFT recall | 22/38 | 13/38 |
+| CENTER recall | 4/26 | 22/26 |
+| RIGHT recall | 32/51 | 9/51 |
+| Unanimous held-out subset correct | 25/54 | 31/54 |
+| Disputed held-out subset correct | 33/61 | 13/61 |
+
+Candidate predicts CENTER 78/115 with precision 22/78=.28205. Nineteen corrected
+versus 33 regressed examples. Reject candidate: improved CENTER recall and the
+unanimous slice come with substantial degradation elsewhere. Disputed-slice
+macro-F1 uses fixed three-class averaging; that slice contains zero CENTER
+references, so its reported zero recall is not an estimate for CENTER examples.
+Neither unanimous agreement nor disputed aggregation is unquestioned human truth.
+
+No causal attribution to noise: exclusion also changes training size, topic/class
+mix, balanced class weights, and effective regularization at fixed C. Repeated
+development folds and related event families limit inference. No validation or
+reserved-test access, relabeling, hyperparameter search or deployment. Corpus and
+candidate remain research-only/noncommercial; release approval false.
+
+research/scripts/strict_label_cv.py; checkpoints/strict-label-cv-20261005 contains
+five models, protocol and report. research/results/strict_label_cv_20261005.json
+preserves source/fold hashes, train/held/supervised/excluded IDs, counts, parameters,
+model hashes, 230 OOF probability vectors, confusion matrices and paired changes;
+also copied to outputs. Verified five candidate hashes, all exclusion/partition
+conditions, unique complete OOF coverage and probability argmax labels. Six tests
+passed (three new supervision-selection tests plus three existing split/feature
+tests). Astra Medium no-tools critique: research/data/strict-fit-method-20261005.txt.
+
+Actual public browser audit occurred 10:52:15-10:52:33 UTC, later than trigger.
+Local Chrome/Playwright fallback (agent-browser unavailable; no cloud browser
+tool found). Two frozen probes returned HTTP 200 and unchanged production LEFT
+.993377 / RIGHT .997867, with complete UI/capture states, no page errors/failed
+requests or mobile overflow. Repeated smoke only, not candidate evaluation.
+Raw responses/screenshots outputs/live-browser-strict-fit-20261005; sanitized
+model fingerprints and screenshot hashes research/results/strict_fit_browser_20261005.json.
+Independent human evaluation/high accuracy remain outstanding.
+
 ## 2026-10-05 05:51 UTC heartbeat: order diagnostics and durable browser responses
 
 Fixed live_browser_audit.cjs to save each parsed prediction response before UI
