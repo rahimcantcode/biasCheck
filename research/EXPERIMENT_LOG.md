@@ -1,5 +1,36 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 21:58 UTC heartbeat: same-text cross-mode diagnostic
+
+Extended live browser harness with an optional per-input mode (default article),
+explicit UI mode selection, requested_mode evidence, and a failure if a successful
+response returns a different mode. Raw evidence is saved before that check.
+Seven mock-browser scenarios passed, including paragraph selection and a
+sentence-request/article-response mismatch. Existing failure-capture tests retained.
+
+Froze one AI-authored two-paragraph text across Article, Sentence and Paragraph
+inputs. First paragraph advocates wealth taxes/universal healthcare; second
+advocates corporate-tax cuts/deregulation. No human gold labels or accuracy metric.
+Public browser 22:00:14-22:00:23 UTC returned HTTP 200 for all three with identical
+model metadata/text, requested modes honored and expected 1/2/2 segments. Verified
+all segment offsets reproduce source text; visible result headers matched modes.
+
+Overall RIGHT .963345 in all modes. Sentence and paragraph outputs both showed
+first passage LEFT .997521 and second RIGHT .989956. Thus a full-text single label
+can hide conflicting passage predictions. This is an observability finding on
+one synthetic text, not proof that the overall label is wrong, calibrated, fair,
+or representative; aggregation/context and units of analysis differ. No mixed
+override or deployment introduced. Astra Medium no-tools critique saved in
+research/data/mode-probe-method-20261005.txt.
+
+Inputs research/data/mode-probes-20261005.json; report
+research/results/mode_probes_20261005.json retains complete passage scores/offsets,
+model/input/screenshot hashes and mode evidence, also copied to outputs. Raw
+responses/screenshots outputs/live-browser-mode-probes-20261005. No page errors,
+failed requests or mobile overflow. Local Chrome/Playwright fallback; agent-browser
+unavailable, no cloud browser tool. No training, corpus split access, release
+approval or high-accuracy claim; production unchanged.
+
 ## 2026-10-05 20:42 UTC heartbeat: calibration reference-class coverage
 
 Reproduced a calibration gap with 120 synthetic rows: replacing an entire class

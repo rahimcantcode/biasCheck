@@ -1,0 +1,287 @@
+{
+  "purpose": "AI-authored cross-mode diagnostic, no human gold or accuracy estimate",
+  "input_sha256": "76cca4468fadf201a1d427f894232db7077fdc8042a08f805e8ad79ac2d03390",
+  "started_at": "2026-10-05T22:00:14.933Z",
+  "finished_at": "2026-10-05T22:00:23.541Z",
+  "browser": "154.0.8037.98",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "cases": [
+    {
+      "id": "mixed-article",
+      "requested_mode": "article",
+      "status": 200,
+      "returned_mode": "article",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "RIGHT",
+        "label_id": 1,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.027243,
+          "RIGHT": 0.963345,
+          "CENTER": 0.009413
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 46,
+        "tokens_processed": 46,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "results": [
+        {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "RIGHT",
+          "label_id": 1,
+          "raw_label": "RIGHT",
+          "probabilities": {
+            "LEFT": 0.027243,
+            "RIGHT": 0.963345,
+            "CENTER": 0.009413
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 46,
+          "tokens_processed": 46,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false,
+          "segment_index": 0,
+          "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.\n\nThe government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth.",
+          "start": 0,
+          "end": 280
+        }
+      ],
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "ui_verification": "complete",
+      "screenshot": "complete",
+      "screenshot_sha256": "6afacfe7ac1c8782e8fa1495cfaefd085b1ff42b15667cab0b4ddbe0ff50c320"
+    },
+    {
+      "id": "mixed-sentence",
+      "requested_mode": "sentence",
+      "status": 200,
+      "returned_mode": "sentence",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "RIGHT",
+        "label_id": 1,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.027243,
+          "RIGHT": 0.963345,
+          "CENTER": 0.009413
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 46,
+        "tokens_processed": 46,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "results": [
+        {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.997521,
+            "RIGHT": 0.00162,
+            "CENTER": 0.000859
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 20,
+          "tokens_processed": 20,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false,
+          "segment_index": 0,
+          "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.",
+          "start": 0,
+          "end": 130
+        },
+        {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "RIGHT",
+          "label_id": 1,
+          "raw_label": "RIGHT",
+          "probabilities": {
+            "LEFT": 0.008014,
+            "RIGHT": 0.989956,
+            "CENTER": 0.00203
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 24,
+          "tokens_processed": 24,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false,
+          "segment_index": 1,
+          "text": "The government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth.",
+          "start": 132,
+          "end": 280
+        }
+      ],
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "ui_verification": "complete",
+      "screenshot": "complete",
+      "screenshot_sha256": "bd9bdb3ab76959fd3ed3d3db0e0f045b81eea0e742c3c08b50606bd93c0d4764"
+    },
+    {
+      "id": "mixed-paragraph",
+      "requested_mode": "paragraph",
+      "status": 200,
+      "returned_mode": "paragraph",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "RIGHT",
+        "label_id": 1,
+        "raw_label": "RIGHT",
+        "probabilities": {
+          "LEFT": 0.027243,
+          "RIGHT": 0.963345,
+          "CENTER": 0.009413
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 46,
+        "tokens_processed": 46,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "results": [
+        {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.997521,
+            "RIGHT": 0.00162,
+            "CENTER": 0.000859
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 20,
+          "tokens_processed": 20,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false,
+          "segment_index": 0,
+          "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.",
+          "start": 0,
+          "end": 130
+        },
+        {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "RIGHT",
+          "label_id": 1,
+          "raw_label": "RIGHT",
+          "probabilities": {
+            "LEFT": 0.008014,
+            "RIGHT": 0.989956,
+            "CENTER": 0.00203
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 24,
+          "tokens_processed": 24,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false,
+          "segment_index": 1,
+          "text": "The government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth.",
+          "start": 132,
+          "end": 280
+        }
+      ],
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "ui_verification": "complete",
+      "screenshot": "complete",
+      "screenshot_sha256": "b7c16c11bf0349374440a0d6f113a87498b4a2aa2033c0bdeb0ae33ff4e085e5"
+    }
+  ],
+  "error": null,
+  "page_errors": [],
+  "failed_requests": [],
+  "mobile_overflow": false,
+  "release_approved": false
+}

@@ -4,15 +4,16 @@ const path = require('node:path');
 const vm = require('node:vm');
 const source = fs.readFileSync(path.join(__dirname, '../research/scripts/live_browser_audit.cjs'), 'utf8');
 
-async function simulate(failure) {
+async function simulate(failure, mode = 'article') {
   const writes = [];
+  const buttons = [];
   let waits = 0, closed = false;
-  const result = { resolved_text: 'example', overall: { label: 'LEFT' } };
+  const result = { mode: failure === 'mode' ? 'article' : mode, resolved_text: 'example', overall: { label: 'LEFT' } };
   const locator = { fill: async () => {}, click: async () => {}, waitFor: async () => {} };
   const page = {
     setDefaultTimeout() {}, on() {},
     goto: async () => ({ status: () => 200 }), url: () => 'https://bias.r4him.tech/',
-    getByLabel: () => locator, getByRole: () => locator,
+    getByLabel: () => locator, getByRole: (role, options) => { buttons.push(options.name); return locator; },
     waitForFunction: async () => {
       if (++waits === 2 && failure === 'ui') throw new Error('render timeout');
     },
@@ -27,7 +28,7 @@ async function simulate(failure) {
   const process = { argv: ['node', 'script', 'input', 'output'], env: {} };
   await vm.runInNewContext(source, {
     require(name) {
-      if (name === 'fs') return { mkdirSync() {}, readFileSync: () => '[{"id":"one","text":"example"}]',
+      if (name === 'fs') return { mkdirSync() {}, readFileSync: () => JSON.stringify([{id:'one',text:'example',mode}]),
         writeFileSync: (file, value) => writes.push(JSON.parse(value)) };
       if (name === 'path') return path;
       if (name === 'playwright') return { chromium: { launch: async () => ({
@@ -37,6 +38,8 @@ async function simulate(failure) {
     }, process, console: { log() {} }, Date
   });
   assert(closed);
+  assert(buttons.includes({article:'Article',sentence:'Sentence',paragraph:'Paragraph'}[mode]));
+  assert.equal(writes[0].cases[0].requested_mode, mode);
   assert.equal(writes[0].cases[0].status, failure === 'json' ? 502 : 200);
   assert.equal(writes[0].cases[0].body_read, 'pending');
   assert.equal(writes[0].cases[0].ui_verification, 'pending');
@@ -71,5 +74,7 @@ async function simulate(failure) {
 
 (async () => {
   for (const failure of [null, 'ui', 'screenshot', 'json', 'body']) await simulate(failure);
-  console.log('5 response-persistence scenarios passed (mock browser)');
+  await simulate(null, 'paragraph');
+  await simulate('mode', 'sentence');
+  console.log('7 response-persistence/mode scenarios passed (mock browser)');
 })().catch(error => { console.error(error); process.exitCode = 1; });

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "mixed-article",
+    "mode": "article",
+    "annotation_provenance": "AI-authored diagnostic, no human gold",
+    "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.\n\nThe government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth."
+  },
+  {
+    "id": "mixed-sentence",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored diagnostic, no human gold",
+    "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.\n\nThe government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth."
+  },
+  {
+    "id": "mixed-paragraph",
+    "mode": "paragraph",
+    "annotation_provenance": "AI-authored diagnostic, no human gold",
+    "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.\n\nThe government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth."
+  }
+]

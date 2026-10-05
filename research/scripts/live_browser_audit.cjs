@@ -20,6 +20,10 @@ fs.mkdirSync(output, { recursive: true });
     await page.getByLabel('Article text or URL').waitFor({ timeout: 60000 });
     await page.waitForFunction(() => Object.keys(document.querySelector('#article-input')).some(key => key.startsWith('__reactProps')), undefined, { timeout: 90000 });
     for (const row of input) {
+      const mode = row.mode || 'article';
+      const modeButtons = { article: 'Article', sentence: 'Sentence', paragraph: 'Paragraph' };
+      if (!Object.hasOwn(modeButtons, mode)) throw new Error('Invalid requested mode: ' + mode);
+      await page.getByRole('button', { name: modeButtons[mode], exact: true }).click();
       await page.getByLabel('Article text or URL').fill(row.text);
       const started = Date.now();
       const [prediction] = await Promise.all([
@@ -27,7 +31,7 @@ fs.mkdirSync(output, { recursive: true });
         page.getByRole('button', { name: 'Analyze', exact: true }).click()
       ]);
       // Preserve HTTP evidence even when body reading or JSON decoding fails.
-      activeCase = { id: row.id, status: prediction.status(), response_seconds: (Date.now() - started) / 1000,
+      activeCase = { id: row.id, requested_mode: mode, status: prediction.status(), response_seconds: (Date.now() - started) / 1000,
         body_read: 'pending', json_decode: 'pending', ui_verification: 'pending', screenshot: 'pending' };
       report.cases.push(activeCase);
       fs.writeFileSync(path.join(output, 'audit.json'), JSON.stringify(report, null, 2));
@@ -38,6 +42,7 @@ fs.mkdirSync(output, { recursive: true });
       activeCase.result = result;
       activeCase.json_decode = 'complete';
       fs.writeFileSync(path.join(output, 'audit.json'), JSON.stringify(report, null, 2));
+      if (prediction.ok() && result.mode !== mode) throw new Error('Response mode differs from requested mode');
       await page.getByRole('button', { name: 'Analyze', exact: true }).waitFor({ state: 'visible' });
       if (prediction.ok()) {
         await page.waitForFunction(text => document.querySelector('article[aria-label="Analyzed article"]')?.textContent === text, result.resolved_text);
