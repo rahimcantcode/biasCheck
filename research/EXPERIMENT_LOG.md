@@ -1,5 +1,43 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 23:00 UTC heartbeat: reproduced whitespace-driven label flip
+
+Derived three article-mode inputs from the frozen two-policy mode probe. Changed
+only its sole paragraph separator: blank line, single newline, or space. Verified
+identical word sequence before submission; all returned resolved text matched its
+submitted variant. Inputs frozen in research/data/formatting-probes-20261005.json
+with provenance/source hash; AI-authored diagnostics, not human gold.
+
+| Separator | Label | LEFT score | RIGHT score | Tokens |
+| --- | --- | ---: | ---: | ---: |
+| Blank line | RIGHT | .027243 | .963345 | 46 |
+| Single newline | RIGHT | .025680 | .964275 | 45 |
+| Space | LEFT | .961676 | .026161 | 44 |
+
+First public-browser run 23:02:00-23:02:34 UTC. After observing the flip, repeated
+the blank-line and space variants in a fresh browser, 23:02:54-23:03:09 UTC. Both
+returned EXACT same score vectors and full model metadata as the first run.
+Five total HTTP 200 submissions, article mode honored, unchanged model across
+all cases, complete captures; no page errors/failed requests or mobile overflow.
+
+This demonstrates reproducible formatting sensitivity for one selected passage,
+not a population error rate, proof of wrongness, or evidence for a particular
+correct label. The repeat was triggered by the finding, not an independent
+preregistered evaluation. No whitespace-normalization fix deployed: that could
+simply select a different wrong label and requires broader evaluation. No training,
+dataset split access or release approval. Astra Medium reviewed the initial
+single-run method (before the repeat decision); research/data/formatting-method-20261005.txt.
+
+Seven existing harness regression scenarios passed. Verified input/resolved-text
+identity, word-sequence identity, shared model metadata and exact repeat scores.
+Raw responses/screenshots outputs/live-browser-formatting-20261005 and
+outputs/live-browser-formatting-repeat-20261005. Repeat input retained in
+research/checkpoints/formatting-20261005/repeat.json. Sanitized report with input,
+text and screenshot hashes plus all raw score vectors:
+research/results/formatting_probes_20261005.json, also copied to outputs.
+Local Chrome/Playwright fallback; agent-browser unavailable, no cloud browser
+tool. Production unchanged; independent human accuracy remains unproven.
+
 ## 2026-10-05 21:58 UTC heartbeat: same-text cross-mode diagnostic
 
 Extended live browser harness with an optional per-input mode (default article),

@@ -1,0 +1,274 @@
+{
+  "purpose": "AI-authored whitespace diagnostic; no human gold or accuracy",
+  "input_sha256": "e3ce0cc06cd21c7be41ac6538c1aa9832a6af0f99a7d1f0a71df22b2039a1899",
+  "word_sequence_identical": true,
+  "repeat_protocol": "After observing a label flip, repeat the original blank-line and space cases in a fresh browser; confirmatory diagnostic, not preregistered independent evaluation",
+  "repeat_exact_scores": true,
+  "runs": [
+    {
+      "directory": "live-browser-formatting-20261005",
+      "started_at": "2026-10-05T23:02:00.722Z",
+      "finished_at": "2026-10-05T23:02:34.977Z",
+      "browser": "154.0.8037.98",
+      "environment": "local Chromium driving public deployed site; not cloud browser",
+      "cases": [
+        {
+          "id": "format-blank-line",
+          "status": 200,
+          "mode": "article",
+          "text_sha256": "39c52320270e1ff4f789c7ed155661bad2c2ba634bb6fbd5ce671052f1c3e866",
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.027243,
+              "RIGHT": 0.963345,
+              "CENTER": 0.009413
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 46,
+            "tokens_processed": 46,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          },
+          "model": {
+            "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+            "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+            "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+            "id2label": {
+              "0": "LEFT",
+              "1": "RIGHT",
+              "2": "CENTER"
+            },
+            "aggregation": "new_token_weighted_logit_mean_v1",
+            "max_length": 512,
+            "stride": 64,
+            "demo_mode": true,
+            "transformers": "4.57.1",
+            "torch": "2.6.0+cpu",
+            "tokenizers": "0.22.2"
+          },
+          "ui_verification": "complete",
+          "screenshot": "complete",
+          "screenshot_sha256": "dc3c857e8e77cd35836f18e47f84ea5f307c81e76fa4847966ab33c5e63810f0"
+        },
+        {
+          "id": "format-single-newline",
+          "status": 200,
+          "mode": "article",
+          "text_sha256": "d1ac33461dcc6f03fb5d400b0a5551916bb6c25bd40224ae101c015e25c749f0",
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.02568,
+              "RIGHT": 0.964275,
+              "CENTER": 0.010045
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 45,
+            "tokens_processed": 45,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          },
+          "model": {
+            "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+            "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+            "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+            "id2label": {
+              "0": "LEFT",
+              "1": "RIGHT",
+              "2": "CENTER"
+            },
+            "aggregation": "new_token_weighted_logit_mean_v1",
+            "max_length": 512,
+            "stride": 64,
+            "demo_mode": true,
+            "transformers": "4.57.1",
+            "torch": "2.6.0+cpu",
+            "tokenizers": "0.22.2"
+          },
+          "ui_verification": "complete",
+          "screenshot": "complete",
+          "screenshot_sha256": "47fd66905b2c4794ff1088e9ed17b0d5b127a76e9c2675e91d6bb58aa4c21681"
+        },
+        {
+          "id": "format-space",
+          "status": 200,
+          "mode": "article",
+          "text_sha256": "e2cfdeaf5ea054fd1e235ae6b591230febe97b5550bdb3e9808b6320bd069f1d",
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.961676,
+              "RIGHT": 0.026161,
+              "CENTER": 0.012163
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 44,
+            "tokens_processed": 44,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          },
+          "model": {
+            "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+            "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+            "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+            "id2label": {
+              "0": "LEFT",
+              "1": "RIGHT",
+              "2": "CENTER"
+            },
+            "aggregation": "new_token_weighted_logit_mean_v1",
+            "max_length": 512,
+            "stride": 64,
+            "demo_mode": true,
+            "transformers": "4.57.1",
+            "torch": "2.6.0+cpu",
+            "tokenizers": "0.22.2"
+          },
+          "ui_verification": "complete",
+          "screenshot": "complete",
+          "screenshot_sha256": "e9102686d43b2718330d8fb35b07142ed6581a16be1cc97bf5a1007b79e4b8af"
+        }
+      ],
+      "page_errors": [],
+      "failed_requests": [],
+      "mobile_overflow": false
+    },
+    {
+      "directory": "live-browser-formatting-repeat-20261005",
+      "started_at": "2026-10-05T23:02:54.648Z",
+      "finished_at": "2026-10-05T23:03:09.226Z",
+      "browser": "154.0.8037.98",
+      "environment": "local Chromium driving public deployed site; not cloud browser",
+      "cases": [
+        {
+          "id": "format-blank-line",
+          "status": 200,
+          "mode": "article",
+          "text_sha256": "39c52320270e1ff4f789c7ed155661bad2c2ba634bb6fbd5ce671052f1c3e866",
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.027243,
+              "RIGHT": 0.963345,
+              "CENTER": 0.009413
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 46,
+            "tokens_processed": 46,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          },
+          "model": {
+            "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+            "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+            "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+            "id2label": {
+              "0": "LEFT",
+              "1": "RIGHT",
+              "2": "CENTER"
+            },
+            "aggregation": "new_token_weighted_logit_mean_v1",
+            "max_length": 512,
+            "stride": 64,
+            "demo_mode": true,
+            "transformers": "4.57.1",
+            "torch": "2.6.0+cpu",
+            "tokenizers": "0.22.2"
+          },
+          "ui_verification": "complete",
+          "screenshot": "complete",
+          "screenshot_sha256": "9173168a37e40a1ffd052f5e8cf470a9d532743086b9bc1fd604e22431bf1cff"
+        },
+        {
+          "id": "format-space",
+          "status": 200,
+          "mode": "article",
+          "text_sha256": "e2cfdeaf5ea054fd1e235ae6b591230febe97b5550bdb3e9808b6320bd069f1d",
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.961676,
+              "RIGHT": 0.026161,
+              "CENTER": 0.012163
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 44,
+            "tokens_processed": 44,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          },
+          "model": {
+            "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+            "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+            "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+            "id2label": {
+              "0": "LEFT",
+              "1": "RIGHT",
+              "2": "CENTER"
+            },
+            "aggregation": "new_token_weighted_logit_mean_v1",
+            "max_length": 512,
+            "stride": 64,
+            "demo_mode": true,
+            "transformers": "4.57.1",
+            "torch": "2.6.0+cpu",
+            "tokenizers": "0.22.2"
+          },
+          "ui_verification": "complete",
+          "screenshot": "complete",
+          "screenshot_sha256": "f03dd44de4292474f60f7c662bbf0d44cc8dd24e2bee6abebaa3f4d274d199f4"
+        }
+      ],
+      "page_errors": [],
+      "failed_requests": [],
+      "mobile_overflow": false
+    }
+  ],
+  "release_approved": false,
+  "limitations": [
+    "One selected passage, no human gold",
+    "Formatting sensitivity does not establish which label is correct",
+    "No automatic normalization or deployment justified by this alone"
+  ]
+}
