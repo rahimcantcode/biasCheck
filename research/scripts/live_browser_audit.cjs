@@ -9,7 +9,7 @@ fs.mkdirSync(output, { recursive: true });
   const args = process.env.BIASCHECK_DISABLE_WEBGL === '1' ? ['--disable-webgl'] : [];
   const browser = await chromium.launch({ headless: true, args, executablePath: process.env.BIASCHECK_TEST_BROWSER, timeout: 120000 });
   const report = { started_at: new Date().toISOString(), environment: 'local Chromium driving public deployed site; not cloud browser', browser_args: args, url: 'https://bias.r4him.tech/', browser: browser.version(), cases: [], page_errors: [], failed_requests: [] };
-  let page;
+  let page, activeCase;
   try {
     page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     page.setDefaultTimeout(90000);
@@ -27,20 +27,31 @@ fs.mkdirSync(output, { recursive: true });
         page.getByRole('button', { name: 'Analyze', exact: true }).click()
       ]);
       const result = await prediction.json();
+      // Persist the response before any UI wait or capture can fail.
+      activeCase = { id: row.id, status: prediction.status(), response_seconds: (Date.now() - started) / 1000,
+        result, ui_verification: 'pending', screenshot: 'pending' };
+      report.cases.push(activeCase);
+      fs.writeFileSync(path.join(output, 'audit.json'), JSON.stringify(report, null, 2));
       await page.getByRole('button', { name: 'Analyze', exact: true }).waitFor({ state: 'visible' });
       if (prediction.ok()) {
         await page.waitForFunction(text => document.querySelector('article[aria-label="Analyzed article"]')?.textContent === text, result.resolved_text);
       }
+      activeCase.ui_verification = prediction.ok() ? 'complete' : 'not_applicable';
       await page.screenshot({ path: path.join(output, row.id + '.png'), fullPage: true });
-      report.cases.push({ id: row.id, status: prediction.status(), seconds: (Date.now() - started) / 1000, result, visible_text: await page.locator('body').innerText() });
+      activeCase.screenshot = 'complete';
+      activeCase.seconds = (Date.now() - started) / 1000;
+      activeCase.visible_text = await page.locator('body').innerText();
       fs.writeFileSync(path.join(output, 'audit.json'), JSON.stringify(report, null, 2));
       console.log(row.id, prediction.status(), JSON.stringify(result.overall || result));
+      activeCase = null;
     }
     await page.setViewportSize({ width: 390, height: 844 });
     report.mobile_overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
     await page.screenshot({ path: path.join(output, 'mobile.png'), fullPage: true });
   } catch (error) {
     report.error = error.message;
+    if (activeCase) activeCase.error = error.message;
+    fs.writeFileSync(path.join(output, 'audit.json'), JSON.stringify(report, null, 2));
     if (page) await page.screenshot({ path: path.join(output, 'failure.png'), fullPage: true }).catch(() => {});
     process.exitCode = 1;
   } finally {

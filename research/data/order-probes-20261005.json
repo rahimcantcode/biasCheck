@@ -1,0 +1,26 @@
+[
+  {
+    "id": "quotes-tax-first",
+    "pair": "quotes",
+    "annotation_provenance": "AI-authored fictional diagnostic, no human gold",
+    "text": "At a fictional town hall, the moderator recorded these statements. Speaker A said, \"The government should raise taxes on wealthy households to fund public services.\" Speaker B said, \"The government should cut taxes and spending so families can decide how to use their own money.\" The moderator moved to the next question without endorsing either position."
+  },
+  {
+    "id": "quotes-cut-first",
+    "pair": "quotes",
+    "annotation_provenance": "AI-authored fictional diagnostic, no human gold",
+    "text": "At a fictional town hall, the moderator recorded these statements. Speaker B said, \"The government should cut taxes and spending so families can decide how to use their own money.\" Speaker A said, \"The government should raise taxes on wealthy households to fund public services.\" The moderator moved to the next question without endorsing either position."
+  },
+  {
+    "id": "mixed-health-first",
+    "pair": "mixed",
+    "annotation_provenance": "AI-authored diagnostic, no human gold",
+    "text": "The government should guarantee universal health coverage and strengthen protections for workers who join unions. The government should lower corporate taxes, reduce business regulation, and impose stricter limits on immigration. This proposal deliberately combines these policies rather than adopting either major party's entire platform."
+  },
+  {
+    "id": "mixed-cuts-first",
+    "pair": "mixed",
+    "annotation_provenance": "AI-authored diagnostic, no human gold",
+    "text": "The government should lower corporate taxes, reduce business regulation, and impose stricter limits on immigration. The government should guarantee universal health coverage and strengthen protections for workers who join unions. This proposal deliberately combines these policies rather than adopting either major party's entire platform."
+  }
+]

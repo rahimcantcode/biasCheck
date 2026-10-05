@@ -1,0 +1,232 @@
+{
+  "purpose": "Frozen AI-authored order diagnostics; no human gold or accuracy metric",
+  "started_at": "2026-10-05T05:53:18.926Z",
+  "finished_at": "2026-10-05T05:53:28.201Z",
+  "browser": "154.0.8037.95",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "input_sha256": "912d7c44a1412458d478c8b057f31a9c307158605a6c3223e57cd832a6beba37",
+  "audit_script_sha256": "8d126da6fe30c85377ee6d6f33edd1450592d7db7dc5a134576a7006e2903200",
+  "cases": [
+    {
+      "id": "quotes-tax-first",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998645,
+          "RIGHT": 0.0006,
+          "CENTER": 0.000756
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 65,
+        "tokens_processed": 65,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "screenshot": "complete",
+      "ui_verification": "complete",
+      "text_sha256": "f0dfc08b440141809f4d94fb847f33b4874ff3e0569f7f7e8af2bff7ceb4e759",
+      "screenshot_sha256": "bfbcac0505137feb5f316c3c956ec7a87489e10d1334f3fb3112fa39ae9e2620"
+    },
+    {
+      "id": "quotes-cut-first",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998841,
+          "RIGHT": 0.000546,
+          "CENTER": 0.000612
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 65,
+        "tokens_processed": 65,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "screenshot": "complete",
+      "ui_verification": "complete",
+      "text_sha256": "38f0eb6bc0ca797d654a4de30cc76de61f8a6851b39c7cbe33b2fa127cc234c3",
+      "screenshot_sha256": "aaffcac78c5c980084920237563910faf10dd799efbcf2d38720159652b3486e"
+    },
+    {
+      "id": "mixed-health-first",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999196,
+          "RIGHT": 0.0005,
+          "CENTER": 0.000304
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 50,
+        "tokens_processed": 50,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "screenshot": "complete",
+      "ui_verification": "complete",
+      "text_sha256": "d48ac90cbbd436ab774da036cd5565beaf6a26ebf50c9f89d0718c1dbf5f150e",
+      "screenshot_sha256": "bae3d84140e2e2e0b7c1f8dfab32f1b0c3d462f23a0dc1cca9165b5aafd1eb63"
+    },
+    {
+      "id": "mixed-cuts-first",
+      "status": 200,
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.999169,
+          "RIGHT": 0.000507,
+          "CENTER": 0.000324
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 50,
+        "tokens_processed": 50,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      },
+      "screenshot": "complete",
+      "ui_verification": "complete",
+      "text_sha256": "ba61842b171594aa0e59dda4c0b23f6ce55fcad7905e8774dba9ff8789eeadf1",
+      "screenshot_sha256": "8bff1864ab33f5b8b41724cd401184997cede6121c8af5c8f5dfeb6edc3c4bf4"
+    }
+  ],
+  "pairs": [
+    {
+      "ids": [
+        "quotes-tax-first",
+        "quotes-cut-first"
+      ],
+      "same_label": true,
+      "probability_delta": {
+        "LEFT": 0.00019599999999997397,
+        "CENTER": -0.00014400000000000003,
+        "RIGHT": -0.0000539999999999999
+      }
+    },
+    {
+      "ids": [
+        "mixed-health-first",
+        "mixed-cuts-first"
+      ],
+      "same_label": true,
+      "probability_delta": {
+        "LEFT": -0.000026999999999999247,
+        "CENTER": 0.000019999999999999998,
+        "RIGHT": 0.000006999999999999953
+      }
+    }
+  ],
+  "page_errors": [],
+  "failed_requests": [],
+  "error": null,
+  "mobile_overflow": false,
+  "mobile_screenshot_sha256": "04354e9b216de94feed2e07c230f622aa42800a3b2e0f2b4b440c2a653cc2cf7",
+  "release_approved": false,
+  "limitations": [
+    "Two selected pairs only; no human gold",
+    "One observation per input, not repeated-trial inference",
+    "Score stability does not establish correct attribution or calibrated certainty"
+  ]
+}

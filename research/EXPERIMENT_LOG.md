@@ -1,5 +1,46 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 05:51 UTC heartbeat: order diagnostics and durable browser responses
+
+Fixed live_browser_audit.cjs to save each parsed prediction response before UI
+verification or screenshots, with separate pending/complete capture states. On
+failure it records the active case's error before attempting a failure screenshot.
+Previously a screenshot timeout could discard an already received prediction.
+Three mock-browser tests passed: successful capture, render timeout and screenshot
+timeout. Tests confirm the response is already saved, incomplete captures are not
+reported complete, failed runs exit nonzero, and browser cleanup happens. This is
+research-harness reliability work, not a production change or model improvement.
+
+Frozen two new AI-authored order pairs before browser execution. Attributed
+pro-tax and anti-tax quotations swap order with their speaker IDs intact; two
+mixed-policy sentences swap with the final framing sentence unchanged. Verified
+identical word multisets within each pair. No human gold or accuracy calculation.
+
+| Probe | Production label | LEFT class score |
+| --- | --- | ---: |
+| Quotes: tax increase first | LEFT | .998645 |
+| Quotes: tax cut first | LEFT | .998841 |
+| Mixed: health/union first | LEFT | .999196 |
+| Mixed: tax cuts/restrictions first | LEFT | .999169 |
+
+No label changes; second-minus-first LEFT score deltas +.000196 and -.000027.
+All model metadata identical across four responses. This is local order stability
+in two selected examples only. It does not establish accurate attribution,
+ideological symmetry, correct mixed-position handling or calibrated confidence.
+One observation per input cannot isolate stochastic variation or support general
+robustness claims. Astra Medium no-tools method critique saved in
+research/data/order-probe-method-20261005.txt.
+
+Real public form audit ran 05:53:18-05:53:28 UTC: four HTTP 200 responses, complete
+UI verification and screenshots, no page errors/failed requests, mobile overflow
+false. Local Chrome/Playwright fallback; agent-browser CLI unavailable, no cloud
+browser tool found. Inputs research/data/order-probes-20261005.json. Raw responses,
+visible text and screenshots: outputs/live-browser-order-20261005. Sanitized
+report research/results/order_probes_20261005.json includes input/script/text/
+screenshot hashes, model fingerprints, probability vectors and paired deltas;
+also copied to outputs. No training, corpus split access, policy changes or
+deployment. Independent human evaluation/high-accuracy evidence still absent.
+
 ## 2026-10-05 04:51 UTC heartbeat: OOF confidence and new browser probes
 
 Audited frozen training-only class-weight comparison predictions, not validation
