@@ -1,5 +1,50 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 10:55 UTC heartbeat: matched supervision controls
+
+Completed 25 fits: five seeds 20261005-20261009 x five frozen development folds.
+Sampled without replacement within each full training class to exactly match the
+prior unanimous-only supervised class counts (40-46 examples per fold). RNG
+SeedSequence([seed,fold]); retained original training order after selection.
+Same verified fold-local vectorizers and cloned balanced logistic parameters as
+the prior experiment. All fold-training text remains in representation fitting;
+only supervised selections change. Convergence warnings treated as errors; none
+raised. No validation, reserved test, relabeling, search or deployment.
+
+| Seed | Correct/115 | Macro-F1 | Unanimous correct/54 | Disputed correct/61 | CENTER recall |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 20261005 | 39 | .31905 | 28 | 11 | 22/26 |
+| 20261006 | 32 | .25103 | 24 | 8 | 18/26 |
+| 20261007 | 27 | .19324 | 23 | 4 | 20/26 |
+| 20261008 | 41 | .33999 | 26 | 15 | 19/26 |
+| 20261009 | 34 | .28566 | 24 | 10 | 20/26 |
+
+Matched-control accuracy 23.5-35.7%, below unanimous-only 44/115=38.3% and full
+supervision 58/115=50.4%. Controls predict CENTER 74-89/115, versus 78 unanimous-
+only and 10 full-supervision. Thus excessive CENTER predictions also occur with
+random supervision at matched size/class composition; they are not unique to
+unanimous-only selection. Unanimous selection beats these five random selections,
+but this is descriptive, not a p-value or causal label-noise estimate. Remaining
+topic, difficulty, annotator and selection confounds persist; seeds share rows and
+folds overlap. All candidates inadequate; corpus remains research-only/noncommercial.
+
+research/scripts/matched_supervision.py and checkpoints/matched-supervision-20261005
+retain protocol, 25 models, selections and results. Committed report
+research/results/matched_supervision_20261005.json links source/data/fold hashes,
+all train/held/supervised IDs, model hashes/parameters, unanimous counts and 575
+raw predictions/probabilities. Copied to outputs. Verified 25 model hashes,
+without-replacement training-only selection and exact class counts, and 575 argmax
+labels. Nine tests passed (matched selection, unanimous selection and fold/feature
+checks). Astra Medium no-tools critique: research/data/matched-supervision-method-20261005.txt.
+
+Public-browser smoke 10:56:56-10:57:02 UTC: two frozen examples HTTP 200, unchanged
+LEFT .993377 / RIGHT .997867, complete UI/captures, no errors/failed requests or
+mobile overflow. Local Chrome/Playwright fallback; agent-browser unavailable,
+no cloud browser tool found. Repeated smoke is not candidate evaluation. Evidence:
+outputs/live-browser-matched-supervision-20261005 and sanitized fingerprints/
+screenshot hashes research/results/matched_supervision_browser_20261005.json.
+No release approval or high-accuracy claim; independent human evaluation absent.
+
 ## 2026-10-05 06:58 UTC heartbeat: withhold disputed supervision
 
 Five fixed fits, one per frozen training-only event-string fold. Cloned each
