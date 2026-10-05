@@ -1,0 +1,5 @@
+The paired ablation isolates **the effect of class weighting within this fixed pipeline**, provided both runs use identical fold-local vectorizers, splits, training data, and all other settings. Saved predictions, probabilities, model hashes, and train/held IDs support auditability.
+
+Interpretation remains narrow. With 115 examples and only 26 CENTER cases, per-class results are sensitive to a few predictions; baseline CENTER recall is 4/26. Five folds are not five independent replications, and frozen event-string grouping does not establish independence beyond those strings. Disputed labels limit conclusions about political bias itself: scores measure agreement with those labels.
+
+Report paired prediction changes, confusion matrices, and per-class metrics alongside macro-F1. Weighting can redistribute errors across classes, so aggregate improvement need not improve CENTER performance. Avoiding validation/test use and threshold search limits tuning, but supplies no independent generalization evidence. This is a diagnostic sensitivity comparison, not evidence of accuracy, label validity, or deployment readiness.

@@ -1,5 +1,51 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 03:42 UTC heartbeat: fixed class-weight ablation
+
+Tested one fixed change: class_weight='balanced' to None in the frozen word
+TF-IDF logistic-regression pipeline. Cloned each reference estimator so all other
+parameters remained identical (C=1, max_iter=1000, random_state=20261001).
+Reused hash-verified fold-local vectorizers and the same five event-string folds,
+115 training records only. Also refitted all five balanced controls: held-out
+probabilities reproduced their frozen references within atol/rtol 1e-10. Ten fits
+total, 8-16 iterations; convergence warnings configured as errors, none raised.
+
+| Training-only OOF metric | Balanced | Unweighted |
+| --- | ---: | ---: |
+| Correct / 115 | 58 | 54 |
+| Accuracy | .50435 | .46957 |
+| Macro-F1 | .44234 | .31586 |
+| LEFT recall | 22/38 | 10/38 |
+| CENTER recall | 4/26 | 0/26 |
+| RIGHT recall | 32/51 | 44/51 |
+| Unanimous-label subset correct / 54 | 25 | 18 |
+
+Unweighted predicts LEFT 20, CENTER 0, RIGHT 95. Twelve corrected versus sixteen
+regressed examples. Removing weights worsens CENTER performance and macro-F1;
+reject this candidate. This isolates weighting in this fixed small pipeline, not
+a general conclusion about weighting or independent high accuracy. Repeatedly
+used development folds, overlapping fits, disputed label aggregation and related
+event families limit inference. No validation/test read, tuning, relabeling,
+paid compute, deployment, or release approval. Corpus remains research-only.
+
+Artifacts: research/scripts/class_weight_cv.py;
+research/checkpoints/class-weight-cv-20261005 contains protocol, ten model files
+and full results. research/results/class_weight_cv_20261005.json retains train/
+held IDs, text fingerprints, all parameters, model hashes, 230 OOF predictions/
+probabilities, confusion matrices and paired-change IDs; copied to outputs.
+Verified ten checkpoint hashes, 230 argmax/sum checks, complete unique OOF
+coverage, and that class_weight is the sole parameter difference. Three existing
+split/feature tests passed. Astra Medium critique through requested terminal
+route saved in research/data/class-weight-method-20261005.txt, no tools used.
+
+Public browser audit 03:43:17-03:43:42 UTC used local Chrome/Playwright fallback
+(no cloud browser tool found; agent-browser CLI unavailable). Frozen two targeted
+examples again HTTP 200 with unchanged LEFT .993377 / RIGHT .997867; no page
+errors, failed requests or mobile overflow. These are repeated production smoke
+checks, not candidate evaluation. Raw browser evidence/screenshots in
+outputs/live-browser-class-weight-20261005; sanitized fingerprints and screenshot
+hashes in research/results/class_weight_browser_20261005.json.
+
 ## 2026-10-04 22:57 UTC heartbeat: raw-label scoring consistency
 
 Fixed offline policy evaluation to reconstruct raw labels from validated logits
