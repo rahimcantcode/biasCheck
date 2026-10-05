@@ -1,5 +1,49 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 15:00 UTC heartbeat: frozen vocabulary coverage audit
+
+Audited all 115 training-only OOF rows using their verified saved fold vectorizers
+and classifiers. Counted analyzer-emitted word unigram/bigram occurrences present
+in each training vocabulary, plus distinct feature counts and sparse nnz. No
+refitting, vocabulary changes, threshold selection, validation/test access or
+deployment. Every prediction and probability vector exactly reproduced the prior
+full-supervision baseline; retained distinct feature counts equaled sparse nnz.
+
+Mean per-document retained occurrence fractions (not raw-word coverage):
+
+| Slice | n | All features | Unigrams | Bigrams |
+| --- | ---: | ---: | ---: | ---: |
+| All | 115 | .4181 | .6828 | .1509 |
+| LEFT reference | 38 | .4135 | .6854 | .1394 |
+| CENTER reference | 26 | .4004 | .6598 | .1385 |
+| RIGHT reference | 51 | .4305 | .6927 | .1658 |
+| Correct vs corpus | 58 | .4335 | .6982 | .1662 |
+| Incorrect vs corpus | 57 | .4025 | .6671 | .1353 |
+
+Bigrams have low vocabulary survival; incorrect predictions have modestly lower
+coverage. CENTER is not uniquely devoid of features. These descriptive differences
+do not identify min_df as the cause of errors: unseen wording, tokenization,
+feature caps, topics, length and disputed labels also matter. No evidence here
+that changing vocabulary will improve independent accuracy. Empty analyzer outputs
+are represented as null fractions, not zero; none occurred in these 115 rows.
+
+New feature_coverage_audit.py and three count/empty/unknown-feature tests; six tests
+passed including existing fold/feature checks. Verified all 115 reproduced
+probability vectors and feature count identities. Artifact
+research/results/feature_coverage_20261005.json retains data/fold/model hashes,
+train/held IDs, settings, per-row counts, raw predictions/probabilities and summaries;
+copied to outputs. Astra Medium no-tools critique saved as
+research/data/feature-coverage-method-20261005.txt.
+
+Public-browser smoke 15:03:06-15:03:37 UTC: unchanged two frozen predictions,
+HTTP 200, complete UI/captures, no page errors/failed requests or mobile overflow.
+Local Chrome/Playwright fallback; agent-browser unavailable, no cloud browser tool.
+Not candidate accuracy evidence. Raw responses/screenshots:
+outputs/live-browser-feature-coverage-20261005. Sanitized model/screenshot
+fingerprints: research/results/feature_coverage_browser_20261005.json. Production
+unchanged; corpus research-only/noncommercial and independent human evaluation
+still required before any high-accuracy claim.
+
 ## 2026-10-05 12:24 UTC heartbeat: preserve non-JSON HTTP evidence
 
 Hardened live_browser_audit.cjs: persist case ID/HTTP status before reading the
