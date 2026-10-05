@@ -16,7 +16,10 @@ async function simulate(failure) {
     waitForFunction: async () => {
       if (++waits === 2 && failure === 'ui') throw new Error('render timeout');
     },
-    waitForResponse: async () => ({ json: async () => result, status: () => 200, ok: () => true }),
+    waitForResponse: async () => ({ text: async () => {
+      if (failure === 'body') throw new Error('body unavailable');
+      return failure === 'json' ? '<html>Bad gateway</html>' : JSON.stringify(result);
+    }, status: () => failure === 'json' ? 502 : 200, ok: () => failure !== 'json' }),
     screenshot: async () => { if (failure === 'screenshot') throw new Error('capture timeout'); },
     locator: () => ({ innerText: async () => 'visible' }),
     setViewportSize: async () => {}, evaluate: async () => false
@@ -34,17 +37,30 @@ async function simulate(failure) {
     }, process, console: { log() {} }, Date
   });
   assert(closed);
-  assert.equal(writes[0].cases[0].result.overall.label, 'LEFT');
+  assert.equal(writes[0].cases[0].status, failure === 'json' ? 502 : 200);
+  assert.equal(writes[0].cases[0].body_read, 'pending');
   assert.equal(writes[0].cases[0].ui_verification, 'pending');
   assert.equal(writes[0].cases[0].screenshot, 'pending');
   const final = writes.at(-1);
   assert.equal(final.cases.length, 1);
   assert(final.finished_at);
+  if (failure === 'json') {
+    assert.equal(final.cases[0].response_text, '<html>Bad gateway</html>');
+    assert.equal(final.cases[0].body_read, 'complete');
+    assert.equal(final.cases[0].json_decode, 'pending');
+    assert.equal(final.cases[0].result, undefined);
+  } else if (failure === 'body') {
+    assert.equal(final.cases[0].body_read, 'pending');
+    assert.equal(final.cases[0].result, undefined);
+  } else {
+    assert.equal(final.cases[0].result.overall.label, 'LEFT');
+    assert.equal(final.cases[0].json_decode, 'complete');
+  }
   if (failure) {
     assert.equal(process.exitCode, 1);
     assert.equal(final.cases[0].error, final.error);
     assert.equal(final.cases[0].screenshot, 'pending');
-    assert.equal(final.cases[0].ui_verification, failure === 'ui' ? 'pending' : 'complete');
+    assert.equal(final.cases[0].ui_verification, failure === 'screenshot' ? 'complete' : 'pending');
   } else {
     assert.equal(final.cases[0].screenshot, 'complete');
     assert.equal(final.cases[0].visible_text, 'visible');
@@ -54,6 +70,6 @@ async function simulate(failure) {
 }
 
 (async () => {
-  for (const failure of [null, 'ui', 'screenshot']) await simulate(failure);
-  console.log('3 response-persistence scenarios passed (mock browser)');
+  for (const failure of [null, 'ui', 'screenshot', 'json', 'body']) await simulate(failure);
+  console.log('5 response-persistence scenarios passed (mock browser)');
 })().catch(error => { console.error(error); process.exitCode = 1; });

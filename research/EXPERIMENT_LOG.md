@@ -1,5 +1,30 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 12:24 UTC heartbeat: preserve non-JSON HTTP evidence
+
+Hardened live_browser_audit.cjs: persist case ID/HTTP status before reading the
+body, then persist response text before JSON decoding. Track body_read and
+json_decode separately from UI/capture status. A failed body read now retains
+status; malformed JSON (e.g. a gateway HTML response) retains status and body
+instead of discarding the case. Existing parsed result remains compatible for
+successful runs. Failed runs remain nonzero with explicit incomplete stages.
+
+Five mock-browser tests passed: success, rendering timeout, screenshot timeout,
+non-JSON 502 body, and body-read failure. Browser cleanup and earlier response
+writes verified. Real public smoke 12:25:25-12:25:31 UTC: both frozen examples
+HTTP 200 with complete body/decode/UI/capture states. Verified saved response text
+decodes to the stored result. Predictions unchanged (LEFT .993377 / RIGHT .997867),
+no page errors/failed requests or mobile overflow. No actual production HTTP
+failure was observed or induced; failure coverage is mocked.
+
+Raw response text, parsed outputs and screenshots preserved in
+outputs/live-browser-http-evidence-20261005. Sanitized report with response-text/
+screenshot hashes and model fingerprints: research/results/http_evidence_browser_20261005.json.
+Local Chrome/Playwright fallback; agent-browser unavailable and no cloud browser
+tool found. Repeated probes are harness smoke only, not independent accuracy.
+Engineering-only run: no ML training, Astra review, dataset split access, policy
+change or deployment. High accuracy remains unproven; human evaluation outstanding.
+
 ## 2026-10-05 10:55 UTC heartbeat: matched supervision controls
 
 Completed 25 fits: five seeds 20261005-20261009 x five frozen development folds.

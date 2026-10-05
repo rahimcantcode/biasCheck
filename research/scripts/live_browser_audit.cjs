@@ -26,11 +26,17 @@ fs.mkdirSync(output, { recursive: true });
         page.waitForResponse(r => r.url().endsWith('/predict') && r.request().method() === 'POST', { timeout: 180000 }),
         page.getByRole('button', { name: 'Analyze', exact: true }).click()
       ]);
-      const result = await prediction.json();
-      // Persist the response before any UI wait or capture can fail.
+      // Preserve HTTP evidence even when body reading or JSON decoding fails.
       activeCase = { id: row.id, status: prediction.status(), response_seconds: (Date.now() - started) / 1000,
-        result, ui_verification: 'pending', screenshot: 'pending' };
+        body_read: 'pending', json_decode: 'pending', ui_verification: 'pending', screenshot: 'pending' };
       report.cases.push(activeCase);
+      fs.writeFileSync(path.join(output, 'audit.json'), JSON.stringify(report, null, 2));
+      activeCase.response_text = await prediction.text();
+      activeCase.body_read = 'complete';
+      fs.writeFileSync(path.join(output, 'audit.json'), JSON.stringify(report, null, 2));
+      const result = JSON.parse(activeCase.response_text);
+      activeCase.result = result;
+      activeCase.json_decode = 'complete';
       fs.writeFileSync(path.join(output, 'audit.json'), JSON.stringify(report, null, 2));
       await page.getByRole('button', { name: 'Analyze', exact: true }).waitFor({ state: 'visible' });
       if (prediction.ok()) {
