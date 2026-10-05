@@ -1,7 +1,7 @@
 import copy,json
 from pathlib import Path
 import pytest
-from research.annotation.compare_reviews import compare,validate
+from research.annotation.compare_reviews import compare,validate,agreement
 ROOT=Path(__file__).resolve().parents[1]
 M=json.loads((ROOT/'research/annotation/pilot_manifest.json').read_text())
 
@@ -56,3 +56,32 @@ def test_invalid_review_rejected(mutation):
     if mutation=='unread':a['full_text_read']=False
     if mutation=='relevance':a['relevance']='NONPOLITICAL'
     with pytest.raises(ValueError):validate(r,M)
+
+def test_class_agreement_exposes_minor_category_disagreement():
+    pairs=[({'label':'LEFT'},{'label':'LEFT'}) for _ in range(9)]
+    pairs.append(({'label':'CENTER'},{'label':'RIGHT'}))
+    result=agreement(pairs,'label')
+    assert result['agreement']==.9
+    assert result['per_category']['CENTER']['positive_agreement']==0
+    assert result['per_category']['NONPOLITICAL']['positive_agreement'] is None
+    assert result['confusion_matrix'][1][2]==1
+    assert sum(map(sum,result['confusion_matrix']))==10
+
+def test_positive_agreement_is_symmetric():
+    pairs=[({'label':'LEFT'},{'label':'LEFT'}),({'label':'LEFT'},{'label':'CENTER'})]
+    first=agreement(pairs,'label');second=agreement([(b,a) for a,b in pairs],'label')
+    assert first['per_category']['LEFT']['positive_agreement']==pytest.approx(2/3)
+    for k in first['category_order']:
+        assert first['per_category'][k]['positive_agreement']==second['per_category'][k]['positive_agreement']
+    assert first['confusion_matrix']==[list(row) for row in zip(*second['confusion_matrix'])]
+
+def test_empty_agreement_has_null_metrics_and_zero_counts():
+    result=agreement([],'relevance')
+    assert result['n']==0 and result['agreement'] is None and result['cohens_kappa'] is None
+    assert result['confusion_matrix']==[[0,0,0],[0,0,0],[0,0,0]]
+    assert all(v['positive_agreement'] is None for v in result['per_category'].values())
+
+def test_unanimous_single_category_has_undefined_kappa():
+    result=agreement([({'label':'LEFT'},{'label':'LEFT'})],'label')
+    assert result['agreement']==1 and result['cohens_kappa'] is None
+    assert result['per_category']['LEFT']['positive_agreement']==1

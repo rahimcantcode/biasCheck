@@ -1,0 +1,87 @@
+{
+  "purpose": "Synthetic software demonstration, not human annotation or accuracy evidence",
+  "human_reviewed": false,
+  "gold_labels_approved": false,
+  "label_agreement": {
+    "n": 10,
+    "agreement": 0.9,
+    "cohens_kappa": 0.47368421052631576,
+    "category_order": [
+      "LEFT",
+      "CENTER",
+      "RIGHT",
+      "NONPOLITICAL",
+      "UNCERTAIN"
+    ],
+    "matrix_orientation": "rows=reviewer_a, columns=reviewer_b; neither is ground truth",
+    "confusion_matrix": [
+      [
+        9,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "per_category": {
+      "LEFT": {
+        "reviewer_a_n": 9,
+        "reviewer_b_n": 9,
+        "matching_n": 9,
+        "positive_agreement": 1.0
+      },
+      "CENTER": {
+        "reviewer_a_n": 1,
+        "reviewer_b_n": 0,
+        "matching_n": 0,
+        "positive_agreement": 0.0
+      },
+      "RIGHT": {
+        "reviewer_a_n": 0,
+        "reviewer_b_n": 1,
+        "matching_n": 0,
+        "positive_agreement": 0.0
+      },
+      "NONPOLITICAL": {
+        "reviewer_a_n": 0,
+        "reviewer_b_n": 0,
+        "matching_n": 0,
+        "positive_agreement": null
+      },
+      "UNCERTAIN": {
+        "reviewer_a_n": 0,
+        "reviewer_b_n": 0,
+        "matching_n": 0,
+        "positive_agreement": null
+      }
+    }
+  }
+}

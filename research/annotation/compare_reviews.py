@@ -46,10 +46,18 @@ def validate(review,manifest):
     return result
 
 def agreement(pairs,field):
-    if not pairs:return {'n':0,'agreement':None,'cohens_kappa':None}
+    order=['LEFT','CENTER','RIGHT','NONPOLITICAL','UNCERTAIN'] if field=='label' else ['POLITICAL','NONPOLITICAL','UNCERTAIN']
+    if field not in {'label','relevance'}:raise ValueError('Unknown agreement field')
+    if any(x[field] not in order or y[field] not in order for x,y in pairs):raise ValueError('Invalid agreement category')
     n=len(pairs);a=Counter(x[field] for x,y in pairs);b=Counter(y[field] for x,y in pairs)
-    observed=sum(x[field]==y[field] for x,y in pairs)/n;chance=sum(a[k]*b[k] for k in set(a)|set(b))/n**2
-    return {'n':n,'agreement':observed,'cohens_kappa':(observed-chance)/(1-chance) if chance<1 else None}
+    cells=Counter((x[field],y[field]) for x,y in pairs)
+    observed=sum(x[field]==y[field] for x,y in pairs)/n if n else None
+    chance=sum(a[k]*b[k] for k in order)/n**2 if n else None
+    return {'n':n,'agreement':observed,'cohens_kappa':(observed-chance)/(1-chance) if n and chance<1 else None,
+        'category_order':order,'matrix_orientation':'rows=reviewer_a, columns=reviewer_b; neither is ground truth',
+        'confusion_matrix':[[cells[(x,y)] for y in order] for x in order],
+        'per_category':{k:{'reviewer_a_n':a[k],'reviewer_b_n':b[k],'matching_n':cells[(k,k)],
+            'positive_agreement':2*cells[(k,k)]/(a[k]+b[k]) if a[k]+b[k] else None} for k in order}}
 
 def compare(first,second,manifest):
     if reviewer_key(first.get('reviewer_id'))==reviewer_key(second.get('reviewer_id')):raise ValueError('Two distinct independent reviewers required')

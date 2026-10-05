@@ -1,5 +1,35 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 19:33 UTC heartbeat: per-category reviewer agreement
+
+Extended annotation/compare_reviews.py without changing existing raw agreement,
+kappa, skipped/missing handling or gold_labels_approved=False. Added fixed-order
+confusion tables (rows reviewer A, columns B), per-category marginal counts and
+matching counts, plus symmetric positive agreement 2*matches/(A_count+B_count).
+Jointly absent categories have null, not perfect or zero agreement. Applies to
+five leaning labels, three relevance labels, and existing source-kind slices.
+Neither reviewer is treated as ground truth; this metric is not accuracy.
+
+22 annotation tests passed, including four new tests covering a minority-category
+disagreement hidden by high overall agreement, symmetry under swapping reviewers,
+empty pairs, and undefined kappa for a single unanimously used category. Saved
+research/results/reviewer_agreement_synthetic_20261005.json explicitly as synthetic,
+human_reviewed=False, gold_labels_approved=False. It demonstrates 90% aggregate
+agreement with zero CENTER positive agreement; it is not a human review result.
+No actual annotations manufactured or approved. Astra Medium no-tools critique:
+research/data/reviewer-agreement-method-20261005.txt. Missing/skipped selection can
+still distort paired agreement and reviewer independence requires human review.
+
+No training or dataset split access, no deployment, no model-accuracy claim.
+
+Public-browser smoke actually ran 20:14:32-20:14:55 UTC, later than trigger: two
+frozen cases HTTP 200, unchanged LEFT .993377 / RIGHT .997867, complete captures,
+no page errors/failed requests or mobile overflow. Local Chrome/Playwright
+fallback; agent-browser unavailable, no cloud browser tool. Raw evidence in
+outputs/live-browser-reviewer-agreement-20261005; sanitized model fingerprints
+and screenshot hashes research/results/reviewer_agreement_browser_20261005.json.
+This smoke does not validate the annotation metric or establish accuracy.
+
 ## 2026-10-05 18:17 UTC heartbeat: fixed unigram-only ablation
 
 Five fixed fits on the same 115-row training-only event-string folds. Cloned each
