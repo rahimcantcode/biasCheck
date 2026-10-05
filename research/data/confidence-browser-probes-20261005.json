@@ -1,0 +1,20 @@
+[
+  {
+    "id": "recipe-diagnostic",
+    "annotation_provenance": "AI-authored diagnostic; no human gold label",
+    "slice": "nonpolitical",
+    "text": "Rinse the rice under cold water until the water runs clear. Put it in a saucepan with water, bring to a boil, then cover and reduce the heat. Leave the lid in place while the rice cooks. Remove the pan from the heat and let it rest before fluffing the grains with a fork."
+  },
+  {
+    "id": "attributed-quotes-diagnostic",
+    "annotation_provenance": "AI-authored fictional diagnostic; no human gold label",
+    "slice": "quotation",
+    "text": "At a fictional town hall, one speaker said, \"The government should raise taxes on wealthy households to fund public services.\" Another speaker replied, \"The government should cut taxes and spending so families can decide how to use their own money.\" The moderator recorded both statements and moved to the next question without endorsing either position."
+  },
+  {
+    "id": "mixed-policy-diagnostic",
+    "annotation_provenance": "AI-authored diagnostic; no human gold label",
+    "slice": "mixed",
+    "text": "The government should guarantee universal health coverage and strengthen protections for workers who join unions. At the same time, it should lower corporate taxes, reduce business regulation, and impose stricter limits on immigration. This proposal deliberately combines these policies rather than adopting either major party's entire platform."
+  }
+]

@@ -1,0 +1,5 @@
+This is a reasonable descriptive diagnostic of frozen training-only OOF predictions, not independent accuracy evidence. Disputed labels make correctness agreement with corpus annotations; noncommercial restrictions constrain reuse. Event-string grouping reduces exact-group leakage but may miss related-event overlap; prior model selection using these OOF results could add optimism.
+
+Brier and NLL assess probabilistic quality; specify natural logs and handling of zero probabilities. Ten-bin top-label ECE is bin-sensitive and hides classwise miscalibration. Correctness AUC measures ranking, not calibration; null is appropriate with one outcome.
+
+Define k explicitly, such as ceil(fraction × N), and retain scores ≥ the kth-largest value. Ties can inflate coverage; equal target fractions need not yield equal coverage across models. Fixed targets avoid performance-based threshold selection. Recall denominators must include every reference-class row; absent classes require null. Report retained counts by reference class.

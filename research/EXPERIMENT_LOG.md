@@ -1,5 +1,51 @@
 # Working experiment log (not a final report)
 
+## 2026-10-05 04:51 UTC heartbeat: OOF confidence and new browser probes
+
+Audited frozen training-only class-weight comparison predictions, not validation
+or reserved test data. New oof_confidence_audit.py leaves the older production
+confidence audit intact. No fitting, threshold selection, or release approval.
+For fixed retained fractions 1/.8/.6/.4/.2, used ceil(fraction*N)-th highest
+confidence and retained all ties. Recall denominators include abstentions.
+
+Balanced model: correctness-ranking AUC .56594, multiclass Brier (sum over
+classes) .63723, natural-log NLL 1.05447 (probability floor 1e-15), ten fixed-width
+bin top-label ECE .12054. At 80% coverage, accuracy among retained predictions
+is 48/92=.52174, and all four correct CENTER predictions have been rejected:
+delivered CENTER recall 0/26. Even at 20% coverage, retained accuracy is only
+15/23=.65217, with CENTER recall still zero. Full-coverage accuracy 58/115.
+
+Unweighted model: AUC .54068, Brier .64441, NLL 1.06660, ECE .05897. Its lower
+ECE does not make it a better classifier: raw accuracy and macro-F1 are worse,
+and 20%-coverage accuracy is 10/23=.43478. Do not optimize ECE alone. These are
+descriptive, bin-dependent development diagnostics with no uncertainty intervals,
+disputed labels and repeated fold inspection; not independent product accuracy.
+
+Source report hash links all 230 probabilities to prior model hashes/split IDs.
+Output includes bins, all ten retained-ID sets, actual coverage and per-reference-
+class retained counts. Verified source hash, bin totals and all retained-ID/count
+sets. Sixteen tests passed across new OOF audit, existing production confidence
+audit, and split/feature tests. Astra Medium no-tools critique saved in
+research/data/confidence-audit-method-20261005.txt. Report:
+research/results/confidence_audit_20261005.json, also copied to outputs.
+
+Three new AI-authored diagnostics (no human gold) tested through the public form:
+recipe LEFT .997732; fictional opposed attributed quotes LEFT .998199; mixed-policy
+passage LEFT .999138. All HTTP 200, unchanged production weights. These targeted
+examples expose relevance/attribution/mixed-position concerns, not a measured
+error rate or benchmark. No AI labels were promoted to human annotations.
+
+Actual first browser run 05:25:10-05:42:58 UTC retained two responses/screenshots
+then failed during screenshot capture; no mobile check completed in that run.
+Remaining-probe retry 05:48:54-05:49:07 completed, no page errors/failed requests,
+mobile overflow false; mobile screenshot visually inspected. Both runs preserved
+under outputs/live-browser-confidence[-retry]-20261005, including failure.png.
+Local Chrome/Playwright fallback (no cloud browser tool; agent-browser unavailable).
+Inputs: research/data/confidence-browser-probes-20261005.json. Sanitized responses,
+model fingerprints, screenshot hashes and failure metadata:
+research/results/confidence_browser_20261005.json. No deployment; human evaluation
+and independent high-accuracy evidence still outstanding.
+
 ## 2026-10-05 03:42 UTC heartbeat: fixed class-weight ablation
 
 Tested one fixed change: class_weight='balanced' to None in the frozen word

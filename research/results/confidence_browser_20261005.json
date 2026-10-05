@@ -1,0 +1,161 @@
+{
+  "purpose": "AI-authored diagnostics, no human gold; production only",
+  "input_sha256": "67c879f50436e051beeea7b6d424eae300af8a44ebfa0a95bfad908535317a17",
+  "runs": [
+    {
+      "directory": "live-browser-confidence-20261005",
+      "started_at": "2026-10-05T05:25:10.084Z",
+      "finished_at": "2026-10-05T05:42:58.833Z",
+      "browser": "154.0.8037.95",
+      "environment": "local Chromium driving public deployed site; not cloud browser",
+      "error": "page.screenshot: Timeout 90000ms exceeded.\nCall log:\n\u001b[2m  - taking page screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n",
+      "cases": [
+        {
+          "id": "recipe-diagnostic",
+          "status": 200,
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.997732,
+              "RIGHT": 0.000495,
+              "CENTER": 0.001773
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 64,
+            "tokens_processed": 64,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          },
+          "model": {
+            "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+            "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+            "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+            "id2label": {
+              "0": "LEFT",
+              "1": "RIGHT",
+              "2": "CENTER"
+            },
+            "aggregation": "new_token_weighted_logit_mean_v1",
+            "max_length": 512,
+            "stride": 64,
+            "demo_mode": true,
+            "transformers": "4.57.1",
+            "torch": "2.6.0+cpu",
+            "tokenizers": "0.22.2"
+          },
+          "screenshot_sha256": "637206e5bdaba53bdab4dff94c73a5bdba34aaf4fb454e67af8b24457a87456b"
+        },
+        {
+          "id": "attributed-quotes-diagnostic",
+          "status": 200,
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998199,
+              "RIGHT": 0.000695,
+              "CENTER": 0.001106
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 63,
+            "tokens_processed": 63,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          },
+          "model": {
+            "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+            "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+            "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+            "id2label": {
+              "0": "LEFT",
+              "1": "RIGHT",
+              "2": "CENTER"
+            },
+            "aggregation": "new_token_weighted_logit_mean_v1",
+            "max_length": 512,
+            "stride": 64,
+            "demo_mode": true,
+            "transformers": "4.57.1",
+            "torch": "2.6.0+cpu",
+            "tokenizers": "0.22.2"
+          },
+          "screenshot_sha256": "eea5ee3ea5954089d6e49197ec658e404355ce06b6da6386c48bee11b2060add"
+        }
+      ],
+      "page_errors": [],
+      "failed_requests": [],
+      "mobile_overflow": null
+    },
+    {
+      "directory": "live-browser-confidence-retry-20261005",
+      "started_at": "2026-10-05T05:48:54.470Z",
+      "finished_at": "2026-10-05T05:49:07.512Z",
+      "browser": "154.0.8037.95",
+      "environment": "local Chromium driving public deployed site; not cloud browser",
+      "error": null,
+      "cases": [
+        {
+          "id": "mixed-policy-diagnostic",
+          "status": 200,
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.999138,
+              "RIGHT": 0.00051,
+              "CENTER": 0.000352
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 54,
+            "tokens_processed": 54,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          },
+          "model": {
+            "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+            "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+            "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+            "id2label": {
+              "0": "LEFT",
+              "1": "RIGHT",
+              "2": "CENTER"
+            },
+            "aggregation": "new_token_weighted_logit_mean_v1",
+            "max_length": 512,
+            "stride": 64,
+            "demo_mode": true,
+            "transformers": "4.57.1",
+            "torch": "2.6.0+cpu",
+            "tokenizers": "0.22.2"
+          },
+          "screenshot_sha256": "3c29169bb793210ebd35e2a078470ac8cd5f68c526f549a5542391a2695c7ae2"
+        }
+      ],
+      "page_errors": [],
+      "failed_requests": [],
+      "mobile_overflow": false
+    }
+  ]
+}
