@@ -1,5 +1,33 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 02:01 UTC heartbeat: fail closed on browser audit response errors
+
+Fixed an evidence-collection gap: valid-JSON HTTP errors previously could finish
+the browser audit without a nonzero exit. Non-2xx prediction responses now fail
+after preserving the status, raw body and parsed JSON. Added exact resolved-text
+verification for direct-text fixtures. URL fixtures may supply a frozen
+expected_resolved_text; without one, input_verification is explicitly
+not_checked_url rather than falsely claiming extracted-text identity.
+
+Expanded mocked regression coverage from seven to thirteen scenarios: JSON 503,
+JSON 422, changed direct text, URL with no reference, matching URL reference and
+mismatching URL reference. All thirteen passed, including saved failure evidence
+and browser closure. No production HTTP failures were deliberately induced.
+
+Ran the stricter harness against the public site using the three frozen sentence
+formatting probes. All HTTP 200, exact inputs, correct modes and rendered text;
+full result objects exactly match the earlier saved audit. Known RIGHT/RIGHT/LEFT
+pattern persists. No page/request errors or mobile horizontal overflow. Local
+Chrome/Playwright fallback because cloud browser unavailable and agent-browser CLI
+absent. Preserved raw responses/screenshots under
+outputs/live-browser-audit-contract-20261006 and hashes/results in
+research/results/browser_audit_contract_20261006.json (also copied to outputs).
+
+Engineering-only improvement: no new accuracy evidence, training, Astra ML task,
+normalization or deployment. Reserved test untouched. Repeated synthetic examples
+verify the harness, not independent model quality. URL extraction requires a
+separate frozen reference to meet the new input-identity check.
+
 ## 2026-10-06 01:01 UTC heartbeat: broader frozen formatting panel
 
 Created four new AI-authored two-sentence examples and fixed the inputs/comparisons

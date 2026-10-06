@@ -1,0 +1,368 @@
+{
+  "id": "browser-audit-contract-20261006",
+  "heartbeat": "2026-10-06T02:01:36.972Z",
+  "started_at": "2026-10-06T02:02:35.735Z",
+  "finished_at": "2026-10-06T02:02:42.828Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.98",
+  "changes": [
+    "Non-2xx prediction responses fail the run after raw body and parsed JSON are saved.",
+    "Direct text must exactly match returned resolved_text. URL inputs can supply expected_resolved_text; without it, input_verification explicitly says not_checked_url."
+  ],
+  "tests": {
+    "mock_scenarios": 13,
+    "passed": 13,
+    "live_requests": 3,
+    "live_passed": 3,
+    "exact_prior_results": true,
+    "page_errors": [],
+    "failed_requests": [],
+    "mobile_overflow": false
+  },
+  "sources": [
+    {
+      "path": "research/scripts/live_browser_audit.cjs",
+      "sha256": "19bf36a9777761335ead6575a3623d542555715516aa0c74d6a907287abb0ae7"
+    },
+    {
+      "path": "tests/test_browser_audit_persistence.cjs",
+      "sha256": "c3aaa8e0e25521362bebd46c78cb0dc623428b0cf440699983d333ea3716933c"
+    },
+    {
+      "path": "research/data/formatting-sentence-probes-20261006.json",
+      "sha256": "ead292dfdc3f8b340d39316e16e29bc0361ac74efd328244b03b7cedf377e771"
+    },
+    {
+      "path": "../../outputs/live-browser-audit-contract-20261006/audit.json",
+      "sha256": "752a95fadd88ec85b05a101af0c92e031109a114cabddbc93985be5d4cba1a4b"
+    }
+  ],
+  "cases": [
+    {
+      "id": "format-blank-line-sentence",
+      "status": 200,
+      "input_verification": "complete",
+      "result": {
+        "source_type": "text",
+        "resolved_text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.\n\nThe government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "RIGHT",
+          "label_id": 1,
+          "raw_label": "RIGHT",
+          "probabilities": {
+            "LEFT": 0.027243,
+            "RIGHT": 0.963345,
+            "CENTER": 0.009413
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 46,
+          "tokens_processed": 46,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.997521,
+              "RIGHT": 0.00162,
+              "CENTER": 0.000859
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 20,
+            "tokens_processed": 20,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.",
+            "start": 0,
+            "end": 130
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.008014,
+              "RIGHT": 0.989956,
+              "CENTER": 0.00203
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 24,
+            "tokens_processed": 24,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "The government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth.",
+            "start": 132,
+            "end": 280
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "screenshot_sha256": "fcf6c5ebb8160186442773b5105cc950981023a5348773f7d4a7c35c1e9e012c"
+    },
+    {
+      "id": "format-single-newline-sentence",
+      "status": 200,
+      "input_verification": "complete",
+      "result": {
+        "source_type": "text",
+        "resolved_text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.\nThe government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "RIGHT",
+          "label_id": 1,
+          "raw_label": "RIGHT",
+          "probabilities": {
+            "LEFT": 0.02568,
+            "RIGHT": 0.964275,
+            "CENTER": 0.010045
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 45,
+          "tokens_processed": 45,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.997521,
+              "RIGHT": 0.00162,
+              "CENTER": 0.000859
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 20,
+            "tokens_processed": 20,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.",
+            "start": 0,
+            "end": 130
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.008014,
+              "RIGHT": 0.989956,
+              "CENTER": 0.00203
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 24,
+            "tokens_processed": 24,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "The government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth.",
+            "start": 131,
+            "end": 279
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "screenshot_sha256": "a212e34450d4ca53645f92710ccda5c43d28d8e228903dd3a3d20bf0ed1da07c"
+    },
+    {
+      "id": "format-space-sentence",
+      "status": 200,
+      "input_verification": "complete",
+      "result": {
+        "source_type": "text",
+        "resolved_text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone. The government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.961676,
+            "RIGHT": 0.026161,
+            "CENTER": 0.012163
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 44,
+          "tokens_processed": 44,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.997521,
+              "RIGHT": 0.00162,
+              "CENTER": 0.000859
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 20,
+            "tokens_processed": 20,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.",
+            "start": 0,
+            "end": 130
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.008014,
+              "RIGHT": 0.989956,
+              "CENTER": 0.00203
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 24,
+            "tokens_processed": 24,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "The government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth.",
+            "start": 131,
+            "end": 279
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "screenshot_sha256": "e8460bd71b6d10e9606c7e4a4e8beedceab6ef6f30efbc80be41a5532871bb8b"
+    }
+  ],
+  "limitations": [
+    "Engineering-only run; no ML training or Astra subtask required.",
+    "Repeated known synthetic diagnostic: not independent evaluation or accuracy evidence.",
+    "Errors were mocked, not induced on production.",
+    "URL extraction equality remains unverified unless a frozen reference is supplied."
+  ],
+  "production_changed": false,
+  "release_approved": false
+}

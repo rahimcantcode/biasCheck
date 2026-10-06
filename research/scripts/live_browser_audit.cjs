@@ -42,12 +42,18 @@ fs.mkdirSync(output, { recursive: true });
       activeCase.result = result;
       activeCase.json_decode = 'complete';
       fs.writeFileSync(path.join(output, 'audit.json'), JSON.stringify(report, null, 2));
-      if (prediction.ok() && result.mode !== mode) throw new Error('Response mode differs from requested mode');
-      await page.getByRole('button', { name: 'Analyze', exact: true }).waitFor({ state: 'visible' });
-      if (prediction.ok()) {
-        await page.waitForFunction(text => document.querySelector('article[aria-label="Analyzed article"]')?.textContent === text, result.resolved_text);
+      if (!prediction.ok()) throw new Error('Prediction HTTP error: ' + prediction.status());
+      if (result.mode !== mode) throw new Error('Response mode differs from requested mode');
+      // URL extraction needs its own frozen text reference; never compare a URL to article text.
+      const expectedText = row.expected_resolved_text ?? (/^https?:\/\//i.test(row.text.trim()) ? null : row.text);
+      activeCase.input_verification = expectedText === null ? 'not_checked_url' : 'pending';
+      if (expectedText !== null) {
+        if (result.resolved_text !== expectedText) throw new Error('Resolved text differs from expected input');
+        activeCase.input_verification = 'complete';
       }
-      activeCase.ui_verification = prediction.ok() ? 'complete' : 'not_applicable';
+      await page.getByRole('button', { name: 'Analyze', exact: true }).waitFor({ state: 'visible' });
+      await page.waitForFunction(text => document.querySelector('article[aria-label="Analyzed article"]')?.textContent === text, result.resolved_text);
+      activeCase.ui_verification = 'complete';
       await page.screenshot({ path: path.join(output, row.id + '.png'), fullPage: true });
       activeCase.screenshot = 'complete';
       activeCase.seconds = (Date.now() - started) / 1000;
