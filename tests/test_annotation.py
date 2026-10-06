@@ -69,6 +69,20 @@ def test_duplicate_manifest_ids_rejected():
     manifest=copy.deepcopy(M);manifest['items'].append(copy.deepcopy(manifest['items'][0]))
     with pytest.raises(ValueError):validate(review(),manifest)
 
+@pytest.mark.parametrize('uppercase',[False,True])
+def test_duplicate_manifest_text_with_distinct_ids_rejected(uppercase):
+    manifest=copy.deepcopy(M)
+    fingerprint=manifest['items'][0]['text_sha256']
+    manifest['items'][1]['text_sha256']=fingerprint.upper() if uppercase else fingerprint
+    with pytest.raises(ValueError,match='Duplicate manifest text'):
+        validate(review(),manifest)
+
+@pytest.mark.parametrize('fingerprint',[None,'','not-a-hash','g'*64,123])
+def test_invalid_unreviewed_manifest_hash_rejected(fingerprint):
+    manifest=copy.deepcopy(M);manifest['items'][1]['text_sha256']=fingerprint
+    with pytest.raises(ValueError,match='Invalid manifest text'):
+        validate(review(),manifest)
+
 def test_skipped_item_requires_valid_completion_timestamp():
     r=review();r['annotations'][0].update(status='skipped',skip_reason='Snapshot unavailable',completed_at='invalid')
     with pytest.raises(ValueError):validate(r,M)

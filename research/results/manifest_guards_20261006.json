@@ -1,0 +1,130 @@
+{
+  "purpose": "Annotation manifest exact-duplicate protection; engineering only",
+  "tests_passed": 32,
+  "manifest_items": 100,
+  "unique_valid_text_hashes": 100,
+  "real_annotations_added": 0,
+  "source_hashes": {
+    "manifest": "97ddc6db156e472065c9091b35b08ecea6885b58f0817ebf7c72c163ba09bcf7",
+    "script": "09353fa44aac1fc1f853ad787cdbb35a133d8243bb287dbef21be40fb04a7b89"
+  },
+  "browser": {
+    "audit_sha256": "36121fc2cfc8705c19b0e5c1cd4ad826c912b3cc8e7a574a82428b61d22293db",
+    "started_at": "2026-10-06T20:31:44.036Z",
+    "finished_at": "2026-10-06T20:32:03.459Z",
+    "environment": "local Chromium driving public deployed site; not cloud browser",
+    "browser": "155.0.8059.39",
+    "result": {
+      "source_type": "text",
+      "resolved_text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock. Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+      "mode": "sentence",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.997309,
+          "RIGHT": 0.000459,
+          "CENTER": 0.002231
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 48,
+        "tokens_processed": 48,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "results": [
+        {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998918,
+            "RIGHT": 0.000369,
+            "CENTER": 0.000713
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 24,
+          "tokens_processed": 24,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false,
+          "segment_index": 0,
+          "text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.",
+          "start": 0,
+          "end": 119
+        },
+        {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.996503,
+            "RIGHT": 0.000765,
+            "CENTER": 0.002733
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 24,
+          "tokens_processed": 24,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false,
+          "segment_index": 1,
+          "text": "Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+          "start": 120,
+          "end": 236
+        }
+      ],
+      "warnings": [
+        "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+        "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+        "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+      ],
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      }
+    },
+    "screenshot_sha256": "7939f2422b707e41cba10f9d483011614b9e464875cc77434151de99c182e689",
+    "page_errors": [],
+    "failed_requests": [],
+    "mobile_overflow": false
+  },
+  "limitations": [
+    "Exact fingerprint uniqueness does not detect near duplicates or prove event/source independence.",
+    "Engineering-only run, no Astra ML task or training.",
+    "Repeated synthetic browser smoke is not independent model evaluation."
+  ],
+  "release_approved": false,
+  "production_changed": false,
+  "reserved_test_read": false
+}

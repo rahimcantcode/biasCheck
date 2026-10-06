@@ -27,6 +27,14 @@ def validate(review,manifest):
     reviewer_key(reviewer)
     known={r['id']:r for r in manifest['items']};seen=set();result={}
     if len(known)!=len(manifest['items']):raise ValueError('Duplicate manifest item IDs')
+    fingerprints=set()
+    for item in manifest['items']:
+        fingerprint=item.get('text_sha256')
+        if not isinstance(fingerprint,str) or len(fingerprint)!=64 or any(c not in '0123456789abcdefABCDEF' for c in fingerprint):
+            raise ValueError('Invalid manifest text SHA-256')
+        if fingerprint.lower() in fingerprints:
+            raise ValueError('Duplicate manifest text snapshot')
+        fingerprints.add(fingerprint.lower())
     for row in review.get('annotations',[]):
         id=row.get('id')
         if id not in known or id in seen:raise ValueError('Unknown or duplicate item ID')

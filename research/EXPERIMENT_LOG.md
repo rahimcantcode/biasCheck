@@ -1,5 +1,24 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 18:04 UTC heartbeat: duplicate snapshot review guard
+
+Added validation of every manifest text SHA-256 and rejection of duplicate text
+fingerprints under distinct item IDs, case-insensitively. Previously only duplicate
+manifest IDs were checked. This prevents exact snapshots being double-counted in
+review coverage/agreement, including unreviewed manifest items. Near duplicates
+and source/event independence remain outside this check. README updated.
+
+All 32 annotation tests passed, including seven new cases for duplicate hashes
+and malformed hashes on unreviewed items. Existing pilot verified: 100 items,
+100 unique valid hashes. No real reviews or gold labels added. Report preserved
+at research/results/manifest_guards_20261006.json and copied to outputs.
+
+Public-site local Chrome/Playwright fallback recipe smoke returned unchanged
+LEFT .997309, HTTP 200, exact input/UI, no page/request errors or mobile overflow.
+Raw evidence outputs/live-browser-manifest-guards-20261006. Cloud browser
+unavailable. Engineering-only run: no Astra ML task, training, deployment or
+reserved-test access. Independent high accuracy remains unestablished.
+
 ## 2026-10-06 15:07 UTC heartbeat: resampling input guards
 
 Hardened event-cluster resampling: reject a zero-column model matrix, missing or

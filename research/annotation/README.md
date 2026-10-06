@@ -63,6 +63,11 @@ datetime with an explicit timezone (`Z` or a numeric offset). Duplicate manifest
 IDs are rejected, even if their contents match. These checks cannot authenticate
 a reviewer, verify a claimed timestamp, or prove independent human judgment.
 
+Every manifest item must have a valid text SHA-256, and distinct IDs may not share
+the same text fingerprint (hash comparison is case-insensitive). This prevents
+exact snapshots being counted twice, including items not yet reviewed. It does
+not detect near-duplicate articles or establish source/event independence.
+
 Preserve the two independent exports. Adjudicate differences with documented reasoning and reviewer identity. A future gold dataset requires completed adjudication and explicit human sign-off. All pilot items remain development data, excluded from the later final evaluation.
 
 ## Reproduce
