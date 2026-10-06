@@ -41,9 +41,6 @@ def evaluate(report,policy,validation):
             'raw_label':raw_label_from_logits(row,report['model']['id2label']),
             'label':labels[int(scores.argmax())] if reason is None else None,'decision':'classified' if reason is None else 'abstained','reason':reason})
     metrics=summarize(rows)
-    unknown=[r for r in rows if r['gold']=='UNCERTAIN']
-    metrics['uncertain_n']=len(unknown)
-    metrics['uncertain_false_label_rate']=sum(r['decision']=='classified' for r in unknown)/len(unknown) if unknown else None
     requirements=point_estimate_gates(metrics)
     return {'metrics':metrics,'proposed_point_estimate_gates':requirements,'point_estimate_gates_pass':all(requirements.values()),'release_approved':False,
       'limitations':['Requires confidence intervals, source/event/time leakage review, per-slice review and operational validation before approval','Provenance fields are supplied assertions requiring human audit'],'predictions':rows}

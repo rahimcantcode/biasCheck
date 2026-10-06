@@ -11,6 +11,30 @@ def row(gold, raw, accepted=True):
 
 
 class DeliveredMetricsTests(unittest.TestCase):
+    def test_uncertain_reference_reporting_preserves_political_denominators(self):
+        baseline=summarize([row('CENTER','CENTER')])
+        result=summarize([row('CENTER','CENTER'),row('UNCERTAIN','LEFT'),row('UNCERTAIN','RIGHT',False)])
+        self.assertEqual(result['uncertain_n'],2)
+        self.assertEqual(result['uncertain_false_label_rate'],.5)
+        for key in ('eligible_n','coverage','raw_accuracy','macro_f1','selective_accuracy'):
+            self.assertEqual(result[key],baseline[key])
+        interval=result['marginal_intervals']['uncertain_false_label_rate']
+        self.assertEqual((interval['successes'],interval['n']),(1,2))
+        self.assertEqual(result['per_class']['CENTER']['support'],1)
+
+    def test_empty_uncertain_slice_is_unknown_not_perfect(self):
+        result=summarize([row('LEFT','LEFT')])
+        self.assertEqual(result['uncertain_n'],0)
+        self.assertIsNone(result['uncertain_false_label_rate'])
+        self.assertIsNone(result['marginal_intervals']['uncertain_false_label_rate']['upper'])
+
+    def test_all_uncertain_labeling_and_abstention(self):
+        for accepted,rate in ((True,1),(False,0)):
+            result=summarize([row('UNCERTAIN','LEFT',accepted)])
+            self.assertEqual(result['uncertain_false_label_rate'],rate)
+            self.assertEqual(result['eligible_n'],0)
+            self.assertIsNone(result['coverage'])
+
     def test_unknown_reference_not_silently_dropped(self):
         for gold in ('CENTRE', '', None, 'MIXED'):
             with self.subTest(gold=gold), self.assertRaisesRegex(ValueError,'reference label'):

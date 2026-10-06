@@ -1,5 +1,28 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 08:07 UTC heartbeat: shared UNCERTAIN slice reporting
+
+General evaluation validated UNCERTAIN rows but omitted their label-assignment
+rate; only policy evaluation added it separately. Moved this reporting into the
+shared summarize function: uncertain_n, uncertain_false_label_rate and its marginal
+Wilson interval. Removed duplicate policy-only calculation. Empty slices return
+null rate/bounds, not apparent perfect handling. Explicit definition: fraction of
+UNCERTAIN-reference rows given any political label, not proof of which class is
+correct; UNCERTAIN is not CENTER. Political denominators remain unchanged.
+
+Three new tests cover mixed slices, empty slice and all-labeled/all-abstained
+cases. All 37 focused/new/existing tests passed. Synthetic three-row demonstration
+records 1/2 UNCERTAIN rows labeled while political eligible_n stays 1. This is
+contract scaffolding, not human evaluation or measured accuracy. Preserved in
+research/results/uncertain_metrics_20261006.json, copied to outputs.
+
+Public-site local Chrome/Playwright fallback repeated recipe-space: HTTP 200,
+LEFT .997309, exact input/UI, no page/request errors or mobile overflow. Raw
+responses/screenshots outputs/live-browser-uncertain-metrics-20261006. No cloud
+browser available. This smoke does not validate reference uncertainty handling.
+Engineering-only run: no Astra ML subtask, training, new gate, deployment or
+reserved-test access. Independent high accuracy remains unestablished.
+
 ## 2026-10-06 07:07 UTC heartbeat: binary term-frequency ablation
 
 Ran five fixed training-fold fits with binary=True in the cloned baseline TF-IDF

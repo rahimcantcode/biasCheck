@@ -34,9 +34,12 @@ def summarize(rows):
     eligible=[r for r in rows if r['gold'] in ['LEFT','CENTER','RIGHT']]
     accepted=[r for r in eligible if r['decision']=='classified']
     negatives=[r for r in rows if r['gold']=='NONPOLITICAL']
+    uncertain=[r for r in rows if r['gold']=='UNCERTAIN']
     report={'n':len(rows),'eligible_n':len(eligible),'coverage':len(accepted)/len(eligible) if eligible else None,
         'selective_accuracy':sum(r['label']==r['gold'] for r in accepted)/len(accepted) if accepted else None,
-        'nonpolitical_n':len(negatives),'nonpolitical_false_label_rate':sum(r['decision']=='classified' for r in negatives)/len(negatives) if negatives else None}
+        'nonpolitical_n':len(negatives),'nonpolitical_false_label_rate':sum(r['decision']=='classified' for r in negatives)/len(negatives) if negatives else None,
+        'uncertain_n':len(uncertain),'uncertain_false_label_rate':sum(r['decision']=='classified' for r in uncertain)/len(uncertain) if uncertain else None,
+        'uncertain_definition':'Fraction of UNCERTAIN-reference examples assigned any political label; reference uncertainty is not CENTER and does not establish the correct political class.'}
     if eligible:
         y=[r['gold'] for r in eligible];p=[r['raw_label'] for r in eligible];labels=['LEFT','CENTER','RIGHT']
         delivered=[r['label'] if r['decision']=='classified' else 'ABSTAIN' for r in eligible]
@@ -58,6 +61,7 @@ def summarize(rows):
         coverage=wilson(len(accepted),len(eligible)),
         selective_accuracy=wilson(sum(r['label']==r['gold'] for r in accepted),len(accepted)),
         nonpolitical_false_label_rate=wilson(sum(r['decision']=='classified' for r in negatives),len(negatives)),
+        uncertain_false_label_rate=wilson(sum(r['decision']=='classified' for r in uncertain),len(uncertain)),
         per_class={label:dict(
             raw_recall=wilson(sum(r['raw_label']==label for r in eligible if r['gold']==label),sum(r['gold']==label for r in eligible)),
             delivered_recall=wilson(sum(r['decision']=='classified' and r['label']==label for r in eligible if r['gold']==label),sum(r['gold']==label for r in eligible))) for label in labels})
