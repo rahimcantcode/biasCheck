@@ -1,5 +1,31 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 06:06 UTC heartbeat: marginal uncertainty reporting
+
+Added 95% Wilson intervals with exact numerators/denominators to evaluation
+summaries for raw accuracy, political coverage, selective accuracy, nonpolitical
+false-label rate, and raw/delivered per-class recall. Empty denominators produce
+null bounds; abstentions remain failures for delivered recall. Formula reference:
+https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm (NIST).
+
+These are explicitly marginal IID binomial diagnostics, not cluster-adjusted or
+simultaneous bounds. They do not provide independent evidence on reused development
+data, establish human provenance, or address macro-F1 uncertainty. Point-estimate
+gates and release_approved=False behavior unchanged. Astra Medium method review
+retained. Four new unit tests cover known values, boundary/invalid counts, missing
+classes and abstention denominators. All 34 focused/new/existing metric tests passed.
+
+Synthetic contract demonstration: 90/100 correct yields interval .82563-.94477,
+illustrating why a 90% point estimate is not a 90% lower bound. This is generated
+test data, not a measured model result or human evaluation. Saved as
+research/results/interval_demo_20261006.json and copied to outputs.
+
+Public-site local Chrome/Playwright fallback repeated frozen recipe-space smoke:
+LEFT .997309, HTTP 200, exact input/UI checks, no page/request errors or mobile
+overflow. Raw evidence: outputs/live-browser-intervals-20261006. No cloud browser
+available. This smoke tests unchanged production, not interval validity or accuracy.
+No model training, deployment, reserved-test access or high-accuracy claim.
+
 ## 2026-10-06 05:05 UTC heartbeat: event-level error concentration
 
 Audited frozen baseline OOF predictions against training rows only: 115 examples,

@@ -1,0 +1,343 @@
+{
+  "purpose": "Synthetic interval contract demonstration; not human evaluation",
+  "metrics": {
+    "n": 100,
+    "eligible_n": 100,
+    "coverage": 1,
+    "selective_accuracy": 0.9,
+    "nonpolitical_n": 0,
+    "nonpolitical_false_label_rate": null,
+    "raw_accuracy": 0.9,
+    "macro_f1": 0.3157894736842105,
+    "confusion_order": [
+      "LEFT",
+      "CENTER",
+      "RIGHT"
+    ],
+    "confusion_matrix": [
+      [
+        90,
+        0,
+        10
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "per_class": {
+      "LEFT": {
+        "precision": 1,
+        "recall": 0.9,
+        "f1-score": 0.9473684210526315,
+        "support": 100
+      },
+      "CENTER": {
+        "precision": 0,
+        "recall": 0,
+        "f1-score": 0,
+        "support": 0
+      },
+      "RIGHT": {
+        "precision": 0,
+        "recall": 0,
+        "f1-score": 0,
+        "support": 0
+      },
+      "accuracy": 0.9,
+      "macro avg": {
+        "precision": 0.3333333333333333,
+        "recall": 0.3,
+        "f1-score": 0.3157894736842105,
+        "support": 100
+      },
+      "weighted avg": {
+        "precision": 1,
+        "recall": 0.9,
+        "f1-score": 0.9473684210526315,
+        "support": 100
+      }
+    },
+    "delivered": {
+      "correct_fraction": 0.9,
+      "macro_f1": 0.3157894736842105,
+      "per_class": {
+        "LEFT": {
+          "precision": 1,
+          "recall": 0.9,
+          "f1-score": 0.9473684210526315,
+          "support": 100
+        },
+        "CENTER": {
+          "precision": 0,
+          "recall": 0,
+          "f1-score": 0,
+          "support": 0
+        },
+        "RIGHT": {
+          "precision": 0,
+          "recall": 0,
+          "f1-score": 0,
+          "support": 0
+        },
+        "accuracy": 0.9,
+        "macro avg": {
+          "precision": 0.3333333333333333,
+          "recall": 0.3,
+          "f1-score": 0.3157894736842105,
+          "support": 100
+        },
+        "weighted avg": {
+          "precision": 1,
+          "recall": 0.9,
+          "f1-score": 0.9473684210526315,
+          "support": 100
+        }
+      },
+      "confusion_rows": [
+        "LEFT",
+        "CENTER",
+        "RIGHT"
+      ],
+      "confusion_columns": [
+        "LEFT",
+        "CENTER",
+        "RIGHT",
+        "ABSTAIN"
+      ],
+      "confusion_matrix": [
+        [
+          90,
+          0,
+          10,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "per_class_coverage": {
+        "LEFT": 1,
+        "CENTER": null,
+        "RIGHT": null
+      },
+      "definition": "All eligible examples retained; abstentions count as false negatives for their reference class."
+    },
+    "marginal_intervals": {
+      "method": "Wilson",
+      "confidence_level": 0.95,
+      "reference": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+      "limitations": "IID binomial diagnostics only; not event/source-cluster adjusted or simultaneous. Reused development data do not provide independent evidence. No macro-F1 interval or release approval.",
+      "raw_accuracy": {
+        "successes": 90,
+        "n": 100,
+        "lower": 0.8256343384950865,
+        "upper": 0.9447708629393249
+      },
+      "coverage": {
+        "successes": 100,
+        "n": 100,
+        "lower": 0.9630065017930143,
+        "upper": 1
+      },
+      "selective_accuracy": {
+        "successes": 90,
+        "n": 100,
+        "lower": 0.8256343384950865,
+        "upper": 0.9447708629393249
+      },
+      "nonpolitical_false_label_rate": {
+        "successes": 0,
+        "n": 0,
+        "lower": null,
+        "upper": null
+      },
+      "per_class": {
+        "LEFT": {
+          "raw_recall": {
+            "successes": 90,
+            "n": 100,
+            "lower": 0.8256343384950865,
+            "upper": 0.9447708629393249
+          },
+          "delivered_recall": {
+            "successes": 90,
+            "n": 100,
+            "lower": 0.8256343384950865,
+            "upper": 0.9447708629393249
+          }
+        },
+        "CENTER": {
+          "raw_recall": {
+            "successes": 0,
+            "n": 0,
+            "lower": null,
+            "upper": null
+          },
+          "delivered_recall": {
+            "successes": 0,
+            "n": 0,
+            "lower": null,
+            "upper": null
+          }
+        },
+        "RIGHT": {
+          "raw_recall": {
+            "successes": 0,
+            "n": 0,
+            "lower": null,
+            "upper": null
+          },
+          "delivered_recall": {
+            "successes": 0,
+            "n": 0,
+            "lower": null,
+            "upper": null
+          }
+        }
+      }
+    }
+  },
+  "release_approved": false,
+  "source": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+  "script_sha256": "cb876b8654c2fc07371daf73669d3c400c76f6ab64c0975e95255ac0b3d98550",
+  "tests_passed": 34,
+  "method_review": {
+    "model": "gpt-6-astra",
+    "reasoning": "medium",
+    "sha256": "95ce87aa33d900d467feccde266b408b72d709881a56406d9f0d0e1e50e76106"
+  },
+  "browser": {
+    "audit_sha256": "10b8f9911fe2f2c0d5b6b85f726513ec5f6a875050593eba76a998ed7df75f84",
+    "started_at": "2026-10-06T06:07:50.470Z",
+    "finished_at": "2026-10-06T06:07:54.901Z",
+    "environment": "local Chromium driving public deployed site; not cloud browser",
+    "browser": "154.0.8037.98",
+    "cases": [
+      {
+        "id": "recipe-space",
+        "status": 200,
+        "input_verification": "complete",
+        "result": {
+          "source_type": "text",
+          "resolved_text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock. Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+          "mode": "sentence",
+          "overall": {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.997309,
+              "RIGHT": 0.000459,
+              "CENTER": 0.002231
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 48,
+            "tokens_processed": 48,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false
+          },
+          "results": [
+            {
+              "assessment": null,
+              "tentative_label": null,
+              "relevance_scores": null,
+              "score_type": "class_probability",
+              "label": "LEFT",
+              "label_id": 0,
+              "raw_label": "LEFT",
+              "probabilities": {
+                "LEFT": 0.998918,
+                "RIGHT": 0.000369,
+                "CENTER": 0.000713
+              },
+              "decision": "classified",
+              "reason": "demo_estimate",
+              "token_count": 24,
+              "tokens_processed": 24,
+              "chunk_count": 1,
+              "truncated": false,
+              "calibrated": false,
+              "segment_index": 0,
+              "text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.",
+              "start": 0,
+              "end": 119
+            },
+            {
+              "assessment": null,
+              "tentative_label": null,
+              "relevance_scores": null,
+              "score_type": "class_probability",
+              "label": "LEFT",
+              "label_id": 0,
+              "raw_label": "LEFT",
+              "probabilities": {
+                "LEFT": 0.996503,
+                "RIGHT": 0.000765,
+                "CENTER": 0.002733
+              },
+              "decision": "classified",
+              "reason": "demo_estimate",
+              "token_count": 24,
+              "tokens_processed": 24,
+              "chunk_count": 1,
+              "truncated": false,
+              "calibrated": false,
+              "segment_index": 1,
+              "text": "Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+              "start": 120,
+              "end": 236
+            }
+          ],
+          "warnings": [
+            "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+            "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+            "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+          ],
+          "model": {
+            "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+            "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+            "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+            "id2label": {
+              "0": "LEFT",
+              "1": "RIGHT",
+              "2": "CENTER"
+            },
+            "aggregation": "new_token_weighted_logit_mean_v1",
+            "max_length": 512,
+            "stride": 64,
+            "demo_mode": true,
+            "transformers": "4.57.1",
+            "torch": "2.6.0+cpu",
+            "tokenizers": "0.22.2"
+          }
+        },
+        "screenshot_sha256": "c22e4757fd7d60c862d2b5dcbcf7cd1dd74aa69d8a5771204bb1658050479475"
+      }
+    ],
+    "page_errors": [],
+    "failed_requests": [],
+    "mobile_overflow": false
+  }
+}

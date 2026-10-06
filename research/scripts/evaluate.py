@@ -1,9 +1,25 @@
 """Full-document evaluation; raw accuracy is distinct from accepted-label accuracy."""
 import argparse, hashlib, json, os, sys, time
 from pathlib import Path
+from math import sqrt
+from statistics import NormalDist
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 import numpy as np
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classification_report
+
+
+def wilson(successes, n):
+    """Marginal 95% binomial interval; not a cluster-adjusted release test."""
+    if type(successes) is not int or type(n) is not int or not 0 <= successes <= n:
+        raise ValueError('Expected integer counts with 0 <= successes <= n')
+    if n == 0:
+        return dict(successes=0, n=0, lower=None, upper=None)
+    z = NormalDist().inv_cdf(.975)
+    p = successes/n
+    denominator = 1+z*z/n
+    center = (p+z*z/(2*n))/denominator
+    half = z*sqrt(p*(1-p)/n+z*z/(4*n*n))/denominator
+    return dict(successes=successes, n=n, lower=max(0.,center-half), upper=min(1.,center+half))
 
 
 def summarize(rows):
@@ -35,6 +51,16 @@ def summarize(rows):
             'confusion_matrix':confusion_matrix(y,delivered,labels=labels+['ABSTAIN']).tolist()[:3],
             'per_class_coverage':{label:sum(r['decision']=='classified' for r in eligible if r['gold']==label)/y.count(label) if y.count(label) else None for label in labels},
             'definition':'All eligible examples retained; abstentions count as false negatives for their reference class.'}
+    report['marginal_intervals'] = dict(method='Wilson', confidence_level=.95,
+        reference='https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm',
+        limitations='IID binomial diagnostics only; not event/source-cluster adjusted or simultaneous. Reused development data do not provide independent evidence. No macro-F1 interval or release approval.',
+        raw_accuracy=wilson(sum(r['raw_label']==r['gold'] for r in eligible),len(eligible)),
+        coverage=wilson(len(accepted),len(eligible)),
+        selective_accuracy=wilson(sum(r['label']==r['gold'] for r in accepted),len(accepted)),
+        nonpolitical_false_label_rate=wilson(sum(r['decision']=='classified' for r in negatives),len(negatives)),
+        per_class={label:dict(
+            raw_recall=wilson(sum(r['raw_label']==label for r in eligible if r['gold']==label),sum(r['gold']==label for r in eligible)),
+            delivered_recall=wilson(sum(r['decision']=='classified' and r['label']==label for r in eligible if r['gold']==label),sum(r['gold']==label for r in eligible))) for label in labels})
     return report
 
 
