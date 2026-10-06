@@ -1,5 +1,38 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 00:00 UTC heartbeat: sentence scores invariant under separator changes
+
+Followed the formatting diagnostic with three frozen sentence-mode inputs derived
+from the prior article inputs. Actual public browser run: 00:06:23-00:06:34 UTC.
+Used local Chrome 154.0.8037.98 through Playwright; cloud browser unavailable.
+All three returned HTTP 200, two passages, correct requested mode, exact input
+text, valid offsets and unchanged model metadata. No browser/request errors or
+mobile horizontal overflow. Seven mocked browser persistence/mode tests passed.
+
+For blank-line, newline and space separators respectively, overall labels remain
+RIGHT (.963345), RIGHT (.964275), LEFT (.961676); all overall fields exactly match
+the preceding article-mode outputs. Every first sentence has the same LEFT score
+.997521, every second sentence the same RIGHT score .989956, with identical full
+score vectors and 20/24 token counts. Second-sentence offsets correctly shift from
+132..280 to 131..279. Full-text token counts are 46, 45 and 44.
+
+Local backend/main.py:64 computes overall directly from full text; line 67
+separately predicts each sentence. This supports investigating the full-text path,
+not a claim that the overall label aggregates sentence scores. The Astra Medium
+method critique proposed passage-to-overall mapping as a possibility, but that
+mechanism is not supported by this local code. Server source identity was not
+verified; model fingerprints alone do not prove it. No causal mechanism or correct
+label established. This is one AI-authored, previously selected diagnostic, not
+human gold, an independent sample, or an accuracy estimate.
+
+Preserved inputs and method critique under research/data/formatting-sentence-*,
+full diagnostic report research/results/formatting_sentence_20261006.json, and raw
+responses/screenshots in outputs/live-browser-formatting-sentence-20261006. Report
+contains hashes of inputs, prior/current raw audits, screenshots and local code.
+No normalization, model replacement or deployment; reserved test untouched.
+Next useful step: broader preregistered formatting probes before considering any
+normalization, preserving meaningful paragraph boundaries and human evaluation.
+
 ## 2026-10-05 23:00 UTC heartbeat: reproduced whitespace-driven label flip
 
 Derived three article-mode inputs from the frozen two-policy mode probe. Changed

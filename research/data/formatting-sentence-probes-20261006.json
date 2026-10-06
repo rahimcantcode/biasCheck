@@ -1,0 +1,26 @@
+[
+  {
+    "id": "format-blank-line-sentence",
+    "mode": "sentence",
+    "annotation_provenance": "Derived AI-authored diagnostic; no human gold",
+    "source_sha256": "e3ce0cc06cd21c7be41ac6538c1aa9832a6af0f99a7d1f0a71df22b2039a1899",
+    "transform": "Replace the sole paragraph separator with blank-line",
+    "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.\n\nThe government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth."
+  },
+  {
+    "id": "format-single-newline-sentence",
+    "mode": "sentence",
+    "annotation_provenance": "Derived AI-authored diagnostic; no human gold",
+    "source_sha256": "e3ce0cc06cd21c7be41ac6538c1aa9832a6af0f99a7d1f0a71df22b2039a1899",
+    "transform": "Replace the sole paragraph separator with single-newline",
+    "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone.\nThe government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth."
+  },
+  {
+    "id": "format-space-sentence",
+    "mode": "sentence",
+    "annotation_provenance": "Derived AI-authored diagnostic; no human gold",
+    "source_sha256": "e3ce0cc06cd21c7be41ac6538c1aa9832a6af0f99a7d1f0a71df22b2039a1899",
+    "transform": "Replace the sole paragraph separator with space",
+    "text": "The government should raise taxes on wealthy households to fund universal healthcare and stronger social safety nets for everyone. The government should lower corporate taxes and reduce business regulation so private enterprise can invest, create jobs, and drive economic growth."
+  }
+]
