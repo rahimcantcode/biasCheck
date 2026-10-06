@@ -1,5 +1,32 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 13:13 UTC heartbeat: uncertainty for recent negative candidates
+
+Reused existing event-string cluster bootstrap on frozen training OOF predictions
+for baseline, ComplementNB, binary TF and min_df=1. Verified row IDs, labels/text
+hashes, fold assignments and exact baseline predictions/scores across all source
+reports. 115 rows, 42 groups; 5,000 uniform cluster draws with replacement,
+seed 20261004, sample-weighted accuracy. No retraining or model selection.
+
+All three observed deltas are -7/115 (-.06087). Conditional paired 95% percentile
+intervals: ComplementNB [-.14458,.01205], binary TF [-.12389,0], rare terms
+[-.125,0]. Each includes/touches zero. Baseline accuracy interval [.38888,.61538].
+These are not significance tests or generalization guarantees: saved predictions,
+overlapping training folds, imperfect event grouping, disputed noncommercial labels
+and repeated development remain limitations. No positive improvement established;
+do not upgrade the prior negative findings into formal inferiority claims.
+
+Astra Medium critique saved. Four resampling tests passed; verified the 5000x42
+count matrix sums to 42 per draw and all paired-difference arrays match. Preserved
+normalized aligned source input, hashes, draw counts and full replicates under
+research/checkpoints/recent-uncertainty-20261006; summary
+research/results/recent_uncertainty_20261006.json (also outputs).
+
+Public-site local Chrome/Playwright fallback recipe smoke unchanged, LEFT .997309,
+HTTP 200, exact text/UI, no page/request errors or mobile overflow. Evidence:
+outputs/live-browser-recent-uncertainty-20261006. Cloud browser unavailable.
+Smoke is not candidate evaluation. No deployment or reserved-test access.
+
 ## 2026-10-06 12:12 UTC heartbeat: expose annotation attrition
 
 Extended validated two-reviewer comparison with per-reviewer reviewed/skipped/
