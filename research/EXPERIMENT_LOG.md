@@ -1,5 +1,35 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 03:03 UTC heartbeat: fixed Complement Naive Bayes comparison
+
+Tested ComplementNB(alpha=1, norm=False, fit_prior=True; remaining defaults
+recorded) against balanced logistic regression on the same 115 training rows and
+five frozen event-group folds. Reused each training-only TF-IDF vectorizer exactly;
+five classifier fits, no tuning or validation/test access. Astra Medium reviewed
+the protocol and highlighted confounding changes in estimator/class weighting,
+repeated development use and disputed labels. This is research-only under the
+corpus noncommercial license, not evidence of independent high accuracy.
+
+Candidate: 51/115 correct (.44348), macro-F1 .34294, versus baseline 58/115
+(.50435), macro-F1 .44234. Recall LEFT 16/38, CENTER 1/26, RIGHT 34/51, versus
+22/38, 4/26, 32/51. Strict-agreement slice 19/54 versus 25/54. Three baseline
+errors corrected, ten baseline successes regressed. Reject this fixed candidate
+as an improvement; no hyperparameter search in this run.
+
+Preserved split IDs, all OOF class scores, model hashes, runtime, parameters and
+method critique. Reloaded all five saved candidates and reproduced all 115 score
+vectors at absolute tolerance 1e-12; hashes verified. Three existing fold-guard
+tests passed. Script: research/scripts/complement_nb_cv.py. Checkpoints/protocol:
+research/checkpoints/complement-nb-20261006. Full report:
+research/results/complement_nb_20261006.json, also copied to outputs.
+
+Public-site browser smoke at 03:04:39-03:04:44 UTC used local Chrome/Playwright
+fallback, not a cloud browser. Frozen recipe-space diagnostic still returned
+LEFT .997309; exact input and UI checks passed, no browser/request errors or
+mobile overflow. Raw responses/screenshots: outputs/live-browser-complement-nb-20261006.
+This checks unchanged production, not the candidate or representative accuracy.
+No deployment; reserved test untouched.
+
 ## 2026-10-06 02:01 UTC heartbeat: fail closed on browser audit response errors
 
 Fixed an evidence-collection gap: valid-JSON HTTP errors previously could finish
