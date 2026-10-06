@@ -1,0 +1,42 @@
+[
+  {
+    "id": "public-health-affirmative-policy-only",
+    "pair": "public-health",
+    "negated": false,
+    "mode": "article",
+    "annotation_provenance": "AI-authored diagnostic, no human gold or expected political label",
+    "text": "The government should raise taxes on wealthy households to fund universal public healthcare for residents across the country.",
+    "source_sha256": "c6668b3a7c7de2aab4b44a99231c5a3dfc2e554ab7f803d36452633ae9a71be6",
+    "transform": "Remove exact shared second sentence; post-hoc context sensitivity diagnostic"
+  },
+  {
+    "id": "public-health-negated-policy-only",
+    "pair": "public-health",
+    "negated": true,
+    "mode": "article",
+    "annotation_provenance": "AI-authored diagnostic, no human gold or expected political label",
+    "text": "The government should not raise taxes on wealthy households to fund universal public healthcare for residents across the country.",
+    "source_sha256": "c6668b3a7c7de2aab4b44a99231c5a3dfc2e554ab7f803d36452633ae9a71be6",
+    "transform": "Remove exact shared second sentence; post-hoc context sensitivity diagnostic"
+  },
+  {
+    "id": "corporate-tax-affirmative-policy-only",
+    "pair": "corporate-tax",
+    "negated": false,
+    "mode": "article",
+    "annotation_provenance": "AI-authored diagnostic, no human gold or expected political label",
+    "text": "The government should lower corporate taxes and remove business regulations to encourage private investment throughout the country.",
+    "source_sha256": "c6668b3a7c7de2aab4b44a99231c5a3dfc2e554ab7f803d36452633ae9a71be6",
+    "transform": "Remove exact shared second sentence; post-hoc context sensitivity diagnostic"
+  },
+  {
+    "id": "corporate-tax-negated-policy-only",
+    "pair": "corporate-tax",
+    "negated": true,
+    "mode": "article",
+    "annotation_provenance": "AI-authored diagnostic, no human gold or expected political label",
+    "text": "The government should not lower corporate taxes and remove business regulations to encourage private investment throughout the country.",
+    "source_sha256": "c6668b3a7c7de2aab4b44a99231c5a3dfc2e554ab7f803d36452633ae9a71be6",
+    "transform": "Remove exact shared second sentence; post-hoc context sensitivity diagnostic"
+  }
+]

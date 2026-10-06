@@ -1,5 +1,30 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 10:10 UTC heartbeat: remove shared context from negation probes
+
+Derived four policy-only texts by removing the exact shared committee-meeting
+second sentence from the frozen negation probes. No other edits; article mode,
+one request each, compared with preserved earlier full-passage responses. Astra
+Medium reviewed the follow-up and cautioned about prior-result selection and
+between-run drift even with unchanged model fingerprints.
+
+All policy-only labels remain LEFT. LEFT scores: public-health affirmative .998403,
+negated .998078; corporate-tax affirmative .956399, negated .807743. Removing the
+second sentence reduced the negated corporate-tax LEFT score by .189435. The
+corporate pair's negation score difference is now .148656, compared with .001032
+in full passages; public-health difference .000325 versus .000184. Thus the
+earlier tiny score changes do not generalize across these input lengths/contexts.
+No inference of correct labels, causal mechanism or general negation failure.
+
+Exact submitted/returned text and unchanged model metadata verified. Tokens now
+19/20/18/19 versus 39/40/38/39. All four HTTP 200, no page/request errors or mobile
+overflow; 13 browser harness tests passed. Local Chrome/Playwright fallback, no
+cloud browser available. Raw responses/screenshots:
+outputs/live-browser-negation-context-20261006. Derived inputs/method under
+research/data/negation-context-*, complete comparison report
+research/results/negation_context_20261006.json (also outputs).
+AI-authored diagnostic only; no tuning, deployment or reserved-test access.
+
 ## 2026-10-06 09:08 UTC heartbeat: frozen negation sensitivity probes
 
 Submitted two AI-authored policy pairs in article mode, differing only by insertion

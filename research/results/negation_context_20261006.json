@@ -1,0 +1,459 @@
+{
+  "experiment": "negation-context-20261006",
+  "heartbeat": "2026-10-06T10:10:09.006Z",
+  "started_at": "2026-10-06T10:10:44.495Z",
+  "finished_at": "2026-10-06T10:10:53.194Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.98",
+  "inputs_sha256": "fffb562c18bb833aea202e9015397cfdd29813728e7397212354148181134b24",
+  "prior_audit_sha256": "1e0459cf792db3780300955302285641fb9bd041a832259abcff6fb62925ca62",
+  "current_audit_sha256": "a5f17d3918ccbb170081be3467271dbcf5af08488255f5b8f232d47ed8a729d1",
+  "method_review": {
+    "model": "gpt-6-astra",
+    "reasoning": "medium",
+    "sha256": "43456016ebd0f6a8d0a9cc277c153de689dbd2f4aa311a0c9a6136c54f8c0bd2"
+  },
+  "comparisons": [
+    {
+      "id": "public-health-affirmative-policy-only",
+      "full_passage_overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998833,
+          "RIGHT": 0.00049,
+          "CENTER": 0.000677
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 39,
+        "tokens_processed": 39,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "policy_only_result": {
+        "source_type": "text",
+        "resolved_text": "The government should raise taxes on wealthy households to fund universal public healthcare for residents across the country.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998403,
+            "RIGHT": 0.001055,
+            "CENTER": 0.000541
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 19,
+          "tokens_processed": 19,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998403,
+              "RIGHT": 0.001055,
+              "CENTER": 0.000541
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 19,
+            "tokens_processed": 19,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "The government should raise taxes on wealthy households to fund universal public healthcare for residents across the country.",
+            "start": 0,
+            "end": 125
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "deltas_policy_only_minus_full": {
+        "LEFT": -0.00043,
+        "CENTER": -0.000136,
+        "RIGHT": 0.000565
+      },
+      "screenshot_sha256": "b0b653ffc906921ca2ff8f05494d5b6fbdc00fd82fac9bab458ce37953a89d84"
+    },
+    {
+      "id": "public-health-negated-policy-only",
+      "full_passage_overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.998649,
+          "RIGHT": 0.00052,
+          "CENTER": 0.00083
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 40,
+        "tokens_processed": 40,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "policy_only_result": {
+        "source_type": "text",
+        "resolved_text": "The government should not raise taxes on wealthy households to fund universal public healthcare for residents across the country.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998078,
+            "RIGHT": 0.001195,
+            "CENTER": 0.000727
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 20,
+          "tokens_processed": 20,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998078,
+              "RIGHT": 0.001195,
+              "CENTER": 0.000727
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 20,
+            "tokens_processed": 20,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "The government should not raise taxes on wealthy households to fund universal public healthcare for residents across the country.",
+            "start": 0,
+            "end": 129
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "deltas_policy_only_minus_full": {
+        "LEFT": -0.000571,
+        "CENTER": -0.000103,
+        "RIGHT": 0.000675
+      },
+      "screenshot_sha256": "b8c63d6c63fcd0036854819c758d0a9378347cbc94d09b2cb46c60c9aa330887"
+    },
+    {
+      "id": "corporate-tax-affirmative-policy-only",
+      "full_passage_overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.99821,
+          "RIGHT": 0.000497,
+          "CENTER": 0.001293
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 38,
+        "tokens_processed": 38,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "policy_only_result": {
+        "source_type": "text",
+        "resolved_text": "The government should lower corporate taxes and remove business regulations to encourage private investment throughout the country.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.956399,
+            "RIGHT": 0.033884,
+            "CENTER": 0.009717
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 18,
+          "tokens_processed": 18,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.956399,
+              "RIGHT": 0.033884,
+              "CENTER": 0.009717
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 18,
+            "tokens_processed": 18,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "The government should lower corporate taxes and remove business regulations to encourage private investment throughout the country.",
+            "start": 0,
+            "end": 131
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "deltas_policy_only_minus_full": {
+        "LEFT": -0.041811,
+        "CENTER": 0.008424,
+        "RIGHT": 0.033387
+      },
+      "screenshot_sha256": "31f89aadbcf7a38347540db195e90ee44544ad5d8e30e6d372eb023c4cebb58a"
+    },
+    {
+      "id": "corporate-tax-negated-policy-only",
+      "full_passage_overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.997178,
+          "RIGHT": 0.000687,
+          "CENTER": 0.002134
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 39,
+        "tokens_processed": 39,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "policy_only_result": {
+        "source_type": "text",
+        "resolved_text": "The government should not lower corporate taxes and remove business regulations to encourage private investment throughout the country.",
+        "mode": "article",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.807743,
+            "RIGHT": 0.166448,
+            "CENTER": 0.025809
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 19,
+          "tokens_processed": 19,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.807743,
+              "RIGHT": 0.166448,
+              "CENTER": 0.025809
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 19,
+            "tokens_processed": 19,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "The government should not lower corporate taxes and remove business regulations to encourage private investment throughout the country.",
+            "start": 0,
+            "end": 135
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "deltas_policy_only_minus_full": {
+        "LEFT": -0.189435,
+        "CENTER": 0.023675,
+        "RIGHT": 0.165761
+      },
+      "screenshot_sha256": "24bb5150edf6bedf81c9b616bcdd220ab0cab6f2090db8a0077450bbd48d6bc8"
+    }
+  ],
+  "pairs": [
+    {
+      "pair": "public-health",
+      "max_negation_score_delta_policy_only": 0.0003250000000000197
+    },
+    {
+      "pair": "corporate-tax",
+      "max_negation_score_delta_policy_only": 0.148656
+    }
+  ],
+  "harness_tests_passed": 13,
+  "browser_checks": {
+    "page_errors": [],
+    "failed_requests": [],
+    "mobile_overflow": false
+  },
+  "limitations": [
+    "Post-hoc followup on four AI-authored examples; not human gold or accuracy evidence.",
+    "One request per policy-only text compared with earlier-run full passages; drift cannot be excluded by hashes alone.",
+    "Context removal also changes length/tokenization; mechanism and correct labels not established.",
+    "Negation does not imply opposite ideology; full-passage near-invariance did not generalize to policy-only score magnitudes."
+  ],
+  "release_approved": false,
+  "production_changed": false,
+  "reserved_test_read": false
+}
