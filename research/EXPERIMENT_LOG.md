@@ -1,5 +1,27 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 09:08 UTC heartbeat: frozen negation sensitivity probes
+
+Submitted two AI-authored policy pairs in article mode, differing only by insertion
+of "not" after "should". Both retain an identical neutral committee-meeting second
+sentence. Inputs frozen before requests; one request each, no repeats/tuning.
+Astra Medium reviewed the method. No human gold or opposite-label oracle: rejecting
+one policy does not establish another ideology, and conjunction scope can be ambiguous.
+
+All four returned LEFT. Public-health pair LEFT scores .998833 -> .998649;
+corporate-tax/deregulation pair .998210 -> .997178. Maximum absolute class-score
+changes .000184 and .001032; token counts 39->40 and 38->39. Exact texts, only-not
+transformation and unchanged model fingerprints verified. These two local responses
+show small score changes, not a general negation failure, correctness or accuracy.
+
+All four HTTP 200 with exact input/UI checks; no page/request errors or mobile
+overflow. Local Chrome/Playwright fallback, cloud browser unavailable. Thirteen
+browser harness tests passed. Raw responses/screenshots:
+outputs/live-browser-negation-20261006. Frozen inputs/method critique under
+research/data/negation-*, complete report research/results/negation_probes_20261006.json
+(also outputs), including score deltas, model/input/screenshot hashes and caveats.
+No model changes, deployment, reserved-test access or high-accuracy claim.
+
 ## 2026-10-06 08:07 UTC heartbeat: shared UNCERTAIN slice reporting
 
 General evaluation validated UNCERTAIN rows but omitted their label-assignment
