@@ -1,5 +1,32 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 04:04 UTC heartbeat: validate calibration requirements
+
+Reproduced an input-contract defect on the synthetic calibration fixture: target=-1,
+target=True, min_coverage=-1 and min_coverage=False all returned candidate policies.
+They remained release_approved=False; no deployment gate was bypassed. Nevertheless,
+invalid requirements should not be accepted as calibration objectives.
+
+Added fail-fast validation for both parameters: finite nonboolean real numbers in
+(0,1]. Candidate policies now retain requested_accuracy and requested_min_coverage
+for auditability. Defaults and release protection unchanged. Added tests covering
+24 invalid parameter cases and three valid pairs (including numeric upper bound
+and NumPy scalar inputs). Optimizer must not run for invalid values. All 23 tests
+across calibration optimizer, numerical predictions and unique-example guards
+passed. The fixture's human-reviewed flag is synthetic test scaffolding, not human
+annotation evidence. No generated fixture was promoted into research gold.
+
+Public-site local Chrome/Playwright smoke repeated the frozen recipe-space example:
+HTTP 200, exact returned text, LEFT .997309, no page/request errors or mobile
+overflow. Raw evidence outputs/live-browser-calibration-requirements-20261006;
+report research/results/calibration_requirements_20261006.json (also outputs).
+Cloud browser unavailable; used established local fallback. This is unchanged
+production, not a test of candidate calibration or independent accuracy.
+
+Engineering-only run: no ML training/Astra subtask, production change, or reserved
+test access. Numerical validation strengthens the experiment contract but does not
+establish accuracy, annotation provenance or release readiness.
+
 ## 2026-10-06 03:03 UTC heartbeat: fixed Complement Naive Bayes comparison
 
 Tested ComplementNB(alpha=1, norm=False, fit_prior=True; remaining defaults

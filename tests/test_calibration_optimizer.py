@@ -19,6 +19,22 @@ def report():
 
 
 class OptimizerTests(unittest.TestCase):
+    def test_invalid_requirements_rejected_before_optimization(self):
+        for name in ('target','min_coverage'):
+            for value in (True,False,np.bool_(True),None,'0.9',[],0,-.1,1.01,float('nan'),float('inf'),float('-inf')):
+                with self.subTest(name=name,value=value),patch('research.scripts.calibrate.minimize_scalar') as optimizer:
+                    with self.assertRaisesRegex(ValueError,name):
+                        fit(report(),**{name:value})
+                    optimizer.assert_not_called()
+
+    def test_valid_requirements_retained_without_release(self):
+        for target,coverage in ((.9,.8),(1,1),(np.float64(.95),np.float32(.75))):
+            with self.subTest(target=target,coverage=coverage):
+                result=fit(report(),target=target,min_coverage=coverage)
+                self.assertEqual(result['requested_accuracy'],float(target))
+                self.assertEqual(result['requested_min_coverage'],float(coverage))
+                self.assertIs(result['release_approved'],False)
+
     def test_unsuccessful_fit_rejected_even_with_usable_temperature(self):
         with patch('research.scripts.calibrate.minimize_scalar', return_value=SimpleNamespace(success=False, x=0., fun=.01)):
             with self.assertRaisesRegex(ValueError, 'optimization'): fit(report())

@@ -1,6 +1,7 @@
 """Fit only on validation; never marks a policy as approved for deployment."""
 import argparse,hashlib,json
 from collections import Counter
+from numbers import Real
 from pathlib import Path
 import numpy as np
 from scipy.optimize import minimize_scalar
@@ -12,6 +13,9 @@ except ImportError:
 
 
 def fit(report,target=.9,min_coverage=.8):
+    for name,value in [('target',target),('min_coverage',min_coverage)]:
+        if isinstance(value,bool) or not isinstance(value,Real) or not np.isfinite(value) or not 0 < value <= 1:
+            raise ValueError(f'{name} must be a finite number in (0, 1], not a boolean.')
     if report['split']!='validation':raise ValueError('Only validation may be used for calibration.')
     require_human_provenance(report)
     require_unique_examples(report)
@@ -45,6 +49,7 @@ def fit(report,target=.9,min_coverage=.8):
     policy.update(schema_version=1,temperature=temperature,min_confidence=best[1],min_margin=best[2],min_tokens=30,
         validated_modes=[report['mode']],calibration_data_sha256=report['data_sha256'],validation_coverage=best[0],
         validation_selective_accuracy=best[3],release_approved=False,
+        requested_accuracy=float(target),requested_min_coverage=float(min_coverage),
         validation_class_counts=dict(class_counts),
         limitations='Requires independent test and relevance evaluation. Minimum context is an engineering guard, not a nonpolitical classifier.')
     return policy
