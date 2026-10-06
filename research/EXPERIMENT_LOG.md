@@ -1,5 +1,34 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 21:34 UTC heartbeat: traceable passage-development material
+
+Implemented `research/scripts/pilot_passages.py` to address the pilot's passage
+length gap without changing its frozen 100 items. Verified every snapshot hash,
+then selected one existing 80-200-whitespace-word paragraph per eligible historical
+parent by minimum SHA256 of UTF-8 `parent_id:start:end`. Offsets are Unicode code
+points into the unchanged snapshot; ties use tuple ordering. No normalization or
+article-label inheritance. Result: 39 selected parents, 21 explicitly excluded for
+no eligible paragraph. All labels remain null and human_reviewed remains false.
+Parent IDs are retained as split groups, but do not establish event, publisher,
+syndication or model-training independence. Context loss and length/format selection
+bias require human review; these historical passages are rubric development only.
+
+Artifacts: `research/results/pilot_passages_20261006.json` contains input hashes,
+revision, offsets, candidate counts, passage hashes and all exclusions. Local-only
+texts and two browser inputs are in `research/checkpoints/pilot-passages-20261006/`;
+article text is not added to Git because redistribution rights remain unresolved.
+GPT-6 Astra Medium critique is preserved in `research/data/passage-method-20261006.txt`.
+Five focused tests pass (exact span/hash, determinism, short exclusion, duplicate,
+missing and changed snapshots). The unchanged pilot manifest was not edited.
+
+Local Chrome fallback tested the first two selected passages on the public site:
+P001-passage-v1 LEFT .998950, 112 tokens; P002-passage-v1 LEFT .999133, 122 tokens.
+Both HTTP 200, no page errors/failed requests, no mobile overflow. These are raw
+uncalibrated production scores, not correctness or accuracy evidence. Raw JSON,
+screenshots and visible text: `outputs/live-browser-pilot-passages-20261006/` in
+the parent workspace. No cloud browser available. No training, reserved-test
+access or deployment; no independent high-accuracy result established.
+
 ## 2026-10-06 20:33 UTC heartbeat: pilot sampling mismatch audit
 
 Audited frozen manifest metadata only, no labels or article snapshots: 60 historical
