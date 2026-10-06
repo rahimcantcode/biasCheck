@@ -83,4 +83,13 @@ The seed and frozen manifest preserve selection/order. Do not regenerate IDs aft
 
 ## What this does not complete
 
+The October 6 manifest audit found dates for 51/60 historical articles, ranging
+from 2012-06-17 to 2020-07-10; nine dates are missing and were not inferred.
+Historical article lengths are 305-1,595 words (median 714.5), versus 1-36 words
+for the 40 controlled examples (median 29). Thus no pilot items cover 37-304 words.
+These are manifest word counts, not tokenizer measurements. Twelve URL hosts do
+not imply twelve independent publishers. The gap in lengths, historical dates and
+synthetic proportion are further reasons not to use this pilot as a contemporary
+passage-level performance estimate. Frozen items/IDs have not been changed.
+
 No independent human annotation, contemporary news collection, model retraining, accuracy measurement or production release is claimed. The historical dataset's source availability and reuse rights must be reviewed before further distribution or commercial use. Synthetic examples stress specific behaviors but do not estimate real-world performance.

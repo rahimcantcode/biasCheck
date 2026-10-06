@@ -1,5 +1,31 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 20:33 UTC heartbeat: pilot sampling mismatch audit
+
+Audited frozen manifest metadata only, no labels or article snapshots: 60 historical
+articles and 40 AI-controlled items. Found 51 valid dates spanning 2012-06-17 to
+2020-07-10 and nine missing dates. Initial strict date parsing failed on a blank;
+reran with explicit missingness reporting, without imputation or manifest edits.
+Twelve normalized URL hosts (lowercase, leading www removed), 41 topics, top three
+hosts 18/60 articles. Hosts are not independent publishers; subdomains remain distinct.
+
+Historical word counts 305-1595, median 714.5, 40/60 above 500. Controlled counts
+1-36, median 29, all below 100. No pilot item covers 37-304 words. These metadata
+counts are not token counts. This temporal/length/synthetic-composition mismatch
+reinforces the pilot's rubric-development-only purpose: it cannot establish
+contemporary passage-level accuracy. README now records the limits; IDs unchanged.
+
+Astra Medium methodological review saved. Verified date, host and topic denominators
+sum to 60; IDs unique and word counts nonnegative integers. Full missing-date IDs,
+counts, quantile method, manifest revision/hash and limitations preserved in
+research/results/pilot_sampling_20261006.json, copied to outputs. No class balance
+or accuracy inferred, no data selection, labels, tuning or reserved-test access.
+
+Public-site local Chrome/Playwright fallback recipe smoke unchanged, LEFT .997309,
+HTTP 200 with exact input/UI and no page/request errors or mobile overflow. Raw
+evidence outputs/live-browser-pilot-sampling-20261006; no cloud browser available.
+No deployment. Human annotation and independent task-matched evaluation still absent.
+
 ## 2026-10-06 18:04 UTC heartbeat: duplicate snapshot review guard
 
 Added validation of every manifest text SHA-256 and rejection of duplicate text
