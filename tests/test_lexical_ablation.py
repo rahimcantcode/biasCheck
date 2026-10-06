@@ -10,7 +10,7 @@ class LexicalAblationTests(unittest.TestCase):
     def test_only_requested_setting_changes(self):
         baseline=TfidfVectorizer(ngram_range=(1,2),min_df=2,sublinear_tf=True)
         original=baseline.get_params()
-        for ablation,parameter,value in [('unigram','ngram_range',(1,1)),('binary_tf','binary',True)]:
+        for ablation,parameter,value in [('unigram','ngram_range',(1,1)),('binary_tf','binary',True),('rare_terms','min_df',1)]:
             result=candidate_vectorizer(baseline,ablation)
             self.assertEqual(result.get_params(),dict(original,**{parameter:value}))
             self.assertEqual(baseline.get_params(),original)

@@ -1,5 +1,32 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 11:11 UTC heartbeat: rare-term vocabulary experiment
+
+Fixed min_df=1 versus baseline 2, all other TF-IDF and balanced logistic regression
+settings cloned. Five training-only fits on frozen event folds, no tuning or
+validation/test access. Vocabulary grew from 1,972-2,103 to 11,261-11,908 features,
+remaining below the 20,000 cap. Astra Medium reviewed dimensionality/normalization
+confounds and repeated-development limitations.
+
+Candidate 51/115 correct (.44348), macro-F1 .32762 versus baseline 58/115
+(.50435), macro-F1 .44234. Recall LEFT 18/38, CENTER 0/26, RIGHT 33/51; strict
+agreement slice 20/54 versus 25/54. Two errors corrected, nine introduced.
+Reject as an improvement. This and preceding negative lexical ablations support
+deprioritizing further small TF-IDF variants on these reused folds, not claiming
+that all lexical models fail. Label/task quality and independent human evaluation
+remain unresolved; corpus is research-only with noncommercial/disputed labels.
+
+Five parameter/fold tests passed. Five saved hashes verified, all 115 prediction
+vectors reproduced after reload at atol=1e-12. Full parameters, splits, probabilities
+and checkpoints preserved under research/checkpoints/rare-terms-20261006; report
+research/results/rare_terms_20261006.json (also outputs), method critique retained.
+
+Public-site local Chrome/Playwright fallback smoke on recipe-space unchanged:
+LEFT .997309, HTTP 200, exact input/UI, no page/request errors or mobile overflow.
+Raw evidence outputs/live-browser-rare-terms-20261006. Cloud browser unavailable.
+This tests unchanged production, not the candidate. No deployment or reserved-test
+access; independent high accuracy remains unestablished.
+
 ## 2026-10-06 10:10 UTC heartbeat: remove shared context from negation probes
 
 Derived four policy-only texts by removing the exact shared committee-meeting

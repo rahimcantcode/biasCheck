@@ -17,11 +17,13 @@ def candidate_vectorizer(baseline, ablation):
         return clone(baseline).set_params(ngram_range=(1, 1))
     if ablation == 'binary_tf':
         return clone(baseline).set_params(binary=True)
+    if ablation == 'rare_terms':
+        return clone(baseline).set_params(min_df=1)
     raise ValueError('Unknown ablation')
 
 
 def run(data, folds, output, ablation='unigram'):
-    if ablation not in ('unigram','binary_tf'): raise ValueError('Unknown ablation')
+    if ablation not in ('unigram','binary_tf','rare_terms'): raise ValueError('Unknown ablation')
     if output.exists(): raise ValueError('Use a new output directory')
     rows = [json.loads(s) for s in data.read_text().splitlines()]
     prior = json.loads((folds / 'training_results.json').read_text())
@@ -82,6 +84,6 @@ def run(data, folds, output, ablation='unigram'):
 if __name__ == '__main__':
     p = argparse.ArgumentParser()
     for name in ('data', 'folds', 'output'): p.add_argument('--' + name, type=Path, required=True)
-    p.add_argument('--ablation',choices=['unigram','binary_tf'],default='unigram')
+    p.add_argument('--ablation',choices=['unigram','binary_tf','rare_terms'],default='unigram')
     a = p.parse_args()
     run(a.data, a.folds, a.output,a.ablation)
