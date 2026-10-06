@@ -1,0 +1,1426 @@
+{
+  "experiment": "formatting-panel-20261006",
+  "heartbeat": "2026-10-06T01:01:06.952Z",
+  "started_at": "2026-10-06T01:02:10.944Z",
+  "finished_at": "2026-10-06T01:02:31.201Z",
+  "environment": "local Chromium driving public deployed site; not cloud browser",
+  "browser": "154.0.8037.98",
+  "url": "https://bias.r4him.tech/",
+  "plan": "Freeze four new two-sentence examples before requests. Submit blank-line, newline and space variants in that order for each example, preserving identical words/order. Compare overall labels and complete score vectors, passage text/scores, offsets, model fingerprints and token counts. Report each example, label-flip count out of four and maximum within-example absolute score change. No accuracy metric, inferential population claim or normalization deployment. One request per variant; any repeat must be identified as post hoc.",
+  "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+  "sources": [
+    {
+      "path": "research/data/formatting-panel-20261006.json",
+      "sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+    },
+    {
+      "path": "research/data/formatting-panel-inputs-20261006.json",
+      "sha256": "fec46095bf59ce30ec4c9846a7458a3a47b593e2cecbae5705903bcd63222aa0"
+    },
+    {
+      "path": "../../outputs/live-browser-formatting-panel-20261006/audit.json",
+      "sha256": "4b06b4ec3fb640b32dc71e557a4579383ace4d7d3e573a541aaf731339c9eb8b"
+    },
+    {
+      "path": "research/data/formatting-panel-method-20261006.txt",
+      "sha256": "d4c432aee8408ce4c5cef21867c3932231f121d7a2b1c14ea0dfeb338d9b73f3"
+    }
+  ],
+  "method_review": {
+    "model": "gpt-6-astra",
+    "reasoning": "medium"
+  },
+  "cases": [
+    {
+      "id": "redistribution-blank-line",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "Congress should expand public housing and strengthen tenant protections so working families can afford a stable place to live.\n\nThe cost should be covered by higher taxes on large fortunes rather than by reducing assistance to low-income households.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.913586,
+            "RIGHT": 0.07371,
+            "CENTER": 0.012704
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 44,
+          "tokens_processed": 44,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998031,
+              "RIGHT": 0.000946,
+              "CENTER": 0.001024
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 20,
+            "tokens_processed": 20,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "Congress should expand public housing and strengthen tenant protections so working families can afford a stable place to live.",
+            "start": 0,
+            "end": 126
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.99854,
+              "RIGHT": 0.000827,
+              "CENTER": 0.000633
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 22,
+            "tokens_processed": 22,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "The cost should be covered by higher taxes on large fortunes rather than by reducing assistance to low-income households.",
+            "start": 128,
+            "end": 249
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.717,
+      "text_sha256": "a86cc7ed9e731df6099ef00205d54f64d5db4ea2a41f359a2df651fad0db17fd",
+      "screenshot_sha256": "23549c1316682941e3da9c3f30743d1670f469f3f7f4e6796d71407f7220c611"
+    },
+    {
+      "id": "redistribution-newline",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "Congress should expand public housing and strengthen tenant protections so working families can afford a stable place to live.\nThe cost should be covered by higher taxes on large fortunes rather than by reducing assistance to low-income households.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.996298,
+            "RIGHT": 0.002307,
+            "CENTER": 0.001395
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 43,
+          "tokens_processed": 43,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998031,
+              "RIGHT": 0.000946,
+              "CENTER": 0.001024
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 20,
+            "tokens_processed": 20,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "Congress should expand public housing and strengthen tenant protections so working families can afford a stable place to live.",
+            "start": 0,
+            "end": 126
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.99854,
+              "RIGHT": 0.000827,
+              "CENTER": 0.000633
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 22,
+            "tokens_processed": 22,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "The cost should be covered by higher taxes on large fortunes rather than by reducing assistance to low-income households.",
+            "start": 127,
+            "end": 248
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.588,
+      "text_sha256": "da6910891434c13f158825a6c4b1c142140c0f8d78c8549489108a9edd147139",
+      "screenshot_sha256": "eeccb46fd6164fac7d96e26a7b1cf9fb96c1978ec09279464ca3744a01d8b496"
+    },
+    {
+      "id": "redistribution-space",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "Congress should expand public housing and strengthen tenant protections so working families can afford a stable place to live. The cost should be covered by higher taxes on large fortunes rather than by reducing assistance to low-income households.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998613,
+            "RIGHT": 0.000714,
+            "CENTER": 0.000673
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 42,
+          "tokens_processed": 42,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998031,
+              "RIGHT": 0.000946,
+              "CENTER": 0.001024
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 20,
+            "tokens_processed": 20,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "Congress should expand public housing and strengthen tenant protections so working families can afford a stable place to live.",
+            "start": 0,
+            "end": 126
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.99854,
+              "RIGHT": 0.000827,
+              "CENTER": 0.000633
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 22,
+            "tokens_processed": 22,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "The cost should be covered by higher taxes on large fortunes rather than by reducing assistance to low-income households.",
+            "start": 127,
+            "end": 248
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.589,
+      "text_sha256": "e438d9284cb9d09912d1b0d24ae4eadedf686cf46fcd9f0dce48c39db095296f",
+      "screenshot_sha256": "c794707a103bfc5979d0ba6153455d4b907d254ec03256fad8402293b9bc8acb"
+    },
+    {
+      "id": "deregulation-blank-line",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "Congress should cut business taxes and remove unnecessary regulations so entrepreneurs can expand their companies and hire more workers.\n\nPrivate investment and competition should drive economic growth instead of new federal programs financed by higher public spending.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "RIGHT",
+          "label_id": 1,
+          "raw_label": "RIGHT",
+          "probabilities": {
+            "LEFT": 0.001709,
+            "RIGHT": 0.997318,
+            "CENTER": 0.000973
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 41,
+          "tokens_processed": 41,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.001818,
+              "RIGHT": 0.997763,
+              "CENTER": 0.000419
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 20,
+            "tokens_processed": 20,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "Congress should cut business taxes and remove unnecessary regulations so entrepreneurs can expand their companies and hire more workers.",
+            "start": 0,
+            "end": 136
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.974079,
+              "RIGHT": 0.011295,
+              "CENTER": 0.014626
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 19,
+            "tokens_processed": 19,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "Private investment and competition should drive economic growth instead of new federal programs financed by higher public spending.",
+            "start": 138,
+            "end": 269
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.583,
+      "text_sha256": "89e6762e1cc1c3962b4130ab07673d479a22f07804379a9ee1c43a8c7b73cc46",
+      "screenshot_sha256": "09ee392946c2099e512a0ce06f0ff15e71f160a8180ff142dfc7834b39772770"
+    },
+    {
+      "id": "deregulation-newline",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "Congress should cut business taxes and remove unnecessary regulations so entrepreneurs can expand their companies and hire more workers.\nPrivate investment and competition should drive economic growth instead of new federal programs financed by higher public spending.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "RIGHT",
+          "label_id": 1,
+          "raw_label": "RIGHT",
+          "probabilities": {
+            "LEFT": 0.003773,
+            "RIGHT": 0.994234,
+            "CENTER": 0.001994
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 40,
+          "tokens_processed": 40,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.001818,
+              "RIGHT": 0.997763,
+              "CENTER": 0.000419
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 20,
+            "tokens_processed": 20,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "Congress should cut business taxes and remove unnecessary regulations so entrepreneurs can expand their companies and hire more workers.",
+            "start": 0,
+            "end": 136
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.974079,
+              "RIGHT": 0.011295,
+              "CENTER": 0.014626
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 19,
+            "tokens_processed": 19,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "Private investment and competition should drive economic growth instead of new federal programs financed by higher public spending.",
+            "start": 137,
+            "end": 268
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.546,
+      "text_sha256": "1656bb59b91d5c5e7ac638145f7547c40008a50cdefc92134dd40b440cf324bf",
+      "screenshot_sha256": "ea8a804b81b48075238e78bf925a70e29bdd920da5f8d8c05beef6cb882d5d71"
+    },
+    {
+      "id": "deregulation-space",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "Congress should cut business taxes and remove unnecessary regulations so entrepreneurs can expand their companies and hire more workers. Private investment and competition should drive economic growth instead of new federal programs financed by higher public spending.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "RIGHT",
+          "label_id": 1,
+          "raw_label": "RIGHT",
+          "probabilities": {
+            "LEFT": 0.143712,
+            "RIGHT": 0.849429,
+            "CENTER": 0.006859
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 39,
+          "tokens_processed": 39,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "RIGHT",
+            "label_id": 1,
+            "raw_label": "RIGHT",
+            "probabilities": {
+              "LEFT": 0.001818,
+              "RIGHT": 0.997763,
+              "CENTER": 0.000419
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 20,
+            "tokens_processed": 20,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "Congress should cut business taxes and remove unnecessary regulations so entrepreneurs can expand their companies and hire more workers.",
+            "start": 0,
+            "end": 136
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.974079,
+              "RIGHT": 0.011295,
+              "CENTER": 0.014626
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 19,
+            "tokens_processed": 19,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "Private investment and competition should drive economic growth instead of new federal programs financed by higher public spending.",
+            "start": 137,
+            "end": 268
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.604,
+      "text_sha256": "e94da5b6e321c653500b16e5d477793aca29b31799a4058e477e90c9658c4032",
+      "screenshot_sha256": "282fcd32e6a4fc6c1ee6c66c04eef28280937339c62f7ec5180d3a23a5da73cc"
+    },
+    {
+      "id": "recipe-blank-line",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.\n\nBring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.994616,
+            "RIGHT": 0.000946,
+            "CENTER": 0.004439
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 50,
+          "tokens_processed": 50,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998918,
+              "RIGHT": 0.000369,
+              "CENTER": 0.000713
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 24,
+            "tokens_processed": 24,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.",
+            "start": 0,
+            "end": 119
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.996503,
+              "RIGHT": 0.000765,
+              "CENTER": 0.002733
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 24,
+            "tokens_processed": 24,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+            "start": 121,
+            "end": 237
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.689,
+      "text_sha256": "3248d81630074a2e47af684252a8449719df257cda2d5b40888145007978acf3",
+      "screenshot_sha256": "0ab2a995ea99563fdfdde5a886022fd3dafc6fd5174db41fee3a4eb6f6e3538b"
+    },
+    {
+      "id": "recipe-newline",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.\nBring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.996541,
+            "RIGHT": 0.000595,
+            "CENTER": 0.002864
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 49,
+          "tokens_processed": 49,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998918,
+              "RIGHT": 0.000369,
+              "CENTER": 0.000713
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 24,
+            "tokens_processed": 24,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.",
+            "start": 0,
+            "end": 119
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.996503,
+              "RIGHT": 0.000765,
+              "CENTER": 0.002733
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 24,
+            "tokens_processed": 24,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+            "start": 120,
+            "end": 236
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.593,
+      "text_sha256": "55b26d1e51cc244b21644ecdfb6d4cd79cc8cf55433c5061f37528ba9318161f",
+      "screenshot_sha256": "63011f9a95fe779c26061ebaf5d5373443873c8d03f1e2ff68063b547fba985c"
+    },
+    {
+      "id": "recipe-space",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock. Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.997309,
+            "RIGHT": 0.000459,
+            "CENTER": 0.002231
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 48,
+          "tokens_processed": 48,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998918,
+              "RIGHT": 0.000369,
+              "CENTER": 0.000713
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 24,
+            "tokens_processed": 24,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.",
+            "start": 0,
+            "end": 119
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.996503,
+              "RIGHT": 0.000765,
+              "CENTER": 0.002733
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 24,
+            "tokens_processed": 24,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+            "start": 120,
+            "end": 236
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.583,
+      "text_sha256": "a71c21b9eaf87bc852ec743e09f2224e60e4a132e76783b261de5baaefc3fd7b",
+      "screenshot_sha256": "f59e2b0b0658d6f55647b37ef886be3fb05838ba19cb0cdc63caf86dc14cf094"
+    },
+    {
+      "id": "attributed-disagreement-blank-line",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "At the hearing, one resident argued that the city should raise taxes on wealthy property owners to fund public childcare.\n\nAnother resident argued that the city should cut taxes and let private providers compete, and the reporter recorded both comments without endorsing either proposal.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998173,
+            "RIGHT": 0.000969,
+            "CENTER": 0.000857
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 50,
+          "tokens_processed": 50,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998911,
+              "RIGHT": 0.000382,
+              "CENTER": 0.000707
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 22,
+            "tokens_processed": 22,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "At the hearing, one resident argued that the city should raise taxes on wealthy property owners to fund public childcare.",
+            "start": 0,
+            "end": 121
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998978,
+              "RIGHT": 0.000557,
+              "CENTER": 0.000465
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 26,
+            "tokens_processed": 26,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "Another resident argued that the city should cut taxes and let private providers compete, and the reporter recorded both comments without endorsing either proposal.",
+            "start": 123,
+            "end": 287
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.624,
+      "text_sha256": "defb268e65762638bb68bd4a40702c494b43ca7668da30166952108f5debfa9f",
+      "screenshot_sha256": "22dd36874749229b9ea1c891c1272652d332a9bbac6710f5505434cbf5e1f998"
+    },
+    {
+      "id": "attributed-disagreement-newline",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "At the hearing, one resident argued that the city should raise taxes on wealthy property owners to fund public childcare.\nAnother resident argued that the city should cut taxes and let private providers compete, and the reporter recorded both comments without endorsing either proposal.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998617,
+            "RIGHT": 0.000671,
+            "CENTER": 0.000712
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 49,
+          "tokens_processed": 49,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998911,
+              "RIGHT": 0.000382,
+              "CENTER": 0.000707
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 22,
+            "tokens_processed": 22,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "At the hearing, one resident argued that the city should raise taxes on wealthy property owners to fund public childcare.",
+            "start": 0,
+            "end": 121
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998978,
+              "RIGHT": 0.000557,
+              "CENTER": 0.000465
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 26,
+            "tokens_processed": 26,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "Another resident argued that the city should cut taxes and let private providers compete, and the reporter recorded both comments without endorsing either proposal.",
+            "start": 122,
+            "end": 286
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.958,
+      "text_sha256": "4869d99ebcb4da4ebac877601b96bee1c9fabd2987eb755ab49b519c775d0d69",
+      "screenshot_sha256": "f73d38e1532ebcf7f3ac4d5c1d2e2478aa2b02fa53243dbddddd14405dceac8e"
+    },
+    {
+      "id": "attributed-disagreement-space",
+      "status": 200,
+      "result": {
+        "source_type": "text",
+        "resolved_text": "At the hearing, one resident argued that the city should raise taxes on wealthy property owners to fund public childcare. Another resident argued that the city should cut taxes and let private providers compete, and the reporter recorded both comments without endorsing either proposal.",
+        "mode": "sentence",
+        "overall": {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.999012,
+            "RIGHT": 0.000466,
+            "CENTER": 0.000522
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 48,
+          "tokens_processed": 48,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false
+        },
+        "results": [
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998911,
+              "RIGHT": 0.000382,
+              "CENTER": 0.000707
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 22,
+            "tokens_processed": 22,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 0,
+            "text": "At the hearing, one resident argued that the city should raise taxes on wealthy property owners to fund public childcare.",
+            "start": 0,
+            "end": 121
+          },
+          {
+            "assessment": null,
+            "tentative_label": null,
+            "relevance_scores": null,
+            "score_type": "class_probability",
+            "label": "LEFT",
+            "label_id": 0,
+            "raw_label": "LEFT",
+            "probabilities": {
+              "LEFT": 0.998978,
+              "RIGHT": 0.000557,
+              "CENTER": 0.000465
+            },
+            "decision": "classified",
+            "reason": "demo_estimate",
+            "token_count": 26,
+            "tokens_processed": 26,
+            "chunk_count": 1,
+            "truncated": false,
+            "calibrated": false,
+            "segment_index": 1,
+            "text": "Another resident argued that the city should cut taxes and let private providers compete, and the reporter recorded both comments without endorsing either proposal.",
+            "start": 122,
+            "end": 286
+          }
+        ],
+        "warnings": [
+          "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+          "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+          "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+        ],
+        "model": {
+          "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+          "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+          "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+          "id2label": {
+            "0": "LEFT",
+            "1": "RIGHT",
+            "2": "CENTER"
+          },
+          "aggregation": "new_token_weighted_logit_mean_v1",
+          "max_length": 512,
+          "stride": 64,
+          "demo_mode": true,
+          "transformers": "4.57.1",
+          "torch": "2.6.0+cpu",
+          "tokenizers": "0.22.2"
+        }
+      },
+      "response_seconds": 0.586,
+      "text_sha256": "38d1d4a1ab16dbd7ed767a31ec913c73e000514591b1feaebf453e66694ea490",
+      "screenshot_sha256": "d205dd77b847618b615e81a619e1ff281cd1301eafb799268975b032f93bb8fe"
+    }
+  ],
+  "examples": [
+    {
+      "id": "redistribution",
+      "labels": [
+        "LEFT",
+        "LEFT",
+        "LEFT"
+      ],
+      "label_flip": false,
+      "score_ranges": {
+        "LEFT": 0.085027,
+        "RIGHT": 0.072996,
+        "CENTER": 0.012031
+      },
+      "max_absolute_score_change": 0.085027,
+      "passage_text_and_scores_identical": true,
+      "full_text_token_counts": [
+        44,
+        43,
+        42
+      ]
+    },
+    {
+      "id": "deregulation",
+      "labels": [
+        "RIGHT",
+        "RIGHT",
+        "RIGHT"
+      ],
+      "label_flip": false,
+      "score_ranges": {
+        "LEFT": 0.142003,
+        "RIGHT": 0.147889,
+        "CENTER": 0.005886
+      },
+      "max_absolute_score_change": 0.147889,
+      "passage_text_and_scores_identical": true,
+      "full_text_token_counts": [
+        41,
+        40,
+        39
+      ]
+    },
+    {
+      "id": "recipe",
+      "labels": [
+        "LEFT",
+        "LEFT",
+        "LEFT"
+      ],
+      "label_flip": false,
+      "score_ranges": {
+        "LEFT": 0.002693,
+        "RIGHT": 0.000487,
+        "CENTER": 0.002208
+      },
+      "max_absolute_score_change": 0.002693,
+      "passage_text_and_scores_identical": true,
+      "full_text_token_counts": [
+        50,
+        49,
+        48
+      ]
+    },
+    {
+      "id": "attributed-disagreement",
+      "labels": [
+        "LEFT",
+        "LEFT",
+        "LEFT"
+      ],
+      "label_flip": false,
+      "score_ranges": {
+        "LEFT": 0.000839,
+        "RIGHT": 0.000503,
+        "CENTER": 0.000335
+      },
+      "max_absolute_score_change": 0.000839,
+      "passage_text_and_scores_identical": true,
+      "full_text_token_counts": [
+        50,
+        49,
+        48
+      ]
+    }
+  ],
+  "summary": {
+    "n_examples": 4,
+    "n_requests": 12,
+    "examples_with_label_flip": 0,
+    "max_absolute_score_change": 0.147889
+  },
+  "browser_checks": {
+    "page_errors": [],
+    "failed_requests": [],
+    "mobile_overflow": false,
+    "mobile_screenshot_sha256": "a2f9840029fde4eda8a805f0e6e49480df12e596f8d72633a809883dd93b2f99"
+  },
+  "limitations": [
+    "Exploratory follow-up selected after an earlier one-example flip; fixed inputs limit additional selection but do not provide independent confirmation.",
+    "One request per variant cannot exclude stochasticity or backend drift.",
+    "AI-authored examples and construction categories are not human gold; no accuracy or population prevalence estimate.",
+    "Uncalibrated scores; invariant labels do not establish correctness, robustness or successful nonpolitical handling.",
+    "No normalization or replacement validated; reserved test untouched."
+  ],
+  "release_approved": false,
+  "production_changed": false
+}

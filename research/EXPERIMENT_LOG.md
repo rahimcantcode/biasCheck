@@ -1,5 +1,45 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 01:01 UTC heartbeat: broader frozen formatting panel
+
+Created four new AI-authored two-sentence examples and fixed the inputs/comparisons
+before browser requests: redistribution, deregulation, recipe, attributed opposing
+arguments. These names describe construction intent, not human annotations. Each
+was tested in sentence mode with blank-line, newline and space separators, in that
+order, one request each. No repeat or input replacement after results. The panel
+is an exploratory follow-up to a selected earlier flip, not independent validation.
+GPT-6 Astra Medium provided a preserved pre-run method critique emphasizing these
+selection limits and the inability of single requests to exclude backend drift.
+
+| Example | Overall labels (blank-line/newline/space) | Largest class-score change |
+| --- | --- | ---: |
+| redistribution | LEFT / LEFT / LEFT | .085027 |
+| deregulation | RIGHT / RIGHT / RIGHT | .147889 |
+| recipe | LEFT / LEFT / LEFT | .002693 |
+| attributed-disagreement | LEFT / LEFT / LEFT | .000839 |
+
+Zero of four examples flipped labels. All eight individual sentence texts and
+score vectors were invariant across their three versions. Full-text token counts
+decreased by one per separator change (44/43/42, 41/40/39, 50/49/48, 50/49/48).
+The deregulation RIGHT score ranged from .849429 to .997318 despite stable label.
+The recipe received LEFT scores .994616/.996541/.997309; stability is not evidence
+of correct nonpolitical handling. No accuracy, population flip-rate or causal claim.
+
+Actual public-site run 01:02:10-01:02:31 UTC, local Chrome 154.0.8037.98 via
+Playwright fallback (no cloud browser discovered; agent-browser CLI absent).
+All 12 HTTP 200, exact returned texts, valid offsets, same model metadata,
+completed mode/UI checks and screenshots. No page/request errors or mobile
+horizontal overflow. Recipe-space screenshot visually inspected: recipe is
+displayed with LEFT overall and colored passages. Seven mocked persistence/mode
+tests passed. No deployment, normalization or reserved-test access.
+
+Frozen spec/inputs/method: research/data/formatting-panel-*-20261006.* and
+research/data/formatting-panel-20261006.json. Full scores, hashes, per-example
+comparisons: research/results/formatting_panel_20261006.json, copied to outputs.
+Raw browser evidence: outputs/live-browser-formatting-panel-20261006. The negative
+flip result limits generalization of the previous finding; task-matched human
+evaluation remains necessary before any release claim.
+
 ## 2026-10-06 00:00 UTC heartbeat: sentence scores invariant under separator changes
 
 Followed the formatting diagnostic with three frozen sentence-mode inputs derived

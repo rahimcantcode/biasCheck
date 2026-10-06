@@ -1,0 +1,13 @@
+{
+  "id": "formatting-panel-20261006",
+  "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+  "mode": "sentence",
+  "plan": "Freeze four new two-sentence examples before requests. Submit blank-line, newline and space variants in that order for each example, preserving identical words/order. Compare overall labels and complete score vectors, passage text/scores, offsets, model fingerprints and token counts. Report each example, label-flip count out of four and maximum within-example absolute score change. No accuracy metric, inferential population claim or normalization deployment. One request per variant; any repeat must be identified as post hoc.",
+  "separators": [{"id":"blank-line","text":"\n\n"},{"id":"newline","text":"\n"},{"id":"space","text":" "}],
+  "examples": [
+    {"id":"redistribution","sentences":["Congress should expand public housing and strengthen tenant protections so working families can afford a stable place to live.","The cost should be covered by higher taxes on large fortunes rather than by reducing assistance to low-income households."]},
+    {"id":"deregulation","sentences":["Congress should cut business taxes and remove unnecessary regulations so entrepreneurs can expand their companies and hire more workers.","Private investment and competition should drive economic growth instead of new federal programs financed by higher public spending."]},
+    {"id":"recipe","sentences":["Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.","Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving."]},
+    {"id":"attributed-disagreement","sentences":["At the hearing, one resident argued that the city should raise taxes on wealthy property owners to fund public childcare.","Another resident argued that the city should cut taxes and let private providers compete, and the reporter recorded both comments without endorsing either proposal."]}
+  ]
+}

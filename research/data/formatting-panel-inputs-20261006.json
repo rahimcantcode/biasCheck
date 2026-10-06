@@ -1,0 +1,86 @@
+[
+  {
+    "id": "redistribution-blank-line",
+    "text": "Congress should expand public housing and strengthen tenant protections so working families can afford a stable place to live.\n\nThe cost should be covered by higher taxes on large fortunes rather than by reducing assistance to low-income households.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  },
+  {
+    "id": "redistribution-newline",
+    "text": "Congress should expand public housing and strengthen tenant protections so working families can afford a stable place to live.\nThe cost should be covered by higher taxes on large fortunes rather than by reducing assistance to low-income households.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  },
+  {
+    "id": "redistribution-space",
+    "text": "Congress should expand public housing and strengthen tenant protections so working families can afford a stable place to live. The cost should be covered by higher taxes on large fortunes rather than by reducing assistance to low-income households.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  },
+  {
+    "id": "deregulation-blank-line",
+    "text": "Congress should cut business taxes and remove unnecessary regulations so entrepreneurs can expand their companies and hire more workers.\n\nPrivate investment and competition should drive economic growth instead of new federal programs financed by higher public spending.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  },
+  {
+    "id": "deregulation-newline",
+    "text": "Congress should cut business taxes and remove unnecessary regulations so entrepreneurs can expand their companies and hire more workers.\nPrivate investment and competition should drive economic growth instead of new federal programs financed by higher public spending.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  },
+  {
+    "id": "deregulation-space",
+    "text": "Congress should cut business taxes and remove unnecessary regulations so entrepreneurs can expand their companies and hire more workers. Private investment and competition should drive economic growth instead of new federal programs financed by higher public spending.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  },
+  {
+    "id": "recipe-blank-line",
+    "text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.\n\nBring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  },
+  {
+    "id": "recipe-newline",
+    "text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.\nBring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  },
+  {
+    "id": "recipe-space",
+    "text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock. Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  },
+  {
+    "id": "attributed-disagreement-blank-line",
+    "text": "At the hearing, one resident argued that the city should raise taxes on wealthy property owners to fund public childcare.\n\nAnother resident argued that the city should cut taxes and let private providers compete, and the reporter recorded both comments without endorsing either proposal.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  },
+  {
+    "id": "attributed-disagreement-newline",
+    "text": "At the hearing, one resident argued that the city should raise taxes on wealthy property owners to fund public childcare.\nAnother resident argued that the city should cut taxes and let private providers compete, and the reporter recorded both comments without endorsing either proposal.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  },
+  {
+    "id": "attributed-disagreement-space",
+    "text": "At the hearing, one resident argued that the city should raise taxes on wealthy property owners to fund public childcare. Another resident argued that the city should cut taxes and let private providers compete, and the reporter recorded both comments without endorsing either proposal.",
+    "mode": "sentence",
+    "annotation_provenance": "AI-authored synthetic diagnostic; category names describe construction intent, not human gold",
+    "source_sha256": "fe4282882e0694c43bd2c6601162b1f29512e9f3adfe54e4660f23066c5176bd"
+  }
+]
