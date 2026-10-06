@@ -1,0 +1,808 @@
+{
+  "pilot_id": "biascheck-rubric-pilot-20260929-v1",
+  "purpose": "rubric development only",
+  "reviewers": [
+    "SYNTHETIC_A",
+    "SYNTHETIC_B"
+  ],
+  "completed": [
+    1,
+    1
+  ],
+  "paired_n": 1,
+  "missing_or_skipped_ids": [
+    "P002",
+    "P003",
+    "P004",
+    "P005",
+    "P006",
+    "P007",
+    "P008",
+    "P009",
+    "P010",
+    "P011",
+    "P012",
+    "P013",
+    "P014",
+    "P015",
+    "P016",
+    "P017",
+    "P018",
+    "P019",
+    "P020",
+    "P021",
+    "P022",
+    "P023",
+    "P024",
+    "P025",
+    "P026",
+    "P027",
+    "P028",
+    "P029",
+    "P030",
+    "P031",
+    "P032",
+    "P033",
+    "P034",
+    "P035",
+    "P036",
+    "P037",
+    "P038",
+    "P039",
+    "P040",
+    "P041",
+    "P042",
+    "P043",
+    "P044",
+    "P045",
+    "P046",
+    "P047",
+    "P048",
+    "P049",
+    "P050",
+    "P051",
+    "P052",
+    "P053",
+    "P054",
+    "P055",
+    "P056",
+    "P057",
+    "P058",
+    "P059",
+    "P060",
+    "P061",
+    "P062",
+    "P063",
+    "P064",
+    "P065",
+    "P066",
+    "P067",
+    "P068",
+    "P069",
+    "P070",
+    "P071",
+    "P072",
+    "P073",
+    "P074",
+    "P075",
+    "P076",
+    "P077",
+    "P078",
+    "P079",
+    "P080",
+    "P081",
+    "P082",
+    "P083",
+    "P084",
+    "P085",
+    "P086",
+    "P087",
+    "P088",
+    "P089",
+    "P090",
+    "P091",
+    "P092",
+    "P093",
+    "P094",
+    "P095",
+    "P096",
+    "P097",
+    "P098",
+    "P099",
+    "P100"
+  ],
+  "paired_fraction": 0.01,
+  "review_coverage": [
+    {
+      "total_n": 100,
+      "reviewed_n": 1,
+      "skipped_n": 1,
+      "missing_n": 98,
+      "reviewed_fraction": 0.01,
+      "reviewer_id": "SYNTHETIC_A",
+      "reviewed_ids": [
+        "P001"
+      ],
+      "skipped_ids": [
+        "P002"
+      ],
+      "missing_ids": [
+        "P003",
+        "P004",
+        "P005",
+        "P006",
+        "P007",
+        "P008",
+        "P009",
+        "P010",
+        "P011",
+        "P012",
+        "P013",
+        "P014",
+        "P015",
+        "P016",
+        "P017",
+        "P018",
+        "P019",
+        "P020",
+        "P021",
+        "P022",
+        "P023",
+        "P024",
+        "P025",
+        "P026",
+        "P027",
+        "P028",
+        "P029",
+        "P030",
+        "P031",
+        "P032",
+        "P033",
+        "P034",
+        "P035",
+        "P036",
+        "P037",
+        "P038",
+        "P039",
+        "P040",
+        "P041",
+        "P042",
+        "P043",
+        "P044",
+        "P045",
+        "P046",
+        "P047",
+        "P048",
+        "P049",
+        "P050",
+        "P051",
+        "P052",
+        "P053",
+        "P054",
+        "P055",
+        "P056",
+        "P057",
+        "P058",
+        "P059",
+        "P060",
+        "P061",
+        "P062",
+        "P063",
+        "P064",
+        "P065",
+        "P066",
+        "P067",
+        "P068",
+        "P069",
+        "P070",
+        "P071",
+        "P072",
+        "P073",
+        "P074",
+        "P075",
+        "P076",
+        "P077",
+        "P078",
+        "P079",
+        "P080",
+        "P081",
+        "P082",
+        "P083",
+        "P084",
+        "P085",
+        "P086",
+        "P087",
+        "P088",
+        "P089",
+        "P090",
+        "P091",
+        "P092",
+        "P093",
+        "P094",
+        "P095",
+        "P096",
+        "P097",
+        "P098",
+        "P099",
+        "P100"
+      ],
+      "by_kind": {
+        "controlled_example": {
+          "total_n": 40,
+          "reviewed_n": 0,
+          "skipped_n": 0,
+          "missing_n": 40,
+          "reviewed_fraction": 0
+        },
+        "historical_article": {
+          "total_n": 60,
+          "reviewed_n": 1,
+          "skipped_n": 1,
+          "missing_n": 58,
+          "reviewed_fraction": 0.016666666666666666
+        }
+      }
+    },
+    {
+      "total_n": 100,
+      "reviewed_n": 1,
+      "skipped_n": 0,
+      "missing_n": 99,
+      "reviewed_fraction": 0.01,
+      "reviewer_id": "SYNTHETIC_B",
+      "reviewed_ids": [
+        "P001"
+      ],
+      "skipped_ids": [],
+      "missing_ids": [
+        "P002",
+        "P003",
+        "P004",
+        "P005",
+        "P006",
+        "P007",
+        "P008",
+        "P009",
+        "P010",
+        "P011",
+        "P012",
+        "P013",
+        "P014",
+        "P015",
+        "P016",
+        "P017",
+        "P018",
+        "P019",
+        "P020",
+        "P021",
+        "P022",
+        "P023",
+        "P024",
+        "P025",
+        "P026",
+        "P027",
+        "P028",
+        "P029",
+        "P030",
+        "P031",
+        "P032",
+        "P033",
+        "P034",
+        "P035",
+        "P036",
+        "P037",
+        "P038",
+        "P039",
+        "P040",
+        "P041",
+        "P042",
+        "P043",
+        "P044",
+        "P045",
+        "P046",
+        "P047",
+        "P048",
+        "P049",
+        "P050",
+        "P051",
+        "P052",
+        "P053",
+        "P054",
+        "P055",
+        "P056",
+        "P057",
+        "P058",
+        "P059",
+        "P060",
+        "P061",
+        "P062",
+        "P063",
+        "P064",
+        "P065",
+        "P066",
+        "P067",
+        "P068",
+        "P069",
+        "P070",
+        "P071",
+        "P072",
+        "P073",
+        "P074",
+        "P075",
+        "P076",
+        "P077",
+        "P078",
+        "P079",
+        "P080",
+        "P081",
+        "P082",
+        "P083",
+        "P084",
+        "P085",
+        "P086",
+        "P087",
+        "P088",
+        "P089",
+        "P090",
+        "P091",
+        "P092",
+        "P093",
+        "P094",
+        "P095",
+        "P096",
+        "P097",
+        "P098",
+        "P099",
+        "P100"
+      ],
+      "by_kind": {
+        "controlled_example": {
+          "total_n": 40,
+          "reviewed_n": 0,
+          "skipped_n": 0,
+          "missing_n": 40,
+          "reviewed_fraction": 0
+        },
+        "historical_article": {
+          "total_n": 60,
+          "reviewed_n": 1,
+          "skipped_n": 0,
+          "missing_n": 59,
+          "reviewed_fraction": 0.016666666666666666
+        }
+      }
+    }
+  ],
+  "paired_coverage_by_kind": {
+    "controlled_example": {
+      "total_n": 40,
+      "paired_n": 0
+    },
+    "historical_article": {
+      "total_n": 60,
+      "paired_n": 1
+    }
+  },
+  "label_agreement": {
+    "n": 1,
+    "agreement": 1,
+    "cohens_kappa": null,
+    "category_order": [
+      "LEFT",
+      "CENTER",
+      "RIGHT",
+      "NONPOLITICAL",
+      "UNCERTAIN"
+    ],
+    "matrix_orientation": "rows=reviewer_a, columns=reviewer_b; neither is ground truth",
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "per_category": {
+      "LEFT": {
+        "reviewer_a_n": 0,
+        "reviewer_b_n": 0,
+        "matching_n": 0,
+        "positive_agreement": null
+      },
+      "CENTER": {
+        "reviewer_a_n": 0,
+        "reviewer_b_n": 0,
+        "matching_n": 0,
+        "positive_agreement": null
+      },
+      "RIGHT": {
+        "reviewer_a_n": 0,
+        "reviewer_b_n": 0,
+        "matching_n": 0,
+        "positive_agreement": null
+      },
+      "NONPOLITICAL": {
+        "reviewer_a_n": 0,
+        "reviewer_b_n": 0,
+        "matching_n": 0,
+        "positive_agreement": null
+      },
+      "UNCERTAIN": {
+        "reviewer_a_n": 1,
+        "reviewer_b_n": 1,
+        "matching_n": 1,
+        "positive_agreement": 1
+      }
+    }
+  },
+  "relevance_agreement": {
+    "n": 1,
+    "agreement": 1,
+    "cohens_kappa": null,
+    "category_order": [
+      "POLITICAL",
+      "NONPOLITICAL",
+      "UNCERTAIN"
+    ],
+    "matrix_orientation": "rows=reviewer_a, columns=reviewer_b; neither is ground truth",
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "per_category": {
+      "POLITICAL": {
+        "reviewer_a_n": 0,
+        "reviewer_b_n": 0,
+        "matching_n": 0,
+        "positive_agreement": null
+      },
+      "NONPOLITICAL": {
+        "reviewer_a_n": 0,
+        "reviewer_b_n": 0,
+        "matching_n": 0,
+        "positive_agreement": null
+      },
+      "UNCERTAIN": {
+        "reviewer_a_n": 1,
+        "reviewer_b_n": 1,
+        "matching_n": 1,
+        "positive_agreement": 1
+      }
+    }
+  },
+  "slices": {
+    "historical_article": {
+      "n": 1,
+      "agreement": 1,
+      "cohens_kappa": null,
+      "category_order": [
+        "LEFT",
+        "CENTER",
+        "RIGHT",
+        "NONPOLITICAL",
+        "UNCERTAIN"
+      ],
+      "matrix_orientation": "rows=reviewer_a, columns=reviewer_b; neither is ground truth",
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "per_category": {
+        "LEFT": {
+          "reviewer_a_n": 0,
+          "reviewer_b_n": 0,
+          "matching_n": 0,
+          "positive_agreement": null
+        },
+        "CENTER": {
+          "reviewer_a_n": 0,
+          "reviewer_b_n": 0,
+          "matching_n": 0,
+          "positive_agreement": null
+        },
+        "RIGHT": {
+          "reviewer_a_n": 0,
+          "reviewer_b_n": 0,
+          "matching_n": 0,
+          "positive_agreement": null
+        },
+        "NONPOLITICAL": {
+          "reviewer_a_n": 0,
+          "reviewer_b_n": 0,
+          "matching_n": 0,
+          "positive_agreement": null
+        },
+        "UNCERTAIN": {
+          "reviewer_a_n": 1,
+          "reviewer_b_n": 1,
+          "matching_n": 1,
+          "positive_agreement": 1
+        }
+      }
+    },
+    "controlled_example": {
+      "n": 0,
+      "agreement": null,
+      "cohens_kappa": null,
+      "category_order": [
+        "LEFT",
+        "CENTER",
+        "RIGHT",
+        "NONPOLITICAL",
+        "UNCERTAIN"
+      ],
+      "matrix_orientation": "rows=reviewer_a, columns=reviewer_b; neither is ground truth",
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "per_category": {
+        "LEFT": {
+          "reviewer_a_n": 0,
+          "reviewer_b_n": 0,
+          "matching_n": 0,
+          "positive_agreement": null
+        },
+        "CENTER": {
+          "reviewer_a_n": 0,
+          "reviewer_b_n": 0,
+          "matching_n": 0,
+          "positive_agreement": null
+        },
+        "RIGHT": {
+          "reviewer_a_n": 0,
+          "reviewer_b_n": 0,
+          "matching_n": 0,
+          "positive_agreement": null
+        },
+        "NONPOLITICAL": {
+          "reviewer_a_n": 0,
+          "reviewer_b_n": 0,
+          "matching_n": 0,
+          "positive_agreement": null
+        },
+        "UNCERTAIN": {
+          "reviewer_a_n": 0,
+          "reviewer_b_n": 0,
+          "matching_n": 0,
+          "positive_agreement": null
+        }
+      }
+    }
+  },
+  "disagreements": [],
+  "gold_labels_approved": false,
+  "limitations": [
+    "Reviewer independence requires human confirmation",
+    "Agreement is not accuracy",
+    "Consensus is not automatically a gold label",
+    "Pilot examples cannot become an independent final test"
+  ],
+  "synthetic_fixture_only": true,
+  "not_human_evidence": true,
+  "tests_passed": 25,
+  "source_sha256": {
+    "script": "1f967744fa4667f3e53e2211dfb6b9ba33584db5cce98ff21889ac2043357cf2",
+    "manifest": "97ddc6db156e472065c9091b35b08ecea6885b58f0817ebf7c72c163ba09bcf7"
+  },
+  "browser": {
+    "audit_sha256": "f21233b206ae20f0186953d50550019e878e5f443555811f961483a2abb1bfc0",
+    "started_at": "2026-10-06T12:13:52.494Z",
+    "finished_at": "2026-10-06T12:13:57.253Z",
+    "environment": "local Chromium driving public deployed site; not cloud browser",
+    "browser": "154.0.8037.98",
+    "result": {
+      "source_type": "text",
+      "resolved_text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock. Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+      "mode": "sentence",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.997309,
+          "RIGHT": 0.000459,
+          "CENTER": 0.002231
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 48,
+        "tokens_processed": 48,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "results": [
+        {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998918,
+            "RIGHT": 0.000369,
+            "CENTER": 0.000713
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 24,
+          "tokens_processed": 24,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false,
+          "segment_index": 0,
+          "text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.",
+          "start": 0,
+          "end": 119
+        },
+        {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.996503,
+            "RIGHT": 0.000765,
+            "CENTER": 0.002733
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 24,
+          "tokens_processed": 24,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false,
+          "segment_index": 1,
+          "text": "Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+          "start": 120,
+          "end": 236
+        }
+      ],
+      "warnings": [
+        "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+        "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+        "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+      ],
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      }
+    },
+    "screenshot_sha256": "a193df35a29093622db449891607fe6b2252432344b89a1b84f01ddbb4f4c225",
+    "page_errors": [],
+    "failed_requests": [],
+    "mobile_overflow": false
+  }
+}

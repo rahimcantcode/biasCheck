@@ -26,6 +26,35 @@ def test_comparison_preserves_disagreement_and_missing_items():
 def test_same_reviewer_rejected():
     with pytest.raises(ValueError,match='distinct'):compare(review(),review(),M)
 
+def test_coverage_distinguishes_skipped_missing_and_reviewed():
+    a=review();b=review('B')
+    skipped=copy.deepcopy(a['annotations'][0])
+    skipped.update(id=M['items'][1]['id'],text_sha256=M['items'][1]['text_sha256'],status='skipped',skip_reason='Synthetic unavailable snapshot')
+    a['annotations'].append(skipped)
+    result=compare(a,b,M)
+    first,second=result['review_coverage']
+    assert (first['reviewed_n'],first['skipped_n'],first['missing_n'])==(1,1,98)
+    assert (second['reviewed_n'],second['skipped_n'],second['missing_n'])==(1,0,99)
+    assert result['paired_fraction']==.01
+    assert first['skipped_ids']==[M['items'][1]['id']]
+    assert sum(x['total_n'] for x in first['by_kind'].values())==100
+    assert sum(x['paired_n'] for x in result['paired_coverage_by_kind'].values())==1
+    assert result['label_agreement']['agreement']==1
+    assert result['gold_labels_approved'] is False
+
+def test_empty_manifest_coverage_is_undefined():
+    a=review();b=review('B');a['annotations']=[];b['annotations']=[]
+    result=compare(a,b,dict(M,items=[]))
+    assert result['paired_fraction'] is None
+    assert result['review_coverage'][0]['reviewed_fraction'] is None
+
+def test_no_completed_review_is_not_full_coverage():
+    a=review();b=review('B');a['annotations']=[];b['annotations']=[]
+    result=compare(a,b,M)
+    assert result['paired_fraction']==0
+    assert result['label_agreement']['agreement'] is None
+    assert result['review_coverage'][0]['missing_n']==100
+
 @pytest.mark.parametrize('alias',[' A ', 'a', '\uFF21'])
 def test_reviewer_aliases_are_not_independent(alias):
     with pytest.raises(ValueError,match='distinct'):

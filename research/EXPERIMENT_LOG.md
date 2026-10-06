@@ -1,5 +1,26 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 12:12 UTC heartbeat: expose annotation attrition
+
+Extended validated two-reviewer comparison with per-reviewer reviewed/skipped/
+missing counts and IDs, reviewed fractions by item kind, overall paired fraction,
+and paired counts by kind. Existing agreement and unapproved-gold behavior remain
+unchanged. Coverage is calculated only after supplied annotations pass validation;
+no inference about absent reviews or reviewer independence is made.
+
+All 25 annotation tests passed, including three new cases: partial coverage with
+skips, empty manifest, and no completed reviews. Synthetic demonstration explicitly
+marked not human evidence: 1/100 paired, agreement 1.0, reviewer A reviewed/skipped/
+missing 1/1/98, reviewer B 1/0/99. This prevents agreement being read without its
+coverage denominator; it is not a classifier result or human annotation progress.
+Preserved research/results/review_coverage_20261006.json, copied to outputs.
+
+Public-site local Chrome/Playwright fallback recipe smoke unchanged: LEFT .997309,
+HTTP 200, exact input/UI checks, no page/request errors or mobile overflow.
+Raw evidence outputs/live-browser-review-coverage-20261006. Cloud browser
+unavailable. Engineering-only run, no Astra ML task, training, real labels,
+deployment or reserved-test use. Independent high accuracy remains unestablished.
+
 ## 2026-10-06 11:11 UTC heartbeat: rare-term vocabulary experiment
 
 Fixed min_df=1 versus baseline 2, all other TF-IDF and balanced logistic regression
