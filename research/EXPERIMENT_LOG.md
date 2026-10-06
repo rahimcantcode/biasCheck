@@ -1,5 +1,34 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 07:07 UTC heartbeat: binary term-frequency ablation
+
+Ran five fixed training-fold fits with binary=True in the cloned baseline TF-IDF
+vectorizer, otherwise unchanged settings and balanced logistic regression. Existing
+unigram runner now accepts an explicit ablation option, retaining unigram default.
+Vocabulary and IDF arrays matched baseline exactly in every fold. Vectorizers fit
+training folds only; validation and reserved test untouched. Astra Medium reviewed
+the method and noted changed document normalization/effective regularization,
+preventing an isolated causal claim about repeated terms.
+
+Binary TF: 51/115 correct (.44348), macro-F1 .38069 versus baseline 58/115
+(.50435), macro-F1 .44234. Recall LEFT 18/38, CENTER 3/26, RIGHT 30/51 versus
+22/38, 4/26, 32/51. Strict-agreement slice 20/54 versus 25/54. Two baseline errors
+corrected, nine successes regressed. Reject as an improvement on this development
+comparison; no tuning or deployment. Corpus remains research-only/noncommercial,
+with disputed labels and repeatedly used folds, not independent accuracy evidence.
+
+Five tests passed for ablation parameter isolation/default behavior and fold guards.
+Reloaded five models, verified hashes and reproduced all 115 probability vectors
+at absolute tolerance 1e-12. Retained full scores, split IDs, parameters, runtime,
+protocol and model hashes under research/checkpoints/binary-tf-20261006. Report:
+research/results/binary_tf_20261006.json (also outputs). Method critique retained.
+
+Public-site local Chrome/Playwright fallback repeated the two selected training
+errors from the event audit: LEFT .996359 and LEFT .999042, unchanged. Both HTTP
+200 with exact input/UI checks; no page/request errors or mobile overflow. Evidence:
+outputs/live-browser-binary-tf-20261006. No cloud browser available. These are
+production smoke checks, not candidate evaluation or representative accuracy.
+
 ## 2026-10-06 06:06 UTC heartbeat: marginal uncertainty reporting
 
 Added 95% Wilson intervals with exact numerators/denominators to evaluation
