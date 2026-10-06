@@ -1,5 +1,37 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 05:05 UTC heartbeat: event-level error concentration
+
+Audited frozen baseline OOF predictions against training rows only: 115 examples,
+42 event strings, 57 errors. Sorted events by descending error count, lexical
+tie-break fixed before analysis. The top five contain 24/57 errors (42.1%) and
+36/115 rows (31.3%). Errors occur in 29 events. CENTER has 22 errors across 17 of
+18 events containing CENTER examples, so the deficit is not confined to one event.
+Largest error-count groups: Las Vegas response (6/13), Scaramucci leaks (5/6),
+election-result reactions (5/6), Indiana law (4/5), contractor minimum wage (4/6).
+These shorthand descriptions are not replacements for the preserved event strings.
+
+This is descriptive post-model error ranking, not a prevalence estimate, causal
+claim or evidence that labels are wrong. Larger events have more error opportunities;
+event strings may not be independent families. Reused development predictions and
+disputed noncommercial corpus labels cannot establish independent accuracy.
+Astra Medium method critique retained. No tuning, relabeling or reserved-test use.
+
+Added research/scripts/event_error_audit.py with checks for complete unique IDs,
+reference/hash agreement and single held-out fold per event. Three unit tests
+passed, including zero-error share, mismatched rows and cross-fold event rejection.
+Full event counts, row IDs, source model hashes and provenance preserved in
+research/results/event_errors_20261006.json and copied to outputs.
+
+Public browser checks selected, post hoc, the first ID-sorted CENTER baseline
+error in each of the top two events: 1b8a9395-94b4-4183-9b16-f12bd692aadd and
+259b95ba-221b-42c2-b490-a318b5c75b00. Production returned LEFT .996359 and
+LEFT .999042. Both HTTP 200, exact inputs and rendered text; no browser/request
+errors or mobile overflow. Local Chrome/Playwright fallback, not cloud browser.
+Raw outputs/screenshots: outputs/live-browser-event-errors-20261006. These are
+selected corpus disagreements, not a representative production error rate.
+No deployment or model replacement; human review remains necessary.
+
 ## 2026-10-06 04:04 UTC heartbeat: validate calibration requirements
 
 Reproduced an input-contract defect on the synthetic calibration fixture: target=-1,
