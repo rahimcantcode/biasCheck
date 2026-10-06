@@ -10,9 +10,11 @@ from hybrid_cv import digest
 
 def resample(correct, groups, draws=5000, seed=20261004):
     correct=np.asarray(correct,dtype=float)
-    if correct.ndim!=2 or correct.shape[0]!=len(groups) or not len(groups) or not np.isin(correct,[0,1]).all():
+    if correct.ndim!=2 or correct.shape[1]==0 or correct.shape[0]!=len(groups) or not len(groups) or not np.isin(correct,[0,1]).all():
         raise ValueError('Expected aligned nonempty binary correctness matrix')
-    if not isinstance(draws,int) or draws<1:raise ValueError('Positive draw count required')
+    if any(not isinstance(group,str) or not group.strip() for group in groups):
+        raise ValueError('Nonblank event-string groups required')
+    if type(draws) is not int or draws<1:raise ValueError('Positive integer draw count required')
     names=sorted(set(groups))
     sizes=np.array([sum(g==name for g in groups) for name in names])
     sums=np.array([correct[np.array(groups)==name].sum(axis=0) for name in names])

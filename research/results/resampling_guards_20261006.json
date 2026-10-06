@@ -1,0 +1,151 @@
+{
+  "purpose": "Resampling input guard regression verification; no new model evidence",
+  "tests_passed": 8,
+  "verified_exact_equality": {
+    "accuracy_shape": [
+      5000,
+      4
+    ],
+    "group_count_shape": [
+      5000,
+      42
+    ]
+  },
+  "sources": [
+    {
+      "path": "research/scripts/oof_uncertainty.py",
+      "sha256": "83af2bb633a13794ef120f05cee92260e8b1bfb2277701c328b62f5f87449e7f"
+    },
+    {
+      "path": "tests/test_oof_uncertainty.py",
+      "sha256": "c347e714a9c17d9eec6f9de79f3d9c4c6c903baf7ba8fb73ad57e256eb070c1c"
+    },
+    {
+      "path": "research/data/recent-uncertainty-input-20261006.json",
+      "sha256": "d1392558569f0e91cc47f68bcbbd5e2d1e16754ee488c6639783cfc1e9be4132"
+    },
+    {
+      "path": "research/checkpoints/recent-uncertainty-20261006/replicates.npz",
+      "sha256": "e4fe5fa1597b400b8925979b18e8ced8f75a33d57b32d66fc88a7022bf9ea437"
+    }
+  ],
+  "browser": {
+    "audit_sha256": "a02ef798360dfe320e061e97a6be62cf0ee4e17492a168ecd5f406271f7201ab",
+    "started_at": "2026-10-06T15:15:40.963Z",
+    "finished_at": "2026-10-06T15:15:53.928Z",
+    "environment": "local Chromium driving public deployed site; not cloud browser",
+    "browser": "154.0.8037.98",
+    "result": {
+      "source_type": "text",
+      "resolved_text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock. Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+      "mode": "sentence",
+      "overall": {
+        "assessment": null,
+        "tentative_label": null,
+        "relevance_scores": null,
+        "score_type": "class_probability",
+        "label": "LEFT",
+        "label_id": 0,
+        "raw_label": "LEFT",
+        "probabilities": {
+          "LEFT": 0.997309,
+          "RIGHT": 0.000459,
+          "CENTER": 0.002231
+        },
+        "decision": "classified",
+        "reason": "demo_estimate",
+        "token_count": 48,
+        "tokens_processed": 48,
+        "chunk_count": 1,
+        "truncated": false,
+        "calibrated": false
+      },
+      "results": [
+        {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.998918,
+            "RIGHT": 0.000369,
+            "CENTER": 0.000713
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 24,
+          "tokens_processed": 24,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false,
+          "segment_index": 0,
+          "text": "Rinse the lentils under cold running water and place them in a large saucepan with chopped carrots and vegetable stock.",
+          "start": 0,
+          "end": 119
+        },
+        {
+          "assessment": null,
+          "tentative_label": null,
+          "relevance_scores": null,
+          "score_type": "class_probability",
+          "label": "LEFT",
+          "label_id": 0,
+          "raw_label": "LEFT",
+          "probabilities": {
+            "LEFT": 0.996503,
+            "RIGHT": 0.000765,
+            "CENTER": 0.002733
+          },
+          "decision": "classified",
+          "reason": "demo_estimate",
+          "token_count": 24,
+          "tokens_processed": 24,
+          "chunk_count": 1,
+          "truncated": false,
+          "calibrated": false,
+          "segment_index": 1,
+          "text": "Bring the mixture to a gentle simmer and cook until the lentils are tender, then stir in lemon juice before serving.",
+          "start": 120,
+          "end": 236
+        }
+      ],
+      "warnings": [
+        "Investor demo mode: this is an experimental model estimate, not a validated probability or factual judgment.",
+        "Passage scores do not establish the author's position. Quotations and surrounding context can change their meaning.",
+        "This tool estimates U.S. political leaning in English news. It does not check factual accuracy or measure loaded language."
+      ],
+      "model": {
+        "weights_sha256": "548cc7ca4e33a3a76bba015a2ca940d1111d50c5594a9b6b27b4e7bf1719090d",
+        "config_sha256": "d219a9b34ba27e1c0d501e45c1cecc57320a1cd2e7267c3679f4ada4b6c8e3e9",
+        "tokenizer_sha256": "4082d391a9b2de9138b4f835f8d9d8711314e4de08a973a6ea2ded651b529917",
+        "id2label": {
+          "0": "LEFT",
+          "1": "RIGHT",
+          "2": "CENTER"
+        },
+        "aggregation": "new_token_weighted_logit_mean_v1",
+        "max_length": 512,
+        "stride": 64,
+        "demo_mode": true,
+        "transformers": "4.57.1",
+        "torch": "2.6.0+cpu",
+        "tokenizers": "0.22.2"
+      }
+    },
+    "screenshot_sha256": "9d807dc622613ca7a841cde536e553ea5b1730c213207dc0547a37cd6513ca56",
+    "page_errors": [],
+    "failed_requests": [],
+    "mobile_overflow": false
+  },
+  "release_approved": false,
+  "production_changed": false,
+  "reserved_test_read": false,
+  "limitations": [
+    "Engineering-only run, no ML training or Astra subtask.",
+    "Existing conditional uncertainty limitations unchanged; one-group resampling is valid but degenerate.",
+    "Repeated synthetic browser smoke is not independent accuracy evidence."
+  ]
+}

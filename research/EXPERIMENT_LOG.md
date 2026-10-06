@@ -1,5 +1,24 @@
 # Working experiment log (not a final report)
 
+## 2026-10-06 15:07 UTC heartbeat: resampling input guards
+
+Hardened event-cluster resampling: reject a zero-column model matrix, missing or
+blank/non-string event groups (including NaN), and boolean/noninteger draw counts.
+Kept one-group inputs valid but tested their degenerate constant estimates. These
+checks address malformed research inputs, not grouping validity or independence.
+
+Eight resampling tests passed. Recomputed the recent four-model experiment and
+verified exact equality of every saved 5000x4 accuracy value and 5000x42 draw count.
+The new guards leave prior valid results unchanged. No retraining, re-selection or
+new statistical conclusion. Verification hashes/report:
+research/results/resampling_guards_20261006.json, also copied to outputs.
+
+Public-site local Chrome/Playwright fallback recipe smoke unchanged: LEFT .997309,
+HTTP 200, exact input/UI, no page/request errors or mobile overflow. Evidence:
+outputs/live-browser-resampling-guards-20261006; cloud browser unavailable.
+Engineering-only run, no Astra ML subtask, deployment or reserved-test access.
+Independent high accuracy remains unestablished.
+
 ## 2026-10-06 13:13 UTC heartbeat: uncertainty for recent negative candidates
 
 Reused existing event-string cluster bootstrap on frozen training OOF predictions

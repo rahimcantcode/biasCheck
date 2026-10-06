@@ -24,5 +24,25 @@ class OOFUncertaintyTests(unittest.TestCase):
     def test_bad_alignment(self):
         with self.assertRaises(ValueError):resample([[1]],['a','b'])
 
+    def test_invalid_groups_rejected(self):
+        for group in (None,'','  ',float('nan'),123,True):
+            with self.subTest(group=group),self.assertRaisesRegex(ValueError,'event-string'):
+                resample([[1]],[group])
+
+    def test_empty_model_axis_rejected(self):
+        with self.assertRaisesRegex(ValueError,'matrix'):
+            resample(np.empty((2,0)),['a','b'])
+
+    def test_invalid_draw_count_rejected(self):
+        for draws in (True,False,0,-1,1.5,'20'):
+            with self.subTest(draws=draws),self.assertRaisesRegex(ValueError,'draw count'):
+                resample([[1]],['a'],draws)
+
+    def test_one_group_is_valid_but_degenerate(self):
+        values,counts,groups=resample([[1],[0]],['a','a'],5)
+        np.testing.assert_array_equal(values,np.full((5,1),.5))
+        np.testing.assert_array_equal(counts,np.ones((5,1)))
+        self.assertEqual(groups,['a'])
+
 
 if __name__=='__main__':unittest.main()
